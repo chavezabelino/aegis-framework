@@ -1,0 +1,61 @@
+{
+  "metadata": {
+    "created": "2025-01-08T00:00:00Z",
+    "version": "1.0.0-alpha",
+    "validator": "constitutional-drift-detector",
+    "lastAnalysis": "2025-01-08T00:00:00Z"
+  },
+  "driftEvents": [
+    {
+      "id": "drift-001",
+      "timestamp": "2025-01-08T00:00:00Z",
+      "type": "structural",
+      "severity": "medium",
+      "description": "Missing constitutional state files during initial setup",
+      "detected": {
+        "component": "framework-structure",
+        "expected": ".framework/constitutional-state.json",
+        "actual": "missing",
+        "rule": "Article II: Framework Governance"
+      },
+      "resolution": {
+        "action": "auto-created",
+        "timestamp": "2025-01-08T00:00:01Z",
+        "result": "compliant"
+      }
+    }
+  ],
+  "patterns": {
+    "commonDrifts": [
+      {
+        "type": "missing-annotations",
+        "frequency": 0,
+        "autoCorrectible": true
+      },
+      {
+        "type": "version-inconsistency", 
+        "frequency": 0,
+        "autoCorrectible": true
+      },
+      {
+        "type": "structural-deviation",
+        "frequency": 1,
+        "autoCorrectible": true
+      }
+    ],
+    "learningHistory": [
+      {
+        "date": "2025-01-08",
+        "insight": "Initial framework setup requires comprehensive structure validation",
+        "action": "Enhanced auto-correction for missing files"
+      }
+    ]
+  },
+  "analytics": {
+    "totalDriftEvents": 1,
+    "resolvedEvents": 1,
+    "pendingEvents": 0,
+    "autoResolvedRate": 1.0,
+    "averageResolutionTime": "1s"
+  }
+}

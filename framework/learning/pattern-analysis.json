@@ -1,0 +1,142 @@
+{
+  "metadata": {
+    "generated": "2025-08-05T18:12:18.757Z",
+    "version": "1.1.0-beta",
+    "engine": "enhanced-pattern-recognition"
+  },
+  "summary": {
+    "totalPatterns": 2,
+    "insights": 2,
+    "predictions": 0,
+    "recommendations": 4
+  },
+  "patterns": [
+    {
+      "id": "agent-node-modules-misconception",
+      "type": "requirement-misinterpretation",
+      "frequency": 1,
+      "severity": "medium",
+      "firstOccurrence": "2025-08-05T18:30:00Z",
+      "lastOccurrence": "2025-08-05T18:30:00Z",
+      "contexts": [
+        {
+          "sessionId": "session-002",
+          "agent": "copilot-assistant",
+          "userInteraction": "User clarified: 'why did you suggest removing node in the first place? you know we're doing local development and the ask was just to not commit those files'",
+          "triggerConditions": [
+            "action-type:node-modules-misconception",
+            "drift-type:requirement-misinterpretation",
+            "low-compliance"
+          ],
+          "resolution": "Incorrectly suggested removing node_modules for gitignore setup instead of understanding user request for git exclusion only"
+        }
+      ],
+      "prediction": {
+        "likelihood": 0.9999999999999999,
+        "conditions": [
+          "action-type:node-modules-misconception",
+          "drift-type:requirement-misinterpretation",
+          "low-compliance"
+        ],
+        "riskFactors": [
+          "user-correction-required",
+          "low-confidence",
+          "behavioral-drift"
+        ],
+        "confidence": 0.6
+      },
+      "preventionStrategy": {
+        "triggers": [
+          "file-operation-suggestion",
+          "gitignore-setup-request"
+        ],
+        "interventions": [
+          {
+            "type": "user-prompt",
+            "message": "Clarify: Do you want to exclude files from git or remove them from filesystem?",
+            "priority": 1
+          },
+          {
+            "type": "suggestion",
+            "message": "Consider creating .gitignore entry instead of file deletion",
+            "priority": 2
+          }
+        ],
+        "autoCorrectible": false,
+        "userGuidance": "Always clarify user intent before suggesting file operations. Distinguish between git exclusion and file deletion."
+      }
+    },
+    {
+      "id": "system-structural",
+      "type": "structural",
+      "frequency": 1,
+      "severity": "medium",
+      "firstOccurrence": "2025-01-08T00:00:00Z",
+      "lastOccurrence": "2025-01-08T00:00:00Z",
+      "contexts": [
+        {
+          "sessionId": "drift-001",
+          "agent": "system",
+          "userInteraction": "none",
+          "triggerConditions": [
+            "framework-structure"
+          ],
+          "resolution": "auto-created"
+        }
+      ],
+      "prediction": {
+        "likelihood": 0.3,
+        "conditions": [
+          "Article II: Framework Governance"
+        ],
+        "riskFactors": [
+          "framework-structure"
+        ],
+        "confidence": 0.8
+      },
+      "preventionStrategy": {
+        "triggers": [
+          ".framework/constitutional-state.json"
+        ],
+        "interventions": [
+          {
+            "type": "auto-correction",
+            "message": "Ensure .framework/constitutional-state.json exists",
+            "priority": 1
+          }
+        ],
+        "autoCorrectible": true,
+        "userGuidance": "Monitor framework-structure for compliance"
+      }
+    }
+  ],
+  "insights": [
+    {
+      "pattern": "requirement-interpretation",
+      "insight": "Agents need clearer guidance on distinguishing between git exclusion and file operations",
+      "confidence": 0.8,
+      "applicability": [
+        "agent-training",
+        "requirement-clarification"
+      ],
+      "recommendation": "Add context validation step before suggesting file operations"
+    },
+    {
+      "pattern": "compliance-challenges",
+      "insight": "1 patterns show low compliance confidence",
+      "confidence": 0.7,
+      "applicability": [
+        "validation",
+        "training"
+      ],
+      "recommendation": "Enhance validation checks for low-confidence scenarios"
+    }
+  ],
+  "predictions": [],
+  "recommendations": [
+    "🔍 Monitor agent behavior for requirement interpretation accuracy",
+    "📚 Enhance documentation for common developer workflow scenarios",
+    "✅ 1 patterns can be auto-corrected proactively",
+    "🎯 Implement requirement clarification step before file operation suggestions"
+  ]
+}

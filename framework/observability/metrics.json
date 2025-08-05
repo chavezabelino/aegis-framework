@@ -1,0 +1,35 @@
+[
+  {
+    "timestamp": "2025-08-05T22:28:08.563Z",
+    "metrics": {
+      "performance": {
+        "blueprintValidationTime": 150,
+        "constitutionalCheckTime": 75,
+        "patternRecognitionTime": 200,
+        "healingOperationTime": 300,
+        "averageResponseTime": 120,
+        "throughput": 10
+      },
+      "health": {
+        "blueprintHealthScore": 90.19392263832363,
+        "constitutionalCompliance": 95.26973475635926,
+        "systemStability": 94.28459254845104,
+        "errorRate": 0,
+        "availabilityPercentage": 99.78841098973572
+      },
+      "usage": {
+        "dailyActiveOperations": 1,
+        "blueprintGeneration": 0,
+        "amendmentProposals": 0,
+        "healingOperations": 0,
+        "userInteractions": 0
+      },
+      "governance": {
+        "democraticParticipation": 0,
+        "amendmentSuccessRate": 0.8807551345627178,
+        "consensusQuality": 0.92948356350923,
+        "constitutionalStability": 0.9517207674406057
+      }
+    }
+  }
+]

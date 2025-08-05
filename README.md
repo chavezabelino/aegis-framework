@@ -2,6 +2,53 @@
 
 > A production-grade, blueprint-driven system for AI-assisted software development — with full traceability, observability, drift protection, and replay fidelity.
 
+**🏛️ Governed by the [Aegis Framework Constitution](CONSTITUTION.md)** - establishing foundational principles, governance structures, and evolutionary processes for AI-native engineering.
+
+---
+
+## 🚀 Quick Start
+
+### Prerequisites
+
+- **Node.js** >= 18.0.0
+- **npm** >= 8.0.0 (or yarn/pnpm equivalent)
+
+### Installation & Setup
+
+```bash
+# Clone the repository
+git clone https://github.com/your-org/aegis-framework.git
+cd aegis-framework
+
+# Install dependencies
+npm install
+
+# Initialize constitutional framework
+npm run conductor init
+
+# Run constitutional compliance check
+npm run check
+
+# Validate comprehensive framework compliance
+npm run validate
+```
+
+### Available Commands
+
+```bash
+# Constitutional Governance
+npm run conductor <command>     # Run constitutional conductor
+npm run check                   # Quick compliance audit
+npm run validate               # Comprehensive constitutional validation
+
+# Constitutional Conductor Commands
+npm run conductor status       # Show governance status
+npm run conductor init         # Initialize constitutional framework
+npm run conductor check        # Run compliance audit
+npm run conductor enforce      # Apply constitutional enforcement
+npm run conductor drift-report # Generate drift analysis
+```
+
 ---
 
 ## 🧠 What is Aegis?
@@ -16,6 +63,7 @@ It was designed from the ground up to enforce:
 - ❗ **Fallback Safety**: Define user-facing error states for failed AI generations
 - 🔐 **Blueprint Contracts**: Strict schemas for every AI-assisted change
 - 🧬 **Rule Versioning**: Enforce specific contract versions via CI or orchestration
+- 🏛️ **Constitutional Governance**: Self-healing, democratic framework evolution
 
 ---
 
@@ -24,7 +72,7 @@ It was designed from the ground up to enforce:
 ```txt
 aegis-framework/
 ├── framework/             # Core specs, contracts, modes, agent behaviors
-│   ├── framework-core-v4.6.md
+│   ├── framework-core-v1.0.0-alpha.md
 │   ├── contracts/         # Blueprint + rule schemas
 │   ├── modes/             # lean, strict, generative (token-mode configs)
 │   ├── agents/            # Copilot, Kilo, Lovable behavior profiles
@@ -76,7 +124,7 @@ Blueprints define:
 - Associated rule contracts and error fallback UX
 - Agent mode and output hash
 
-See `framework/framework-core-v4.6.md` for the full blueprint schema.
+See `framework/framework-core-v1.0.0-alpha.md` for the full blueprint schema.
 
 ---
 
@@ -126,21 +174,42 @@ Each agent (Copilot, Kilo, Lovable) has a behavior profile in `/framework/agents
 
 ## 🛣 Roadmap
 
-- ✅ v4.6: Hardened replay, error taxonomy, observability contracts
-- 🔜 v4.7: Multi-agent orchestration, auto-mode selection
-- 🔜 v5.0: Full runtime + UI support, adapter registry
+- ✅ **v1.0.0-alpha**: Initial semantic release - hardened replay, error taxonomy, observability contracts
+- 🔜 **v1.1.0-beta**: Multi-agent orchestration, MCP metadata, drift logging, enhanced adapters
+- 🔜 **v1.2.0**: Visual blueprint designer, real-time collaboration
+- 🔜 **v2.0.0**: Enterprise governance, compliance reporting, marketplace
 
-See `framework-core-v4.6.md` and `CHANGELOG.md` for full release details.
+See `framework-core-v1.0.0-alpha.md` and [v1.1.0-beta specification](framework/versions/framework-core-v1.1.0-beta-spec.md) for detailed feature planning.
 
 ---
 
 ## 📎 Resources
 
+- [🏛️ **Framework Constitution**](CONSTITUTION.md) - Foundational principles and governance
 - [📘 Architecture Overview](docs/architecture.md)
 - [🧩 Blueprint Schema](framework/contracts/)
 - [🧪 Snapshot Test Examples](tests/snapshot-tests/)
 - [🛠 Drift Detection Tool](tools/detect-drift.ts)
 - [🧱 Starter Scaffold](scaffolds/web-app-starter/)
+- [🔄 Framework Evolution Strategy](docs/evolution-strategy.md)
+- [📝 Changelog Generator](tools/generate-changelog.sh)
+
+---
+
+## 🔄 Contributing & Versioning
+
+Aegis follows [Semantic Versioning](https://semver.org/) starting with v1.0.0-alpha. 
+
+**For changelog-worthy contributions:**
+```bash
+# Generate changelog entry for your changes
+./tools/generate-changelog.sh 1.0.1-alpha "Your feature description"
+
+# Validate blueprints before committing
+node tools/validate-blueprint.ts blueprints/your-feature/blueprint.yaml
+```
+
+See [Evolution Strategy](docs/evolution-strategy.md) for guidance on framework development and impact assessment.
 
 ---
 

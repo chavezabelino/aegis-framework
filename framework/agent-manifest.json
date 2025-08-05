@@ -1,0 +1,46 @@
+{
+  "aegisFrameworkVersion": "1.0.0-alpha",
+  "schemaVersion": "1.0",
+  "lastUpdated": "2025-08-05",
+  "outputTypes": {
+    "lean": {
+      "description": "Minimal output, strict replay match",
+      "tokenLimit": "low",
+      "useCase": "Cost-sensitive operations"
+    },
+    "strict": {
+      "description": "Full schema compliance",
+      "tokenLimit": "medium", 
+      "useCase": "CI/QA environments"
+    },
+    "generative": {
+      "description": "Rich creative expansion",
+      "tokenLimit": "high",
+      "useCase": "Ideation and design"
+    }
+  },
+  "behavioralAnnotations": {
+    "required": [
+      "@aegisBlueprint",
+      "@version",
+      "@mode",
+      "@intent",
+      "@context"
+    ],
+    "pattern": "<!--\n@aegisBlueprint: <blueprint-id>\n@version: <version>\n@mode: lean|strict|generative\n@intent: <brief description>\n@context: <relevant context>\n-->"
+  },
+  "supportedAgents": [
+    "github-copilot",
+    "cursor",
+    "windsurf",
+    "anthropic-claude"
+  ],
+  "blueprintSchema": {
+    "required": ["id", "name", "version"],
+    "optional": ["requiredRoutes", "requiredProviders", "requiredSelectors", "ruleContracts", "observability", "errorStates"]
+  },
+  "validationTools": {
+    "blueprint": "tools/validate-blueprint.ts",
+    "drift": "tools/detect-drift.ts"
+  }
+}

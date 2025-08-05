@@ -1,0 +1,44 @@
+{
+  "name": "aegis-framework",
+  "version": "1.2.0-alpha",
+  "description": "Blueprint-driven AI engineering framework with constitutional governance",
+  "type": "module",
+  "scripts": {
+    "validate": "node tools/validate-constitution.ts",
+    "conductor": "node cli/aegis-conductor.ts",
+    "check": "node cli/aegis-conductor.ts check",
+    "init": "node cli/aegis-conductor.ts init",
+    "analyze-patterns": "node framework/learning/pattern-recognition-engine.ts",
+    "learn": "npm run analyze-patterns",
+    "predict": "node framework/learning/predictive-enforcement.ts",
+    "changelog": "node framework/learning/intelligent-changelog.ts",
+    "changelog-analyze": "node framework/learning/intelligent-changelog.ts",
+    "changelog-update": "node tools/auto-update-changelog.ts",
+    "version-plan": "npm run changelog",
+    "amendment": "node cli/amendment-cli.ts",
+    "democracy": "node framework/governance/democratic-amendment-engine.ts",
+    "governance": "npm run amendment",
+    "heal": "node framework/healing/self-healing-blueprint-engine.ts",
+    "observe": "node framework/observability/advanced-observability-engine.ts",
+    "cross-learn": "node framework/learning/cross-framework-learning-system.ts"
+  },
+  "dependencies": {
+    "js-yaml": "^4.1.0"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^20.0.0"
+  },
+  "keywords": [
+    "ai",
+    "framework",
+    "blueprint",
+    "governance",
+    "constitutional",
+    "self-healing"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

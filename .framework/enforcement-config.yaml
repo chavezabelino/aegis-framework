@@ -1,0 +1,90 @@
+# Constitutional Enforcement Configuration
+# Governs the behavior of the Aegis Constitutional Conductor
+
+enforcement:
+  # Enforcement modes: strict, moderate, permissive
+  mode: strict
+  
+  # Auto-correction settings
+  autoCorrect:
+    enabled: true
+    dryRun: false
+    backupBeforeCorrection: true
+    
+  # What violations to auto-correct
+  autoCorrectableViolations:
+    - missing-annotations
+    - version-inconsistencies  
+    - structural-deviations
+    - blueprint-formatting
+    
+  # Violations that require manual intervention
+  manualReviewRequired:
+    - constitutional-amendments
+    - breaking-changes
+    - security-issues
+
+validation:
+  # How often to run constitutional validation
+  frequency: "on-commit"  # options: on-commit, daily, weekly
+  
+  # Validation scope
+  scope:
+    - framework-structure
+    - blueprint-compliance
+    - annotation-requirements
+    - version-consistency
+    
+  # Thresholds for compliance scoring
+  thresholds:
+    critical: 0.95  # Must maintain 95% compliance
+    warning: 0.85   # Warning threshold
+    acceptable: 0.75 # Minimum acceptable
+
+drift:
+  # Drift detection sensitivity
+  sensitivity: medium  # low, medium, high
+  
+  # What types of drift to monitor
+  monitoring:
+    - agent-behavior
+    - user-workflows
+    - framework-evolution
+    - blueprint-patterns
+    
+  # Drift response actions
+  responses:
+    alert: true
+    log: true
+    autoCorrect: true
+    notifyMaintainers: false
+
+learning:
+  # Enable introspective learning
+  enabled: true
+  
+  # Learning data retention
+  retentionPeriod: "90 days"
+  
+  # Pattern recognition
+  patternDetection:
+    enabled: true
+    minimumOccurrences: 3
+    
+  # Self-improvement
+  selfImprovement:
+    enabled: true
+    proposalGeneration: true
+    
+governance:
+  # Amendment proposal settings
+  amendments:
+    autoGenerate: true
+    communityReview: true
+    approvalThreshold: 0.67
+    
+  # Democratic processes
+  democracy:
+    enabled: true
+    votingPeriod: "7 days"
+    quorum: 0.5

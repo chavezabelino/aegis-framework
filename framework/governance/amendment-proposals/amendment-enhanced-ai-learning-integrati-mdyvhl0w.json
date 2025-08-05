@@ -1,0 +1,101 @@
+{
+  "id": "amendment-enhanced-ai-learning-integrati-mdyvhl0w",
+  "title": "Enhanced AI Learning Integration",
+  "description": "Integrate AI learning capabilities more deeply into the constitutional framework",
+  "proposer": "core-team",
+  "proposedDate": "2025-08-05T18:28:38.960Z",
+  "status": "under-review",
+  "type": "constitutional",
+  "impact": "major",
+  "version": "1.1.0-beta",
+  "proposedText": "Add Article X: AI Learning Integration - All framework components shall integrate with the AI learning system for continuous improvement and pattern recognition.",
+  "rationale": "The successful implementation of Pattern Recognition and Predictive Enforcement demonstrates the value of AI learning. This amendment formalizes AI integration as a constitutional requirement.",
+  "implementationPlan": [
+    "Update CONSTITUTION.md with Article X",
+    "Modify framework specifications to require AI integration",
+    "Update validation tools to check AI learning compliance",
+    "Create migration guide for existing components"
+  ],
+  "migrationGuide": [
+    "Review all existing framework components for AI integration opportunities",
+    "Update blueprint templates to include AI learning hooks",
+    "Migrate existing drift logs to new AI learning format"
+  ],
+  "reviewPeriod": {
+    "startDate": "2025-08-05T18:28:38.962Z",
+    "endDate": "2025-08-05T18:28:37.963Z",
+    "durationDays": 14
+  },
+  "voting": {
+    "votes": [
+      {
+        "voter": "contributor",
+        "decision": "approve",
+        "rationale": "Good direction",
+        "timestamp": "2025-08-05T18:28:38.963Z",
+        "weight": 2
+      },
+      {
+        "voter": "community",
+        "decision": "approve",
+        "rationale": "Needed improvement",
+        "timestamp": "2025-08-05T18:28:38.963Z",
+        "weight": 1
+      },
+      {
+        "voter": "community-2",
+        "decision": "abstain",
+        "rationale": "Need more time to review",
+        "timestamp": "2025-08-05T18:28:38.963Z",
+        "weight": 1
+      },
+      {
+        "voter": "community-3",
+        "decision": "approve",
+        "rationale": "Excellent proposal",
+        "timestamp": "2025-08-05T18:28:38.963Z",
+        "weight": 1
+      }
+    ],
+    "quorum": 7,
+    "threshold": 66,
+    "endDate": "2025-08-05T18:28:37.963Z"
+  },
+  "comments": [
+    {
+      "id": "565732e2-ba6f-4b8c-84db-2252ce93bf41",
+      "author": "community-member",
+      "content": "This looks like a great improvement to the framework!",
+      "timestamp": "2025-08-05T18:28:38.963Z",
+      "type": "support",
+      "resolved": false,
+      "replies": []
+    },
+    {
+      "id": "07566e1a-40f8-47f1-b913-08d88977a9ab",
+      "author": "community-member",
+      "content": "What about backward compatibility?",
+      "timestamp": "2025-08-05T18:28:38.963Z",
+      "type": "question",
+      "resolved": false,
+      "replies": []
+    },
+    {
+      "id": "8dad1306-7b0a-4134-96d9-40f1dd351b7b",
+      "author": "community-member",
+      "content": "Suggest adding more detail to the implementation plan",
+      "timestamp": "2025-08-05T18:28:38.963Z",
+      "type": "suggestion",
+      "resolved": false,
+      "replies": []
+    }
+  ],
+  "revisions": [],
+  "supporters": [],
+  "metadata": {
+    "relatedArticles": [],
+    "affectedFiles": [],
+    "testingRequired": true,
+    "precedents": []
+  }
+}
