@@ -1,0 +1,15 @@
+name: Validate Aegis Framework
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Validate Blueprint Contracts
+        run: echo "TODO: add schema validation logic"
