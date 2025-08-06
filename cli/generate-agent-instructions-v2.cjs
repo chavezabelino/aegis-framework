@@ -8,6 +8,7 @@ const fs = require('fs');
 const path = require('path');
 const yaml = require('js-yaml');
 const ejs = require('ejs');
+const minimist = require('minimist');
 
 function loadSection(section) {
   // Accept both 'constitutional' and 'constitutional.template.md' as input
@@ -57,29 +58,48 @@ function renderSections(agent) {
     driftDetection: ejs.render(loadSection('drift-detection.template.md'), { driftDetectionContent: 'See drift log and CLI for drift management.' }),
     cliIntegration: ejs.render(loadSection('cli-integration.template.md'), { cliIntegrationContent: 'See CLI tools for blueprint, drift, and apprenticeship workflows.' }),
     validation: ejs.render(loadSection('validation.template.md'), { validationContent: 'See tests/snapshot-tests/ and validation tools.' }),
-    knowledgeBase: ejs.render(loadSection('knowledge-base.template.md'), { knowledgeBaseContent: 'See docs/ for architecture, workflow, and reference.' })
+    knowledgeBase: ejs.render(loadSection('knowledge-base.template.md'), { knowledgeBaseContent: 'See docs/ for architecture, workflow, and reference.' }),
+    aiAgentMode: ejs.render(loadSection('ai-agent-mode.template.md'), {}),
+    directoryStructure: ejs.render(loadSection('directory-structure.template.md'), {}),
+    rcaDebugLoop: ejs.render(loadSection('rca-debug-loop.template.md'), {}),
+    codePatterns: ejs.render(loadSection('code-patterns.template.md'), {}),
+    decisionMatrix: ejs.render(loadSection('decision-matrix.template.md'), {})
   };
 }
 
-function generateInstructions(agentId) {
+function loadProjectStandards(projectProfilePath) {
+  if (!projectProfilePath) return '';
+  if (!fs.existsSync(projectProfilePath)) throw new Error(`Project standards file not found: ${projectProfilePath}`);
+  return fs.readFileSync(projectProfilePath, 'utf8');
+}
+
+function generateInstructions(agentId, projectProfilePath) {
   const agent = loadAgentProfile(agentId);
   const frameworkVersion = getFrameworkVersion();
   const lastUpdated = getLastUpdated();
   const sections = renderSections(agent);
   const mainTemplate = loadMainTemplate();
-  const output = ejs.render(mainTemplate, { agent, frameworkVersion, lastUpdated, sections });
-  const outPath = path.join(__dirname, `../framework/generated/instructions/current/${agentId}.md`);
+  const projectStandards = loadProjectStandards(projectProfilePath);
+  const output = ejs.render(mainTemplate, { agent, frameworkVersion, lastUpdated, sections, projectStandards });
+  let outPath;
+  if (projectProfilePath) {
+    outPath = path.join(__dirname, `../framework/generated/instructions/current/${agentId}-ready.md`);
+  } else {
+    outPath = path.join(__dirname, `../framework/generated/instructions/current/${agentId}.md`);
+  }
   fs.writeFileSync(outPath, output);
   console.log(`✅ Generated instructions for ${agent.displayName}: ${outPath}`);
 }
 
-const args = process.argv.slice(2);
-if (args.length === 0) {
-  console.log('Usage: node cli/generate-agent-instructions-v2.cjs <agent-id>');
+const args = minimist(process.argv.slice(2));
+const agentId = args._[0];
+const projectProfilePath = args['project-profile'] || args['projectProfile'];
+if (!agentId) {
+  console.log('Usage: node cli/generate-agent-instructions-v2.cjs <agent-id> [--project-profile <path>]');
   process.exit(0);
 }
 try {
-  generateInstructions(args[0]);
+  generateInstructions(agentId, projectProfilePath);
 } catch (e) {
   console.error('❌ Error:', e instanceof Error ? e.message : String(e));
   process.exit(1);

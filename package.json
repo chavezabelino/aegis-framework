@@ -1,10 +1,13 @@
 {
   "name": "aegis-framework",
-  "version": "1.2.0-alpha",
+  "version": "1.3.0",
   "description": "Blueprint-driven AI engineering framework with constitutional governance",
   "type": "module",
   "scripts": {
     "validate": "node tools/validate-constitution.ts",
+    "validate:templates": "node tools/validate-template-quality.cjs",
+    "validate:fidelity": "node tools/validate-output-fidelity.cjs",
+    "validate:all": "npm run validate && npm run validate:templates && npm run validate:fidelity",
     "conductor": "node cli/aegis-conductor.ts",
     "check": "node cli/aegis-conductor.ts check",
     "init": "node cli/aegis-conductor.ts init",

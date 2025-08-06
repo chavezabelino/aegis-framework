@@ -5,9 +5,54 @@ All notable changes to the Aegis Framework will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+# Changelog
+
+All notable changes to the Aegis Framework will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
 ## [Unreleased]
 
-### Planned for v1.3.0
+## [1.3.0] - 2025-08-06
+### Added
+- **Constitutional Enhancement**: Article IX: Template and Documentation Quality Standards
+  - New constitutional article establishing template encoding standards and quality requirements
+  - Plain text primacy mandate - prohibits HTML entities in templates
+  - Structural integrity requirements for markdown documents
+  - Output validation against reference targets
+  - Constitutional annotation requirements for framework files
+
+- **Template Quality Validation Tools**:
+  - `validate-template-quality.cjs` - Comprehensive template quality validator
+  - `validate-output-fidelity.cjs` - Output validation against reference targets
+  - Encoding compliance validation with specific violation reporting
+  - Structural integrity checks (markdown structure, heading hierarchy)
+  - Constitutional annotation verification
+  - Quality scoring system with 80/100 constitutional minimum
+
+- **Enhanced Development Workflow**:
+  - Pre-commit hooks with constitutional enforcement (Article IX)
+  - New npm scripts: `validate:templates`, `validate:fidelity`, `validate:all`
+  - Git hooks setup script for constitutional compliance automation
+  - HTML entity detection and blocking in development workflow
+
+- **Constitutional Enforcement Infrastructure**:
+  - Automated violation detection and reporting
+  - Clear remediation guidance for developers
+  - Integration with existing constitutional validation tools
+  - Quality metrics and scoring aligned with constitutional standards
+
+### Changed
+- Enhanced package.json with new validation scripts
+- Updated pre-commit hooks to include Article IX compliance
+- Version bumped from 1.2.1 to 1.3.0 (minor version for new constitutional features)
+
+### Fixed
+- HTML encoding artifacts in template system now automatically detected
+- Template quality issues prevented from entering codebase through pre-commit enforcement
+
+### Planned for v1.4.0
 - Apprenticeship Scaffolds for Junior Developers:
   - `@apprenticeshipMode` execution contexts (guided, challenge, review-only)
   - Blueprint reflection blocks and prompts
@@ -16,12 +61,87 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Reflection-aware hybrid snapshots for learning delta
   - CLI and schema support for apprenticeship workflows
 
+## [1.7.1] - 2025-08-06
+### Fixed
+- **Framework Templates**: Enhanced template system to generate complete operational patterns
+  - Added `ai-agent-mode.template.md` for execution discipline and intent compilation
+  - Added `directory-structure.template.md` for structural integrity enforcement
+  - Added `rca-debug-loop.template.md` for token-gated AI analysis integration
+  - Added `code-patterns.template.md` for schema validation and integration examples
+  - Added `decision-matrix.template.md` for execution mode selection guidance
+  - Enhanced `validation.template.md` with comprehensive pre-commit checklist and pitfalls
+  - Updated CLI to include all new template sections in generated instructions
+  - **Impact**: Framework now generates instructions that include v2.5 operational patterns without manual editing
+
+## [1.7.0] - 2025-08-06
+### Enhanced
+- **Merged v2.5 battle-tested operational patterns**: Integrated proven Kilo + bracket-app-audit standards from v2.5 into Aegis constitutional framework
+- **Execution mode decision matrix**: Added guidance for when to use constitutional (`strict`), tactical (`lean`), or hybrid approaches
+- **Enhanced operational discipline**: Strengthened "compiler for intent" agent behavior patterns and execution validation
+- **Improved RCA integration**: Token-gated analysis now includes constitutional compliance and blueprint impact assessment
+- **Expanded pitfall detection**: Added impact levels and emergency patterns for critical production scenarios
+
+### Added
+- **Hybrid execution mode**: Combines constitutional annotations with operational patterns (recommended default)
+- **Pattern selection guide**: Code examples for enterprise, tactical, and hybrid approaches
+- **Enhanced pre-commit checklist**: More specific validation requirements with constitutional and operational compliance
+- **Emergency fix patterns**: Critical production fix templates with required annotations
+
+### Design Philosophy
+- **Constitutional + Operational**: Best of both systematic governance AND battle-tested execution discipline  
+- **Context-appropriate scaling**: Enterprise governance when needed, tactical speed when possible
+- **Proven pattern integration**: v2.5 operational patterns enhanced with constitutional traceability
+- **Decision framework**: Clear guidance on when to use which approach based on project context
+
+### Migration Notes
+- Existing `strict` mode unchanged for full constitutional compliance
+- New `lean` mode emphasizes operational patterns with minimal constitutional overhead
+- `hybrid` mode (new default) provides balanced approach for most use cases
+- All modes maintain core constitutional requirements (annotations, traceability)
+
+---
+### Fixed
+- **Eliminated redundant instruction files**: Removed duplicate `copilot-kilo-standards.md` which contained identical content to `github-copilot-ready.md`
+- **Single source of truth**: `framework/generated/instructions/current/github-copilot-ready.md` now serves as the complete, merged instruction set
+- **Removed over-engineering**: Deleted redundant `generate-copilot-kilo-standards.cjs` CLI tool that was creating unnecessary duplication
+
+### Clarified
+- **File purpose**: The layered approach (framework + project standards) in a single file is the correct architecture
+- **Content completeness**: Single file contains all constitutional compliance AND operational patterns - no separate "merged" version needed
+
+---
+
+## [1.5.0] - 2025-08-06
+### Added
+- **Composable, layered agent instructions**: Framework now generates ready-to-use, IDE/agent-specific instructions by merging constitutional (framework) and project-specific (operational) guidance into a single output file.
+- **Project profile and standards support**: CLI and template system accept a `project-profile.yaml` and/or markdown template (e.g., `/templates/project-standards.md`) to inject project-specific workflows, directory conventions, and code patterns.
+- **Unified output**: Generates `/generated/instructions/{agent}-ready.md` with both compliance and actionable project guidance for the target IDE/agent.
+
+### Design
+- **Layered Generation**: Instruction output is composed of:
+  1. Framework/constitutional section (auto-generated, versioned)
+  2. Project-specific operational standards (from project profile/template)
+  3. Agent/IDE-specific integration tips
+- **Automation**: CLI tool accepts both agent and project profile, merges both layers, and renders a single markdown file.
+- **Extensible**: Supports per-IDE or per-agent customization and future project standards.
+
+### Migration
+- No breaking changes. Existing instruction generation remains supported; new composable output is additive and opt-in.
+
+### Usage Instructions
+- Add or edit your project profile in `project-profile.yaml` and/or `/templates/project-standards.md`.
+- Run: `node cli/generate-agent-instructions-v2.cjs github-copilot --project-profile project-profile.yaml`
+- Find the merged output in `/generated/instructions/github-copilot-ready.md`.
+
+---
+
 ## [1.4.0] - 2025-08-06
 ### Added
 - Template-driven, agent-agnostic instruction generation system
 - Modular instruction templates and agent profiles in `framework/templates/`
 - Organized output structure in `framework/generated/instructions/`
 - Generation metadata and archive support for traceability
+- **Migration audit CLI tool**: `cli/aegis-migration-audit.cjs` for scanning applications and generating migration plans
 
 ### Changed
 - Instruction generation now leverages framework docs and agent profiles
@@ -29,6 +149,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Migration
 - No breaking changes. Existing instructions are archived; new system is backward compatible.
+
+### Usage Instructions
+- To generate agent instructions using the new system:
+  1. Edit or add modular templates and agent profiles in `framework/templates/` as needed.
+  2. Run the CLI tool: `node cli/generate-agent-instructions-v2.cjs`
+  3. Generated instructions will appear in `framework/generated/instructions/` with metadata and archive support.
+- For custom agent profiles or instruction sections, add or modify YAML files in `framework/templates/agent-profiles/` and reference them in the CLI.
+- For more details, see the README or run the CLI with `--help` for options and advanced usage.
+
+---
+
+- To audit an existing application and generate a migration plan:
+  1. Run: `node cli/aegis-migration-audit.cjs <target-path> [options]`
+  2. Options:
+     - `--output <file>`   Write migration plan to file (default: stdout)
+     - `--strict`          Fail on first critical compliance issue
+     - `--help`            Show usage instructions
+  3. Example: `node cli/aegis-migration-audit.cjs ../my-app --output migration-plan.md --strict`
+  4. The tool will scan for blueprints, contracts, and constitutional files, and output actionable migration steps.
 
 ### Future Enhancements
 - Live extraction of requirements and examples from framework docs (MCP, drift, CLI, etc.)

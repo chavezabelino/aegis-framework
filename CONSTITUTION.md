@@ -161,6 +161,7 @@ In cases of critical security or stability issues:
 The framework provides constitutional enforcement through:
 - `tools/validate-blueprint.ts`: Blueprint schema compliance
 - `tools/generate-changelog.ts`: Structured changelog generation
+- `tools/validate-template-quality.ts`: Template and documentation quality assurance
 - CI/CD validation: Automated constitutional compliance checking
 
 ### Section 2: Non-Compliance Consequences
@@ -168,6 +169,74 @@ Code that violates constitutional principles:
 - Shall not be accepted into the main framework
 - Must be remediated before merge approval
 - May trigger emergency constitutional review
+
+## 📝 Article IX: Template and Documentation Quality Standards
+
+### Section 1: Template Encoding Standards
+All framework templates and documentation must adhere to strict encoding principles:
+
+1. **Plain Text Primacy**: Templates must use plain Unicode characters, not HTML entities
+2. **Encoding Consistency**: No mixed encoding schemes within a single document
+3. **Human Readability**: Generated output must be human-readable without decoding
+4. **Platform Agnostic**: Templates must render consistently across all target platforms
+
+### Section 2: Template Quality Requirements
+All EJS templates and markdown documents must:
+
+#### Encoding Compliance
+- Use plain Unicode characters: `'`, `"`, `—`, `–` instead of HTML entities
+- Avoid double-encoding through template engines
+- Maintain consistent character encoding throughout the document
+- Pass automated encoding validation before merge
+
+#### Structural Integrity
+- Follow semantic markdown structure with proper heading hierarchy
+- Use consistent formatting patterns across all templates
+- Include required constitutional annotations in template headers
+- Validate against target output schemas
+
+#### Output Validation
+- Generated files must match reference targets character-for-character
+- No encoding artifacts or malformed entities permitted
+- Diff validation must pass with zero tolerance for encoding discrepancies
+- Section-by-section validation required for complex templates
+
+### Section 3: Documentation Development Standards
+Framework documentation development must follow:
+
+#### Template Development Workflow
+1. **Plain Text First**: Write templates using plain Unicode characters
+2. **Validation Early**: Run encoding validation during development
+3. **Reference Matching**: Compare against established reference targets
+4. **Peer Review**: Multi-agent validation of template outputs
+
+#### Quality Gates
+- All templates pass `tools/validate-template-quality.ts` before merge
+- Generated outputs validated against reference targets
+- No HTML entity artifacts in production documentation
+- Consistent rendering across GitHub, VS Code, and other platforms
+
+### Section 4: Automated Quality Enforcement
+The framework provides template quality enforcement through:
+
+#### Validation Tools
+- `tools/validate-template-quality.ts`: Comprehensive template and encoding validation
+- `tools/validate-output-fidelity.ts`: Generated output quality assurance
+- Pre-commit hooks: Automated template quality checking
+- CI/CD integration: Template quality gates in deployment pipeline
+
+#### Quality Metrics
+- **Encoding Compliance Score**: 100% plain text character usage
+- **Output Fidelity Score**: Character-perfect match against reference targets  
+- **Structural Integrity Score**: Proper markdown hierarchy and formatting
+- **Cross-Platform Consistency Score**: Identical rendering across platforms
+
+#### Violation Response
+Template quality violations trigger:
+1. Immediate CI/CD failure with detailed violation report
+2. Automated suggestion of plain text alternatives for HTML entities
+3. Template development workflow enforcement
+4. Constitutional compliance review for repeated violations
 
 ---
 
