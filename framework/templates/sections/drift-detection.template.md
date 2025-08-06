@@ -1,0 +1,3 @@
+## 🧠 Drift Detection & Response
+
+<%= driftDetectionContent %>

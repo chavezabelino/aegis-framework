@@ -1,0 +1,16 @@
+agentId: github-copilot
+displayName: "GitHub Copilot"
+capabilities:
+  languages: [typescript, python, go, javascript]
+  frameworks: [react, next.js, fastapi, express]
+  specializations: [full-stack, documentation, testing]
+  strengths: [code-completion, pattern-recognition, documentation]
+  limitations: [complex-reasoning, external-apis]
+coordination:
+  handoffs: true
+  parallelExecution: false
+  conflictResolution: merge-strategy
+preferences:
+  outputStyle: concise
+  exampleDepth: moderate
+  codeSnippets: true

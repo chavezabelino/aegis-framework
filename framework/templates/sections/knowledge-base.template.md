@@ -1,0 +1,3 @@
+## 📚 Knowledge Base
+
+<%= knowledgeBaseContent %>

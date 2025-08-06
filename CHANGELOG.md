@@ -16,6 +16,32 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Reflection-aware hybrid snapshots for learning delta
   - CLI and schema support for apprenticeship workflows
 
+## [1.4.0] - 2025-08-06
+### Added
+- Template-driven, agent-agnostic instruction generation system
+- Modular instruction templates and agent profiles in `framework/templates/`
+- Organized output structure in `framework/generated/instructions/`
+- Generation metadata and archive support for traceability
+
+### Changed
+- Instruction generation now leverages framework docs and agent profiles
+- All new instructions are assembled from templates and live documentation
+
+### Migration
+- No breaking changes. Existing instructions are archived; new system is backward compatible.
+
+### Future Enhancements
+- Live extraction of requirements and examples from framework docs (MCP, drift, CLI, etc.)
+- Automated detection of new/removed features for agent instructions
+- Interactive CLI for instruction preview, validation, and customization
+- CI/CD integration for auto-regeneration on framework changes
+- Support for custom agent profiles and user-defined instruction sections
+- Richer metadata and traceability for generated instructions
+- Integration with blueprint validation and test results for context-aware guidance
+- Internationalization/localization of agent instructions
+- Visual diff and changelog for instruction evolution
+- Web-based documentation portal for generated agent instructions
+
 ## [1.3.0] - 2025-08-05
 
 ### Added - Apprenticeship Scaffolds for Junior Developers

@@ -1,0 +1,16 @@
+agentId: claude-3-5-sonnet
+displayName: "Claude 3.5 Sonnet"
+capabilities:
+  languages: [typescript, python, rust]
+  frameworks: [react, fastapi]
+  specializations: [architecture, analysis, planning]
+  strengths: [reasoning, planning]
+  limitations: [UI-generation]
+coordination:
+  handoffs: true
+  parallelExecution: false
+  conflictResolution: merge-strategy
+preferences:
+  outputStyle: detailed
+  exampleDepth: deep
+  codeSnippets: true

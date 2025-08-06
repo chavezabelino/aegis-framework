@@ -1,0 +1,3 @@
+## 📄 MCP Metadata Emission
+
+<%= mcpMetadataContent %>

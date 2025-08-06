@@ -1,0 +1,16 @@
+agentId: generic-ai-agent
+displayName: "Generic AI Agent"
+capabilities:
+  languages: [typescript, python, javascript]
+  frameworks: [react, fastapi]
+  specializations: [full-stack, documentation]
+  strengths: [code-completion, documentation]
+  limitations: [external-apis]
+coordination:
+  handoffs: true
+  parallelExecution: true
+  conflictResolution: manual
+preferences:
+  outputStyle: verbose
+  exampleDepth: shallow
+  codeSnippets: true

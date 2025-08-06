@@ -175,11 +175,12 @@ Each agent (Copilot, Kilo, Lovable) has a behavior profile in `/framework/agents
 ## 🛣 Roadmap
 
 - ✅ **v1.0.0-alpha**: Initial semantic release - hardened replay, error taxonomy, observability contracts
-- 🔜 **v1.1.0-beta**: Multi-agent orchestration, MCP metadata, drift logging, enhanced adapters
-- 🔜 **v1.2.0**: Visual blueprint designer, real-time collaboration
-- 🔜 **v2.0.0**: Enterprise governance, compliance reporting, marketplace
+- ✅ **v1.1.0-beta**: Multi-agent orchestration, MCP metadata, drift logging, enhanced adapters
+- ✅ **v1.2.1**: Enhanced Blueprint Auto-Repair (ML optimization, context-sensitive fixes, observability, compliance)
+- ✅ **v1.3.0**: Apprenticeship Scaffolds (guided/challenge/review-only modes, reflection, observability, mentor plugin, CLI, tests)
+- 🔜 **v2.0.0**: Visual blueprint designer, real-time collaboration, enterprise governance, compliance reporting, marketplace
 
-See `framework-core-v1.0.0-alpha.md` and [v1.1.0-beta specification](framework/versions/framework-core-v1.1.0-beta-spec.md) for detailed feature planning.
+See `framework-core-v1.0.0-alpha.md`, [v1.1.0-beta specification](framework/versions/framework-core-v1.1.0-beta-spec.md), and the [CHANGELOG.md](CHANGELOG.md) for detailed feature planning and release history.
 
 ---
 

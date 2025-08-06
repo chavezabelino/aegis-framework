@@ -1,0 +1,3 @@
+## 🏗️ Blueprint Compliance
+
+<%= blueprintComplianceContent %>
