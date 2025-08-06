@@ -23,7 +23,8 @@
     "cross-learn": "node framework/learning/cross-framework-learning-system.ts"
   },
   "dependencies": {
-    "js-yaml": "^4.1.0"
+    "js-yaml": "^4.1.0",
+    "yargs": "^18.0.0"
   },
   "devDependencies": {
     "@types/jest": "^30.0.0",

@@ -97,3 +97,11 @@ web_modules/
 # Ignore compiled output (if any)
 *.js.map
 *.d.ts.map
+
+# Ignore compiled CLI JS and accidental folders
+cli/apprenticeship-cli.js
+cli/cli/
+cli/framework/
+
+# Jest snapshot output
+**/__snapshots__/
