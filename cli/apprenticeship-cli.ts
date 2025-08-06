@@ -1,4 +1,3 @@
-
 /*
 @aegisBlueprint: apprenticeship-scaffolds
 @version: 1.3.0
@@ -78,4 +77,37 @@ emitEvent({
   mode,
   blueprint,
   timestamp: new Date().toISOString(),
+});
+
+// MCP metadata emission (v1.1.0-beta)
+function emitMCPEvent(event: object) {
+  const mcpPath = require('path').join(__dirname, '../framework/observability/mcp-events.jsonl');
+  require('fs').appendFileSync(mcpPath, JSON.stringify(event) + '\n');
+}
+
+// Run log emission (v1.1.0-beta)
+function emitRunLog(run: object) {
+  const runLogPath = require('path').join(__dirname, '../framework/observability/run-log.jsonl');
+  require('fs').appendFileSync(runLogPath, JSON.stringify(run) + '\n');
+}
+
+// Example MCP event emission
+emitMCPEvent({
+  event: 'mcp_execution_start',
+  blueprintId: blueprint,
+  agentId: 'github-copilot',
+  modelProvider: 'openai',
+  contextTokens: 4096,
+  timestamp: new Date().toISOString()
+});
+
+// Example run log emission
+emitRunLog({
+  executionId: 'exec-' + Date.now(),
+  blueprintId: blueprint,
+  startTime: new Date().toISOString(),
+  agents: [{ agentId: 'github-copilot', role: 'primary', outputMode: mode, tokenUsage: 1024, status: 'completed' }],
+  coordination: { strategy: 'sequential' },
+  outputs: { [mode]: 'output.' + mode + '.json' },
+  validation: { schemaCompliance: true }
 });

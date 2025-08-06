@@ -1,0 +1,25 @@
+# Drift log for v1.1.0-beta human-in-the-loop workflows
+# See framework-core-v1.1.0-beta-spec.md for schema
+
+driftEvents:
+  # Example event
+  - id: drift-001
+    timestamp: "2025-08-05T10:30:00Z"
+    type: semantic_drift
+    severity: medium
+    detection:
+      method: automated
+      source: snapshot_test_failure
+    context:
+      blueprintId: feat-user-auth
+      expectedOutput: Login form with email validation
+      actualOutput: Login form without validation
+      agentId: github-copilot
+      mode: strict
+    resolution:
+      action: human_intervention_required
+      assignee: developer@company.com
+      notes: Agent skipped required validation rules
+    metadata:
+      mcpContext: {}
+      blueprintHash: sha256:def456...

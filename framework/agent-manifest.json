@@ -42,5 +42,22 @@
   "validationTools": {
     "blueprint": "tools/validate-blueprint.ts",
     "drift": "tools/detect-drift.ts"
-  }
+  },
+  "agentManifests": [
+    {
+      "agentId": "github-copilot",
+      "capabilities": {
+        "languages": ["typescript", "python", "go"],
+        "frameworks": ["react", "next.js", "fastapi"],
+        "specializations": ["full-stack", "documentation"],
+        "maxTokens": 8192,
+        "supportedModes": ["lean", "strict", "generative"]
+      },
+      "coordinationSupport": {
+        "handoffs": true,
+        "parallelExecution": false,
+        "conflictResolution": "merge-strategy"
+      }
+    }
+  ]
 }

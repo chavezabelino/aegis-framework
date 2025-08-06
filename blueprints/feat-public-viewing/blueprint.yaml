@@ -1,3 +1,24 @@
 id: feat-public-viewing
 name: Public Tournament Viewer
 version: 1.0.0
+agents:
+  primary: github-copilot
+  fallback: claude-3-5-sonnet
+  specialized:
+    - agent: cursor
+      role: frontend-components
+      scope:
+        - src/components/**
+    - agent: windsurf
+      role: backend-api
+      scope:
+        - src/api/**
+coordination:
+  strategy: sequential
+  handoff:
+    - from: cursor
+      to: windsurf
+      trigger: frontend components complete
+    - from: windsurf
+      to: github-copilot
+      trigger: api endpoints ready

@@ -1,0 +1,9 @@
+/*
+@aegisBlueprint: mcp-metadata
+@version: 1.1.0-beta
+@mode: strict
+@intent: MCP event log for model context protocol emission
+@context: Stores MCP context and event emission for v1.1.0-beta compliance
+*/
+{"event": "mcp_execution_start", "blueprintId": "feat-public-viewing", "agentId": "github-copilot", "modelProvider": "openai", "contextTokens": 4096, "timestamp": "2025-08-05T10:30:00Z"}
+{"event": "mcp_execution_complete", "outputMode": "strict", "tokenUsage": 1024, "responseTokens": 1024, "temperature": 0.1, "timestamp": "2025-08-05T10:31:00Z"}
