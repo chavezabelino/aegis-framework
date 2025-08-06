@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Planned for v1.4.0
+### Planned for v1.3.0
 - Apprenticeship Scaffolds for Junior Developers:
   - `@apprenticeshipMode` execution contexts (guided, challenge, review-only)
   - Blueprint reflection blocks and prompts
@@ -15,6 +15,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Ghost Mentor plugin system for review/feedback
   - Reflection-aware hybrid snapshots for learning delta
   - CLI and schema support for apprenticeship workflows
+
+## [1.3.0] - 2025-08-05
+
+### Added - Apprenticeship Scaffolds for Junior Developers
+- **Apprenticeship execution modes**: `@apprenticeshipMode` contexts (guided, challenge, review-only) for blueprints and CLI
+- **Blueprint reflection blocks and prompts**: Schema extension for learning objectives, reflection, and progress tracking
+- **Observability events**: Dedicated `framework/observability/apprenticeship-events.jsonl` for apprenticeship telemetry and learning signals
+- **Ghost Mentor plugin**: Automated feedback and review system for apprenticeship workflows (`framework/mentors/ghost-mentor-plugin.ts`)
+- **CLI support**: `cli/apprenticeship-cli.ts` and compiled CLI for running apprenticeship workflows with event emission and mentor feedback
+- **Replay and snapshot tests**: Deterministic output validation and learning delta tracking (`tests/snapshot-tests/apprenticeship-scaffolds.test.ts`, `tests/replay-diff-tests/apprenticeship-scaffolds-replay.test.ts`)
+- **Constitutional compliance**: All scaffolds, events, and plugins include required annotations and follow blueprint-driven traceability
+
+#### Migration Notes
+- No breaking changes. Existing blueprints are unaffected unless adopting apprenticeship scaffolds.
+- See `docs/implementation/apprenticeship-scaffolds.md` for usage, extension, and compliance guidance.
 
 ## [1.2.1] - 2025-08-05
 

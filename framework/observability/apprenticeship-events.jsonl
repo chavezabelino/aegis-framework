@@ -1,0 +1,7 @@
+{"id":"event-apprenticeship-init","timestamp":"2025-08-05T00:00:00.000Z","source":"apprenticeship-cli","type":"apprenticeship","category":"init","name":"apprenticeship-mode-started","data":{"mode":"guided"},"context":{},"severity":"info","tags":["apprenticeship","guided"]}
+{"event":"apprenticeship_mode_started","mode":"guided","blueprint":"blueprints/feat-public-viewing/blueprint.yaml","timestamp":"2025-08-06T01:13:49.630Z"}
+{"event":"mentor_feedback","feedback":"Ghost Mentor feedback: \"initial reflection\" [auto-generated]","timestamp":"2025-08-06T01:13:49.632Z"}
+{"event":"apprenticeship_mode_completed","mode":"guided","blueprint":"blueprints/feat-public-viewing/blueprint.yaml","timestamp":"2025-08-06T01:13:49.632Z"}
+{"event":"apprenticeship_mode_started","mode":"guided","blueprint":"blueprints/feat-public-viewing/blueprint.yaml","timestamp":"2025-08-06T01:13:49.684Z"}
+{"event":"mentor_feedback","feedback":"Ghost Mentor feedback: \"initial reflection\" [auto-generated]","timestamp":"2025-08-06T01:13:49.685Z"}
+{"event":"apprenticeship_mode_completed","mode":"guided","blueprint":"blueprints/feat-public-viewing/blueprint.yaml","timestamp":"2025-08-06T01:13:49.685Z"}
