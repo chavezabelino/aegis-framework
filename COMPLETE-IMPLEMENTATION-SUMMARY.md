@@ -216,22 +216,28 @@ npm run cross-learn evolve             # Generate evolution guidance
 ## 🚀 Future Roadmap
 
 ### Immediate Enhancements (v1.2.1)
-- Enhanced blueprint auto-repair algorithms with ML optimization
-- Real-time dashboard for observability metrics and health visualization
-- Advanced machine learning models for pattern prediction and synthesis
-- Integration with external monitoring tools and CI/CD platforms
 
 ### Next Version Features (v1.3.0)
-- Predictive failure detection and automated prevention
-- Performance optimization engine with automatic tuning
-- Advanced cross-framework API integration and pattern marketplace
-- Community-driven pattern contribution and validation system
+## 🛠️ v1.2.1 Feature Implementation: Enhanced Blueprint Auto-Repair
+
+**Goal:**
+Leverage machine learning to optimize and extend the framework's blueprint auto-repair capabilities, enabling more accurate, context-aware, and proactive correction of blueprint issues.
+
+**Key Objectives:**
+- Integrate ML-driven pattern recognition into the self-healing blueprint engine
+- Improve detection of subtle or emerging blueprint errors
+- Enable context-sensitive repair suggestions and automated fixes
+- Enhance observability and reporting for all auto-repair actions
+- Maintain full constitutional compliance and traceability for all changes
+
+**Planned Artifacts:**
+- `framework/healing/auto-repair-ml-engine.ts` (initial scaffold)
+- Updated tests in `tests/snapshot-tests/` and `tests/replay-diff-tests/`
+- Documentation updates in `docs/implementation/`
+
+**Status:** Not started (scaffolding phase)
 
 ### Long-term Vision (v2.0.0)
-- Fully autonomous framework evolution with minimal human oversight
-- AI-driven architectural recommendations and optimization
-- Global framework intelligence network with pattern sharing
-- Self-modifying constitutional governance with adaptive amendments
 
 ## 📊 Impact Assessment
 

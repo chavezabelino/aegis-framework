@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Planned for v1.4.0
+- Apprenticeship Scaffolds for Junior Developers:
+  - `@apprenticeshipMode` execution contexts (guided, challenge, review-only)
+  - Blueprint reflection blocks and prompts
+  - Observability events for learning signals
+  - Ghost Mentor plugin system for review/feedback
+  - Reflection-aware hybrid snapshots for learning delta
+  - CLI and schema support for apprenticeship workflows
+
 ## [1.2.0-alpha] - 2025-08-05
 
 ### Added - Phase 3: Advanced Self-Healing Features
