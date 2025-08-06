@@ -26,8 +26,11 @@
     "js-yaml": "^4.1.0"
   },
   "devDependencies": {
+    "@types/jest": "^30.0.0",
     "@types/js-yaml": "^4.0.9",
-    "@types/node": "^20.0.0"
+    "@types/node": "^20.0.0",
+    "jest": "^30.0.5",
+    "ts-jest": "^29.4.1"
   },
   "keywords": [
     "ai",

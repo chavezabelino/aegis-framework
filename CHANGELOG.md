@@ -16,35 +16,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Reflection-aware hybrid snapshots for learning delta
   - CLI and schema support for apprenticeship workflows
 
-## [1.2.0-alpha] - 2025-08-05
+## [1.2.1] - 2025-08-05
 
-### Added - Phase 3: Advanced Self-Healing Features
+### Added - Enhanced Blueprint Auto-Repair (ML Optimization)
+- **ML-driven error detection and repair**: `framework/healing/auto-repair-ml-engine.ts` with rule-based and extensible pattern recognition
+- **Context-sensitive auto-fixes**: Automated repair for missing/invalid blueprint fields (id, version, content)
+- **Observability event emission**: All repair actions are logged to `framework/observability/events.jsonl` for audit and replay
+- **Constitutional compliance**: Full traceability, error handling, and fallback for all auto-repair actions
+- **Extensible design**: Ready for future ML model/plugin integration
 
-#### 🔧 Self-Healing Blueprint Engine
-- **Autonomous Blueprint Repair**: `framework/healing/self-healing-blueprint-engine.ts` with intelligent blueprint validation and auto-correction
-- **Constitutional Compliance Checking**: Automated verification and repair of constitutional violations
-- **Schema Validation & Repair**: Smart detection and resolution of blueprint schema issues
-- **Safe Rollback Mechanisms**: Automatic reversion when automated fixes cause problems
-- **Preventive Maintenance**: Proactive issue detection and prevention capabilities
-
-#### 📊 Advanced Observability Engine
-- **Comprehensive Telemetry**: `framework/observability/advanced-observability-engine.ts` with real-time event tracking
-- **System Health Monitoring**: Multi-component health analysis with actionable insights
-- **Performance Metrics**: Response time, throughput, error rate, and efficiency tracking
-- **Intelligent Alerting**: Automated alerts with contextual recommendations and severity assessment
-- **Trend Analysis**: Predictive insights and system evolution tracking with confidence scoring
-
-#### 🧠 Cross-Framework Learning System
-- **Framework Intelligence**: `framework/learning/cross-framework-learning-system.ts` for systematic external framework analysis
-- **Pattern Synthesis**: AI-powered cross-pollination of design patterns from multiple frameworks
-- **Applicability Assessment**: Smart evaluation of pattern relevance and adaptation strategies for Aegis
-- **Evolution Guidance**: Strategic framework development recommendations based on industry trends
-- **Knowledge Management**: Persistent learning database with insight synthesis and storage
-
-#### 🎯 CLI Integration & Scripts
-- **Health Monitoring**: `npm run observe health|metrics|report` for comprehensive system analysis
-- **Blueprint Healing**: `npm run heal check-all|repair|validate` for autonomous maintenance
-- **Cross-Framework Learning**: `npm run cross-learn learn|synthesize|pollinate|evolve` for intelligence operations
+#### Migration Notes
+- No breaking changes. Existing blueprints will be auto-repaired if missing required fields or types.
+- See `docs/implementation/auto-repair-ml-engine.md` for usage and extension guidance.
 
 ### Enhanced
 - **Constitutional Compliance**: All Phase 3 systems fully adhere to Aegis constitutional requirements
