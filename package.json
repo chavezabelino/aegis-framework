@@ -1,6 +1,6 @@
 {
   "name": "aegis-framework",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "description": "Blueprint-driven AI engineering framework with constitutional governance",
   "type": "module",
   "scripts": {

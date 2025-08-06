@@ -95,10 +95,13 @@ aegis-framework/
 │   └── replay-diff-tests/
 │
 ├── tools/                 # Helpers for validation, drift detection, docgen
-├── docs/                  # Guide and architecture docs
+├── docs/                  # Organized documentation
+│   ├── releases/          # Release summaries and templates
+│   ├── implementation/    # Technical implementation details
 │   ├── architecture.md
-│   ├── guide/
-│   └── reference/
+│   ├── guide/             # User guides and tutorials
+│   ├── reference/         # Reference documentation
+│   └── roadmap/           # Future planning
 │
 ├── scaffolds/             # Starter kits for framework adoption
 │   └── web-app-starter/
@@ -188,6 +191,8 @@ See `framework-core-v1.0.0-alpha.md`, [v1.1.0-beta specification](framework/vers
 
 - [🏛️ **Framework Constitution**](CONSTITUTION.md) - Foundational principles and governance
 - [📘 Architecture Overview](docs/architecture.md)
+- [📋 **Release Documentation**](docs/releases/) - Version history and release summaries
+- [🔧 **Implementation Details**](docs/implementation/) - Technical implementation documentation
 - [🧩 Blueprint Schema](framework/contracts/)
 - [🧪 Snapshot Test Examples](tests/snapshot-tests/)
 - [🛠 Drift Detection Tool](tools/detect-drift.ts)

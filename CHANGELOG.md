@@ -14,6 +14,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.1] - 2025-08-06
+### Changed
+- **Documentation Organization**: Restructured project documentation for improved maintainability
+  - Moved release documentation to `docs/releases/` directory
+  - Moved implementation summaries to `docs/implementation/` directory  
+  - Root directory now contains only core files: README, CONSTITUTION, CHANGELOG, CONTRIBUTING
+  - Created navigation index pages for organized documentation discovery
+  - Added release template for consistent future documentation
+  - Updated README.md with improved project structure documentation
+  - Enhanced cross-references and internal linking for better navigation
+
+### Fixed
+- **Documentation References**: Updated internal references to reflect new organization
+  - Fixed roadmap references to implementation documentation
+  - Updated project structure documentation in README
+  - Corrected file paths in navigation and index pages
+
 ## [1.3.0] - 2025-08-06
 ### Added
 - **Constitutional Enhancement**: Article IX: Template and Documentation Quality Standards
