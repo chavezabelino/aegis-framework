@@ -23,12 +23,22 @@
     "governance": "npm run amendment",
     "heal": "node framework/healing/self-healing-blueprint-engine.ts",
     "observe": "node framework/observability/advanced-observability-engine.ts",
-    "cross-learn": "node framework/learning/cross-framework-learning-system.ts"
+    "cross-learn": "node framework/learning/cross-framework-learning-system.ts",
+    "detect-evolution": "node cli/detect-evolution-stories.cjs",
+    "evolution-story": "node cli/generate-evolution-story.cjs",
+    "analyze-copilot": "node -e \"require('./tools/copilot-integration.ts').analyzeCopilotInteractions(1)\"",
+    "pre-commit-check": "node cli/detect-evolution-stories.cjs",
+    "dev-scan": "watch \"npm run detect-evolution\" docs/ framework/ tools/ --interval=30",
+    "setup-proactive": "bash tools/setup-proactive-detection.sh"
   },
   "dependencies": {
+    "commander": "^14.0.0",
     "ejs": "^3.1.10",
+    "inquirer": "^12.9.0",
     "js-yaml": "^4.1.0",
-    "yargs": "^18.0.0"
+    "ora": "^8.2.0",
+    "yargs": "^18.0.0",
+    "zod": "^4.0.15"
   },
   "devDependencies": {
     "@types/ejs": "^3.1.5",

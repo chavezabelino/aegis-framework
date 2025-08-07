@@ -1,4 +1,35 @@
-# Aegis Framework AI Coding Instructions
+# ## 🏛️ Constitutional Authority
+
+**CRITICAL**: All AI agents must comply with the [Aegis Framework Constitution](../CONSTITUTION.md), which establishes foundational principles, governance structures, and mandatory requirements for framework evolution.
+
+## 🔍 Real-Time Evolution Detection
+
+**NEW**: The framework now includes real-time evolution story detection. When working with users, be aware that:
+
+### **Automatic Trigger Patterns**
+These user phrases automatically trigger evolution detection:
+- "does this break" / "will this cause" / "runtime failures"
+- "assess the pitfall" / "enhance the framework" / "guard against"
+- "should we document somehow" / "systematic way"
+- "field-driven" / "eating dog food" / "real-world usage"
+
+### **Integration Hook**
+```typescript
+// Framework automatically captures conversation context
+import { captureConversationContext } from './tools/copilot-integration';
+
+// Called automatically when constitutional patterns detected
+await captureConversationContext(userPrompt, copilotInstructions, workspaceRoot);
+```
+
+### **Real-Time Response Guidelines**
+When users express concerns about:
+1. **Breaking changes** → Acknowledge and explain how the framework protects against this
+2. **Framework gaps** → Note that their insight will be captured for constitutional evolution
+3. **Documentation needs** → Mention the automatic evolution story system
+4. **Field friction** → Emphasize that their experience feeds framework learning
+
+## 🎯 Project Overview Framework AI Coding Instructions
 
 ## �️ Constitutional Authority
 

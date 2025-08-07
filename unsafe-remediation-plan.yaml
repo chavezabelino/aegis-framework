@@ -1,0 +1,24 @@
+id: "unsafe-plan-001"
+name: "Unsafe Remediation Plan"
+description: "This plan demonstrates what gets blocked by constitutional safeguards"
+version: "1.0.0"
+
+targetProject:
+  path: "/unsafe/project"
+  type: "test"
+
+phases:
+  - id: "unsafe-phase"
+    name: "Unsafe Phase"
+    description: "Phase without proper safety mechanisms"
+    order: 1
+    
+    validationSteps: []
+    
+    riskLevel: "high"
+    
+    estimatedDuration: "unknown"
+    dependencies: []
+    parallelizable: false
+
+successCriteria: []

@@ -1,0 +1,126 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2025-08-06T00:00:00Z",
+  "tools": [
+    {
+      "name": "aegis-hydrate",
+      "path": "cli/aegis-hydrate.ts",
+      "required": true,
+      "version": "2.0.0-alpha-dev",
+      "description": "Primary framework hydration tool",
+      "validateCommand": "node cli/aegis-hydrate.ts --version"
+    },
+    {
+      "name": "validate-blueprint",
+      "path": "tools/validate-blueprint.ts",
+      "required": true,
+      "description": "Blueprint schema validation",
+      "validateCommand": "node tools/validate-blueprint.ts --help"
+    },
+    {
+      "name": "validate-constitution",
+      "path": "tools/validate-constitution.ts",
+      "required": true,
+      "description": "Constitutional compliance validation",
+      "validateCommand": "node tools/validate-constitution.ts --help"
+    },
+    {
+      "name": "validate-remediation-plan",
+      "path": "tools/validate-remediation-plan.ts",
+      "required": true,
+      "description": "Remediation plan safety validation",
+      "validateCommand": "node tools/validate-remediation-plan.ts --help"
+    },
+    {
+      "name": "generate-changelog",
+      "path": "tools/generate-changelog.ts",
+      "required": false,
+      "description": "Structured changelog generation",
+      "validateCommand": "node tools/generate-changelog.ts --help"
+    },
+    {
+      "name": "validate-template-quality",
+      "path": "tools/validate-template-quality.ts",
+      "required": false,
+      "description": "Template encoding and quality validation",
+      "validateCommand": "node tools/validate-template-quality.ts --help"
+    },
+    {
+      "name": "generate-evolution-story",
+      "path": "cli/generate-evolution-story.cjs",
+      "required": false,
+      "description": "Generate standardized evolution story documentation",
+      "validateCommand": "node cli/generate-evolution-story.cjs --help"
+    },
+    {
+      "name": "detect-evolution-stories",
+      "path": "tools/detect-evolution-stories.ts",
+      "required": false,
+      "description": "Automatically detect triggers for evolution story documentation",
+      "validateCommand": "node -e \"require('./tools/detect-evolution-stories.ts'); console.log('Detection system loaded')\""
+    },
+    {
+      "name": "intent-enforcement-engine",
+      "path": "tools/intent-enforcement-engine.ts",
+      "required": true,
+      "description": "Real-time intent enforcement and agent drift prevention",
+      "validateCommand": "node tools/intent-enforcement-engine.ts"
+    },
+    {
+      "name": "constitutional-ai-agent",
+      "path": "tools/constitutional-ai-agent.ts",
+      "required": true,
+      "description": "AI Agent wrapper with built-in constitutional enforcement",
+      "validateCommand": "node tools/constitutional-ai-agent.ts"
+    }
+  ],
+  "systemRequirements": [
+    {
+      "name": "node",
+      "version": ">=18.0.0",
+      "validateCommand": "node --version"
+    },
+    {
+      "name": "npm",
+      "version": ">=9.0.0",
+      "validateCommand": "npm --version"
+    },
+    {
+      "name": "git",
+      "version": ">=2.40.0",
+      "validateCommand": "git --version"
+    }
+  ],
+  "packageDependencies": [
+    {
+      "name": "zod",
+      "version": "^3.22.0",
+      "required": true,
+      "purpose": "Schema validation for constitutional compliance"
+    },
+    {
+      "name": "js-yaml",
+      "version": "^4.1.0",
+      "required": true,
+      "purpose": "YAML parsing for blueprint and plan files"
+    },
+    {
+      "name": "inquirer",
+      "version": "^9.2.0",
+      "required": true,
+      "purpose": "Interactive CLI prompts for hydration workflow"
+    },
+    {
+      "name": "ora",
+      "version": "^7.0.0",
+      "required": true,
+      "purpose": "Terminal spinners for hydration progress"
+    },
+    {
+      "name": "commander",
+      "version": "^11.0.0",
+      "required": true,
+      "purpose": "CLI argument parsing"
+    }
+  ]
+}

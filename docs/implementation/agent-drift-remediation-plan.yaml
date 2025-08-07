@@ -1,0 +1,227 @@
+# Agent Drift Prevention Remediation Plan
+# @aegisFrameworkVersion: 2.0.0-alpha-dev
+# @intent: Constitutional remediation plan for AI agent drift prevention
+# @context: Systematic implementation of safeguards against agent constitutional violations
+# @mode: strict
+
+remediationPlan:
+  id: "RDP-2025-08-06-002"
+  name: "AI Agent Constitutional Drift Prevention"
+  description: "Comprehensive implementation of real-time intent enforcement and constitutional compliance for AI agents"
+  version: "1.0.0"
+  
+  # Constitutional annotations
+  aegisFrameworkVersion: "2.0.0-alpha-dev"
+  blueprintId: "constitutional-governance"
+  mode: "strict"
+  intent: "Prevent AI agent drift from constitutional principles through technical and procedural safeguards"
+  context: "Response to identified agent drift pattern where echo commands were used instead of functional tests"
+
+targetProject:
+  path: "/Users/nino/Workspace/02-local-dev/aegis-framework"
+  type: "aegis-framework-core"
+  currentFrameworkVersion: "2.0.0-alpha-dev"
+  detectedIssues:
+    - "AI agents can drift from stated intent without detection"
+    - "Echo commands used for functional testing violate constitutional principles"
+    - "No real-time enforcement of constitutional compliance"
+    - "Lack of intent alignment validation before command execution"
+    - "Missing constitutional agent wrapper classes"
+
+# Execution Phases
+phase1:
+  id: "constitutional-foundation"
+  name: "Constitutional Framework Foundation"
+  description: "Implement core constitutional enforcement mechanisms"
+  order: 1
+  riskLevel: "medium"
+  
+  validationSteps:
+    - name: "build-validation"
+      command: "npm run build"
+      description: "Ensure framework builds successfully with new components"
+      required: true
+      rollbackOnFailure: true
+    
+    - name: "test-validation"
+      command: "npm test"
+      description: "Verify all existing tests pass with constitutional enhancements"
+      required: true
+      rollbackOnFailure: true
+    
+    - name: "constitutional-validation"
+      command: "node tools/validate-constitution.ts"
+      description: "Verify constitutional compliance of new amendments"
+      required: true
+      rollbackOnFailure: true
+  
+  rollbackPlan:
+    strategy: "git-snapshot"
+    snapshotCommand: "git stash push -m 'Pre-constitutional-enhancement-snapshot'"
+    restoreInstructions: "git stash pop to restore pre-enhancement state"
+    testRollback: true
+    validationSteps:
+      - name: "rollback-verification"
+        command: "git status --porcelain"
+        description: "Verify clean working directory after rollback"
+        required: true
+        rollbackOnFailure: false
+  
+  dryRunSimulation:
+    enabled: true
+    commands:
+      - "node --check tools/intent-enforcement-engine.ts"
+      - "node --check tools/constitutional-ai-agent.ts"
+      - "node tools/validate-constitution.ts --dry-run"
+    outputPath: "logs/constitutional-enhancement-dryrun.log"
+    diffGeneration: true
+    safetyChecks:
+      - "syntax validation"
+      - "import resolution check"
+      - "constitutional schema validation"
+  
+  toolingRequirements:
+    requiredTools:
+      - name: "node"
+        version: ">=18.0.0"
+        validateCommand: "node --version"
+        criticalForExecution: true
+      - name: "npm"
+        version: ">=9.0.0"
+        validateCommand: "npm --version"
+        criticalForExecution: true
+    
+    scaffoldedTools:
+      - name: "intent-enforcement-engine"
+        path: "tools/intent-enforcement-engine.ts"
+        purpose: "Real-time intent validation and agent drift prevention"
+        validated: true
+      - name: "constitutional-ai-agent"
+        path: "tools/constitutional-ai-agent.ts"
+        purpose: "AI agent wrapper with constitutional compliance enforcement"
+        validated: true
+      - name: "constitutional-pre-commit-hook"
+        path: "tools/constitutional-pre-commit-hook.sh"
+        purpose: "Pre-commit constitutional compliance validation"
+        validated: true
+    
+    toolingValidated: true
+    validationCommand: "node tools/validate-tools-manifest.ts"
+  
+  constitutionalImpact:
+    blueprintChanges: false
+    frameworkModifications: true
+    breakingChanges: false
+    requiresApproval: true
+  
+  estimatedDuration: "2-4 hours"
+  dependencies: []
+  parallelizable: false
+
+# Compliance Targets
+buildCompliance:
+  metric: "Build Success Rate"
+  targetValue: "100%"
+  measurementCommand: "npm run build"
+  validationFrequency: "pre-phase"
+  enforcementLevel: "blocking"
+
+testCompliance:
+  metric: "Test Pass Rate"
+  targetValue: "100%"
+  measurementCommand: "npm test"
+  validationFrequency: "pre-phase"
+  enforcementLevel: "blocking"
+
+constitutionalCompliance:
+  metric: "Constitutional Validation"
+  targetValue: "Full Compliance"
+  measurementCommand: "node tools/validate-constitution.ts"
+  validationFrequency: "continuous"
+  enforcementLevel: "blocking"
+
+# CI/CD Integration
+ciIntegration:
+  required: true
+  workflowPath: ".github/workflows/constitutional-compliance.yml"
+  
+  preflightGates:
+    - name: "constitutional-validation"
+      command: "node tools/validate-constitution.ts"
+      blocking: true
+    
+    - name: "intent-enforcement-test"
+      command: "node tools/intent-enforcement-engine.ts"
+      blocking: true
+    
+    - name: "build-validation"
+      command: "npm run build"
+      blocking: true
+  
+  postExecutionValidation:
+    - "npm run build"
+    - "npm test"
+    - "node tools/validate-constitution.ts"
+  
+  failureActions: ["rollback", "notify"]
+
+# Overall Safety Mechanisms
+overallRollbackStrategy:
+  strategy: "git-snapshot"
+  snapshotCommand: "git stash push -m 'Agent-drift-prevention-implementation-snapshot'"
+  restoreInstructions: "Use git stash pop to restore pre-implementation state, then run npm install to restore dependencies"
+  testRollback: true
+  validationSteps:
+    - name: "framework-integrity"
+      command: "node tools/validate-constitution.ts"
+      description: "Verify framework integrity after rollback"
+      required: true
+      rollbackOnFailure: false
+
+emergencyProcedures:
+  escalationPath: "Constitutional amendment process for framework-level issues"
+  emergencyContacts: ["framework-maintainers@aegis.dev"]
+  failsafeActions:
+    - "git-snapshot-restore"
+    - "disable-constitutional-enforcement"
+    - "escalate-to-constitutional-review-board"
+
+# Success Criteria
+successCriteria:
+  - criterion: "Build successful"
+    measurementMethod: "npm run build"
+    acceptanceThreshold: "zero errors"
+  
+  - criterion: "Tests passing"
+    measurementMethod: "npm test"
+    acceptanceThreshold: "100% pass rate"
+  
+  - criterion: "Constitutional compliance"
+    measurementMethod: "node tools/validate-constitution.ts"
+    acceptanceThreshold: "full compliance"
+  
+  - criterion: "Intent enforcement operational"
+    measurementMethod: "node tools/intent-enforcement-engine.ts"
+    acceptanceThreshold: "successful blocking of echo commands for functional intent"
+  
+  - criterion: "Agent drift prevention validated"
+    measurementMethod: "node tools/demo-constitutional-enforcement.cjs"
+    acceptanceThreshold: "constitutional enforcement demonstrates drift prevention"
+
+# Plan Validation
+planValidation:
+  schemaValidated: true
+  preflightTested: false
+  dryRunExecuted: false
+  toolingVerified: true
+  peerReviewed: false
+  constitutionallyCompliant: true
+
+# Constitutional Approval
+approvalRequired: true
+approvers: ["framework-maintainers", "constitutional-review-board"]
+constitutionalReview: true
+
+createdAt: "2025-08-06T00:00:00Z"
+lastModified: "2025-08-06T00:00:00Z"
+estimatedCompletionTime: "4-8 hours + community review"

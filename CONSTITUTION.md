@@ -98,6 +98,38 @@ All blueprints must include:
 - **Error Handling**: Fallback state definitions
 - **Validation**: Rule contracts with versioning
 
+### Section 4: Remediation Plan Constitutional Requirements
+All AI-generated or team-authored remediation plans must conform to constitutional safety standards:
+
+#### **Mandatory Safety Mechanisms**
+- **Validation Gates**: All plans must include build, test, and lint validation before any structural changes
+- **Rollback Strategy**: Every phase must include tested rollback procedures with clear restoration steps
+- **Dry-Run Simulation**: High-risk phases must include simulation or preview of effects before execution
+- **Tool Validation**: All referenced tools must exist and be validated before plan approval
+- **Constitutional Review**: Plans affecting framework structure require constitutional compliance validation
+
+#### **Schema Compliance**
+All remediation plans must conform to `RemediationPlan.schema.ts` including:
+- Constitutional annotations (`@aegisFrameworkVersion`, `@intent`, `@context`, `@mode`)
+- Semantic versioning for plan versions
+- Measurable success criteria (minimum 3 criteria including build, test, compliance)
+- Risk assessment and mitigation strategies
+- CI integration requirements with preflight gates
+
+#### **Preflight Gate Requirements**
+Before any remediation plan execution:
+1. **Build Validation**: `npm run build` or equivalent must pass
+2. **Test Validation**: All existing tests must pass
+3. **Lint Validation**: Code style and quality checks must pass
+4. **Tool Existence**: All referenced tools must be verified to exist
+5. **Schema Validation**: Plan must pass `validate-remediation-plan.ts` checks
+
+#### **Enforcement Mechanisms**
+- **CI Integration**: `.github/workflows/constitutional-compliance.yml` enforces validation
+- **Blocking Failures**: Plans that fail constitutional validation cannot be executed
+- **Tool Manifest**: `tools/manifest.json` must exist and validate all framework tools
+- **Emergency Procedures**: All plans must include escalation paths and emergency contacts
+
 ## 📊 Article IV: Quality Assurance
 
 ### Section 1: Testing Requirements
@@ -160,9 +192,11 @@ In cases of critical security or stability issues:
 ### Section 1: Validation Tools
 The framework provides constitutional enforcement through:
 - `tools/validate-blueprint.ts`: Blueprint schema compliance
+- `tools/validate-remediation-plan.ts`: Remediation plan constitutional compliance and safety validation
 - `tools/generate-changelog.ts`: Structured changelog generation
 - `tools/validate-template-quality.ts`: Template and documentation quality assurance
-- CI/CD validation: Automated constitutional compliance checking
+- `tools/validate-constitution.ts`: Constitutional principle validation
+- CI/CD validation: Automated constitutional compliance checking via `.github/workflows/constitutional-compliance.yml`
 
 ### Section 2: Non-Compliance Consequences
 Code that violates constitutional principles:
@@ -249,3 +283,76 @@ This constitution was ratified on August 5, 2025, with the adoption of Aegis Fra
 **Enforcement**: Automated validation and community review
 
 > *"We establish this constitution to ensure that AI-generated systems remain safe, reliable, and replayable — with fidelity."*
+
+---
+
+## 🔄 Article X: Field-Driven Evolution Documentation
+
+### Section 1: Evolution Story Requirements
+All framework evolution driven by real-world usage must be systematically documented using standardized Evolution Stories to preserve intellectual journey and enable pattern recognition.
+
+#### **Mandatory Documentation Triggers**
+- **Field Usage Gaps**: When real-world usage exposes framework limitations
+- **User Questions**: When user inquiries reveal systematic issues
+- **Constitutional Violations**: When framework principles are inadvertently violated
+- **Migration Challenges**: When adoption processes reveal friction points
+
+#### **Evolution Story Schema**
+All evolution stories must follow the standardized format:
+- **Metadata**: ID, trigger type, impact level, participants, artifacts
+- **Field Context**: Real-world scenario, user workflow, expectation vs reality
+- **Gap Analysis**: Trigger moment, framework limitation, impact assessment
+- **Solution Design**: Enhancement proposal, implementation strategy
+- **Meta-Learning**: Patterns identified, preventive measures, future implications
+
+### Section 2: Constitutional Integration
+Evolution stories become part of framework constitutional history and intellectual property:
+
+#### **Governance Requirements**
+- Stories affecting constitutional principles require governance review
+- All constitutional amendments must reference originating evolution story
+- Meta-patterns analyzed for systematic framework improvements
+
+#### **Knowledge Preservation**
+- Evolution stories linked to specific commits and releases
+- Decision context preserved for future maintainers
+- Institutional knowledge base maintained for framework development
+
+### Section 3: Meta-Learning Objectives
+The evolution documentation system enables:
+
+#### **Pattern Recognition**
+- Identification of recurring themes in field-driven evolution
+- Recognition of systematic gaps before they impact users
+- Development of predictive frameworks for common evolution patterns
+
+#### **Framework Maturation**
+- Tracking evolution from reactive to proactive development
+- Measurement of reduction in field-driven constitutional amendments
+- Documentation of progression toward comprehensive coverage
+
+#### **Industry Leadership**
+- Establishment of new standards for AI framework development
+- Sharing of meta-learning with broader community
+- Influence on industry best practices for constitutional AI governance
+
+### Section 4: Implementation Standards
+Evolution documentation must be:
+
+#### **Comprehensive**
+- 100% of constitutional changes have evolution stories
+- All major features include field-driven insight capture
+- Meta-patterns documented and validated
+
+#### **Actionable**
+- Tool integration with CI/CD pipeline for automatic linking
+- Search and analysis capabilities for pattern recognition
+- Community involvement in evolution insight contribution
+
+#### **Constitutional**
+- Evolution stories required for all constitutional amendments
+- Governance review process for major framework changes
+- Audit trail maintenance for all framework decision-making
+
+**First Evolution Story**: EVS-2025-08-06-001 (Remediation Plan Constitutional Safeguards)  
+**Ratification Date**: August 6, 2025
