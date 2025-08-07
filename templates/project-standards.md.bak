@@ -1,5 +1,4 @@
 <!--
-@aegisFrameworkVersion: 1.3.1
 @aegisProjectProfile: true
 @intent: Project-specific operational standards for agent instruction merging
 @context: This file is merged with framework/agent instructions to produce ready-to-use, IDE/agent-specific guidance.
@@ -171,7 +170,7 @@ const rcaResult = await runTokenGatedAnalysis({
 - **Constitutional compliance check** — Blueprint impact assessment
 - **Drift detection integration** — Feeds into framework monitoring
 
-## 🔍 Validation & Testing
+## 🔍 Validation &amp; Testing
 
 ### Quick Validation Commands
 ```bash
@@ -197,10 +196,10 @@ describe('Blueprint Fidelity', () => {
 
 ### Blueprint Replay Tests
 ```ts
-describe('Blueprint Replay', () => {
-  test('same blueprint produces identical output', async () => {
-    const output1 = await generateFromBlueprint('feat-example');
-    const output2 = await generateFromBlueprint('feat-example');
+describe(&#39;Blueprint Replay&#39;, () =&gt; {
+  test(&#39;same blueprint produces identical output&#39;, async () =&gt; {
+    const output1 = await generateFromBlueprint(&#39;feat-example&#39;);
+    const output2 = await generateFromBlueprint(&#39;feat-example&#39;);
     expect(output1).toEqual(output2);
   });
 });
@@ -208,9 +207,9 @@ describe('Blueprint Replay', () => {
 
 ### Visual Regression Tests
 ```ts
-describe('Visual Regression', () => {
-  test('public route renders consistently', async () => {
-    await page.goto('/public/example');
+describe(&#39;Visual Regression&#39;, () =&gt; {
+  test(&#39;public route renders consistently&#39;, async () =&gt; {
+    await page.goto(&#39;/public/example&#39;);
     const screenshot = await page.screenshot();
     expect(screenshot).toMatchImageSnapshot();
   });

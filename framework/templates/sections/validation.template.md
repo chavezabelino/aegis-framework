@@ -1,3 +1,9 @@
+<!--
+@aegisFrameworkVersion: 1.3.1
+@intent: Validation and testing template section
+@context: Testing standards and validation tooling for AI agents
+-->
+
 ## 🔍 Validation & Testing
 
 ### Constitutional Compliance Validation

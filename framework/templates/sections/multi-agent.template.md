@@ -1,3 +1,9 @@
+<!--
+@aegisFrameworkVersion: 1.3.1
+@intent: Multi-agent orchestration template section
+@context: Agent coordination patterns and handoff protocols
+-->
+
 ## 🔁 Multi-Agent Orchestration Protocol
 
 ### Agent Coordination Schema

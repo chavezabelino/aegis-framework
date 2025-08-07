@@ -12,40 +12,40 @@
 
 > **Complete instructions combining constitutional compliance with operational excellence.**
 
-<%= sections.constitutional %>
+<%- sections.constitutional %>
 
-<%= sections.frameworkContext %>
+<%- sections.frameworkContext %>
 
-<%= sections.agentProfile %>
+<%- sections.agentProfile %>
 
-<%= sections.multiAgent %>
+<%- sections.multiAgent %>
 
-<%= sections.blueprintCompliance %>
+<%- sections.blueprintCompliance %>
 
-<%= sections.mcpMetadata %>
+<%- sections.mcpMetadata %>
 
-<%= sections.driftDetection %>
+<%- sections.driftDetection %>
 
-<%= sections.cliIntegration %>
+<%- sections.cliIntegration %>
 
 <%- sections.validation %>
 
-<%= sections.knowledgeBase %>
+<%- sections.knowledgeBase %>
 
 <% if (projectStandards) { %>
 ---
 <%- projectStandards %>
 <% } else { %>
 
-<%= sections.aiAgentMode %>
+<%- sections.aiAgentMode %>
 
-<%= sections.directoryStructure %>
+<%- sections.directoryStructure %>
 
-<%= sections.rcaDebugLoop %>
+<%- sections.rcaDebugLoop %>
 
-<%= sections.codePatterns %>
+<%- sections.codePatterns %>
 
-<%= sections.decisionMatrix %>
+<%- sections.decisionMatrix %>
 <% } %>
 
 ---

@@ -16,6 +16,7 @@
 ### **Version-Specific Implementations**
 - **[v1.2.1 Summary](./v1.2.1-summary.md)** - General implementation details from v1.2.1
 - **[Complete Summary](./complete-summary.md)** - Comprehensive implementation overview
+- **[Framework Evolution Recommendations](./framework-evolution-recommendations.md)** - Strategic roadmap and platform vision
 
 ### **Phase-Based Documentation**
 - **[Phase 2 Implementation](./PHASE-2-IMPLEMENTATION.md)** - Detailed phase 2 planning

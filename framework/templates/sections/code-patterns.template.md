@@ -1,3 +1,9 @@
+<!--
+@aegisFrameworkVersion: 1.3.1
+@intent: Code patterns and integration examples template section
+@context: Operational code patterns for agent guidance
+-->
+
 ## 🧪 Code Patterns & Integration Examples
 
 ### Edge Function Call Pattern

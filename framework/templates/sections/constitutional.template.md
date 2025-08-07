@@ -1,3 +1,9 @@
+<!--
+@aegisFrameworkVersion: 1.3.1
+@intent: Constitutional compliance template section
+@context: Core constitutional requirements for all agent instructions
+-->
+
 ## 🏛️ Constitutional Compliance
 
 **CRITICAL**: All operations must comply with the [Aegis Framework Constitution](../../CONSTITUTION.md). This includes:

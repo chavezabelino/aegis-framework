@@ -1,3 +1,9 @@
+<!--
+@aegisFrameworkVersion: 1.3.1
+@intent: MCP metadata emission template section
+@context: Event schemas and observability patterns for agents
+-->
+
 ## 📄 MCP Metadata Emission
 
 ### Event Schema Structure

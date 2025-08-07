@@ -1,14 +1,20 @@
 <!--
-@aegisFrameworkVersion: 1.3.0
+@aegisFrameworkVersion: 1.4.0
 @intent: Complete GitHub Copilot instructions combining constitutional compliance with operational excellence
 @context: Single source of truth for GitHub Copilot under Aegis Framework + Kilo standards
 @generatedFrom: agent-instructions.template.md + project-standards.md
-@lastGenerated: 2025-08-06
+@lastGenerated: 2025-08-07
 -->
 
-# 🤖 GitHub Copilot Instructions for Aegis Framework v1.3.0
+# 🤖 GitHub Copilot Instructions for Aegis Framework v1.4.0
 
 > **Complete instructions combining constitutional compliance with operational excellence.**
+
+<!--
+@aegisFrameworkVersion: 1.3.1
+@intent: Constitutional compliance template section
+@context: Core constitutional requirements for all agent instructions
+-->
 
 ## 🏛️ Constitutional Compliance
 
@@ -20,7 +26,12 @@
 - **Semantic Versioning**: Strict adherence to constitutional version management
 
 
-## 🎯 Framework Context (v1.3.0)
+<!--
+@aegisFrameworkVersion: 1.3.1
+@intent: Template section for agent instructions
+@context: Modular content for framework instruction generation
+-->
+## 🎯 Framework Context (v1.4.0)
 
 ### Current Capabilities
 - **Core**: Blueprint-driven development with v1.0.0-alpha specification
@@ -35,6 +46,11 @@
 - **generative**: Creative expansion within constitutional boundaries
 
 
+<!--
+@aegisFrameworkVersion: 1.3.1
+@intent: Template section for agent instructions
+@context: Modular content for framework instruction generation
+-->
 ## 🎯 GitHub Copilot Specific Guidance
 
 ### Your Capabilities
@@ -53,6 +69,12 @@
 - **Hybrid**: Constitutional annotations + operational discipline (recommended default)
 
 
+<!--
+@aegisFrameworkVersion: 1.3.1
+@intent: Multi-agent orchestration template section
+@context: Agent coordination patterns and handoff protocols
+-->
+
 ## 🔁 Multi-Agent Orchestration Protocol
 
 ### Agent Coordination Schema
@@ -60,7 +82,7 @@
 interface AgentHandoff {
   fromAgent: string;
   toAgent: string;
-  reason: &#39;complex_analysis&#39; | &#39;specialized_domain&#39; | &#39;workload_distribution&#39;;
+  reason: 'complex_analysis' | 'specialized_domain' | 'workload_distribution';
   context: {
     blueprintId: string;
     currentState: string;
@@ -74,25 +96,25 @@ interface AgentHandoff {
 ```typescript
 // Complex analysis handoff
 await handoffToAgent({
-  fromAgent: &#39;github-copilot&#39;,
-  toAgent: &#39;claude-3-5-sonnet&#39;,
-  reason: &#39;complex_analysis&#39;,
+  fromAgent: 'github-copilot',
+  toAgent: 'claude-3-5-sonnet',
+  reason: 'complex_analysis',
   context: {
-    blueprintId: &#39;feat-advanced-analytics&#39;,
-    currentState: &#39;initial_implementation&#39;,
-    requirements: [&#39;performance_optimization&#39;, &#39;error_handling&#39;]
+    blueprintId: 'feat-advanced-analytics',
+    currentState: 'initial_implementation',
+    requirements: ['performance_optimization', 'error_handling']
   }
 });
 
 // Specialized domain handoff
 await handoffToAgent({
-  fromAgent: &#39;claude-3-5-sonnet&#39;,
-  toAgent: &#39;github-copilot&#39;,
-  reason: &#39;specialized_domain&#39;,
+  fromAgent: 'claude-3-5-sonnet',
+  toAgent: 'github-copilot',
+  reason: 'specialized_domain',
   context: {
-    blueprintId: &#39;feat-ui-components&#39;,
-    currentState: &#39;design_complete&#39;,
-    requirements: [&#39;react_implementation&#39;, &#39;typescript_types&#39;]
+    blueprintId: 'feat-ui-components',
+    currentState: 'design_complete',
+    requirements: ['react_implementation', 'typescript_types']
   }
 });
 ```
@@ -100,18 +122,18 @@ await handoffToAgent({
 ### Agent Manifest System
 ```json
 {
-  &#34;agents&#34;: [
+  "agents": [
     {
-      &#34;id&#34;: &#34;github-copilot&#34;,
-      &#34;capabilities&#34;: [&#34;typescript&#34;, &#34;python&#34;, &#34;go&#34;, &#34;javascript&#34;],
-      &#34;specializations&#34;: [&#34;full-stack&#34;, &#34;documentation&#34;, &#34;testing&#34;],
-      &#34;coordinationSupported&#34;: true
+      "id": "github-copilot",
+      "capabilities": ["typescript", "python", "go", "javascript"],
+      "specializations": ["full-stack", "documentation", "testing"],
+      "coordinationSupported": true
     },
     {
-      &#34;id&#34;: &#34;claude-3-5-sonnet&#34;,
-      &#34;capabilities&#34;: [&#34;analysis&#34;, &#34;architecture&#34;, &#34;complex_reasoning&#34;],
-      &#34;specializations&#34;: [&#34;system_design&#34;, &#34;debugging&#34;, &#34;optimization&#34;],
-      &#34;coordinationSupported&#34;: true
+      "id": "claude-3-5-sonnet",
+      "capabilities": ["analysis", "architecture", "complex_reasoning"],
+      "specializations": ["system_design", "debugging", "optimization"],
+      "coordinationSupported": true
     }
   ]
 }
@@ -124,6 +146,11 @@ await handoffToAgent({
 - `agent.workload.distributed`
 
 
+<!--
+@aegisFrameworkVersion: 1.3.1
+@intent: Template section for agent instructions
+@context: Modular content for framework instruction generation
+-->
 ## 🏗️ Blueprint Compliance
 
 ### Required Blueprint Structure
@@ -132,22 +159,22 @@ id: feat-example
 name: Example Feature
 version: 1.0.0
 requiredRoutes:
-  - path: &#34;/api/example&#34;
-    method: &#34;POST&#34;
+  - path: "/api/example"
+    method: "POST"
 requiredProviders:
-  - name: &#34;exampleProvider&#34;
+  - name: "exampleProvider"
 requiredSelectors:
-  - name: &#34;selectExample&#34;
+  - name: "selectExample"
 ruleContracts:
-  - rule: &#34;validation&#34;
-    version: &#34;1.0.0&#34;
+  - rule: "validation"
+    version: "1.0.0"
 observability:
   events:
-    - name: &#34;example.created&#34;
-      schema: &#34;ExampleEventSchema&#34;
+    - name: "example.created"
+      schema: "ExampleEventSchema"
 errorStates:
-  - code: &#34;EXAMPLE_NOT_FOUND&#34;
-    fallback: &#34;Show default example&#34;
+  - code: "EXAMPLE_NOT_FOUND"
+    fallback: "Show default example"
 ```
 
 ### Constitutional Requirements
@@ -168,6 +195,12 @@ errorStates:
 ```
 
 
+<!--
+@aegisFrameworkVersion: 1.3.1
+@intent: MCP metadata emission template section
+@context: Event schemas and observability patterns for agents
+-->
+
 ## 📄 MCP Metadata Emission
 
 ### Event Schema Structure
@@ -178,7 +211,7 @@ interface MCPEvent {
   agentId: string;
   blueprintId: string;
   correlationId: string;
-  metadata: Record&lt;string, any&gt;;
+  metadata: Record<string, any>;
 }
 ```
 
@@ -186,22 +219,22 @@ interface MCPEvent {
 ```typescript
 // Blueprint lifecycle events
 await emitEvent({
-  eventType: &#39;blueprint.validated&#39;,
-  blueprintId: &#39;feat-example&#39;,
-  metadata: { validationResult: &#39;passed&#39; }
+  eventType: 'blueprint.validated',
+  blueprintId: 'feat-example',
+  metadata: { validationResult: 'passed' }
 });
 
 // Agent coordination events
 await emitEvent({
-  eventType: &#39;agent.handoff&#39;,
-  agentId: &#39;github-copilot&#39;,
-  metadata: { targetAgent: &#39;claude-3-5-sonnet&#39;, reason: &#39;complex_analysis&#39; }
+  eventType: 'agent.handoff',
+  agentId: 'github-copilot',
+  metadata: { targetAgent: 'claude-3-5-sonnet', reason: 'complex_analysis' }
 });
 
 // Drift detection events
 await emitEvent({
-  eventType: &#39;drift.detected&#39;,
-  metadata: { driftType: &#39;agent-behavior&#39;, severity: &#39;medium&#39; }
+  eventType: 'drift.detected',
+  metadata: { driftType: 'agent-behavior', severity: 'medium' }
 });
 ```
 
@@ -213,7 +246,12 @@ await emitEvent({
 - `framework/drift-log/user-workflow-drift.json` — Workflow drift tracking
 
 
-## 🧠 Drift Detection &amp; Response
+<!--
+@aegisFrameworkVersion: 1.3.1
+@intent: Template section for agent instructions
+@context: Modular content for framework instruction generation
+-->
+## 🧠 Drift Detection & Response
 
 ### Three-Layer Drift Monitoring
 1. **Agent Behavior Drift**: Changes in code generation patterns, annotation compliance
@@ -224,17 +262,17 @@ await emitEvent({
 ```typescript
 // Check for drift
 const driftResults = await detectDrift({
-  type: [&#39;agent-behavior&#39;, &#39;user-workflow&#39;, &#39;framework-system&#39;],
-  timeWindow: &#39;24h&#39;
+  type: ['agent-behavior', 'user-workflow', 'framework-system'],
+  timeWindow: '24h'
 });
 
 // Auto-correct minor violations
-if (driftResults.severity === &#39;low&#39;) {
+if (driftResults.severity === 'low') {
   await autoCorrect(driftResults);
 }
 
 // Escalate critical violations
-if (driftResults.severity === &#39;critical&#39;) {
+if (driftResults.severity === 'critical') {
   await escalateToConstitutionalConductor(driftResults);
 }
 ```
@@ -262,6 +300,11 @@ node cli/drift-cli.ts --fix --severity low
 ```
 
 
+<!--
+@aegisFrameworkVersion: 1.3.1
+@intent: Template section for agent instructions
+@context: Modular content for framework instruction generation
+-->
 ## 🛠️ CLI Integration
 
 ### Blueprint Management
@@ -279,7 +322,7 @@ node cli/generate-agent-instructions-v2.cjs github-copilot --project-profile tem
 node cli/aegis-migration-audit.cjs ../target-app --output migration-plan.md --strict
 ```
 
-### Drift Detection &amp; Control
+### Drift Detection & Control
 ```bash
 # Constitutional conductor (governance automation)
 node cli/aegis-conductor.ts
@@ -288,7 +331,7 @@ node cli/aegis-conductor.ts
 node cli/drift-cli.ts --check
 
 # Amendment proposals
-node cli/amendment-cli.ts propose --title &#34;Feature Enhancement&#34; --description &#34;...&#34;
+node cli/amendment-cli.ts propose --title "Feature Enhancement" --description "..."
 ```
 
 ### Output Management
@@ -306,7 +349,13 @@ node tools/validate-blueprint.ts blueprints/*/blueprint.yaml
 ```
 
 
-## 🔍 Validation &amp;amp; Testing
+<!--
+@aegisFrameworkVersion: 1.3.1
+@intent: Validation and testing template section
+@context: Testing standards and validation tooling for AI agents
+-->
+
+## 🔍 Validation & Testing
 
 ### Constitutional Compliance Validation
 ```bash
@@ -314,7 +363,7 @@ node tools/validate-blueprint.ts blueprints/*/blueprint.yaml
 node tools/validate-constitution.ts
 
 # Check annotation compliance
-grep -r &amp;#34;@aegisBlueprint&amp;#34; src/ --include=&amp;#34;*.ts&amp;#34; --include=&amp;#34;*.js&amp;#34;
+grep -r "@aegisBlueprint" src/ --include="*.ts" --include="*.js"
 
 # Verify semantic versioning
 node tools/validate-blueprint.ts blueprints/*/blueprint.yaml
@@ -323,9 +372,9 @@ node tools/validate-blueprint.ts blueprints/*/blueprint.yaml
 ### Snapshot Testing
 ```typescript
 // Blueprint fidelity validation
-describe(&amp;#39;Blueprint Fidelity&amp;#39;, () =&amp;gt; {
-  test(&amp;#39;feat-example generates consistent output&amp;#39;, async () =&amp;gt; {
-    const output = await generateFromBlueprint(&amp;#39;feat-example&amp;#39;);
+describe('Blueprint Fidelity', () => {
+  test('feat-example generates consistent output', async () => {
+    const output = await generateFromBlueprint('feat-example');
     expect(output).toMatchSnapshot();
   });
 });
@@ -334,10 +383,10 @@ describe(&amp;#39;Blueprint Fidelity&amp;#39;, () =&amp;gt; {
 ### Replay Testing
 ```typescript
 // Deterministic output validation
-describe(&amp;#39;Blueprint Replay&amp;#39;, () =&amp;gt; {
-  test(&amp;#39;same blueprint produces identical output&amp;#39;, async () =&amp;gt; {
-    const output1 = await generateFromBlueprint(&amp;#39;feat-example&amp;#39;);
-    const output2 = await generateFromBlueprint(&amp;#39;feat-example&amp;#39;);
+describe('Blueprint Replay', () => {
+  test('same blueprint produces identical output', async () => {
+    const output1 = await generateFromBlueprint('feat-example');
+    const output2 = await generateFromBlueprint('feat-example');
     expect(output1).toEqual(output2);
   });
 });
@@ -346,9 +395,9 @@ describe(&amp;#39;Blueprint Replay&amp;#39;, () =&amp;gt; {
 ### Visual Regression Testing
 ```typescript
 // Required for public routes
-describe(&amp;#39;Visual Regression&amp;#39;, () =&amp;gt; {
-  test(&amp;#39;public route renders consistently&amp;#39;, async () =&amp;gt; {
-    await page.goto(&amp;#39;/public/example&amp;#39;);
+describe('Visual Regression', () => {
+  test('public route renders consistently', async () => {
+    await page.goto('/public/example');
     const screenshot = await page.screenshot();
     expect(screenshot).toMatchImageSnapshot();
   });
@@ -378,6 +427,11 @@ npm run test:snapshot || exit 1
 ```
 
 
+<!--
+@aegisFrameworkVersion: 1.3.1
+@intent: Template section for agent instructions
+@context: Modular content for framework instruction generation
+-->
 ## 📚 Knowledge Base
 
 See docs/ for architecture, workflow, and reference.
@@ -386,6 +440,7 @@ See docs/ for architecture, workflow, and reference.
 
 ---
 <!--
+@aegisFrameworkVersion: 1.3.1
 @aegisProjectProfile: true
 @intent: Project-specific operational standards for agent instruction merging
 @context: This file is merged with framework/agent instructions to produce ready-to-use, IDE/agent-specific guidance.
@@ -557,7 +612,7 @@ const rcaResult = await runTokenGatedAnalysis({
 - **Constitutional compliance check** — Blueprint impact assessment
 - **Drift detection integration** — Feeds into framework monitoring
 
-## 🔍 Validation &amp; Testing
+## 🔍 Validation & Testing
 
 ### Quick Validation Commands
 ```bash
@@ -565,7 +620,7 @@ const rcaResult = await runTokenGatedAnalysis({
 node tools/validate-blueprint.ts blueprints/feat-example/blueprint.yaml
 
 # Check for required annotations
-grep -r &#34;@aegisBlueprint&#34; src/ --include=&#34;*.ts&#34; --include=&#34;*.js&#34;
+grep -r "@aegisBlueprint" src/ --include="*.ts" --include="*.js"
 
 # Run snapshot tests
 npm test -- --testPathPattern=snapshot
@@ -573,9 +628,9 @@ npm test -- --testPathPattern=snapshot
 
 ### Blueprint Fidelity Tests
 ```ts
-describe(&#39;Blueprint Fidelity&#39;, () =&gt; {
-  test(&#39;feat-example generates consistent output&#39;, async () =&gt; {
-    const output = await generateFromBlueprint(&#39;feat-example&#39;);
+describe('Blueprint Fidelity', () => {
+  test('feat-example generates consistent output', async () => {
+    const output = await generateFromBlueprint('feat-example');
     expect(output).toMatchSnapshot();
   });
 });
@@ -583,10 +638,10 @@ describe(&#39;Blueprint Fidelity&#39;, () =&gt; {
 
 ### Blueprint Replay Tests
 ```ts
-describe(&#39;Blueprint Replay&#39;, () =&gt; {
-  test(&#39;same blueprint produces identical output&#39;, async () =&gt; {
-    const output1 = await generateFromBlueprint(&#39;feat-example&#39;);
-    const output2 = await generateFromBlueprint(&#39;feat-example&#39;);
+describe('Blueprint Replay', () => {
+  test('same blueprint produces identical output', async () => {
+    const output1 = await generateFromBlueprint('feat-example');
+    const output2 = await generateFromBlueprint('feat-example');
     expect(output1).toEqual(output2);
   });
 });
@@ -594,9 +649,9 @@ describe(&#39;Blueprint Replay&#39;, () =&gt; {
 
 ### Visual Regression Tests
 ```ts
-describe(&#39;Visual Regression&#39;, () =&gt; {
-  test(&#39;public route renders consistently&#39;, async () =&gt; {
-    await page.goto(&#39;/public/example&#39;);
+describe('Visual Regression', () => {
+  test('public route renders consistently', async () => {
+    await page.goto('/public/example');
     const screenshot = await page.screenshot();
     expect(screenshot).toMatchImageSnapshot();
   });
@@ -768,8 +823,8 @@ Based on analysis of Aegis v1.2.1 vs bracket-app-audit v2.5:
 
 ---
 
-**Version**: 1.3.0 (Enhanced with v2.5 Operational Patterns)  
-**Last Updated**: 2025-08-06  
+**Version**: 1.4.0 (Enhanced with v2.5 Operational Patterns)  
+**Last Updated**: 2025-08-07  
 **Target Agent**: GitHub Copilot  
 **Framework Authority**: Aegis Framework Constitution  
 **Operational Standards**: Kilo v2.5 Battle-Tested Patterns  

@@ -1,3 +1,9 @@
+<!--
+@aegisFrameworkVersion: 1.3.1
+@intent: Directory structure and enforcement template section
+@context: Project organization standards for AI agents
+-->
+
 ## 📁 Directory Structure & Enforcement
 
 ```

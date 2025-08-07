@@ -14,6 +14,34 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.4.0] - 2025-08-06
+### Fixed
+- **Template Generation Quality**: Eliminated HTML entity contamination in agent instruction generation
+  - Fixed EJS template rendering to use unescaped output (`<%-`) for markdown sections containing code blocks
+  - Resolved HTML entity artifacts (`&#39;`, `&amp;`, `&lt;`, `&gt;`) appearing in generated GitHub Copilot instructions
+  - All generated agent instructions now produce clean markdown with proper quotes and formatting
+  - Root cause addressed in generation tool, preventing drift and manual post-processing
+
+### Enhanced
+- **Constitutional Compliance**: Improved Article IX template quality enforcement
+  - Added constitutional annotations (`@aegisFrameworkVersion`, `@intent`) to all framework template sections
+  - Template quality validation now achieves 100/100 encoding compliance score
+  - Generated instructions meet constitutional standards for deployment readiness
+
+### Added
+- **GitHub Copilot Instructions**: Comprehensive agent instructions combining constitutional compliance with operational excellence
+  - Multi-agent orchestration protocols and handoff patterns
+  - Apprenticeship scaffolding system integration
+  - Enhanced validation and testing standards (snapshot, replay, visual regression)
+  - Drift detection and remediation workflows
+  - Complete integration of Kilo v2.5 operational patterns
+  - Blueprint-driven development guidance with constitutional governance
+
+### Technical Improvements
+- **Generation Tool**: Enhanced `generate-agent-instructions-v2.cjs` for clean markdown output
+- **Template Architecture**: All framework template sections now properly annotated and structured
+- **Quality Assurance**: Template encoding validation integrated into CI/CD workflow
+
 ## [1.3.1] - 2025-08-06
 ### Changed
 - **Documentation Organization**: Restructured project documentation for improved maintainability

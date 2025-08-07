@@ -55,7 +55,7 @@ Added comprehensive constitutional requirements for:
   📊 Encoding score: 0/100
 
 ❌ HIGH SEVERITY:
-  templates/project-standards.md:173 - HTML entity "&" found, violates plain text primacy
+  templates/project-standards.md:173 - HTML entity "&amp;" found, violates plain text primacy
   Suggestion: Replace with plain Unicode character: "&"
 ```
 
@@ -76,7 +76,7 @@ Added comprehensive constitutional requirements for:
 ❌ FAIL github-copilot-ready.md (0/100)
   📋 269 differences found
   🔤 12 encoding issues detected
-    Line 309: "&" → "&"
+    Line 309: "&amp;" → "&"
 ```
 
 ### 3. Enhanced Pre-commit Hook (`pre-commit-hook.sh`)
@@ -107,7 +107,7 @@ The new tooling immediately identified the exact issues we've been working on:
 
 ### Template Quality Issues Detected:
 - **28 critical violations**: Missing constitutional annotations
-- **17 high severity**: HTML entities in templates (`&`, `'`, `>`)
+- **17 high severity**: HTML entities in templates (`&amp;`, `&#39;`, `&gt;`)
 - **8 medium severity**: Markdown structure issues
 - **Overall Score**: 25/100 (below constitutional 80/100 standard)
 
