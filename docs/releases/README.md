@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 1.3.0
+@aegisFrameworkVersion: 1.4.0
 @intent: Navigation index for release documentation
 -->
 
@@ -8,12 +8,20 @@
 ## 🏷️ **Available Releases**
 
 ### **Current Release**
+- **[v1.4.0](./v1.4.0-summary.md)** - Template Quality & GitHub Copilot Instructions
+  - Fixed HTML entity generation in templates (100% encoding compliance)
+  - Comprehensive GitHub Copilot instructions with constitutional compliance
+  - Multi-agent orchestration and apprenticeship integration
+  - Production-ready template generation system
+
+### **Previous Releases**
+- **[v1.3.1](./v1.3.1-summary.md)** - Documentation Reorganization
+  - Improved project structure and maintainability
+  - Enhanced navigation and cross-references
 - **[v1.3.0](./v1.3.0-summary.md)** - Template and Documentation Quality Standards
   - Article IX constitutional amendment
   - Automated validation tools and enforcement
   - Clean repository and enhanced developer workflow
-
-### **Previous Releases**
 - **v1.2.1** - See `docs/implementation/v1.2.1-summary.md` for implementation details
 
 ---
