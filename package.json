@@ -1,6 +1,6 @@
 {
   "name": "aegis-framework",
-  "version": "1.3.1",
+  "version": "2.0.1",
   "description": "Blueprint-driven AI engineering framework with constitutional governance",
   "type": "module",
   "scripts": {
@@ -29,7 +29,17 @@
     "analyze-copilot": "node -e \"require('./tools/copilot-integration.ts').analyzeCopilotInteractions(1)\"",
     "pre-commit-check": "node cli/detect-evolution-stories.cjs",
     "dev-scan": "watch \"npm run detect-evolution\" docs/ framework/ tools/ --interval=30",
-    "setup-proactive": "bash tools/setup-proactive-detection.sh"
+    "setup-proactive": "bash tools/setup-proactive-detection.sh",
+    "build": "npm run validate:all && npm run build:package",
+    "build:package": "node scripts/build-package.ts",
+    "build:cli": "node scripts/build-standalone-cli.ts",
+    "build:docker": "docker build -t aegis-framework/cli:$(cat VERSION) .",
+    "release": "node scripts/release.ts",
+    "release:patch": "npm run release -- patch",
+    "release:minor": "npm run release -- minor", 
+    "release:major": "npm run release -- major",
+    "version:sync": "node scripts/sync-version.ts",
+    "package:validate": "node scripts/validate-package.ts"
   },
   "dependencies": {
     "commander": "^14.0.0",

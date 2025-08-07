@@ -1,6 +1,6 @@
-# 🛡️ Aegis Framework
+# 🛡️ Aegis Framework v2.0.1
 
-> A production-grade, blueprint-driven system for AI-assisted software development — with full traceability, observability, drift protection, and replay fidelity.
+> A production-grade, blueprint-driven system for AI-assisted software development — with constitutional governance, single-command hydration, and packaged distribution.
 
 **🏛️ Governed by the [Aegis Framework Constitution](CONSTITUTION.md)** - establishing foundational principles, governance structures, and evolutionary processes for AI-native engineering.
 
@@ -8,46 +8,93 @@
 
 ## 🚀 Quick Start
 
-### Prerequisites
+### Two Installation Options
 
-- **Node.js** >= 18.0.0
-- **npm** >= 8.0.0 (or yarn/pnpm equivalent)
-
-### Installation & Setup
-
+#### Option 1: NPM Package (Recommended for Teams)
 ```bash
-# Clone the repository
+# Install globally for immediate use
+npm install -g @aegis-framework/cli@2.0.1
+
+# Hydrate any project instantly
+aegis-hydrate /path/to/your/project
+
+# Constitutional governance
+aegis-conductor init
+aegis-conductor check
+```
+
+#### Option 2: Source Installation (For Customization)
+```bash
+# Clone for customization and development
 git clone https://github.com/your-org/aegis-framework.git
 cd aegis-framework
 
 # Install dependencies
 npm install
 
-# Initialize constitutional framework
-npm run conductor init
+# Build packages
+npm run build:package
 
-# Run constitutional compliance check
-npm run check
-
-# Validate comprehensive framework compliance
-npm run validate
+# Run from source
+./cli/aegis-hydrate.ts /path/to/project
 ```
 
-### Available Commands
+### System Requirements
 
+- **Node.js** >= 18.0.0 (required for TypeScript support)
+- **npm** >= 8.0.0 (or yarn/pnpm equivalent)
+- **Git** (for project hydration and constitutional tracking)
+
+---
+
+## 🎯 Core Features
+
+### ⚡ Single Command Hydration
+Transform any project to constitutional compliance with one command:
 ```bash
-# Constitutional Governance
-npm run conductor <command>     # Run constitutional conductor
-npm run check                   # Quick compliance audit
-npm run validate               # Comprehensive constitutional validation
-
-# Constitutional Conductor Commands
-npm run conductor status       # Show governance status
-npm run conductor init         # Initialize constitutional framework
-npm run conductor check        # Run compliance audit
-npm run conductor enforce      # Apply constitutional enforcement
-npm run conductor drift-report # Generate drift analysis
+aegis-hydrate /path/to/project
 ```
+- **Approval gates** for transparent decision-making
+- **Automatic rollback** on failures  
+- **Constitutional compliance** validation
+- **Risk assessment** and mitigation
+
+### 🏛️ Constitutional Governance
+Built-in democratic processes for framework evolution:
+```bash
+aegis-conductor init       # Initialize constitutional framework
+aegis-conductor check      # Constitutional compliance audit
+aegis-conductor enforce    # Apply governance enforcement
+```
+
+### 📦 Package Distribution
+- **`@aegis-framework/cli`**: Standalone CLI for quick adoption
+- **`aegis-framework-lib`**: Full framework source for customization
+- **Docker support**: Containerized hydration and governance
+
+---
+
+## 📋 Available Commands
+
+### 🚀 NPM Package Commands
+```bash
+# After: npm install -g @aegis-framework/cli
+aegis-hydrate <path>           # One-command project hydration
+aegis-conductor <command>      # Constitutional governance
+aegis-config                   # Team configuration management
+```
+
+### 🔧 Development Commands (Source Installation)
+```bash
+# Package Management
+npm run build:package          # Build distribution packages
+npm run version:sync           # Synchronize version across files
+npm run package:validate       # Validate built packages
+
+# Release Management  
+npm run release:patch          # Create patch release
+npm run release:minor          # Create minor release
+npm run release:major          # Create major release
 
 ---
 

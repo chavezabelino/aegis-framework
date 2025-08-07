@@ -5,6 +5,65 @@ All notable changes to the Aegis Framework will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.1] - 2025-08-07
+
+### 🎉 Stable Release: Package Distribution & Automation
+
+This stable release provides production-ready package distribution with enhanced automation for team adoption.
+
+#### **📦 Package Distribution**
+- **NEW**: NPM package `@aegis-framework/cli@2.0.1` for global installation
+- **NEW**: Standalone CLI package with all hydration and governance tools
+- **NEW**: Framework library package for customization and extension
+- **NEW**: Docker support for containerized deployment
+- **NEW**: Automated package building and validation pipeline
+
+#### **🤖 Release Automation**
+- **NEW**: Automated version synchronization across all framework files
+- **NEW**: Release management scripts with semantic versioning
+- **NEW**: Package validation suite ensuring release readiness
+- **NEW**: Constitutional compliance validation in release pipeline
+- **NEW**: Comprehensive release notes generation
+
+#### **🛠️ Enhanced Developer Experience**
+- **NEW**: One-command installation: `npm install -g @aegis-framework/cli`
+- **NEW**: Immediate project hydration: `aegis-hydrate /path/to/project`
+- **NEW**: TypeScript-to-executable CLI wrapper system
+- **NEW**: Module type configuration eliminating Node.js warnings
+- **NEW**: Comprehensive package metadata with integrity checksums
+
+#### **📋 Build System**
+- **NEW**: `npm run build:package` - Build distribution packages
+- **NEW**: `npm run version:sync` - Synchronize versions across files
+- **NEW**: `npm run package:validate` - Validate built packages
+- **NEW**: `npm run release:[patch|minor|major]` - Automated releases
+
+### 🔧 Technical Improvements
+- Enhanced CLI executable wrapper system for TypeScript compatibility
+- Improved package structure with proper module type definitions
+- Automated checksum generation for package integrity verification
+- Comprehensive validation suite for release quality assurance
+
+### 📖 Documentation Updates
+- Updated README with dual installation paths (NPM + source)
+- Enhanced quick start guide for different user personas
+- Comprehensive release notes with upgrade instructions
+- Package distribution documentation and usage examples
+
+### 🏛️ Constitutional Compliance
+- 100% constitutional compliance maintained across all new features
+- All automation scripts include required aegis framework annotations
+- Democratic governance processes preserved in release automation
+- Semantic versioning enforcement aligned with constitutional principles
+
+### Breaking Changes
+- None (backward compatible with v2.0.0-alpha)
+
+### Migration Required
+- None (existing installations continue to work)
+
+---
+
 ## [2.0.0-alpha-dev] - 2025-08-06
 
 ### 🚨 BREAKING CHANGES - Major Version Bump
