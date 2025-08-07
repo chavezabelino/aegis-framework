@@ -1,7 +1,7 @@
 {
   "name": "aegis-framework",
   "version": "2.0.1",
-  "description": "Blueprint-driven AI engineering framework with constitutional governance",
+  "description": "The world's first GenAI Operating System - Constitutional governance for AI-native engineering with systematic drift detection, evolution learning, and democratic amendment processes",
   "type": "module",
   "scripts": {
     "validate": "node tools/validate-constitution.ts",
@@ -11,6 +11,10 @@
     "conductor": "node cli/aegis-conductor.ts",
     "check": "node cli/aegis-conductor.ts check",
     "init": "node cli/aegis-conductor.ts init",
+    "docs": "node cli/aegis-docs.ts",
+    "docs:manifesto": "node cli/aegis-docs.ts manifesto",
+    "docs:principles": "node cli/aegis-docs.ts principles",
+    "docs:search": "node cli/aegis-docs.ts search",
     "analyze-patterns": "node framework/learning/pattern-recognition-engine.ts",
     "learn": "npm run analyze-patterns",
     "predict": "node framework/learning/predictive-enforcement.ts",
@@ -64,9 +68,39 @@
     "blueprint",
     "governance",
     "constitutional",
-    "self-healing"
+    "self-healing",
+    "genai-os",
+    "constitutional-ai",
+    "ai-governance",
+    "genai-operating-system",
+    "ai-infrastructure",
+    "constitutional-computing",
+    "drift-detection",
+    "evolution-stories",
+    "ai-native-engineering",
+    "intelligence-governance",
+    "probabilistic-systems",
+    "ai-reliability",
+    "systematic-ai",
+    "production-ai"
   ],
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chavezabelino/aegis-framework.git"
+  },
+  "homepage": "https://github.com/chavezabelino/aegis-framework#readme",
+  "bugs": {
+    "url": "https://github.com/chavezabelino/aegis-framework/issues"
+  },
+  "author": {
+    "name": "Aegis Framework Contributors",
+    "url": "https://github.com/chavezabelino/aegis-framework/graphs/contributors"
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/chavezabelino"
+  },
   "engines": {
     "node": ">=18.0.0"
   }

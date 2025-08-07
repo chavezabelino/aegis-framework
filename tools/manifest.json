@@ -74,6 +74,14 @@
       "validateCommand": "node tools/constitutional-ai-agent.ts"
     },
     {
+      "name": "aegis-docs",
+      "path": "cli/aegis-docs.ts",
+      "required": false,
+      "version": "1.0.0",
+      "description": "Quick access to manifesto documentation and GenAI OS principles",
+      "validateCommand": "node cli/aegis-docs.ts --version"
+    },
+    {
       "name": "team-configuration",
       "path": "cli/team-config.ts",
       "required": false,

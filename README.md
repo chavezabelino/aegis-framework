@@ -1,8 +1,34 @@
 # 🛡️ Aegis Framework v2.0.1
 
-> A production-grade, blueprint-driven system for AI-assisted software development — with constitutional governance, single-command hydration, and packaged distribution.
+[![GenAI OS Manifesto](https://img.shields.io/badge/📖_GenAI_OS-Manifesto-blue?style=for-the-badge)](docs/manifesto/README.md)
+[![Constitutional Computing](https://img.shields.io/badge/🏛️_Constitutional-Computing-green?style=for-the-badge)](docs/manifesto/principles.md)
+[![Framework Version](https://img.shields.io/badge/Framework-v2.0.1-orange?style=for-the-badge)](VERSION)
+[![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](LICENSE)
 
-**🏛️ Governed by the [Aegis Framework Constitution](CONSTITUTION.md)** - establishing foundational principles, governance structures, and evolutionary processes for AI-native engineering.
+> **The world's first GenAI Operating System** - Constitutional governance for AI-native engineering with systematic drift detection, evolution learning, and democratic amendment processes.
+
+## 📜 The GenAI Operating System Manifesto
+
+**Stop building faster chaos. Start building governed intelligence.**
+
+While most teams deploy AI like browser plugins—fast, fragile, ungoverned—we built the **constitutional layer** that makes AI reliable for production.
+
+**[📖 Read the Full Manifesto →](docs/manifesto/README.md)**
+
+### 🎯 The Problem We're Solving
+- **Current State**: AI deployed without governance (prompt engineering ≠ system design)
+- **The Gap**: Productivity gains that silently drift into technical debt
+- **Our Solution**: Constitutional computing—infrastructure patterns for reliable AI
+
+### 🧠 Core Principles
+1. **Intelligence Requires Infrastructure** - You need governance, not just generation
+2. **Prompting ≠ Governance** - Perfect prompts are still prayers to probability machines
+3. **Drift Is Inevitable, Detection Is Optional** - Systems decay without monitoring
+4. **Execution Modes Are Constitutional Rights** - Different contexts need different AI behavior
+
+**[🔍 Explore Case Studies →](docs/manifesto/case-studies.md)** | **[⚙️ See Technical Principles →](docs/manifesto/principles.md)**
+
+> 💡 **Like what you see?** ⭐ Star this repo to help others discover constitutional computing | 👀 Watch for updates on AI governance patterns
 
 ---
 
@@ -237,7 +263,9 @@ See `framework-core-v1.0.0-alpha.md`, [v1.1.0-beta specification](framework/vers
 ## 📎 Resources
 
 - [🏛️ **Framework Constitution**](CONSTITUTION.md) - Foundational principles and governance
-- [📘 Architecture Overview](docs/architecture.md)
+- [� **GenAI OS Manifesto**](docs/manifesto/README.md) - Core philosophy and vision
+- [📊 **Case Studies**](docs/manifesto/case-studies.md) - Real-world evidence and examples
+- [�📘 Architecture Overview](docs/architecture.md)
 - [📋 **Release Documentation**](docs/releases/) - Version history and release summaries
 - [🔧 **Implementation Details**](docs/implementation/) - Technical implementation documentation
 - [🧩 Blueprint Schema](framework/contracts/)
@@ -246,6 +274,56 @@ See `framework-core-v1.0.0-alpha.md`, [v1.1.0-beta specification](framework/vers
 - [🧱 Starter Scaffold](scaffolds/web-app-starter/)
 - [🔄 Framework Evolution Strategy](docs/evolution-strategy.md)
 - [📝 Changelog Generator](tools/generate-changelog.sh)
+
+---
+
+## 🔄 Contributing & Versioning
+
+Aegis follows [Semantic Versioning](https://semver.org/) starting with v1.0.0-alpha. 
+
+**For changelog-worthy contributions:**
+```bash
+# Generate changelog entry for your changes
+./tools/generate-changelog.sh 1.0.1-alpha "Your feature description"
+
+# Validate blueprints before committing
+node tools/validate-blueprint.ts blueprints/your-feature/blueprint.yaml
+```
+
+See [Evolution Strategy](docs/evolution-strategy.md) for guidance on framework development and impact assessment.
+
+---
+
+## 🧠 Created By
+
+This framework implements the **GenAI Operating System** paradigm - constitutional governance for intelligence-augmented engineering teams.
+
+The Aegis Framework represents a fundamental shift from "AI as better autocomplete" to "AI as governable infrastructure." It provides the constitutional layer that makes AI reliable for production use.
+
+> _"We're not just building better AI tools. We're building the governance layer that makes any AI tool reliable."_
+
+**Learn More**: [GenAI Operating System Manifesto](docs/manifesto/README.md)
+
+---
+
+## 🌍 Community & Engagement
+
+### Join the Constitutional Computing Movement
+- **🐛 Found an issue?** [Report bugs](https://github.com/chavezabelino/aegis-framework/issues/new?template=bug-report.md) with constitutional impact assessment
+- **💡 Have an idea?** [Request features](https://github.com/chavezabelino/aegis-framework/issues/new?template=feature-request.md) that advance AI governance
+- **🔄 Share your story:** [Evolution Stories](https://github.com/chavezabelino/aegis-framework/issues/new?template=evolution-story.md) help the framework learn from real-world usage
+- **🏛️ Contribute code:** See our [Contributing Guide](CONTRIBUTING.md) for constitutional compliance requirements
+
+### Community Principles
+> **"Constitutional computing is a conversation, not a monologue."** - [Author Notes](docs/manifesto/author-notes.md)
+
+If you're building reliable AI systems and thinking "finally, someone else gets it," we want to hear from you. If you're skeptical but curious, try the framework on one small project—infrastructure is easier to understand when you've lived in it.
+
+**Connect with us:**
+- 📖 Read our [manifesto](docs/manifesto/README.md) and share your thoughts
+- ⭐ Star this repo to help others discover constitutional computing
+- 🔔 Watch for updates on AI governance patterns and framework evolution
+- 💬 Start discussions about AI infrastructure and systematic reliability
 
 ---
 

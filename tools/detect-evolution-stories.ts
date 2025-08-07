@@ -2,6 +2,12 @@
  * @aegisFrameworkVersion 2.0.0-alpha-dev
  * @intent Automated detection system for evolution story triggers
  * @context Monitor framework usage patterns and automatically suggest evolution documentation
+ * 
+ * @aegisNote: See 'docs/manifesto/genai-os-manifesto.md'
+ * This system implements the GenAI OS principle:
+ * "Systems that observe themselves become self-improving"
+ * 
+ * @manifestoRef: case-studies.md#automated-evolution-detection
  */
 
 import fs from 'fs';

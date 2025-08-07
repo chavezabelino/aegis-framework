@@ -5,6 +5,12 @@
  * @mode: strict
  * @intent: One-command migration tool with constitutional governance
  * @context: Implementation of "bill becomes law" migration process
+ * 
+ * @aegisNote: See 'docs/manifesto/genai-os-manifesto.md'
+ * This tool implements the GenAI OS principle:
+ * "Automation without governance is just faster chaos"
+ * 
+ * @manifestoRef: case-studies.md#hydration-vs-manual-migration
  */
 
 import { Command } from 'commander';

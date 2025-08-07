@@ -3,6 +3,11 @@
 /**
  * Aegis Constitutional Conductor
  * 
+ * @aegisNote: See 'docs/manifesto/genai-os-manifesto.md'
+ * This system implements the GenAI OS principle:
+ * "Constitutional Computing: Some decisions are too important for config files"
+ * 
+ * @manifestoRef: principles.md#constitutional-computing
  * The primary enforcement mechanism for the Aegis Framework Constitution.
  * Provides constitutional compliance monitoring, drift detection, and automated enforcement.
  */
