@@ -26,6 +26,8 @@ export class EvolutionStoryDetector {
 
   /**
    * Scan for evolution story triggers across multiple signals
+   * Note: This detection behavior can be configured via team-config.yaml
+   * See docs/roadmap/feature-configurability-roadmap.md for configuration details
    */
   async detectTriggers(): Promise<EvolutionTrigger[]> {
     this.triggers = [];
@@ -375,6 +377,7 @@ export class EvolutionStoryDetector {
 
   /**
    * Generate automatic evolution story for high-severity triggers
+   * Note: Auto-generation can be configured in team-config.yaml (optional feature)
    */
   async autoGenerateStories(): Promise<string[]> {
     const autoTriggers = this.triggers.filter(t => t.autoGenerate && t.severity === 'critical');

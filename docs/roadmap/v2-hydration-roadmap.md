@@ -49,6 +49,16 @@
 - 🛡️ **Security Gates**: Constitutional compliance validation
 - 🔧 **Custom Workflows**: Approval webhook integration
 
+### **🎯 v2.1.0-alpha (Q1 2026)**
+**Theme**: Feature Configurability System
+- 🎛️ **Three-Tier Configuration**: Core, Required, Optional feature tiers
+- ⚙️ **Team Configuration CLI**: Interactive setup and management
+- 🏛️ **Constitutional Safeguards**: Override tracking and approval
+- 📊 **Configuration Profiles**: Strict, Balanced, Minimal presets
+- 🔍 **Usage Analytics**: Track configuration patterns and adoption
+
+*See [Feature Configurability Roadmap](feature-configurability-roadmap.md) for detailed implementation plan*
+
 ### **🎯 v2.0.0 Stable (Q1 2026)**
 **Theme**: Production Excellence
 - 🏢 **Enterprise Features**: Advanced approval workflows
@@ -56,6 +66,13 @@
 - 🔒 **Security Hardening**: Audit trail encryption
 - 🌐 **Multi-Platform**: Windows, macOS, Linux support
 - ⚡ **Performance**: Optimized migration execution
+
+### **🎯 v2.1.0-beta (Q2 2026)**
+**Theme**: Configuration System Integration
+- 🛠️ **Tool Integration**: Framework-wide configuration support
+- 📋 **Profile Management**: Advanced configuration profiles
+- 📊 **Usage Analytics**: Configuration adoption tracking
+- 🔧 **Enterprise Configuration**: Organization-level policies
 
 ---
 
@@ -88,6 +105,12 @@ v1.3.0 → v2.3.0 (post-v2.0)
 ├── Learning telemetry → Migration pattern intelligence
 ├── Enhanced observability → Real-time hydration monitoring
 └── Quality validation → Continuous compliance checking
+
+v2.1.0+ → Configurability Era
+├── Fixed framework behavior → Team-configurable features
+├── All-or-nothing adoption → Graduated feature adoption
+├── Universal enforcement → Constitutional override system
+└── Framework-driven → Team-driven configuration choices
 ```
 
 ### **LTS Support Strategy**

@@ -72,6 +72,20 @@
       "required": true,
       "description": "AI Agent wrapper with built-in constitutional enforcement",
       "validateCommand": "node tools/constitutional-ai-agent.ts"
+    },
+    {
+      "name": "team-configuration",
+      "path": "cli/team-config.ts",
+      "required": false,
+      "description": "Interactive team configuration management for feature flags",
+      "validateCommand": "node cli/team-config.ts validate"
+    },
+    {
+      "name": "validate-team-config",
+      "path": "cli/validate-team-config.ts",
+      "required": false,
+      "description": "Validate team configuration against constitutional requirements",
+      "validateCommand": "node cli/validate-team-config.ts quick"
     }
   ],
   "systemRequirements": [
