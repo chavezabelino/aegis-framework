@@ -237,7 +237,24 @@ Leverage machine learning to optimize and extend the framework's blueprint auto-
 
 **Status:** Not started (scaffolding phase)
 
-### Long-term Vision (v2.0.0)
+### Long-term Vision (v2.0.0+)
+
+**v2.0.0: One-Command Hydration Era**
+- 🚀 **aegis hydrate**: Single-command migration for existing projects
+- 🏛️ **Constitutional Gates**: Human approval workflows with rollback safety
+- 📊 **Risk Assessment**: Transparent migration process with audit trails
+- 🎛️ **[Feature Configurability](../roadmap/feature-configurability-roadmap.md)**: Team-customizable framework behavior with constitutional safeguards
+
+**v3.0.0: Universal Tech Stack Support Era**
+- 🌐 **[Tech Stack Neutrality](../roadmap/tech-stack-neutrality-roadmap.md)**: Transform framework from React+Next.js+Supabase bias to universal adapter system
+- 🔧 **Universal Adapters**: Support for Python+FastAPI, Go+Gin, Spring Boot, Django, .NET Core, and more
+- 📋 **Language-Agnostic CLI**: Cross-platform tooling that works in any development environment
+- 🏗️ **Universal Blueprint Schema**: Same blueprint generates working code across all major tech stacks
+- 📈 **Massive Ecosystem Expansion**: Enable framework adoption across all major technology communities
+
+**Detailed Planning Documents**:
+- **[Tech Stack Neutrality Plan](./tech-stack-neutrality-plan.md)**: Comprehensive 8-month implementation strategy
+- **[Tech Neutrality Detailed Requirements](./tech-neutrality-detailed-requirements.md)**: Specific technical tasks and migration strategies
 
 ## 📊 Impact Assessment
 
