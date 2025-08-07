@@ -75,12 +75,15 @@ class PackageBuilder {
     this.copyDirectory('framework/contracts', path.join(libDir, 'contracts'));
     this.copyDirectory('framework/templates', path.join(libDir, 'templates'));
     
+    // Dependencies will be handled by NPM during installation
+    // No need to bundle - this is standard for Node.js CLI tools
+    
     // Copy essential docs
     this.copyFile('README.md', path.join(docsDir, 'README.md'));
     this.copyFile('LICENSE', path.join(docsDir, 'LICENSE'));
     this.generateQuickStartGuide(path.join(docsDir, 'QUICK-START.md'));
     
-    // Create CLI package.json
+    // Create CLI package.json with proper dependencies
     this.createCLIPackageJson(cliDir);
     
     // Make binaries executable
@@ -233,6 +236,39 @@ try {
     }
   }
   
+  private copyNodeModules(cliDir: string): void {
+    console.log('📦 Bundling dependencies for standalone operation...');
+    
+    // For a proper production setup, we'd use webpack or esbuild
+    // For now, copy essential dependencies only
+    const nodeModulesDir = path.join(cliDir, 'node_modules');
+    fs.mkdirSync(nodeModulesDir, { recursive: true });
+    
+    // Copy only the dependencies our CLI actually uses
+    const essentialDeps = ['commander', 'inquirer', 'ora', 'chalk'];
+    
+    for (const dep of essentialDeps) {
+      const sourceDepDir = path.join('node_modules', dep);
+      const targetDepDir = path.join(nodeModulesDir, dep);
+      
+      if (fs.existsSync(sourceDepDir)) {
+        this.copyDirectory(sourceDepDir, targetDepDir);
+      }
+    }
+    
+    // Create a minimal package.json for node_modules resolution
+    const nodeModulesPackage = {
+      "name": "aegis-cli-dependencies",
+      "version": "1.0.0",
+      "private": true
+    };
+    
+    fs.writeFileSync(
+      path.join(nodeModulesDir, 'package.json'),
+      JSON.stringify(nodeModulesPackage, null, 2)
+    );
+  }
+  
   private createCLIPackageJson(cliDir: string): void {
     const cliPackage = {
       name: '@aegis-framework/cli',
@@ -243,6 +279,13 @@ try {
         'aegis-hydrate': './bin/aegis-hydrate',
         'aegis-conductor': './bin/aegis-conductor',
         'aegis-config': './bin/aegis-config'
+      },
+      dependencies: {
+        'commander': '^14.0.0',
+        'inquirer': '^12.9.0',
+        'ora': '^8.2.0',
+        'chalk': '^5.3.0',
+        'js-yaml': '^4.1.0'
       },
       engines: {
         node: '>=18.0.0'
