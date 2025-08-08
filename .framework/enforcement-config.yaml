@@ -1,90 +1,97 @@
-# Constitutional Enforcement Configuration
-# Governs the behavior of the Aegis Constitutional Conductor
+# @aegisFrameworkVersion: 2.1.0
+# @intent: Constitutional enforcement configuration
+# @context: Framework governance and protection system configuration
 
-enforcement:
-  # Enforcement modes: strict, moderate, permissive
-  mode: strict
-  
-  # Auto-correction settings
-  autoCorrect:
-    enabled: true
-    dryRun: false
-    backupBeforeCorrection: true
+framework:
+  version: "2.1.0"
+  enforcement:
+    destructiveActionProtection:
+      enabled: true
+      riskLevels:
+        - low
+        - medium
+        - high
+        - critical
+      essentialFiles:
+        - "CONSTITUTION.md"
+        - "VERSION"
+        - "package.json"
+        - "tsconfig.json"
+        - "README.md"
+        - "CHANGELOG.md"
+        - "CONTRIBUTING.md"
+        - "LICENSE"
+      essentialDirectories:
+        - "framework/"
+        - "docs/"
+        - "cli/"
+        - "tools/"
+        - "blueprints/"
+        - "adapters/"
+        - "tests/"
+        - "examples/"
+        - "templates/"
+        - "scaffolds/"
     
-  # What violations to auto-correct
-  autoCorrectableViolations:
-    - missing-annotations
-    - version-inconsistencies  
-    - structural-deviations
-    - blueprint-formatting
+    preCommitHooks:
+      enabled: true
+      destructivePatterns:
+        - "rm -rf"
+        - "rm -r"
+        - "rm -f"
+        - "rm -rf ."
+        - "rm -rf /"
+        - "rm -rf node_modules"
+        - "rm -rf dist"
+        - "rm -rf .framework"
+        - "rm -rf .aegis"
+        - "rm -rf .vscode"
+        - "rm -rf .cursor"
     
-  # Violations that require manual intervention
-  manualReviewRequired:
-    - constitutional-amendments
-    - breaking-changes
-    - security-issues
+    constitutionalCompliance:
+      requiredAnnotations:
+        - "@aegisFrameworkVersion"
+        - "@intent"
+        - "@context"
+        - "@mode"
+      versionConsistency:
+        enabled: true
+        files:
+          - "VERSION"
+          - "README.md"
+          - "CHANGELOG.md"
+          - "framework/framework-core-v2.1.0.md"
+          - ".github/copilot-instructions.md"
+    
+    emergencyRecovery:
+      enabled: true
+      autoRestore:
+        enabled: true
+        maxBackupAge: "7d"
+      frameworkState:
+        backupInterval: "1h"
+        retentionPeriod: "30d"
 
-validation:
-  # How often to run constitutional validation
-  frequency: "on-commit"  # options: on-commit, daily, weekly
-  
-  # Validation scope
-  scope:
-    - framework-structure
-    - blueprint-compliance
-    - annotation-requirements
-    - version-consistency
-    
-  # Thresholds for compliance scoring
-  thresholds:
-    critical: 0.95  # Must maintain 95% compliance
-    warning: 0.85   # Warning threshold
-    acceptable: 0.75 # Minimum acceptable
+cursor:
+  integration:
+    enabled: true
+    realTimeDetection:
+      enabled: true
+      sessionAnalysis: true
+      visualFeedback: true
+    evolutionStoryGeneration:
+      enabled: true
+      autoCapture: true
 
-drift:
-  # Drift detection sensitivity
-  sensitivity: medium  # low, medium, high
-  
-  # What types of drift to monitor
-  monitoring:
-    - agent-behavior
-    - user-workflows
-    - framework-evolution
-    - blueprint-patterns
-    
-  # Drift response actions
-  responses:
-    alert: true
-    log: true
-    autoCorrect: true
-    notifyMaintainers: false
-
-learning:
-  # Enable introspective learning
-  enabled: true
-  
-  # Learning data retention
-  retentionPeriod: "90 days"
-  
-  # Pattern recognition
-  patternDetection:
-    enabled: true
-    minimumOccurrences: 3
-    
-  # Self-improvement
-  selfImprovement:
-    enabled: true
-    proposalGeneration: true
-    
-governance:
-  # Amendment proposal settings
-  amendments:
-    autoGenerate: true
-    communityReview: true
-    approvalThreshold: 0.67
-    
-  # Democratic processes
-  democracy:
-    enabled: true
-    votingPeriod: "7 days"
-    quorum: 0.5
+build:
+  system:
+    vite:
+      enabled: true
+      optimization: true
+    bun:
+      enabled: true
+      runtime: true
+    typescript:
+      moduleResolution: "bundler"
+      noEmit: true
+      strict: false

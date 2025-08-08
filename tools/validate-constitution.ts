@@ -296,8 +296,7 @@ class ConstitutionalValidator {
 
   private async checkFrameworkFileAnnotations(): Promise<AnnotationCheck[]> {
     const frameworkFiles = [
-      'framework/framework-core-v1.0.0-alpha.md',
-      'framework/versions/framework-core-v1.0.1-alpha-spec.md',
+      'framework/framework-core-v2.1.0.md',
       'CONSTITUTION.md'
     ];
 
@@ -356,18 +355,68 @@ class ConstitutionalValidator {
       'VERSION',
       'README.md',
       'CHANGELOG.md',
-      'framework/framework-core-v1.0.0-alpha.md',
+      'framework/framework-core-v2.1.0.md',
       '.github/copilot-instructions.md'
     ];
 
     return files.map(file => {
       const version = this.extractVersionFromFile(file);
+      const consistent = this.isVersionConsistent(file, version);
       return {
         file,
         version: version || 'unknown',
-        consistent: version === this.currentVersion
+        consistent
       };
     });
+  }
+
+  private isVersionConsistent(filePath: string, version: string | null): boolean {
+    // VERSION file should always match current version
+    if (filePath === 'VERSION') {
+      return version === this.currentVersion;
+    }
+
+    // README.md should reflect current version
+    if (filePath === 'README.md') {
+      return version === this.currentVersion;
+    }
+
+    // CHANGELOG.md can contain historical versions - check if current version is present
+    if (filePath === 'CHANGELOG.md') {
+      return version === this.currentVersion || this.hasCurrentVersionInChangelog();
+    }
+
+    // Framework core spec filename contains version - this is expected
+    if (filePath === 'framework/framework-core-v2.1.0.md') {
+      return version === this.currentVersion; // Should match current version
+    }
+
+    // Copilot instructions can reference framework specs - check if current version is mentioned
+    if (filePath === '.github/copilot-instructions.md') {
+      return this.hasCurrentVersionInCopilotInstructions();
+    }
+
+    return version === this.currentVersion;
+  }
+
+  private hasCurrentVersionInChangelog(): boolean {
+    try {
+      const changelogPath = path.join(this.frameworkRoot, 'CHANGELOG.md');
+      const content = fs.readFileSync(changelogPath, 'utf8');
+      return content.includes(`[${this.currentVersion}]`);
+    } catch (error) {
+      return false;
+    }
+  }
+
+  private hasCurrentVersionInCopilotInstructions(): boolean {
+    try {
+      const instructionsPath = path.join(this.frameworkRoot, '.github/copilot-instructions.md');
+      const content = fs.readFileSync(instructionsPath, 'utf8');
+      return content.includes(this.currentVersion);
+    } catch (error) {
+      return false;
+    }
   }
 
   private extractVersionFromFile(filePath: string): string | null {
@@ -381,7 +430,32 @@ class ConstitutionalValidator {
         return content.trim();
       }
 
-      // Look for version patterns in other files
+      // For CHANGELOG.md, look for the most recent version entry
+      if (filePath === 'CHANGELOG.md') {
+        const changelogMatch = content.match(/## \[(\d+\.\d+\.\d+(?:-[a-zA-Z0-9]+)?)\]/);
+        return changelogMatch ? changelogMatch[1] : null;
+      }
+
+      // For other files, look for version patterns but be more specific
+      if (filePath === 'README.md') {
+        // Look for version in badges or headers
+        const versionMatch = content.match(/v(\d+\.\d+\.\d+(?:-[a-zA-Z0-9]+)?)/);
+        return versionMatch ? versionMatch[1] : null;
+      }
+
+      // For framework core spec, extract from filename
+      if (filePath === 'framework/framework-core-v2.0.1.md') {
+        const filenameMatch = filePath.match(/v(\d+\.\d+\.\d+(?:-[a-zA-Z0-9]+)?)/);
+        return filenameMatch ? filenameMatch[1] : null;
+      }
+
+      // For copilot instructions, look for framework version references
+      if (filePath === '.github/copilot-instructions.md') {
+        const versionMatch = content.match(/v(\d+\.\d+\.\d+(?:-[a-zA-Z0-9]+)?)/);
+        return versionMatch ? versionMatch[1] : null;
+      }
+
+      // Default: look for version patterns in other files
       const versionMatch = content.match(/(\d+\.\d+\.\d+(?:-[a-zA-Z0-9]+)?)/);
       return versionMatch ? versionMatch[1] : null;
     } catch (error) {

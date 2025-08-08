@@ -43,7 +43,7 @@ Aegis is a **blueprint-driven AI engineering framework** that enforces reproduci
 
 ### Blueprint-Driven Development
 - **Blueprints** (`blueprints/*/blueprint.yaml`) define feature requirements, routes, components, and contracts
-- **Framework Core** (`framework/framework-core-v1.0.0-alpha.md`) defines the specification - currently v1.0.0-alpha
+- **Framework Core** (`framework/framework-core-v2.1.0.md`) defines the specification - currently v2.1.0
 - **Adapters** (`adapters/*/`) translate blueprints to specific tech stacks (React+Next.js, Deno, Python+FastAPI)
 - **Three execution modes**: `lean` (minimal), `strict` (full compliance), `generative` (creative expansion)
 
@@ -71,7 +71,7 @@ node tools/validate-blueprint.ts blueprints/feat-your-feature/blueprint.yaml
 ```
 
 ### Blueprint Structure Pattern
-Follow the template in `framework/framework-core-v1.0.0-alpha.md`:
+Follow the template in `framework/framework-core-v2.1.0.md`:
 - `id`, `name`, `version` (required)
 - `requiredRoutes`, `requiredProviders`, `requiredSelectors`
 - `ruleContracts` with versioned rules
@@ -88,7 +88,7 @@ Store AI agent outputs as:
 
 - **Snapshot tests** in `tests/snapshot-tests/` validate blueprint fidelity over time
 - **Replay tests** in `tests/replay-diff-tests/` ensure deterministic outputs
-- **Visual regression** required for public routes (mentioned in v1.0.0-alpha spec)
+- **Visual regression** required for public routes (mentioned in v2.1.0 spec)
 
 ## 📋 Project Conventions
 

@@ -8,13 +8,18 @@
 ## 🏷️ **Available Releases**
 
 ### **Current Release**
+- **[v2.0.1](./v2.0.1-summary.md)** - Package Distribution & Automation (Stable)
+  - NPM package `@aegis-framework/cli@2.0.1` for global installation
+  - Docker support and automated release pipeline
+  - One-command installation and immediate project hydration
+  - Constitutional compliance automation with comprehensive validation
+
+### **Previous Releases**
 - **[v1.4.0](./v1.4.0-summary.md)** - Template Quality & GitHub Copilot Instructions
   - Fixed HTML entity generation in templates (100% encoding compliance)
   - Comprehensive GitHub Copilot instructions with constitutional compliance
   - Multi-agent orchestration and apprenticeship integration
   - Production-ready template generation system
-
-### **Previous Releases**
 - **[v1.3.1](./v1.3.1-summary.md)** - Documentation Reorganization
   - Improved project structure and maintainability
   - Enhanced navigation and cross-references

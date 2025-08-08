@@ -40,6 +40,21 @@ jobs:
         node tools/validate-template-quality.ts || exit 1
         node tools/validate-remediation-plan.ts --check-all || exit 1
         
+    - name: Validate version consistency
+      run: |
+        echo "🔍 Validating version consistency..."
+        npm run validate:versions || exit 1
+        
+    - name: Validate roadmap alignment
+      run: |
+        echo "🗺️ Validating roadmap alignment..."
+        node tools/validate-version-consistency.cjs --check-roadmap || exit 1
+        
+    - name: Validate release coverage
+      run: |
+        echo "📋 Validating release documentation coverage..."
+        node tools/validate-version-consistency.cjs --check-releases || exit 1
+        
     - name: Detect evolution story triggers
       run: |
         echo "🔍 Detecting evolution story triggers..."

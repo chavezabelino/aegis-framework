@@ -1,8 +1,8 @@
-# 🛡️ Aegis Framework v2.0.1
+# 🛡️ Aegis Framework v2.1.0
 
 [![GenAI OS Manifesto](https://img.shields.io/badge/📖_GenAI_OS-Manifesto-blue?style=for-the-badge)](docs/manifesto/README.md)
 [![Constitutional Computing](https://img.shields.io/badge/🏛️_Constitutional-Computing-green?style=for-the-badge)](docs/manifesto/principles.md)
-[![Framework Version](https://img.shields.io/badge/Framework-v2.0.1-orange?style=for-the-badge)](VERSION)
+[![Framework Version](https://img.shields.io/badge/Framework-v2.1.0-orange?style=for-the-badge)](VERSION)
 [![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](LICENSE)
 
 > **The world's first GenAI Operating System** - Constitutional governance for AI-native engineering with systematic drift detection, evolution learning, and democratic amendment processes.
@@ -39,7 +39,7 @@ While most teams deploy AI like browser plugins—fast, fragile, ungoverned—we
 #### Option 1: NPM Package (Recommended for Teams)
 ```bash
 # Install globally for immediate use
-npm install -g @aegis-framework/cli@2.0.1
+npm install -g @aegis-framework/cli@2.1.0
 
 # Hydrate any project instantly
 aegis-hydrate /path/to/your/project
@@ -251,12 +251,18 @@ Each agent (Copilot, Kilo, Lovable) has a behavior profile in `/framework/agents
 ## 🛣 Roadmap
 
 - ✅ **v1.0.0-alpha**: Initial semantic release - hardened replay, error taxonomy, observability contracts
-- ✅ **v1.1.0-beta**: Multi-agent orchestration, MCP metadata, drift logging, enhanced adapters
+- ✅ **v1.2.0-alpha**: Constitutional governance, self-healing systems, pattern recognition, amendment processes
 - ✅ **v1.2.1**: Enhanced Blueprint Auto-Repair (ML optimization, context-sensitive fixes, observability, compliance)
 - ✅ **v1.3.0**: Apprenticeship Scaffolds (guided/challenge/review-only modes, reflection, observability, mentor plugin, CLI, tests)
-- 🔜 **v2.0.0**: Visual blueprint designer, real-time collaboration, enterprise governance, compliance reporting, marketplace
+- ✅ **v1.3.1**: Documentation reorganization and improved maintainability
+- ✅ **v1.4.0**: Template Quality & GitHub Copilot Instructions (HTML entity fixes, constitutional compliance, operational excellence)
+- ✅ **v2.0.0-alpha-dev**: One-Command Hydration paradigm shift - "bill becomes law" migration with approval gates
+- ✅ **v2.1.0**: Framework Protection & Cursor Integration (Destructive action protection, Cursor IDE integration, Vite + Bun migration)
+- ✅ **v2.0.1**: Package Distribution & Automation (NPM packages, Docker support, automated releases)
+- 🔜 **v2.1.0**: Feature Configurability System (three-tier configuration: Core/Required/Optional)
+- 🔜 **v3.0.0**: Tech Stack Neutrality (universal framework support beyond React+Next.js)
 
-See `framework-core-v1.0.0-alpha.md`, [v1.1.0-beta specification](framework/versions/framework-core-v1.1.0-beta-spec.md), and the [CHANGELOG.md](CHANGELOG.md) for detailed feature planning and release history.
+See [detailed roadmaps](docs/roadmap/), [v2.1.0 Feature Configurability plan](docs/roadmap/feature-configurability-roadmap.md), and the [CHANGELOG.md](CHANGELOG.md) for complete feature planning and release history.
 
 ---
 

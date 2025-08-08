@@ -94,9 +94,54 @@ web_modules/
 .framework/temp/
 .framework/cache/
 
+# Framework state directories (keep essential, ignore temp/cache)
+.aegis/temp/
+.aegis/cache/
+.framework/temp/
+.framework/cache/
+
 # Ignore compiled output (if any)
 *.js.map
 *.d.ts.map
+
+# Vite + Bun specific ignores
+# Vite cache and build artifacts
+.vite/
+*.local
+
+# Bun specific
+bun.lockb
+
+# Development and IDE files (keep essential configs, ignore temp files)
+.cursor/temp/
+.cursor/cache/
+.vscode/extensions/
+.vscode/workspaceStorage/
+.idea/workspace.xml
+.idea/tasks.xml
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs and runtime data
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Temporary folders
+tmp/
+temp/
 
 # Ignore compiled CLI JS and accidental folders
 cli/apprenticeship-cli.js

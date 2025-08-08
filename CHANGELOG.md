@@ -5,6 +5,71 @@ All notable changes to the Aegis Framework will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.1.0] - 2025-08-08
+
+### 🛡️ Framework Protection & Cursor Integration
+
+This release introduces comprehensive destructive action protection and enhanced Cursor IDE integration.
+
+#### **🛡️ Destructive Action Protection System**
+- **NEW**: `tools/destructive-action-protection.ts` - Pre-execution validation for destructive operations
+- **NEW**: `tools/pre-commit-destructive-check.sh` - Git pre-commit hook preventing destructive commits
+- **NEW**: Risk assessment system (Low/Medium/High/Critical) for file operations
+- **NEW**: Constitutional safeguards protecting essential framework files and directories
+- **NEW**: Emergency recovery mechanisms for framework state restoration
+- **NEW**: Evolution story documentation (EVS-2025-08-08-001) for systematic learning
+
+#### **🖱️ Cursor IDE Integration**
+- **NEW**: `tools/cursor-integration.ts` - Cursor-specific real-time evolution detection
+- **NEW**: `cli/generate-cursor-instructions.ts` - CLI tool for Cursor instruction generation
+- **NEW**: `tools/cursor-realtime-integration.ts` - Real-time integration with Cursor workflows
+- **NEW**: `cli/cursor-realtime-cli.ts` - CLI for managing real-time Cursor integration
+- **NEW**: `framework/templates/agent-profiles/cursor.yaml` - Cursor agent profile template
+- **NEW**: `framework/generated/instructions/current/cursor-ready.md` - Cursor-specific instructions
+
+#### **⚡ Modern Build System Migration**
+- **NEW**: Vite + Bun integration for modern development workflow
+- **NEW**: `vite.config.ts` and `vite.cli.config.ts` for optimized builds
+- **NEW**: `tsconfig.dev.json` for development with relaxed type checking
+- **NEW**: Enhanced build pipeline with `moduleResolution: "bundler"` and `noEmit: true`
+- **NEW**: Comprehensive migration documentation in `docs/implementation/bun-vite-migration.md`
+
+#### **📋 Enhanced Documentation & Governance**
+- **NEW**: Capability-based roadmap structure (`docs/roadmap/`)
+- **NEW**: Comprehensive audit documentation (`docs/audit/`)
+- **NEW**: Remediation plan documentation (`docs/remediation/`)
+- **NEW**: Enhanced constitutional compliance validation
+- **NEW**: Automated version consistency validation
+- **NEW**: Release coverage validation in CI/CD pipeline
+
+#### **🔧 Technical Improvements**
+- Enhanced `.gitignore` with comprehensive exclusion patterns
+- Improved constitutional validation with smarter version extraction
+- Enhanced evolution story detection and documentation
+- Streamlined build process with modern tooling
+- Better development experience with Bun runtime
+
+#### **📖 Documentation Updates**
+- Updated README with new capabilities and protection features
+- Enhanced constitutional compliance documentation
+- Comprehensive migration guides for Vite + Bun
+- Detailed implementation documentation for all new features
+
+#### **🏛️ Constitutional Compliance**
+- 100% constitutional compliance maintained across all new features
+- All new tools include required aegis framework annotations
+- Democratic governance processes enhanced with protection mechanisms
+- Systematic learning captured through evolution stories
+
+### Breaking Changes
+- None (backward compatible with v2.0.1)
+
+### Migration Required
+- None (existing installations continue to work)
+- Optional: Upgrade to Vite + Bun for enhanced development experience
+
+---
+
 ## [2.0.1] - 2025-08-07
 
 ### 🎉 Stable Release: Package Distribution & Automation
@@ -57,10 +122,37 @@ This stable release provides production-ready package distribution with enhanced
 - Semantic versioning enforcement aligned with constitutional principles
 
 ### Breaking Changes
-- None (backward compatible with v2.0.0-alpha)
+- None (backward compatible with v2.0.0-alpha-dev)
 
 ### Migration Required
 - None (existing installations continue to work)
+
+---
+
+## [2.0.1-manifesto] - 2025-08-07
+
+### 🏛️ GenAI Operating System Manifesto
+
+Constitutional foundation for the world's first GenAI Operating System.
+
+#### **🎯 Manifesto Launch**
+- **Added**: Complete GenAI OS manifesto and philosophical framework
+- **Added**: Comprehensive discoverability infrastructure for global reach
+- **Added**: Constitutional foundation for GenAI operating system principles
+
+---
+
+## [2.0.1-alpha-feature-configurability] - 2025-08-07
+
+### 🎛️ Alpha: Three-Tier Feature Configurability System
+
+Alpha release introducing team-configurable framework behavior.
+
+#### **🎛️ Feature Configurability**
+- **Added**: Three-tier feature configurability system
+- **Added**: Team-customizable Aegis Framework behavior
+- **Added**: Constitutional safeguards for feature configuration
+- **Added**: Foundation for team-specific framework adaptation
 
 ---
 
@@ -100,16 +192,8 @@ This stable release provides production-ready package distribution with enhanced
 
 ---
 
-# Changelog
-
-All notable changes to the Aegis Framework will be documented in this file.
-
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
-
-## [Unreleased]
-
 ## [1.4.0] - 2025-08-06
+
 ### Fixed
 - **Template Generation Quality**: Eliminated HTML entity contamination in agent instruction generation
   - Fixed EJS template rendering to use unescaped output (`<%-`) for markdown sections containing code blocks
@@ -131,13 +215,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Drift detection and remediation workflows
   - Complete integration of Kilo v2.5 operational patterns
   - Blueprint-driven development guidance with constitutional governance
+- **Template-driven, agent-agnostic instruction generation system**
+- **Migration audit CLI tool**: `cli/aegis-migration-audit.cjs` for scanning applications and generating migration plans
 
 ### Technical Improvements
 - **Generation Tool**: Enhanced `generate-agent-instructions-v2.cjs` for clean markdown output
 - **Template Architecture**: All framework template sections now properly annotated and structured
 - **Quality Assurance**: Template encoding validation integrated into CI/CD workflow
 
+---
+
 ## [1.3.1] - 2025-08-06
+
 ### Changed
 - **Documentation Organization**: Restructured project documentation for improved maintainability
   - Moved release documentation to `docs/releases/` directory
@@ -154,172 +243,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Updated project structure documentation in README
   - Corrected file paths in navigation and index pages
 
-## [1.3.0] - 2025-08-06
-### Added
-- **Constitutional Enhancement**: Article IX: Template and Documentation Quality Standards
-  - New constitutional article establishing template encoding standards and quality requirements
-  - Plain text primacy mandate - prohibits HTML entities in templates
-  - Structural integrity requirements for markdown documents
-  - Output validation against reference targets
-  - Constitutional annotation requirements for framework files
-
-- **Template Quality Validation Tools**:
-  - `validate-template-quality.cjs` - Comprehensive template quality validator
-  - `validate-output-fidelity.cjs` - Output validation against reference targets
-  - Encoding compliance validation with specific violation reporting
-  - Structural integrity checks (markdown structure, heading hierarchy)
-  - Constitutional annotation verification
-  - Quality scoring system with 80/100 constitutional minimum
-
-- **Enhanced Development Workflow**:
-  - Pre-commit hooks with constitutional enforcement (Article IX)
-  - New npm scripts: `validate:templates`, `validate:fidelity`, `validate:all`
-  - Git hooks setup script for constitutional compliance automation
-  - HTML entity detection and blocking in development workflow
-
-- **Constitutional Enforcement Infrastructure**:
-  - Automated violation detection and reporting
-  - Clear remediation guidance for developers
-  - Integration with existing constitutional validation tools
-  - Quality metrics and scoring aligned with constitutional standards
-
-### Changed
-- Enhanced package.json with new validation scripts
-- Updated pre-commit hooks to include Article IX compliance
-- Version bumped from 1.2.1 to 1.3.0 (minor version for new constitutional features)
-
-### Fixed
-- HTML encoding artifacts in template system now automatically detected
-- Template quality issues prevented from entering codebase through pre-commit enforcement
-
-### Planned for v1.4.0
-- Apprenticeship Scaffolds for Junior Developers:
-  - `@apprenticeshipMode` execution contexts (guided, challenge, review-only)
-  - Blueprint reflection blocks and prompts
-  - Observability events for learning signals
-  - Ghost Mentor plugin system for review/feedback
-  - Reflection-aware hybrid snapshots for learning delta
-  - CLI and schema support for apprenticeship workflows
-
-## [1.7.1] - 2025-08-06
-### Fixed
-- **Framework Templates**: Enhanced template system to generate complete operational patterns
-  - Added `ai-agent-mode.template.md` for execution discipline and intent compilation
-  - Added `directory-structure.template.md` for structural integrity enforcement
-  - Added `rca-debug-loop.template.md` for token-gated AI analysis integration
-  - Added `code-patterns.template.md` for schema validation and integration examples
-  - Added `decision-matrix.template.md` for execution mode selection guidance
-  - Enhanced `validation.template.md` with comprehensive pre-commit checklist and pitfalls
-  - Updated CLI to include all new template sections in generated instructions
-  - **Impact**: Framework now generates instructions that include v2.5 operational patterns without manual editing
-
-## [1.7.0] - 2025-08-06
-### Enhanced
-- **Merged v2.5 battle-tested operational patterns**: Integrated proven Kilo + bracket-app-audit standards from v2.5 into Aegis constitutional framework
-- **Execution mode decision matrix**: Added guidance for when to use constitutional (`strict`), tactical (`lean`), or hybrid approaches
-- **Enhanced operational discipline**: Strengthened "compiler for intent" agent behavior patterns and execution validation
-- **Improved RCA integration**: Token-gated analysis now includes constitutional compliance and blueprint impact assessment
-- **Expanded pitfall detection**: Added impact levels and emergency patterns for critical production scenarios
-
-### Added
-- **Hybrid execution mode**: Combines constitutional annotations with operational patterns (recommended default)
-- **Pattern selection guide**: Code examples for enterprise, tactical, and hybrid approaches
-- **Enhanced pre-commit checklist**: More specific validation requirements with constitutional and operational compliance
-- **Emergency fix patterns**: Critical production fix templates with required annotations
-
-### Design Philosophy
-- **Constitutional + Operational**: Best of both systematic governance AND battle-tested execution discipline  
-- **Context-appropriate scaling**: Enterprise governance when needed, tactical speed when possible
-- **Proven pattern integration**: v2.5 operational patterns enhanced with constitutional traceability
-- **Decision framework**: Clear guidance on when to use which approach based on project context
-
-### Migration Notes
-- Existing `strict` mode unchanged for full constitutional compliance
-- New `lean` mode emphasizes operational patterns with minimal constitutional overhead
-- `hybrid` mode (new default) provides balanced approach for most use cases
-- All modes maintain core constitutional requirements (annotations, traceability)
-
 ---
-### Fixed
-- **Eliminated redundant instruction files**: Removed duplicate `copilot-kilo-standards.md` which contained identical content to `github-copilot-ready.md`
-- **Single source of truth**: `framework/generated/instructions/current/github-copilot-ready.md` now serves as the complete, merged instruction set
-- **Removed over-engineering**: Deleted redundant `generate-copilot-kilo-standards.cjs` CLI tool that was creating unnecessary duplication
-
-### Clarified
-- **File purpose**: The layered approach (framework + project standards) in a single file is the correct architecture
-- **Content completeness**: Single file contains all constitutional compliance AND operational patterns - no separate "merged" version needed
-
----
-
-## [1.5.0] - 2025-08-06
-### Added
-- **Composable, layered agent instructions**: Framework now generates ready-to-use, IDE/agent-specific instructions by merging constitutional (framework) and project-specific (operational) guidance into a single output file.
-- **Project profile and standards support**: CLI and template system accept a `project-profile.yaml` and/or markdown template (e.g., `/templates/project-standards.md`) to inject project-specific workflows, directory conventions, and code patterns.
-- **Unified output**: Generates `/generated/instructions/{agent}-ready.md` with both compliance and actionable project guidance for the target IDE/agent.
-
-### Design
-- **Layered Generation**: Instruction output is composed of:
-  1. Framework/constitutional section (auto-generated, versioned)
-  2. Project-specific operational standards (from project profile/template)
-  3. Agent/IDE-specific integration tips
-- **Automation**: CLI tool accepts both agent and project profile, merges both layers, and renders a single markdown file.
-- **Extensible**: Supports per-IDE or per-agent customization and future project standards.
-
-### Migration
-- No breaking changes. Existing instruction generation remains supported; new composable output is additive and opt-in.
-
-### Usage Instructions
-- Add or edit your project profile in `project-profile.yaml` and/or `/templates/project-standards.md`.
-- Run: `node cli/generate-agent-instructions-v2.cjs github-copilot --project-profile project-profile.yaml`
-- Find the merged output in `/generated/instructions/github-copilot-ready.md`.
-
----
-
-## [1.4.0] - 2025-08-06
-### Added
-- Template-driven, agent-agnostic instruction generation system
-- Modular instruction templates and agent profiles in `framework/templates/`
-- Organized output structure in `framework/generated/instructions/`
-- Generation metadata and archive support for traceability
-- **Migration audit CLI tool**: `cli/aegis-migration-audit.cjs` for scanning applications and generating migration plans
-
-### Changed
-- Instruction generation now leverages framework docs and agent profiles
-- All new instructions are assembled from templates and live documentation
-
-### Migration
-- No breaking changes. Existing instructions are archived; new system is backward compatible.
-
-### Usage Instructions
-- To generate agent instructions using the new system:
-  1. Edit or add modular templates and agent profiles in `framework/templates/` as needed.
-  2. Run the CLI tool: `node cli/generate-agent-instructions-v2.cjs`
-  3. Generated instructions will appear in `framework/generated/instructions/` with metadata and archive support.
-- For custom agent profiles or instruction sections, add or modify YAML files in `framework/templates/agent-profiles/` and reference them in the CLI.
-- For more details, see the README or run the CLI with `--help` for options and advanced usage.
-
----
-
-- To audit an existing application and generate a migration plan:
-  1. Run: `node cli/aegis-migration-audit.cjs <target-path> [options]`
-  2. Options:
-     - `--output <file>`   Write migration plan to file (default: stdout)
-     - `--strict`          Fail on first critical compliance issue
-     - `--help`            Show usage instructions
-  3. Example: `node cli/aegis-migration-audit.cjs ../my-app --output migration-plan.md --strict`
-  4. The tool will scan for blueprints, contracts, and constitutional files, and output actionable migration steps.
-
-### Future Enhancements
-- Live extraction of requirements and examples from framework docs (MCP, drift, CLI, etc.)
-- Automated detection of new/removed features for agent instructions
-- Interactive CLI for instruction preview, validation, and customization
-- CI/CD integration for auto-regeneration on framework changes
-- Support for custom agent profiles and user-defined instruction sections
-- Richer metadata and traceability for generated instructions
-- Integration with blueprint validation and test results for context-aware guidance
-- Internationalization/localization of agent instructions
-- Visual diff and changelog for instruction evolution
-- Web-based documentation portal for generated agent instructions
 
 ## [1.3.0] - 2025-08-05
 
@@ -332,9 +256,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Replay and snapshot tests**: Deterministic output validation and learning delta tracking (`tests/snapshot-tests/apprenticeship-scaffolds.test.ts`, `tests/replay-diff-tests/apprenticeship-scaffolds-replay.test.ts`)
 - **Constitutional compliance**: All scaffolds, events, and plugins include required annotations and follow blueprint-driven traceability
 
+### Constitutional Enhancement
+- **Article IX**: Template and Documentation Quality Standards
+  - New constitutional article establishing template encoding standards and quality requirements
+  - Plain text primacy mandate - prohibits HTML entities in templates
+  - Structural integrity requirements for markdown documents
+  - Output validation against reference targets
+  - Constitutional annotation requirements for framework files
+
+### Template Quality Validation Tools
+- `validate-template-quality.cjs` - Comprehensive template quality validator
+- `validate-output-fidelity.cjs` - Output validation against reference targets
+- Encoding compliance validation with specific violation reporting
+- Structural integrity checks (markdown structure, heading hierarchy)
+- Constitutional annotation verification
+- Quality scoring system with 80/100 constitutional minimum
+
 #### Migration Notes
 - No breaking changes. Existing blueprints are unaffected unless adopting apprenticeship scaffolds.
 - See `docs/implementation/apprenticeship-scaffolds.md` for usage, extension, and compliance guidance.
+
+---
 
 ## [1.2.1] - 2025-08-05
 
@@ -362,37 +304,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 📈 **Comprehensive Observability** with predictive analytics and strategic evolution guidance
 - ⚖️ **Constitutional AI Governance** with democratic amendment processes and community engagement
 
-## [1.1.0-beta] - 2025-08-05
 
-### Added
-- **🏛️ Constitutional Governance**: Complete constitutional framework with `CONSTITUTION.md` establishing foundational principles, governance structures, and amendment processes
-- **🔄 Self-Healing System**: Automated drift detection, constitutional enforcement, and introspective learning capabilities
-- **⚖️ Constitutional Conductor**: CLI tool `cli/aegis-conductor.ts` for comprehensive governance automation
-- **📊 Constitutional Validator**: Advanced validation tool `tools/validate-constitution.ts` with compliance scoring
-- **📈 Drift Monitoring**: Multi-layer drift detection for agent behavior, user workflows, and framework evolution
-- **🎯 Amendment Proposals**: Democratic amendment proposal system with `framework/governance/amendment-proposals/`
-- **🗺️ Strategic Roadmap**: Phased implementation plan in `docs/roadmap/self-healing-governance-roadmap.md`
-- **⚙️ Configuration Management**: Constitutional state tracking with `.framework/constitutional-state.json` and enforcement configuration
-- **📋 Engineering Communication**: Updated team guidance in `docs/reference/pov-engineering-team.md`
-
-### Enhanced
-- **Framework Specification**: Detailed v1.0.1-alpha spec for Constitutional Conductor phase
-- **Governance Structure**: Complete governance directory structure with amendment tracking
-- **Compliance Monitoring**: Real-time constitutional compliance scoring and violation detection
-- **Auto-Correction**: Automated fixes for structural deviations, annotation compliance, and version consistency
-- **Democratic Process**: Community-driven amendment proposals with voting mechanisms
-
-## [1.1.0-beta] - 2025-08-19
-
-### Added
-- 🧠 **Pattern Recognition Engine**: Analyzes drift logs to learn from violations and predict future issues
-- 🛡️ **Predictive Enforcement System**: Prevents violations before they occur using learned patterns
-- 🎯 **Phase 2: Enhanced Pattern Recognition Complete**: Intelligent learning, pattern analysis, and predictive enforcement capabilities
-- 📝 **Intelligent Changelog Generation**: AI-powered changelog analysis, version planning, and automated documentation detection
-- 🗳️ **Democratic Amendment Workflows**: Complete community-driven constitutional governance system
-- 🏛️ **Amendment Management Engine**: Proposal, review, voting, and implementation lifecycle management
-- 🖥️ **Amendment CLI**: User-friendly command-line interface for democratic governance processes
-- ⚖️ **Weighted Voting System**: Role-based voting weights with automatic quorum and threshold calculations
 
 ## [1.0.0-alpha] - 2025-08-05
 

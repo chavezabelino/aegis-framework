@@ -1,3 +1,9 @@
+# @aegisBlueprint
+# @aegisFrameworkVersion: 2.1.0
+# @intent: Public tournament viewing feature blueprint
+# @context: Multi-agent coordination for frontend and backend development
+# @mode: strict
+
 id: feat-public-viewing
 name: Public Tournament Viewer
 version: 1.0.0

@@ -1,13 +1,38 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
-    "module": "commonjs",
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
     "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "skipLibCheck": true,
-    "outDir": "dist"
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"],
+      "@framework/*": ["framework/*"],
+      "@tools/*": ["tools/*"],
+      "@cli/*": ["cli/*"],
+      "@blueprints/*": ["blueprints/*"]
+    }
   },
-  "include": ["./**/*.ts"],
-  "exclude": ["node_modules", "dist"]
+  "include": [
+    "./**/*.ts",
+    "./**/*.tsx",
+    "vite.config.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "**/*.test.ts",
+    "**/*.spec.ts"
+  ]
 }

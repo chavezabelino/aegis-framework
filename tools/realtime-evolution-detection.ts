@@ -4,8 +4,8 @@
  * @context Capture field insights directly from user prompts and AI interactions
  */
 
-import fs from 'fs';
-import path from 'path';
+import * as fs from 'fs';
+import * as path from 'path';
 import { EvolutionStoryDetector, type EvolutionTrigger } from './detect-evolution-stories';
 
 interface ConversationContext {

@@ -1,0 +1,35 @@
+agentId: cursor
+displayName: "Cursor AI Assistant"
+capabilities:
+  languages: [typescript, javascript, css, html, react, next.js]
+  frameworks: [react, next.js, tailwind, styled-components]
+  specializations: [frontend, ui-components, styling, real-time-editing]
+  strengths: [code-completion, real-time-analysis, interface-patterns, visual-feedback]
+  limitations: [complex-backend, external-apis, multi-file-coordination]
+coordination:
+  handoffs: true
+  parallelExecution: true
+  conflictResolution: real-time-merge
+preferences:
+  outputStyle: concise
+  exampleDepth: moderate
+  codeSnippets: true
+  realTimeDetection: true
+interface:
+  patterns:
+    - real-time-conversation-capture
+    - immediate-pattern-recognition
+    - visual-feedback-integration
+    - context-aware-suggestions
+  realTimeDetection:
+    enabled: true
+    patterns:
+      - "does this break|will this cause|runtime failures"
+      - "assess the pitfall|enhance the framework|guard against"
+      - "should we document somehow|systematic way"
+      - "field-driven|eating dog food|real-world usage"
+    integration:
+      - captureConversationContext
+      - analyzeCursorPatterns
+      - generateEvolutionStories
+      - visualFeedback
