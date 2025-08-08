@@ -1,0 +1,17 @@
+[
+  {
+    "id": "version-documentation-drift",
+    "type": "version-drift",
+    "description": "Version documentation not updated across critical files",
+    "firstOccurrence": "2025-08-07T00:00:00.000Z",
+    "lastOccurrence": "2025-08-08T00:00:00.000Z",
+    "occurrences": 2,
+    "preventionMechanism": "version-consistency-validation",
+    "status": "active",
+    "evidence": [
+      "Version documentation drift occurred in previous update",
+      "Same issue repeated in current update",
+      "Framework claimed intelligence features that didn't exist"
+    ]
+  }
+]

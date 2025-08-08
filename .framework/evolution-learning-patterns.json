@@ -1,0 +1,79 @@
+[
+  {
+    "id": "version-documentation-drift-repeat",
+    "type": "failure",
+    "description": "Version documentation drift repeated despite framework intelligence claims",
+    "firstOccurrence": "2025-08-07T00:00:00.000Z",
+    "lastOccurrence": "2025-08-08T00:00:00.000Z",
+    "occurrences": 2,
+    "learnedFrom": true,
+    "preventionImplemented": true,
+    "evidence": [
+      "Version documentation drift occurred in previous update",
+      "Same issue repeated in current update despite intelligence claims",
+      "Framework claimed evolution learning that didn't exist",
+      "Pattern recognition failed to prevent repeat occurrence"
+    ],
+    "status": "learned"
+  },
+  {
+    "id": "constitutional-violation",
+    "type": "failure",
+    "description": "New pattern detected: constitutional-violation",
+    "firstOccurrence": "2025-08-08T21:20:42.972Z",
+    "lastOccurrence": "2025-08-08T21:20:42.972Z",
+    "occurrences": 1,
+    "learnedFrom": true,
+    "preventionImplemented": false,
+    "evidence": [
+      "Pattern detected in evolution stories",
+      "Learning system activated"
+    ],
+    "status": "active"
+  },
+  {
+    "id": "intelligence-failure",
+    "type": "failure",
+    "description": "New pattern detected: intelligence-failure",
+    "firstOccurrence": "2025-08-08T21:20:42.972Z",
+    "lastOccurrence": "2025-08-08T21:20:42.972Z",
+    "occurrences": 1,
+    "learnedFrom": true,
+    "preventionImplemented": false,
+    "evidence": [
+      "Pattern detected in evolution stories",
+      "Learning system activated"
+    ],
+    "status": "active"
+  },
+  {
+    "id": "version-documentation-drift",
+    "type": "failure",
+    "description": "New pattern detected: version-documentation-drift",
+    "firstOccurrence": "2025-08-08T21:20:42.973Z",
+    "lastOccurrence": "2025-08-08T21:20:42.973Z",
+    "occurrences": 1,
+    "learnedFrom": true,
+    "preventionImplemented": false,
+    "evidence": [
+      "Pattern detected in evolution stories",
+      "Learning system activated"
+    ],
+    "status": "active"
+  },
+  {
+    "id": "constitutional-constitutional-violation-detection-failed",
+    "type": "violation",
+    "description": "Constitutional violation: constitutional-violation-detection-failed",
+    "firstOccurrence": "2025-08-08T21:20:42.973Z",
+    "lastOccurrence": "2025-08-08T21:20:42.973Z",
+    "occurrences": 1,
+    "learnedFrom": true,
+    "preventionImplemented": true,
+    "evidence": [
+      "Constitutional violation detected",
+      "Learning system activated"
+    ],
+    "status": "learned"
+  }
+]

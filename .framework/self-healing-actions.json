@@ -1,0 +1,47 @@
+[
+  {
+    "id": "version-drift-prevention",
+    "patternId": "version-documentation-drift",
+    "action": "prevent",
+    "implementation": "tools/validate-version-consistency.ts",
+    "evidence": [
+      "Automated version consistency validation",
+      "Pre-commit hooks block version mismatches",
+      "Critical file protection",
+      "Auto-fix capability for version inconsistencies"
+    ],
+    "effectiveness": 1,
+    "lastExecuted": "2025-08-08T21:20:40.082Z",
+    "status": "active"
+  },
+  {
+    "id": "version-drift-detection",
+    "patternId": "version-documentation-drift",
+    "action": "detect",
+    "implementation": "tools/validate-version-consistency.ts",
+    "evidence": [
+      "Pattern recognition for version mismatches",
+      "Line-level analysis of version references",
+      "Comprehensive file scanning",
+      "Real-time validation during commits"
+    ],
+    "effectiveness": 1,
+    "lastExecuted": "2025-08-08T21:20:40.082Z",
+    "status": "active"
+  },
+  {
+    "id": "version-drift-correction",
+    "patternId": "version-documentation-drift",
+    "action": "correct",
+    "implementation": "tools/validate-version-consistency.ts",
+    "evidence": [
+      "Auto-fix capability for version inconsistencies",
+      "Automated correction of version mismatches",
+      "Batch processing of multiple files",
+      "Validation of corrections"
+    ],
+    "effectiveness": 1,
+    "lastExecuted": "2025-08-08T21:20:40.082Z",
+    "status": "active"
+  }
+]

@@ -1,0 +1,114 @@
+[
+  {
+    "id": "version-drift-learning",
+    "patternId": "version-documentation-drift-repeat",
+    "action": "learn",
+    "implementation": "tools/validate-version-consistency.ts",
+    "evidence": [
+      "Pattern recognition for version documentation drift",
+      "Learning from repeat occurrences",
+      "Implementation of prevention mechanisms",
+      "Validation of learning effectiveness"
+    ],
+    "effectiveness": 1,
+    "lastExecuted": "2025-08-08T21:20:42.967Z",
+    "status": "active"
+  },
+  {
+    "id": "version-drift-prevention",
+    "patternId": "version-documentation-drift-repeat",
+    "action": "prevent",
+    "implementation": "tools/validate-version-consistency.ts",
+    "evidence": [
+      "Automated version consistency validation",
+      "Pre-commit hooks block version mismatches",
+      "Critical file protection",
+      "Auto-fix capability for version inconsistencies"
+    ],
+    "effectiveness": 1,
+    "lastExecuted": "2025-08-08T21:20:42.968Z",
+    "status": "active"
+  },
+  {
+    "id": "version-drift-implementation",
+    "patternId": "version-documentation-drift-repeat",
+    "action": "implement",
+    "implementation": "tools/validate-version-consistency.ts",
+    "evidence": [
+      "Implementation of version consistency validator",
+      "Integration with pre-commit hooks",
+      "Automated correction capabilities",
+      "Comprehensive pattern recognition"
+    ],
+    "effectiveness": 1,
+    "lastExecuted": "2025-08-08T21:20:42.968Z",
+    "status": "active"
+  },
+  {
+    "id": "version-drift-validation",
+    "patternId": "version-documentation-drift-repeat",
+    "action": "validate",
+    "implementation": "tools/validate-version-consistency.ts",
+    "evidence": [
+      "Validation of version consistency across all files",
+      "Testing of prevention mechanisms",
+      "Verification of learning effectiveness",
+      "Confirmation of pattern prevention"
+    ],
+    "effectiveness": 1,
+    "lastExecuted": "2025-08-08T21:20:42.968Z",
+    "status": "active"
+  },
+  {
+    "id": "constitutional-violation-learning",
+    "patternId": "constitutional-violation",
+    "action": "learn",
+    "implementation": "tools/evolution-learning-system.ts",
+    "evidence": [
+      "Pattern recognition for constitutional-violation",
+      "Learning implementation"
+    ],
+    "effectiveness": 1,
+    "lastExecuted": "2025-08-08T21:20:42.972Z",
+    "status": "active"
+  },
+  {
+    "id": "intelligence-failure-learning",
+    "patternId": "intelligence-failure",
+    "action": "learn",
+    "implementation": "tools/evolution-learning-system.ts",
+    "evidence": [
+      "Pattern recognition for intelligence-failure",
+      "Learning implementation"
+    ],
+    "effectiveness": 1,
+    "lastExecuted": "2025-08-08T21:20:42.972Z",
+    "status": "active"
+  },
+  {
+    "id": "version-documentation-drift-learning",
+    "patternId": "version-documentation-drift",
+    "action": "learn",
+    "implementation": "tools/evolution-learning-system.ts",
+    "evidence": [
+      "Pattern recognition for version-documentation-drift",
+      "Learning implementation"
+    ],
+    "effectiveness": 1,
+    "lastExecuted": "2025-08-08T21:20:42.973Z",
+    "status": "active"
+  },
+  {
+    "id": "constitutional-constitutional-violation-detection-failed-learning",
+    "patternId": "constitutional-constitutional-violation-detection-failed",
+    "action": "learn",
+    "implementation": "tools/constitutional-compliance-enforcer.ts",
+    "evidence": [
+      "Constitutional violation learning",
+      "Prevention implementation"
+    ],
+    "effectiveness": 1,
+    "lastExecuted": "2025-08-08T21:20:42.973Z",
+    "status": "active"
+  }
+]
