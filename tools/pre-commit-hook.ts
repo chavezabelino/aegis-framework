@@ -21,6 +21,15 @@ interface PreCommitResult {
 class PreCommitHook {
   private configLoader: TeamConfigLoader;
   private projectRoot: string;
+  private criticalFiles: string[] = [
+    'VERSION',
+    'README.md',
+    'CHANGELOG.md',
+    'docs/roadmap/current-state.md',
+    'docs/roadmap/README.md',
+    'docs/releases/README.md',
+    'package.json'
+  ];
 
   constructor(projectRoot: string = process.cwd()) {
     this.projectRoot = projectRoot;
@@ -59,6 +68,11 @@ class PreCommitHook {
       result.violations.push(...evolutionResult.violations);
       result.warnings.push(...evolutionResult.warnings);
     }
+
+    // Run version consistency validation
+    const versionResult = await this.checkVersionConsistency();
+    result.violations.push(...versionResult.violations);
+    result.warnings.push(...versionResult.warnings);
 
     // Determine if commit should be blocked
     const mode = this.configLoader.getConstitutionalMode();
@@ -221,6 +235,41 @@ class PreCommitHook {
 
     } catch (error) {
       warnings.push(`Failed to check evolution stories: ${error}`);
+    }
+
+    return { violations, warnings };
+  }
+
+  /**
+   * Check version consistency
+   */
+  private async checkVersionConsistency(): Promise<{ violations: string[]; warnings: string[] }> {
+    const violations: string[] = [];
+    const warnings: string[] = [];
+
+    try {
+      // Import and run version consistency validator
+      const { VersionConsistencyValidator } = await import('./validate-version-consistency.js');
+      const validator = new VersionConsistencyValidator(this.projectRoot);
+      const result = await validator.validateAll();
+
+      if (result.overallStatus === 'fail') {
+        violations.push('CRITICAL: Version consistency validation failed');
+        result.violations.forEach(v => {
+          if (this.criticalFiles.includes(v.file)) {
+            violations.push(`Version mismatch in ${v.file}: expected ${v.expectedVersion}, found ${v.foundVersion}`);
+          } else {
+            warnings.push(`Version mismatch in ${v.file}: expected ${v.expectedVersion}, found ${v.foundVersion}`);
+          }
+        });
+      } else if (result.overallStatus === 'warning') {
+        warnings.push('Version consistency warnings detected');
+        result.violations.forEach(v => {
+          warnings.push(`Version mismatch in ${v.file}: expected ${v.expectedVersion}, found ${v.foundVersion}`);
+        });
+      }
+    } catch (error) {
+      warnings.push(`Failed to check version consistency: ${error}`);
     }
 
     return { violations, warnings };

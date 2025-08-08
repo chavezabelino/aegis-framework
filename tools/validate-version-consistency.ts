@@ -1,320 +1,360 @@
 #!/usr/bin/env node
+
 /**
- * @aegisFrameworkVersion 2.1.0
- * @intent Constitutional validation tool for version consistency across framework
- * @context Prevention tool for version drift following comprehensive audit
+ * @aegisFrameworkVersion: 2.2.0
+ * @intent: Comprehensive version consistency validation to prevent documentation drift
+ * @context: Automated prevention of version mismatch issues across all framework files
+ * @mode: strict
  */
 
-import * as fs from 'fs';
-import * as path from 'path';
+import fs from 'fs';
+import path from 'path';
 import { execSync } from 'child_process';
 
-interface VersionValidation {
-  versionFile: string;
-  gitTags: string[];
-  changelogEntries: string[];
-  roadmapReferences: string[];
-  releaseDocuments: string[];
-  frameworkSpecs: string[];
+interface VersionCheck {
+  file: string;
+  expectedVersion: string;
+  foundVersion: string | null;
+  status: 'match' | 'mismatch' | 'missing' | 'error';
+  line?: number;
+  context?: string;
 }
 
-interface ValidationResult {
-  passed: boolean;
-  errors: string[];
-  warnings: string[];
-  summary: string;
+interface VersionConsistencyResult {
+  overallStatus: 'pass' | 'fail' | 'warning';
+  currentVersion: string;
+  checks: VersionCheck[];
+  violations: VersionCheck[];
+  recommendations: string[];
+  criticalFiles: string[];
 }
 
 class VersionConsistencyValidator {
-  private workspaceRoot: string;
-  
-  constructor(workspaceRoot: string = process.cwd()) {
-    this.workspaceRoot = workspaceRoot;
+  private projectRoot: string;
+  private currentVersion: string;
+  private criticalFiles: string[] = [
+    'VERSION',
+    'README.md',
+    'CHANGELOG.md',
+    'docs/roadmap/current-state.md',
+    'docs/roadmap/README.md',
+    'docs/releases/README.md',
+    'package.json',
+    'framework/framework-core-v2.2.0.md'
+  ];
+
+  private versionPatterns: RegExp[] = [
+    /@aegisFrameworkVersion:\s*([0-9]+\.[0-9]+\.[0-9]+)/,
+    /v([0-9]+\.[0-9]+\.[0-9]+)/,
+    /version:\s*["']([0-9]+\.[0-9]+\.[0-9]+)["']/i,
+    /"version":\s*["']([0-9]+\.[0-9]+\.[0-9]+)["']/,
+    /Current Version.*v([0-9]+\.[0-9]+\.[0-9]+)/i,
+    /Version.*v([0-9]+\.[0-9]+\.[0-9]+)/i
+  ];
+
+  constructor(projectRoot: string = process.cwd()) {
+    this.projectRoot = projectRoot;
+    this.currentVersion = this.getCurrentVersion();
   }
 
   /**
-   * Run comprehensive version consistency validation
+   * Get current version from VERSION file
    */
-  async validateVersionConsistency(): Promise<ValidationResult> {
-    const result: ValidationResult = {
-      passed: true,
-      errors: [],
-      warnings: [],
-      summary: ''
-    };
-
-    console.log('🔍 Starting constitutional version consistency validation...\n');
-
+  private getCurrentVersion(): string {
     try {
-      // 1. Gather version information from all sources
-      const versionData = await this.gatherVersionData();
-      
-      // 2. Validate VERSION file matches current git tag
-      this.validateVersionFile(versionData, result);
-      
-      // 3. Validate CHANGELOG entries match git tags
-      this.validateChangelogConsistency(versionData, result);
-      
-      // 4. Validate release documentation coverage
-      this.validateReleaseDocumentation(versionData, result);
-      
-      // 5. Validate roadmap version references
-      this.validateRoadmapReferences(versionData, result);
-      
-      // 6. Validate framework specification versions
-      this.validateFrameworkSpecs(versionData, result);
-      
-      // 7. Generate summary
-      this.generateValidationSummary(result);
-      
-      return result;
-      
-    } catch (error: any) {
-      result.passed = false;
-      result.errors.push(`Validation failed: ${error?.message || 'Unknown error'}`);
-      return result;
-    }
-  }
-
-  /**
-   * Gather version information from all framework sources
-   */
-  private async gatherVersionData(): Promise<VersionValidation> {
-    const data: VersionValidation = {
-      versionFile: '',
-      gitTags: [],
-      changelogEntries: [],
-      roadmapReferences: [],
-      releaseDocuments: [],
-      frameworkSpecs: []
-    };
-
-    // Read VERSION file
-    const versionPath = path.join(this.workspaceRoot, 'VERSION');
-    if (fs.existsSync(versionPath)) {
-      data.versionFile = fs.readFileSync(versionPath, 'utf8').trim();
-    }
-
-    // Get git tags
-    try {
-      const gitOutput = execSync('git tag | grep -E "v[0-9]" | sort -V', { 
-        cwd: this.workspaceRoot,
-        encoding: 'utf8' 
-      });
-      data.gitTags = gitOutput.trim().split('\n').filter((tag: string) => tag.length > 0);
+      const versionPath = path.join(this.projectRoot, 'VERSION');
+      const version = fs.readFileSync(versionPath, 'utf8').trim();
+      return version;
     } catch (error) {
-      console.warn('Warning: Could not retrieve git tags');
+      console.error('Failed to read VERSION file:', error);
+      process.exit(1);
     }
+  }
 
-    // Parse CHANGELOG for version entries
-    const changelogPath = path.join(this.workspaceRoot, 'CHANGELOG.md');
-    if (fs.existsSync(changelogPath)) {
-      const changelogContent = fs.readFileSync(changelogPath, 'utf8');
-      const versionMatches = changelogContent.match(/## \[([^\]]+)\]/g);
-      if (versionMatches) {
-        data.changelogEntries = versionMatches.map((match: string) => {
-          const version = match.match(/\[([^\]]+)\]/);
-          return version ? version[1] : '';
-        }).filter((v: string) => v && v !== 'Unreleased');
+  /**
+   * Validate version consistency across all files
+   */
+  async validateAll(): Promise<VersionConsistencyResult> {
+    console.log('🔍 Validating Version Consistency...\n');
+    console.log(`📋 Current Version: ${this.currentVersion}\n`);
+
+    const checks: VersionCheck[] = [];
+    const violations: VersionCheck[] = [];
+
+    // Check critical files first
+    for (const file of this.criticalFiles) {
+      const check = this.validateFile(file);
+      checks.push(check);
+      if (check.status !== 'match') {
+        violations.push(check);
       }
     }
 
-    // Find release documentation files
-    const releasesDir = path.join(this.workspaceRoot, 'docs/releases');
-    if (fs.existsSync(releasesDir)) {
-      const releaseFiles = fs.readdirSync(releasesDir)
-        .filter((file: string) => file.match(/^v\d+\.\d+\.\d+.*-summary\.md$/))
-        .map((file: string) => file.replace('-summary.md', ''));
-      data.releaseDocuments = releaseFiles;
-    }
-
-    // Find framework specification files
-    const frameworkDir = path.join(this.workspaceRoot, 'framework');
-    if (fs.existsSync(frameworkDir)) {
-      const specFiles = fs.readdirSync(frameworkDir)
-        .filter((file: string) => file.match(/^framework-core-v.*\.md$/))
-        .map((file: string) => {
-          const version = file.match(/framework-core-v([^\.]+)\.md/);
-          return version ? version[1] : '';
-        }).filter((v: string) => v);
-      data.frameworkSpecs = specFiles;
-    }
-
-    return data;
-  }
-
-  /**
-   * Validate VERSION file consistency
-   */
-  private validateVersionFile(data: VersionValidation, result: ValidationResult): void {
-    console.log('📄 Validating VERSION file...');
-    
-    if (!data.versionFile) {
-      result.errors.push('VERSION file not found or empty');
-      result.passed = false;
-      return;
-    }
-
-    // Check if VERSION matches latest git tag
-    const latestTag = data.gitTags[data.gitTags.length - 1];
-    const expectedVersion = latestTag ? latestTag.replace('v', '') : '';
-    
-    if (data.versionFile !== expectedVersion) {
-      result.errors.push(`VERSION file (${data.versionFile}) does not match latest git tag (${latestTag})`);
-      result.passed = false;
-    } else {
-      console.log(`  ✅ VERSION file matches latest git tag: ${data.versionFile}`);
-    }
-  }
-
-  /**
-   * Validate CHANGELOG entries match git tags
-   */
-  private validateChangelogConsistency(data: VersionValidation, result: ValidationResult): void {
-    console.log('📝 Validating CHANGELOG consistency...');
-    
-    // Check for phantom versions (in CHANGELOG but not in git)
-    const phantomVersions = data.changelogEntries.filter(version => {
-      const tag = `v${version}`;
-      return !data.gitTags.includes(tag);
-    });
-
-    if (phantomVersions.length > 0) {
-      result.errors.push(`Phantom versions in CHANGELOG (not in git): ${phantomVersions.join(', ')}`);
-      result.passed = false;
-    }
-
-    // Check for missing versions (in git but not in CHANGELOG)
-    const missingVersions = data.gitTags.filter(tag => {
-      const version = tag.replace('v', '');
-      return !data.changelogEntries.includes(version);
-    });
-
-    if (missingVersions.length > 0) {
-      result.warnings.push(`Missing CHANGELOG entries for git tags: ${missingVersions.join(', ')}`);
-    }
-
-    if (phantomVersions.length === 0) {
-      console.log(`  ✅ No phantom versions detected in CHANGELOG`);
-    }
-    
-    console.log(`  📊 CHANGELOG has ${data.changelogEntries.length} versions, git has ${data.gitTags.length} tags`);
-  }
-
-  /**
-   * Validate release documentation coverage
-   */
-  private validateReleaseDocumentation(data: VersionValidation, result: ValidationResult): void {
-    console.log('📋 Validating release documentation coverage...');
-    
-    // Check if current version has release documentation
-    const currentVersion = `v${data.versionFile}`;
-    if (!data.releaseDocuments.includes(currentVersion)) {
-      result.errors.push(`Missing release documentation for current version: ${currentVersion}`);
-      result.passed = false;
-    }
-
-    // Check for major versions missing documentation
-    const majorVersions = data.gitTags.filter(tag => {
-      const parts = tag.split('.');
-      return parts.length >= 2 && !tag.includes('alpha') && !tag.includes('beta');
-    });
-
-    const missingDocs = majorVersions.filter(tag => !data.releaseDocuments.includes(tag));
-    if (missingDocs.length > 0) {
-      result.warnings.push(`Major versions missing release documentation: ${missingDocs.join(', ')}`);
-    }
-
-    console.log(`  📚 ${data.releaseDocuments.length} release documents found`);
-  }
-
-  /**
-   * Validate roadmap version references are current
-   */
-  private validateRoadmapReferences(data: VersionValidation, result: ValidationResult): void {
-    console.log('🗺️ Validating roadmap version references...');
-    
-    // Check README roadmap section
-    const readmePath = path.join(this.workspaceRoot, 'README.md');
-    if (fs.existsSync(readmePath)) {
-      const readmeContent = fs.readFileSync(readmePath, 'utf8');
-      
-      // Look for outdated "current" version references
-      const currentVersionRefs = readmeContent.match(/v\d+\.\d+\.\d+/g);
-      if (currentVersionRefs) {
-        const latestVersion = `v${data.versionFile}`;
-        const hasLatestRef = currentVersionRefs.includes(latestVersion);
-        
-        if (!hasLatestRef) {
-          result.warnings.push(`README may have outdated version references. Current: ${latestVersion}`);
+    // Check all TypeScript and Markdown files for version annotations
+    const allFiles = this.getAllFiles();
+    for (const file of allFiles) {
+      if (!this.criticalFiles.includes(file)) {
+        const check = this.validateFile(file);
+        if (check.status !== 'match') {
+          checks.push(check);
+          violations.push(check);
         }
       }
     }
 
-    console.log(`  🎯 Roadmap version references validated`);
+    const result: VersionConsistencyResult = {
+      overallStatus: violations.length === 0 ? 'pass' : violations.length <= 2 ? 'warning' : 'fail',
+      currentVersion: this.currentVersion,
+      checks,
+      violations,
+      recommendations: this.generateRecommendations(violations),
+      criticalFiles: this.criticalFiles
+    };
+
+    this.displayResults(result);
+    return result;
   }
 
   /**
-   * Validate framework specification versions
+   * Validate version in a specific file
    */
-  private validateFrameworkSpecs(data: VersionValidation, result: ValidationResult): void {
-    console.log('🏛️ Validating framework specifications...');
+  private validateFile(filePath: string): VersionCheck {
+    const fullPath = path.join(this.projectRoot, filePath);
     
-    // Check if current version has framework spec
-    const currentSpec = data.frameworkSpecs.find(spec => spec === data.versionFile);
-    
-    if (!currentSpec) {
-      result.warnings.push(`No framework specification found for current version: v${data.versionFile}`);
+    if (!fs.existsSync(fullPath)) {
+      return {
+        file: filePath,
+        expectedVersion: this.currentVersion,
+        foundVersion: null,
+        status: 'error',
+        context: 'File does not exist'
+      };
     }
 
-    console.log(`  📜 ${data.frameworkSpecs.length} framework specifications found`);
+    try {
+      const content = fs.readFileSync(fullPath, 'utf8');
+      const lines = content.split('\n');
+      
+      // Check for version patterns
+      for (let i = 0; i < lines.length; i++) {
+        const line = lines[i];
+        for (const pattern of this.versionPatterns) {
+          const match = line.match(pattern);
+          if (match) {
+            const foundVersion = match[1];
+            const status = foundVersion === this.currentVersion ? 'match' : 'mismatch';
+            
+            return {
+              file: filePath,
+              expectedVersion: this.currentVersion,
+              foundVersion,
+              status,
+              line: i + 1,
+              context: line.trim()
+            };
+          }
+        }
+      }
+
+      // No version found
+      return {
+        file: filePath,
+        expectedVersion: this.currentVersion,
+        foundVersion: null,
+        status: 'missing',
+        context: 'No version reference found'
+      };
+
+    } catch (error) {
+      return {
+        file: filePath,
+        expectedVersion: this.currentVersion,
+        foundVersion: null,
+        status: 'error',
+        context: `Failed to read file: ${error}`
+      };
+    }
   }
 
   /**
-   * Generate validation summary
+   * Get all TypeScript and Markdown files
    */
-  private generateValidationSummary(result: ValidationResult): void {
-    console.log('\n📊 Validation Summary:');
-    console.log('═'.repeat(50));
+  private getAllFiles(): string[] {
+    const files: string[] = [];
     
-    if (result.passed) {
-      console.log('✅ Constitutional version consistency: PASSED');
-    } else {
-      console.log('❌ Constitutional version consistency: FAILED');
+    const walkDir = (dir: string, baseDir: string = '') => {
+      try {
+        const items = fs.readdirSync(dir);
+        
+        for (const item of items) {
+          const fullPath = path.join(dir, item);
+          const relativePath = path.join(baseDir, item);
+          const stat = fs.statSync(fullPath);
+          
+          if (stat.isDirectory()) {
+            if (item !== 'node_modules' && item !== '.git' && !item.startsWith('.')) {
+              walkDir(fullPath, relativePath);
+            }
+          } else if (stat.isFile()) {
+            const ext = path.extname(item);
+            if (['.ts', '.js', '.md', '.yaml', '.yml', '.json'].includes(ext)) {
+              files.push(relativePath);
+            }
+          }
+        }
+      } catch (error) {
+        // Skip directories we can't read
+      }
+    };
+
+    walkDir(this.projectRoot);
+    return files;
+  }
+
+  /**
+   * Generate recommendations based on violations
+   */
+  private generateRecommendations(violations: VersionCheck[]): string[] {
+    const recommendations: string[] = [];
+
+    if (violations.length === 0) {
+      recommendations.push('✅ All version references are consistent');
+      return recommendations;
     }
-    
-    if (result.errors.length > 0) {
-      console.log(`\n🚨 ${result.errors.length} Error(s):`);
-      result.errors.forEach(error => console.log(`   • ${error}`));
+
+    const criticalViolations = violations.filter(v => this.criticalFiles.includes(v.file));
+    const otherViolations = violations.filter(v => !this.criticalFiles.includes(v.file));
+
+    if (criticalViolations.length > 0) {
+      recommendations.push(`🚨 ${criticalViolations.length} critical files have version mismatches`);
+      criticalViolations.forEach(v => {
+        if (v.status === 'mismatch') {
+          recommendations.push(`   Update ${v.file}:${v.line} from ${v.foundVersion} to ${v.expectedVersion}`);
+        } else if (v.status === 'missing') {
+          recommendations.push(`   Add version reference to ${v.file}`);
+        }
+      });
     }
-    
-    if (result.warnings.length > 0) {
-      console.log(`\n⚠️  ${result.warnings.length} Warning(s):`);
-      result.warnings.forEach(warning => console.log(`   • ${warning}`));
+
+    if (otherViolations.length > 0) {
+      recommendations.push(`⚠️ ${otherViolations.length} other files have version mismatches`);
     }
-    
-    result.summary = `Version consistency validation ${result.passed ? 'PASSED' : 'FAILED'} with ${result.errors.length} errors and ${result.warnings.length} warnings.`;
+
+    recommendations.push('💡 Run "node tools/validate-version-consistency.ts --auto-fix" to apply automatic corrections');
+    recommendations.push('💡 Add version validation to pre-commit hooks to prevent future issues');
+
+    return recommendations;
+  }
+
+  /**
+   * Display validation results
+   */
+  private displayResults(result: VersionConsistencyResult): void {
+    console.log('📊 Version Consistency Validation Results');
+    console.log('=========================================\n');
+
+    if (result.violations.length === 0) {
+      console.log('✅ All version references are consistent!');
+      return;
+    }
+
+    console.log(`❌ Found ${result.violations.length} version inconsistencies\n`);
+
+    // Group violations by severity
+    const criticalViolations = result.violations.filter(v => this.criticalFiles.includes(v.file));
+    const otherViolations = result.violations.filter(v => !this.criticalFiles.includes(v.file));
+
+    if (criticalViolations.length > 0) {
+      console.log('🚨 Critical Files (Must Fix):');
+      criticalViolations.forEach(v => {
+        const status = v.status === 'mismatch' ? '❌' : v.status === 'missing' ? '⚠️' : '💥';
+        console.log(`   ${status} ${v.file}`);
+        if (v.line) {
+          console.log(`      Line ${v.line}: ${v.context}`);
+        }
+        if (v.status === 'mismatch') {
+          console.log(`      Expected: ${v.expectedVersion}, Found: ${v.foundVersion}`);
+        }
+      });
+      console.log('');
+    }
+
+    if (otherViolations.length > 0) {
+      console.log('⚠️ Other Files:');
+      otherViolations.forEach(v => {
+        const status = v.status === 'mismatch' ? '❌' : v.status === 'missing' ? '⚠️' : '💥';
+        console.log(`   ${status} ${v.file}`);
+        if (v.line) {
+          console.log(`      Line ${v.line}: ${v.context}`);
+        }
+      });
+      console.log('');
+    }
+
+    console.log('💡 Recommendations:');
+    result.recommendations.forEach(rec => console.log(`   ${rec}`));
+
+    console.log(`\n📋 Overall Status: ${result.overallStatus.toUpperCase()}`);
+  }
+
+  /**
+   * Auto-fix version inconsistencies
+   */
+  async autoFix(): Promise<void> {
+    console.log('🔧 Auto-fixing version inconsistencies...\n');
+
+    const result = await this.validateAll();
+    let fixedCount = 0;
+
+    for (const violation of result.violations) {
+      if (violation.status === 'mismatch' && violation.line) {
+        try {
+          const fullPath = path.join(this.projectRoot, violation.file);
+          const content = fs.readFileSync(fullPath, 'utf8');
+          const lines = content.split('\n');
+          
+          // Replace version in the specific line
+          const lineIndex = violation.line - 1;
+          const oldLine = lines[lineIndex];
+          const newLine = oldLine.replace(violation.foundVersion!, this.currentVersion);
+          
+          if (newLine !== oldLine) {
+            lines[lineIndex] = newLine;
+            fs.writeFileSync(fullPath, lines.join('\n'));
+            console.log(`✅ Fixed ${violation.file}:${violation.line}`);
+            fixedCount++;
+          }
+        } catch (error) {
+          console.log(`❌ Failed to fix ${violation.file}: ${error}`);
+        }
+      }
+    }
+
+    console.log(`\n📊 Auto-fix complete: ${fixedCount} files updated`);
   }
 }
 
-// CLI execution
-if (import.meta.url === `file://${process.argv[1]}`) {
+// CLI interface
+async function main(): Promise<void> {
   const validator = new VersionConsistencyValidator();
   
-  validator.validateVersionConsistency()
-    .then(result => {
-      if (result.passed) {
-        console.log('\n🎉 Constitutional compliance achieved! Version consistency validated.');
-        process.exit(0);
-      } else {
-        console.log('\n💥 Constitutional violation detected! Version inconsistencies must be resolved.');
-        process.exit(1);
-      }
-    })
-    .catch(error => {
-      console.error('Validation error:', error.message);
+  if (process.argv.includes('--auto-fix')) {
+    await validator.autoFix();
+  } else {
+    const result = await validator.validateAll();
+    
+    if (result.overallStatus === 'fail') {
       process.exit(1);
-    });
+    }
+  }
+}
+
+// Run if called directly
+if (process.argv[1] && process.argv[1].endsWith('validate-version-consistency.ts')) {
+  main().catch(error => {
+    console.error('Version validation error:', error);
+    process.exit(1);
+  });
 }
 
 export { VersionConsistencyValidator };
