@@ -1,11 +1,11 @@
 <!--
-@aegisFrameworkVersion: 2.0.1
+@aegisFrameworkVersion: 2.1.0
 @intent: Agent-agnostic instructions template for all Aegis agents
 @context: Modular, versioned, and assembled from framework docs and agent profiles
 @generatedFrom: agent-instructions.template.md
 -->
 
-# 🤖 Cursor AI Assistant Instructions for Aegis Framework v2.0.1
+# 🤖 Cursor AI Assistant Instructions for Aegis Framework v2.1.0
 
 > **Complete instructions combining constitutional compliance with operational excellence.**
 
@@ -205,7 +205,7 @@ Store AI agent outputs as:
 
 ---
 
-**Version**: 2.0.1 (Enhanced with v2.5 Operational Patterns)  
+**Version**: 2.1.0 (Enhanced with v2.5 Operational Patterns)  
 **Last Updated**: 2025-08-08T13:22:42.024Z  
 **Target Agent**: Cursor AI Assistant  
 **Framework Authority**: Aegis Framework Constitution  

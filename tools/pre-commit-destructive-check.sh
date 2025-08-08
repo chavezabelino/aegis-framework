@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# @aegisFrameworkVersion: 2.0.1
+# @aegisFrameworkVersion: 2.1.0
 # @intent: Pre-commit hook to prevent destructive actions
 # @context: Constitutional protection against framework-breaking commits
 

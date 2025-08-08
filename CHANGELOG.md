@@ -62,7 +62,7 @@ This release introduces comprehensive destructive action protection and enhanced
 - Systematic learning captured through evolution stories
 
 ### Breaking Changes
-- None (backward compatible with v2.0.1)
+- None (backward compatible with v2.1.0)
 
 ### Migration Required
 - None (existing installations continue to work)
@@ -70,14 +70,14 @@ This release introduces comprehensive destructive action protection and enhanced
 
 ---
 
-## [2.0.1] - 2025-08-07
+## [2.1.0] - 2025-08-07
 
 ### 🎉 Stable Release: Package Distribution & Automation
 
 This stable release provides production-ready package distribution with enhanced automation for team adoption.
 
 #### **📦 Package Distribution**
-- **NEW**: NPM package `@aegis-framework/cli@2.0.1` for global installation
+- **NEW**: NPM package `@aegis-framework/cli@2.1.0` for global installation
 - **NEW**: Standalone CLI package with all hydration and governance tools
 - **NEW**: Framework library package for customization and extension
 - **NEW**: Docker support for containerized deployment
@@ -129,7 +129,7 @@ This stable release provides production-ready package distribution with enhanced
 
 ---
 
-## [2.0.1-manifesto] - 2025-08-07
+## [2.1.0-manifesto] - 2025-08-07
 
 ### 🏛️ GenAI Operating System Manifesto
 
@@ -142,7 +142,7 @@ Constitutional foundation for the world's first GenAI Operating System.
 
 ---
 
-## [2.0.1-alpha-feature-configurability] - 2025-08-07
+## [2.1.0-alpha-feature-configurability] - 2025-08-07
 
 ### 🎛️ Alpha: Three-Tier Feature Configurability System
 

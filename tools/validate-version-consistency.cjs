@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * @aegisFrameworkVersion 2.0.1
+ * @aegisFrameworkVersion 2.1.0
  * @intent Constitutional validation tool for version consistency across framework
  * @context Prevention tool for version drift following comprehensive audit
  */

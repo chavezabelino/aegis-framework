@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.0.1
+@aegisFrameworkVersion: 2.1.0
 @intent: Immediate horizon roadmap for next 3 months with high confidence planning
 @context: Capability-driven roadmap following remediation plan standardization
 @mode: strict

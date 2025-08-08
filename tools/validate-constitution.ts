@@ -444,7 +444,7 @@ class ConstitutionalValidator {
       }
 
       // For framework core spec, extract from filename
-      if (filePath === 'framework/framework-core-v2.0.1.md') {
+      if (filePath === 'framework/framework-core-v2.1.0.md') {
         const filenameMatch = filePath.match(/v(\d+\.\d+\.\d+(?:-[a-zA-Z0-9]+)?)/);
         return filenameMatch ? filenameMatch[1] : null;
       }

@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.0.1
+@aegisFrameworkVersion: 2.1.0
 @intent: Document framework drift regarding incorrect dependency bundling approach
 @context: Field-driven learning about open source distribution best practices
 -->
@@ -12,7 +12,7 @@ evolutionStory:
   id: "EVS-2025-08-07-008"
   title: "Dependency Bundling Drift and Correction"
   date: "2025-08-07"
-  frameworkVersion: "2.0.1"
+  frameworkVersion: "2.1.0"
   triggerType: "field-driven-learning"
   impactLevel: "high"
   
@@ -139,7 +139,7 @@ Before (bundling): 1.1MB+
 After (NPM deps):  83KB ✅
 
 # NPM installation test:
-npm install /path/to/aegis-framework-cli-2.0.1.tgz
+npm install /path/to/aegis-framework-cli-2.1.0.tgz
 # ✅ Added 60 packages automatically
 # ✅ All dependencies resolved correctly
 ```
@@ -177,7 +177,7 @@ curl -sSL https://releases/download/aegis-cli-huge.tar.gz | tar -xz
 ./aegis-cli/bin/aegis-hydrate # Might fail with dependency issues
 
 # After (standard):
-npm install -g @aegis-framework/cli@2.0.1
+npm install -g @aegis-framework/cli@2.1.0
 aegis-hydrate /path/to/project  # Just works
 ```
 

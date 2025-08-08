@@ -1,10 +1,10 @@
 <!--
-@aegisFrameworkVersion: 2.0.1
+@aegisFrameworkVersion: 2.1.0
 @intent: Stable framework specification for packaged distribution and constitutional governance
 @context: Stable release with NPM packages, Docker support, and automated release pipeline
 -->
 
-# ⚙️ Aegis Framework v2.0.1
+# ⚙️ Aegis Framework v2.1.0
 
 > **Stable Release**: Production-ready package distribution with constitutional governance  
 > **Status**: Stable Release - Production Ready

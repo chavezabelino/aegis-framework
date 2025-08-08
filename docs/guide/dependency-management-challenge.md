@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.0.1
+@aegisFrameworkVersion: 2.1.0
 @intent: Document the dependency bundling challenge and proper solutions
 @context: Real-world distribution requires understanding dependency management
 -->
@@ -28,7 +28,7 @@ This is why NPM exists - it handles dependencies automatically:
 
 ```bash
 # When users install via NPM:
-npm install -g @aegis-framework/cli@2.0.1
+npm install -g @aegis-framework/cli@2.1.0
 # NPM automatically installs ALL dependencies
 ```
 
@@ -69,7 +69,7 @@ Package everything in a container:
 
 ```bash
 # Users run via Docker
-docker run --rm -v $(pwd):/workspace aegis-framework/cli:2.0.1 hydrate /workspace
+docker run --rm -v $(pwd):/workspace aegis-framework/cli:2.1.0 hydrate /workspace
 ```
 
 **Pros**:
@@ -87,12 +87,12 @@ docker run --rm -v $(pwd):/workspace aegis-framework/cli:2.0.1 hydrate /workspac
 Create OS-specific installers:
 
 ```bash
-# Windows: aegis-cli-v2.0.1-windows.msi
-# Mac: aegis-cli-v2.0.1-macos.pkg  
-# Linux: aegis-cli-v2.0.1-linux.deb
+# Windows: aegis-cli-v2.1.0-windows.msi
+# Mac: aegis-cli-v2.1.0-macos.pkg  
+# Linux: aegis-cli-v2.1.0-linux.deb
 ```
 
-## 🎯 Recommended Approach for v2.0.1
+## 🎯 Recommended Approach for v2.1.0
 
 For our stable release, let's focus on **NPM distribution** because:
 
@@ -105,8 +105,8 @@ For our stable release, let's focus on **NPM distribution** because:
 
 ```bash
 # GitHub Releases Assets:
-aegis-framework-lib-v2.0.1.tar.gz    # Full framework source
-aegis-cli-source-v2.0.1.tar.gz       # CLI source code
+aegis-framework-lib-v2.1.0.tar.gz    # Full framework source
+aegis-cli-source-v2.1.0.tar.gz       # CLI source code
 checksums.txt                         # Security verification
 RELEASE-NOTES.md                      # What's new
 ```
@@ -118,7 +118,7 @@ RELEASE-NOTES.md                      # What's new
 
 ### Method 1: NPM (Recommended)
 ```bash
-npm install -g @aegis-framework/cli@2.0.1
+npm install -g @aegis-framework/cli@2.1.0
 aegis-hydrate /path/to/project
 ```
 
@@ -133,7 +133,7 @@ npm run build:package
 
 ### Method 3: Docker
 ```bash
-docker run --rm -v $(pwd):/workspace aegis-framework/cli:2.0.1 hydrate /workspace
+docker run --rm -v $(pwd):/workspace aegis-framework/cli:2.1.0 hydrate /workspace
 ```
 ```
 
@@ -150,7 +150,7 @@ cd dist/aegis-cli/
 npm pack  # Creates a .tgz file like NPM would
 
 # Test installation simulation
-npm install -g ./aegis-framework-cli-2.0.1.tgz
+npm install -g ./aegis-framework-cli-2.1.0.tgz
 ```
 
 ## 📊 Distribution Strategy Matrix
@@ -162,7 +162,7 @@ npm install -g ./aegis-framework-cli-2.0.1.tgz
 | **Docker** | Medium | Good | Low | DevOps teams |
 | **OS Packages** | High | Excellent | High | Enterprise |
 
-## 🚀 Action Plan for v2.0.1
+## 🚀 Action Plan for v2.1.0
 
 1. **Focus on NPM distribution** (what we built works for this)
 2. **Document installation methods clearly**

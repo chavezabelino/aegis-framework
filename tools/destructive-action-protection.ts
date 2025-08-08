@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * @aegisFrameworkVersion: 2.0.1
+ * @aegisFrameworkVersion: 2.1.0
  * @intent: Destructive action protection and validation system
  * @context: Prevents framework-breaking operations through systematic validation
  * @mode: strict

@@ -1,6 +1,6 @@
 # 🔄 Vite Build Pipeline Implementation
 
-**@aegisFrameworkVersion**: 2.0.1  
+**@aegisFrameworkVersion**: 2.1.0  
 **@intent**: Modern Vite-based build pipeline for Aegis Framework  
 **@context**: Bun + Vite architecture for fast development and production builds
 

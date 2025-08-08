@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * @aegisFrameworkVersion: 2.0.1
+ * @aegisFrameworkVersion: 2.1.0
  * @intent: Build packaged distribution of Aegis Framework
  * @context: Create standalone and library packages for stable releases
  */
@@ -160,13 +160,13 @@ class PackageBuilder {
   
   private copyCLIExecutable(source: string, destination: string): void {
     if (fs.existsSync(source)) {
-      // For v2.0.1, we'll use Node.js direct TypeScript execution
+      // For v2.1.0, we'll use Node.js direct TypeScript execution
       // This is simpler and doesn't require compilation for initial release
       
       const cliName = path.basename(source, '.ts');
       const wrapperContent = `#!/usr/bin/env node
 
-// Aegis Framework CLI: ${cliName} v2.0.1
+// Aegis Framework CLI: ${cliName} v2.1.0
 // Runs TypeScript CLI directly using Node.js built-in capabilities
 
 import { execSync } from 'child_process';

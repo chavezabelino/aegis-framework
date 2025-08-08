@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.0.1
+@aegisFrameworkVersion: 2.1.0
 @intent: Explain the correct approach to dependency management in open source distribution
 @context: Best practices for Node.js CLI tool distribution
 -->
@@ -34,7 +34,7 @@ npm install -g create-react-app
 // dist/aegis-cli/package.json
 {
   "name": "@aegis-framework/cli",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "dependencies": {
     "commander": "^14.0.0",
     "inquirer": "^12.9.0", 
@@ -46,7 +46,7 @@ npm install -g create-react-app
 
 **When users install:**
 ```bash
-npm install -g @aegis-framework/cli@2.0.1
+npm install -g @aegis-framework/cli@2.1.0
 # NPM automatically installs ALL dependencies
 # No bundling needed!
 ```
@@ -115,7 +115,7 @@ aegis-hydrate /path/to/project
 ### **NPM Package** (Primary Distribution)
 ```bash
 # What users do:
-npm install -g @aegis-framework/cli@2.0.1
+npm install -g @aegis-framework/cli@2.1.0
 
 # What happens automatically:
 # 1. Downloads our CLI package (~500KB)
@@ -128,8 +128,8 @@ npm install -g @aegis-framework/cli@2.0.1
 ### **GitHub Releases** (Source Distribution)
 ```bash
 # For developers who want to customize:
-wget https://github.com/aegis-framework/releases/v2.0.1/aegis-framework-v2.0.1.tar.gz
-tar -xzf aegis-framework-v2.0.1.tar.gz
+wget https://github.com/aegis-framework/releases/v2.1.0/aegis-framework-v2.1.0.tar.gz
+tar -xzf aegis-framework-v2.1.0.tar.gz
 cd aegis-framework
 npm install  # Installs dependencies from package.json
 ```
@@ -161,7 +161,7 @@ dist/aegis-cli/
 
 ### **2. Source Tarball for GitHub Releases**
 ```
-aegis-framework-v2.0.1.tar.gz
+aegis-framework-v2.1.0.tar.gz
 ├── cli/                   # Source files
 ├── framework/             # Framework source
 ├── tools/                 # Tools source
@@ -207,7 +207,7 @@ dependencies: {
 ```bash
 cd dist/aegis-cli/
 npm pack  # Creates .tgz file
-npm install -g ./aegis-framework-cli-2.0.1.tgz
+npm install -g ./aegis-framework-cli-2.1.0.tgz
 aegis-hydrate --help  # Should work!
 ```
 

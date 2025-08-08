@@ -33,7 +33,7 @@ constitutional-violation
 critical
 
 ### **Evidence Found**
-- Commit without evolution story: 50c89a3 fix: constitutional compliance for v2.0.1
+- Commit without evolution story: 50c89a3 fix: constitutional compliance for v2.1.0
 
 ## 🌱 Field Context
 

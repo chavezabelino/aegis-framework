@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.0.1
+@aegisFrameworkVersion: 2.1.0
 @intent: Evolution story for destructive action protection system
 @context: Framework learning from near-catastrophic deletion of essential files
 @mode: strict
@@ -13,7 +13,7 @@ evolutionStory:
   id: "EVS-2025-08-08-001"
   title: "Destructive Action Protection System"
   date: "2025-08-08"
-  frameworkVersion: "2.0.1"
+  frameworkVersion: "2.1.0"
   triggerType: "near-catastrophic-error"
   impactLevel: "critical"
   

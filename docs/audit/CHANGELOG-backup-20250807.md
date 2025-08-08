@@ -5,14 +5,14 @@ All notable changes to the Aegis Framework will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2.0.1] - 2025-08-07
+## [2.1.0] - 2025-08-07
 
 ### 🎉 Stable Release: Package Distribution & Automation
 
 This stable release provides production-ready package distribution with enhanced automation for team adoption.
 
 #### **📦 Package Distribution**
-- **NEW**: NPM package `@aegis-framework/cli@2.0.1` for global installation
+- **NEW**: NPM package `@aegis-framework/cli@2.1.0` for global installation
 - **NEW**: Standalone CLI package with all hydration and governance tools
 - **NEW**: Framework library package for customization and extension
 - **NEW**: Docker support for containerized deployment

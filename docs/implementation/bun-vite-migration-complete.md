@@ -1,6 +1,6 @@
 # 🎉 Bun + Vite Migration Complete
 
-**@aegisFrameworkVersion**: 2.0.1  
+**@aegisFrameworkVersion**: 2.1.0  
 **@intent**: Comprehensive summary of completed Bun + Vite migration  
 **@context**: Successfully migrated from esbuild + ts-node to modern Bun + Vite architecture
 

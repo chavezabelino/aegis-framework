@@ -1,6 +1,6 @@
 # 🔗 Cursor Real-Time Integration Implementation
 
-**@aegisFrameworkVersion**: 2.0.1  
+**@aegisFrameworkVersion**: 2.1.0  
 **@intent**: Real-time integration with Cursor IDE workflows  
 **@context**: Live pattern detection, evolution story generation, and immediate feedback
 

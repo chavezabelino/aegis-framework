@@ -2,7 +2,7 @@ import { defineConfig } from 'vite'
 import { resolve } from 'path'
 
 /**
- * @aegisFrameworkVersion: 2.0.1
+ * @aegisFrameworkVersion: 2.1.0
  * @intent: Vite configuration for Aegis Framework
  * @context: Modern build system with Bun integration
  */
@@ -111,7 +111,7 @@ export default defineConfig({
 
   // Define environment variables
   define: {
-    __AEGIS_VERSION__: JSON.stringify(process.env.npm_package_version || '2.0.1'),
+    __AEGIS_VERSION__: JSON.stringify(process.env.npm_package_version || '2.1.0'),
     __AEGIS_ENV__: JSON.stringify(process.env.NODE_ENV || 'development')
   }
 })

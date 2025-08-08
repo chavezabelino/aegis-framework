@@ -258,7 +258,7 @@ Each agent (Copilot, Kilo, Lovable) has a behavior profile in `/framework/agents
 - ✅ **v1.4.0**: Template Quality & GitHub Copilot Instructions (HTML entity fixes, constitutional compliance, operational excellence)
 - ✅ **v2.0.0-alpha-dev**: One-Command Hydration paradigm shift - "bill becomes law" migration with approval gates
 - ✅ **v2.1.0**: Framework Protection & Cursor Integration (Destructive action protection, Cursor IDE integration, Vite + Bun migration)
-- ✅ **v2.0.1**: Package Distribution & Automation (NPM packages, Docker support, automated releases)
+- ✅ **v2.1.0**: Package Distribution & Automation (NPM packages, Docker support, automated releases)
 - 🔜 **v2.1.0**: Feature Configurability System (three-tier configuration: Core/Required/Optional)
 - 🔜 **v3.0.0**: Tech Stack Neutrality (universal framework support beyond React+Next.js)
 

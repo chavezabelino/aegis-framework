@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * @aegisFrameworkVersion: 2.0.1
+ * @aegisFrameworkVersion: 2.1.0
  * @intent: Synchronize version across all framework files
  * @context: Maintain version consistency for stable releases
  */

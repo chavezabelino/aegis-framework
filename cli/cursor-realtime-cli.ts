@@ -1,5 +1,5 @@
 /**
- * @aegisFrameworkVersion: 2.0.1
+ * @aegisFrameworkVersion: 2.1.0
  * @intent: CLI for managing Cursor real-time integration
  * @context: Provides command-line interface for live Cursor workflow monitoring
  */
@@ -26,7 +26,7 @@ class CursorRealtimeCLI {
     this.program
       .name('cursor-realtime')
       .description('Cursor Real-time Integration CLI')
-      .version('2.0.1');
+      .version('2.1.0');
 
     this.program
       .command('start')

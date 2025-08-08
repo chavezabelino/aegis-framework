@@ -4,13 +4,13 @@
 @context: Framework automatic detection of evolution documentation needs
 -->
 
-# EVS-2025-08-07-006: Staged Constitutional Change - framework/framework-core-v2.0.1.md
+# EVS-2025-08-07-006: Staged Constitutional Change - framework/framework-core-v2.1.0.md
 
 ## 📊 Story Metadata
 ```yaml
 evolutionStory:
   id: "EVS-2025-08-07-006"
-  title: "Staged Constitutional Change - framework/framework-core-v2.0.1.md"
+  title: "Staged Constitutional Change - framework/framework-core-v2.1.0.md"
   date: "2025-08-07"
   frameworkVersion: "2.0.0-alpha-dev"
   triggerType: "constitutional-violation"
@@ -33,7 +33,7 @@ constitutional-violation
 critical
 
 ### **Evidence Found**
-- Staged constitutional file without evolution story: framework/framework-core-v2.0.1.md
+- Staged constitutional file without evolution story: framework/framework-core-v2.1.0.md
 
 ## 🌱 Field Context
 

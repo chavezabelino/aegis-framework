@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.0.1
+@aegisFrameworkVersion: 2.1.0
 @intent: Active framework specification for One-Command Hydration paradigm
 @context: Breaking change from manual migration to orchestrated "bill becomes law" process
 -->

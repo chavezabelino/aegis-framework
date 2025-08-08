@@ -392,7 +392,7 @@ const program = new Command();
 program
   .name('aegis-hydrate')
   .description('One-command migration tool for Aegis Framework compliance')
-  .version('2.0.1')
+  .version('2.1.0')
   .argument('<target-path>', 'Path to the project to migrate')
   .option('-i, --interactive', 'Interactive mode with approval gates', true)
   .option('--auto-approve', 'Skip all approval gates (dangerous)', false)

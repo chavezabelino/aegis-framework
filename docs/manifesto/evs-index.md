@@ -17,7 +17,7 @@ Evolution Stories (EVS) document the framework's learning journey through real-w
 **Constitutional Impact**: 3 major stories  
 **Field-Driven Learning**: 2 complete stories  
 **Auto-Generated**: 7 placeholder stories  
-**Framework Version Range**: v1.0.0-alpha to v2.0.1
+**Framework Version Range**: v1.0.0-alpha to v2.1.0
 
 ## 📋 Complete Evolution Stories
 
@@ -37,7 +37,7 @@ Evolution Stories (EVS) document the framework's learning journey through real-w
 ### **EVS-2025-08-07-008: Dependency Bundling Drift and Correction**
 - **Date**: August 7, 2025  
 - **Trigger**: User question revealed anti-pattern in framework guidance  
-- **Impact**: Complete distribution strategy reversal (v2.0.1)  
+- **Impact**: Complete distribution strategy reversal (v2.1.0)  
 - **Status**: ✅ Complete - Framework corrected and documented  
 - **Pattern**: User insight > Framework assumption  
 
@@ -74,7 +74,7 @@ Evolution Stories (EVS) document the framework's learning journey through real-w
 - **Evidence**: Commit without evolution story documentation  
 - **Status**: 🚧 Auto-Generated - Requires Investigation  
 
-### **EVS-2025-08-07-006: Staged Constitutional Change - framework/framework-core-v2.0.1.md**
+### **EVS-2025-08-07-006: Staged Constitutional Change - framework/framework-core-v2.1.0.md**
 - **Detection Pattern**: Constitutional change without evolution story  
 - **Evidence**: Framework specification modification  
 - **Status**: 🚧 Auto-Generated - Requires Investigation  
