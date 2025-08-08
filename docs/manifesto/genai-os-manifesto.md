@@ -5,28 +5,28 @@
 @manifestoRef: Primary declaration of framework philosophy
 -->
 
-# 🏛️ The GenAI Operating System Manifesto
+# The GenAI Operating System Manifesto
 
-## 📜 Declaration
+## Declaration
 
-We are building the world's first **Operating System for Intelligence**.
+We are building an operating system approach for AI-assisted engineering.
 
-While others build better autocomplete, we architect the governance layer.  
-While others optimize for speed, we engineer for alignment.  
-While others chase agent autonomy, we enforce system accountability.
+Where others focus on individual tools, we focus on governance patterns.  
+Where others optimize for speed, we engineer for consistency.  
+Where others enable agent autonomy, we implement system accountability.
 
 This is not about replacing human developers.  
-This is about creating **sovereign systems** that work *with* unpredictable intelligence.
+This is about creating reliable systems that work with AI assistance.
 
-## 🧠 The Crisis We're Solving
+## The Problem We're Addressing
 
-**The Current State**: Teams deploy AI agents like installing browser plugins—fast, fragile, ungoverned.
+**Current State**: Teams deploy AI tools without governance patterns—fast adoption, fragile integration.
 
-**The Reality**: 
-- Prompt engineering ≠ System design
-- Tool integration ≠ Infrastructure  
-- Speed ≠ Reliability
-- Autonomy ≠ Accountability
+**Reality**: 
+- Prompt engineering is not system design
+- Tool integration is not infrastructure  
+- Speed is not reliability
+- Autonomy is not accountability
 
 **The Result**: Productivity gains that silently drift into technical debt.
 

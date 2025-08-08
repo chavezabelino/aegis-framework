@@ -5,12 +5,12 @@
 @manifestoRef: Engineering principles and implementation patterns
 -->
 
-# 🎯 GenAI OS Engineering Principles
+# GenAI OS Engineering Principles
 
-## 🏗️ Foundational Architecture Principles
+## Foundational Architecture Principles
 
-### **1. Constitutional Computing**
-Every system decision must be traceable to constitutional authority.
+### 1. Constitutional Computing
+System decisions should be traceable to documented authority.
 
 **Implementation**:
 ```markdown
@@ -21,10 +21,10 @@ Every system decision must be traceable to constitutional authority.
 -->
 ```
 
-**Why**: Prevents arbitrary decisions that compound into technical debt.
+**Why**: Helps prevent arbitrary decisions that accumulate into technical debt.
 
-### **2. Behavioral Determinism**
-Same inputs + same blueprints = identical outputs, always.
+### 2. Behavioral Determinism
+Same inputs + same blueprints should produce consistent outputs.
 
 **Implementation**:
 ```typescript

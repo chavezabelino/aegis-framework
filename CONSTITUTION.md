@@ -1,13 +1,13 @@
-# 🏛️ Aegis Framework Constitution
+# Aegis Framework Constitution
 
-## 📜 Preamble
+## Preamble
 
-This document establishes the foundational principles, governance structures, and evolutionary processes for the Aegis Framework. It serves as the supreme authority for all framework decisions, ensuring consistency, traceability, and democratic evolution of the AI-native engineering ecosystem.
+This document establishes the foundational principles, governance structures, and evolutionary processes for the Aegis Framework. It serves as the central authority for framework decisions, ensuring consistency, traceability, and structured evolution of the engineering workflow.
 
-## 🎯 Article I: Core Principles
+## Article I: Core Principles
 
 ### Section 1: Fundamental Values
-The Aegis Framework is founded upon these immutable principles:
+The Aegis Framework is founded upon these principles:
 
 1. **Traceability**: Every AI-generated change must be traceable through blueprints and contracts
 2. **Observability**: All framework operations must emit telemetry and be auditable
@@ -16,9 +16,9 @@ The Aegis Framework is founded upon these immutable principles:
 5. **Semantic Versioning**: All changes follow strict semantic versioning principles
 
 ### Section 2: Blueprint Primacy
-Blueprints are the supreme source of truth for all AI-generated code. No code shall be generated without a corresponding blueprint specification.
+Blueprints serve as the source of truth for AI-generated code. Code generation requires a corresponding blueprint specification.
 
-## 🏗️ Article II: Framework Governance
+## Article II: Framework Governance
 
 ### Section 1: Version Authority
 The current framework version is declared in:

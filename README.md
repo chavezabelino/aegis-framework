@@ -1,50 +1,40 @@
-# 🛡️ Aegis Framework v2.4.0
+# Aegis Framework v2.4.0
 
-[![GenAI OS Manifesto](https://img.shields.io/badge/📖_GenAI_OS-Manifesto-blue?style=for-the-badge)](docs/manifesto/README.md)
-[![Constitutional Computing](https://img.shields.io/badge/🏛️_Constitutional-Computing-green?style=for-the-badge)](docs/manifesto/principles.md)
-[![Framework Version](https://img.shields.io/badge/Framework-v2.2.0-orange?style=for-the-badge)](VERSION)
+[![Framework Version](https://img.shields.io/badge/Framework-v2.4.0-orange?style=for-the-badge)](VERSION)
 [![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](LICENSE)
 
-> **The world's first GenAI Operating System** - Constitutional governance for AI-native engineering with systematic drift detection, evolution learning, and democratic amendment processes.
+A framework for AI-assisted engineering with governance patterns, drift detection, and configuration management.
 
-## 📜 The GenAI Operating System Manifesto
+## Overview
 
-**Stop building faster chaos. Start building governed intelligence.**
+This framework provides tools for managing AI-assisted development workflows with attention to configuration management, versioning consistency, and drift detection.
 
-While most teams deploy AI like browser plugins—fast, fragile, ungoverned—we built the **constitutional layer** that makes AI reliable for production.
+### Key Features
+- Configuration management with team-specific settings
+- Version consistency validation across project files
+- Blueprint-driven development patterns
+- Drift detection and monitoring tools
+- Constitutional governance patterns for AI workflows
 
-**[📖 Read the Full Manifesto →](docs/manifesto/README.md)**
-
-### 🎯 The Problem We're Solving
-- **Current State**: AI deployed without governance (prompt engineering ≠ system design)
-- **The Gap**: Productivity gains that silently drift into technical debt
-- **Our Solution**: Constitutional computing—infrastructure patterns for reliable AI
-
-### 🧠 Core Principles
-1. **Intelligence Requires Infrastructure** - You need governance, not just generation
-2. **Prompting ≠ Governance** - Perfect prompts are still prayers to probability machines
-3. **Drift Is Inevitable, Detection Is Optional** - Systems decay without monitoring
-4. **Execution Modes Are Constitutional Rights** - Different contexts need different AI behavior
-
-**[🔍 Explore Case Studies →](docs/manifesto/case-studies.md)** | **[⚙️ See Technical Principles →](docs/manifesto/principles.md)**
-
-> 💡 **Like what you see?** ⭐ Star this repo to help others discover constitutional computing | 👀 Watch for updates on AI governance patterns
+### Design Principles
+1. Governance through configuration, not just prompting
+2. Systematic detection of drift and inconsistencies  
+3. Reproducible AI-assisted development workflows
+4. Team-configurable enforcement levels
 
 ---
 
-## 🚀 Quick Start
+## Installation
 
-### Two Installation Options
-
-#### Option 1: NPM Package (Recommended for Teams)
+### NPM Package
 ```bash
-# Install globally for immediate use
-npm install -g @aegis-framework/cli@2.2.0
+# Install globally
+npm install -g @aegis-framework/cli@2.4.0
 
-# Hydrate any project instantly
+# Initialize in a project
 aegis-hydrate /path/to/your/project
 
-# Constitutional governance
+# Basic commands
 aegis-conductor init
 aegis-conductor check
 ```
@@ -65,82 +55,74 @@ npm run build:package
 ./cli/aegis-hydrate.ts /path/to/project
 ```
 
-### System Requirements
+### Requirements
 
-- **Node.js** >= 18.0.0 (required for TypeScript support)
-- **npm** >= 8.0.0 (or yarn/pnpm equivalent)
-- **Git** (for project hydration and constitutional tracking)
+- Node.js >= 18.0.0
+- npm >= 8.0.0 (or equivalent package manager)
+- Git
 
----
+## Core Features
 
-## 🎯 Core Features
-
-### ⚡ Single Command Hydration
-Transform any project to constitutional compliance with one command:
+### Project Setup
 ```bash
 aegis-hydrate /path/to/project
 ```
-- **Approval gates** for transparent decision-making
-- **Automatic rollback** on failures  
-- **Constitutional compliance** validation
-- **Risk assessment** and mitigation
+Configures a project with framework patterns including approval gates, rollback capability, and compliance validation.
 
-### 🏛️ Constitutional Governance
-Built-in democratic processes for framework evolution:
+### Governance Tools
 ```bash
-aegis-conductor init       # Initialize constitutional framework
-aegis-conductor check      # Constitutional compliance audit
-aegis-conductor enforce    # Apply governance enforcement
+aegis-conductor init       # Initialize framework
+aegis-conductor check      # Run compliance checks
+aegis-conductor enforce    # Apply enforcement rules
 ```
 
-### 📦 Package Distribution
-- **`@aegis-framework/cli`**: Standalone CLI for quick adoption
-- **`aegis-framework-lib`**: Full framework source for customization
-- **Docker support**: Containerized hydration and governance
+### Distribution
+- `@aegis-framework/cli`: Standalone CLI package
+- `aegis-framework-lib`: Full framework source
+- Docker support available
 
 ---
 
-## 📋 Available Commands
+## Available Commands
 
-### 🚀 NPM Package Commands
+### CLI Commands
 ```bash
 # After: npm install -g @aegis-framework/cli
-aegis-hydrate <path>           # One-command project hydration
-aegis-conductor <command>      # Constitutional governance
-aegis-config                   # Team configuration management
+aegis-hydrate <path>           # Project setup
+aegis-conductor <command>      # Governance tools
+aegis-config                   # Configuration management
 ```
 
-### 🔧 Development Commands (Source Installation)
+### Development Commands
 ```bash
 # Package Management
-npm run build:package          # Build distribution packages
-npm run version:sync           # Synchronize version across files
-npm run package:validate       # Validate built packages
+npm run build:package          # Build packages
+npm run version:sync           # Synchronize versions
+npm run package:validate       # Validate packages
 
 # Release Management  
-npm run release:patch          # Create patch release
-npm run release:minor          # Create minor release
-npm run release:major          # Create major release
+npm run release:patch          # Patch release
+npm run release:minor          # Minor release
+npm run release:major          # Major release
+```
+
+## What is Aegis?
+
+Aegis is a framework for managing AI-assisted software development. It provides contracts, execution rules, and validation layers for AI-generated code across different tech stacks and development contexts.
+
+Key capabilities:
+
+- **Auditability**: Track what was generated, when, and with what context
+- **Reproducibility**: Regenerate consistent output from the same blueprint
+- **Observability**: Emit telemetry and trace blueprint coverage
+- **Safety**: Define fallback states for failed AI generations
+- **Contracts**: Schemas for AI-assisted changes
+- **Versioning**: Enforce contract versions via CI
+- **Governance**: Framework evolution patterns
 
 ---
 
-## 🧠 What is Aegis?
-
-**Aegis** is an AI-native engineering framework for managing complex, agent-driven software systems. It formalizes the contracts, execution rules, and validation layers required to safely scale AI-generated software — across tech stacks, tools, and developer contexts.
-
-It was designed from the ground up to enforce:
-
-- ✅ **Auditability**: Track who generated what, when, and with what context
-- 🔁 **Replayability**: Regenerate the same output from the same blueprint, deterministically
-- 📈 **Observability**: Emit telemetry and trace blueprint coverage at runtime
-- ❗ **Fallback Safety**: Define user-facing error states for failed AI generations
-- 🔐 **Blueprint Contracts**: Strict schemas for every AI-assisted change
-- 🧬 **Rule Versioning**: Enforce specific contract versions via CI or orchestration
-- 🏛️ **Constitutional Governance**: Self-healing, democratic framework evolution
-
----
-
-## 📂 Project Structure
+## Project Structure
 
 ```txt
 aegis-framework/
