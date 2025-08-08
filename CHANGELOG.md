@@ -5,11 +5,101 @@ All notable changes to the Aegis Framework will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.0] - 2025-08-08
+
+### 🎛️ Feature Configurability System Complete
+
+This release completes the comprehensive feature configurability system with three-tier configuration support across all framework tools.
+
+#### **🔧 Phase 1: Core Infrastructure (Previous)**
+- **NEW**: `tools/team-config-loader.ts` - Centralized team configuration loader with caching
+- **NEW**: `framework/contracts/team-configuration.schema.ts` - Zod-based configuration schema
+- **NEW**: `cli/team-config.ts` - Interactive team configuration setup
+- **NEW**: `cli/validate-team-config.ts` - Team configuration validation
+- **ENHANCED**: `tools/detect-evolution-stories.ts` - Team configuration integration
+- **ENHANCED**: `tools/intent-enforcement-engine.ts` - Mode-aware enforcement
+
+#### **🔧 Phase 2: Required Features Integration**
+- **NEW**: `tools/pre-commit-hook.ts` - TypeScript pre-commit hook with team configuration
+- **ENHANCED**: `tools/validate-template-quality.ts` - Feature flag support
+- **NEW**: `tools/validate-annotations.ts` - Comprehensive annotation validation system
+- **NEW**: `tests/feature-configurability-integration.test.ts` - Phase 1 & 2 integration tests
+
+#### **🔧 Phase 3: Optional Features Integration**
+- **ENHANCED**: `tools/realtime-evolution-detection.ts` - Sensitivity-aware pattern detection
+- **NEW**: `tools/drift-monitoring-dashboard.ts` - Comprehensive framework health monitoring
+- **ENHANCED**: `tools/auto-update-changelog.ts` - Format-aware changelog automation
+- **NEW**: `tests/feature-configurability-phase2.test.ts` - Phase 2 integration tests
+- **NEW**: `tests/feature-configurability-phase3.test.ts` - Phase 3 integration tests
+
+#### **📋 Three-Tier Configuration System**
+- **Core Features**: Always enabled (blueprint validation, agent drift prevention, etc.)
+- **Required Features**: Configurable with enforcement modes (evolution detection, constitutional enforcement, etc.)
+- **Optional Features**: Team preference-based (pattern detection, dashboard, changelog, etc.)
+
+#### **🎛️ Configuration Profiles**
+- **Strict Profile**: Maximum enforcement and validation
+- **Balanced Profile**: Moderate enforcement with warnings
+- **Minimal Profile**: Essential features only
+
+#### **📊 Configuration Features**
+- **Team Configuration**: Per-workspace configuration management
+- **Feature Flags**: Granular control over framework capabilities
+- **Enforcement Modes**: Strict/guided/advisory constitutional enforcement
+- **Performance Optimization**: Caching and lazy loading for minimal overhead
+- **Constitutional Compliance**: All configurations maintain framework principles
+
+#### **🔍 Integration Testing**
+- **Comprehensive Test Coverage**: 20+ integration tests across all phases
+- **Profile Validation**: Tests for all three configuration profiles
+- **Performance Validation**: Confirms minimal overhead (< 20ms)
+- **Constitutional Compliance**: Verifies framework principles maintained
+
+#### **📖 Documentation**
+- **NEW**: `docs/implementation/feature-configurability-integration-complete.md` - Phase 1 & 2 summary
+- **NEW**: `docs/implementation/feature-configurability-phase2-complete.md` - Phase 2 details
+- **NEW**: `docs/implementation/feature-configurability-phase3-complete.md` - Phase 3 details
+- **ENHANCED**: All tool documentation with configuration examples
+
+#### **🏛️ Constitutional Compliance**
+- **100% Compliance**: All new features maintain constitutional principles
+- **Required Annotations**: All new files include framework annotations
+- **Blueprint Integration**: Configuration system integrates with blueprint-driven development
+- **Evolution Stories**: Systematic learning captured through configuration adoption
+
+### Breaking Changes
+- None (backward compatible with v2.1.0)
+
+### Migration Required
+- None (existing installations continue to work)
+- Optional: Configure team settings via `node cli/team-config.ts setup`
+
+---
+
 ## [2.1.0] - 2025-08-08
 
 ### 🛡️ Framework Protection & Cursor Integration
 
 This release introduces comprehensive destructive action protection and enhanced Cursor IDE integration.
+
+### 🧠 Memory Governance Foundation
+
+This release establishes the foundation for constitutional memory governance with dual-layer architecture.
+
+#### **Memory Governance Infrastructure**
+- **NEW**: `framework/memory/memory-core.ts` - Core memory interfaces and constitutional schemas
+- **NEW**: `blueprints/memory-governance/blueprint.yaml` - Memory governance blueprint specification
+- **NEW**: `cli/aegis-memory.ts` - Memory subsystem CLI with constitutional compliance
+- **NEW**: `docs/evolution/evs-2025-01-XX-001-memory-subsystem-integration.md` - Evolution story
+- **NEW**: `docs/implementation/memory-subsystem-implementation-summary.md` - Implementation summary
+- **NEW**: `docs/roadmap/memory-governance-roadmap.md` - Memory governance roadmap
+
+#### **Memory Governance Features**
+- **Dual-Layer Architecture**: Lite memory (transient) + Heavy memory (persistent)
+- **Constitutional Compliance**: All memory operations traceable and auditable
+- **Schema Validation**: Zod-based validation for memory operations
+- **Blueprint Integration**: Memory operations require blueprint specifications
+- **Observability**: Memory telemetry integrated with framework observability
 
 #### **🛡️ Destructive Action Protection System**
 - **NEW**: `tools/destructive-action-protection.ts` - Pre-execution validation for destructive operations

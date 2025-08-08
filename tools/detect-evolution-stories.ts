@@ -1,5 +1,5 @@
 /**
- * @aegisFrameworkVersion 2.0.0-alpha-dev
+ * @aegisFrameworkVersion 2.1.0
  * @intent Automated detection system for evolution story triggers
  * @context Monitor framework usage patterns and automatically suggest evolution documentation
  * 
@@ -13,6 +13,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { execSync } from 'child_process';
+import { TeamConfigLoader } from './team-config-loader.js';
 
 interface EvolutionTrigger {
   type: 'constitutional-violation' | 'user-question' | 'validation-failure' | 'migration-friction' | 'ai-quality-gap';
@@ -25,9 +26,11 @@ interface EvolutionTrigger {
 export class EvolutionStoryDetector {
   protected projectRoot: string;
   private triggers: EvolutionTrigger[] = [];
+  private configLoader: TeamConfigLoader;
 
   constructor(projectRoot: string = process.cwd()) {
     this.projectRoot = projectRoot;
+    this.configLoader = TeamConfigLoader.getInstance(projectRoot);
   }
 
   /**
@@ -37,6 +40,12 @@ export class EvolutionStoryDetector {
    */
   async detectTriggers(): Promise<EvolutionTrigger[]> {
     this.triggers = [];
+
+    // Check if evolution story detection is enabled
+    if (!this.configLoader.isRequiredFeatureEnabled('evolutionStoryDetection')) {
+      console.log('📋 Evolution story detection disabled in team configuration');
+      return [];
+    }
 
     // Check for constitutional violations
     await this.detectConstitutionalViolations();
@@ -386,6 +395,15 @@ export class EvolutionStoryDetector {
    * Note: Auto-generation can be configured in team-config.yaml (optional feature)
    */
   async autoGenerateStories(): Promise<string[]> {
+    // Check if auto-generation is enabled
+    const config = this.configLoader.loadConfig();
+    const autoGenerateEnabled = config?.required.evolutionStoryDetection.autoGenerate ?? false;
+    
+    if (!autoGenerateEnabled) {
+      console.log('📋 Auto-generation of evolution stories disabled in team configuration');
+      return [];
+    }
+
     const autoTriggers = this.triggers.filter(t => t.autoGenerate && t.severity === 'critical');
     const generatedStories: string[] = [];
 

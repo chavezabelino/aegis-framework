@@ -1,5 +1,5 @@
 /**
- * @aegisFrameworkVersion 2.0.0-alpha-dev
+ * @aegisFrameworkVersion 2.1.0
  * @intent Real-time intent enforcement and agent drift prevention
  * @context Prevents AI agents from deviating from constitutional principles during execution
  */
@@ -7,6 +7,7 @@
 import { execSync } from 'child_process';
 import * as fs from 'fs';
 import * as path from 'path';
+import { TeamConfigLoader } from './team-config-loader.js';
 
 interface IntentViolation {
   type: 'functional-drift' | 'constitutional-violation' | 'blueprint-deviation' | 'safety-bypass';
@@ -39,9 +40,11 @@ export class IntentEnforcementEngine {
   private currentIntent: ExecutionIntent | null = null;
   private violationHistory: IntentViolation[] = [];
   private commandHistory: CommandAnalysis[] = [];
+  private configLoader: TeamConfigLoader;
 
   constructor(projectRoot: string = process.cwd()) {
     this.projectRoot = projectRoot;
+    this.configLoader = TeamConfigLoader.getInstance(projectRoot);
   }
 
   /**
@@ -76,6 +79,12 @@ export class IntentEnforcementEngine {
    * Enforce intent before command execution
    */
   enforceIntent(command: string, explanation?: string): { allowed: boolean; violations: IntentViolation[] } {
+    // Check if constitutional enforcement is enabled
+    if (!this.configLoader.isRequiredFeatureEnabled('constitutionalEnforcement')) {
+      console.log('📋 Constitutional enforcement disabled in team configuration');
+      return { allowed: true, violations: [] };
+    }
+
     if (!this.currentIntent) {
       return {
         allowed: false,
@@ -93,11 +102,23 @@ export class IntentEnforcementEngine {
     const analysis = this.analyzeCommand(command, explanation);
     const violations = this.detectViolations(analysis, explanation);
     
+    // Apply team configuration mode
+    const mode = this.configLoader.getConstitutionalMode();
+    const blocking = this.configLoader.loadConfig()?.required.constitutionalEnforcement.blocking ?? true;
+    
+    // Adjust violations based on mode
+    const adjustedViolations = violations.map(violation => ({
+      ...violation,
+      blockExecution: mode === 'strict' ? violation.blockExecution : 
+                     mode === 'guided' ? violation.severity === 'critical' :
+                     false // advisory mode - never block
+    }));
+    
     // Log enforcement decision
-    this.logEnforcementDecision(command, analysis, violations);
+    this.logEnforcementDecision(command, analysis, adjustedViolations);
     
     return {
-      allowed: violations.filter(v => v.blockExecution).length === 0,
+      allowed: adjustedViolations.filter(v => v.blockExecution).length === 0,
       violations
     };
   }

@@ -1,8 +1,8 @@
-# 🛡️ Aegis Framework v2.1.0
+# 🛡️ Aegis Framework v2.2.0
 
 [![GenAI OS Manifesto](https://img.shields.io/badge/📖_GenAI_OS-Manifesto-blue?style=for-the-badge)](docs/manifesto/README.md)
 [![Constitutional Computing](https://img.shields.io/badge/🏛️_Constitutional-Computing-green?style=for-the-badge)](docs/manifesto/principles.md)
-[![Framework Version](https://img.shields.io/badge/Framework-v2.1.0-orange?style=for-the-badge)](VERSION)
+[![Framework Version](https://img.shields.io/badge/Framework-v2.2.0-orange?style=for-the-badge)](VERSION)
 [![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](LICENSE)
 
 > **The world's first GenAI Operating System** - Constitutional governance for AI-native engineering with systematic drift detection, evolution learning, and democratic amendment processes.
@@ -39,7 +39,7 @@ While most teams deploy AI like browser plugins—fast, fragile, ungoverned—we
 #### Option 1: NPM Package (Recommended for Teams)
 ```bash
 # Install globally for immediate use
-npm install -g @aegis-framework/cli@2.1.0
+npm install -g @aegis-framework/cli@2.2.0
 
 # Hydrate any project instantly
 aegis-hydrate /path/to/your/project
@@ -257,12 +257,12 @@ Each agent (Copilot, Kilo, Lovable) has a behavior profile in `/framework/agents
 - ✅ **v1.3.1**: Documentation reorganization and improved maintainability
 - ✅ **v1.4.0**: Template Quality & GitHub Copilot Instructions (HTML entity fixes, constitutional compliance, operational excellence)
 - ✅ **v2.0.0-alpha-dev**: One-Command Hydration paradigm shift - "bill becomes law" migration with approval gates
+- ✅ **v2.2.0**: Feature Configurability System Complete (Three-tier configuration: Core/Required/Optional)
 - ✅ **v2.1.0**: Framework Protection & Cursor Integration (Destructive action protection, Cursor IDE integration, Vite + Bun migration)
 - ✅ **v2.1.0**: Package Distribution & Automation (NPM packages, Docker support, automated releases)
-- 🔜 **v2.1.0**: Feature Configurability System (three-tier configuration: Core/Required/Optional)
 - 🔜 **v3.0.0**: Tech Stack Neutrality (universal framework support beyond React+Next.js)
 
-See [detailed roadmaps](docs/roadmap/), [v2.1.0 Feature Configurability plan](docs/roadmap/feature-configurability-roadmap.md), and the [CHANGELOG.md](CHANGELOG.md) for complete feature planning and release history.
+See [detailed roadmaps](docs/roadmap/), [v2.2.0 Feature Configurability completion](docs/implementation/feature-configurability-phase3-complete.md), and the [CHANGELOG.md](CHANGELOG.md) for complete feature planning and release history.
 
 ---
 

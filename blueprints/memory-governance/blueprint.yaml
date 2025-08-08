@@ -1,0 +1,352 @@
+id: memory-governance
+name: Constitutional Memory Governance
+version: 1.0.0
+description: "Constitutional memory governance system for AI companion applications with dual-layer architecture (Lite + Heavy memory)"
+
+# ============================================================================
+# REQUIRED COMPONENTS
+# ============================================================================
+
+requiredRoutes:
+  - path: "/memory/lite/append"
+    method: "POST"
+    description: "Append message to lite memory"
+    schema: "memory-message.schema.ts"
+    
+  - path: "/memory/lite/context"
+    method: "GET"
+    description: "Generate context from lite memory"
+    schema: "memory-context.schema.ts"
+    
+  - path: "/memory/lite/summarize"
+    method: "POST"
+    description: "Summarize lite memory to snapshot"
+    schema: "memory-summary.schema.ts"
+    
+  - path: "/memory/heavy/commit"
+    method: "POST"
+    description: "Commit memory snapshot to heavy storage"
+    schema: "memory-commit.schema.ts"
+    
+  - path: "/memory/heavy/load"
+    method: "GET"
+    description: "Load memory snapshots with filter"
+    schema: "memory-filter.schema.ts"
+    
+  - path: "/memory/heavy/diff"
+    method: "GET"
+    description: "Generate diff between memory commits"
+    schema: "memory-diff.schema.ts"
+    
+  - path: "/memory/heavy/replay"
+    method: "GET"
+    description: "Replay memory state from commit"
+    schema: "memory-replay.schema.ts"
+    
+  - path: "/memory/schema/register"
+    method: "POST"
+    description: "Register new memory schema"
+    schema: "memory-schema.schema.ts"
+    
+  - path: "/memory/schema/validate"
+    method: "POST"
+    description: "Validate data against memory schema"
+    schema: "memory-validation.schema.ts"
+
+requiredProviders:
+  - id: "memory-storage"
+    type: "database"
+    description: "Persistent storage for heavy memory"
+    config:
+      type: "postgresql"
+      connection: "DATABASE_URL"
+      schema: "memory"
+      
+  - id: "memory-cache"
+    type: "cache"
+    description: "Fast cache for lite memory"
+    config:
+      type: "redis"
+      connection: "REDIS_URL"
+      ttl: 3600
+      
+  - id: "memory-observability"
+    type: "telemetry"
+    description: "Memory operation telemetry"
+    config:
+      type: "opentelemetry"
+      endpoint: "OTEL_ENDPOINT"
+
+requiredSelectors:
+  - id: "memory-message-selector"
+    description: "Select memory messages by criteria"
+    schema: "memory-filter.schema.ts"
+    
+  - id: "memory-snapshot-selector"
+    description: "Select memory snapshots by criteria"
+    schema: "memory-filter.schema.ts"
+    
+  - id: "memory-schema-selector"
+    description: "Select memory schemas by criteria"
+    schema: "memory-schema-filter.schema.ts"
+
+# ============================================================================
+# RULE CONTRACTS
+# ============================================================================
+
+ruleContracts:
+  - id: memory-privacy
+    version: "1.0.0"
+    description: "Constitutional memory privacy and access controls"
+    schema: "memory-privacy.schema.ts"
+    enforcement: "strict"
+    
+  - id: memory-traceability
+    version: "1.0.0"
+    description: "Memory operation traceability requirements"
+    schema: "memory-traceability.schema.ts"
+    enforcement: "strict"
+    
+  - id: memory-observability
+    version: "1.0.0"
+    description: "Memory telemetry and audit requirements"
+    schema: "memory-observability.schema.ts"
+    enforcement: "strict"
+    
+  - id: memory-schema-validation
+    version: "1.0.0"
+    description: "Memory schema validation requirements"
+    schema: "memory-schema-validation.schema.ts"
+    enforcement: "strict"
+    
+  - id: memory-quota-management
+    version: "1.0.0"
+    description: "Memory quota and storage management"
+    schema: "memory-quota.schema.ts"
+    enforcement: "strict"
+    
+  - id: memory-constitutional-compliance
+    version: "1.0.0"
+    description: "Constitutional compliance for memory operations"
+    schema: "memory-constitutional.schema.ts"
+    enforcement: "strict"
+
+# ============================================================================
+# OBSERVABILITY
+# ============================================================================
+
+observability:
+  events:
+    # Lite Memory Events
+    - name: "lite_memory_append"
+      description: "Message appended to lite memory"
+      severity: "info"
+      metadata:
+        - "message_id"
+        - "role"
+        - "token_count"
+        - "blueprint_id"
+        
+    - name: "lite_memory_generate_context"
+      description: "Context generated from lite memory"
+      severity: "info"
+      metadata:
+        - "context_length"
+        - "message_count"
+        - "blueprint_id"
+        
+    - name: "lite_memory_summarize"
+      description: "Lite memory summarized to snapshot"
+      severity: "info"
+      metadata:
+        - "snapshot_id"
+        - "summary_length"
+        - "original_count"
+        - "blueprint_id"
+        
+    - name: "lite_memory_forget"
+      description: "Messages forgotten from lite memory"
+      severity: "info"
+      metadata:
+        - "forgotten_count"
+        - "criteria"
+        - "blueprint_id"
+        
+    # Heavy Memory Events
+    - name: "heavy_memory_commit"
+      description: "Memory snapshot committed to heavy storage"
+      severity: "info"
+      metadata:
+        - "commit_id"
+        - "snapshot_id"
+        - "author"
+        - "blueprint_id"
+        
+    - name: "heavy_memory_load"
+      description: "Memory snapshots loaded from heavy storage"
+      severity: "info"
+      metadata:
+        - "filter_criteria"
+        - "result_count"
+        - "blueprint_id"
+        
+    - name: "heavy_memory_diff"
+      description: "Memory diff generated between commits"
+      severity: "info"
+      metadata:
+        - "commit_id_1"
+        - "commit_id_2"
+        - "diff_size"
+        - "blueprint_id"
+        
+    - name: "heavy_memory_replay"
+      description: "Memory state replayed from commit"
+      severity: "info"
+      metadata:
+        - "commit_id"
+        - "replay_context"
+        - "blueprint_id"
+        
+    # Constitutional Compliance Events
+    - name: "memory_validation_success"
+      description: "Memory validation successful"
+      severity: "info"
+      metadata:
+        - "validation_type"
+        - "blueprint_id"
+        
+    - name: "memory_validation_failure"
+      description: "Memory validation failed"
+      severity: "error"
+      metadata:
+        - "validation_type"
+        - "error_details"
+        - "blueprint_id"
+        
+    - name: "memory_constitutional_compliance"
+      description: "Memory operation constitutional compliance verified"
+      severity: "info"
+      metadata:
+        - "operation_type"
+        - "blueprint_id"
+        
+    - name: "memory_constitutional_violation"
+      description: "Memory operation constitutional violation detected"
+      severity: "error"
+      metadata:
+        - "operation_type"
+        - "violation_details"
+        - "blueprint_id"
+        
+    # Error Events
+    - name: "memory_quota_exceeded"
+      description: "Memory storage quota exceeded"
+      severity: "warning"
+      metadata:
+        - "quota_type"
+        - "current_usage"
+        - "quota_limit"
+        - "blueprint_id"
+        
+    - name: "memory_schema_validation_failed"
+      description: "Memory schema validation failed"
+      severity: "error"
+      metadata:
+        - "schema_id"
+        - "validation_errors"
+        - "blueprint_id"
+        
+    - name: "memory_storage_error"
+      description: "Memory storage operation failed"
+      severity: "error"
+      metadata:
+        - "operation_type"
+        - "error_details"
+        - "blueprint_id"
+        
+    - name: "memory_operation_failed"
+      description: "Memory operation failed"
+      severity: "error"
+      metadata:
+        - "operation_type"
+        - "error_details"
+        - "blueprint_id"
+
+# ============================================================================
+# ERROR STATES
+# ============================================================================
+
+errorStates:
+  - id: memory_quota_exceeded
+    description: "Memory storage quota exceeded"
+    fallback: "Summarize and archive oldest memories"
+    recovery:
+      - action: "summarize_oldest_memories"
+        description: "Summarize oldest memories to reduce storage"
+      - action: "archive_inactive_memories"
+        description: "Archive memories not accessed recently"
+      - action: "increase_quota"
+        description: "Request quota increase from administrator"
+        
+  - id: schema_validation_failed
+    description: "Memory schema validation failed"
+    fallback: "Reject memory operation with detailed error"
+    recovery:
+      - action: "log_validation_error"
+        description: "Log detailed validation error for debugging"
+      - action: "reject_operation"
+        description: "Reject the memory operation"
+      - action: "notify_administrator"
+        description: "Notify administrator of schema issues"
+        
+  - id: storage_connection_failed
+    description: "Memory storage connection failed"
+    fallback: "Use local cache and retry later"
+    recovery:
+      - action: "use_local_cache"
+        description: "Use local cache for temporary storage"
+      - action: "retry_connection"
+        description: "Retry storage connection"
+      - action: "notify_administrator"
+        description: "Notify administrator of storage issues"
+        
+  - id: constitutional_violation
+    description: "Memory operation violates constitutional principles"
+    fallback: "Block operation and log violation"
+    recovery:
+      - action: "block_operation"
+        description: "Block the memory operation"
+      - action: "log_violation"
+        description: "Log constitutional violation details"
+      - action: "notify_governance"
+        description: "Notify governance system of violation"
+
+# ============================================================================
+# EXECUTION MODE
+# ============================================================================
+
+executionMode: "strict"
+agentMode: "constitutional"
+outputType: "memory-governance-system"
+
+# ============================================================================
+# METADATA
+# ============================================================================
+
+metadata:
+  author: "Aegis Framework Community"
+  created: "2025-01-XX"
+  lastModified: "2025-01-XX"
+  tags:
+    - "memory"
+    - "governance"
+    - "constitutional"
+    - "ai-companion"
+    - "dual-layer"
+  dependencies:
+    - "zod"
+    - "postgresql"
+    - "redis"
+    - "opentelemetry"
+  constitutionalAuthority: "Article I (Core Principles) + Article III (Evolution Process)"
+  strategicAlignment: "v3.0.0 Universal Tech Stack Support"

@@ -6,14 +6,15 @@
  * Constitutional enforcement tool for Article IX: Template and Documentation Quality Standards
  * Validates encoding compliance, structural integrity, and output fidelity
  * 
- * @aegisFrameworkVersion: 1.2.1
- * @intent: Prevent HTML encoding artifacts and ensure template quality
+ * @aegisFrameworkVersion: 2.1.0
+ * @intent: Prevent HTML encoding artifacts and ensure template quality with team configuration support
  * @constitutionalAuthority: Article IX, Section 4
  */
 
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import { TeamConfigLoader } from './team-config-loader.js';
 
 // ES module compatibility
 const __filename = fileURLToPath(import.meta.url);
@@ -72,13 +73,28 @@ interface QualityViolation {
 class TemplateQualityValidator {
   private frameworkRoot: string;
   private violations: QualityViolation[] = [];
+  private configLoader: TeamConfigLoader;
 
-  constructor() {
-    this.frameworkRoot = path.resolve(__dirname, '..');
+  constructor(projectRoot?: string) {
+    this.frameworkRoot = projectRoot || path.resolve(__dirname, '..');
+    this.configLoader = TeamConfigLoader.getInstance(this.frameworkRoot);
   }
 
   async validateAll(): Promise<TemplateQualityResult> {
     console.log('🔍 Validating Template Quality (Constitutional Article IX)...\n');
+
+    // Check if template quality validation is enabled
+    if (!this.configLoader.isRequiredFeatureEnabled('templateQuality')) {
+      console.log('📋 Template quality validation disabled in team configuration');
+      return {
+        overall: 100,
+        encoding: { score: 100, plainTextCompliance: true, htmlEntities: [], encodingIssues: [], mixedEncodingDetected: false },
+        structure: { score: 100, markdownStructure: true, headingHierarchy: true, constitutionalAnnotations: true, formatConsistency: true, issues: [] },
+        fidelity: { score: 100, referenceMatches: [], encodingArtifacts: [], outputConsistency: true, crossPlatformCompatible: true },
+        violations: [],
+        recommendations: []
+      };
+    }
 
     const encoding = await this.validateEncoding();
     const structure = await this.validateStructure();

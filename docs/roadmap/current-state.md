@@ -137,6 +137,21 @@ aegis-hydrate /path/to/existing/project
 
 **Evolution Tools**:
 - `tools/detect-evolution-stories.ts` - Real-time pattern detection
+
+### **🧠 Memory Governance Foundation**
+**Status**: 🔄 **Development Phase**
+- **Memory Core Interfaces**: Constitutional memory interfaces and base classes (`framework/memory/memory-core.ts`)
+- **Memory Governance Blueprint**: Complete blueprint specification for memory operations (`blueprints/memory-governance/blueprint.yaml`)
+- **Memory Governance CLI**: Command-line tools for memory subsystem management (`cli/aegis-memory.ts`)
+- **Constitutional Memory Schemas**: Zod-based validation for all memory operations
+- **Dual-Layer Architecture**: Lite memory (transient) + Heavy memory (persistent) design
+
+**Memory Components**:
+- `framework/memory/memory-core.ts` - Core memory interfaces and schemas
+- `blueprints/memory-governance/blueprint.yaml` - Memory governance specification
+- `cli/aegis-memory.ts` - Memory subsystem CLI tools
+- `docs/evolution/evs-2025-01-XX-001-memory-subsystem-integration.md` - Evolution story
+- `docs/implementation/memory-subsystem-implementation-summary.md` - Implementation summary
 - `cli/detect-evolution-stories.cjs` - Evolution story automation
 - `tools/copilot-integration.ts` - Conversation context capture
 

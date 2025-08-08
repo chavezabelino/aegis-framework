@@ -6,26 +6,42 @@
  * Uses intelligent changelog analysis to automatically update CHANGELOG.md
  * Part of Option B: Intelligent Changelog Generation
  * 
- * @aegisFrameworkVersion: 1.1.0-beta
- * @intent: Automate changelog maintenance with AI-powered change detection
+ * @aegisFrameworkVersion: 2.1.0
+ * @intent: Automate changelog maintenance with AI-powered change detection and team configuration support
+ * @context: Automated changelog generation with configurable formats and team preferences
+ * @mode: strict
  */
 
 import fs from "fs";
 import path from "path";
 import { IntelligentChangelogEngine } from "../framework/learning/intelligent-changelog.ts";
+import { TeamConfigLoader } from './team-config-loader.js';
 
 class AutomatedChangelogUpdater {
   private frameworkRoot: string;
   private changelogPath: string;
+  private configLoader: TeamConfigLoader;
 
   constructor(frameworkRoot: string = process.cwd()) {
     this.frameworkRoot = frameworkRoot;
     this.changelogPath = path.join(frameworkRoot, 'CHANGELOG.md');
+    this.configLoader = TeamConfigLoader.getInstance(frameworkRoot);
   }
 
   async updateChangelog(dryRun: boolean = false): Promise<void> {
     console.log("🔄 Automated Changelog Update");
     console.log("=============================");
+
+    // Check if automated changelog is enabled
+    if (!this.configLoader.isOptionalFeatureEnabled('automatedChangelog')) {
+      console.log('📋 Automated changelog disabled in team configuration');
+      return;
+    }
+
+    const config = this.configLoader.loadConfig();
+    const format = config?.optional.automatedChangelog.format ?? 'constitutional';
+
+    console.log(`📋 Using format: ${format}`);
 
     // Generate intelligent analysis
     const engine = new IntelligentChangelogEngine(this.frameworkRoot);

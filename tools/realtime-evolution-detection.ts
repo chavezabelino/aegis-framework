@@ -1,12 +1,14 @@
 /**
- * @aegisFrameworkVersion 2.0.0-alpha-dev
- * @intent Real-time evolution trigger detection from AI conversation context
- * @context Capture field insights directly from user prompts and AI interactions
+ * @aegisFrameworkVersion: 2.1.0
+ * @intent: Real-time evolution trigger detection from AI conversation context
+ * @context: Capture field insights directly from user prompts and AI interactions
+ * @mode: strict
  */
 
 import * as fs from 'fs';
 import * as path from 'path';
-import { EvolutionStoryDetector, type EvolutionTrigger } from './detect-evolution-stories';
+import { EvolutionStoryDetector, type EvolutionTrigger } from './detect-evolution-stories.js';
+import { TeamConfigLoader } from './team-config-loader.js';
 
 interface ConversationContext {
   userPrompt: string;
@@ -27,6 +29,12 @@ interface RealTimePattern {
 
 class RealTimeEvolutionDetector extends EvolutionStoryDetector {
   private conversationLog: ConversationContext[] = [];
+  private configLoader: TeamConfigLoader;
+  
+  constructor(projectRoot: string = process.cwd()) {
+    super(projectRoot);
+    this.configLoader = TeamConfigLoader.getInstance(projectRoot);
+  }
   
   /**
    * Real-time patterns that indicate evolution story needs
@@ -98,6 +106,14 @@ class RealTimeEvolutionDetector extends EvolutionStoryDetector {
    * Analyze conversation context for evolution triggers
    */
   async analyzeConversationContext(context: ConversationContext): Promise<EvolutionTrigger[]> {
+    // Check if real-time pattern detection is enabled
+    if (!this.configLoader.isOptionalFeatureEnabled('realtimePatternDetection')) {
+      console.log('📋 Real-time pattern detection disabled in team configuration');
+      return [];
+    }
+
+    const config = this.configLoader.loadConfig();
+    const sensitivity = config?.optional.realtimePatternDetection.sensitivity ?? 'medium';
     this.conversationLog.push(context);
     const triggers: EvolutionTrigger[] = [];
     

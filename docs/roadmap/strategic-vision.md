@@ -92,6 +92,12 @@ Transform the Aegis Framework from React+Next.js-biased to **truly universal con
 ### **Target Release**: v3.1.0+ (2027)  
 **Confidence Level**: 🔵 **Directional** (research and development)
 
+### **Constitutional Memory Governance**
+- **Dual-layer memory architecture** (Lite + Heavy memory) - [See Memory Governance Roadmap](./memory-governance-roadmap.md)
+- **Memory as constitutional contracts** with schema validation
+- **Memory-driven framework evolution** and learning
+- **Cross-platform memory governance** patterns
+
 ### **Predictive Governance**
 - **ML-driven drift prediction** and prevention
 - **Automated policy optimization** based on usage patterns
@@ -111,6 +117,7 @@ Transform the Aegis Framework from React+Next.js-biased to **truly universal con
 - **Intelligent governance** evolution
 
 ### **Success Criteria**
+- [ ] Constitutional memory governance operational
 - [ ] Predictive governance features operational
 - [ ] Multi-agent constitutional governance working
 - [ ] Advanced evolution learning implemented

@@ -43,6 +43,16 @@ Comprehensive inventory of all delivered capabilities including:
 
 ## ⚡ **Immediate Horizon (Next 3 Months)**
 
+### **🧠 [Memory Governance System](./memory-governance-roadmap.md)**
+**Target Release**: v2.2.0 (Q2 2025)  
+**Confidence Level**: 🔥 **High** (detailed implementation plan)
+
+**Core Innovation**: Dual-layer memory architecture (Lite + Heavy memory)
+- **Lite Memory**: Transient contextual layer for prompt enrichment
+- **Heavy Memory**: Persistent reflective layer for audit and compliance
+- **Constitutional Compliance**: All memory operations traceable and auditable
+- **Cross-Platform**: Memory governance patterns for all tech stacks
+
 ### **🎛️ [Feature Configurability System](./feature-configurability-roadmap.md)**
 **Target Release**: v2.1.0-alpha (Q1 2026)  
 **Confidence Level**: 🔥 **High** (detailed implementation plan)
@@ -114,6 +124,7 @@ Comprehensive inventory of all delivered capabilities including:
 ## 📚 **Feature-Specific Roadmaps**
 
 ### **🎛️ Core Feature Development**
+- **[Memory Governance](./memory-governance-roadmap.md)** - Dual-layer memory architecture with constitutional compliance
 - **[Feature Configurability](./feature-configurability-roadmap.md)** - Three-tier configuration system (46KB comprehensive plan)
 - **[Tech Stack Neutrality](./tech-stack-neutrality-roadmap.md)** - Universal framework support beyond React ecosystem
 - **[Self-Healing Governance](./self-healing-governance-roadmap.md)** - Advanced constitutional automation
