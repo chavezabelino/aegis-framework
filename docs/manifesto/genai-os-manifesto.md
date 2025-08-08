@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.0.0-alpha-dev
+@aegisFrameworkVersion: 2.3.0-alpha-dev
 @intent: Core manifesto declaring the GenAI Operating System paradigm
 @context: Foundational document establishing AI-native engineering principles
 @manifestoRef: Primary declaration of framework philosophy

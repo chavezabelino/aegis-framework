@@ -1,0 +1,21 @@
+{
+  "checkInterval": 15,
+  "enabledMonitors": [
+    "constitutional-compliance",
+    "version-consistency",
+    "prevention-mechanisms",
+    "intelligence-validation",
+    "system-health",
+    "predictive-analysis"
+  ],
+  "alertThresholds": {
+    "compliance": 85,
+    "violations": 3,
+    "systemHealth": 90
+  },
+  "autoRemediation": true,
+  "notificationChannels": [
+    "console",
+    "file"
+  ]
+}

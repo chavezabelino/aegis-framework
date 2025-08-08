@@ -1,6 +1,6 @@
 {
   "name": "aegis-framework",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "The world's first GenAI Operating System - Constitutional governance for AI-native engineering with systematic drift detection, evolution learning, and democratic amendment processes",
   "type": "module",
   "scripts": {

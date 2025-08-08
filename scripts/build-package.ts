@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * @aegisFrameworkVersion: 2.1.0
+ * @aegisFrameworkVersion: 2.3.0
  * @intent: Build packaged distribution of Aegis Framework
  * @context: Create standalone and library packages for stable releases
  */

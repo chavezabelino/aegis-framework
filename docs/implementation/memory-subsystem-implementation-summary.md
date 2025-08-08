@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.1.0
+@aegisFrameworkVersion: 2.3.0
 @intent: Comprehensive implementation summary for Aegis Memory Subsystem
 @context: Analysis of MemU framework concepts and constitutional integration
 @mode: strict

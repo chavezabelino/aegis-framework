@@ -1,0 +1,31 @@
+{
+  "certificateId": "AEGIS-INTEL-SELF-HEALING-GOVERNANCE-1754690456897",
+  "issuedTo": "Aegis Framework",
+  "claimCertified": "Framework learns from failures and prevents their recurrence",
+  "certificationLevel": "platinum",
+  "score": 99.39999999999999,
+  "issuedDate": "2025-08-08T22:00:56.897Z",
+  "validUntil": "2025-11-06T22:00:56.897Z",
+  "certifyingAuthority": "Aegis Framework Intelligence Certification Authority",
+  "evidence": [
+    "Implementation verified: framework/healing/self-healing-governance.ts",
+    "✅ Pattern Recognition Test: Self-healing governance validated",
+    "✅ Healing Effectiveness Test: Self-healing governance validated",
+    "📋 Evidence verified: Failure pattern recognition",
+    "📋 Evidence verified: Healing action implementation",
+    "📋 Evidence verified: Prevention effectiveness",
+    "📋 Evidence verified: Learning persistence"
+  ],
+  "testResults": [
+    {
+      "test": "pattern-recognition-test",
+      "status": "pass",
+      "score": 92
+    },
+    {
+      "test": "healing-effectiveness-test",
+      "status": "pass",
+      "score": 92
+    }
+  ]
+}

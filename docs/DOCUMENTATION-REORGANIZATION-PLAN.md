@@ -23,7 +23,7 @@ The project root has **8 markdown files**, creating clutter and poor organizatio
 ```
 docs/
 ├── releases/                    # 📁 Release documentation
-│   ├── v1.3.0-summary.md      # Moved from root
+│   ├── v2.3.0-summary.md      # Moved from root
 │   ├── v1.2.1-summary.md      # Future releases
 │   └── release-template.md     # Standard format
 ├── implementation/              # 📁 Implementation details

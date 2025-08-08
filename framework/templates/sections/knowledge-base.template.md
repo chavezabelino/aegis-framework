@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 1.3.1
+@aegisFrameworkVersion: 2.3.0
 @intent: Template section for agent instructions
 @context: Modular content for framework instruction generation
 -->

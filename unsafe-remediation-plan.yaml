@@ -1,7 +1,7 @@
 id: "unsafe-plan-001"
 name: "Unsafe Remediation Plan"
 description: "This plan demonstrates what gets blocked by constitutional safeguards"
-version: "1.0.0"
+version: "2.3.0"
 
 targetProject:
   path: "/unsafe/project"

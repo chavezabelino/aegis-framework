@@ -1,0 +1,296 @@
+[
+  {
+    "id": "version-drift-detection-unit",
+    "name": "Version Drift Detection Unit Test",
+    "category": "prevention",
+    "description": "Test individual components of version drift detection",
+    "targetFeature": "tools/validate-version-consistency.ts",
+    "testType": "unit",
+    "criticalityLevel": "critical",
+    "automated": true,
+    "expectedOutcome": "All version inconsistencies detected correctly",
+    "testImplementation": "unit-test-version-drift-detection",
+    "evidenceValidation": [
+      "Detection accuracy",
+      "False positive rate",
+      "Performance"
+    ],
+    "prerequisites": [
+      "VERSION file exists",
+      "Core files present"
+    ]
+  },
+  {
+    "id": "version-drift-integration",
+    "name": "Version Drift Prevention Integration Test",
+    "category": "prevention",
+    "description": "Test version drift prevention in realistic scenarios",
+    "targetFeature": "tools/validate-version-consistency.ts",
+    "testType": "integration",
+    "criticalityLevel": "critical",
+    "automated": true,
+    "expectedOutcome": "Version drift prevented across all file types",
+    "testImplementation": "integration-test-version-drift",
+    "evidenceValidation": [
+      "Cross-file consistency",
+      "Auto-fix capability",
+      "Git integration"
+    ],
+    "prerequisites": [
+      "Git repository",
+      "Framework files present"
+    ]
+  },
+  {
+    "id": "version-drift-e2e",
+    "name": "Version Drift End-to-End Test",
+    "category": "prevention",
+    "description": "Complete workflow test of version drift prevention",
+    "targetFeature": "tools/validate-version-consistency.ts",
+    "testType": "end-to-end",
+    "criticalityLevel": "high",
+    "automated": true,
+    "expectedOutcome": "Complete version update workflow protected",
+    "testImplementation": "e2e-test-version-workflow",
+    "evidenceValidation": [
+      "Workflow protection",
+      "User experience",
+      "Error handling"
+    ],
+    "prerequisites": [
+      "Full framework setup",
+      "Git hooks configured"
+    ]
+  },
+  {
+    "id": "constitutional-compliance-unit",
+    "name": "Constitutional Compliance Unit Test",
+    "category": "enforcement",
+    "description": "Test individual constitutional validation components",
+    "targetFeature": "tools/constitutional-compliance-enforcer.ts",
+    "testType": "unit",
+    "criticalityLevel": "critical",
+    "automated": true,
+    "expectedOutcome": "All constitutional violations detected",
+    "testImplementation": "unit-test-constitutional-compliance",
+    "evidenceValidation": [
+      "Violation detection",
+      "Enforcement mechanisms",
+      "Claim validation"
+    ],
+    "prerequisites": [
+      "Constitutional rules defined",
+      "Claims registry present"
+    ]
+  },
+  {
+    "id": "constitutional-security",
+    "name": "Constitutional Security Test",
+    "category": "enforcement",
+    "description": "Security testing of constitutional enforcement",
+    "targetFeature": "tools/constitutional-compliance-enforcer.ts",
+    "testType": "security",
+    "criticalityLevel": "critical",
+    "automated": true,
+    "expectedOutcome": "No security bypasses possible",
+    "testImplementation": "security-test-constitutional",
+    "evidenceValidation": [
+      "Bypass prevention",
+      "Access control",
+      "Audit trail"
+    ],
+    "prerequisites": [
+      "Security test framework",
+      "Attack vectors defined"
+    ]
+  },
+  {
+    "id": "self-healing-unit",
+    "name": "Self-Healing Unit Test",
+    "category": "learning",
+    "description": "Test self-healing components individually",
+    "targetFeature": "framework/healing/self-healing-governance.ts",
+    "testType": "unit",
+    "criticalityLevel": "critical",
+    "automated": true,
+    "expectedOutcome": "Pattern recognition and healing actions work correctly",
+    "testImplementation": "unit-test-self-healing",
+    "evidenceValidation": [
+      "Pattern detection",
+      "Action execution",
+      "State persistence"
+    ],
+    "prerequisites": [
+      "Healing patterns defined",
+      "Action registry present"
+    ]
+  },
+  {
+    "id": "self-healing-reliability",
+    "name": "Self-Healing Reliability Test",
+    "category": "learning",
+    "description": "Test reliability and persistence of self-healing",
+    "targetFeature": "framework/healing/self-healing-governance.ts",
+    "testType": "reliability",
+    "criticalityLevel": "high",
+    "automated": true,
+    "expectedOutcome": "Self-healing survives restarts and maintains state",
+    "testImplementation": "reliability-test-self-healing",
+    "evidenceValidation": [
+      "State persistence",
+      "Recovery capability",
+      "Long-term operation"
+    ],
+    "prerequisites": [
+      "Persistent storage",
+      "Restart simulation capability"
+    ]
+  },
+  {
+    "id": "evolution-learning-unit",
+    "name": "Evolution Learning Unit Test",
+    "category": "learning",
+    "description": "Test evolution learning mechanisms",
+    "targetFeature": "tools/evolution-learning-system.ts",
+    "testType": "unit",
+    "criticalityLevel": "critical",
+    "automated": true,
+    "expectedOutcome": "Learning from patterns and implementing prevention",
+    "testImplementation": "unit-test-evolution-learning",
+    "evidenceValidation": [
+      "Pattern learning",
+      "Prevention implementation",
+      "Knowledge retention"
+    ],
+    "prerequisites": [
+      "Learning patterns defined",
+      "Knowledge base available"
+    ]
+  },
+  {
+    "id": "evolution-learning-performance",
+    "name": "Evolution Learning Performance Test",
+    "category": "learning",
+    "description": "Performance testing of evolution learning",
+    "targetFeature": "tools/evolution-learning-system.ts",
+    "testType": "performance",
+    "criticalityLevel": "medium",
+    "automated": true,
+    "expectedOutcome": "Learning performance meets requirements",
+    "testImplementation": "performance-test-evolution-learning",
+    "evidenceValidation": [
+      "Learning speed",
+      "Memory usage",
+      "Pattern processing rate"
+    ],
+    "prerequisites": [
+      "Performance benchmarks",
+      "Load testing tools"
+    ]
+  },
+  {
+    "id": "agent-drift-unit",
+    "name": "Agent Drift Prevention Unit Test",
+    "category": "prevention",
+    "description": "Test intent enforcement mechanisms",
+    "targetFeature": "tools/intent-enforcement-engine.ts",
+    "testType": "unit",
+    "criticalityLevel": "high",
+    "automated": true,
+    "expectedOutcome": "Intent violations correctly detected and blocked",
+    "testImplementation": "unit-test-agent-drift",
+    "evidenceValidation": [
+      "Intent enforcement",
+      "Violation detection",
+      "Blocking effectiveness"
+    ],
+    "prerequisites": [
+      "Intent definitions",
+      "Violation scenarios"
+    ]
+  },
+  {
+    "id": "agent-drift-integration",
+    "name": "Agent Drift Prevention Integration Test",
+    "category": "prevention",
+    "description": "Integration testing of agent drift prevention",
+    "targetFeature": "tools/intent-enforcement-engine.ts",
+    "testType": "integration",
+    "criticalityLevel": "high",
+    "automated": true,
+    "expectedOutcome": "Agent drift prevention integrated with workflow",
+    "testImplementation": "integration-test-agent-drift",
+    "evidenceValidation": [
+      "Workflow integration",
+      "Real-time enforcement",
+      "User experience"
+    ],
+    "prerequisites": [
+      "Agent workflow simulation",
+      "Integration points defined"
+    ]
+  },
+  {
+    "id": "predictive-compliance-unit",
+    "name": "Predictive Compliance Unit Test",
+    "category": "prediction",
+    "description": "Test predictive compliance components",
+    "targetFeature": "tools/predictive-compliance-monitor.ts",
+    "testType": "unit",
+    "criticalityLevel": "high",
+    "automated": true,
+    "expectedOutcome": "Predictions generated accurately",
+    "testImplementation": "unit-test-predictive-compliance",
+    "evidenceValidation": [
+      "Prediction accuracy",
+      "Pattern recognition",
+      "Alert generation"
+    ],
+    "prerequisites": [
+      "Historical data",
+      "Prediction models"
+    ]
+  },
+  {
+    "id": "predictive-compliance-performance",
+    "name": "Predictive Compliance Performance Test",
+    "category": "prediction",
+    "description": "Performance testing of predictive compliance",
+    "targetFeature": "tools/predictive-compliance-monitor.ts",
+    "testType": "performance",
+    "criticalityLevel": "medium",
+    "automated": true,
+    "expectedOutcome": "Predictions generated within time requirements",
+    "testImplementation": "performance-test-predictive-compliance",
+    "evidenceValidation": [
+      "Response time",
+      "Throughput",
+      "Resource usage"
+    ],
+    "prerequisites": [
+      "Performance requirements",
+      "Load testing setup"
+    ]
+  },
+  {
+    "id": "intelligence-certification-comprehensive",
+    "name": "Intelligence Certification Comprehensive Test",
+    "category": "validation",
+    "description": "Comprehensive test of certification system",
+    "targetFeature": "tools/framework-intelligence-certification.ts",
+    "testType": "end-to-end",
+    "criticalityLevel": "high",
+    "automated": true,
+    "expectedOutcome": "All intelligence features properly certified",
+    "testImplementation": "e2e-test-intelligence-certification",
+    "evidenceValidation": [
+      "Certification accuracy",
+      "Evidence validation",
+      "Certificate generation"
+    ],
+    "prerequisites": [
+      "All intelligence features",
+      "Certification criteria"
+    ]
+  }
+]

@@ -1,5 +1,5 @@
 /**
- * @aegisFrameworkVersion 2.1.0
+ * @aegisFrameworkVersion 2.3.0
  * @intent Integration tests for feature configurability system
  * @context Validate that all framework tools respect team configuration settings
  * @mode: strict

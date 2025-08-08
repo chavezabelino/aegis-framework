@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 1.0.1-alpha
+@aegisFrameworkVersion: 2.3.0-alpha
 @intent: Constitutional amendment proposal for self-healing governance
 @constitutionalAuthority: ../../../CONSTITUTION.md
 @amendmentProcess: Article VII

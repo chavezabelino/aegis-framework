@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.2.0
+@aegisFrameworkVersion: 2.3.0
 @intent: Evolution story documenting systematic version consistency failure and automated solution
 @context: Framework learning from repeated version documentation drift issues
 @mode: strict

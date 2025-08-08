@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.2.0
+@aegisFrameworkVersion: 2.3.0
 @intent: Master roadmap index and navigation for capability-based planning
 @context: Standardized roadmap organization following version audit remediation
 -->

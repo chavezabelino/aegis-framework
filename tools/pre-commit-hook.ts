@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * @aegisFrameworkVersion: 2.1.0
+ * @aegisFrameworkVersion: 2.3.0
  * @intent: Pre-commit hook with team configuration support
  * @context: Constitutional protection with configurable enforcement levels
  * @mode: strict

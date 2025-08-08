@@ -1,5 +1,5 @@
 /**
- * @aegisFrameworkVersion 2.0.0-alpha-dev
+ * @aegisFrameworkVersion 2.3.0-alpha-dev
  * @intent Constitutional schema for validating AI-generated remediation plans
  * @context Framework safeguard against incomplete or unsafe remediation strategies
  */

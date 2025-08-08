@@ -1,0 +1,278 @@
+[
+  {
+    "id": "version-consistency-prevention",
+    "name": "Version Documentation Drift Prevention",
+    "purpose": "Prevent version documentation from becoming inconsistent",
+    "implementation": "tools/validate-version-consistency.ts",
+    "expectedBehavior": "Detect and prevent version inconsistencies before they cause issues",
+    "failureMode": "Allows version drift to occur undetected",
+    "criticalityLevel": "critical",
+    "testScenarios": [
+      {
+        "id": "version-drift-detection",
+        "name": "Version Drift Detection Test",
+        "scenario": "Simulate version changes without documentation updates",
+        "expectedOutcome": "System detects inconsistencies and blocks operations",
+        "testImplementation": "Create temporary version inconsistency and validate detection",
+        "riskLevel": "critical",
+        "autoExecutable": true
+      },
+      {
+        "id": "auto-fix-validation",
+        "name": "Auto-Fix Capability Test",
+        "scenario": "Test automatic correction of version inconsistencies",
+        "expectedOutcome": "System automatically corrects detected inconsistencies",
+        "testImplementation": "Trigger auto-fix and validate corrections",
+        "riskLevel": "high",
+        "autoExecutable": true
+      }
+    ],
+    "lastValidated": "2025-08-08T21:43:12.835Z",
+    "validationResult": {
+      "mechanism": "version-consistency-prevention",
+      "status": "fail",
+      "testsRun": 2,
+      "testsPassed": 0,
+      "testsFailed": 2,
+      "warnings": [
+        "⚠️ Auto-Fix Capability Test: Auto-fix test failed: Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/Users/nino/Workspace/02-local-dev/aegis-framework/tools/validate-version-consistency.js' imported from /Users/nino/Workspace/02-local-dev/aegis-framework/tools/systematic-prevention-validator.ts"
+      ],
+      "errors": [
+        "❌ Version Drift Detection Test: Version validator not accessible: Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/Users/nino/Workspace/02-local-dev/aegis-framework/tools/validate-version-consistency.js' imported from /Users/nino/Workspace/02-local-dev/aegis-framework/tools/systematic-prevention-validator.ts"
+      ],
+      "evidence": [
+        "Implementation file exists: tools/validate-version-consistency.ts"
+      ],
+      "recommendations": [
+        "Fix 2 failed test scenarios",
+        "Critical mechanism requires immediate attention"
+      ],
+      "executionTime": 1,
+      "timestamp": "2025-08-08T21:43:12.835Z"
+    }
+  },
+  {
+    "id": "constitutional-compliance-prevention",
+    "name": "Constitutional Compliance Enforcement",
+    "purpose": "Prevent constitutional violations before they occur",
+    "implementation": "tools/constitutional-compliance-enforcer.ts",
+    "expectedBehavior": "Block operations that would violate constitutional principles",
+    "failureMode": "Allows constitutional violations to proceed undetected",
+    "criticalityLevel": "critical",
+    "testScenarios": [
+      {
+        "id": "false-claim-detection",
+        "name": "False Claim Detection Test",
+        "scenario": "Simulate false intelligence claims being made",
+        "expectedOutcome": "System detects and blocks false claims",
+        "testImplementation": "Create temporary false claim and validate detection",
+        "riskLevel": "critical",
+        "autoExecutable": true
+      },
+      {
+        "id": "compliance-validation",
+        "name": "Constitutional Compliance Validation",
+        "scenario": "Test comprehensive constitutional compliance checking",
+        "expectedOutcome": "System validates all constitutional requirements",
+        "testImplementation": "Run full compliance check and validate results",
+        "riskLevel": "high",
+        "autoExecutable": true
+      }
+    ],
+    "lastValidated": "2025-08-08T21:43:12.912Z",
+    "validationResult": {
+      "mechanism": "constitutional-compliance-prevention",
+      "status": "fail",
+      "testsRun": 2,
+      "testsPassed": 0,
+      "testsFailed": 2,
+      "warnings": [
+        "⚠️ Constitutional Compliance Validation: Constitutional validation failed: Error: Command failed: node tools/validate-constitution.ts\n(node:55360) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n  ⚠️ Comprehensive version validation failed, using basic validation\n"
+      ],
+      "errors": [
+        "❌ False Claim Detection Test: Constitutional enforcer test failed: Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/Users/nino/Workspace/02-local-dev/aegis-framework/tools/constitutional-compliance-enforcer.js' imported from /Users/nino/Workspace/02-local-dev/aegis-framework/tools/systematic-prevention-validator.ts"
+      ],
+      "evidence": [
+        "Implementation file exists: tools/constitutional-compliance-enforcer.ts"
+      ],
+      "recommendations": [
+        "Fix 2 failed test scenarios",
+        "Critical mechanism requires immediate attention"
+      ],
+      "executionTime": 77,
+      "timestamp": "2025-08-08T21:43:12.912Z"
+    }
+  },
+  {
+    "id": "self-healing-prevention",
+    "name": "Self-Healing Governance",
+    "purpose": "Prevent repeat failures through automated learning and correction",
+    "implementation": "framework/healing/self-healing-governance.ts",
+    "expectedBehavior": "Learn from failures and prevent their recurrence",
+    "failureMode": "Allows same failures to repeat without learning",
+    "criticalityLevel": "critical",
+    "testScenarios": [
+      {
+        "id": "failure-pattern-recognition",
+        "name": "Failure Pattern Recognition Test",
+        "scenario": "Test recognition of recurring failure patterns",
+        "expectedOutcome": "System identifies and records failure patterns",
+        "testImplementation": "Simulate recurring failure and validate pattern detection",
+        "riskLevel": "critical",
+        "autoExecutable": true
+      },
+      {
+        "id": "healing-action-execution",
+        "name": "Healing Action Execution Test",
+        "scenario": "Test execution of healing actions for known patterns",
+        "expectedOutcome": "System executes appropriate healing actions",
+        "testImplementation": "Trigger healing for known pattern and validate execution",
+        "riskLevel": "high",
+        "autoExecutable": true
+      }
+    ],
+    "lastValidated": "2025-08-08T21:43:12.912Z",
+    "validationResult": {
+      "mechanism": "self-healing-prevention",
+      "status": "fail",
+      "testsRun": 2,
+      "testsPassed": 1,
+      "testsFailed": 1,
+      "warnings": [],
+      "errors": [
+        "❌ Failure Pattern Recognition Test: Self-healing test failed: Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/Users/nino/Workspace/02-local-dev/aegis-framework/framework/healing/self-healing-governance.js' imported from /Users/nino/Workspace/02-local-dev/aegis-framework/tools/systematic-prevention-validator.ts"
+      ],
+      "evidence": [
+        "Implementation file exists: framework/healing/self-healing-governance.ts",
+        "✅ Healing Action Execution Test: Healing action execution simulated"
+      ],
+      "recommendations": [
+        "Fix 1 failed test scenarios",
+        "Critical mechanism requires immediate attention"
+      ],
+      "executionTime": 0,
+      "timestamp": "2025-08-08T21:43:12.912Z"
+    }
+  },
+  {
+    "id": "evolution-learning-prevention",
+    "name": "Evolution Learning System",
+    "purpose": "Prevent repeat patterns through evolutionary learning",
+    "implementation": "tools/evolution-learning-system.ts",
+    "expectedBehavior": "Learn from patterns and implement prevention mechanisms",
+    "failureMode": "Fails to learn from patterns, allowing repetition",
+    "criticalityLevel": "critical",
+    "testScenarios": [
+      {
+        "id": "pattern-learning-validation",
+        "name": "Pattern Learning Validation Test",
+        "scenario": "Test learning from new patterns and violations",
+        "expectedOutcome": "System learns from patterns and implements prevention",
+        "testImplementation": "Create new pattern and validate learning response",
+        "riskLevel": "critical",
+        "autoExecutable": true
+      }
+    ],
+    "lastValidated": "2025-08-08T21:43:12.912Z",
+    "validationResult": {
+      "mechanism": "evolution-learning-prevention",
+      "status": "fail",
+      "testsRun": 1,
+      "testsPassed": 0,
+      "testsFailed": 1,
+      "warnings": [],
+      "errors": [
+        "❌ Pattern Learning Validation Test: Evolution learning test failed: Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/Users/nino/Workspace/02-local-dev/aegis-framework/tools/evolution-learning-system.js' imported from /Users/nino/Workspace/02-local-dev/aegis-framework/tools/systematic-prevention-validator.ts"
+      ],
+      "evidence": [
+        "Implementation file exists: tools/evolution-learning-system.ts"
+      ],
+      "recommendations": [
+        "Fix 1 failed test scenarios",
+        "Critical mechanism requires immediate attention"
+      ],
+      "executionTime": 0,
+      "timestamp": "2025-08-08T21:43:12.912Z"
+    }
+  },
+  {
+    "id": "agent-drift-prevention",
+    "name": "Agent Drift Prevention",
+    "purpose": "Prevent AI agents from deviating from constitutional principles",
+    "implementation": "tools/intent-enforcement-engine.ts",
+    "expectedBehavior": "Block agent actions that violate constitutional principles",
+    "failureMode": "Allows agent drift to occur without intervention",
+    "criticalityLevel": "high",
+    "testScenarios": [
+      {
+        "id": "intent-violation-detection",
+        "name": "Intent Violation Detection Test",
+        "scenario": "Test detection of actions that violate set intentions",
+        "expectedOutcome": "System detects and blocks violating actions",
+        "testImplementation": "Simulate intent violation and validate blocking",
+        "riskLevel": "high",
+        "autoExecutable": true
+      }
+    ],
+    "lastValidated": "2025-08-08T21:43:12.913Z",
+    "validationResult": {
+      "mechanism": "agent-drift-prevention",
+      "status": "warning",
+      "testsRun": 1,
+      "testsPassed": 0,
+      "testsFailed": 1,
+      "warnings": [
+        "⚠️ Intent Violation Detection Test: Intent enforcement test failed: Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/Users/nino/Workspace/02-local-dev/aegis-framework/tools/intent-enforcement-engine.js' imported from /Users/nino/Workspace/02-local-dev/aegis-framework/tools/systematic-prevention-validator.ts"
+      ],
+      "errors": [],
+      "evidence": [
+        "Implementation file exists: tools/intent-enforcement-engine.ts"
+      ],
+      "recommendations": [
+        "Fix 1 failed test scenarios"
+      ],
+      "executionTime": 1,
+      "timestamp": "2025-08-08T21:43:12.913Z"
+    }
+  },
+  {
+    "id": "predictive-compliance-prevention",
+    "name": "Predictive Compliance Monitoring",
+    "purpose": "Prevent violations before they occur through predictive analysis",
+    "implementation": "tools/predictive-compliance-monitor.ts",
+    "expectedBehavior": "Predict and prevent violations before they happen",
+    "failureMode": "Fails to predict violations, allowing them to occur",
+    "criticalityLevel": "high",
+    "testScenarios": [
+      {
+        "id": "prediction-accuracy-test",
+        "name": "Prediction Accuracy Test",
+        "scenario": "Test accuracy of violation predictions",
+        "expectedOutcome": "System accurately predicts potential violations",
+        "testImplementation": "Create predictable violation scenario and validate prediction",
+        "riskLevel": "medium",
+        "autoExecutable": true
+      }
+    ],
+    "lastValidated": "2025-08-08T21:43:12.913Z",
+    "validationResult": {
+      "mechanism": "predictive-compliance-prevention",
+      "status": "warning",
+      "testsRun": 1,
+      "testsPassed": 0,
+      "testsFailed": 1,
+      "warnings": [
+        "⚠️ Prediction Accuracy Test: Predictive monitoring test failed: Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/Users/nino/Workspace/02-local-dev/aegis-framework/tools/predictive-compliance-monitor.js' imported from /Users/nino/Workspace/02-local-dev/aegis-framework/tools/systematic-prevention-validator.ts"
+      ],
+      "errors": [],
+      "evidence": [
+        "Implementation file exists: tools/predictive-compliance-monitor.ts"
+      ],
+      "recommendations": [
+        "Fix 1 failed test scenarios"
+      ],
+      "executionTime": 0,
+      "timestamp": "2025-08-08T21:43:12.913Z"
+    }
+  }
+]

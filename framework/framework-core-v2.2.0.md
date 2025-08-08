@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.2.0
+@aegisFrameworkVersion: 2.3.0
 @intent: Framework core specification for v2.2.0 with feature configurability system
 @context: Complete framework architecture and capabilities documentation
 @mode: strict

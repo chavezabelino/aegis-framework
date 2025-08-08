@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * @aegisFrameworkVersion 2.0.0-alpha-dev
+ * @aegisFrameworkVersion 2.3.0-alpha-dev
  * @intent Simple validation script for testing remediation plan constitutional compliance
  * @context Temporary JavaScript version to test framework safeguards
  */

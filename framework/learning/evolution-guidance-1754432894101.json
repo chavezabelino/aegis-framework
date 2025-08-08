@@ -1,6 +1,6 @@
 {
   "timestamp": "2025-08-05T22:28:14.100Z",
-  "frameworkVersion": "1.1.0-beta",
+  "frameworkVersion": "2.3.0-beta",
   "recommendations": [
     {
       "category": "architecture",

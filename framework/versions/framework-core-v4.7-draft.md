@@ -2,7 +2,7 @@
 @aegisBlueprint: framework-core
 @version: 4.7-draft
 @mode: strict
-@intent: ARCHIVED - Features migrated to v1.1.0-beta specification
+@intent: ARCHIVED - Features migrated to v2.3.0-beta specification
 @context:
 - This file has been archived as part of semantic versioning migration
 - Features from this draft have been migrated to framework-core-v1.1.0-beta-spec.md

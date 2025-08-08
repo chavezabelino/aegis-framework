@@ -1,5 +1,5 @@
 /**
- * @aegisFrameworkVersion 2.1.0
+ * @aegisFrameworkVersion 2.3.0
  * @intent Centralized team configuration loader for framework tools
  * @context Enable all tools to respect team-specific feature configuration
  * @mode: strict

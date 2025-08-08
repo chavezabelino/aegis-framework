@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 1.4.0
+@aegisFrameworkVersion: 2.3.0
 @intent: Design plan for enhanced team customization capabilities
 @context: Addresses engineering team adoption needs for framework instruction customization
 -->

@@ -416,7 +416,7 @@ class ConstitutionalConductor {
   }
 
   private async findVersionReferences(): Promise<string[]> {
-    return ["VERSION", "framework/framework-core-v1.0.0-alpha.md"];
+    return ["VERSION", "framework/framework-core-v2.3.0-alpha.md"];
   }
 
   private async calculateVersionConsistency(references: string[]): Promise<number> {

@@ -1,0 +1,229 @@
+[
+  {
+    "id": "alert-1754689292876-e03gp4jw1",
+    "patternId": "version-documentation-drift-prediction",
+    "riskLevel": "low",
+    "confidence": 0.475,
+    "predictedViolation": "version-drift likely to occur",
+    "preventionActions": [
+      "Auto-run version consistency validation",
+      "Block commits until validation passes",
+      "Generate missing documentation updates",
+      "Alert about potential drift"
+    ],
+    "timeToViolation": "Eventually (< 7 days)",
+    "evidence": [
+      "Risk indicator detected: No version consistency check run",
+      "Risk indicator detected: Rapid development phase",
+      "Predictive signal found: Recent commits without validation"
+    ],
+    "autoPreventable": false
+  },
+  {
+    "id": "alert-1754689618606-yrmtysau6",
+    "patternId": "version-documentation-drift-prediction",
+    "riskLevel": "low",
+    "confidence": 0.475,
+    "predictedViolation": "version-drift likely to occur",
+    "preventionActions": [
+      "Auto-run version consistency validation",
+      "Block commits until validation passes",
+      "Generate missing documentation updates",
+      "Alert about potential drift"
+    ],
+    "timeToViolation": "Eventually (< 7 days)",
+    "evidence": [
+      "Risk indicator detected: No version consistency check run",
+      "Risk indicator detected: Rapid development phase",
+      "Predictive signal found: Recent commits without validation"
+    ],
+    "autoPreventable": false
+  },
+  {
+    "id": "alert-1754689759017-7eedwy8ku",
+    "patternId": "version-documentation-drift-prediction",
+    "riskLevel": "low",
+    "confidence": 0.475,
+    "predictedViolation": "version-drift likely to occur",
+    "preventionActions": [
+      "Auto-run version consistency validation",
+      "Block commits until validation passes",
+      "Generate missing documentation updates",
+      "Alert about potential drift"
+    ],
+    "timeToViolation": "Eventually (< 7 days)",
+    "evidence": [
+      "Risk indicator detected: No version consistency check run",
+      "Risk indicator detected: Rapid development phase",
+      "Predictive signal found: Recent commits without validation"
+    ],
+    "autoPreventable": false
+  },
+  {
+    "id": "alert-1754689759233-mvrk6p2sv",
+    "patternId": "version-documentation-drift-prediction",
+    "riskLevel": "low",
+    "confidence": 0.475,
+    "predictedViolation": "version-drift likely to occur",
+    "preventionActions": [
+      "Auto-run version consistency validation",
+      "Block commits until validation passes",
+      "Generate missing documentation updates",
+      "Alert about potential drift"
+    ],
+    "timeToViolation": "Eventually (< 7 days)",
+    "evidence": [
+      "Risk indicator detected: No version consistency check run",
+      "Risk indicator detected: Rapid development phase",
+      "Predictive signal found: Recent commits without validation"
+    ],
+    "autoPreventable": false
+  },
+  {
+    "id": "alert-1754690078719-09c5b2ik8",
+    "patternId": "version-documentation-drift-prediction",
+    "riskLevel": "medium",
+    "confidence": 0.57,
+    "predictedViolation": "version-drift likely to occur",
+    "preventionActions": [
+      "Auto-run version consistency validation",
+      "Block commits until validation passes",
+      "Generate missing documentation updates",
+      "Alert about potential drift"
+    ],
+    "timeToViolation": "Soon (< 24 hours)",
+    "evidence": [
+      "Risk indicator detected: No version consistency check run",
+      "Risk indicator detected: Rapid development phase",
+      "Predictive signal found: Recent commits without validation",
+      "Predictive signal found: Framework core files modified"
+    ],
+    "autoPreventable": false
+  },
+  {
+    "id": "alert-1754690125516-9ai7naeue",
+    "patternId": "version-documentation-drift-prediction",
+    "riskLevel": "medium",
+    "confidence": 0.57,
+    "predictedViolation": "version-drift likely to occur",
+    "preventionActions": [
+      "Auto-run version consistency validation",
+      "Block commits until validation passes",
+      "Generate missing documentation updates",
+      "Alert about potential drift"
+    ],
+    "timeToViolation": "Soon (< 24 hours)",
+    "evidence": [
+      "Risk indicator detected: No version consistency check run",
+      "Risk indicator detected: Rapid development phase",
+      "Predictive signal found: Recent commits without validation",
+      "Predictive signal found: Framework core files modified"
+    ],
+    "autoPreventable": false
+  },
+  {
+    "id": "alert-1754690145792-vyh5r8gsn",
+    "patternId": "version-documentation-drift-prediction",
+    "riskLevel": "medium",
+    "confidence": 0.57,
+    "predictedViolation": "version-drift likely to occur",
+    "preventionActions": [
+      "Auto-run version consistency validation",
+      "Block commits until validation passes",
+      "Generate missing documentation updates",
+      "Alert about potential drift"
+    ],
+    "timeToViolation": "Soon (< 24 hours)",
+    "evidence": [
+      "Risk indicator detected: No version consistency check run",
+      "Risk indicator detected: Rapid development phase",
+      "Predictive signal found: Recent commits without validation",
+      "Predictive signal found: Framework core files modified"
+    ],
+    "autoPreventable": false
+  },
+  {
+    "id": "alert-1754690146029-00fqsbiav",
+    "patternId": "version-documentation-drift-prediction",
+    "riskLevel": "medium",
+    "confidence": 0.57,
+    "predictedViolation": "version-drift likely to occur",
+    "preventionActions": [
+      "Auto-run version consistency validation",
+      "Block commits until validation passes",
+      "Generate missing documentation updates",
+      "Alert about potential drift"
+    ],
+    "timeToViolation": "Soon (< 24 hours)",
+    "evidence": [
+      "Risk indicator detected: No version consistency check run",
+      "Risk indicator detected: Rapid development phase",
+      "Predictive signal found: Recent commits without validation",
+      "Predictive signal found: Framework core files modified"
+    ],
+    "autoPreventable": false
+  },
+  {
+    "id": "alert-1754690389568-0w5h0wfc3",
+    "patternId": "version-documentation-drift-prediction",
+    "riskLevel": "medium",
+    "confidence": 0.57,
+    "predictedViolation": "version-drift likely to occur",
+    "preventionActions": [
+      "Auto-run version consistency validation",
+      "Block commits until validation passes",
+      "Generate missing documentation updates",
+      "Alert about potential drift"
+    ],
+    "timeToViolation": "Soon (< 24 hours)",
+    "evidence": [
+      "Risk indicator detected: No version consistency check run",
+      "Risk indicator detected: Rapid development phase",
+      "Predictive signal found: Recent commits without validation",
+      "Predictive signal found: Framework core files modified"
+    ],
+    "autoPreventable": false
+  },
+  {
+    "id": "alert-1754690401464-suaguzmx0",
+    "patternId": "version-documentation-drift-prediction",
+    "riskLevel": "medium",
+    "confidence": 0.57,
+    "predictedViolation": "version-drift likely to occur",
+    "preventionActions": [
+      "Auto-run version consistency validation",
+      "Block commits until validation passes",
+      "Generate missing documentation updates",
+      "Alert about potential drift"
+    ],
+    "timeToViolation": "Soon (< 24 hours)",
+    "evidence": [
+      "Risk indicator detected: No version consistency check run",
+      "Risk indicator detected: Rapid development phase",
+      "Predictive signal found: Recent commits without validation",
+      "Predictive signal found: Framework core files modified"
+    ],
+    "autoPreventable": false
+  },
+  {
+    "id": "alert-1754690457173-euwew4r89",
+    "patternId": "version-documentation-drift-prediction",
+    "riskLevel": "medium",
+    "confidence": 0.57,
+    "predictedViolation": "version-drift likely to occur",
+    "preventionActions": [
+      "Auto-run version consistency validation",
+      "Block commits until validation passes",
+      "Generate missing documentation updates",
+      "Alert about potential drift"
+    ],
+    "timeToViolation": "Soon (< 24 hours)",
+    "evidence": [
+      "Risk indicator detected: No version consistency check run",
+      "Risk indicator detected: Rapid development phase",
+      "Predictive signal found: Recent commits without validation",
+      "Predictive signal found: Framework core files modified"
+    ],
+    "autoPreventable": false
+  }
+]

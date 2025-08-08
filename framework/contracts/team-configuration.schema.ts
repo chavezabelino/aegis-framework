@@ -1,5 +1,5 @@
 /**
- * @aegisFrameworkVersion 2.0.0-alpha-dev
+ * @aegisFrameworkVersion 2.3.0-alpha-dev
  * @intent Configuration schema for team-specific Aegis Framework behavior
  * @context Support three-tier configuration system: Core, Required, Optional
  */

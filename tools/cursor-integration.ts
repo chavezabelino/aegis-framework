@@ -1,5 +1,5 @@
 /**
- * @aegisFrameworkVersion: 2.0.0-alpha-dev
+ * @aegisFrameworkVersion: 2.3.0-alpha-dev
  * @intent: Cursor-specific real-time evolution detection and conversation capture
  * @context: Optimized for Cursor's interface patterns, real-time editing, and visual feedback
  */

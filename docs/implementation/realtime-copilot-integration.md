@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.0.0-alpha-dev
+@aegisFrameworkVersion: 2.3.0-alpha-dev
 @intent: Complete documentation of real-time evolution detection from copilot conversations
 @context: Answer to "how do we get detection in-flight from real-time prompts? copilot instructions?"
 -->

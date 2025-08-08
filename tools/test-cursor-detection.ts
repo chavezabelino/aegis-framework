@@ -1,6 +1,6 @@
 #!/usr/bin/env ts-node
 /**
- * @aegisFrameworkVersion: 2.0.0-alpha-dev
+ * @aegisFrameworkVersion: 2.3.0-alpha-dev
  * @intent: Test script for Cursor-specific real-time evolution detection
  * @context: Demonstrates the Cursor integration system in action
  */

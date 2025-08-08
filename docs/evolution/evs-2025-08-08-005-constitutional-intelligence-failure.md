@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.2.0
+@aegisFrameworkVersion: 2.3.0
 @intent: Constitutional crisis evolution story - systematic intelligence failure
 @context: Framework's core purpose violated by repeated intelligence failures
 @mode: strict

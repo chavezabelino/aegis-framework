@@ -1,4 +1,4 @@
-# Apprenticeship Scaffolds for Junior Developers (v1.3.0)
+# Apprenticeship Scaffolds for Junior Developers (v2.3.0)
 
 <!--
 @aegisBlueprint: apprenticeship-scaffolds

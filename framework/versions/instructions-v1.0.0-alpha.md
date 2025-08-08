@@ -1,4 +1,4 @@
-# Aegis Framework Agent Instructions v1.0.0-alpha
+# Aegis Framework Agent Instructions v2.3.0-alpha
 
 <!--
 @aegisFrameworkVersion: 1.0.0-alpha

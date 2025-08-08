@@ -5,7 +5,7 @@
 @version: 1.2.1
 @mode: lean
 @intent: Documentation for the ML-driven blueprint auto-repair engine
-@context: Describes design, usage, and observability for the v1.2.1 feature implementation
+@context: Describes design, usage, and observability for the v2.3.0 feature implementation
 -->
 
 ## Overview

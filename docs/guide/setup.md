@@ -32,7 +32,7 @@ git clone https://github.com/your-org/aegis-framework.git
 cd aegis-framework
 
 # Or download and extract the latest release
-# wget https://github.com/your-org/aegis-framework/archive/refs/tags/v1.0.0-alpha.tar.gz
+# wget https://github.com/your-org/aegis-framework/archive/refs/tags/v2.3.0-alpha.tar.gz
 ```
 
 ### 2. Install Dependencies

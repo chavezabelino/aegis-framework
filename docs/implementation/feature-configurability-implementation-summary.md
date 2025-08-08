@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.0.0-alpha-dev
+@aegisFrameworkVersion: 2.3.0-alpha-dev
 @intent: Implementation summary for three-tier feature configuration system
 @context: Complete team configuration system allowing optional vs core vs required framework behaviors
 @mode: implementation-summary

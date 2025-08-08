@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 1.2.1
+@aegisFrameworkVersion: 2.3.0
 @intent: Complete GitHub Copilot instructions combining constitutional compliance with operational excellence
 @context: Single source of truth for GitHub Copilot under Aegis Framework + Kilo standards
 @generatedFrom: agent-instructions.template.md + project-standards.md

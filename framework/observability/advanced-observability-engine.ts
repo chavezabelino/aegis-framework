@@ -6,7 +6,7 @@
  * Comprehensive telemetry, monitoring, and analytics system for framework operations
  * Part of Phase 3: Advanced Self-Healing Features
  * 
- * @aegisFrameworkVersion: 1.2.0-alpha
+ * @aegisFrameworkVersion: 2.3.0-alpha
  * @intent: Implement advanced observability and telemetry for framework intelligence
  */
 

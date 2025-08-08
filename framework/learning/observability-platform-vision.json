@@ -9,7 +9,7 @@
     "metadata": {
       "visionScope": "framework-observability-evolution",
       "evolutionLevel": "fundamental-architecture-change",
-      "targetVersion": "v3.0.0+",
+      "targetVersion": "v2.3.0+",
       "strategicImportance": "critical",
       "technicalComplexity": "high",
       "businessImpact": "transformational"

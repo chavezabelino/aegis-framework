@@ -1,6 +1,6 @@
 #!/usr/bin/env ts-node
 /**
- * @aegisFrameworkVersion: 1.4.0
+ * @aegisFrameworkVersion: 2.3.0
  * @intent: Template-driven, agent-agnostic instruction generator
  * @context: Assembles agent instructions from modular templates, agent profiles, and framework docs
  */

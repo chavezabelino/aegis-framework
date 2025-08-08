@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * @aegisFrameworkVersion: 2.1.0
+ * @aegisFrameworkVersion: 2.3.0
  * @intent: Validate built packages for release readiness
  * @context: Ensure CLI tools work and packages are complete
  */

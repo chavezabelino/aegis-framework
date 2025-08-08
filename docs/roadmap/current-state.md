@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.2.0
+@aegisFrameworkVersion: 2.3.0
 @intent: Comprehensive current state documentation for capability-based roadmap
 @context: Foundation document establishing "what we have today" for roadmap standardization
 @mode: strict

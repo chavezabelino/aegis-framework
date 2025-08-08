@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.1.0
+@aegisFrameworkVersion: 2.3.0
 @intent: Explain the correct approach to dependency management in open source distribution
 @context: Best practices for Node.js CLI tool distribution
 -->

@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 1.3.1
+@aegisFrameworkVersion: 2.3.0
 @intent: Validation and testing template section
 @context: Testing standards and validation tooling for AI agents
 -->

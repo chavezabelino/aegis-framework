@@ -65,7 +65,7 @@ program
       
       // Initialize constitutional memory state
       const memoryState = {
-        version: '1.0.0',
+        version: '2.3.0',
         initialized: new Date().toISOString(),
         blueprintId: 'memory-governance',
         schemaVersion: '1.0.0',

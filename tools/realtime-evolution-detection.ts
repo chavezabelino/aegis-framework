@@ -1,5 +1,5 @@
 /**
- * @aegisFrameworkVersion: 2.1.0
+ * @aegisFrameworkVersion: 2.3.0
  * @intent: Real-time evolution trigger detection from AI conversation context
  * @context: Capture field insights directly from user prompts and AI interactions
  * @mode: strict

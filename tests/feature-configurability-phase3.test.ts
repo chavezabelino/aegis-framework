@@ -1,5 +1,5 @@
 /**
- * @aegisFrameworkVersion: 2.1.0
+ * @aegisFrameworkVersion: 2.3.0
  * @intent: Integration tests for Phase 3 feature configurability tools
  * @context: Validate optional features integration with team configuration
  * @mode: strict

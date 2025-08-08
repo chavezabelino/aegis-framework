@@ -1,0 +1,118 @@
+[
+  {
+    "id": "version-documentation-drift-prediction",
+    "type": "version-drift",
+    "triggerConditions": [
+      "VERSION file modified",
+      "package.json version changed",
+      "Preparation for commit without validation"
+    ],
+    "riskIndicators": [
+      "Multiple version-related files changed",
+      "No version consistency check run",
+      "Previous version drift history",
+      "Rapid development phase"
+    ],
+    "predictiveSignals": [
+      "Git staging area contains version changes",
+      "Recent commits without validation",
+      "Framework core files modified",
+      "Documentation files not updated"
+    ],
+    "preventionActions": [
+      "Auto-run version consistency validation",
+      "Block commits until validation passes",
+      "Generate missing documentation updates",
+      "Alert about potential drift"
+    ],
+    "confidence": 0.95,
+    "preventionSuccess": 0.98
+  },
+  {
+    "id": "intelligence-failure-prediction",
+    "type": "intelligence-failure",
+    "triggerConditions": [
+      "Claims made without implementation",
+      "New intelligence features added",
+      "Constitutional changes proposed"
+    ],
+    "riskIndicators": [
+      "Rapid feature development",
+      "Marketing before implementation",
+      "Documentation written before code",
+      "Claims not verified"
+    ],
+    "predictiveSignals": [
+      "Documentation mentions non-existent features",
+      "Claims without evidence files",
+      "Implementation stubs created",
+      "Testing gaps identified"
+    ],
+    "preventionActions": [
+      "Require evidence before claims",
+      "Auto-generate implementation validation",
+      "Block false claim propagation",
+      "Enforce implementation-first development"
+    ],
+    "confidence": 0.92,
+    "preventionSuccess": 0.94
+  },
+  {
+    "id": "constitutional-violation-prediction",
+    "type": "constitutional-violation",
+    "triggerConditions": [
+      "Framework core modifications",
+      "Constitutional article changes",
+      "Governance bypass attempts"
+    ],
+    "riskIndicators": [
+      "Emergency development mode",
+      "Deadline pressure",
+      "Governance process shortcuts",
+      "Constitutional compliance disabled"
+    ],
+    "predictiveSignals": [
+      "Direct framework file edits",
+      "Constitutional validation skipped",
+      "Governance tools disabled",
+      "Fast-track development flags"
+    ],
+    "preventionActions": [
+      "Enforce constitutional review",
+      "Block unauthorized modifications",
+      "Require governance approval",
+      "Auto-trigger compliance validation"
+    ],
+    "confidence": 0.89,
+    "preventionSuccess": 0.91
+  },
+  {
+    "id": "systematic-failure-prediction",
+    "type": "systematic-failure",
+    "triggerConditions": [
+      "Repeated similar failures",
+      "Pattern recognition gaps",
+      "Learning system failures"
+    ],
+    "riskIndicators": [
+      "Same failure type recurring",
+      "Prevention mechanisms not learning",
+      "Pattern detection disabled",
+      "Manual override frequency"
+    ],
+    "predictiveSignals": [
+      "Similar failure patterns emerging",
+      "Learning system data corruption",
+      "Prevention mechanism degradation",
+      "Systematic pattern correlation"
+    ],
+    "preventionActions": [
+      "Strengthen pattern recognition",
+      "Update prevention mechanisms",
+      "Enhance learning capabilities",
+      "Implement redundant safeguards"
+    ],
+    "confidence": 0.87,
+    "preventionSuccess": 0.89
+  }
+]

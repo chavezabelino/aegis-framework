@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.1.0
+@aegisFrameworkVersion: 2.3.0
 @intent: Roadmap for constitutional memory governance subsystem
 @context: Memory governance as strategic capability for v3.0.0 universal tech stack support
 @mode: strict

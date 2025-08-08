@@ -1,5 +1,5 @@
 /**
- * @aegisFrameworkVersion 2.1.0
+ * @aegisFrameworkVersion 2.3.0
  * @intent Automated detection system for evolution story triggers
  * @context Monitor framework usage patterns and automatically suggest evolution documentation
  * 

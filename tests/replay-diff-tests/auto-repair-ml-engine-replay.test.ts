@@ -13,7 +13,7 @@ describe('AutoRepairMLEngine Replay-Diff', () => {
   const engine = new AutoRepairMLEngine();
   const blueprint: Blueprint = {
     id: 'replay-blueprint',
-    version: '1.0.0',
+    version: '2.3.0',
     content: { id: 'replay-blueprint', version: '1.0.0' },
   };
 

@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.1.0
+@aegisFrameworkVersion: 2.3.0
 @intent: Educational guide for understanding GitHub releases and our distribution system
 @context: Open source software distribution for beginners
 -->

@@ -1,0 +1,51 @@
+{
+  "certificateId": "AEGIS-FRAMEWORK-MASTER-1754690457191",
+  "frameworkName": "Aegis Framework",
+  "version": "2.2.0",
+  "certificationLevel": "silver",
+  "overallStatus": "partially-certified",
+  "certifiedClaims": 5,
+  "totalClaims": 6,
+  "certificationRate": "83.3%",
+  "issuedDate": "2025-08-08T22:00:57.191Z",
+  "nextRecertification": "2025-11-06T22:00:57.190Z",
+  "certifyingAuthority": "Aegis Framework Intelligence Certification Authority",
+  "certificationSummary": [
+    {
+      "claim": "version-drift-prevention",
+      "status": "partial",
+      "level": "bronze",
+      "score": 46.71428571428571
+    },
+    {
+      "claim": "constitutional-compliance-enforcement",
+      "status": "certified",
+      "level": "platinum",
+      "score": 103.6
+    },
+    {
+      "claim": "self-healing-governance",
+      "status": "certified",
+      "level": "platinum",
+      "score": 99.39999999999999
+    },
+    {
+      "claim": "evolution-learning-system",
+      "status": "certified",
+      "level": "platinum",
+      "score": 97.6
+    },
+    {
+      "claim": "agent-drift-prevention",
+      "status": "certified",
+      "level": "platinum",
+      "score": 99
+    },
+    {
+      "claim": "predictive-compliance-monitoring",
+      "status": "certified",
+      "level": "platinum",
+      "score": 95.5
+    }
+  ]
+}

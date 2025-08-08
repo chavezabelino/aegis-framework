@@ -42,6 +42,8 @@ interface VersionValidation {
   currentVersion: string;
   references: VersionReference[];
   inconsistencies: string[];
+  criticalFilesMissing: string[];
+  comprehensiveCheck: boolean;
 }
 
 interface BlueprintValidation {
@@ -208,20 +210,49 @@ class ConstitutionalValidator {
   private async validateVersioning(): Promise<VersionValidation> {
     console.log("  🔢 Validating version consistency...");
 
-    const references = await this.findAllVersionReferences();
-    const inconsistencies = references
+    let references = await this.findAllVersionReferences();
+    let inconsistencies = references
       .filter(ref => ref.version !== this.currentVersion)
       .map(ref => `${ref.file}: found ${ref.version}, expected ${this.currentVersion}`);
+    
+    let criticalFilesMissing: string[] = [];
+    let comprehensiveCheck = false;
+
+    try {
+      // Use the comprehensive version consistency validator
+      const { VersionConsistencyValidator } = await import('./validate-version-consistency.js');
+      const validator = new VersionConsistencyValidator(this.frameworkRoot);
+      const result = await validator.validateAll();
+      
+      comprehensiveCheck = true;
+      
+      // Extract information from comprehensive validation
+      inconsistencies = [];
+      for (const violation of result.violations) {
+        if (violation.status === 'mismatch' || violation.status === 'missing') {
+          inconsistencies.push(`${violation.file}: expected ${violation.expectedVersion}, found ${violation.foundVersion || 'missing'}`);
+          
+          // Track critical files specifically
+          if (result.criticalFiles.includes(violation.file)) {
+            criticalFilesMissing.push(violation.file);
+          }
+        }
+      }
+    } catch (error) {
+      console.warn("  ⚠️ Comprehensive version validation failed, using basic validation");
+    }
 
     const versionConsistency = inconsistencies.length === 0;
-    const score = versionConsistency ? 1 : Math.max(0, 1 - (inconsistencies.length / references.length));
+    const score = versionConsistency ? 1 : Math.max(0, 1 - (inconsistencies.length / Math.max(references.length, 10)));
 
     return {
       score,
       versionConsistency,
       currentVersion: this.currentVersion,
       references,
-      inconsistencies
+      inconsistencies,
+      criticalFilesMissing,
+      comprehensiveCheck
     };
   }
 
@@ -296,7 +327,7 @@ class ConstitutionalValidator {
 
   private async checkFrameworkFileAnnotations(): Promise<AnnotationCheck[]> {
     const frameworkFiles = [
-      'framework/framework-core-v2.1.0.md',
+      'framework/framework-core-v2.3.0.md',
       'CONSTITUTION.md'
     ];
 

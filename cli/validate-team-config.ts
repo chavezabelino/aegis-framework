@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * @aegisFrameworkVersion 2.0.0-alpha-dev
+ * @aegisFrameworkVersion 2.3.0-alpha-dev
  * @intent Validate team configuration against constitutional requirements
  * @context Ensure team configurations maintain constitutional compliance
  */

@@ -1,5 +1,5 @@
 /**
- * @aegisFrameworkVersion 2.0.0-alpha-dev
+ * @aegisFrameworkVersion 2.3.0-alpha-dev
  * @intent Integration hook for capturing copilot conversation context
  * @context Enable real-time evolution detection from GitHub Copilot interactions
  */

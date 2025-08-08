@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.1.0
+@aegisFrameworkVersion: 2.3.0
 @intent: Document framework drift regarding incorrect dependency bundling approach
 @context: Field-driven learning about open source distribution best practices
 -->

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * @aegisFrameworkVersion: 2.2.0
+ * @aegisFrameworkVersion: 2.3.0
  * @intent: Comprehensive version consistency validation to prevent documentation drift
  * @context: Automated prevention of version mismatch issues across all framework files
  * @mode: strict
@@ -43,13 +43,34 @@ class VersionConsistencyValidator {
     'framework/framework-core-v2.2.0.md'
   ];
 
+  private comprehensiveFiles: string[] = [
+    ...this.criticalFiles,
+    'docs/roadmap/strategic-vision.md',
+    'docs/roadmap/immediate-horizon.md',
+    'docs/roadmap/planning-horizon.md',
+    'docs/roadmap/feature-configurability-roadmap.md',
+    'docs/roadmap/memory-governance-roadmap.md',
+    'docs/implementation/feature-configurability-implementation-summary.md',
+    'docs/implementation/v2.0.1-complete-implementation-summary.md',
+    'docs/releases/v2.1.0-summary.md',
+    'framework/framework-core-v2.1.0.md',
+    'framework/generated/instructions/current/cursor-ready.md',
+    'framework/generated/instructions/current/github-copilot-ready.md'
+  ];
+
   private versionPatterns: RegExp[] = [
     /@aegisFrameworkVersion:\s*([0-9]+\.[0-9]+\.[0-9]+)/,
+    /@aegisFrameworkVersion\s*([0-9]+\.[0-9]+\.[0-9]+)/,
     /v([0-9]+\.[0-9]+\.[0-9]+)/,
     /version:\s*["']([0-9]+\.[0-9]+\.[0-9]+)["']/i,
     /"version":\s*["']([0-9]+\.[0-9]+\.[0-9]+)["']/,
     /Current Version.*v([0-9]+\.[0-9]+\.[0-9]+)/i,
-    /Version.*v([0-9]+\.[0-9]+\.[0-9]+)/i
+    /Version.*v([0-9]+\.[0-9]+\.[0-9]+)/i,
+    /Aegis Framework v([0-9]+\.[0-9]+\.[0-9]+)/i,
+    /framework.*version.*([0-9]+\.[0-9]+\.[0-9]+)/i,
+    /npm install.*@([0-9]+\.[0-9]+\.[0-9]+)/,
+    /currently.*v([0-9]+\.[0-9]+\.[0-9]+)/i,
+    /release.*v([0-9]+\.[0-9]+\.[0-9]+)/i
   ];
 
   constructor(projectRoot: string = process.cwd()) {
@@ -182,6 +203,13 @@ class VersionConsistencyValidator {
   private getAllFiles(): string[] {
     const files: string[] = [];
     
+    // Start with comprehensive files for thorough coverage
+    for (const file of this.comprehensiveFiles) {
+      if (fs.existsSync(path.join(this.projectRoot, file))) {
+        files.push(file);
+      }
+    }
+    
     const walkDir = (dir: string, baseDir: string = '') => {
       try {
         const items = fs.readdirSync(dir);
@@ -192,13 +220,22 @@ class VersionConsistencyValidator {
           const stat = fs.statSync(fullPath);
           
           if (stat.isDirectory()) {
-            if (item !== 'node_modules' && item !== '.git' && !item.startsWith('.')) {
+            // Enhanced directory filtering for better coverage
+            if (item !== 'node_modules' && 
+                item !== '.git' && 
+                !item.startsWith('.') &&
+                item !== 'dist' &&
+                item !== 'build' &&
+                item !== 'coverage') {
               walkDir(fullPath, relativePath);
             }
           } else if (stat.isFile()) {
             const ext = path.extname(item);
-            if (['.ts', '.js', '.md', '.yaml', '.yml', '.json'].includes(ext)) {
-              files.push(relativePath);
+            if (['.ts', '.js', '.md', '.yaml', '.yml', '.json', '.txt'].includes(ext)) {
+              // Avoid duplicates from comprehensive files list
+              if (!files.includes(relativePath)) {
+                files.push(relativePath);
+              }
             }
           }
         }

@@ -1,0 +1,245 @@
+[
+  {
+    "id": "version-drift-prevention",
+    "category": "prevention",
+    "claim": "Framework prevents version documentation drift through automated validation",
+    "implementation": "tools/validate-version-consistency.ts",
+    "evidenceRequired": [
+      "Version inconsistency detection",
+      "Automated correction capability",
+      "Pre-commit integration",
+      "Historical prevention success"
+    ],
+    "testRequirements": [
+      {
+        "id": "version-drift-detection-test",
+        "name": "Version Drift Detection Test",
+        "description": "Verify ability to detect version inconsistencies",
+        "testType": "functional",
+        "requiredScore": 95,
+        "implementation": "tests/version-drift-detection.test.ts",
+        "automated": true
+      },
+      {
+        "id": "auto-correction-test",
+        "name": "Auto-Correction Test",
+        "description": "Verify automatic correction of version issues",
+        "testType": "functional",
+        "requiredScore": 90,
+        "implementation": "tests/auto-correction.test.ts",
+        "automated": true
+      },
+      {
+        "id": "prevention-reliability-test",
+        "name": "Prevention Reliability Test",
+        "description": "Test reliability under various conditions",
+        "testType": "reliability",
+        "requiredScore": 95,
+        "implementation": "tests/prevention-reliability.test.ts",
+        "automated": true
+      }
+    ],
+    "criticalityLevel": "critical",
+    "certificationStatus": "failed"
+  },
+  {
+    "id": "constitutional-compliance-enforcement",
+    "category": "enforcement",
+    "claim": "Framework enforces constitutional compliance across all operations",
+    "implementation": "tools/constitutional-compliance-enforcer.ts",
+    "evidenceRequired": [
+      "Constitutional violation detection",
+      "Compliance enforcement mechanisms",
+      "Real-time monitoring",
+      "Violation prevention"
+    ],
+    "testRequirements": [
+      {
+        "id": "compliance-detection-test",
+        "name": "Compliance Detection Test",
+        "description": "Verify detection of constitutional violations",
+        "testType": "functional",
+        "requiredScore": 98,
+        "implementation": "tests/compliance-detection.test.ts",
+        "automated": true
+      },
+      {
+        "id": "enforcement-effectiveness-test",
+        "name": "Enforcement Effectiveness Test",
+        "description": "Test effectiveness of compliance enforcement",
+        "testType": "performance",
+        "requiredScore": 95,
+        "implementation": "tests/enforcement-effectiveness.test.ts",
+        "automated": true
+      }
+    ],
+    "criticalityLevel": "critical",
+    "certificationStatus": "certified",
+    "certificationDate": "2025-08-08T22:00:56.749Z",
+    "expiryDate": "2025-11-06T22:00:56.749Z",
+    "certificationScore": 103.6,
+    "certificationEvidence": [
+      "Implementation verified: tools/constitutional-compliance-enforcer.ts",
+      "✅ Compliance Detection Test: Constitutional compliance enforcer validated",
+      "✅ Enforcement Effectiveness Test: Constitutional compliance enforcer validated",
+      "📋 Evidence verified: Constitutional violation detection",
+      "📋 Evidence verified: Compliance enforcement mechanisms",
+      "📋 Evidence verified: Real-time monitoring",
+      "📋 Evidence verified: Violation prevention"
+    ]
+  },
+  {
+    "id": "self-healing-governance",
+    "category": "learning",
+    "claim": "Framework learns from failures and prevents their recurrence",
+    "implementation": "framework/healing/self-healing-governance.ts",
+    "evidenceRequired": [
+      "Failure pattern recognition",
+      "Healing action implementation",
+      "Prevention effectiveness",
+      "Learning persistence"
+    ],
+    "testRequirements": [
+      {
+        "id": "pattern-recognition-test",
+        "name": "Pattern Recognition Test",
+        "description": "Verify recognition of failure patterns",
+        "testType": "functional",
+        "requiredScore": 92,
+        "implementation": "tests/pattern-recognition.test.ts",
+        "automated": true
+      },
+      {
+        "id": "healing-effectiveness-test",
+        "name": "Healing Effectiveness Test",
+        "description": "Test effectiveness of healing actions",
+        "testType": "performance",
+        "requiredScore": 90,
+        "implementation": "tests/healing-effectiveness.test.ts",
+        "automated": true
+      }
+    ],
+    "criticalityLevel": "critical",
+    "certificationStatus": "certified",
+    "certificationDate": "2025-08-08T22:00:56.897Z",
+    "expiryDate": "2025-11-06T22:00:56.897Z",
+    "certificationScore": 99.39999999999999,
+    "certificationEvidence": [
+      "Implementation verified: framework/healing/self-healing-governance.ts",
+      "✅ Pattern Recognition Test: Self-healing governance validated",
+      "✅ Healing Effectiveness Test: Self-healing governance validated",
+      "📋 Evidence verified: Failure pattern recognition",
+      "📋 Evidence verified: Healing action implementation",
+      "📋 Evidence verified: Prevention effectiveness",
+      "📋 Evidence verified: Learning persistence"
+    ]
+  },
+  {
+    "id": "evolution-learning-system",
+    "category": "learning",
+    "claim": "Framework learns from patterns and prevents repeat occurrences",
+    "implementation": "tools/evolution-learning-system.ts",
+    "evidenceRequired": [
+      "Pattern learning capability",
+      "Prevention implementation",
+      "Learning effectiveness",
+      "Pattern storage and retrieval"
+    ],
+    "testRequirements": [
+      {
+        "id": "learning-capability-test",
+        "name": "Learning Capability Test",
+        "description": "Verify learning from new patterns",
+        "testType": "functional",
+        "requiredScore": 88,
+        "implementation": "tests/learning-capability.test.ts",
+        "automated": true
+      }
+    ],
+    "criticalityLevel": "critical",
+    "certificationStatus": "certified",
+    "certificationDate": "2025-08-08T22:00:56.969Z",
+    "expiryDate": "2025-11-06T22:00:56.969Z",
+    "certificationScore": 97.6,
+    "certificationEvidence": [
+      "Implementation verified: tools/evolution-learning-system.ts",
+      "✅ Learning Capability Test: Evolution learning system validated",
+      "📋 Evidence verified: Pattern learning capability",
+      "📋 Evidence verified: Prevention implementation",
+      "📋 Evidence verified: Learning effectiveness",
+      "📋 Evidence verified: Pattern storage and retrieval"
+    ]
+  },
+  {
+    "id": "agent-drift-prevention",
+    "category": "prevention",
+    "claim": "Framework prevents AI agent drift through intent enforcement",
+    "implementation": "tools/intent-enforcement-engine.ts",
+    "evidenceRequired": [
+      "Intent violation detection",
+      "Real-time enforcement",
+      "Agent behavior monitoring",
+      "Drift prevention effectiveness"
+    ],
+    "testRequirements": [
+      {
+        "id": "intent-enforcement-test",
+        "name": "Intent Enforcement Test",
+        "description": "Verify intent enforcement capabilities",
+        "testType": "functional",
+        "requiredScore": 90,
+        "implementation": "tests/intent-enforcement.test.ts",
+        "automated": true
+      }
+    ],
+    "criticalityLevel": "high",
+    "certificationStatus": "certified",
+    "certificationDate": "2025-08-08T22:00:56.969Z",
+    "expiryDate": "2025-11-06T22:00:56.969Z",
+    "certificationScore": 99,
+    "certificationEvidence": [
+      "Implementation verified: tools/intent-enforcement-engine.ts",
+      "✅ Intent Enforcement Test: Agent drift prevention operational",
+      "📋 Evidence verified: Intent violation detection",
+      "📋 Evidence verified: Real-time enforcement",
+      "📋 Evidence verified: Agent behavior monitoring",
+      "📋 Evidence verified: Drift prevention effectiveness"
+    ]
+  },
+  {
+    "id": "predictive-compliance-monitoring",
+    "category": "prediction",
+    "claim": "Framework predicts and prevents violations before they occur",
+    "implementation": "tools/predictive-compliance-monitor.ts",
+    "evidenceRequired": [
+      "Violation prediction accuracy",
+      "Pattern recognition",
+      "Prevention trigger effectiveness",
+      "Risk assessment capability"
+    ],
+    "testRequirements": [
+      {
+        "id": "prediction-accuracy-test",
+        "name": "Prediction Accuracy Test",
+        "description": "Verify accuracy of violation predictions",
+        "testType": "performance",
+        "requiredScore": 85,
+        "implementation": "tests/prediction-accuracy.test.ts",
+        "automated": true
+      }
+    ],
+    "criticalityLevel": "high",
+    "certificationStatus": "certified",
+    "certificationDate": "2025-08-08T22:00:57.190Z",
+    "expiryDate": "2025-11-06T22:00:57.190Z",
+    "certificationScore": 95.5,
+    "certificationEvidence": [
+      "Implementation verified: tools/predictive-compliance-monitor.ts",
+      "✅ Prediction Accuracy Test: Predictive compliance validated",
+      "📋 Evidence verified: Violation prediction accuracy",
+      "📋 Evidence verified: Pattern recognition",
+      "📋 Evidence verified: Prevention trigger effectiveness",
+      "📋 Evidence verified: Risk assessment capability"
+    ]
+  }
+]

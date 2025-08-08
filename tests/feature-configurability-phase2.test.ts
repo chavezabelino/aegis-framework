@@ -1,5 +1,5 @@
 /**
- * @aegisFrameworkVersion: 2.1.0
+ * @aegisFrameworkVersion: 2.3.0
  * @intent: Integration tests for Phase 2 feature configurability tools
  * @context: Validate pre-commit hooks, template quality, and annotation validation
  * @mode: strict

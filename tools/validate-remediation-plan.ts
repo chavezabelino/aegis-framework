@@ -1,5 +1,5 @@
 /**
- * @aegisFrameworkVersion 2.0.0-alpha-dev
+ * @aegisFrameworkVersion 2.3.0-alpha-dev
  * @intent Validate remediation plans against constitutional requirements
  * @context Prevents deployment of incomplete or unsafe remediation strategies
  */

@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.0.0-alpha-dev
+@aegisFrameworkVersion: 2.3.0-alpha-dev
 @intent: Constitutional amendment addressing AI agent drift and intent enforcement
 @context: Response to identified field gap in agent constitutional compliance
 -->

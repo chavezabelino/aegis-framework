@@ -1,7 +1,8 @@
 /**
- * @aegisFrameworkVersion 2.1.0
- * @intent Real-time intent enforcement and agent drift prevention
- * @context Prevents AI agents from deviating from constitutional principles during execution
+ * @aegisFrameworkVersion: 2.3.0
+ * @intent: Real-time intent enforcement and agent drift prevention that catches systematic issues
+ * @context: Prevents AI agents from deviating from constitutional principles and detects pattern-based drift
+ * @mode: strict
  */
 
 import { execSync } from 'child_process';
@@ -233,6 +234,29 @@ export class IntentEnforcementEngine {
     // Commands modifying constitutional files require special handling
     if (command.includes('CONSTITUTION.md') || command.includes('framework-core-v')) {
       return false; // Requires special approval
+    }
+
+    // Detect systematic issue patterns like version documentation drift
+    const systematicIssuePatterns = [
+      /git\s+commit.*-m.*version/i,
+      /git\s+commit.*-m.*update/i,
+      /git\s+commit.*-m.*fix/i
+    ];
+
+    // Detect version-related commits without validation
+    if (systematicIssuePatterns.some(pattern => pattern.test(command))) {
+      console.log('🚨 Systematic issue pattern detected: Version-related commit');
+      console.log('💡 Recommendation: Run version consistency validation before commits');
+      
+      // Record this as a potential drift pattern
+      this.violationHistory.push({
+        type: 'constitutional-violation',
+        severity: 'warning',
+        description: 'Version-related commit without prior validation - systematic drift pattern detected',
+        evidence: `Command: ${command}`,
+        suggestedCorrection: 'Run "node tools/validate-version-consistency.ts" before version-related commits',
+        blockExecution: false
+      });
     }
 
     return true;

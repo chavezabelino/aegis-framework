@@ -6,7 +6,7 @@
  * Uses intelligent changelog analysis to automatically update CHANGELOG.md
  * Part of Option B: Intelligent Changelog Generation
  * 
- * @aegisFrameworkVersion: 2.1.0
+ * @aegisFrameworkVersion: 2.3.0
  * @intent: Automate changelog maintenance with AI-powered change detection and team configuration support
  * @context: Automated changelog generation with configurable formats and team preferences
  * @mode: strict

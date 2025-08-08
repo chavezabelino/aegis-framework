@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 1.3.1
+@aegisFrameworkVersion: 2.3.0
 @intent: Multi-agent orchestration template section
 @context: Agent coordination patterns and handoff protocols
 -->

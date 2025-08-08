@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.2.0
+@aegisFrameworkVersion: 2.3.0
 @intent: Evolution story for feature configurability system completion
 @context: Major milestone in framework evolution enabling team customization
 @mode: strict

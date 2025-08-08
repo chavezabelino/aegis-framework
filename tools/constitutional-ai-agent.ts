@@ -1,5 +1,5 @@
 /**
- * @aegisFrameworkVersion 2.0.0-alpha-dev
+ * @aegisFrameworkVersion 2.3.0-alpha-dev
  * @intent AI Agent wrapper with built-in constitutional enforcement
  * @context Prevents agent drift by enforcing intent and constitutional compliance before every action
  */

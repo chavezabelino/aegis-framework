@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * @aegisFrameworkVersion: 2.1.0
+ * @aegisFrameworkVersion: 2.3.0
  * @intent: Enhanced evolution story detection with intelligence gap analysis
  * @context: Framework learning from systematic thinking failures and intelligence gaps
  * @mode: strict

@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.1.0
+@aegisFrameworkVersion: 2.3.0
 @intent: Document the dependency bundling challenge and proper solutions
 @context: Real-world distribution requires understanding dependency management
 -->

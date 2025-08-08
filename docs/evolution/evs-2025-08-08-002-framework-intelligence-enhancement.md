@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.1.0
+@aegisFrameworkVersion: 2.3.0
 @intent: Evolution story for framework intelligence enhancement and constitutional amendments
 @context: Framework learning from intelligence gaps and systematic thinking failures
 @mode: strict

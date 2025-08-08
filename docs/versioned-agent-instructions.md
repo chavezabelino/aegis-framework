@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 1.2.1
+@aegisFrameworkVersion: 2.3.0
 @intent: Documentation for versioned agent instruction system
 @context: Auto-generated instructions for AI agents based on framework state
 -->

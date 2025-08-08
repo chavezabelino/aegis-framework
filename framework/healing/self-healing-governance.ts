@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * @aegisFrameworkVersion: 2.2.0
+ * @aegisFrameworkVersion: 2.3.0
  * @intent: Actual self-healing governance that prevents repeat failures
  * @context: Constitutional crisis response - implementing real self-healing capabilities
  * @mode: strict
