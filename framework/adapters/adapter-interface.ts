@@ -3,7 +3,7 @@
 @version: 1.1.0-beta
 @mode: strict
 @intent: Adapter interface for multi-agent, handoff, and dependency resolution
-@context: Implements v2.3.0-beta adapter protocol for tech stack translation
+@context: Implements v2.4.0-beta adapter protocol for tech stack translation
 */
 
 export interface AdapterInterface {

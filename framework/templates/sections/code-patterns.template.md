@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.3.0
+@aegisFrameworkVersion: 2.4.0
 @intent: Code patterns and integration examples template section
 @context: Operational code patterns for agent guidance
 -->

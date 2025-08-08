@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * @aegisFrameworkVersion: 2.3.0
+ * @aegisFrameworkVersion: 2.4.0
  * @intent: Comprehensive testing suite for all framework intelligence features
  * @context: Complete validation of all intelligence capabilities through systematic testing
  * @mode: strict

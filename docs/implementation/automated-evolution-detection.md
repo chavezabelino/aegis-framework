@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.3.0-alpha-dev
+@aegisFrameworkVersion: 2.4.0-alpha-dev
 @intent: Documentation for automated evolution story detection system
 @context: Complete the meta-learning loop by automating detection of evolution documentation needs
 -->

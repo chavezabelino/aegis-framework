@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.3.0-alpha
+@aegisFrameworkVersion: 2.4.0-alpha
 @intent: First semantic version release of the full framework specification
 @constitutionalAuthority: ../CONSTITUTION.md
 @governanceModel: Semantic versioning with structured evolution

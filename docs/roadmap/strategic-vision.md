@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.3.0
+@aegisFrameworkVersion: 2.4.0
 @intent: Strategic vision roadmap for 6+ months with directional guidance
 @context: Capability-driven roadmap following remediation plan standardization
 @mode: strict

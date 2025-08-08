@@ -6,7 +6,7 @@
  * Constitutional enforcement tool for Article IX: Template and Documentation Quality Standards
  * Validates encoding compliance, structural integrity, and output fidelity
  * 
- * @aegisFrameworkVersion: 2.3.0
+ * @aegisFrameworkVersion: 2.4.0
  * @intent: Prevent HTML encoding artifacts and ensure template quality with team configuration support
  * @constitutionalAuthority: Article IX, Section 4
  */

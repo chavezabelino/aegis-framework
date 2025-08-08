@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * @aegisFrameworkVersion: 2.3.0
+ * @aegisFrameworkVersion: 2.4.0
  * @intent: Enhanced test runner for intelligence features that handles TypeScript directly
  * @context: Addresses test failures by providing proper execution environment for all tests
  * @mode: strict

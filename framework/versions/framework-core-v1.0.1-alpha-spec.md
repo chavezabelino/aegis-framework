@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.3.0-alpha
+@aegisFrameworkVersion: 2.4.0-alpha
 @intent: Technical specification for Constitutional Conductor implementation
 @context: Phase 1 of self-healing governance roadmap
 @constitutionalAuthority: ../../CONSTITUTION.md

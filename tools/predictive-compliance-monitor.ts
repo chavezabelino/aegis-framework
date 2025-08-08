@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * @aegisFrameworkVersion: 2.3.0
+ * @aegisFrameworkVersion: 2.4.0
  * @intent: Predictive compliance monitoring that prevents constitutional violations before they occur
  * @context: Advanced constitutional safeguard that analyzes patterns and predicts potential violations
  * @mode: strict

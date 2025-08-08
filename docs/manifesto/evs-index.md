@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.3.0-alpha-dev
+@aegisFrameworkVersion: 2.4.0-alpha-dev
 @intent: Canonical index of all Evolution Stories for pattern recognition and learning
 @context: Central registry enabling systematic analysis of framework evolution patterns
 @manifestoRef: Evidence base supporting field-driven learning claims

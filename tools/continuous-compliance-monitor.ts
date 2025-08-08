@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * @aegisFrameworkVersion: 2.3.0
+ * @aegisFrameworkVersion: 2.4.0
  * @intent: Continuous compliance monitoring that ensures constitutional adherence at all times
  * @context: Always-on constitutional safeguard that monitors and enforces compliance continuously
  * @mode: strict

@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.3.0-alpha-dev
+@aegisFrameworkVersion: 2.4.0-alpha-dev
 @intent: Comprehensive solution summary for AI agent drift prevention
 @context: Documentation of complete solution addressing agent constitutional compliance
 -->

@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.3.0-alpha-dev
+@aegisFrameworkVersion: 2.4.0-alpha-dev
 @intent: Feature configurability audit and design for optional vs core vs required framework behaviors
 @context: Assess which recently added features should be configurable vs mandatory per dev team preferences
 @mode: analytical

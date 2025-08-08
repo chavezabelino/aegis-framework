@@ -7,7 +7,7 @@
  * cross-pollinates patterns, and provides evolutionary guidance
  * Part of Phase 3: Advanced Self-Healing Features
  * 
- * @aegisFrameworkVersion: 2.3.0-alpha
+ * @aegisFrameworkVersion: 2.4.0-alpha
  * @intent: Implement cross-framework pattern learning and knowledge synthesis
  */
 

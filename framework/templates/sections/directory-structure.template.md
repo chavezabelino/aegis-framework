@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.3.0
+@aegisFrameworkVersion: 2.4.0
 @intent: Directory structure and enforcement template section
 @context: Project organization standards for AI agents
 -->

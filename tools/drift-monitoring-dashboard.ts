@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * @aegisFrameworkVersion: 2.3.0
+ * @aegisFrameworkVersion: 2.4.0
  * @intent: Drift monitoring dashboard with team configuration support
  * @context: Visual insights into framework health and drift patterns
  * @mode: strict

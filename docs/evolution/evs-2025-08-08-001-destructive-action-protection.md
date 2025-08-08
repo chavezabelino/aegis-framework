@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.3.0
+@aegisFrameworkVersion: 2.4.0
 @intent: Evolution story for destructive action protection system
 @context: Framework learning from near-catastrophic deletion of essential files
 @mode: strict

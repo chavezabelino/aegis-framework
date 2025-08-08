@@ -1,5 +1,5 @@
 /**
- * @aegisFrameworkVersion: 2.3.0
+ * @aegisFrameworkVersion: 2.4.0
  * @intent: Real-time Cursor integration for live workflow detection
  * @context: Connects Cursor detection to live IDE workflows with immediate feedback
  */

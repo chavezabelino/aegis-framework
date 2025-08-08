@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.3.0-alpha-dev
+@aegisFrameworkVersion: 2.4.0-alpha-dev
 @intent: Roadmap for three-tier feature configurability system implementation
 @context: Future implementation of team-specific framework behavior configuration
 -->

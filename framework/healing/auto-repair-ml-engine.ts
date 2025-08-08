@@ -3,7 +3,7 @@
 @version: 1.2.1
 @mode: lean
 @intent: Scaffold for ML-driven blueprint auto-repair engine
-@context: Implements the v2.3.0 roadmap feature for ML-optimized blueprint repair, integrating with the self-healing engine and emitting observability events.
+@context: Implements the v2.4.0 roadmap feature for ML-optimized blueprint repair, integrating with the self-healing engine and emitting observability events.
 */
 
 import { Blueprint, RepairAction, ErrorPattern } from './types';

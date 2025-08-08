@@ -96,7 +96,7 @@ requiredSelectors:
 
 ruleContracts:
   - id: memory-privacy
-    version: "2.3.0"
+    version: "2.4.0"
     description: "Constitutional memory privacy and access controls"
     schema: "memory-privacy.schema.ts"
     enforcement: "strict"

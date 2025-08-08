@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.3.0-alpha-dev
+@aegisFrameworkVersion: 2.4.0-alpha-dev
 @intent: Summary of v2.0 paradigm shift implementation
 @context: Documentation of One-Command Hydration framework evolution
 -->

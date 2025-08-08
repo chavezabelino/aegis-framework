@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.3.0
+@aegisFrameworkVersion: 2.4.0
 @intent: Evolution story for Aegis Memory Subsystem integration
 @context: Analysis of memory governance concepts inspired by MemU framework
 @mode: strict

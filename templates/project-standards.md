@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.3.0
+@aegisFrameworkVersion: 2.4.0
 @aegisProjectProfile: true
 @intent: Project-specific operational standards for agent instruction merging
 @context: This file is merged with framework/agent instructions to produce ready-to-use, IDE/agent-specific guidance.

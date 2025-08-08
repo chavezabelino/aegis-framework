@@ -327,7 +327,7 @@ class ConstitutionalValidator {
 
   private async checkFrameworkFileAnnotations(): Promise<AnnotationCheck[]> {
     const frameworkFiles = [
-      'framework/framework-core-v2.3.0.md',
+      'framework/framework-core-v2.4.0.md',
       'CONSTITUTION.md'
     ];
 

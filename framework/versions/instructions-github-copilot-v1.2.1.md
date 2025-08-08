@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.3.0
+@aegisFrameworkVersion: 2.4.0
 @intent: Versioned github-copilot agent instructions for current framework state
 @context: blueprint-driven-development, constitutional-governance, semantic-versioning, multi-agent-orchestration, mcp-metadata, drift-logging, adapter-interface, apprenticeship-scaffolds, mentor-system, learning-integration, advanced-observability, event-emission, telemetry
 @target: github-copilot

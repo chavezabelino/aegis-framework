@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.3.0-alpha-dev
+@aegisFrameworkVersion: 2.4.0-alpha-dev
 @intent: Auto-generated evolution story for detected trigger
 @context: Framework automatic detection of evolution documentation needs
 -->

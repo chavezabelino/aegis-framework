@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.3.0-alpha-dev
+@aegisFrameworkVersion: 2.4.0-alpha-dev
 @intent: Core engineering principles for GenAI Operating System development
 @context: Technical foundations supporting the manifesto vision
 @manifestoRef: Engineering principles and implementation patterns

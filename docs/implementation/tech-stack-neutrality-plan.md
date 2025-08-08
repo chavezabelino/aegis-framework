@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.3.0-alpha-dev
+@aegisFrameworkVersion: 2.4.0-alpha-dev
 @intent: Comprehensive plan for removing tech stack bias and achieving full reusability
 @context: Analysis of current tech stack bias and roadmap for framework neutrality
 -->

@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.3.0-alpha-dev
+@aegisFrameworkVersion: 2.4.0-alpha-dev
 @intent: Detailed technical requirements for removing tech stack bias
 @context: Specific implementation tasks for achieving framework neutrality
 -->

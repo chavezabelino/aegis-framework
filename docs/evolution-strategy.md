@@ -63,7 +63,7 @@ When adding new features (like the v4.7 draft content), follow this process:
 - Additional execution modes
 - Enhanced observability features
 - New adapter support
-- Multi-agent coordination (planned for v2.3.0)
+- Multi-agent coordination (planned for v2.4.0)
 
 #### Major Releases (x.0.0)
 - Breaking schema changes

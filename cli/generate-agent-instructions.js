@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * @aegisFrameworkVersion: 2.3.0
+ * @aegisFrameworkVersion: 2.4.0
  * @intent: CLI tool for generating versioned agent instructions
  * @context: Automatically creates agent-specific instructions based on current framework state
  */

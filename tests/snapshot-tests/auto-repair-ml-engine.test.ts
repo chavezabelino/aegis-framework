@@ -13,7 +13,7 @@ describe('AutoRepairMLEngine', () => {
   const engine = new AutoRepairMLEngine();
   const validBlueprint: Blueprint = {
     id: 'test-blueprint',
-    version: '2.3.0',
+    version: '2.4.0',
     content: { id: 'test-blueprint', version: '1.0.0' },
   };
   const missingIdBlueprint: Blueprint = {

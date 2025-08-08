@@ -1,6 +1,6 @@
 # 🚀 Bun + Vite Migration: Modern TypeScript/ESM Toolchain
 
-**@aegisFrameworkVersion**: 2.3.0  
+**@aegisFrameworkVersion**: 2.4.0  
 **@intent**: Migration to modern Bun + Vite toolchain  
 **@context**: Eliminating ESM/TypeScript configuration paradox with modern tools
 

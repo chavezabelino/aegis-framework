@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.3.0-beta
+@aegisFrameworkVersion: 2.4.0-beta
 @intent: Multi-agent orchestration and advanced observability features
 @migratedFrom: framework-core-v4.7-draft.md
 @context:

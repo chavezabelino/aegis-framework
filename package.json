@@ -1,6 +1,6 @@
 {
   "name": "aegis-framework",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "description": "The world's first GenAI Operating System - Constitutional governance for AI-native engineering with systematic drift detection, evolution learning, and democratic amendment processes",
   "type": "module",
   "scripts": {
@@ -41,8 +41,6 @@
     "dev": "vite",
     "preview": "vite preview",
     "type-check": "tsc --noEmit",
-
-
     "cursor:start": "bun run cli/cursor-realtime-cli.ts start",
     "cursor:stop": "bun run cli/cursor-realtime-cli.ts stop",
     "cursor:status": "bun run cli/cursor-realtime-cli.ts status",
@@ -84,7 +82,6 @@
     "@types/node": "^20.0.0",
     "@vitejs/plugin-react": "^5.0.0",
     "bun": "^1.2.19",
-    
     "jest": "^30.0.5",
     "ts-jest": "^29.4.1",
     "vite": "^7.1.1"

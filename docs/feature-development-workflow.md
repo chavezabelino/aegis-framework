@@ -17,7 +17,7 @@ Instead of informal drafts, create structured specifications:
 
 ```bash
 # For a new minor version feature
-touch framework/versions/framework-core-v2.3.0-beta-spec.md
+touch framework/versions/framework-core-v2.4.0-beta-spec.md
 ```
 
 **Specification Template:**

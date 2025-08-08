@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.3.0-alpha-dev
+@aegisFrameworkVersion: 2.4.0-alpha-dev
 @intent: Complete documentation of proactive evolution story detection system
 @context: Answer to "is this all after the fact? do i have to remember to run this scan?"
 -->

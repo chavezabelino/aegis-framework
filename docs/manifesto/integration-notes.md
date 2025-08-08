@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.3.0-alpha-dev
+@aegisFrameworkVersion: 2.4.0-alpha-dev
 @intent: Guide for integrating manifesto principles with development tools and workflows
 @context: Practical implementation of GenAI OS concepts in daily development
 @manifestoRef: Operational bridge between manifesto theory and development practice

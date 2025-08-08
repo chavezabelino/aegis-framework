@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.3.0
+@aegisFrameworkVersion: 2.4.0
 @intent: Comprehensive audit of version drift and roadmap documentation inconsistencies
 @context: Version management audit before implementing systematic roadmap standardization
 @mode: strict

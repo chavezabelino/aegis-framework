@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.3.0
+@aegisFrameworkVersion: 2.4.0
 @intent: Ultimate merged GitHub Copilot + Kilo standards under Aegis Framework
 @context: Intelligent section merging with deduplication and hierarchical priority
 @generatedFrom: generate-copilot-kilo-standards.cjs

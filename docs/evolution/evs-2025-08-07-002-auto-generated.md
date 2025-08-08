@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.3.0
+@aegisFrameworkVersion: 2.4.0
 @intent: Completed evolution story for version management systematic gap
 @context: Framework learning from constitutional governance violation and systematic remediation
 @mode: strict

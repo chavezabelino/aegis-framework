@@ -6,7 +6,7 @@
  * Constitutional enforcement tool for Article IX: Template and Documentation Quality Standards
  * Validates generated outputs against reference targets for character-perfect fidelity
  * 
- * @aegisFrameworkVersion: 2.3.0
+ * @aegisFrameworkVersion: 2.4.0
  * @intent: Ensure generated outputs match reference targets exactly
  * @constitutionalAuthority: Article IX, Section 2
  */

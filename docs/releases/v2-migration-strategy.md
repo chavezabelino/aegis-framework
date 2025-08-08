@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.3.0-alpha-dev
+@aegisFrameworkVersion: 2.4.0-alpha-dev
 @intent: Version migration strategy for v1.x → v2.0 breaking changes
 @context: Constitutional version management for One-Command Hydration paradigm
 -->

@@ -1,4 +1,4 @@
-# 🛡️ Aegis Framework v2.3.0
+# 🛡️ Aegis Framework v2.4.0
 
 [![GenAI OS Manifesto](https://img.shields.io/badge/📖_GenAI_OS-Manifesto-blue?style=for-the-badge)](docs/manifesto/README.md)
 [![Constitutional Computing](https://img.shields.io/badge/🏛️_Constitutional-Computing-green?style=for-the-badge)](docs/manifesto/principles.md)

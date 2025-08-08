@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * @aegisFrameworkVersion: 2.3.0
+ * @aegisFrameworkVersion: 2.4.0
  * @intent: Systematic prevention validation framework that ensures all prevention mechanisms work correctly
  * @context: Advanced constitutional safeguard that validates prevention mechanisms through systematic testing
  * @mode: strict

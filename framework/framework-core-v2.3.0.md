@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.3.0
+@aegisFrameworkVersion: 2.4.0
 @intent: Framework core specification for v2.3.0 with enhanced constitutional safeguards
 @context: Complete framework architecture with dramatically strengthened constitutional protection systems
 @mode: strict

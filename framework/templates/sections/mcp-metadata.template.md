@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.3.0
+@aegisFrameworkVersion: 2.4.0
 @intent: MCP metadata emission template section
 @context: Event schemas and observability patterns for agents
 -->

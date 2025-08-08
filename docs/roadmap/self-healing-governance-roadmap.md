@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.3.0-alpha
+@aegisFrameworkVersion: 2.4.0-alpha
 @intent: Strategic roadmap for self-healing constitutional governance system
 @constitutionalAuthority: ../CONSTITUTION.md
 @amendmentRequired: true

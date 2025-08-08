@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.3.0
+@aegisFrameworkVersion: 2.4.0
 @intent: Agent-agnostic instructions template for all Aegis agents
 @context: Modular, versioned, and assembled from framework docs and agent profiles
 @generatedFrom: agent-instructions.template.md

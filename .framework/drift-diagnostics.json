@@ -1,0 +1,187 @@
+[
+  {
+    "timestamp": "2025-08-08T22:18:50.944Z",
+    "triggeredBy": "what are you trying to do?",
+    "currentObjective": "Current objective unclear from context",
+    "originalBlueprint": "Implement semantic interrupt detection as a constitutional safeguard",
+    "driftPercentage": 100,
+    "confidence": 0.95,
+    "recommendations": [
+      "Complete intent realignment required",
+      "Return to last confirmed checkpoint",
+      "Provide clear explanation of current reasoning",
+      "Offer alternative approaches for consideration",
+      "Create new checkpoint with clarified intent"
+    ],
+    "recoveryOptions": [
+      {
+        "id": "explain-current",
+        "type": "review",
+        "description": "Explain current reasoning and approach",
+        "impact": "low",
+        "confidence": 0.9
+      },
+      {
+        "id": "rollback-checkpoint",
+        "type": "rollback",
+        "description": "Return to last confirmed checkpoint",
+        "impact": "medium",
+        "confidence": 0.8
+      },
+      {
+        "id": "confirm-intent",
+        "type": "confirm",
+        "description": "Request user to confirm or update intended objective",
+        "impact": "low",
+        "confidence": 0.95
+      },
+      {
+        "id": "gradual-realign",
+        "type": "realign",
+        "description": "Gradually adjust approach based on user feedback",
+        "impact": "medium",
+        "confidence": 0.85
+      }
+    ]
+  },
+  {
+    "timestamp": "2025-08-08T22:19:11.801Z",
+    "triggeredBy": "what are you trying to do",
+    "currentObjective": "Current objective unclear from context",
+    "originalBlueprint": "Build reflex system to detect when users express doubt about agent intent",
+    "driftPercentage": 100,
+    "confidence": 0.95,
+    "recommendations": [
+      "Complete intent realignment required",
+      "Return to last confirmed checkpoint",
+      "Provide clear explanation of current reasoning",
+      "Offer alternative approaches for consideration",
+      "Create new checkpoint with clarified intent"
+    ],
+    "recoveryOptions": [
+      {
+        "id": "explain-current",
+        "type": "review",
+        "description": "Explain current reasoning and approach",
+        "impact": "low",
+        "confidence": 0.9
+      },
+      {
+        "id": "rollback-checkpoint",
+        "type": "rollback",
+        "description": "Return to last confirmed checkpoint",
+        "impact": "medium",
+        "confidence": 0.8
+      },
+      {
+        "id": "confirm-intent",
+        "type": "confirm",
+        "description": "Request user to confirm or update intended objective",
+        "impact": "low",
+        "confidence": 0.95
+      },
+      {
+        "id": "gradual-realign",
+        "type": "realign",
+        "description": "Gradually adjust approach based on user feedback",
+        "impact": "medium",
+        "confidence": 0.85
+      }
+    ]
+  },
+  {
+    "timestamp": "2025-08-08T22:20:10.441Z",
+    "triggeredBy": "why are you doing that",
+    "currentObjective": "Current objective unclear from context",
+    "originalBlueprint": "Build reflex system to detect when users express doubt about agent intent",
+    "driftPercentage": 100,
+    "confidence": 0.9,
+    "recommendations": [
+      "Complete intent realignment required",
+      "Return to last confirmed checkpoint",
+      "Create new checkpoint with clarified intent"
+    ],
+    "recoveryOptions": [
+      {
+        "id": "explain-current",
+        "type": "review",
+        "description": "Explain current reasoning and approach",
+        "impact": "low",
+        "confidence": 0.9
+      },
+      {
+        "id": "rollback-checkpoint",
+        "type": "rollback",
+        "description": "Return to last confirmed checkpoint",
+        "impact": "medium",
+        "confidence": 0.8
+      },
+      {
+        "id": "confirm-intent",
+        "type": "confirm",
+        "description": "Request user to confirm or update intended objective",
+        "impact": "low",
+        "confidence": 0.95
+      },
+      {
+        "id": "gradual-realign",
+        "type": "realign",
+        "description": "Gradually adjust approach based on user feedback",
+        "impact": "medium",
+        "confidence": 0.85
+      }
+    ]
+  },
+  {
+    "timestamp": "2025-08-08T22:20:15.344Z",
+    "triggeredBy": "stop doing that",
+    "currentObjective": "Current objective unclear from context",
+    "originalBlueprint": "Build reflex system to detect when users express doubt about agent intent",
+    "driftPercentage": 100,
+    "confidence": 0.95,
+    "recommendations": [
+      "IMMEDIATE HALT: Stop current action and await user clarification",
+      "Request explicit confirmation of intended objective",
+      "Complete intent realignment required",
+      "Return to last confirmed checkpoint",
+      "Create new checkpoint with clarified intent"
+    ],
+    "recoveryOptions": [
+      {
+        "id": "explain-current",
+        "type": "review",
+        "description": "Explain current reasoning and approach",
+        "impact": "low",
+        "confidence": 0.9
+      },
+      {
+        "id": "rollback-checkpoint",
+        "type": "rollback",
+        "description": "Return to last confirmed checkpoint",
+        "impact": "medium",
+        "confidence": 0.8
+      },
+      {
+        "id": "confirm-intent",
+        "type": "confirm",
+        "description": "Request user to confirm or update intended objective",
+        "impact": "low",
+        "confidence": 0.95
+      },
+      {
+        "id": "full-restart",
+        "type": "restart",
+        "description": "Restart from beginning with clear objective definition",
+        "impact": "high",
+        "confidence": 0.7
+      },
+      {
+        "id": "gradual-realign",
+        "type": "realign",
+        "description": "Gradually adjust approach based on user feedback",
+        "impact": "medium",
+        "confidence": 0.85
+      }
+    ]
+  }
+]

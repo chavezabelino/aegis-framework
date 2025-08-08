@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.3.0
+@aegisFrameworkVersion: 2.4.0
 @intent: Stable framework specification for packaged distribution and constitutional governance
 @context: Stable release with NPM packages, Docker support, and automated release pipeline
 -->

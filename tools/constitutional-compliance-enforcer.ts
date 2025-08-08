@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * @aegisFrameworkVersion: 2.3.0
+ * @aegisFrameworkVersion: 2.4.0
  * @intent: Constitutional compliance enforcer to prevent false claims and ensure framework integrity
  * @context: Emergency response to constitutional crisis - systematic intelligence failure
  * @mode: strict
@@ -9,6 +9,7 @@
 
 import fs from 'fs';
 import path from 'path';
+import { ConstitutionalReflexEngine } from '../framework/governance/constitutional-reflex-engine.ts';
 
 interface IntelligenceClaim {
   id: string;
@@ -44,11 +45,38 @@ class ConstitutionalComplianceEnforcer {
   private projectRoot: string;
   private intelligenceClaims: IntelligenceClaim[] = [];
   private preventionMechanisms: PreventionMechanism[] = [];
+  private reflexEngine: ConstitutionalReflexEngine;
 
   constructor(projectRoot: string = process.cwd()) {
     this.projectRoot = projectRoot;
+    this.reflexEngine = new ConstitutionalReflexEngine(projectRoot);
     this.initializeClaims();
     this.initializePreventionMechanisms();
+  }
+
+  /**
+   * Process user input for semantic interrupts and constitutional violations
+   */
+  async processUserInput(userInput: string, currentContext: string): Promise<any> {
+    console.log('🔍 Processing user input for constitutional compliance...\n');
+    
+    // Check for semantic interrupts first
+    const reflexResponse = await this.reflexEngine.processInput(userInput, currentContext);
+    
+    if (reflexResponse.triggered) {
+      console.log('🚨 SEMANTIC INTERRUPT DETECTED - Constitutional reflex activated\n');
+      return {
+        type: 'semantic_interrupt',
+        reflexResponse,
+        compliance: 'suspended_for_realignment'
+      };
+    }
+    
+    // No semantic interrupt - continue normal compliance checking
+    return {
+      type: 'normal_operation',
+      compliance: await this.enforceCompliance()
+    };
   }
 
   /**

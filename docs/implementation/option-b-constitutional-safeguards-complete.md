@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.3.0
+@aegisFrameworkVersion: 2.4.0
 @intent: Document completion of Option B constitutional safeguard improvements
 @context: Final documentation before version increment to test our enhanced version consistency safeguards
 @mode: strict

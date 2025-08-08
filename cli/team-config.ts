@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * @aegisFrameworkVersion 2.3.0-alpha-dev
+ * @aegisFrameworkVersion 2.4.0-alpha-dev
  * @intent Interactive CLI for team configuration management
  * @context Support team-specific feature configuration with constitutional compliance
  */

@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.3.0
+@aegisFrameworkVersion: 2.4.0
 @intent: Phase 2 feature configurability integration complete
 @context: Comprehensive tool integration with team configuration system
 @mode: strict

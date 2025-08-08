@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.3.0-alpha-dev
+@aegisFrameworkVersion: 2.4.0-alpha-dev
 @intent: Roadmap for implementing tech stack neutrality across the framework
 @context: Future feature planning for universal adapter system and framework reusability
 -->

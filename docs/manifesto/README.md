@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.3.0-alpha-dev
+@aegisFrameworkVersion: 2.4.0-alpha-dev
 @intent: Navigation index for the GenAI Operating System Manifesto documentation
 @context: Central hub for manifesto exploration and implementation guidance
 @manifestoRef: Primary navigation for manifesto ecosystem

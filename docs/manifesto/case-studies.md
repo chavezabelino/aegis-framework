@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.3.0-alpha-dev
+@aegisFrameworkVersion: 2.4.0-alpha-dev
 @intent: Real-world case studies demonstrating GenAI OS principles in practice
 @context: Concrete examples linking to Evolution Stories and implementation experiences
 @manifestoRef: Evidence supporting manifesto claims through lived experience

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * @aegisFrameworkVersion: 2.3.0
+ * @aegisFrameworkVersion: 2.4.0
  * @intent: Comprehensive version update script to fix systematic gaps
  * @context: Addresses documentation drift by updating all version references
  * @mode: strict

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * @aegisFrameworkVersion: 2.3.0
+ * @aegisFrameworkVersion: 2.4.0
  * @intent: Comprehensive version consistency validation to prevent documentation drift
  * @context: Automated prevention of version mismatch issues across all framework files
  * @mode: strict

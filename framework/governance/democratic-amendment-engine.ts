@@ -6,7 +6,7 @@
  * Community-driven constitutional amendment proposal, review, and voting system
  * Part of Option C: Democratic Amendment Workflows
  * 
- * @aegisFrameworkVersion: 2.3.0-beta
+ * @aegisFrameworkVersion: 2.4.0-beta
  * @intent: Implement democratic governance for constitutional amendments
  */
 

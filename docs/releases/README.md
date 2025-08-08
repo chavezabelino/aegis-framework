@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.3.0
+@aegisFrameworkVersion: 2.4.0
 @intent: Release documentation index and navigation
 @context: Comprehensive release documentation for all framework versions
 @mode: strict

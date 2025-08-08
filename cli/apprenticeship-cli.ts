@@ -79,7 +79,7 @@ emitEvent({
   timestamp: new Date().toISOString(),
 });
 
-// MCP metadata emission (v2.3.0-beta)
+// MCP metadata emission (v2.4.0-beta)
 function emitMCPEvent(event: object) {
   const mcpPath = require('path').join(__dirname, '../framework/observability/mcp-events.jsonl');
   require('fs').appendFileSync(mcpPath, JSON.stringify(event) + '\n');

@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.3.0-alpha-dev
+@aegisFrameworkVersion: 2.4.0-alpha-dev
 @intent: Personal reflections on the journey from autocomplete to GenAI Operating System
 @context: Author's lived experience building and evolving the framework
 @manifestoRef: The human story behind the technical manifesto

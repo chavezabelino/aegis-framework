@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.3.0-alpha-dev
+@aegisFrameworkVersion: 2.4.0-alpha-dev
 @intent: Constitutional example of a safe remediation plan
 @context: Template showing all required safety mechanisms and validation gates
 @mode: strict

@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.3.0-alpha-dev
+@aegisFrameworkVersion: 2.4.0-alpha-dev
 @intent: Constitutional framework for documenting field-driven evolution insights
 @context: Systematic capture of "eating our own dog food" feedback loops that drive framework development
 -->

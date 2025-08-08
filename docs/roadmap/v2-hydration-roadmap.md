@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.3.0-spec
+@aegisFrameworkVersion: 2.4.0-spec
 @intent: Updated framework roadmap reflecting v2.0 hydration paradigm
 @context: Version strategy update for One-Command Hydration major release
 -->

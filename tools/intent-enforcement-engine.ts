@@ -1,5 +1,5 @@
 /**
- * @aegisFrameworkVersion: 2.3.0
+ * @aegisFrameworkVersion: 2.4.0
  * @intent: Real-time intent enforcement and agent drift prevention that catches systematic issues
  * @context: Prevents AI agents from deviating from constitutional principles and detects pattern-based drift
  * @mode: strict
