@@ -54,24 +54,24 @@ npm run validate
 
 ```bash
 # Before making changes - check current compliance
-npm run check
+bun run check
 
 # Make your changes...
 
 # Validate constitutional compliance
-npm run validate
+bun run validate
 
 # Check for drift patterns
-npm run conductor drift-report
+bun run conductor drift-report
 
 # Test enforcement system
-npm run conductor enforce --dry-run
+bun run conductor enforce --dry-run
 
 # Apply corrections if needed
-npm run conductor enforce --auto-fix
+bun run conductor enforce --auto-fix
 
 # Run tests (when available)
-npm test
+bun test
 ```
 
 ## 🏛️ Constitutional Compliance
@@ -112,14 +112,14 @@ metadata:
 
 ```bash
 # Run constitutional compliance before PR
-npm run check
-npm run validate
+bun run check
+bun run validate
 
 # Test enforcement system
-npm run conductor enforce --dry-run
+bun run conductor enforce --dry-run
 
 # Check drift patterns
-npm run conductor drift-report
+bun run conductor drift-report
 ```
 
 - New adapters or tools should include constitutional compliance verification
@@ -130,8 +130,8 @@ npm run conductor drift-report
 
 Before submitting a PR, ensure:
 
-- [ ] `npm run validate` passes with >90% compliance
-- [ ] `npm run check` shows constitutional compliance
+- [ ] `bun run validate` passes with >90% compliance
+- [ ] `bun run check` shows constitutional compliance
 - [ ] All new files include proper constitutional annotations
 - [ ] Version references are consistent with current framework version
 - [ ] Changes follow semantic versioning principles
@@ -159,7 +159,7 @@ aegis-framework/
 
 ## 🚫 What NOT to Commit
 
-- `node_modules/` (use npm install)
+- `node_modules/` (use bun install)
 - `package-lock.json` (unless intentionally updating dependencies)
 - Personal IDE configurations
 - Temporary or cache files

@@ -98,7 +98,7 @@ else
     # Constitutional validation
     if [ -f "tools/validate-constitution.ts" ]; then
         log_info "Running constitutional validation..."
-        if node tools/validate-constitution.ts; then
+        if bun tools/validate-constitution.ts; then
             log_success "Constitutional validation passed"
         else
             log_error "Constitutional validation failed"
@@ -110,7 +110,7 @@ else
     # Template quality validation
     if [ -f "tools/validate-template-quality.ts" ]; then
         log_info "Running template quality validation..."
-        if node tools/validate-template-quality.ts; then
+        if bun tools/validate-template-quality.ts; then
             log_success "Template quality validation passed"
         else
             log_error "Template quality validation failed"
@@ -124,7 +124,7 @@ else
         echo "$REMEDIATION_PLANS" | while IFS= read -r plan; do
             if [ -f "$plan" ]; then
                 log_info "Validating $plan..."
-                if node tools/validate-remediation-plan.ts "$plan"; then
+                if bun tools/validate-remediation-plan.ts "$plan"; then
                     log_success "Remediation plan $plan validated"
                 else
                     log_error "Remediation plan $plan failed validation"
@@ -140,7 +140,7 @@ else
         echo "$BLUEPRINT_FILES" | while IFS= read -r blueprint; do
             if [ -f "$blueprint" ]; then
                 log_info "Validating $blueprint..."
-                if node tools/validate-blueprint.ts "$blueprint"; then
+                if bun tools/validate-blueprint.ts "$blueprint"; then
                     log_success "Blueprint $blueprint validated"
                 else
                     log_error "Blueprint $blueprint failed validation"
@@ -152,11 +152,11 @@ fi
 
 # 4. Check for evolution story requirements
 log_info "Checking evolution story requirements..."
-EVOLUTION_TRIGGERS=$(node tools/detect-evolution-stories.ts 2>/dev/null | grep -E "(constitutional-violation|user-question)" || true)
+EVOLUTION_TRIGGERS=$(bun tools/detect-evolution-stories.ts 2>/dev/null | grep -E "(constitutional-violation|user-question)" || true)
 if [ -n "$EVOLUTION_TRIGGERS" ]; then
     log_warning "Evolution story triggers detected:"
     echo "$EVOLUTION_TRIGGERS"
-    log_info "Consider documenting these insights using: node cli/generate-evolution-story.cjs"
+    log_info "Consider documenting these insights using: bun cli/generate-evolution-story.cjs"
 fi
 
 # 5. Intent enforcement check

@@ -51,12 +51,12 @@ jobs:
         # CI mode: fail on critical issues, compare against baseline
         if [ "${{ github.event_name }}" = "pull_request" ]; then
           echo "🔍 PR evaluation mode - comparing against baseline"
-          node cli/aegis-eval.ts $EVAL_ID --ci --baseline $BASELINE --threshold 0.85
+          bun cli/aegis-eval.ts $EVAL_ID --ci --baseline $BASELINE --threshold 0.85
         else
           echo "🚀 Main branch evaluation - creating new baseline"
-          node cli/aegis-eval.ts $EVAL_ID --verbose
+          bun cli/aegis-eval.ts $EVAL_ID --verbose
           # Update baseline on main branch
-          node cli/aegis-eval.ts baseline main ${{ github.sha }}
+          bun cli/aegis-eval.ts baseline main ${{ github.sha }}
         fi
         
     - name: Upload evaluation results

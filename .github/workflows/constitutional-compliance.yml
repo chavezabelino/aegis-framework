@@ -40,9 +40,9 @@ jobs:
     - name: Run constitutional validation
       run: |
         echo "🏛️ Running constitutional compliance validation..."
-        node tools/validate-constitution.ts || exit 1
-        node tools/validate-template-quality.ts || exit 1
-        node tools/validate-remediation-plan.ts --check-all || exit 1
+        bun tools/validate-constitution.ts || exit 1
+        bun tools/validate-template-quality.ts || exit 1
+        bun tools/validate-remediation-plan.ts --check-all || exit 1
         
     - name: Validate version consistency
       run: |
@@ -52,17 +52,17 @@ jobs:
     - name: Validate roadmap alignment
       run: |
         echo "🗺️ Validating roadmap alignment..."
-        node tools/validate-version-consistency.cjs --check-roadmap || exit 1
+        bun tools/validate-version-consistency.cjs --check-roadmap || exit 1
         
     - name: Validate release coverage
       run: |
         echo "📋 Validating release documentation coverage..."
-        node tools/validate-version-consistency.cjs --check-releases || exit 1
+        bun tools/validate-version-consistency.cjs --check-releases || exit 1
         
     - name: Detect evolution story triggers
       run: |
         echo "🔍 Detecting evolution story triggers..."
-        node cli/detect-evolution-stories.cjs
+        bun cli/detect-evolution-stories.cjs
         
     - name: Comment evolution insights
       if: always()
@@ -100,7 +100,7 @@ jobs:
         for blueprint in blueprints/*/blueprint.yaml; do
           if [ -f "$blueprint" ]; then
             echo "Validating $blueprint"
-            node tools/validate-blueprint.ts "$blueprint"
+            bun tools/validate-blueprint.ts "$blueprint"
           fi
         done
         
@@ -112,7 +112,7 @@ jobs:
           echo "Found remediation plans - validating constitutional compliance..."
           for plan in $remediation_plans; do
             echo "Validating $plan"
-            node tools/validate-remediation-plan.ts "$plan"
+            bun tools/validate-remediation-plan.ts "$plan"
           done
         else
           echo "No remediation plans found - skipping validation"
@@ -152,7 +152,7 @@ jobs:
       run: |
         echo "📝 Validating template quality..."
         if [ -f "tools/validate-template-quality.ts" ]; then
-          node tools/validate-template-quality.ts
+          bun tools/validate-template-quality.ts
         fi
         
     - name: Framework version consistency check

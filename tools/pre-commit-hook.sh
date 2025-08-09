@@ -16,7 +16,7 @@ VALIDATION_ERRORS=0
 # 1. Constitutional compliance validation
 echo ""
 echo "📜 Validating constitutional compliance..."
-if ! node tools/validate-constitution.ts; then
+if ! bun tools/validate-constitution.ts; then
     echo "❌ Constitutional compliance validation failed"
     VALIDATION_ERRORS=$((VALIDATION_ERRORS + 1))
 else
@@ -26,7 +26,7 @@ fi
 # 2. Template quality validation (Article IX)
 echo ""
 echo "📝 Validating template quality (Article IX)..."
-if ! node tools/validate-template-quality.cjs; then
+if ! bun tools/validate-template-quality.cjs; then
     echo "❌ Template quality validation failed"
     VALIDATION_ERRORS=$((VALIDATION_ERRORS + 1))
 else
@@ -36,7 +36,7 @@ fi
 # 3. Output fidelity validation (Article IX)
 echo ""
 echo "🎯 Validating output fidelity (Article IX)..."
-if ! node tools/validate-output-fidelity.cjs; then
+if ! bun tools/validate-output-fidelity.cjs; then
     echo "❌ Output fidelity validation failed"
     VALIDATION_ERRORS=$((VALIDATION_ERRORS + 1))
 else
@@ -49,7 +49,7 @@ if [ -n "$BLUEPRINT_FILES" ]; then
     echo ""
     echo "📋 Validating blueprint changes..."
     for blueprint in $BLUEPRINT_FILES; do
-        if ! node tools/validate-blueprint.ts "$blueprint"; then
+        if ! bun tools/validate-blueprint.ts "$blueprint"; then
             echo "❌ Blueprint validation failed: $blueprint"
             VALIDATION_ERRORS=$((VALIDATION_ERRORS + 1))
         else

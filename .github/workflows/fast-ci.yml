@@ -99,6 +99,11 @@ jobs:
           fi
         done
         
+    - name: Package manager consistency check
+      run: |
+        echo "🔍 Validating package manager consistency..."
+        bun tools/validate-package-manager-consistency.ts
+        
     - name: Quick telemetry test
       run: |
         echo "📊 Testing telemetry system..."
