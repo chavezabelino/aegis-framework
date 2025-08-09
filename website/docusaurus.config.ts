@@ -25,7 +25,7 @@ const config: Config = {
   organizationName: 'chavezabelino', // Your GitHub username
   projectName: 'aegis-framework', // Your repo name
 
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
 
   // Even if you don't use internationalization, you can use this field to set

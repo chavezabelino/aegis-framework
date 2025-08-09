@@ -25,7 +25,7 @@ function HomepageHeader() {
           </Link>
           <Link
             className="button button--outline button--lg"
-            to="/dashboard"
+            to="/aegis-framework/dashboard"
             style={{marginLeft: '1rem'}}>
             Live Dashboard 📊
           </Link>

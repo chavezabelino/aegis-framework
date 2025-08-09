@@ -76,9 +76,9 @@ The framework currently provides **64 capabilities** across **4 categories**:
 ## Getting Started
 
 1. **Explore the [Live Dashboard](/dashboard)** to see current framework status
-2. **Browse [Capabilities](/docs/capabilities)** to understand available features
-3. **Review [Blueprints](/docs/blueprints)** for implementation examples
-4. **Check [Evolution Stories](/blog)** for framework development history
+2. **Browse [Capabilities](./capabilities/overview)** to understand available features
+3. **Review [Blueprints](./blueprints/overview)** for implementation examples
+4. **Check [Evolution Stories](../blog)** for framework development history
 
 ## Architecture Overview
 
@@ -99,8 +99,8 @@ graph TD
 
 ## Next Steps
 
-- **For New Users**: Start with the [Getting Started Guide](/docs/tutorial)
-- **For Developers**: Explore the [API Documentation](/docs/api)
-- **For Maintainers**: Review [Contributing Guidelines](/docs/contributing)
+- **For New Users**: Start with the [Getting Started Guide](./tutorial-basics/create-a-document)
+- **For Developers**: Explore the [Capabilities Documentation](./capabilities/overview)
+- **For Maintainers**: Review the [Blueprint Registry](./blueprints/overview)
 
 The Aegis Framework is designed to grow with your team while maintaining constitutional governance and safety principles. Every capability is monitored, every execution is traced, and every change respects the framework's foundational principles.

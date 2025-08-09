@@ -1,8 +1,8 @@
-name: Deploy Docusaurus to GitHub Pages
+name: Deploy Docusaurus to GitHub Pages (DISABLED)
 
 on:
-  push:
-    branches: [ main ]
+  # Disabled - using simple workflow instead
+  workflow_dispatch:
 
 permissions:
   contents: read
