@@ -47,7 +47,6 @@ const sidebars: SidebarsConfig = {
       label: 'Available Blueprints',
       items: [
         'blueprints/feat-public-viewing',
-        'blueprints/memory-governance',
       ],
     },
   ],
