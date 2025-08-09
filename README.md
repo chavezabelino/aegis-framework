@@ -33,7 +33,7 @@ Aegis provides **constitutional governance** for AI agents, ensuring they genera
 ### NPM Package
 ```bash
 # Install globally
-npm install -g @aegis-framework/cli@2.4.0
+npm install -g @aegis-framework/cli@2.5.0
 
 # Initialize in a project
 aegis-hydrate /path/to/your/project
@@ -333,6 +333,30 @@ node tools/validate-blueprint.ts patterns/your-feature/pattern.yaml
 ```
 
 See [Evolution Strategy](docs/evolution-strategy.md) for guidance on framework development and impact assessment.
+
+---
+
+## 📚 Documentation
+
+### Core Documentation
+- **[AI Agent Governance Specification](docs/specifications/AI-AGENT-GOVERNANCE-SPEC-v1.md)** - Industry standard for AI agent governance
+- **[Constitutional Framework](CONSTITUTION.md)** - Technical governance implementation
+- **[Contributing Guide](CONTRIBUTING.md)** - How to contribute to the framework
+
+### User Guides
+- **[Getting Started](docs/guide/getting-started.md)** - Quick start guide for new users
+- **[AI Code Patterns](patterns/)** - Available governance patterns
+- **[Framework Dashboard](docs/reference/FRAMEWORK-DASHBOARD.md)** - Live framework status
+
+### Deployment & Operations
+- **[GitHub Pages Deployment](docs/deployment/DEPLOY-TO-GITHUB-PAGES.md)** - Deploy documentation site
+- **[Docusaurus Setup](docs/deployment/DOCUSAURUS-SETUP.md)** - Documentation site setup
+- **[Migration Planning](docs/implementation/POSITIONING-MIGRATION-PLAN.md)** - Framework migration guide
+
+### Vision & Strategy
+- **[Framework Vision](docs/vision/)** - Long-term framework direction
+- **[Evolution Stories](docs/evolution/)** - Framework development history
+- **[Implementation Details](docs/implementation/)** - Technical implementation documentation
 
 ---
 

@@ -1,3 +1,10 @@
+<!--
+@aegisFrameworkVersion: 2.5.0
+@intent: Strategic positioning migration plan implementation documentation
+@context: Documentation of the framework positioning migration to AI Agent Development Governance
+@mode: strict
+-->
+
 # AI Agent Development Governance: Positioning Migration Plan
 
 ## 🎯 **Migration Strategy**

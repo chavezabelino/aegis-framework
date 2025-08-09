@@ -1,3 +1,10 @@
+<!--
+@aegisFrameworkVersion: 2.5.0
+@intent: Industry standard specification for AI agent development governance
+@context: Reference specification for governing AI agent code generation across development tools
+@mode: strict
+-->
+
 # AI Agent Development Governance Specification v1.0
 
 **The industry standard for governing AI agent code generation**

@@ -1,3 +1,10 @@
+<!--
+@aegisFrameworkVersion: 2.5.0
+@intent: Docusaurus setup guide for AI Agent Development Governance documentation site
+@context: Documentation site setup and configuration
+@mode: strict
+-->
+
 # Docusaurus Setup Guide for Aegis Framework
 
 ## ✅ **SETUP COMPLETE**

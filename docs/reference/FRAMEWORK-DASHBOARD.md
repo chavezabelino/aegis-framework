@@ -1,6 +1,13 @@
-# Aegis Framework Dashboard
+<!--
+@aegisFrameworkVersion: 2.5.0
+@intent: Framework dashboard reference documentation
+@context: AI Agent Development Governance Framework monitoring and status dashboard
+@mode: strict
+-->
 
-[![Framework Version](https://img.shields.io/badge/Framework-v2.4.0-orange?style=for-the-badge)](VERSION)
+# AI Agent Development Governance Dashboard
+
+[![Framework Version](https://img.shields.io/badge/Framework-v2.5.0-orange?style=for-the-badge)](VERSION)
 [![Capabilities](https://img.shields.io/badge/Capabilities-64-blue?style=for-the-badge)](#capability-overview)
 [![Health](https://img.shields.io/badge/Health-HEALTHY-green?style=for-the-badge)](#health-status)
 

@@ -1,3 +1,10 @@
+<!--
+@aegisFrameworkVersion: 2.5.0
+@intent: GitHub Pages deployment guide for AI Agent Development Governance documentation
+@context: Deployment documentation for hosting framework documentation
+@mode: strict
+-->
+
 # 🚀 Deploy to GitHub Pages - Complete Guide
 
 ## ✅ **SITE IS READY!**
