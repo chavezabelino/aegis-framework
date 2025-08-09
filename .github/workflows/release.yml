@@ -24,13 +24,13 @@ jobs:
       with:
         fetch-depth: 0  # Full history for changelog generation
       
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
+    - name: Setup Bun
+      uses: oven-sh/setup-bun@v2
       with:
-        node-version: '20'
+        bun-version: latest
         
     - name: Install dependencies
-      run: npm install
+      run: bun install
       
     - name: Version validation
       run: |
@@ -57,7 +57,7 @@ jobs:
     - name: Build package
       run: |
         echo "📦 Building release package..."
-        node scripts/build-package.ts
+        bun scripts/build-package.ts
         
         # Verify package was built
         if [ ! -d "dist/aegis-cli" ]; then
@@ -72,16 +72,16 @@ jobs:
         echo "🧪 Running comprehensive test suite..."
         
         # Type checking
-        npx tsc --noEmit
+        bun tsc --noEmit
         
         # Unit tests (if available)
-        npm test || echo "⚠️ No test script found"
+        bun test || echo "⚠️ No test script found"
         
         # CLI integration tests
         echo "Testing CLI commands..."
-        node cli/aegis-orient.ts quick > /dev/null
-        node cli/aegis-conductor.ts --help > /dev/null
-        node cli/aegis-setup.ts --help > /dev/null
+        bun cli/aegis-orient.ts quick > /dev/null
+        bun cli/aegis-conductor.ts --help > /dev/null
+        bun cli/aegis-setup.ts --help > /dev/null
         
         echo "✅ Test suite completed"
         
@@ -90,7 +90,7 @@ jobs:
         echo "🎯 Running evaluation pipeline..."
         
         # Run evaluations with full reporting
-        node cli/aegis-eval.ts run --verbose
+        bun cli/aegis-eval.ts run --verbose
         
         echo "✅ Evaluation pipeline completed"
         
@@ -99,9 +99,9 @@ jobs:
         echo "⚖️ Running constitutional compliance..."
         
         # Core constitutional validation
-        node tools/validate-constitution.ts
-        node tools/validate-template-quality.ts
-        node tools/validate-version-consistency.cjs
+        bun tools/validate-constitution.ts
+        bun tools/validate-template-quality.ts
+        bun tools/validate-version-consistency.cjs
         
         echo "✅ Constitutional compliance verified"
         

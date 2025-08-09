@@ -15,13 +15,13 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
       
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
+    - name: Setup Bun
+      uses: oven-sh/setup-bun@v2
       with:
-        node-version: '20'
+        bun-version: latest
         
     - name: Install dependencies
-      run: npm install
+      run: bun install
       
     - name: Version consistency check
       run: |
@@ -72,9 +72,9 @@ jobs:
         echo "🧪 Running CLI smoke tests..."
         
         # Test core CLI commands exist and respond
-        timeout 10s node cli/aegis-orient.ts --help > /dev/null || echo "❌ aegis-orient failed"
-        timeout 10s node cli/aegis-conductor.ts --help > /dev/null || echo "❌ aegis-conductor failed"  
-        timeout 10s node cli/aegis-setup.ts --help > /dev/null || echo "❌ aegis-setup failed"
+        timeout 10s bun cli/aegis-orient.ts --help > /dev/null || echo "❌ aegis-orient failed"
+        timeout 10s bun cli/aegis-conductor.ts --help > /dev/null || echo "❌ aegis-conductor failed"  
+        timeout 10s bun cli/aegis-setup.ts --help > /dev/null || echo "❌ aegis-setup failed"
         
         echo "✅ CLI smoke tests completed"
         
@@ -104,7 +104,7 @@ jobs:
         echo "📊 Testing telemetry system..."
         
         # Run a quick evaluation to test telemetry
-        timeout 30s node cli/aegis-eval.ts run eval-feat-user-auth > /dev/null || echo "⚠️ Evaluation test timed out (expected)"
+        timeout 30s bun cli/aegis-eval.ts run eval-feat-user-auth > /dev/null || echo "⚠️ Evaluation test timed out (expected)"
         
         # Check if telemetry files were created
         if [ -d ".aegis/telemetry" ]; then
