@@ -11,7 +11,7 @@ import yaml from 'js-yaml';
 import { 
   AegisFrameworkConfigSchema, 
   type AegisFrameworkConfig 
-} from '../framework/contracts/team-configuration.schema.js';
+} from '../framework/contracts/team-configuration.schema.ts';
 
 export class TeamConfigLoader {
   private static instances: Map<string, TeamConfigLoader> = new Map();
