@@ -1,0 +1,84 @@
+id: eval-feat-user-auth
+name: "User Authentication Feature Evaluation"
+version: "1.0.0"
+aegisFrameworkVersion: "2.4.0"
+
+description: |
+  Golden prompt for evaluating user authentication blueprint generation.
+  Tests core auth flows, security practices, and framework compliance.
+
+prompt: |
+  Generate a complete user authentication system using the feat-user-auth blueprint.
+  
+  Requirements:
+  - JWT-based authentication
+  - Login/logout/register endpoints
+  - Password hashing with bcrypt
+  - Rate limiting on auth endpoints
+  - Input validation and sanitization
+  - Error handling with proper fallbacks
+  - TypeScript types for all interfaces
+  
+  Framework Requirements:
+  - Follow Aegis constitutional annotations
+  - Emit observability events for auth actions
+  - Include error states and fallback UX
+  - Generate both lean and strict outputs
+
+expectedOutputs:
+  - type: "api-routes"
+    files: ["auth/login.ts", "auth/register.ts", "auth/logout.ts"]
+    validationRules:
+      - "contains JWT implementation"
+      - "includes rate limiting"
+      - "has proper error handling"
+  
+  - type: "types"
+    files: ["types/auth.ts"]
+    validationRules:
+      - "exports User interface"
+      - "exports AuthToken interface"
+      - "includes proper TypeScript strict types"
+  
+  - type: "observability"
+    files: ["output.strict.json"]
+    validationRules:
+      - "emits auth.login.attempt event"
+      - "emits auth.login.success event"
+      - "emits auth.login.failed event"
+
+qualityChecks:
+  security:
+    - "passwords are properly hashed"
+    - "JWT secrets are environment variables"
+    - "input validation prevents injection"
+    - "rate limiting configured correctly"
+  
+  codeQuality:
+    - "functions are properly typed"
+    - "error handling is comprehensive"
+    - "code follows consistent style"
+    - "comments explain security decisions"
+  
+  frameworkCompliance:
+    - "includes @aegisBlueprint annotations"
+    - "follows constitutional requirements"
+    - "emits required observability events"
+    - "defines error fallback states"
+
+performance:
+  maxGenerationTime: 30000  # 30 seconds
+  maxTokens: 4096
+  expectedFiles: 8
+  expectedLines: 500
+
+judges:
+  - name: "security-review"
+    prompt: "judges/security-review.md"
+    weight: 0.4
+  - name: "code-quality"
+    prompt: "judges/code-quality.md"
+    weight: 0.3
+  - name: "framework-compliance"
+    prompt: "judges/framework-compliance.md"
+    weight: 0.3

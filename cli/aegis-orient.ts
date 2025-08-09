@@ -12,6 +12,7 @@ import chalk from 'chalk';
 import fs from 'fs';
 import path from 'path';
 import { FrameworkCapabilityMapper } from '../tools/framework-capability-mapper.ts';
+import { TraceabilityGate } from './aegis-traceability-gate.js';
 
 interface OrientationMode {
   mode: 'quick' | 'detailed' | 'category' | 'search' | 'health';
@@ -69,6 +70,27 @@ class AegisOrientationCLI {
       .alias('status')
       .description('Framework health status and issues')
       .action(() => this.runOrientation({ mode: 'health' }));
+
+    // Constitutional traceability check
+    this.program
+      .command('trace')
+      .description('Verify traceability of capability claims (Constitutional Article I §1)')
+      .option('--strict', 'Fail on any violations', true)
+      .option('--claims <path>', 'Path to capability claims file', '.aegis/capability-claims.yaml')
+      .action(async (options) => {
+        console.log(chalk.yellow('🏛️  Constitutional Traceability Gate'));
+        console.log(chalk.gray('⚖️  Authority: CONSTITUTION.md Article I §1 (Traceability)\n'));
+        
+        const passed = await TraceabilityGate.enforceTraceability(options.claims);
+        
+        if (!passed) {
+          console.error(chalk.red('\n🚨 CONSTITUTIONAL VIOLATION DETECTED'));
+          console.error(chalk.red('Cannot proceed with unverifiable capability claims.'));
+          process.exit(1);
+        } else {
+          console.log(chalk.green('\n✅ All capability claims constitutionally verified'));
+        }
+      });
 
     // Interactive mode
     this.program

@@ -25,7 +25,7 @@ Blueprint implementations and external system connections.
 
 ## Live Dashboard
 
-For real-time capability monitoring, visit the [Live Dashboard](../dashboard).
+For real-time capability monitoring, visit the [Live Dashboard](/dashboard).
 
 ## Detailed Documentation
 

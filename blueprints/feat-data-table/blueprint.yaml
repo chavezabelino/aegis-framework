@@ -1,0 +1,166 @@
+id: feat-data-table
+name: "Interactive Data Table"
+version: "1.0.0"
+aegisFrameworkVersion: "2.4.0"
+
+description: |
+  Production-ready data table component with sorting, filtering, pagination,
+  and accessibility features. Demonstrates complex state management and
+  user interaction patterns.
+
+determinismConfig:
+  seed: "data-table-v1"
+  temperature: 0.0
+  strictMode: true
+
+requiredRoutes:
+  - path: "/api/data"
+    method: "GET"
+    description: "Fetch paginated table data"
+  - path: "/api/data/export"
+    method: "POST"
+    description: "Export filtered data"
+
+requiredProviders:
+  - name: "dataProvider"
+    type: "state-management"
+    version: "1.0.0"
+  - name: "filterProvider"
+    type: "filter-context"
+    version: "1.0.0"
+
+requiredSelectors:
+  - name: "selectTableData"
+    type: "data"
+  - name: "selectFilters"
+    type: "data"
+  - name: "selectPagination"
+    type: "data"
+  - name: "updateFilters"
+    type: "action"
+  - name: "sortColumn"
+    type: "action"
+
+ruleContracts:
+  - rule: "accessibility-compliance"
+    version: "1.0.0"
+    enforcement: "blocking"
+    schema:
+      requirements:
+        - "ARIA labels for all interactive elements"
+        - "Keyboard navigation support"
+        - "Screen reader compatibility"
+        - "Focus management"
+  
+  - rule: "performance-optimization"
+    version: "1.0.0"
+    enforcement: "warning"
+    schema:
+      requirements:
+        - "Virtual scrolling for large datasets"
+        - "Debounced search input"
+        - "Memoized column rendering"
+        - "Lazy loading of images"
+
+  - rule: "responsive-design"
+    version: "1.0.0"
+    enforcement: "blocking"
+    schema:
+      breakpoints:
+        - mobile: "< 768px"
+        - tablet: "768px - 1024px"
+        - desktop: "> 1024px"
+
+observability:
+  events:
+    - name: "table.data.loaded"
+      schema: "TableDataLoadedSchema"
+      description: "Fired when table data is successfully loaded"
+    - name: "table.filter.applied"
+      schema: "FilterAppliedSchema"
+      description: "Fired when user applies filters"
+    - name: "table.column.sorted"
+      schema: "ColumnSortedSchema"
+      description: "Fired when user sorts a column"
+    - name: "table.row.selected"
+      schema: "RowSelectedSchema"
+      description: "Fired when user selects table rows"
+    - name: "table.data.exported"
+      schema: "DataExportedSchema"
+      description: "Fired when user exports data"
+
+errorStates:
+  - code: "DATA_LOAD_FAILED"
+    fallback: "Show retry button with error message"
+    recovery: "Implement exponential backoff retry logic"
+  
+  - code: "FILTER_VALIDATION_ERROR"
+    fallback: "Reset to last valid filter state"
+    recovery: "Display validation error inline"
+  
+  - code: "EXPORT_FAILED"
+    fallback: "Show export error notification"
+    recovery: "Offer alternative export formats"
+
+adapters:
+  react-next:
+    framework: "Next.js"
+    version: "14.x"
+    dependencies:
+      "@tanstack/react-table": "^8.0.0"
+      "@tanstack/react-virtual": "^3.0.0"
+      "react-window": "^1.8.8"
+      "fuse.js": "^7.0.0"
+    config:
+      stateManagement: "zustand"
+      styling: "tailwindcss"
+      accessibility: "react-aria"
+
+  react-vite:
+    framework: "Vite + React"
+    version: "5.x"
+    dependencies:
+      "@tanstack/react-table": "^8.0.0"
+      "react-window": "^1.8.8"
+    config:
+      stateManagement: "redux-toolkit"
+      styling: "styled-components"
+
+validation:
+  required: ["build", "test", "lint", "typecheck"]
+  optional: ["a11y-test", "performance-test"]
+
+# Demo data and examples
+examples:
+  sampleData:
+    users:
+      - id: 1
+        name: "John Doe"
+        email: "john@example.com"
+        role: "Admin"
+        status: "Active"
+        lastLogin: "2024-01-15T10:30:00Z"
+      - id: 2
+        name: "Jane Smith"
+        email: "jane@example.com"
+        role: "User"
+        status: "Pending"
+        lastLogin: "2024-01-14T15:45:00Z"
+  
+  filterConfig:
+    - field: "role"
+      type: "select"
+      options: ["Admin", "User", "Moderator"]
+    - field: "status"
+      type: "select"
+      options: ["Active", "Pending", "Inactive"]
+    - field: "name"
+      type: "text"
+      placeholder: "Search by name..."
+
+performance:
+  targets:
+    initialLoad: "< 200ms"
+    filterResponse: "< 100ms"
+    sortResponse: "< 50ms"
+    virtualScrolling: "60fps"

@@ -1,0 +1,138 @@
+name: Aegis Framework Evaluations
+
+on:
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'blueprints/**'
+      - 'framework/**'
+      - 'adapters/**'
+      - 'evals/**'
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+    inputs:
+      eval_id:
+        description: 'Specific evaluation to run (optional)'
+        required: false
+        type: string
+      baseline:
+        description: 'Baseline to compare against'
+        required: false
+        type: string
+        default: 'main'
+
+jobs:
+  evaluations:
+    runs-on: ubuntu-latest
+    name: Framework Quality Evaluations
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0  # Needed for baseline comparison
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Build framework
+      run: npm run build
+      
+    - name: Run unit/integration tests
+      run: npm test
+      
+    - name: Run Aegis evaluations
+      run: |
+        echo "🧪 Running Aegis Framework evaluations..."
+        
+        # Set evaluation parameters
+        EVAL_ID="${{ github.event.inputs.eval_id }}"
+        BASELINE="${{ github.event.inputs.baseline || 'main' }}"
+        
+        # CI mode: fail on critical issues, compare against baseline
+        if [ "${{ github.event_name }}" = "pull_request" ]; then
+          echo "🔍 PR evaluation mode - comparing against baseline"
+          node cli/aegis-eval.ts $EVAL_ID --ci --baseline $BASELINE --threshold 0.85
+        else
+          echo "🚀 Main branch evaluation - creating new baseline"
+          node cli/aegis-eval.ts $EVAL_ID --verbose
+          # Update baseline on main branch
+          node cli/aegis-eval.ts baseline main ${{ github.sha }}
+        fi
+        
+    - name: Upload evaluation results
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: evaluation-results
+        path: .aegis/eval-results/
+        retention-days: 30
+        
+    - name: Upload baselines
+      uses: actions/upload-artifact@v4
+      if: github.ref == 'refs/heads/main'
+      with:
+        name: evaluation-baselines
+        path: .aegis/baselines/
+        retention-days: 90
+        
+    - name: Comment PR with results
+      if: github.event_name == 'pull_request'
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const fs = require('fs');
+          const path = require('path');
+          
+          // Read latest evaluation results
+          const resultsDir = '.aegis/eval-results';
+          if (!fs.existsSync(resultsDir)) {
+            console.log('No evaluation results found');
+            return;
+          }
+          
+          const files = fs.readdirSync(resultsDir)
+            .filter(f => f.endsWith('.json'))
+            .sort()
+            .slice(-5); // Last 5 results
+          
+          let comment = '## 🧪 Aegis Framework Evaluation Results\n\n';
+          
+          files.forEach(file => {
+            const content = fs.readFileSync(path.join(resultsDir, file), 'utf8');
+            const result = JSON.parse(content);
+            
+            const status = result.passed ? '✅' : '❌';
+            const score = (result.score * 100).toFixed(1);
+            const validation = (result.validation.passRate * 100).toFixed(1);
+            
+            comment += `${status} **${result.id}**: ${score}% score, ${validation}% validation\n`;
+            
+            if (!result.passed) {
+              comment += `   - Errors: ${result.errors.join(', ')}\n`;
+              comment += `   - Failed rules: ${result.validation.failedRules.slice(0, 3).join(', ')}\n`;
+            }
+          });
+          
+          comment += '\n---\n';
+          comment += '*Evaluations run on every PR to ensure framework quality and prevent regressions.*';
+          
+          // Post comment
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: comment
+          });
+          
+    - name: Quality gate
+      run: |
+        echo "🎯 Evaluation complete"
+        echo "✅ All quality gates passed"

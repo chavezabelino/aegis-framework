@@ -1,0 +1,194 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://aegis-framework.dev/schemas/blueprint.schema.json",
+  "title": "Aegis Blueprint Schema",
+  "description": "JSON Schema for Aegis Framework blueprints - executable, typed law",
+  "type": "object",
+  "required": ["id", "name", "version", "aegisFrameworkVersion"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*[a-z0-9]$",
+      "minLength": 3,
+      "maxLength": 50,
+      "description": "Unique blueprint identifier (kebab-case)"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 100,
+      "description": "Human-readable blueprint name"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Semantic version (e.g., 1.0.0)"
+    },
+    "aegisFrameworkVersion": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+",
+      "description": "Required framework version"
+    },
+    "description": {
+      "type": "string",
+      "minLength": 10,
+      "maxLength": 500,
+      "description": "Blueprint purpose and functionality"
+    },
+    "determinismConfig": {
+      "type": "object",
+      "description": "Deterministic generation controls",
+      "properties": {
+        "seed": {
+          "type": ["string", "number"],
+          "description": "Generation seed for reproducibility"
+        },
+        "temperature": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "default": 0.0,
+          "description": "Model temperature override"
+        },
+        "strictMode": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enforce bit-exact output matching"
+        },
+        "generationReceipt": {
+          "type": "object",
+          "description": "Generation proof and metadata",
+          "properties": {
+            "inputHash": { "type": "string" },
+            "modelVersion": { "type": "string" },
+            "outputDigest": { "type": "string" },
+            "timestamp": { "type": "string", "format": "date-time" },
+            "reproduced": { "type": "boolean" }
+          }
+        }
+      }
+    },
+    "requiredRoutes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["path", "method"],
+        "properties": {
+          "path": { "type": "string", "pattern": "^/" },
+          "method": { "type": "string", "enum": ["GET", "POST", "PUT", "PATCH", "DELETE"] },
+          "description": { "type": "string" }
+        }
+      }
+    },
+    "requiredProviders": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name"],
+        "properties": {
+          "name": { "type": "string" },
+          "type": { "type": "string" },
+          "version": { "type": "string" }
+        }
+      }
+    },
+    "requiredSelectors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name"],
+        "properties": {
+          "name": { "type": "string" },
+          "type": { "type": "string", "enum": ["data", "computed", "action"] }
+        }
+      }
+    },
+    "ruleContracts": {
+      "type": "array",
+      "description": "Versioned validation rules",
+      "items": {
+        "type": "object",
+        "required": ["rule", "version"],
+        "properties": {
+          "rule": { "type": "string" },
+          "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+          "enforcement": { "type": "string", "enum": ["blocking", "warning", "advisory"] },
+          "schema": { "type": "object" }
+        }
+      }
+    },
+    "observability": {
+      "type": "object",
+      "description": "Telemetry and monitoring configuration",
+      "properties": {
+        "events": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["name"],
+            "properties": {
+              "name": { "type": "string" },
+              "schema": { "type": "string" },
+              "description": { "type": "string" }
+            }
+          }
+        },
+        "traces": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["operation"],
+            "properties": {
+              "operation": { "type": "string" },
+              "attributes": { "type": "object" }
+            }
+          }
+        }
+      }
+    },
+    "errorStates": {
+      "type": "array",
+      "description": "Fallback UX definitions",
+      "items": {
+        "type": "object",
+        "required": ["code", "fallback"],
+        "properties": {
+          "code": { "type": "string" },
+          "fallback": { "type": "string" },
+          "recovery": { "type": "string" }
+        }
+      }
+    },
+    "adapters": {
+      "type": "object",
+      "description": "Tech stack specific configurations",
+      "patternProperties": {
+        "^[a-z-]+$": {
+          "type": "object",
+          "properties": {
+            "framework": { "type": "string" },
+            "version": { "type": "string" },
+            "dependencies": { "type": "object" },
+            "config": { "type": "object" }
+          }
+        }
+      }
+    },
+    "validation": {
+      "type": "object",
+      "description": "Blueprint validation configuration",
+      "properties": {
+        "required": {
+          "type": "array",
+          "items": { "type": "string", "enum": ["build", "test", "lint", "typecheck"] }
+        },
+        "optional": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    }
+  }
+}

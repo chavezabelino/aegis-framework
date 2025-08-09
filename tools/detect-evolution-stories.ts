@@ -13,7 +13,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { execSync } from 'child_process';
-import { TeamConfigLoader } from './team-config-loader.js';
+import { TeamConfigLoader } from './team-config-loader.ts';
 
 interface EvolutionTrigger {
   type: 'constitutional-violation' | 'user-question' | 'validation-failure' | 'migration-friction' | 'ai-quality-gap';

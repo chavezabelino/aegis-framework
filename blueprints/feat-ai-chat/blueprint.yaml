@@ -1,0 +1,191 @@
+id: feat-ai-chat
+name: "AI Chat Interface"
+version: "1.0.0"
+aegisFrameworkVersion: "2.4.0"
+
+description: |
+  Modern AI chat interface with streaming responses, conversation history,
+  and comprehensive safety features. Demonstrates real-time UI patterns
+  and AI integration best practices.
+
+determinismConfig:
+  seed: "ai-chat-v1"
+  temperature: 0.1  # Slightly higher for chat UX
+  strictMode: true
+
+requiredRoutes:
+  - path: "/api/chat/stream"
+    method: "POST"
+    description: "Stream chat responses"
+  - path: "/api/chat/history"
+    method: "GET"
+    description: "Get conversation history"
+  - path: "/api/chat/feedback"
+    method: "POST"
+    description: "Submit response feedback"
+
+requiredProviders:
+  - name: "chatProvider"
+    type: "context"
+    version: "1.0.0"
+  - name: "streamProvider" 
+    type: "realtime"
+    version: "1.0.0"
+
+requiredSelectors:
+  - name: "selectMessages"
+    type: "data"
+  - name: "selectIsStreaming"
+    type: "computed"
+  - name: "selectCurrentConversation"
+    type: "data"
+  - name: "sendMessage"
+    type: "action"
+  - name: "clearHistory"
+    type: "action"
+
+ruleContracts:
+  - rule: "ai-safety"
+    version: "1.0.0"
+    enforcement: "blocking"
+    schema:
+      requirements:
+        - "Content moderation before display"
+        - "PII detection and redaction"
+        - "Harmful content filtering"
+        - "Rate limiting per user"
+        - "Conversation length limits"
+  
+  - rule: "streaming-ux"
+    version: "1.0.0"
+    enforcement: "blocking"
+    schema:
+      requirements:
+        - "Typing indicators during generation"
+        - "Graceful error handling for stream interruption"
+        - "Stop generation button"
+        - "Progressive message display"
+  
+  - rule: "accessibility-chat"
+    version: "1.0.0"
+    enforcement: "blocking"
+    schema:
+      requirements:
+        - "Screen reader announcements for new messages"
+        - "Keyboard navigation for message history"
+        - "Focus management after send"
+        - "High contrast mode support"
+
+observability:
+  events:
+    - name: "chat.message.sent"
+      schema: "MessageSentSchema"
+      description: "User sent a message"
+    - name: "chat.response.started"
+      schema: "ResponseStartedSchema" 
+      description: "AI response generation started"
+    - name: "chat.response.streamed"
+      schema: "ResponseStreamedSchema"
+      description: "AI response chunk received"
+    - name: "chat.response.completed"
+      schema: "ResponseCompletedSchema"
+      description: "AI response fully generated"
+    - name: "chat.feedback.submitted"
+      schema: "FeedbackSubmittedSchema"
+      description: "User provided feedback on response"
+    - name: "chat.error.occurred"
+      schema: "ChatErrorSchema"
+      description: "Error during chat interaction"
+
+errorStates:
+  - code: "STREAM_INTERRUPTED"
+    fallback: "Show partial response with retry option"
+    recovery: "Resume from last chunk or restart"
+  
+  - code: "RATE_LIMIT_EXCEEDED"
+    fallback: "Show cooldown timer and usage limits"
+    recovery: "Queue message for later sending"
+  
+  - code: "CONTENT_FILTERED"
+    fallback: "Show content policy explanation"
+    recovery: "Suggest message modifications"
+  
+  - code: "NETWORK_ERROR"
+    fallback: "Offline mode with cached responses"
+    recovery: "Auto-retry when connection restored"
+
+adapters:
+  react-next:
+    framework: "Next.js"
+    version: "14.x"
+    dependencies:
+      "@vercel/ai": "^3.0.0"
+      "ai": "^3.0.0"
+      "react-markdown": "^9.0.0"
+      "react-syntax-highlighter": "^15.5.0"
+      "eventsource-parser": "^1.1.2"
+    config:
+      stateManagement: "zustand"
+      styling: "tailwindcss"
+      streaming: "vercel-ai-sdk"
+  
+  react-vite:
+    framework: "Vite + React"
+    version: "5.x"
+    dependencies:
+      "openai": "^4.0.0"
+      "react-markdown": "^9.0.0"
+      "sse.js": "^0.6.0"
+    config:
+      stateManagement: "redux-toolkit"
+      streaming: "custom"
+
+validation:
+  required: ["build", "test", "lint", "typecheck"]
+  optional: ["e2e-test", "load-test", "security-scan"]
+
+# Demo configuration
+examples:
+  sampleConversations:
+    - user: "What is the Aegis Framework?"
+      assistant: "The Aegis Framework is a constitutional AI governance system..."
+    - user: "How do I create a blueprint?"
+      assistant: "To create a blueprint, you can use the `aegis-blueprint` CLI..."
+  
+  systemPrompt: |
+    You are a helpful AI assistant integrated into an application built with
+    the Aegis Framework. You should be helpful, accurate, and safe.
+    
+    Always:
+    - Provide clear, actionable information
+    - Admit when you don't know something
+    - Respect user privacy and safety
+    
+    Never:
+    - Generate harmful or inappropriate content
+    - Share personal information
+    - Provide unverified technical advice
+
+safety:
+  contentModeration:
+    enabled: true
+    provider: "openai-moderation"
+    blockLevel: "medium"
+  
+  rateLimit:
+    requestsPerMinute: 20
+    tokensPerHour: 50000
+    conversationLength: 100
+  
+  dataHandling:
+    retentionPeriod: "30days"
+    encryptInTransit: true
+    encryptAtRest: true
+    piiDetection: true
+
+performance:
+  targets:
+    firstTokenLatency: "< 500ms"
+    streamingLatency: "< 100ms"
+    messageRender: "< 50ms"
+    historyLoad: "< 200ms"

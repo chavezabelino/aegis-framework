@@ -1,0 +1,116 @@
+# Aegis Framework Capability Claims
+# Used by Traceability Gate to verify implementation status
+# Each claim requires code lineage verification for "implemented" status
+
+capabilities:
+  # Constitutional Governance (ARCHITECTED - Missing tests)
+  - id: constitutional-governance
+    name: "Constitutional Framework"
+    status: architected
+    description: "Constitutional governance with democratic amendment process"
+    expectedArtifacts:
+      - "CONSTITUTION.md"
+      - "framework/governance/constitutional-reflex-engine.ts"
+      - "framework/governance/democratic-amendment-engine.ts"
+
+  # Blueprint System (ARCHITECTED - Missing schema and tests)
+  - id: blueprint-system
+    name: "Blueprint-Driven Development"
+    status: architected
+    description: "YAML blueprint contracts with validation"
+    cliCommand: "init-blueprint"
+    expectedArtifacts:
+      - "cli/init-blueprint.ts"
+      - "blueprints/feat-public-viewing/blueprint.yaml"
+
+  # Hydration Pipeline (ARCHITECTED - Missing tests)
+  - id: hydration-pipeline
+    name: "Project Hydration System"
+    status: architected
+    description: "One-command project migration with approval gates"
+    cliCommand: "aegis-hydrate"
+    expectedArtifacts:
+      - "cli/aegis-hydrate.ts"
+
+  # Self-Healing (ARCHITECTED)
+  - id: self-healing
+    name: "Self-Healing Infrastructure"
+    status: architected
+    description: "Automated framework correction and maintenance"
+    expectedArtifacts:
+      - "framework/healing/self-healing-blueprint-engine.ts"
+      - "framework/healing/auto-repair-ml-engine.ts"
+    testPaths:
+      - "tests/snapshot-tests/auto-repair-ml-engine.test.ts"
+
+  # Drift Detection (ARCHITECTED)
+  - id: drift-detection
+    name: "Constitutional Drift Prevention"
+    status: architected
+    description: "Three-layer drift monitoring and prevention"
+    cliCommand: "drift-cli"
+    expectedArtifacts:
+      - "cli/drift-cli.ts"
+      - "framework/drift-log/agent-behavior-drift.json"
+      - "framework/learning/pattern-recognition-engine.ts"
+
+  # Observability (ARCHITECTED)
+  - id: observability
+    name: "Advanced Observability Engine"
+    status: architected
+    description: "Comprehensive telemetry and monitoring"
+    expectedArtifacts:
+      - "framework/observability/advanced-observability-engine.ts"
+
+  # ============================================================================
+  # ROADMAP ITEMS (NOT YET IMPLEMENTED)
+  # ============================================================================
+
+  # Evaluation Pipeline (ROADMAP)
+  - id: evaluation-pipeline
+    name: "Comprehensive Evaluation Framework"
+    status: roadmap
+    description: "Golden prompts, LLM-as-judge, CI integration"
+    cliCommand: "aegis-eval"
+    expectedArtifacts:
+      - "cli/aegis-eval.ts"
+      - "evals/golden-prompts/"
+      - "evals/judges/"
+      - ".github/workflows/aegis-eval.yml"
+
+  # OpenTelemetry Integration (ROADMAP)
+  - id: otel-integration
+    name: "OpenTelemetry Traces"
+    status: roadmap
+    description: "Production observability with OpenTelemetry"
+    expectedArtifacts:
+      - "framework/observability/otel-tracer.ts"
+      - "framework/observability/langfuse-adapter.ts"
+
+  # Deterministic Generation (ROADMAP)
+  - id: deterministic-generation
+    name: "Deterministic AI Generation"
+    status: roadmap
+    description: "Seed-based reproducible output with receipts"
+    cliCommand: "aegis-determinism"
+    expectedArtifacts:
+      - "cli/aegis-determinism.ts"
+      - "framework/schemas/blueprint.schema.json"
+
+  # Policy Engine (ROADMAP)
+  - id: policy-engine
+    name: "Policy-as-Code Engine"
+    status: roadmap
+    description: "Centralized policy enforcement with blocking"
+    expectedArtifacts:
+      - "framework/policies/"
+      - "cli/aegis-policy.ts"
+
+  # Supply Chain (ROADMAP)
+  - id: supply-chain
+    name: "Supply Chain Security"
+    status: roadmap
+    description: "SBOM, SLSA attestation, provenance tracking"
+    expectedArtifacts:
+      - "tools/generate-sbom.ts"
+      - "tools/sign-artifacts.ts"

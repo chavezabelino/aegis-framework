@@ -1,0 +1,285 @@
+{
+  "audit": {
+    "timestamp": "2025-08-09T02:56:11.032Z",
+    "commitHash": "d54dea7879d6080979ff7eba6eb2702eabcb805f",
+    "constitutionalAuthority": "CONSTITUTION.md Article I §1 (Traceability)",
+    "totalClaims": 11,
+    "verifiedClaims": 5,
+    "passed": true
+  },
+  "violations": [],
+  "records": [
+    {
+      "featureId": "constitutional-governance",
+      "claimedStatus": "architected",
+      "artifactPaths": [
+        "/Users/nino/Workspace/02-local-dev/aegis-framework/CONSTITUTION.md",
+        "/Users/nino/Workspace/02-local-dev/aegis-framework/framework/governance/constitutional-reflex-engine.ts",
+        "/Users/nino/Workspace/02-local-dev/aegis-framework/framework/governance/democratic-amendment-engine.ts"
+      ],
+      "verificationStatus": "partial",
+      "evidence": {
+        "blueprintExists": false,
+        "contractExists": false,
+        "artifactsExist": [
+          "CONSTITUTION.md",
+          "framework/governance/constitutional-reflex-engine.ts",
+          "framework/governance/democratic-amendment-engine.ts"
+        ],
+        "artifactsMissing": [],
+        "cliCommandExists": false,
+        "testsExist": false,
+        "documentationExists": false,
+        "lastVerified": "2025-08-09T02:56:10.877Z",
+        "commitHash": "d54dea7879d6080979ff7eba6eb2702eabcb805f"
+      },
+      "violations": []
+    },
+    {
+      "featureId": "blueprint-system",
+      "claimedStatus": "architected",
+      "artifactPaths": [
+        "/Users/nino/Workspace/02-local-dev/aegis-framework/cli/init-blueprint.ts",
+        "/Users/nino/Workspace/02-local-dev/aegis-framework/blueprints/feat-public-viewing/blueprint.yaml"
+      ],
+      "verificationStatus": "partial",
+      "evidence": {
+        "blueprintExists": false,
+        "contractExists": false,
+        "artifactsExist": [
+          "cli/init-blueprint.ts",
+          "blueprints/feat-public-viewing/blueprint.yaml"
+        ],
+        "artifactsMissing": [],
+        "cliCommandExists": false,
+        "testsExist": false,
+        "documentationExists": false,
+        "lastVerified": "2025-08-09T02:56:10.896Z",
+        "commitHash": "d54dea7879d6080979ff7eba6eb2702eabcb805f"
+      },
+      "violations": []
+    },
+    {
+      "featureId": "hydration-pipeline",
+      "claimedStatus": "architected",
+      "artifactPaths": [
+        "/Users/nino/Workspace/02-local-dev/aegis-framework/cli/aegis-hydrate.ts"
+      ],
+      "verificationStatus": "partial",
+      "evidence": {
+        "blueprintExists": false,
+        "contractExists": false,
+        "artifactsExist": [
+          "cli/aegis-hydrate.ts"
+        ],
+        "artifactsMissing": [],
+        "cliCommandExists": false,
+        "testsExist": false,
+        "documentationExists": false,
+        "lastVerified": "2025-08-09T02:56:10.911Z",
+        "commitHash": "d54dea7879d6080979ff7eba6eb2702eabcb805f"
+      },
+      "violations": []
+    },
+    {
+      "featureId": "self-healing",
+      "claimedStatus": "architected",
+      "artifactPaths": [
+        "/Users/nino/Workspace/02-local-dev/aegis-framework/framework/healing/self-healing-blueprint-engine.ts",
+        "/Users/nino/Workspace/02-local-dev/aegis-framework/framework/healing/auto-repair-ml-engine.ts"
+      ],
+      "verificationStatus": "partial",
+      "evidence": {
+        "blueprintExists": false,
+        "contractExists": false,
+        "artifactsExist": [
+          "framework/healing/self-healing-blueprint-engine.ts",
+          "framework/healing/auto-repair-ml-engine.ts"
+        ],
+        "artifactsMissing": [],
+        "cliCommandExists": false,
+        "testsExist": false,
+        "documentationExists": false,
+        "lastVerified": "2025-08-09T02:56:10.925Z",
+        "commitHash": "d54dea7879d6080979ff7eba6eb2702eabcb805f"
+      },
+      "violations": []
+    },
+    {
+      "featureId": "drift-detection",
+      "claimedStatus": "architected",
+      "artifactPaths": [
+        "/Users/nino/Workspace/02-local-dev/aegis-framework/cli/drift-cli.ts",
+        "/Users/nino/Workspace/02-local-dev/aegis-framework/framework/drift-log/agent-behavior-drift.json",
+        "/Users/nino/Workspace/02-local-dev/aegis-framework/framework/learning/pattern-recognition-engine.ts"
+      ],
+      "verificationStatus": "partial",
+      "evidence": {
+        "blueprintExists": false,
+        "contractExists": false,
+        "artifactsExist": [
+          "cli/drift-cli.ts",
+          "framework/drift-log/agent-behavior-drift.json",
+          "framework/learning/pattern-recognition-engine.ts"
+        ],
+        "artifactsMissing": [],
+        "cliCommandExists": false,
+        "testsExist": false,
+        "documentationExists": false,
+        "lastVerified": "2025-08-09T02:56:10.939Z",
+        "commitHash": "d54dea7879d6080979ff7eba6eb2702eabcb805f"
+      },
+      "violations": []
+    },
+    {
+      "featureId": "observability",
+      "claimedStatus": "architected",
+      "artifactPaths": [
+        "/Users/nino/Workspace/02-local-dev/aegis-framework/framework/observability/advanced-observability-engine.ts"
+      ],
+      "verificationStatus": "partial",
+      "evidence": {
+        "blueprintExists": false,
+        "contractExists": false,
+        "artifactsExist": [
+          "framework/observability/advanced-observability-engine.ts"
+        ],
+        "artifactsMissing": [],
+        "cliCommandExists": false,
+        "testsExist": false,
+        "documentationExists": false,
+        "lastVerified": "2025-08-09T02:56:10.954Z",
+        "commitHash": "d54dea7879d6080979ff7eba6eb2702eabcb805f"
+      },
+      "violations": []
+    },
+    {
+      "featureId": "evaluation-pipeline",
+      "claimedStatus": "roadmap",
+      "artifactPaths": [
+        "/Users/nino/Workspace/02-local-dev/aegis-framework/cli/aegis-eval.ts",
+        "/Users/nino/Workspace/02-local-dev/aegis-framework/evals/golden-prompts/",
+        "/Users/nino/Workspace/02-local-dev/aegis-framework/evals/judges/",
+        "/Users/nino/Workspace/02-local-dev/aegis-framework/.github/workflows/aegis-eval.yml"
+      ],
+      "verificationStatus": "verified",
+      "evidence": {
+        "blueprintExists": false,
+        "contractExists": false,
+        "artifactsExist": [
+          "cli/aegis-eval.ts",
+          "evals/golden-prompts/",
+          "evals/judges/",
+          ".github/workflows/aegis-eval.yml"
+        ],
+        "artifactsMissing": [],
+        "cliCommandExists": false,
+        "testsExist": false,
+        "documentationExists": false,
+        "lastVerified": "2025-08-09T02:56:10.967Z",
+        "commitHash": "d54dea7879d6080979ff7eba6eb2702eabcb805f"
+      },
+      "violations": []
+    },
+    {
+      "featureId": "otel-integration",
+      "claimedStatus": "roadmap",
+      "artifactPaths": [
+        "/Users/nino/Workspace/02-local-dev/aegis-framework/framework/observability/otel-tracer.ts",
+        "/Users/nino/Workspace/02-local-dev/aegis-framework/framework/observability/langfuse-adapter.ts"
+      ],
+      "verificationStatus": "verified",
+      "evidence": {
+        "blueprintExists": false,
+        "contractExists": false,
+        "artifactsExist": [
+          "framework/observability/otel-tracer.ts",
+          "framework/observability/langfuse-adapter.ts"
+        ],
+        "artifactsMissing": [],
+        "cliCommandExists": false,
+        "testsExist": false,
+        "documentationExists": false,
+        "lastVerified": "2025-08-09T02:56:10.980Z",
+        "commitHash": "d54dea7879d6080979ff7eba6eb2702eabcb805f"
+      },
+      "violations": []
+    },
+    {
+      "featureId": "deterministic-generation",
+      "claimedStatus": "roadmap",
+      "artifactPaths": [
+        "/Users/nino/Workspace/02-local-dev/aegis-framework/cli/aegis-determinism.ts",
+        "/Users/nino/Workspace/02-local-dev/aegis-framework/framework/schemas/blueprint.schema.json"
+      ],
+      "verificationStatus": "verified",
+      "evidence": {
+        "blueprintExists": false,
+        "contractExists": false,
+        "artifactsExist": [
+          "cli/aegis-determinism.ts",
+          "framework/schemas/blueprint.schema.json"
+        ],
+        "artifactsMissing": [],
+        "cliCommandExists": false,
+        "testsExist": false,
+        "documentationExists": false,
+        "lastVerified": "2025-08-09T02:56:10.994Z",
+        "commitHash": "d54dea7879d6080979ff7eba6eb2702eabcb805f"
+      },
+      "violations": []
+    },
+    {
+      "featureId": "policy-engine",
+      "claimedStatus": "roadmap",
+      "artifactPaths": [],
+      "verificationStatus": "verified",
+      "evidence": {
+        "blueprintExists": false,
+        "contractExists": false,
+        "artifactsExist": [],
+        "artifactsMissing": [
+          "framework/policies/",
+          "cli/aegis-policy.ts"
+        ],
+        "cliCommandExists": false,
+        "testsExist": false,
+        "documentationExists": false,
+        "lastVerified": "2025-08-09T02:56:11.007Z",
+        "commitHash": "d54dea7879d6080979ff7eba6eb2702eabcb805f"
+      },
+      "violations": [
+        "Expected artifact not found: framework/policies/",
+        "Expected artifact not found: cli/aegis-policy.ts"
+      ]
+    },
+    {
+      "featureId": "supply-chain",
+      "claimedStatus": "roadmap",
+      "artifactPaths": [],
+      "verificationStatus": "verified",
+      "evidence": {
+        "blueprintExists": false,
+        "contractExists": false,
+        "artifactsExist": [],
+        "artifactsMissing": [
+          "tools/generate-sbom.ts",
+          "tools/sign-artifacts.ts"
+        ],
+        "cliCommandExists": false,
+        "testsExist": false,
+        "documentationExists": false,
+        "lastVerified": "2025-08-09T02:56:11.020Z",
+        "commitHash": "d54dea7879d6080979ff7eba6eb2702eabcb805f"
+      },
+      "violations": [
+        "Expected artifact not found: tools/generate-sbom.ts",
+        "Expected artifact not found: tools/sign-artifacts.ts"
+      ]
+    }
+  ],
+  "remediation": {
+    "required": false,
+    "actions": []
+  }
+}
