@@ -12,7 +12,7 @@ import chalk from 'chalk';
 import fs from 'fs';
 import path from 'path';
 import { FrameworkCapabilityMapper } from '../tools/framework-capability-mapper.ts';
-import { TraceabilityGate } from './aegis-traceability-gate.js';
+import { TraceabilityGate } from './aegis-traceability-gate.ts';
 
 interface OrientationMode {
   mode: 'quick' | 'detailed' | 'category' | 'search' | 'health';
