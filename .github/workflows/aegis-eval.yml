@@ -1,7 +1,8 @@
-name: Aegis Framework Evaluations (DISABLED)
+name: Aegis Framework Evaluations
 
 on:
-  # Temporarily disabled until eval command is fully implemented
+  release:
+    types: [published]
   workflow_dispatch:
     inputs:
       eval_id:

@@ -1,3 +1,10 @@
+---
+id: governance
+title: Governance Capabilities
+sidebar_label: Governance
+slug: /docs/capabilities/governance
+---
+
 # Governance Capabilities
 
 ## Overview

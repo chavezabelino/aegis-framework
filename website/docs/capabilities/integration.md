@@ -1,3 +1,10 @@
+---
+id: integration
+title: Integration Capabilities
+sidebar_label: Integration
+slug: /docs/capabilities/integration
+---
+
 # Integration Capabilities
 
 ## Overview

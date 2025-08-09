@@ -1,3 +1,10 @@
+---
+id: tools
+title: Tools Capabilities
+sidebar_label: Tools
+slug: /docs/capabilities/tools
+---
+
 # Tools Capabilities
 
 ## Overview

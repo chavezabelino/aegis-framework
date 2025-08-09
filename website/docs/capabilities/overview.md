@@ -1,3 +1,10 @@
+---
+id: overview
+title: Capabilities Overview
+sidebar_label: Overview
+slug: /docs/capabilities/overview
+---
+
 # Capabilities Overview
 
 The Aegis Framework provides **64 capabilities** across **4 categories**, delivering comprehensive AI governance and monitoring.

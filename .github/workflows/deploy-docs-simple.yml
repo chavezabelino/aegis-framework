@@ -1,8 +1,14 @@
-name: Deploy Docusaurus (Simple)
+name: Deploy Documentation
 
 on:
   push:
     branches: [ main ]
+    paths:
+      - 'website/**'
+      - 'docs/**'
+      - 'README.md'
+      - 'CONSTITUTION.md'
+  workflow_dispatch:
 
 permissions:
   contents: write

@@ -9,11 +9,16 @@ on:
       - 'framework/**'
       - 'blueprints/**'
       - 'tools/**'
-      - '*.md'
+      - 'CONSTITUTION.md'
       - '*.yaml'
       - '*.yml'
-  push:
-    branches: [ main ]
+  # Only run full compliance check on PRs, not every push
+  workflow_dispatch:
+    inputs:
+      force_run:
+        description: 'Force full compliance check'
+        required: false
+        type: boolean
 
 jobs:
   compliance-check:

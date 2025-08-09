@@ -1,3 +1,10 @@
+---
+id: core
+title: Core Capabilities
+sidebar_label: Core
+slug: /docs/capabilities/core
+---
+
 # Core Capabilities
 
 ## Overview
