@@ -55,6 +55,43 @@ class RealTimeEvolutionDetector extends EvolutionStoryDetector {
       autoGenerate: true,
       description: 'User identifying constitutional framework gaps'
     },
+    // Authentication & Blueprint Gap Patterns (from EVS-2025-01-15-001)
+    {
+      pattern: /(?:TypeError|Cannot read properties).*(?:findFirst|undefined)|db\.query.*undefined/i,
+      triggerType: 'constitutional-violation',
+      severity: 'critical', 
+      autoGenerate: true,
+      description: 'Runtime errors indicating non-blueprint authentication code'
+    },
+    {
+      pattern: /drift.*framework.*principles|constitutional.*violation|blueprint.*compliance.*skipped/i,
+      triggerType: 'constitutional-violation',
+      severity: 'critical',
+      autoGenerate: true,
+      description: 'Explicit recognition of constitutional drift patterns'
+    },
+    {
+      pattern: /quick.*fix|ad.*hoc.*implementation|bypass.*validation|technical.*debt.*accumulation/i,
+      triggerType: 'constitutional-violation', 
+      severity: 'high',
+      autoGenerate: false,
+      description: 'Anti-patterns indicating constitutional shortcuts'
+    },
+    {
+      pattern: /should.*pause.*properly.*define.*blueprint|missing.*authentication.*blueprint/i,
+      triggerType: 'blueprint-gap',
+      severity: 'critical',
+      autoGenerate: true,
+      description: 'Recognition of fundamental framework abstraction gaps'
+    },
+    // Field-Driven Abstraction Patterns
+    {
+      pattern: /framework.*should.*provide.*abstract|tech.*agnostic.*patterns|universal.*guidance/i,
+      triggerType: 'framework-abstraction',
+      severity: 'high',
+      autoGenerate: false,
+      description: 'Recognition of need for abstract framework patterns vs project-specific solutions'
+    },
     {
       pattern: /field-driven|eating.*dog food|real.*world.*usage|migration.*pitfall/i,
       triggerType: 'migration-friction',

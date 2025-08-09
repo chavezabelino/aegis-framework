@@ -167,7 +167,15 @@ if echo "$STAGED_CONTENT" | grep -q "echo.*test" && echo "$STAGED_CONTENT" | gre
     log_info "Framework requires functional commands for testing intent"
 fi
 
-# 6. Version consistency check
+# 6. Article XI: Field-Driven Abstraction Principle validation
+log_info "Validating Article XI: Field-Driven Abstraction Principle..."
+if bun tools/validate-article-xi-abstraction.ts; then
+    log_success "Article XI compliance validated"
+else
+    log_error "Article XI violations detected - framework evolution must maintain abstract governance focus"
+fi
+
+# 7. Version consistency check
 log_info "Checking version consistency..."
 if [ -f "VERSION" ]; then
     VERSION=$(cat VERSION)

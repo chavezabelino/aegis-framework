@@ -1,0 +1,375 @@
+# @aegisBlueprint
+# @aegisFrameworkVersion: 2.4.0
+# @intent: Tech-agnostic user authentication blueprint with constitutional compliance
+# @context: Abstract authentication patterns adaptable to any technology stack
+# @mode: strict
+
+id: user-authentication
+name: "Universal User Authentication"
+version: "1.0.0"
+aegisFrameworkVersion: "2.4.0"
+
+description: |
+  Tech-agnostic user authentication blueprint defining abstract patterns,
+  security contracts, and constitutional requirements that can be implemented
+  across any technology stack (Lucia, Auth0, Firebase, custom solutions, etc.).
+
+determinismConfig:
+  seed: "user-auth-v1"
+  temperature: 0.0  # Zero tolerance for security variations
+  strictMode: true
+
+# ============================================================================
+# ABSTRACT AUTHENTICATION CONTRACTS
+# ============================================================================
+
+requiredCapabilities:
+  - name: "user-registration"
+    description: "Register new users with validation"
+    inputs: ["user-credentials", "user-profile"]
+    outputs: ["user-entity", "session-token"]
+    
+  - name: "user-login"
+    description: "Authenticate existing users"
+    inputs: ["credentials"]
+    outputs: ["session-token", "user-context"]
+    
+  - name: "user-logout"
+    description: "Terminate user sessions securely"
+    inputs: ["session-token"]
+    outputs: ["logout-confirmation"]
+    
+  - name: "session-validation"
+    description: "Validate active user sessions"
+    inputs: ["session-token"]
+    outputs: ["user-context", "session-validity"]
+    
+  - name: "password-management"
+    description: "Secure password operations"
+    inputs: ["current-password", "new-password"]
+    outputs: ["password-update-confirmation"]
+
+# ============================================================================
+# SECURITY CONTRACT REQUIREMENTS
+# ============================================================================
+
+securityContracts:
+  - contract: "password-security"
+    requirements:
+      - "Minimum 8 character password length"
+      - "Password hashing using industry standard (bcrypt, Argon2, scrypt)"
+      - "Salt-based password storage"
+      - "No plaintext password storage or transmission"
+    
+  - contract: "session-security" 
+    requirements:
+      - "Cryptographically secure session tokens"
+      - "HTTP-only session cookies (web contexts)"
+      - "Secure cookie flags (HTTPS contexts)"
+      - "Session expiration and rotation"
+      - "Session invalidation on logout"
+    
+  - contract: "input-validation"
+    requirements:
+      - "Email format validation"
+      - "Password strength requirements"
+      - "Input sanitization against injection attacks"
+      - "CSRF protection on state-changing operations"
+    
+  - contract: "rate-limiting"
+    requirements:
+      - "Login attempt rate limiting"
+      - "Registration rate limiting"
+      - "Progressive delay on failed attempts"
+      - "Account lockout after threshold breaches"
+
+# ============================================================================
+# CONSTITUTIONAL COMPLIANCE RULES
+# ============================================================================
+
+ruleContracts:
+  - rule: "authentication-observability"
+    version: "1.0.0"
+    enforcement: "blocking"
+    schema:
+      requirements:
+        - "All authentication events logged with timestamps"
+        - "Security events tracked (failed logins, lockouts)"
+        - "Performance metrics captured (login latency)"
+        - "Privacy-compliant logging (no sensitive data)"
+        
+  - rule: "authentication-traceability"
+    version: "1.0.0" 
+    enforcement: "blocking"
+    schema:
+      requirements:
+        - "All authentication code traced to blueprint"
+        - "Security decisions documented and auditable"
+        - "Configuration changes tracked"
+        - "Dependency versions recorded"
+        
+  - rule: "authentication-safety"
+    version: "1.0.0"
+    enforcement: "blocking"
+    schema:
+      requirements:
+        - "Graceful degradation for service failures"
+        - "Fallback authentication methods defined"
+        - "Error states handled without information leakage"
+        - "Security incident response procedures"
+
+# ============================================================================
+# TECH STACK ADAPTERS
+# ============================================================================
+
+adapters:
+  # Web Authentication Stacks
+  lucia-sveltekit:
+    framework: "SvelteKit + Lucia"
+    implementation: "lucia-auth/sveltekit-adapter"
+    dependencies:
+      - "lucia-auth"
+      - "@lucia-auth/adapter-drizzle"
+      - "drizzle-orm"
+    
+  nextauth-nextjs:
+    framework: "Next.js + NextAuth"
+    implementation: "nextauth/nextjs-adapter"
+    dependencies:
+      - "next-auth"
+      - "@auth/prisma-adapter"
+      - "prisma"
+    
+  firebase-react:
+    framework: "React + Firebase Auth"
+    implementation: "firebase/react-adapter"
+    dependencies:
+      - "firebase"
+      - "@firebase/auth"
+    
+  auth0-universal:
+    framework: "Universal + Auth0"
+    implementation: "auth0/universal-adapter"
+    dependencies:
+      - "@auth0/auth0-spa-js"
+      - "@auth0/nextjs-auth0"
+  
+  # Mobile Authentication Stacks  
+  react-native-firebase:
+    framework: "React Native + Firebase"
+    implementation: "firebase/react-native-adapter"
+    dependencies:
+      - "@react-native-firebase/auth"
+      
+  # Backend Authentication Stacks
+  passport-express:
+    framework: "Express + Passport"
+    implementation: "passport/express-adapter"
+    dependencies:
+      - "passport"
+      - "passport-local"
+      - "express-session"
+      
+  # Custom Implementation
+  custom-implementation:
+    framework: "Custom Tech Stack"
+    implementation: "custom/generic-adapter"
+    requirements:
+      - "Implement all required capabilities"
+      - "Meet all security contracts"
+      - "Satisfy constitutional compliance rules"
+
+# ============================================================================
+# OBSERVABILITY REQUIREMENTS
+# ============================================================================
+
+observability:
+  events:
+    # Authentication Lifecycle
+    - name: "auth.registration.attempted"
+      schema: "AuthRegistrationAttemptedSchema"
+      description: "User initiated registration process"
+      privacy: "hash-email"
+      
+    - name: "auth.registration.successful"
+      schema: "AuthRegistrationSuccessfulSchema" 
+      description: "User successfully registered"
+      privacy: "hash-email"
+      
+    - name: "auth.login.attempted"
+      schema: "AuthLoginAttemptedSchema"
+      description: "User initiated login process"
+      privacy: "hash-email"
+      
+    - name: "auth.login.successful"
+      schema: "AuthLoginSuccessfulSchema"
+      description: "User successfully authenticated"
+      privacy: "hash-email"
+      
+    - name: "auth.logout.initiated"
+      schema: "AuthLogoutInitiatedSchema"
+      description: "User initiated logout process"
+      
+    - name: "auth.session.expired"
+      schema: "AuthSessionExpiredSchema"
+      description: "User session expired naturally"
+      
+    # Security Events
+    - name: "auth.login.failed"
+      schema: "AuthLoginFailedSchema"
+      description: "Authentication attempt failed"
+      severity: "warning"
+      privacy: "hash-email"
+      
+    - name: "auth.rate.limit.exceeded"
+      schema: "AuthRateLimitExceededSchema"
+      description: "Authentication rate limit exceeded"
+      severity: "warning"
+      
+    - name: "auth.account.locked"
+      schema: "AuthAccountLockedSchema"
+      description: "Account locked due to security policy"
+      severity: "error"
+      privacy: "hash-email"
+      
+    - name: "auth.security.violation"
+      schema: "AuthSecurityViolationSchema"
+      description: "Security violation detected in auth flow"
+      severity: "critical"
+      
+    # Performance Events
+    - name: "auth.performance.login.latency"
+      schema: "AuthPerformanceSchema"
+      description: "Login operation latency measurement"
+      
+    - name: "auth.performance.registration.latency"
+      schema: "AuthPerformanceSchema"
+      description: "Registration operation latency measurement"
+
+# ============================================================================
+# ERROR STATES AND FALLBACKS
+# ============================================================================
+
+errorStates:
+  - code: "INVALID_CREDENTIALS"
+    description: "User provided invalid login credentials"
+    fallback: "Display generic error message (prevent user enumeration)"
+    recovery: "Offer password reset option"
+    security: "Log attempt with rate limiting"
+    
+  - code: "ACCOUNT_LOCKED"
+    description: "User account locked due to security policy"
+    fallback: "Display account locked message"
+    recovery: "Provide unlock/contact support options"
+    security: "Log security event and notify administrators"
+    
+  - code: "SESSION_EXPIRED"
+    description: "User session has expired"
+    fallback: "Redirect to login with preserved context"
+    recovery: "Attempt to restore user workflow after re-auth"
+    
+  - code: "RATE_LIMIT_EXCEEDED"
+    description: "Too many authentication attempts"
+    fallback: "Display rate limit message with cooldown timer"
+    recovery: "Progressive delay before next attempt allowed"
+    security: "Enhanced monitoring and potential IP blocking"
+    
+  - code: "SERVICE_UNAVAILABLE"
+    description: "Authentication service temporarily unavailable"
+    fallback: "Display maintenance message"
+    recovery: "Retry mechanism with exponential backoff"
+    
+  - code: "DATABASE_ERROR"
+    description: "Database connection or query failed"
+    fallback: "Display generic error message"
+    recovery: "Queue operation for retry when service restored"
+    security: "Alert administrators immediately"
+    
+  - code: "VALIDATION_ERROR"
+    description: "Input validation failed"
+    fallback: "Display specific field validation errors"
+    recovery: "Guide user to correct input format"
+    
+  - code: "CSRF_VIOLATION"
+    description: "CSRF token validation failed"
+    fallback: "Refresh page and retry"
+    recovery: "Generate new CSRF token"
+    security: "Log potential attack attempt"
+
+# ============================================================================
+# PERFORMANCE REQUIREMENTS
+# ============================================================================
+
+performance:
+  targets:
+    loginLatency: "< 500ms (95th percentile)"
+    registrationLatency: "< 1000ms (95th percentile)"
+    sessionValidation: "< 100ms (99th percentile)"
+    passwordHashing: "< 200ms (adaptive based on security requirements)"
+    
+  scalability:
+    concurrentUsers: "Design for horizontal scaling"
+    sessionStorage: "Support distributed session management"
+    rateLimiting: "Implement distributed rate limiting"
+
+# ============================================================================
+# VALIDATION REQUIREMENTS
+# ============================================================================
+
+validation:
+  required: ["security-audit", "penetration-test", "constitutional-compliance"]
+  optional: ["load-test", "accessibility-test"]
+  
+  securityValidation:
+    - "Password hashing verification"
+    - "Session security audit"
+    - "CSRF protection testing"
+    - "Rate limiting validation"
+    - "Input sanitization verification"
+    
+  constitutionalValidation:
+    - "Blueprint annotation verification"
+    - "Observability event validation"
+    - "Error state coverage"
+    - "Traceability audit"
+
+# ============================================================================
+# DOCUMENTATION REQUIREMENTS
+# ============================================================================
+
+documentation:
+  required:
+    - "Security architecture overview"
+    - "Technology stack integration guide"
+    - "Configuration reference"
+    - "Troubleshooting guide"
+    - "Security incident response procedures"
+    
+  examples:
+    - "Basic username/password authentication"
+    - "Social login integration"
+    - "Multi-factor authentication setup"
+    - "Custom authentication provider"
+    - "Migration from existing auth systems"
+
+# ============================================================================
+# CONSTITUTIONAL METADATA
+# ============================================================================
+
+constitutionalCompliance:
+  article1: "Traceability - All auth operations traced through blueprint"
+  article1: "Observability - Comprehensive event logging and monitoring"  
+  article1: "Reproducibility - Deterministic auth patterns across stacks"
+  article1: "Safety - Fallback mechanisms for all error conditions"
+  article3: "Mandatory annotations - All generated auth code annotated"
+
+executionMode: "strict"
+agentMode: "constitutional"
+outputType: "authentication-system"
+
+metadata:
+  author: "Aegis Framework Community"
+  created: "2025-01-15"
+  constitutionalAuthority: "Article I (Core Principles) + Article X (Field-Driven Evolution)"
+  strategicAlignment: "Universal tech stack support with constitutional governance"
+  securityClassification: "critical"
