@@ -3,8 +3,6 @@ name: Deploy Docusaurus to GitHub Pages
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
 
 permissions:
   contents: read
@@ -32,13 +30,6 @@ jobs:
       - name: Install dependencies
         run: cd website && npm ci
         
-      - name: Update Framework Data
-        run: |
-          # Generate latest framework data
-          node tools/framework-capability-mapper.ts
-          node framework/registry/blueprint-registry.ts discover
-          node tools/update-framework-dashboard.ts
-          
       - name: Build website
         run: cd website && npm run build
         
