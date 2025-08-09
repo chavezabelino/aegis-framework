@@ -1,15 +1,7 @@
-name: Aegis Framework Evaluations
+name: Aegis Framework Evaluations (DISABLED)
 
 on:
-  pull_request:
-    branches: [ main ]
-    paths:
-      - 'blueprints/**'
-      - 'framework/**'
-      - 'adapters/**'
-      - 'evals/**'
-  push:
-    branches: [ main ]
+  # Temporarily disabled until eval command is fully implemented
   workflow_dispatch:
     inputs:
       eval_id:
