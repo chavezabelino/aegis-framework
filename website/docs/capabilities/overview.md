@@ -5,16 +5,16 @@ sidebar_label: Overview
 slug: /docs/capabilities/overview
 ---
 
-# Capabilities Overview
+# AI Agent Governance Capabilities
 
-The Aegis Framework provides **64 capabilities** across **4 categories**, delivering comprehensive AI governance and monitoring.
+The AI Agent Development Governance Framework provides **64 capabilities** across **4 categories**, delivering comprehensive governance for AI agent code generation.
 
 ## Current Statistics
 
 - **🔧 Tools (38)**: CLI utilities, validation tools, enforcement engines
 - **🏛️ Core (20)**: Framework foundations, specifications, templates  
 - **⚖️ Governance (4)**: Constitutional enforcement, semantic interrupts
-- **🔗 Integration (2)**: Blueprint implementations, external connections
+- **🔗 Integration (2)**: AI code pattern implementations, external connections
 
 ## Categories
 

@@ -1,31 +1,31 @@
-# Blueprint Registry
+# AI Code Patterns Registry
 
 ## Overview
 
-The Aegis Framework uses **blueprints** as the source of truth for AI-generated code. Every AI-assisted change must be traceable through a corresponding blueprint specification.
+The AI Agent Development Governance Framework uses **AI code patterns** as the source of truth for AI agent code generation. Every AI agent must follow approved patterns to ensure consistent, compliant code output.
 
-## Current Blueprints
+## Current AI Code Patterns
 
-### Active Blueprints
+### Active Patterns
 
 #### feat-public-viewing
 - **Status**: Active implementation
 - **Purpose**: Public interface feature development
 - **Scope**: Frontend, backend, documentation
-- **Location**: `blueprints/feat-public-viewing/`
+- **Location**: `patterns/feat-public-viewing/`
 
 #### memory-governance  
 - **Status**: Strategic capability (v3.0.0)
 - **Purpose**: Memory subsystem constitutional integration
 - **Architecture**: Dual-layer memory with governance
-- **Location**: `blueprints/memory-governance/`
+- **Location**: `patterns/memory-governance/`
 
-## Blueprint Architecture
+## AI Code Pattern Architecture
 
 ### Standard Structure
 ```
-blueprints/{blueprint-name}/
-├── blueprint.yaml          # Main specification
+patterns/{pattern-name}/
+├── pattern.yaml             # Main pattern specification
 ├── README.md               # Documentation
 ├── examples/               # Usage examples
 └── tests/                  # Validation tests

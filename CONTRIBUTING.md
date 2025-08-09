@@ -1,26 +1,26 @@
-# Contributing to Aegis Framework
+# Contributing to AI Agent Development Governance Framework
 
-[![GenAI OS Manifesto](https://img.shields.io/badge/📖_Read_Our-Manifesto-blue?style=flat-square)](docs/manifesto/README.md) [![Constitutional Computing](https://img.shields.io/badge/🏛️_Constitutional-Computing-green?style=flat-square)](docs/manifesto/principles.md)
+[![AI Agent Governance](https://img.shields.io/badge/📖_Read_Our-Governance_Spec-blue?style=flat-square)](AI-AGENT-GOVERNANCE-SPEC-v1.md) [![Constitutional Framework](https://img.shields.io/badge/🏛️_Constitutional-Framework-green?style=flat-square)](CONSTITUTION.md)
 
-Welcome to the world's first **GenAI Operating System** community! We welcome contributions that advance constitutional computing and AI-native engineering practices.
+Welcome to the **AI Agent Development Governance Framework** community! We welcome contributions that advance governance patterns for AI agent code generation and establish industry standards.
 
 ## 🏛️ Constitutional Foundation
 
-**CRITICAL**: All contributions must align with the [Aegis Framework Constitution](CONSTITUTION.md) and support the [GenAI OS Manifesto](docs/manifesto/README.md).
+**CRITICAL**: All contributions must align with the [AI Agent Development Governance Charter](CONSTITUTION.md) and advance the [AI Agent Development Governance Specification](AI-AGENT-GOVERNANCE-SPEC-v1.md).
 
 ### 📖 Required Reading
 Before contributing, please read:
-1. **[GenAI OS Manifesto](docs/manifesto/README.md)** - Our foundational philosophy
-2. **[Constitutional Principles](docs/manifesto/principles.md)** - Technical governance framework  
-3. **[Author Notes](docs/manifesto/author-notes.md)** - The journey to constitutional computing
-4. **[Framework Constitution](CONSTITUTION.md)** - Governance requirements
+1. **[AI Agent Development Governance Specification](AI-AGENT-GOVERNANCE-SPEC-v1.md)** - Industry standard for AI agent governance
+2. **[Constitutional Framework](CONSTITUTION.md)** - Technical implementation governance
+3. **[Vision Documents](VISION.md)** - Strategic framework direction
+4. **[Constitutional Principles](docs/manifesto/principles.md)** - Technical governance framework
 
 ### 🎯 Contributing Philosophy
-We're not just building features—we're establishing the patterns for how humans work with intelligence. Your contributions should:
-- **Advance constitutional governance** of AI systems
-- **Support systematic AI reliability** over fast chaos
-- **Enable democratic evolution** of framework capabilities
-- **Preserve institutional knowledge** through evolution stories
+We're establishing the industry standards for AI agent development governance. Your contributions should:
+- **Advance AI agent governance** patterns and standards
+- **Support consistent, compliant code generation** across AI tools
+- **Enable democratic evolution** of governance frameworks
+- **Preserve governance knowledge** through evolution stories
 
 We welcome contributions that improve the fidelity, flexibility, or portability of the Aegis Framework. All contributions must align with the [Aegis Framework Constitution](CONSTITUTION.md).
 

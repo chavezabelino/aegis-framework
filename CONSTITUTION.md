@@ -1,22 +1,22 @@
-# Aegis Framework Constitution
+# AI Agent Development Governance Charter
 
 ## Preamble
 
-This document establishes the foundational principles, governance structures, and evolutionary processes for the Aegis Framework. It serves as the central authority for framework decisions, ensuring consistency, traceability, and structured evolution of the engineering workflow.
+This document establishes the foundational principles, governance structures, and evolutionary processes for the AI Agent Development Governance Framework. It serves as the central authority for governing AI agent code generation, ensuring consistency, traceability, and structured evolution of AI-assisted development.
 
 ## Article I: Core Principles
 
 ### Section 1: Fundamental Values
-The Aegis Framework is founded upon these principles:
+The AI Agent Development Governance Framework is founded upon these principles:
 
-1. **Traceability**: Every AI-generated change must be traceable through blueprints and contracts
+1. **Traceability**: Every AI-generated change must be traceable through AI code patterns and contracts
 2. **Observability**: All framework operations must emit telemetry and be auditable
-3. **Reproducibility**: Same blueprint must generate identical outputs deterministically
+3. **Reproducibility**: Same AI code pattern must generate identical outputs deterministically
 4. **Safety**: Production AI systems must include fallback mechanisms and error handling
 5. **Semantic Versioning**: All changes follow strict semantic versioning principles
 
-### Section 2: Blueprint Primacy
-Blueprints serve as the source of truth for AI-generated code. Code generation requires a corresponding blueprint specification.
+### Section 2: AI Code Pattern Primacy
+AI code patterns serve as the source of truth for AI agent code generation. All AI agents must follow approved patterns to ensure consistent, compliant code output.
 
 ## Article II: Framework Governance
 

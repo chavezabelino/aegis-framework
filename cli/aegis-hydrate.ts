@@ -266,7 +266,7 @@ class AegisHydrator {
           `mkdir -p ${targetPath}/blueprints`,
           `node cli/auto-generate-blueprint.ts ${targetPath}`,
         ],
-        validators: [`node tools/validate-blueprint.ts ${targetPath}/blueprints/*/blueprint.yaml`],
+        validators: [`node tools/validate-blueprint.ts ${targetPath}/patterns/*/blueprint.yaml`],
         rollbackCommands: [`rm -rf ${targetPath}/blueprints`],
         estimatedDuration: 5,
         riskLevel: 'medium'
