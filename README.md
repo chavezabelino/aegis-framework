@@ -236,17 +236,40 @@ Each agent (Copilot, Kilo, Lovable) has a behavior profile in `/framework/agents
 
 ## 🛣 Roadmap
 
+### ✅ **Foundation Era (v1.x - v2.4)**
 - ✅ **v1.0.0-alpha**: Initial semantic release - hardened replay, error taxonomy, observability contracts
 - ✅ **v1.2.0-alpha**: Constitutional governance, self-healing systems, pattern recognition, amendment processes
-- ✅ **v1.2.1**: Enhanced Blueprint Auto-Repair (ML optimization, context-sensitive fixes, observability, compliance)
-- ✅ **v1.3.0**: Apprenticeship Scaffolds (guided/challenge/review-only modes, reflection, observability, mentor plugin, CLI, tests)
-- ✅ **v1.3.1**: Documentation reorganization and improved maintainability
-- ✅ **v1.4.0**: Template Quality & GitHub Copilot Instructions (HTML entity fixes, constitutional compliance, operational excellence)
-- ✅ **v2.0.0-alpha-dev**: One-Command Hydration paradigm shift - "bill becomes law" migration with approval gates
-- ✅ **v2.2.0**: Feature Configurability System Complete (Three-tier configuration: Core/Required/Optional)
-- ✅ **v2.1.0**: Framework Protection & Cursor Integration (Destructive action protection, Cursor IDE integration, Vite + Bun migration)
-- ✅ **v2.1.0**: Package Distribution & Automation (NPM packages, Docker support, automated releases)
-- 🔜 **v3.0.0**: Tech Stack Neutrality (universal framework support beyond React+Next.js)
+- ✅ **v1.3.0**: Apprenticeship scaffolds and documentation reorganization
+- ✅ **v1.4.0**: Template quality & GitHub Copilot instructions
+- ✅ **v2.0.0**: One-command hydration paradigm shift
+- ✅ **v2.1.0**: Framework protection & Cursor integration, package distribution
+- ✅ **v2.2.0**: Feature configurability system complete
+- ✅ **v2.4.0**: Constitutional framework maturation
+
+### 🎯 **AI Agent Governance Era (v2.5+)**
+- ✅ **v2.5.0**: **AI Agent Development Governance Framework**
+  - Strategic positioning as industry-first governance framework
+  - AI Code Patterns (`blueprints/` → `patterns/`) for market clarity
+  - v1.0 AI Agent Development Governance Specification
+  - Documentation standards compliance and organization
+  - Constitutional governance as technical differentiation
+
+### 🚀 **Industry Leadership Era (v3.0+)**
+- 🔜 **v3.0.0**: **Multi-Agent Coordination & Standards**
+  - Distributed AI agent governance across development tools
+  - Advanced pattern composition and inheritance
+  - Industry standards working group establishment
+  - Enterprise governance analytics and reporting
+
+- 🔮 **v3.1.0**: **Ecosystem Integration**
+  - Native integrations with major AI coding tools (Cursor, GitHub Copilot, ChatGPT, Claude)
+  - Real-time governance enforcement across development environments
+  - Community pattern marketplace and contribution system
+
+- 🔮 **v4.0.0**: **Autonomous Governance Evolution**
+  - AI-powered governance rule optimization
+  - Predictive compliance and quality assurance
+  - Self-evolving pattern effectiveness analysis
 
 See [detailed roadmaps](docs/roadmap/), [v2.2.0 Feature Configurability completion](docs/implementation/feature-configurability-phase3-complete.md), and the [CHANGELOG.md](CHANGELOG.md) for complete feature planning and release history.
 
@@ -254,18 +277,28 @@ See [detailed roadmaps](docs/roadmap/), [v2.2.0 Feature Configurability completi
 
 ## 📎 Resources
 
-- [🏛️ **Framework Constitution**](CONSTITUTION.md) - Foundational principles and governance
-- [� **GenAI OS Manifesto**](docs/manifesto/README.md) - Core philosophy and vision
-- [📊 **Case Studies**](docs/manifesto/case-studies.md) - Real-world evidence and examples
-- [�📘 Architecture Overview](docs/architecture.md)
-- [📋 **Release Documentation**](docs/releases/) - Version history and release summaries
-- [🔧 **Implementation Details**](docs/implementation/) - Technical implementation documentation
-- [🧩 Blueprint Schema](framework/contracts/)
-- [🧪 Snapshot Test Examples](tests/snapshot-tests/)
-- [🛠 Drift Detection Tool](tools/detect-drift.ts)
-- [🧱 Starter Scaffold](scaffolds/web-app-starter/)
-- [🔄 Framework Evolution Strategy](docs/evolution-strategy.md)
-- [📝 Changelog Generator](tools/generate-changelog.sh)
+### Core Framework
+- [🏛️ **Constitutional Framework**](CONSTITUTION.md) - Technical governance implementation
+- [📋 **AI Agent Governance Specification**](docs/specifications/AI-AGENT-GOVERNANCE-SPEC-v1.md) - Industry standard v1.0
+- [🎯 **AI Code Patterns**](patterns/) - Governance patterns for consistent AI agent code generation
+- [📊 **Framework Dashboard**](docs/reference/FRAMEWORK-DASHBOARD.md) - Live framework status and metrics
+
+### Technical Implementation
+- [🔧 **Implementation Documentation**](docs/implementation/) - Technical implementation details
+- [🧩 **Pattern Schema**](framework/contracts/) - AI code pattern specifications
+- [🧪 **Snapshot Tests**](tests/snapshot-tests/) - Pattern validation and testing
+- [🛠 **Governance Tools**](tools/) - Real-time enforcement and validation tools
+
+### Community & Standards
+- [📖 **Contributing Guide**](CONTRIBUTING.md) - How to contribute to governance standards
+- [📋 **Release Documentation**](docs/releases/) - Version history and governance evolution
+- [🔄 **Evolution Strategy**](docs/evolution-strategy.md) - Framework development methodology
+- [🎭 **Vision Documents**](docs/vision/) - Strategic framework direction
+
+### Deployment & Operations
+- [🚀 **Deployment Guides**](docs/deployment/) - GitHub Pages and documentation hosting
+- [📚 **Documentation System**](website/) - Docusaurus documentation site
+- [🧱 **Starter Scaffolds**](scaffolds/) - Project templates and examples
 
 ---
 
@@ -286,15 +319,20 @@ See [Evolution Strategy](docs/evolution-strategy.md) for guidance on framework d
 
 ---
 
-## 🧠 Created By
+## 🧠 About This Framework
 
-This framework implements the **GenAI Operating System** paradigm - constitutional governance for intelligence-augmented engineering teams.
+The **AI Agent Development Governance Framework** represents a fundamental shift from "AI as better autocomplete" to "AI as governed, reliable infrastructure." 
 
-The Aegis Framework represents a fundamental shift from "AI as better autocomplete" to "AI as governable infrastructure." It provides the constitutional layer that makes AI reliable for production use.
+We're solving the critical problem that every developer using AI agents faces: **inconsistent, non-compliant code generation**. This framework provides the governance layer that makes any AI tool reliable for production use.
 
-> _"We're not just building better AI tools. We're building the governance layer that makes any AI tool reliable."_
+### Why This Matters
+- **Individual Developers**: Get consistent AI output across all tools
+- **Development Teams**: Enforce team standards through AI agent governance  
+- **Enterprise Organizations**: Meet compliance requirements for AI-generated code
 
-**Learn More**: [GenAI Operating System Manifesto](docs/manifesto/README.md)
+> _"We're not just building better AI tools. We're establishing the industry standards for governing AI agent code generation."_
+
+**Learn More**: [AI Agent Development Governance Specification](docs/specifications/AI-AGENT-GOVERNANCE-SPEC-v1.md)
 
 ---
 
