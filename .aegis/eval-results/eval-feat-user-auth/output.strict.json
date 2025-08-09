@@ -1,0 +1,15 @@
+{
+  "evalId": "eval-feat-user-auth",
+  "mode": "strict",
+  "files": [
+    "auth/login.ts",
+    "auth/register.ts",
+    "types/auth.ts"
+  ],
+  "events": [
+    "auth.login.success",
+    "auth.login.failed",
+    "auth.login.error"
+  ],
+  "timestamp": "2025-08-09T03:20:53.887Z"
+}

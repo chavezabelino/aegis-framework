@@ -1,0 +1,57 @@
+{
+  "id": "eval-feat-user-auth",
+  "timestamp": "2025-08-09T03:20:53.885Z",
+  "passed": false,
+  "score": 0.7831111111111112,
+  "performance": {
+    "generationTime": 1.265874999999994,
+    "tokensUsed": 2100,
+    "filesGenerated": 8,
+    "linesGenerated": 156,
+    "withinThresholds": false
+  },
+  "validation": {
+    "rulesPassed": 7,
+    "rulesTotal": 9,
+    "passRate": 0.7777777777777778,
+    "failedRules": [
+      "includes rate limiting",
+      "has proper error handling"
+    ]
+  },
+  "judgeResults": [
+    {
+      "name": "security-review",
+      "score": 0.9,
+      "weight": 0.4,
+      "reasoning": "Security evaluation based on common patterns. Found good security practices.",
+      "criticalIssues": [],
+      "recommendations": [
+        "Add input validation",
+        "Implement rate limiting"
+      ]
+    },
+    {
+      "name": "code-quality",
+      "score": 0.9,
+      "weight": 0.3,
+      "reasoning": "Code quality evaluation based on TypeScript best practices. Code demonstrates good quality standards.",
+      "criticalIssues": [],
+      "recommendations": [
+        "Add proper TypeScript interfaces"
+      ]
+    },
+    {
+      "name": "framework-compliance",
+      "score": 1,
+      "weight": 0.3,
+      "reasoning": "Framework compliance evaluation based on Aegis requirements. Good framework integration.",
+      "criticalIssues": [],
+      "recommendations": [
+        "Generate structured framework outputs"
+      ]
+    }
+  ],
+  "errors": [],
+  "warnings": []
+}

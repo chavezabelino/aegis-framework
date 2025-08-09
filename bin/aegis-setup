@@ -1,0 +1,33 @@
+#!/usr/bin/env node
+
+// Aegis Framework CLI: aegis-setup v2.4.0
+// Runs TypeScript CLI directly using Node.js built-in capabilities
+
+import { execSync } from 'child_process';
+import { fileURLToPath } from 'url';
+import { dirname, resolve } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+// Path to the original CLI file
+const cliPath = resolve(__dirname, '..', 'lib', 'cli', 'aegis-setup.ts');
+
+try {
+  // Execute the CLI directly with Node.js TypeScript support
+  execSync(`node --experimental-strip-types "${cliPath}" ${process.argv.slice(2).join(' ')}`, {
+    stdio: 'inherit',
+    env: process.env
+  });
+} catch (error) {
+  // If TypeScript stripping not available, fall back to the original method
+  console.error('Note: Using direct import method...');
+  try {
+    const cliModule = await import(`file://${cliPath}`);
+    // Most CLI tools are self-executing when imported
+  } catch (importError) {
+    console.error('❌ Failed to execute CLI:', importError.message);
+    console.error('💡 This CLI requires Node.js v20+ with TypeScript support');
+    process.exit(1);
+  }
+}

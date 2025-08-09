@@ -1,0 +1,24 @@
+{
+  "id": "eval-feat-user-auth",
+  "timestamp": "2025-08-09T03:19:42.594Z",
+  "passed": false,
+  "score": 0,
+  "performance": {
+    "generationTime": 0,
+    "tokensUsed": 0,
+    "filesGenerated": 0,
+    "linesGenerated": 0,
+    "withinThresholds": false
+  },
+  "validation": {
+    "rulesPassed": 0,
+    "rulesTotal": 0,
+    "passRate": 0,
+    "failedRules": []
+  },
+  "judgeResults": [],
+  "errors": [
+    "Evaluation failed: ReferenceError: require is not defined"
+  ],
+  "warnings": []
+}
