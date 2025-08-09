@@ -1,26 +1,30 @@
-# Aegis Framework v2.4.0
+# Aegis: AI Agent Development Governance Framework
 
-[![Framework Version](https://img.shields.io/badge/Framework-v2.4.0-orange?style=for-the-badge)](VERSION)
+[![Framework Version](https://img.shields.io/badge/Framework-v2.5.0-orange?style=for-the-badge)](VERSION)
 [![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](LICENSE)
 
-A framework for AI-assisted engineering with governance patterns, drift detection, and configuration management.
+**The first governance framework for consistent, compliant AI agent code generation**
 
-## Overview
+## 🚨 The Problem You're Experiencing
 
-This framework provides tools for managing AI-assisted development workflows with attention to configuration management, versioning consistency, and drift detection.
+If you're using AI agents for coding (ChatGPT, Claude, Cursor, GitHub Copilot, etc.), you've probably hit these issues:
 
-### Key Features
-- Configuration management with team-specific settings
-- Version consistency validation across project files
-- Blueprint-driven development patterns
-- Drift detection and monitoring tools
-- Constitutional governance patterns for AI workflows
+- **Inconsistent Code**: AI agents generate different patterns for the same problems
+- **Quality Drift**: AI-generated code quality degrades over time without oversight  
+- **Standards Bypass**: AI agents ignore your team's coding standards and patterns
+- **Multi-Agent Chaos**: Different AI tools produce conflicting code styles and approaches
+- **No Accountability**: Can't track or enforce quality in AI-generated code
 
-### Design Principles
-1. Governance through configuration, not just prompting
-2. Systematic detection of drift and inconsistencies  
-3. Reproducible AI-assisted development workflows
-4. Team-configurable enforcement levels
+## ✅ The Solution: AI Agent Governance
+
+Aegis provides **constitutional governance** for AI agents, ensuring they generate **consistent, compliant, trackable code** that follows your standards.
+
+### What Aegis Does
+- **🎯 Agent Consistency**: All AI agents follow the same patterns and standards
+- **📊 Quality Enforcement**: Real-time prevention of non-compliant AI code generation
+- **🔄 Multi-Agent Coordination**: Orchestrate multiple AI tools under shared governance
+- **📈 Performance Tracking**: Monitor and improve AI agent effectiveness
+- **🛡️ Drift Prevention**: Automatic detection and correction of AI code quality drift
 
 ---
 
@@ -133,7 +137,7 @@ aegis-framework/
 │   ├── agents/            # Copilot, Kilo, Lovable behavior profiles
 │   └── versions/          # Archived framework versions
 │
-├── blueprints/            # Real blueprint examples (testable, replayable)
+├── patterns/              # AI Code Patterns (testable, replayable)
 │   └── feat-public-viewing/
 │       ├── blueprint.yaml
 │       ├── output.lean.json
@@ -174,7 +178,7 @@ aegis-framework/
 
 ### 1. Author a Blueprint
 
-Create a new blueprint using `blueprints/<your-feature>/blueprint.yaml`.
+Create a new AI code pattern using `patterns/<your-feature>/pattern.yaml`.
 
 Blueprints define:
 - Feature intent and context
@@ -275,7 +279,7 @@ Aegis follows [Semantic Versioning](https://semver.org/) starting with v1.0.0-al
 ./tools/generate-changelog.sh 1.0.1-alpha "Your feature description"
 
 # Validate blueprints before committing
-node tools/validate-blueprint.ts blueprints/your-feature/blueprint.yaml
+node tools/validate-blueprint.ts patterns/your-feature/pattern.yaml
 ```
 
 See [Evolution Strategy](docs/evolution-strategy.md) for guidance on framework development and impact assessment.
@@ -325,7 +329,7 @@ Aegis follows [Semantic Versioning](https://semver.org/) starting with v1.0.0-al
 ./tools/generate-changelog.sh 1.0.1-alpha "Your feature description"
 
 # Validate blueprints before committing
-node tools/validate-blueprint.ts blueprints/your-feature/blueprint.yaml
+node tools/validate-blueprint.ts patterns/your-feature/pattern.yaml
 ```
 
 See [Evolution Strategy](docs/evolution-strategy.md) for guidance on framework development and impact assessment.

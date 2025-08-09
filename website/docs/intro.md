@@ -1,10 +1,10 @@
-# Introduction to Aegis Framework
+# AI Agent Development Governance Framework
 
-Welcome to **Aegis Framework v2.4.0** - a production-ready system for AI-assisted engineering with comprehensive governance, monitoring, and safety features.
+Welcome to **Aegis v2.5.0** - the first governance framework for consistent, compliant AI agent code generation.
 
-## What is Aegis Framework?
+## What is AI Agent Development Governance?
 
-Aegis Framework is designed to solve the challenges of integrating AI into complex software development workflows by providing:
+Aegis solves the critical problem of inconsistent, non-compliant AI-generated code by providing governance frameworks that ensure AI agents generate code that follows your standards and patterns:
 
 - **Constitutional Governance**: Foundational principles with democratic amendment processes
 - **Drift Detection & Prevention**: Real-time monitoring of agent behavior and intent alignment  
@@ -19,7 +19,7 @@ Aegis Framework is designed to solve the challenges of integrating AI into compl
 
 ```bash
 # Install globally
-npm install -g @aegis-framework/cli@2.4.0
+npm install -g @aegis-framework/cli@2.5.0
 
 # Initialize in a project
 aegis-hydrate /path/to/your/project
@@ -77,7 +77,7 @@ The framework currently provides **64 capabilities** across **4 categories**:
 
 1. **Explore the [Live Dashboard](/dashboard)** to see current framework status
 2. **Browse [Capabilities](./capabilities/overview)** to understand available features
-3. **Review [Blueprints](./blueprints/overview)** for implementation examples
+3. **Review [AI Code Patterns](./blueprints/overview)** for implementation examples
 4. **Check [Evolution Stories](../blog)** for framework development history
 
 ## Architecture Overview

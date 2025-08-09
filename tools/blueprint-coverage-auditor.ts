@@ -39,7 +39,7 @@ export class BlueprintCoverageAuditor {
    * Load existing blueprints for coverage analysis
    */
   async loadExistingBlueprints(): Promise<void> {
-    const blueprintFiles = await glob('blueprints/**/blueprint.yaml', { 
+    const blueprintFiles = await glob('patterns/**/blueprint.yaml', { 
       cwd: this.projectRoot 
     });
 

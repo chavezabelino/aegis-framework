@@ -6,7 +6,7 @@
  * "Constitutional Computing: Some decisions are too important for config files"
  * 
  * @manifestoRef: principles.md#constitutional-computing
- * The primary enforcement mechanism for the Aegis Framework Constitution.
+ * The primary enforcement mechanism for AI Agent Development Governance.
  * Provides constitutional compliance monitoring, drift detection, and automated enforcement.
  */
 
@@ -76,7 +76,7 @@ class ConstitutionalConductor {
   }
 
   async init(): Promise<void> {
-    console.log("🏛️ Initializing Aegis Constitutional Framework...");
+    console.log("🏛️ Initializing AI Agent Development Governance...");
     
     // Create .framework directory
     const frameworkDir = path.join(this.frameworkRoot, '.framework');

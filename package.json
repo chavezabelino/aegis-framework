@@ -1,7 +1,7 @@
 {
   "name": "aegis-framework",
-  "version": "2.4.0",
-  "description": "The world's first GenAI Operating System - Constitutional governance for AI-native engineering with systematic drift detection, evolution learning, and democratic amendment processes",
+  "version": "2.5.0",
+  "description": "AI Agent Development Governance Framework - Constitutional governance for consistent, compliant AI agent code generation with real-time enforcement and quality assurance",
   "type": "module",
   "scripts": {
     "validate": "bun tools/validate-constitution.ts",

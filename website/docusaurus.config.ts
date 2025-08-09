@@ -5,8 +5,8 @@ import type * as Preset from '@docusaurus/preset-classic';
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  title: 'Aegis Framework',
-  tagline: 'Constitutional AI Engineering with Governance, Monitoring & Safety',
+  title: 'Aegis: AI Agent Development Governance',
+  tagline: 'The first governance framework for consistent, compliant AI agent code generation',
   favicon: 'img/favicon.ico',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
