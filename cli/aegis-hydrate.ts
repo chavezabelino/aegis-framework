@@ -20,6 +20,7 @@ import { promisify } from 'util';
 import inquirer from 'inquirer';
 import chalk from 'chalk';
 import ora from 'ora';
+import { AegisTelemetry } from '../framework/observability/aegis-telemetry.ts';
 
 const execAsync = promisify(exec);
 
@@ -54,6 +55,11 @@ interface ApprovalGate {
 class AegisHydrator {
   private plan: MigrationPlan | null = null;
   private spinner = ora();
+  private telemetry?: AegisTelemetry;
+
+  initializeTelemetry(projectPath: string): void {
+    this.telemetry = AegisTelemetry.forHydration(projectPath);
+  }
 
   async discover(targetPath: string): Promise<MigrationPlan> {
     this.spinner.start('🔍 Discovering project structure...');
@@ -399,6 +405,9 @@ program
   .option('--dry-run', 'Show migration plan without executing', false)
   .action(async (targetPath, options) => {
     const hydrator = new AegisHydrator();
+    
+    // Initialize telemetry
+    hydrator.initializeTelemetry(targetPath);
     
     try {
       if (options.dryRun) {

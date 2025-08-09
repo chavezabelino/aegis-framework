@@ -14,8 +14,8 @@ import { Resource } from '@opentelemetry/resources';
 import { SemanticResourceAttributes } from '@opentelemetry/semantic-conventions';
 import { trace, SpanStatusCode, SpanKind } from '@opentelemetry/api';
 import { JaegerExporter } from '@opentelemetry/exporter-jaeger';
-import { OTLPTraceExporter } from '@opentelemetry/exporter-otlp-http';
-import { BatchSpanProcessor } from '@opentelemetry/sdk-trace-node';
+import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-http';
+import { BatchSpanProcessor, ConsoleSpanExporter } from '@opentelemetry/sdk-trace-node';
 import { getNodeAutoInstrumentations } from '@opentelemetry/auto-instrumentations-node';
 import fs from 'fs';
 import path from 'path';
@@ -134,7 +134,6 @@ class AegisOTelTracer {
       });
     } else {
       // Fallback to console
-      const { ConsoleSpanExporter } = require('@opentelemetry/sdk-trace-node');
       primary = new ConsoleSpanExporter();
     }
 

@@ -1,0 +1,20 @@
+{
+  "jaeger": {
+    "enabled": false,
+    "endpoint": "http://localhost:14268/api/traces"
+  },
+  "otlp": {
+    "enabled": false,
+    "endpoint": "http://localhost:4318/v1/traces",
+    "headers": {}
+  },
+  "langfuse": {
+    "enabled": false,
+    "endpoint": "https://cloud.langfuse.com/api/public/ingestion",
+    "apiKey": "",
+    "headers": {}
+  },
+  "console": {
+    "enabled": true
+  }
+}

@@ -16,6 +16,7 @@ import path from 'path';
 import yaml from 'js-yaml';
 import { Command } from 'commander';
 import { performance } from 'perf_hooks';
+import { AegisTelemetry } from '../framework/observability/aegis-telemetry.ts';
 
 interface EvalPrompt {
   id: string;
@@ -104,6 +105,7 @@ class AegisEvaluationEngine {
   private evalsPath: string;
   private resultsPath: string;
   private baselinesPath: string;
+  private telemetry?: AegisTelemetry;
 
   constructor(frameworkRoot: string = process.cwd()) {
     this.frameworkRoot = frameworkRoot;
@@ -111,6 +113,10 @@ class AegisEvaluationEngine {
     this.resultsPath = path.join(frameworkRoot, '.aegis', 'eval-results');
     this.baselinesPath = path.join(frameworkRoot, '.aegis', 'baselines');
     this.ensureDirectories();
+  }
+
+  private initializeTelemetry(): void {
+    this.telemetry = AegisTelemetry.forEvaluation();
   }
 
   private ensureDirectories(): void {
@@ -132,39 +138,65 @@ class AegisEvaluationEngine {
   ): Promise<EvalResult[]> {
     console.log(`🧪 Running Aegis Framework Evaluations...`);
     
-    const evalPrompts = await this.loadEvalPrompts(evalId);
-    const results: EvalResult[] = [];
+    // Initialize telemetry
+    this.initializeTelemetry();
+    
+    try {
+      const evalPrompts = await this.loadEvalPrompts(evalId);
+      const results: EvalResult[] = [];
 
-    for (const evalPrompt of evalPrompts) {
-      console.log(`\n📋 Evaluating: ${evalPrompt.name}`);
+      for (const evalPrompt of evalPrompts) {
+        console.log(`\n📋 Evaluating: ${evalPrompt.name}`);
+        
+        // Trace the entire evaluation process
+        const result = await this.telemetry?.traceOperation(
+          `evaluation.${evalPrompt.id}`,
+          () => this.runSingleEvaluation(evalPrompt, options),
+          {
+            evalId: evalPrompt.id,
+            evalName: evalPrompt.name,
+            evalVersion: evalPrompt.version
+          }
+        ) || await this.runSingleEvaluation(evalPrompt, options);
+        
+        // Record evaluation result in telemetry
+        if (this.telemetry) {
+          this.telemetry.recordEvaluation(evalPrompt.id, result);
+        }
+        
+        results.push(result);
+        
+        await this.storeResult(result);
+        
+        if (options.verbose) {
+          this.printDetailedResult(result);
+        } else {
+          this.printSummaryResult(result);
+        }
+      }
+
+      // Check against baseline if specified
+      if (options.baseline) {
+        await this.compareAgainstBaseline(results, options.baseline, options.threshold);
+      }
+
+      // CI mode: fail if any critical issues or below threshold
+      if (options.ci) {
+        const criticalFailures = results.some(r => !r.passed || r.score < (options.threshold || 0.8));
+        if (criticalFailures) {
+          console.log(`\n❌ CI evaluation failed - critical issues detected`);
+          process.exit(1);
+        }
+      }
+
+      return results;
       
-      const result = await this.runSingleEvaluation(evalPrompt, options);
-      results.push(result);
-      
-      await this.storeResult(result);
-      
-      if (options.verbose) {
-        this.printDetailedResult(result);
-      } else {
-        this.printSummaryResult(result);
+    } finally {
+      // Finalize telemetry session
+      if (this.telemetry) {
+        await this.telemetry.finalize();
       }
     }
-
-    // Check against baseline if specified
-    if (options.baseline) {
-      await this.compareAgainstBaseline(results, options.baseline, options.threshold);
-    }
-
-    // CI mode: fail if any critical issues or below threshold
-    if (options.ci) {
-      const criticalFailures = results.some(r => !r.passed || r.score < (options.threshold || 0.8));
-      if (criticalFailures) {
-        console.log(`\n❌ CI evaluation failed - critical issues detected`);
-        process.exit(1);
-      }
-    }
-
-    return results;
   }
 
   private async runSingleEvaluation(
