@@ -42,7 +42,7 @@ export class RealtimeConstitutionalEnforcer {
    * Load all available blueprints for validation
    */
   private async loadBlueprintRegistry(): Promise<void> {
-    const blueprintFiles = await glob('blueprints/**/blueprint.yaml', { 
+    const blueprintFiles = await glob('patterns/**/blueprint.yaml', { 
       cwd: this.projectRoot 
     });
 

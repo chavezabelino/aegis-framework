@@ -182,7 +182,7 @@ export class ArticleXIValidator {
     return (
       filePath.includes('docs/evolution/') && filePath.endsWith('.md') ||
       filePath.includes('framework/') && filePath.endsWith('.md') ||
-      filePath.includes('blueprints/') && filePath.endsWith('.yaml') ||
+      filePath.includes('patterns/') && filePath.endsWith('.yaml') ||
       filePath.includes('CONSTITUTION.md') ||
       filePath.includes('README.md')
     );
@@ -222,7 +222,7 @@ export class ArticleXIValidator {
     const filePaths = [
       'docs/evolution/**/*.md',
       'framework/**/*.md', 
-      'blueprints/**/*.yaml',
+      'patterns/**/*.yaml',
       'CONSTITUTION.md',
       'README.md'
     ];
