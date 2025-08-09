@@ -404,5 +404,4 @@ This framework is part of a broader initiative to make AI-generated systems **sa
 
 It was designed to be used in production environments and across consulting, open-source, and enterprise workflows.
 
-> _“We're not building a replicator, but we are designing like someone who wants to.”_
-# Test comment
+> _"We're not building a replicator, but we are designing like someone who wants to."_
