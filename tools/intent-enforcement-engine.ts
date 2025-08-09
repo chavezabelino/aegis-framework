@@ -9,6 +9,8 @@ import { execSync } from 'child_process';
 import * as fs from 'fs';
 import * as path from 'path';
 import { TeamConfigLoader } from './team-config-loader.js';
+import { ForegroundHangPrevention } from '../framework/governance/foreground-hang-prevention.js';
+import { trace } from '../framework/observability/execution-trace-hooks.js';
 
 interface IntentViolation {
   type: 'functional-drift' | 'constitutional-violation' | 'blueprint-deviation' | 'safety-bypass';
@@ -42,10 +44,12 @@ export class IntentEnforcementEngine {
   private violationHistory: IntentViolation[] = [];
   private commandHistory: CommandAnalysis[] = [];
   private configLoader: TeamConfigLoader;
+  private hangPrevention: ForegroundHangPrevention;
 
   constructor(projectRoot: string = process.cwd()) {
     this.projectRoot = projectRoot;
     this.configLoader = TeamConfigLoader.getInstance(projectRoot);
+    this.hangPrevention = new ForegroundHangPrevention(projectRoot);
   }
 
   /**
@@ -80,11 +84,24 @@ export class IntentEnforcementEngine {
    * Enforce intent before command execution
    */
   enforceIntent(command: string, explanation?: string): { allowed: boolean; violations: IntentViolation[] } {
-    // Check if constitutional enforcement is enabled
-    if (!this.configLoader.isRequiredFeatureEnabled('constitutionalEnforcement')) {
-      console.log('📋 Constitutional enforcement disabled in team configuration');
-      return { allowed: true, violations: [] };
-    }
+    const traceCtx = trace(
+      'constitutional-enforcement', 
+      'intent-enforcement', 
+      'enforceIntent', 
+      { command, explanation }, 
+      undefined, 
+      'docs/implementation/intent-enforcement.md',
+      `command: ${command.substring(0, 50)}`
+    );
+
+    try {
+      // Check if constitutional enforcement is enabled
+      if (!this.configLoader.isRequiredFeatureEnabled('constitutionalEnforcement')) {
+        console.log('📋 Constitutional enforcement disabled in team configuration');
+        const result = { allowed: true, violations: [] };
+        traceCtx.complete(result);
+        return result;
+      }
 
     if (!this.currentIntent) {
       return {
@@ -118,10 +135,17 @@ export class IntentEnforcementEngine {
     // Log enforcement decision
     this.logEnforcementDecision(command, analysis, adjustedViolations);
     
-    return {
+    const result = {
       allowed: adjustedViolations.filter(v => v.blockExecution).length === 0,
       violations
     };
+    
+    traceCtx.complete(result);
+    return result;
+    } catch (error) {
+      traceCtx.error(error);
+      throw error;
+    }
   }
 
   /**
@@ -409,6 +433,121 @@ export class IntentEnforcementEngine {
     this.violationHistory = [];
     this.commandHistory = [];
     console.log('🔄 Intent enforcement engine reset');
+  }
+
+  /**
+   * Execute command with foreground hang prevention
+   */
+  async executeWithHangPrevention(command: string, explanation?: string): Promise<{
+    success: boolean;
+    result?: any;
+    violations: IntentViolation[];
+    backgrounded?: boolean;
+    message: string;
+  }> {
+    console.log(`🛡️ Executing with constitutional enforcement and hang prevention: ${command}`);
+    
+    // First, check intent enforcement
+    const intentResult = this.enforceIntent(command, explanation);
+    
+    if (!intentResult.allowed) {
+      return {
+        success: false,
+        violations: intentResult.violations,
+        message: `Command blocked by constitutional enforcement: ${intentResult.violations[0]?.description || 'Intent violation'}`
+      };
+    }
+    
+    // Check if this is a long-running process
+    const longRunningPattern = this.hangPrevention.detectLongRunningProcess(command);
+    
+    if (longRunningPattern) {
+      console.log(`🎯 Long-running process detected: ${longRunningPattern.name}`);
+      console.log(`📋 Category: ${longRunningPattern.category}`);
+      console.log(`🚀 Automatically backgrounding to prevent agent hang...`);
+    }
+    
+    // Execute with hang prevention
+    const result = await this.hangPrevention.runWithHangPrevention(command);
+    
+    if (result.success) {
+      // Record successful execution
+      this.commandHistory.push({
+        command,
+        explanation: explanation || 'No explanation provided',
+        timestamp: new Date(),
+        intentAlignment: 100, // Passed all checks
+        riskLevel: result.backgrounded ? 'medium' : 'low',
+        constitutionalCompliance: true
+      });
+      
+      return {
+        success: true,
+        result,
+        violations: [],
+        backgrounded: result.backgrounded,
+        message: result.message
+      };
+    } else {
+      // Record failed execution
+      const violation: IntentViolation = {
+        type: 'functional-drift',
+        severity: 'error',
+        description: `Command execution failed: ${result.message}`,
+        evidence: `Command: ${command}`,
+        suggestedCorrection: 'Check command syntax and dependencies',
+        blockExecution: false
+      };
+      
+      this.violationHistory.push(violation);
+      
+      return {
+        success: false,
+        violations: [violation],
+        backgrounded: result.backgrounded,
+        message: result.message
+      };
+    }
+  }
+
+  /**
+   * Get status of running background processes
+   */
+  getBackgroundProcessStatus(): string {
+    const running = this.hangPrevention.getRunningProcesses();
+    
+    if (running.size === 0) {
+      return '📝 No background processes running';
+    }
+    
+    let status = `📝 ${running.size} background processes running:\n`;
+    
+    for (const [name, process] of running.entries()) {
+      const uptime = Math.round((Date.now() - process.startTime.getTime()) / 1000);
+      status += `  • ${name} (PID: ${process.pid}, uptime: ${uptime}s)\n`;
+      status += `    Category: ${process.category}\n`;
+      status += `    Log: ${process.logFile}\n`;
+      if (process.healthCheck) {
+        status += `    Health: ${process.healthCheck}\n`;
+      }
+    }
+    
+    return status;
+  }
+
+  /**
+   * Show logs for a background process
+   */
+  async showBackgroundLogs(processName: string, lines: number = 20): Promise<string | null> {
+    return await this.hangPrevention.showLogs(processName, lines);
+  }
+
+  /**
+   * Kill all background processes
+   */
+  async killAllBackgroundProcesses(): Promise<void> {
+    console.log('🔄 Killing all background processes via constitutional enforcement...');
+    await this.hangPrevention.killAllProcesses();
   }
 }
 

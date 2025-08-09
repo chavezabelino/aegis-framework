@@ -1,0 +1,224 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: var(--ifm-color-emphasis-600);
+  margin-top: 0.5rem;
+}
+
+.loading,
+.error {
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.error h2 {
+  color: var(--ifm-color-danger);
+}
+
+.statusSection {
+  margin-bottom: 3rem;
+}
+
+.statusGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.statusCard {
+  background: var(--ifm-color-emphasis-100);
+  border-radius: 8px;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-left: 4px solid transparent;
+}
+
+.statusCard.healthy {
+  border-left-color: var(--ifm-color-success);
+}
+
+.statusCard.warning {
+  border-left-color: var(--ifm-color-warning);
+}
+
+.statusCard.error {
+  border-left-color: var(--ifm-color-danger);
+}
+
+.cardIcon {
+  font-size: 2rem;
+}
+
+.cardContent h4 {
+  margin: 0 0 0.5rem 0;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--ifm-color-emphasis-600);
+}
+
+.cardValue {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--ifm-color-emphasis-800);
+}
+
+.chartSection {
+  margin-bottom: 3rem;
+}
+
+.chartContainer {
+  background: var(--ifm-color-emphasis-100);
+  border-radius: 8px;
+  padding: 2rem;
+}
+
+.chartBar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.chartLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 120px;
+  font-weight: 500;
+}
+
+.categoryIcon {
+  font-size: 1.2rem;
+}
+
+.count {
+  font-size: 0.9rem;
+  color: var(--ifm-color-emphasis-600);
+}
+
+.progressBar {
+  flex: 1;
+  height: 20px;
+  background: var(--ifm-color-emphasis-200);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--ifm-color-primary), var(--ifm-color-primary-dark));
+  transition: width 0.3s ease;
+}
+
+.percentage {
+  min-width: 40px;
+  text-align: right;
+  font-weight: 500;
+}
+
+.categoriesSection {
+  margin-bottom: 3rem;
+}
+
+.categoriesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.categoryCard {
+  background: var(--ifm-color-emphasis-100);
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.categoryHeader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.categoryHeader h3 {
+  margin: 0;
+}
+
+.categoryCount {
+  font-size: 1.1rem;
+  color: var(--ifm-color-emphasis-600);
+  margin-bottom: 1.5rem;
+}
+
+.categoryActions {
+  margin-top: 1rem;
+}
+
+.blueprintsSection {
+  margin-bottom: 3rem;
+}
+
+.blueprintStats {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.actionsSection {
+  text-align: center;
+  padding: 2rem;
+  background: var(--ifm-color-emphasis-100);
+  border-radius: 8px;
+}
+
+.actionButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+  
+  .statusGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .categoriesGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .actionButtons {
+    flex-direction: column;
+  }
+  
+  .chartBar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+  
+  .chartLabel {
+    justify-content: space-between;
+  }
+}

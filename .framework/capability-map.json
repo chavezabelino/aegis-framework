@@ -1,0 +1,1241 @@
+{
+  "generated": "2025-08-08T23:10:40.374Z",
+  "frameworkVersion": "2.4.0",
+  "totalCapabilities": 59,
+  "categories": {
+    "tool": [
+      {
+        "id": "cli-aegis-docs",
+        "name": "Aegis Docs",
+        "category": "tool",
+        "status": "stable",
+        "description": "Quick access to manifesto documentation and principles",
+        "implementation": [
+          "/Users/nino/Workspace/02-local-dev/aegis-framework/cli/aegis-docs.ts"
+        ],
+        "dependencies": [
+          "commander",
+          "fs",
+          "path",
+          "chalk"
+        ],
+        "usageExample": "aegis-docs search <",
+        "documentation": "README.md",
+        "blueprint": "manifesto-cli-tool",
+        "lastModified": "2025-08-07T11:49:41.827Z",
+        "codeSignature": "UXVpY2sgYWNjZXNz"
+      },
+      {
+        "id": "cli-aegis-hydrate",
+        "name": "Aegis Hydrate",
+        "category": "tool",
+        "status": "alpha",
+        "description": "One-command migration tool with constitutional governance",
+        "implementation": [
+          "/Users/nino/Workspace/02-local-dev/aegis-framework/cli/aegis-hydrate.ts"
+        ],
+        "dependencies": [
+          "commander",
+          "fs",
+          "child_process",
+          "util",
+          "inquirer",
+          "chalk",
+          "ora"
+        ],
+        "documentation": "README.md",
+        "blueprint": "project-hydration-tool",
+        "lastModified": "2025-08-08T14:37:34.368Z",
+        "codeSignature": "T25lLWNvbW1hbmQg"
+      },
+      {
+        "id": "cli-aegis-memory",
+        "name": "Aegis Memory",
+        "category": "tool",
+        "status": "stable",
+        "description": "CLI tool for constitutional memory governance operations",
+        "implementation": [
+          "/Users/nino/Workspace/02-local-dev/aegis-framework/cli/aegis-memory.ts"
+        ],
+        "dependencies": [
+          "commander",
+          "chalk",
+          "ora",
+          "inquirer",
+          "fs",
+          "path"
+        ],
+        "documentation": "README.md",
+        "blueprint": "memory-governance-cli",
+        "lastModified": "2025-08-08T22:28:09.773Z",
+        "codeSignature": "Q0xJIHRvb2wgZm9y"
+      },
+      {
+        "id": "cli-amendment-cli",
+        "name": "Amendment Cli",
+        "category": "tool",
+        "status": "beta",
+        "description": "Provide user-friendly CLI for amendment management",
+        "implementation": [
+          "/Users/nino/Workspace/02-local-dev/aegis-framework/cli/amendment-cli.ts"
+        ],
+        "dependencies": [],
+        "usageExample": "submit <proposal-id>');",
+        "documentation": "README.md",
+        "lastModified": "2025-08-08T22:28:09.773Z",
+        "codeSignature": "UHJvdmlkZSB1c2Vy"
+      },
+      {
+        "id": "cli-apprenticeship-cli",
+        "name": "Apprenticeship Cli",
+        "category": "tool",
+        "status": "beta",
+        "description": "CLI for blueprint-driven apprenticeship workflows (guided, challenge, review-only)",
+        "implementation": [
+          "/Users/nino/Workspace/02-local-dev/aegis-framework/cli/apprenticeship-cli.ts"
+        ],
+        "dependencies": [
+          "yargs",
+          "yargs/helpers"
+        ],
+        "usageExample": "1024, status: 'completed' }],",
+        "documentation": "README.md",
+        "blueprint": "apprenticeship-scaffolds",
+        "lastModified": "2025-08-08T22:28:09.773Z",
+        "codeSignature": "Q0xJIGZvciBibHVl"
+      },
+      {
+        "id": "tool-auto-update-changelog",
+        "name": "Auto Update Changelog",
+        "category": "tool",
+        "status": "stable",
+        "description": "Automate changelog maintenance with AI-powered change detection and team configuration support",
+        "implementation": [
+          "/Users/nino/Workspace/02-local-dev/aegis-framework/tools/auto-update-changelog.ts"
+        ],
+        "dependencies": [
+          "fs",
+          "path"
+        ],
+        "usageExample": "// Example usage:\n\n  const args = process.argv.slice(2);\n  const dryRun = args.includes('--dry-run') || args.includes('-n');\n  \n  const updater = new AutomatedChangelogUpdater();\n  await updater.updateChangelog(dryRun);\n...",
+        "documentation": "README.md",
+        "lastModified": "2025-08-08T22:28:09.793Z",
+        "codeSignature": "QXV0b21hdGUgY2hh"
+      },
+      {
+        "id": "tool-comprehensive-intelligence-testing",
+        "name": "Comprehensive Intelligence Testing",
+        "category": "tool",
+        "status": "stable",
+        "description": "Comprehensive testing suite for all framework intelligence features",
+        "implementation": [
+          "/Users/nino/Workspace/02-local-dev/aegis-framework/tools/comprehensive-intelligence-testing.ts"
+        ],
+        "dependencies": [
+          "fs",
+          "path",
+          "child_process"
+        ],
+        "usageExample": "// Example usage:\n\n  const testing = new ComprehensiveIntelligenceTesting();\n  try {\n    const report = await testing.runAllTests();\n    process.exit(report.overallStatus === 'fail' ? 1 : 0);\n  } catch (error) {\n    console.error('❌ Comprehensive testing failed:', error);\n    process.exit(1);\n  }\n...",
+        "documentation": "README.md",
+        "lastModified": "2025-08-08T22:28:09.793Z",
+        "codeSignature": "ZXhwb3J0IGNsYXNz"
+      },
+      {
+        "id": "tool-constitutional-compliance-enforcer",
+        "name": "Constitutional Compliance Enforcer",
+        "category": "tool",
+        "status": "stable",
+        "description": "Constitutional compliance enforcer to prevent false claims and ensure framework integrity",
+        "implementation": [
+          "/Users/nino/Workspace/02-local-dev/aegis-framework/tools/constitutional-compliance-enforcer.ts"
+        ],
+        "dependencies": [
+          "fs",
+          "path"
+        ],
+        "usageExample": "// Example usage:\n\n  const enforcer = new ConstitutionalComplianceEnforcer();\n  \n  if (process.argv.includes('--block')) {\n    await enforcer.blockFrameworkOperations();\n  } else {\n    const result = await enforcer.enforceCompliance();\n    \n    if (result.frameworkBlocked) {\n      process.exit(1);\n    }\n  }\n...",
+        "documentation": "README.md",
+        "lastModified": "2025-08-08T22:29:35.197Z",
+        "codeSignature": "Q29uc3RpdHV0aW9u"
+      },
+      {
+        "id": "tool-continuous-compliance-monitor",
+        "name": "Continuous Compliance Monitor",
+        "category": "tool",
+        "status": "stable",
+        "description": "Continuous compliance monitoring that ensures constitutional adherence at all times",
+        "implementation": [
+          "/Users/nino/Workspace/02-local-dev/aegis-framework/tools/continuous-compliance-monitor.ts"
+        ],
+        "dependencies": [
+          "fs",
+          "path",
+          "child_process"
+        ],
+        "usageExample": "// Example usage:\n\n  const monitor = new ContinuousComplianceMonitor();\n  \n  // Handle graceful shutdown\n  process.on('SIGINT', async () => {\n    console.log('\\n📋 Received shutdown signal...');\n    await monitor.stopMonitoring();\n    process.exit(0);\n  });\n  \n  // Check command line arguments\n  const args = process....",
+        "documentation": "README.md",
+        "lastModified": "2025-08-08T22:28:09.794Z",
+        "codeSignature": "ZXhwb3J0IGNsYXNz"
+      },
+      {
+        "id": "tool-cursor-integration",
+        "name": "Cursor Integration",
+        "category": "tool",
+        "status": "alpha",
+        "description": "Cursor-specific real-time evolution detection and conversation capture",
+        "implementation": [
+          "/Users/nino/Workspace/02-local-dev/aegis-framework/tools/cursor-integration.ts"
+        ],
+        "dependencies": [
+          "fs",
+          "path"
+        ],
+        "documentation": "README.md",
+        "lastModified": "2025-08-08T22:28:09.794Z",
+        "codeSignature": "ZXhwb3J0IGZ1bmN0"
+      },
+      {
+        "id": "cli-cursor-realtime-cli",
+        "name": "Cursor Realtime Cli",
+        "category": "tool",
+        "status": "stable",
+        "description": "CLI for managing Cursor real-time integration",
+        "implementation": [
+          "/Users/nino/Workspace/02-local-dev/aegis-framework/cli/cursor-realtime-cli.ts"
+        ],
+        "dependencies": [
+          "commander",
+          "fs",
+          "path",
+          "url"
+        ],
+        "documentation": "README.md",
+        "lastModified": "2025-08-08T22:28:09.773Z",
+        "codeSignature": "Q0xJIGZvciBtYW5h"
+      },
+      {
+        "id": "tool-cursor-realtime-integration",
+        "name": "Cursor Realtime Integration",
+        "category": "tool",
+        "status": "stable",
+        "description": "Real-time Cursor integration for live workflow detection",
+        "implementation": [
+          "/Users/nino/Workspace/02-local-dev/aegis-framework/tools/cursor-realtime-integration.ts"
+        ],
+        "dependencies": [
+          "fs",
+          "path",
+          "url",
+          "events"
+        ],
+        "documentation": "docs/implementation/cursor-realtime-integration.md",
+        "lastModified": "2025-08-08T22:28:09.794Z",
+        "codeSignature": "UmVhbC10aW1lIEN1"
+      },
+      {
+        "id": "tool-destructive-action-protection",
+        "name": "Destructive Action Protection",
+        "category": "tool",
+        "status": "stable",
+        "description": "Destructive action protection and validation system",
+        "implementation": [
+          "/Users/nino/Workspace/02-local-dev/aegis-framework/tools/destructive-action-protection.ts"
+        ],
+        "dependencies": [
+          "fs",
+          "path"
+        ],
+        "usageExample": "// Example usage:\n\n  const protector = new DestructiveActionProtector();\n  \n  if (process.argv.length < 4) {\n    console.log('Usage: node destructive-action-protection.ts <action> <target1> [target2] ...');\n    console.log('Example: node destructive-action-protection.ts delete .DS_Store');\n    process.exit(1);\n  }\n\n ...",
+        "documentation": "README.md",
+        "lastModified": "2025-08-08T22:28:09.794Z",
+        "codeSignature": "ZXhwb3J0IGludGVy"
+      },
+      {
+        "id": "cli-drift-cli",
+        "name": "Drift Cli",
+        "category": "tool",
+        "status": "beta",
+        "description": "CLI for drift event listing, review, and replay (human-in-the-loop)",
+        "implementation": [
+          "/Users/nino/Workspace/02-local-dev/aegis-framework/cli/drift-cli.ts"
+        ],
+        "dependencies": [
+          "fs",
+          "js-yaml"
+        ],
+        "usageExample": "drift list [severity] | drift review <id> --approve | drift replay <blueprintId> --fix-mode=<mode>');",
+        "documentation": "README.md",
+        "blueprint": "drift-logging",
+        "lastModified": "2025-08-08T22:28:09.773Z",
+        "codeSignature": "Q0xJIGZvciBkcmlm"
+      },
+      {
+        "id": "tool-drift-monitoring-dashboard",
+        "name": "Drift Monitoring Dashboard",
+        "category": "tool",
+        "status": "stable",
+        "description": "Drift monitoring dashboard with team configuration support",
+        "implementation": [
+          "/Users/nino/Workspace/02-local-dev/aegis-framework/tools/drift-monitoring-dashboard.ts"
+        ],
+        "dependencies": [
+          "fs",
+          "path"
+        ],
+        "usageExample": "// Example usage:\n\n  const dashboard = new DriftMonitoringDashboard();\n  await dashboard.generateDashboard();\n...",
+        "documentation": "README.md",
+        "lastModified": "2025-08-08T22:28:09.795Z",
+        "codeSignature": "RHJpZnQgbW9uaXRv"
+      },
+      {
+        "id": "tool-enhanced-evolution-detector",
+        "name": "Enhanced Evolution Detector",
+        "category": "tool",
+        "status": "stable",
+        "description": "Enhanced evolution story detection with intelligence gap analysis",
+        "implementation": [
+          "/Users/nino/Workspace/02-local-dev/aegis-framework/tools/enhanced-evolution-detector.ts"
+        ],
+        "dependencies": [
+          "fs",
+          "path"
+        ],
+        "usageExample": "// Example usage:\n\n  const detector = new EnhancedEvolutionDetector();\n  \n  if (process.argv.length < 3) {\n    console.log('Usage: node enhanced-evolution-detector.ts <context-file>');\n    console.log('Example: node enhanced-evolution-detector.ts conversation-context.txt');\n    process.exit(1);\n  }\n\n  const contextFi...",
+        "documentation": "README.md",
+        "lastModified": "2025-08-08T22:28:09.795Z",
+        "codeSignature": "RW5oYW5jZWQgZXZv"
+      },
+      {
+        "id": "tool-enhanced-test-runner",
+        "name": "Enhanced Test Runner",
+        "category": "tool",
+        "status": "stable",
+        "description": "Enhanced test runner for intelligence features that handles TypeScript directly",
+        "implementation": [
+          "/Users/nino/Workspace/02-local-dev/aegis-framework/tools/enhanced-test-runner.ts"
+        ],
+        "dependencies": [
+          "fs",
+          "path",
+          "child_process"
+        ],
+        "usageExample": "// Example usage:\n\n  const runner = new EnhancedTestRunner();\n  try {\n    const report = await runner.runAllIntelligenceTests();\n    process.exit(report.overallStatus === 'fail' ? 1 : 0);\n  } catch (error) {\n    console.error('❌ Enhanced testing failed:', error);\n    process.exit(1);\n  }\n...",
+        "documentation": "README.md",
+        "lastModified": "2025-08-08T22:28:09.795Z",
+        "codeSignature": "ZXhwb3J0IGNsYXNz"
+      },
+      {
+        "id": "tool-evidence-based-validation",
+        "name": "Evidence Based Validation",
+        "category": "tool",
+        "status": "stable",
+        "description": "Evidence-based validation system for all framework intelligence claims",
+        "implementation": [
+          "/Users/nino/Workspace/02-local-dev/aegis-framework/tools/evidence-based-validation.ts"
+        ],
+        "dependencies": [
+          "fs",
+          "path",
+          "child_process"
+        ],
+        "usageExample": "// Example usage:\n\n  const validation = new EvidenceBasedValidation();\n  try {\n    const report = await validation.validateAllEvidence();\n    process.exit(report.insufficientClaims > report.fullyValidatedClaims ? 1 : 0);\n  } catch (error) {\n    console.error('❌ Evidence-based validation failed:', error);\n    process....",
+        "documentation": "README.md",
+        "lastModified": "2025-08-08T22:28:09.795Z",
+        "codeSignature": "ZXhwb3J0IGNsYXNz"
+      },
+      {
+        "id": "tool-evolution-learning-system",
+        "name": "Evolution Learning System",
+        "category": "tool",
+        "status": "stable",
+        "description": "Actual evolution learning system that prevents repeat patterns",
+        "implementation": [
+          "/Users/nino/Workspace/02-local-dev/aegis-framework/tools/evolution-learning-system.ts"
+        ],
+        "dependencies": [
+          "fs",
+          "path"
+        ],
+        "usageExample": "// Example usage:\n\n  const learningSystem = new EvolutionLearningSystem();\n  await learningSystem.preventRepeatPatterns();\n...",
+        "documentation": "README.md",
+        "lastModified": "2025-08-08T22:28:09.795Z",
+        "codeSignature": "QWN0dWFsIGV2b2x1"
+      },
+      {
+        "id": "tool-framework-capability-mapper",
+        "name": "Framework Capability Mapper",
+        "category": "tool",
+        "status": "experimental",
+        "description": "Live capability mapping system that auto-discovers framework features",
+        "implementation": [
+          "/Users/nino/Workspace/02-local-dev/aegis-framework/tools/framework-capability-mapper.ts"
+        ],
+        "dependencies": [
+          "fs",
+          "path",
+          "child_process"
+        ],
+        "usageExample": "// Example usage:\n\n  const mapper = new FrameworkCapabilityMapper();\n  \n  console.log('🧠 Aegis Framework Capability Mapper');\n  console.log('=====================================\\n');\n  \n  try {\n    const map = await mapper.discoverCapabilities();\n    \n    // Save JSON map\n    const jsonPath = await mapper.saveCapab...",
+        "documentation": "README.md",
+        "lastModified": "2025-08-08T23:10:35.711Z",
+        "codeSignature": "ZXhwb3J0IGNsYXNz"
+      },
+      {
+        "id": "tool-framework-intelligence-certification",
+        "name": "Framework Intelligence Certification",
+        "category": "tool",
+        "status": "stable",
+        "description": "Framework intelligence certification system that validates and certifies all intelligence claims",
+        "implementation": [
+          "/Users/nino/Workspace/02-local-dev/aegis-framework/tools/framework-intelligence-certification.ts"
+        ],
+        "dependencies": [
+          "fs",
+          "path",
+          "child_process"
+        ],
+        "usageExample": "// Example usage:\n\n  const certification = new FrameworkIntelligenceCertification();\n  try {\n    const report = await certification.certifyAllClaims();\n    process.exit(report.overallCertificationStatus === 'not-certified' ? 1 : 0);\n  } catch (error) {\n    console.error('❌ Intelligence certification failed:', error);...",
+        "documentation": "README.md",
+        "lastModified": "2025-08-08T22:28:09.796Z",
+        "codeSignature": "ZXhwb3J0IGNsYXNz"
+      },
+      {
+        "id": "cli-generate-agent-instructions",
+        "name": "Generate Agent Instructions",
+        "category": "tool",
+        "status": "alpha",
+        "description": "CLI tool for generating versioned agent instructions",
+        "implementation": [
+          "/Users/nino/Workspace/02-local-dev/aegis-framework/cli/generate-agent-instructions.ts"
+        ],
+        "dependencies": [],
+        "usageExample": "');",
+        "documentation": "README.md",
+        "lastModified": "2025-08-08T22:28:09.774Z",
+        "codeSignature": "Q0xJIHRvb2wgZm9y"
+      },
+      {
+        "id": "cli-generate-agent-instructions-v2",
+        "name": "Generate Agent Instructions V2",
+        "category": "tool",
+        "status": "alpha",
+        "description": "Template-driven, agent-agnostic instruction generator",
+        "implementation": [
+          "/Users/nino/Workspace/02-local-dev/aegis-framework/cli/generate-agent-instructions-v2.ts"
+        ],
+        "dependencies": [
+          "url",
+          "fs",
+          "path",
+          "js-yaml",
+          "ejs"
+        ],
+        "usageExample": "ts-node cli/generate-agent-instructions-v2.ts <agent-id>');",
+        "documentation": "README.md",
+        "lastModified": "2025-08-08T22:28:09.773Z",
+        "codeSignature": "VGVtcGxhdGUtZHJp"
+      },
+      {
+        "id": "cli-generate-cursor-instructions",
+        "name": "Generate Cursor Instructions",
+        "category": "tool",
+        "status": "alpha",
+        "description": "Cursor-specific instruction generator with real-time detection integration",
+        "implementation": [
+          "/Users/nino/Workspace/02-local-dev/aegis-framework/cli/generate-cursor-instructions.ts"
+        ],
+        "dependencies": [
+          "fs",
+          "path",
+          "url",
+          "js-yaml",
+          "ejs"
+        ],
+        "documentation": "README.md",
+        "lastModified": "2025-08-08T22:28:09.774Z",
+        "codeSignature": "Q3Vyc29yLXNwZWNp"
+      },
+      {
+        "id": "tool-intelligent-pattern-detector",
+        "name": "Intelligent Pattern Detector",
+        "category": "tool",
+        "status": "stable",
+        "description": "Intelligent pattern recognition system for systematic issue detection",
+        "implementation": [
+          "/Users/nino/Workspace/02-local-dev/aegis-framework/tools/intelligent-pattern-detector.ts"
+        ],
+        "dependencies": [
+          "fs",
+          "path",
+          "glob"
+        ],
+        "usageExample": "// Example usage:\n\n  const detector = new IntelligentPatternDetector();\n  \n  if (process.argv.length < 3) {\n    console.log('Usage: node intelligent-pattern-detector.ts <violation-file>');\n    console.log('Example: node intelligent-pattern-detector.ts violation.json');\n    process.exit(1);\n  }\n\n  const violationFile ...",
+        "documentation": "README.md",
+        "lastModified": "2025-08-08T22:28:09.796Z",
+        "codeSignature": "SW50ZWxsaWdlbnQg"
+      },
+      {
+        "id": "tool-intent-enforcement-engine",
+        "name": "Intent Enforcement Engine",
+        "category": "tool",
+        "status": "stable",
+        "description": "Real-time intent enforcement and agent drift prevention that catches systematic issues",
+        "implementation": [
+          "/Users/nino/Workspace/02-local-dev/aegis-framework/tools/intent-enforcement-engine.ts"
+        ],
+        "dependencies": [
+          "child_process",
+          "fs",
+          "path"
+        ],
+        "documentation": "README.md",
+        "lastModified": "2025-08-08T23:04:48.989Z",
+        "codeSignature": "ZXhwb3J0IGNsYXNz"
+      },
+      {
+        "id": "tool-pre-commit-hook",
+        "name": "Pre Commit Hook",
+        "category": "tool",
+        "status": "stable",
+        "description": "Pre-commit hook with team configuration support",
+        "implementation": [
+          "/Users/nino/Workspace/02-local-dev/aegis-framework/tools/pre-commit-hook.ts"
+        ],
+        "dependencies": [
+          "child_process",
+          "fs",
+          "path"
+        ],
+        "usageExample": "// Example usage:\n\n  const hook = new PreCommitHook();\n  const result = await hook.run();\n  \n  if (!result.allowed) {\n    process.exit(1);\n  }\n...",
+        "documentation": "README.md",
+        "lastModified": "2025-08-08T22:28:09.796Z",
+        "codeSignature": "UHJlLWNvbW1pdCBo"
+      },
+      {
+        "id": "tool-predictive-compliance-monitor",
+        "name": "Predictive Compliance Monitor",
+        "category": "tool",
+        "status": "stable",
+        "description": "Predictive compliance monitoring that prevents constitutional violations before they occur",
+        "implementation": [
+          "/Users/nino/Workspace/02-local-dev/aegis-framework/tools/predictive-compliance-monitor.ts"
+        ],
+        "dependencies": [
+          "fs",
+          "path",
+          "child_process"
+        ],
+        "usageExample": "// Example usage:\n\n  const monitor = new PredictiveComplianceMonitor();\n  try {\n    const result = await monitor.monitorCompliance();\n    process.exit(result.status === 'critical' ? 1 : 0);\n  } catch (error) {\n    console.error('❌ Predictive monitoring failed:', error);\n    process.exit(1);\n  }\n...",
+        "documentation": "README.md",
+        "lastModified": "2025-08-08T22:28:09.797Z",
+        "codeSignature": "ZXhwb3J0IGNsYXNz"
+      },
+      {
+        "id": "tool-realtime-evolution-detection",
+        "name": "Realtime Evolution Detection",
+        "category": "tool",
+        "status": "stable",
+        "description": "Real-time evolution trigger detection from AI conversation context",
+        "implementation": [
+          "/Users/nino/Workspace/02-local-dev/aegis-framework/tools/realtime-evolution-detection.ts"
+        ],
+        "dependencies": [
+          "fs",
+          "path"
+        ],
+        "documentation": "README.md",
+        "lastModified": "2025-08-08T22:28:09.797Z",
+        "codeSignature": "ZXhwb3J0IGZ1bmN0"
+      },
+      {
+        "id": "tool-systematic-prevention-validator",
+        "name": "Systematic Prevention Validator",
+        "category": "tool",
+        "status": "stable",
+        "description": "Systematic prevention validation framework that ensures all prevention mechanisms work correctly",
+        "implementation": [
+          "/Users/nino/Workspace/02-local-dev/aegis-framework/tools/systematic-prevention-validator.ts"
+        ],
+        "dependencies": [
+          "fs",
+          "path",
+          "child_process"
+        ],
+        "usageExample": "// Example usage:\n\n  const validator = new SystematicPreventionValidator();\n  try {\n    const report = await validator.validateAllMechanisms();\n    process.exit(report.overallStatus === 'fail' ? 1 : 0);\n  } catch (error) {\n    console.error('❌ Systematic validation failed:', error);\n    process.exit(1);\n  }\n...",
+        "documentation": "README.md",
+        "lastModified": "2025-08-08T22:28:09.797Z",
+        "codeSignature": "ZXhwb3J0IGNsYXNz"
+      },
+      {
+        "id": "tool-test-cursor-detection",
+        "name": "Test Cursor Detection",
+        "category": "tool",
+        "status": "alpha",
+        "description": "Test script for Cursor-specific real-time evolution detection",
+        "implementation": [
+          "/Users/nino/Workspace/02-local-dev/aegis-framework/tools/test-cursor-detection.ts"
+        ],
+        "dependencies": [
+          "fs",
+          "path",
+          "url"
+        ],
+        "usageExample": "// Example usage:\n\n  try {\n    await testCursorDetection();\n    await testCursorCLI();\n  } catch (error) {\n    console.error(`❌ Test failed: ${error instanceof Error ? error.message : 'Unknown error'}`);\n    process.exit(1);\n  }\n...",
+        "documentation": "README.md",
+        "lastModified": "2025-08-08T22:28:09.797Z",
+        "codeSignature": "VGVzdCBzY3JpcHQg"
+      },
+      {
+        "id": "tool-validate-annotations",
+        "name": "Validate Annotations",
+        "category": "tool",
+        "status": "stable",
+        "description": "Annotation validation with team configuration support",
+        "implementation": [
+          "/Users/nino/Workspace/02-local-dev/aegis-framework/tools/validate-annotations.ts"
+        ],
+        "dependencies": [
+          "fs",
+          "path"
+        ],
+        "usageExample": "// Example usage:\n\n  const validator = new AnnotationValidator();\n  const result = await validator.validateAll();\n  \n  const enforcementLevel = validator['configLoader'].getAnnotationEnforcement();\n  \n  if (!result.valid && enforcementLevel === 'error') {\n    process.exit(1);\n  }\n...",
+        "documentation": "README.md",
+        "lastModified": "2025-08-08T22:28:09.797Z",
+        "codeSignature": "QW5ub3RhdGlvbiB2"
+      },
+      {
+        "id": "tool-validate-output-fidelity",
+        "name": "Validate Output Fidelity",
+        "category": "tool",
+        "status": "stable",
+        "description": "Ensure generated outputs match reference targets exactly",
+        "implementation": [
+          "/Users/nino/Workspace/02-local-dev/aegis-framework/tools/validate-output-fidelity.ts"
+        ],
+        "dependencies": [
+          "fs",
+          "path"
+        ],
+        "documentation": "README.md",
+        "lastModified": "2025-08-08T22:28:09.798Z",
+        "codeSignature": "RW5zdXJlIGdlbmVy"
+      },
+      {
+        "id": "tool-validate-template-quality",
+        "name": "Validate Template Quality",
+        "category": "tool",
+        "status": "stable",
+        "description": "Prevent HTML encoding artifacts and ensure template quality with team configuration support",
+        "implementation": [
+          "/Users/nino/Workspace/02-local-dev/aegis-framework/tools/validate-template-quality.ts"
+        ],
+        "dependencies": [
+          "fs",
+          "path",
+          "url"
+        ],
+        "documentation": "README.md",
+        "lastModified": "2025-08-08T22:28:09.798Z",
+        "codeSignature": "UHJldmVudCBIVE1M"
+      },
+      {
+        "id": "tool-validate-version-consistency",
+        "name": "Validate Version Consistency",
+        "category": "tool",
+        "status": "stable",
+        "description": "Comprehensive version consistency validation to prevent documentation drift",
+        "implementation": [
+          "/Users/nino/Workspace/02-local-dev/aegis-framework/tools/validate-version-consistency.ts"
+        ],
+        "dependencies": [
+          "fs",
+          "path",
+          "child_process"
+        ],
+        "usageExample": "// Example usage:\n\n  const validator = new VersionConsistencyValidator();\n  \n  if (process.argv.includes('--auto-fix')) {\n    await validator.autoFix();\n  } else {\n    const result = await validator.validateAll();\n    \n    if (result.overallStatus === 'fail') {\n      process.exit(1);\n    }\n  }\n...",
+        "documentation": "README.md",
+        "lastModified": "2025-08-08T22:28:09.798Z",
+        "codeSignature": "Q29tcHJlaGVuc2l2"
+      }
+    ],
+    "core": [
+      {
+        "id": "framework-adapter-interface",
+        "name": "Adapter Interface",
+        "category": "core",
+        "status": "beta",
+        "description": "Adapter interface for multi-agent, handoff, and dependency resolution",
+        "implementation": [
+          "/Users/nino/Workspace/02-local-dev/aegis-framework/framework/adapters/adapter-interface.ts"
+        ],
+        "dependencies": [],
+        "documentation": "README.md",
+        "blueprint": "multiagent-orchestration",
+        "lastModified": "2025-08-08T22:28:09.785Z",
+        "codeSignature": "ZXhwb3J0IGludGVy"
+      },
+      {
+        "id": "framework-advanced-observability-engine",
+        "name": "Advanced Observability Engine",
+        "category": "core",
+        "status": "alpha",
+        "description": "Implement advanced observability and telemetry for framework intelligence",
+        "implementation": [
+          "/Users/nino/Workspace/02-local-dev/aegis-framework/framework/observability/advanced-observability-engine.ts"
+        ],
+        "dependencies": [
+          "fs",
+          "path"
+        ],
+        "documentation": "README.md",
+        "lastModified": "2025-08-08T22:28:09.789Z",
+        "codeSignature": "SW1wbGVtZW50IGFk"
+      },
+      {
+        "id": "framework-auto-repair-ml-engine",
+        "name": "Auto Repair Ml Engine",
+        "category": "core",
+        "status": "stable",
+        "description": "Scaffold for ML-driven blueprint auto-repair engine",
+        "implementation": [
+          "/Users/nino/Workspace/02-local-dev/aegis-framework/framework/healing/auto-repair-ml-engine.ts"
+        ],
+        "dependencies": [],
+        "documentation": "docs/implementation/auto-repair-ml-engine.md",
+        "blueprint": "enhanced-blueprint-auto-repair",
+        "lastModified": "2025-08-08T22:28:09.787Z",
+        "codeSignature": "ZXhwb3J0IGNsYXNz"
+      },
+      {
+        "id": "framework-blueprint-apprenticeship-schema-extension",
+        "name": "Blueprint Apprenticeship Schema Extension",
+        "category": "core",
+        "status": "stable",
+        "description": "Blueprint schema extension for apprenticeship scaffolds",
+        "implementation": [
+          "/Users/nino/Workspace/02-local-dev/aegis-framework/framework/blueprint-apprenticeship-schema-extension.ts"
+        ],
+        "dependencies": [],
+        "documentation": "README.md",
+        "blueprint": "apprenticeship-scaffolds",
+        "lastModified": "2025-08-06T01:10:07.675Z",
+        "codeSignature": "ZXhwb3J0IGludGVy"
+      },
+      {
+        "id": "framework-blueprint-multiagent-schema-extension",
+        "name": "Blueprint Multiagent Schema Extension",
+        "category": "core",
+        "status": "beta",
+        "description": "Blueprint schema extension for multi-agent orchestration and coordination",
+        "implementation": [
+          "/Users/nino/Workspace/02-local-dev/aegis-framework/framework/blueprint-multiagent-schema-extension.ts"
+        ],
+        "dependencies": [],
+        "documentation": "README.md",
+        "blueprint": "multiagent-orchestration",
+        "lastModified": "2025-08-08T22:28:09.785Z",
+        "codeSignature": "ZXhwb3J0IGludGVy"
+      },
+      {
+        "id": "framework-constitutional-reflex-engine",
+        "name": "Constitutional Reflex Engine",
+        "category": "core",
+        "status": "stable",
+        "description": "Constitutional reflex engine for real-time semantic interrupt processing",
+        "implementation": [
+          "/Users/nino/Workspace/02-local-dev/aegis-framework/framework/governance/constitutional-reflex-engine.ts"
+        ],
+        "dependencies": [],
+        "documentation": "README.md",
+        "lastModified": "2025-08-08T22:28:09.787Z",
+        "codeSignature": "ZXhwb3J0IGNsYXNz"
+      },
+      {
+        "id": "framework-cross-framework-learning-system",
+        "name": "Cross Framework Learning System",
+        "category": "core",
+        "status": "experimental",
+        "description": "Implement cross-framework pattern learning and knowledge synthesis",
+        "implementation": [
+          "/Users/nino/Workspace/02-local-dev/aegis-framework/framework/learning/cross-framework-learning-system.ts"
+        ],
+        "dependencies": [
+          "fs",
+          "path"
+        ],
+        "documentation": "README.md",
+        "lastModified": "2025-08-08T22:28:09.788Z",
+        "codeSignature": "SW1wbGVtZW50IGNy"
+      },
+      {
+        "id": "framework-democratic-amendment-engine",
+        "name": "Democratic Amendment Engine",
+        "category": "core",
+        "status": "beta",
+        "description": "Implement democratic governance for constitutional amendments",
+        "implementation": [
+          "/Users/nino/Workspace/02-local-dev/aegis-framework/framework/governance/democratic-amendment-engine.ts"
+        ],
+        "dependencies": [
+          "fs",
+          "path",
+          "crypto"
+        ],
+        "documentation": "README.md",
+        "lastModified": "2025-08-08T22:28:09.787Z",
+        "codeSignature": "SW1wbGVtZW50IGRl"
+      },
+      {
+        "id": "framework-foreground-hang-prevention",
+        "name": "Foreground Hang Prevention",
+        "category": "core",
+        "status": "stable",
+        "description": "Prevent foreground process hangs in LLM-agent development loops",
+        "implementation": [
+          "/Users/nino/Workspace/02-local-dev/aegis-framework/framework/governance/foreground-hang-prevention.ts"
+        ],
+        "dependencies": [
+          "fs",
+          "path",
+          "child_process"
+        ],
+        "documentation": "README.md",
+        "lastModified": "2025-08-08T23:04:48.989Z",
+        "codeSignature": "ZXhwb3J0IGNsYXNz"
+      },
+      {
+        "id": "framework-ghost-mentor-plugin",
+        "name": "Ghost Mentor Plugin",
+        "category": "core",
+        "status": "stable",
+        "description": "Ghost Mentor plugin for apprenticeship scaffolds",
+        "implementation": [
+          "/Users/nino/Workspace/02-local-dev/aegis-framework/framework/mentors/ghost-mentor-plugin.ts"
+        ],
+        "dependencies": [],
+        "documentation": "README.md",
+        "blueprint": "apprenticeship-scaffolds",
+        "lastModified": "2025-08-06T01:11:35.375Z",
+        "codeSignature": "ZXhwb3J0IGNsYXNz"
+      },
+      {
+        "id": "framework-intelligent-changelog",
+        "name": "Intelligent Changelog",
+        "category": "core",
+        "status": "alpha",
+        "description": "Implement intelligent changelog automation with AI-powered analysis",
+        "implementation": [
+          "/Users/nino/Workspace/02-local-dev/aegis-framework/framework/learning/intelligent-changelog.ts"
+        ],
+        "dependencies": [
+          "fs",
+          "path",
+          "child_process"
+        ],
+        "documentation": "README.md",
+        "lastModified": "2025-08-08T22:28:09.788Z",
+        "codeSignature": "SW1wbGVtZW50IGlu"
+      },
+      {
+        "id": "framework-memory-core",
+        "name": "Memory Core",
+        "category": "core",
+        "status": "stable",
+        "description": "Core memory interfaces and base classes for Aegis Memory Subsystem",
+        "implementation": [
+          "/Users/nino/Workspace/02-local-dev/aegis-framework/framework/memory/memory-core.ts"
+        ],
+        "dependencies": [
+          "zod"
+        ],
+        "documentation": "README.md",
+        "lastModified": "2025-08-08T22:28:09.789Z",
+        "codeSignature": "ZXhwb3J0IGludGVy"
+      },
+      {
+        "id": "framework-pattern-recognition-engine",
+        "name": "Pattern Recognition Engine",
+        "category": "core",
+        "status": "beta",
+        "description": "Implement intelligent pattern recognition for constitutional drift prevention",
+        "implementation": [
+          "/Users/nino/Workspace/02-local-dev/aegis-framework/framework/learning/pattern-recognition-engine.ts"
+        ],
+        "dependencies": [
+          "fs",
+          "path"
+        ],
+        "documentation": "README.md",
+        "lastModified": "2025-08-08T22:28:09.789Z",
+        "codeSignature": "SW1wbGVtZW50IGlu"
+      },
+      {
+        "id": "framework-predictive-enforcement",
+        "name": "Predictive Enforcement",
+        "category": "core",
+        "status": "beta",
+        "description": "Implement predictive enforcement based on learned patterns",
+        "implementation": [
+          "/Users/nino/Workspace/02-local-dev/aegis-framework/framework/learning/predictive-enforcement.ts"
+        ],
+        "dependencies": [
+          "fs",
+          "path"
+        ],
+        "documentation": "README.md",
+        "lastModified": "2025-08-08T22:28:09.789Z",
+        "codeSignature": "SW1wbGVtZW50IHBy"
+      },
+      {
+        "id": "framework-self-healing-blueprint-engine",
+        "name": "Self Healing Blueprint Engine",
+        "category": "core",
+        "status": "alpha",
+        "description": "Implement autonomous blueprint repair and validation enhancement",
+        "implementation": [
+          "/Users/nino/Workspace/02-local-dev/aegis-framework/framework/healing/self-healing-blueprint-engine.ts"
+        ],
+        "dependencies": [
+          "fs",
+          "path",
+          "js-yaml"
+        ],
+        "documentation": "README.md",
+        "lastModified": "2025-08-08T22:28:09.787Z",
+        "codeSignature": "SW1wbGVtZW50IGF1"
+      },
+      {
+        "id": "framework-self-healing-governance",
+        "name": "Self Healing Governance",
+        "category": "core",
+        "status": "stable",
+        "description": "Actual self-healing governance that prevents repeat failures",
+        "implementation": [
+          "/Users/nino/Workspace/02-local-dev/aegis-framework/framework/healing/self-healing-governance.ts"
+        ],
+        "dependencies": [
+          "fs",
+          "path"
+        ],
+        "documentation": "README.md",
+        "lastModified": "2025-08-08T22:28:09.788Z",
+        "codeSignature": "QWN0dWFsIHNlbGYt"
+      },
+      {
+        "id": "framework-semantic-interrupt-detector",
+        "name": "Semantic Interrupt Detector",
+        "category": "core",
+        "status": "stable",
+        "description": "Semantic interrupt detection for agent drift prevention and intent realignment",
+        "implementation": [
+          "/Users/nino/Workspace/02-local-dev/aegis-framework/framework/governance/semantic-interrupt-detector.ts"
+        ],
+        "dependencies": [
+          "fs",
+          "path"
+        ],
+        "documentation": "README.md",
+        "lastModified": "2025-08-08T22:28:09.787Z",
+        "codeSignature": "ZXhwb3J0IGNsYXNz"
+      },
+      {
+        "id": "framework-types",
+        "name": "Types",
+        "category": "core",
+        "status": "stable",
+        "description": "Type definitions for ML-driven blueprint auto-repair engine",
+        "implementation": [
+          "/Users/nino/Workspace/02-local-dev/aegis-framework/framework/healing/types.ts"
+        ],
+        "dependencies": [],
+        "documentation": "README.md",
+        "blueprint": "enhanced-blueprint-auto-repair",
+        "lastModified": "2025-08-06T00:18:14.041Z",
+        "codeSignature": "ZXhwb3J0IGludGVy"
+      }
+    ],
+    "governance": [
+      {
+        "id": "governance-constitutional-reflex-engine",
+        "name": "Constitutional Reflex Engine",
+        "category": "governance",
+        "status": "stable",
+        "description": "Constitutional reflex engine for real-time semantic interrupt processing",
+        "implementation": [
+          "/Users/nino/Workspace/02-local-dev/aegis-framework/framework/governance/constitutional-reflex-engine.ts"
+        ],
+        "dependencies": [],
+        "documentation": "README.md",
+        "lastModified": "2025-08-08T22:28:09.787Z",
+        "codeSignature": "ZXhwb3J0IGNsYXNz"
+      },
+      {
+        "id": "governance-democratic-amendment-engine",
+        "name": "Democratic Amendment Engine",
+        "category": "governance",
+        "status": "beta",
+        "description": "Implement democratic governance for constitutional amendments",
+        "implementation": [
+          "/Users/nino/Workspace/02-local-dev/aegis-framework/framework/governance/democratic-amendment-engine.ts"
+        ],
+        "dependencies": [
+          "fs",
+          "path",
+          "crypto"
+        ],
+        "documentation": "README.md",
+        "lastModified": "2025-08-08T22:28:09.787Z",
+        "codeSignature": "SW1wbGVtZW50IGRl"
+      },
+      {
+        "id": "governance-foreground-hang-prevention",
+        "name": "Foreground Hang Prevention",
+        "category": "governance",
+        "status": "stable",
+        "description": "Prevent foreground process hangs in LLM-agent development loops",
+        "implementation": [
+          "/Users/nino/Workspace/02-local-dev/aegis-framework/framework/governance/foreground-hang-prevention.ts"
+        ],
+        "dependencies": [
+          "fs",
+          "path",
+          "child_process"
+        ],
+        "documentation": "README.md",
+        "lastModified": "2025-08-08T23:04:48.989Z",
+        "codeSignature": "ZXhwb3J0IGNsYXNz"
+      },
+      {
+        "id": "governance-semantic-interrupt-detector",
+        "name": "Semantic Interrupt Detector",
+        "category": "governance",
+        "status": "stable",
+        "description": "Semantic interrupt detection for agent drift prevention and intent realignment",
+        "implementation": [
+          "/Users/nino/Workspace/02-local-dev/aegis-framework/framework/governance/semantic-interrupt-detector.ts"
+        ],
+        "dependencies": [
+          "fs",
+          "path"
+        ],
+        "documentation": "README.md",
+        "lastModified": "2025-08-08T22:28:09.787Z",
+        "codeSignature": "ZXhwb3J0IGNsYXNz"
+      }
+    ],
+    "integration": [
+      {
+        "id": "blueprint-memory-governance",
+        "name": "memory_operation_failed",
+        "category": "integration",
+        "status": "stable",
+        "description": "Notify governance system of violation",
+        "implementation": [
+          "/Users/nino/Workspace/02-local-dev/aegis-framework/blueprints/memory-governance/blueprint.yaml"
+        ],
+        "dependencies": [],
+        "documentation": "README.md",
+        "blueprint": "/Users/nino/Workspace/02-local-dev/aegis-framework/blueprints/memory-governance/blueprint.yaml",
+        "lastModified": "2025-08-08T22:28:09.772Z",
+        "codeSignature": ""
+      },
+      {
+        "id": "blueprint-feat-public-viewing",
+        "name": "Public Tournament Viewer",
+        "category": "integration",
+        "status": "stable",
+        "description": "Blueprint: feat-public-viewing",
+        "implementation": [
+          "/Users/nino/Workspace/02-local-dev/aegis-framework/blueprints/feat-public-viewing/blueprint.yaml"
+        ],
+        "dependencies": [],
+        "documentation": "README.md",
+        "blueprint": "/Users/nino/Workspace/02-local-dev/aegis-framework/blueprints/feat-public-viewing/blueprint.yaml",
+        "lastModified": "2025-08-08T22:28:09.772Z",
+        "codeSignature": "UHVibGljIHRvdXJu"
+      }
+    ]
+  },
+  "executionPaths": {
+    "tool-auto-update-changelog": [
+      "/Users/nino/Workspace/02-local-dev/aegis-framework/tools/auto-update-changelog.ts"
+    ],
+    "tool-comprehensive-intelligence-testing": [
+      "/Users/nino/Workspace/02-local-dev/aegis-framework/tools/comprehensive-intelligence-testing.ts"
+    ],
+    "tool-constitutional-compliance-enforcer": [
+      "/Users/nino/Workspace/02-local-dev/aegis-framework/tools/constitutional-compliance-enforcer.ts"
+    ],
+    "tool-continuous-compliance-monitor": [
+      "/Users/nino/Workspace/02-local-dev/aegis-framework/tools/continuous-compliance-monitor.ts"
+    ],
+    "tool-cursor-integration": [
+      "/Users/nino/Workspace/02-local-dev/aegis-framework/tools/cursor-integration.ts"
+    ],
+    "tool-cursor-realtime-integration": [
+      "/Users/nino/Workspace/02-local-dev/aegis-framework/tools/cursor-realtime-integration.ts"
+    ],
+    "tool-destructive-action-protection": [
+      "/Users/nino/Workspace/02-local-dev/aegis-framework/tools/destructive-action-protection.ts"
+    ],
+    "tool-drift-monitoring-dashboard": [
+      "/Users/nino/Workspace/02-local-dev/aegis-framework/tools/drift-monitoring-dashboard.ts"
+    ],
+    "tool-enhanced-evolution-detector": [
+      "/Users/nino/Workspace/02-local-dev/aegis-framework/tools/enhanced-evolution-detector.ts"
+    ],
+    "tool-enhanced-test-runner": [
+      "/Users/nino/Workspace/02-local-dev/aegis-framework/tools/enhanced-test-runner.ts"
+    ],
+    "tool-evidence-based-validation": [
+      "/Users/nino/Workspace/02-local-dev/aegis-framework/tools/evidence-based-validation.ts"
+    ],
+    "tool-evolution-learning-system": [
+      "/Users/nino/Workspace/02-local-dev/aegis-framework/tools/evolution-learning-system.ts"
+    ],
+    "tool-framework-capability-mapper": [
+      "/Users/nino/Workspace/02-local-dev/aegis-framework/tools/framework-capability-mapper.ts"
+    ],
+    "tool-framework-intelligence-certification": [
+      "/Users/nino/Workspace/02-local-dev/aegis-framework/tools/framework-intelligence-certification.ts"
+    ],
+    "tool-intelligent-pattern-detector": [
+      "/Users/nino/Workspace/02-local-dev/aegis-framework/tools/intelligent-pattern-detector.ts"
+    ],
+    "tool-intent-enforcement-engine": [
+      "/Users/nino/Workspace/02-local-dev/aegis-framework/tools/intent-enforcement-engine.ts"
+    ],
+    "tool-pre-commit-hook": [
+      "/Users/nino/Workspace/02-local-dev/aegis-framework/tools/pre-commit-hook.ts"
+    ],
+    "tool-predictive-compliance-monitor": [
+      "/Users/nino/Workspace/02-local-dev/aegis-framework/tools/predictive-compliance-monitor.ts"
+    ],
+    "tool-realtime-evolution-detection": [
+      "/Users/nino/Workspace/02-local-dev/aegis-framework/tools/realtime-evolution-detection.ts"
+    ],
+    "tool-systematic-prevention-validator": [
+      "/Users/nino/Workspace/02-local-dev/aegis-framework/tools/systematic-prevention-validator.ts"
+    ],
+    "tool-test-cursor-detection": [
+      "/Users/nino/Workspace/02-local-dev/aegis-framework/tools/test-cursor-detection.ts"
+    ],
+    "tool-validate-annotations": [
+      "/Users/nino/Workspace/02-local-dev/aegis-framework/tools/validate-annotations.ts"
+    ],
+    "tool-validate-output-fidelity": [
+      "/Users/nino/Workspace/02-local-dev/aegis-framework/tools/validate-output-fidelity.ts"
+    ],
+    "tool-validate-template-quality": [
+      "/Users/nino/Workspace/02-local-dev/aegis-framework/tools/validate-template-quality.ts"
+    ],
+    "tool-validate-version-consistency": [
+      "/Users/nino/Workspace/02-local-dev/aegis-framework/tools/validate-version-consistency.ts"
+    ],
+    "framework-adapter-interface": [
+      "/Users/nino/Workspace/02-local-dev/aegis-framework/framework/adapters/adapter-interface.ts"
+    ],
+    "framework-blueprint-apprenticeship-schema-extension": [
+      "/Users/nino/Workspace/02-local-dev/aegis-framework/framework/blueprint-apprenticeship-schema-extension.ts"
+    ],
+    "framework-blueprint-multiagent-schema-extension": [
+      "/Users/nino/Workspace/02-local-dev/aegis-framework/framework/blueprint-multiagent-schema-extension.ts"
+    ],
+    "framework-constitutional-reflex-engine": [
+      "/Users/nino/Workspace/02-local-dev/aegis-framework/framework/governance/constitutional-reflex-engine.ts"
+    ],
+    "framework-democratic-amendment-engine": [
+      "/Users/nino/Workspace/02-local-dev/aegis-framework/framework/governance/democratic-amendment-engine.ts"
+    ],
+    "framework-foreground-hang-prevention": [
+      "/Users/nino/Workspace/02-local-dev/aegis-framework/framework/governance/foreground-hang-prevention.ts"
+    ],
+    "framework-semantic-interrupt-detector": [
+      "/Users/nino/Workspace/02-local-dev/aegis-framework/framework/governance/semantic-interrupt-detector.ts"
+    ],
+    "framework-auto-repair-ml-engine": [
+      "/Users/nino/Workspace/02-local-dev/aegis-framework/framework/healing/auto-repair-ml-engine.ts"
+    ],
+    "framework-self-healing-blueprint-engine": [
+      "/Users/nino/Workspace/02-local-dev/aegis-framework/framework/healing/self-healing-blueprint-engine.ts"
+    ],
+    "framework-self-healing-governance": [
+      "/Users/nino/Workspace/02-local-dev/aegis-framework/framework/healing/self-healing-governance.ts"
+    ],
+    "framework-types": [
+      "/Users/nino/Workspace/02-local-dev/aegis-framework/framework/healing/types.ts"
+    ],
+    "framework-cross-framework-learning-system": [
+      "/Users/nino/Workspace/02-local-dev/aegis-framework/framework/learning/cross-framework-learning-system.ts"
+    ],
+    "framework-intelligent-changelog": [
+      "/Users/nino/Workspace/02-local-dev/aegis-framework/framework/learning/intelligent-changelog.ts"
+    ],
+    "framework-pattern-recognition-engine": [
+      "/Users/nino/Workspace/02-local-dev/aegis-framework/framework/learning/pattern-recognition-engine.ts"
+    ],
+    "framework-predictive-enforcement": [
+      "/Users/nino/Workspace/02-local-dev/aegis-framework/framework/learning/predictive-enforcement.ts"
+    ],
+    "framework-memory-core": [
+      "/Users/nino/Workspace/02-local-dev/aegis-framework/framework/memory/memory-core.ts"
+    ],
+    "framework-ghost-mentor-plugin": [
+      "/Users/nino/Workspace/02-local-dev/aegis-framework/framework/mentors/ghost-mentor-plugin.ts"
+    ],
+    "framework-advanced-observability-engine": [
+      "/Users/nino/Workspace/02-local-dev/aegis-framework/framework/observability/advanced-observability-engine.ts"
+    ],
+    "governance-constitutional-reflex-engine": [
+      "/Users/nino/Workspace/02-local-dev/aegis-framework/framework/governance/constitutional-reflex-engine.ts"
+    ],
+    "governance-democratic-amendment-engine": [
+      "/Users/nino/Workspace/02-local-dev/aegis-framework/framework/governance/democratic-amendment-engine.ts"
+    ],
+    "governance-foreground-hang-prevention": [
+      "/Users/nino/Workspace/02-local-dev/aegis-framework/framework/governance/foreground-hang-prevention.ts"
+    ],
+    "governance-semantic-interrupt-detector": [
+      "/Users/nino/Workspace/02-local-dev/aegis-framework/framework/governance/semantic-interrupt-detector.ts"
+    ],
+    "blueprint-feat-public-viewing": [
+      "/Users/nino/Workspace/02-local-dev/aegis-framework/blueprints/feat-public-viewing/blueprint.yaml"
+    ],
+    "blueprint-memory-governance": [
+      "/Users/nino/Workspace/02-local-dev/aegis-framework/blueprints/memory-governance/blueprint.yaml"
+    ],
+    "cli-aegis-docs": [
+      "/Users/nino/Workspace/02-local-dev/aegis-framework/cli/aegis-docs.ts"
+    ],
+    "cli-aegis-hydrate": [
+      "/Users/nino/Workspace/02-local-dev/aegis-framework/cli/aegis-hydrate.ts"
+    ],
+    "cli-aegis-memory": [
+      "/Users/nino/Workspace/02-local-dev/aegis-framework/cli/aegis-memory.ts"
+    ],
+    "cli-amendment-cli": [
+      "/Users/nino/Workspace/02-local-dev/aegis-framework/cli/amendment-cli.ts"
+    ],
+    "cli-apprenticeship-cli": [
+      "/Users/nino/Workspace/02-local-dev/aegis-framework/cli/apprenticeship-cli.ts"
+    ],
+    "cli-cursor-realtime-cli": [
+      "/Users/nino/Workspace/02-local-dev/aegis-framework/cli/cursor-realtime-cli.ts"
+    ],
+    "cli-drift-cli": [
+      "/Users/nino/Workspace/02-local-dev/aegis-framework/cli/drift-cli.ts"
+    ],
+    "cli-generate-agent-instructions-v2": [
+      "/Users/nino/Workspace/02-local-dev/aegis-framework/cli/generate-agent-instructions-v2.ts"
+    ],
+    "cli-generate-agent-instructions": [
+      "/Users/nino/Workspace/02-local-dev/aegis-framework/cli/generate-agent-instructions.ts"
+    ],
+    "cli-generate-cursor-instructions": [
+      "/Users/nino/Workspace/02-local-dev/aegis-framework/cli/generate-cursor-instructions.ts"
+    ]
+  },
+  "healthStatus": "healthy",
+  "issues": []
+}
