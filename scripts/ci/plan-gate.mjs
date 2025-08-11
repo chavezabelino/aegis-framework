@@ -7,7 +7,7 @@
  * @intent: "CI plan gate that enforces planning constraints and prevents plan bloat"
  * @context: scripts/ci/plan-gate.mjs
  * @model: gpt-5-thinking
- * @hash: <filled-by-attest>   // leave placeholder; your attest step signs separately
+ * @hash: <filled-by-attest>
  *
  * Usage (preferred):
  *   node scripts/ci/plan-gate.mjs [.aegis/outputs/<plan>.json]
@@ -15,33 +15,27 @@
  *     PLAN_GATE_ALLOW_MISSING=true   # skip on PRs with no plan
  *     PLAN_GATE_STRICT=true          # stricter checks on protected branches
  *
- * Legacy compatibility (still supported; deprecating):
+ * Legacy (detected, but deprecated):
  *   node scripts/ci/plan-gate.mjs <planClass> <path/to/PLAN.md> [filesTouched]
- *   where planClass ∈ {MVP, SURGICAL, SYSTEMIC}
  */
 
-// --- legacy arg shim (optional, deprecating) ---
-const argv = process.argv.slice(2);
-let legacyPlanClass = null;
-let legacyPlanMd = null;
-if (argv.length >= 2 && ['MVP','SURGICAL','SYSTEMIC','MVP-Fix','Surgical-Refactor','Systemic-Change'].includes(argv[0])) {
-  legacyPlanClass = argv[0];
-  legacyPlanMd = argv[1];
-  console.warn('Plan gate: legacy CLI args detected (<class> <PLAN.md>); prefer JSON plan path. This mode will be removed.');
-}
-// You can map legacyPlanMd → a temporary JSON (or just ignore and continue with .aegis/outputs/*plan*.json)
-// ------------------------------------------------
-
-
-#!/usr/bin/env node
 import { existsSync, readFileSync } from 'node:fs';
 import { globSync } from 'glob';
 
-const planArg = process.argv[2];
-const allowMissing = process.env.PLAN_GATE_ALLOW_MISSING === 'true';
-const strict = process.env.PLAN_GATE_STRICT === 'true'; // set true on protected branches if you want harder checks
+const argv = process.argv.slice(2);
 
-const candidates = globSync('.aegis/outputs/**/*plan*.json').sort();
+// Legacy arg shim: if first arg looks like a class, ignore and fall back to JSON detection
+const legacyClassValues = new Set([
+  'MVP','MVP-Fix','SURGICAL','Surgical-Refactor','SYSTEMIC','Systemic-Change'
+]);
+const looksLegacy = argv.length >= 2 && legacyClassValues.has(argv[0]);
+
+const planArg = looksLegacy ? null : argv[0];
+const allowMissing = process.env.PLAN_GATE_ALLOW_MISSING === 'true';
+const strict = process.env.PLAN_GATE_STRICT === 'true';
+
+// Prefer generated JSON plans in .aegis/outputs
+const candidates = globSync('.aegis/outputs/**/*plan*.json', { dot: true, nodir: true }).sort();
 const planPath = planArg || candidates.at(-1);
 
 if (!planPath || !existsSync(planPath)) {
@@ -62,25 +56,16 @@ try {
   process.exit(1);
 }
 
-// Minimal, enforceable checks (extend as your schema stabilizes)
+// Minimal, enforceable checks (extend as schema stabilizes)
 const findings = [];
-
-// Prefer a clear class flag
 const klass = plan.class || plan.planClass || plan.type;
 if (!klass) findings.push('missing plan.class/planClass');
 if (klass && klass !== 'MVP-Fix') findings.push(`planClass must be "MVP-Fix", got "${klass}"`);
-
-// If steps exist, they shouldn’t be empty
-if (Array.isArray(plan.steps) && plan.steps.length === 0) {
-  findings.push('steps present but empty');
-}
-
-// Basic contract-driven hints (non-fatal unless strict)
+if (Array.isArray(plan.steps) && plan.steps.length === 0) findings.push('steps present but empty');
 if (!plan.contracts && !plan.contract && !plan.behavior) {
   if (strict) findings.push('missing contracts/behavior section');
 }
 
-// Decide outcome
 if (findings.length) {
   const level = strict ? 'ERROR' : 'WARN';
   findings.forEach(f => console[level === 'ERROR' ? 'error' : 'warn'](`Plan gate ${level}: ${f}`));
