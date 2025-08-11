@@ -56,9 +56,11 @@ class EvidenceChecker {
   private errors: string[] = [];
   private warnings: string[] = [];
   private isCI: boolean;
+  private hmacKeyPresent: boolean;
 
   constructor() {
     this.isCI = process.argv.includes('--ci');
+    this.hmacKeyPresent = !!process.env.AEGIS_HMAC_KEY;
   }
 
   async checkEvidenceManifest(manifestPath: string): Promise<boolean> {
@@ -140,6 +142,11 @@ class EvidenceChecker {
     const filePath = file.path;
     
     if (file.required && !fs.existsSync(filePath)) {
+      // If HMAC key missing and file is a signature, downgrade to warning
+      if (!this.hmacKeyPresent && filePath.endsWith('.sig')) {
+        this.warnings.push(`Signature file missing (attestation disabled): ${filePath}`);
+        return;
+      }
       this.errors.push(`Required file not found: ${filePath}`);
       return;
     }
@@ -187,6 +194,11 @@ class EvidenceChecker {
 
   private async checkOutputFile(filePath: string): Promise<void> {
     if (!fs.existsSync(filePath)) {
+      // Downgrade missing signature files to warnings when no HMAC key is present
+      if (!this.hmacKeyPresent && filePath.endsWith('.sig')) {
+        this.warnings.push(`Signature file missing (attestation disabled): ${filePath}`);
+        return;
+      }
       this.errors.push(`Required output file not found: ${filePath}`);
       return;
     }

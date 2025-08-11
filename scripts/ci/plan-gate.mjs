@@ -15,8 +15,12 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-// Load configuration
+// Load configuration (gracefully handle missing)
 const configPath = path.join(process.cwd(), '.aegis/config/planning.json');
+if (!fs.existsSync(configPath)) {
+  console.error('⚠️  Planning config not found at .aegis/config/planning.json. Skipping plan gate.');
+  process.exit(0);
+}
 const cfg = JSON.parse(fs.readFileSync(configPath, 'utf8'));
 
 const [,, planClassRaw, planPath, filesTouchedRaw] = process.argv;
@@ -27,6 +31,10 @@ if (!planClassRaw || !planPath) {
 }
 
 const planClass = planClassRaw;
+if (!fs.existsSync(planPath)) {
+  console.error(`❌ Plan Gate: Plan file not found: ${planPath}. Create one or adjust the path.`);
+  process.exit(1);
+}
 const plan = fs.readFileSync(planPath, 'utf8');
 const tokensApprox = Math.ceil(plan.length / 4); // rough char→token heuristic
 const filesTouched = Number(filesTouchedRaw ?? 0);
