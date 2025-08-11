@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [ main, develop ]
 
+concurrency:
+  group: governance-${{ github.ref }}
+  cancel-in-progress: true
+
 permissions:
   id-token: write
   contents: read
@@ -22,7 +26,7 @@ env:
 jobs:
   validate_blueprint:
     name: Validate Blueprints
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
@@ -33,8 +37,12 @@ jobs:
         node-version: '20.16.0'
         cache: npm
         
-    - name: Install dependencies
-      run: npm ci --prefer-offline --no-audit --no-fund
+    - name: Install deps (robust)
+      uses: nick-fields/retry@v3
+      with:
+        timeout_minutes: 20
+        max_attempts: 3
+        command: npm ci --prefer-offline --no-audit --no-fund
       
     - name: Validate blueprints
       run: node tools/validate-blueprint.ts blueprints/**/blueprint.yaml --ci
@@ -50,7 +58,7 @@ jobs:
 
   check_provenance:
     name: Check Provenance
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
@@ -61,8 +69,12 @@ jobs:
         node-version: '20.16.0'
         cache: npm
         
-    - name: Install dependencies
-      run: npm ci --prefer-offline --no-audit --no-fund
+    - name: Install deps (robust)
+      uses: nick-fields/retry@v3
+      with:
+        timeout_minutes: 20
+        max_attempts: 3
+        command: npm ci --prefer-offline --no-audit --no-fund
       
     - name: Generate attestations for repository code
       run: |
@@ -100,7 +112,7 @@ jobs:
 
   check_paths:
     name: Check File Organization
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
@@ -111,8 +123,12 @@ jobs:
         node-version: '20.16.0'
         cache: npm
         
-    - name: Install dependencies
-      run: npm ci --prefer-offline --no-audit --no-fund
+    - name: Install deps (robust)
+      uses: nick-fields/retry@v3
+      with:
+        timeout_minutes: 20
+        max_attempts: 3
+        command: npm ci --prefer-offline --no-audit --no-fund
       
     - name: Check file organization
       run: node tools/check-paths.js --json
@@ -126,7 +142,7 @@ jobs:
 
   check_version:
     name: Check Version Sync
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
@@ -137,8 +153,12 @@ jobs:
         node-version: '20.16.0'
         cache: npm
         
-    - name: Install dependencies
-      run: npm ci --prefer-offline --no-audit --no-fund
+    - name: Install deps (robust)
+      uses: nick-fields/retry@v3
+      with:
+        timeout_minutes: 20
+        max_attempts: 3
+        command: npm ci --prefer-offline --no-audit --no-fund
       
     - name: Check version synchronization
       run: node tools/check-version-sync.js --ci
@@ -152,7 +172,7 @@ jobs:
 
   prove_evidence:
     name: Prove Evidence
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     needs: [validate_blueprint, check_provenance]
     steps:
     - name: Checkout code
@@ -164,8 +184,12 @@ jobs:
         node-version: '20.16.0'
         cache: npm
         
-    - name: Install dependencies
-      run: npm ci --prefer-offline --no-audit --no-fund
+    - name: Install deps (robust)
+      uses: nick-fields/retry@v3
+      with:
+        timeout_minutes: 20
+        max_attempts: 3
+        command: npm ci --prefer-offline --no-audit --no-fund
       
     - name: Generate planning outputs
       run: |
@@ -195,7 +219,7 @@ jobs:
 
   vr_tests:
     name: Visual Regression Tests
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
@@ -206,8 +230,12 @@ jobs:
         node-version: '20.16.0'
         cache: npm
         
-    - name: Install dependencies
-      run: npm ci --prefer-offline --no-audit --no-fund
+    - name: Install deps (robust)
+      uses: nick-fields/retry@v3
+      with:
+        timeout_minutes: 20
+        max_attempts: 3
+        command: npm ci --prefer-offline --no-audit --no-fund
       
     - name: Install Playwright
       run: npx playwright install --with-deps
@@ -262,7 +290,7 @@ jobs:
 
   governance_report:
     name: Generate Governance Report
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     needs: [validate_blueprint, check_provenance, check_paths, check_version, prove_evidence, vr_tests]
     if: always()
     steps:
@@ -275,8 +303,12 @@ jobs:
         node-version: '20.16.0'
         cache: npm
         
-    - name: Install dependencies
-      run: npm ci --prefer-offline --no-audit --no-fund
+    - name: Install deps (robust)
+      uses: nick-fields/retry@v3
+      with:
+        timeout_minutes: 20
+        max_attempts: 3
+        command: npm ci --prefer-offline --no-audit --no-fund
       
     - name: Download all artifacts
       uses: actions/download-artifact@v4
@@ -300,7 +332,7 @@ jobs:
     name: Governance receipts
     needs: [validate_blueprint, check_provenance, check_paths, check_version, prove_evidence, vr_tests]
     if: always()
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
