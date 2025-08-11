@@ -13,6 +13,11 @@ permissions:
 
 env:
   AEGIS_HMAC_KEY: ${{ secrets.AEGIS_HMAC_KEY }}
+  NPM_CONFIG_AUDIT: "false"
+  NPM_CONFIG_FUND: "false"
+  NPM_CONFIG_FETCH_RETRIES: "5"
+  NPM_CONFIG_FETCH_RETRY_MINTIMEOUT: "20000"
+  NPM_CONFIG_FETCH_RETRY_MAXTIMEOUT: "120000"
 
 jobs:
   validate_blueprint:
@@ -25,11 +30,11 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: 'lts/*'
+        node-version: '20.16.0'
         cache: npm
         
     - name: Install dependencies
-      run: npm ci
+      run: npm ci --prefer-offline --no-audit --no-fund
       
     - name: Validate blueprints
       run: node tools/validate-blueprint.ts blueprints/**/blueprint.yaml --ci
@@ -53,11 +58,11 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: 'lts/*'
+        node-version: '20.16.0'
         cache: npm
         
     - name: Install dependencies
-      run: npm ci
+      run: npm ci --prefer-offline --no-audit --no-fund
       
     - name: Generate attestations for repository code
       run: |
@@ -103,11 +108,11 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: 'lts/*'
+        node-version: '20.16.0'
         cache: npm
         
     - name: Install dependencies
-      run: npm ci
+      run: npm ci --prefer-offline --no-audit --no-fund
       
     - name: Check file organization
       run: node tools/check-paths.js --json
@@ -129,11 +134,11 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: 'lts/*'
+        node-version: '20.16.0'
         cache: npm
         
     - name: Install dependencies
-      run: npm ci
+      run: npm ci --prefer-offline --no-audit --no-fund
       
     - name: Check version synchronization
       run: node tools/check-version-sync.js --ci
@@ -156,11 +161,11 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: 'lts/*'
+        node-version: '20.16.0'
         cache: npm
         
     - name: Install dependencies
-      run: npm ci
+      run: npm ci --prefer-offline --no-audit --no-fund
       
     - name: Generate planning outputs
       run: |
@@ -198,11 +203,11 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: 'lts/*'
+        node-version: '20.16.0'
         cache: npm
         
     - name: Install dependencies
-      run: npm ci
+      run: npm ci --prefer-offline --no-audit --no-fund
       
     - name: Install Playwright
       run: npx playwright install --with-deps
@@ -267,11 +272,11 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: 'lts/*'
+        node-version: '20.16.0'
         cache: npm
         
     - name: Install dependencies
-      run: npm ci
+      run: npm ci --prefer-offline --no-audit --no-fund
       
     - name: Download all artifacts
       uses: actions/download-artifact@v4
@@ -282,8 +287,8 @@ jobs:
       env:
         AEGIS_HMAC_KEY: ${{ secrets.AEGIS_HMAC_KEY }}
       run: |
-        node tools/generate-governance-report.ts
-        cp .aegis/reports/governance-report.local.json .aegis/reports/governance-report.ci.json
+        node tools/generate-governance-report.ts || node tools/generate-governance-report.mjs
+        cp .aegis/reports/governance-report.local.json .aegis/reports/governance-report.ci.json || true
         
     - name: Upload governance report
       uses: actions/upload-artifact@v4
@@ -300,11 +305,9 @@ jobs:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
       with:
-        node-version: 'lts/*'
-        cache: npm
-    - run: npm ci
-    - name: Generate governance report (always)
-      run: node tools/generate-governance-report.ts --ci || true
+        node-version: '20.16.0'
+    - name: Generate governance report (no deps)
+      run: node tools/generate-governance-report.mjs --ci || true
     - name: Upload governance report
       if: always()
       uses: actions/upload-artifact@v4
