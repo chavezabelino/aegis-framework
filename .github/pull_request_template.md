@@ -1,14 +1,14 @@
 # 🛡️ Aegis Constitutional Governance PR
 
-## 📋 __Evidence Manifest**
+## 📋 **Evidence Manifest**
 
-### __Blueprint Compliance**
+### **Blueprint Compliance**
 
 - [ ] __Blueprint__: `blueprints/<id>/Blueprint.YAML` exists and is valid
 - [ ] __Evidence__: `blueprints/<id>/evidence.JSON` contains required commands and outputs
 - [ ] __Validation__: All evidence commands execute successfully
 
-### __Governance Checks**
+### **Governance Checks**
 
 - [ ] __Provenance__: All AI-generated files have valid headers with cryptographic hashes
 - [ ] __Attestations__: HMAC signatures generated and verified for all files
@@ -16,9 +16,9 @@
 - [ ] __Versions__: All version references synchronized across project
 - [ ] __Evidence__: Evidence manifest validates successfully
 
-## 🔍 __Command Receipts**
+## 🔍 **Command Receipts**
 
-### __Planning Optimization**
+### **Planning Optimization**
 
 ```bash
 # Auto-detection
@@ -30,7 +30,7 @@ npm run Aegis:planning validate MVP-Fix .Aegis/outputs/auth-plan-strict.JSON 2
 # Output: ✅ Plan validation passed
 ```
 
-### __Governance Enforcement**
+### **Governance Enforcement**
 
 ```bash
 # Provenance check
@@ -50,7 +50,7 @@ node tools/check-evidence.ts blueprints/__/evidence.JSON --ci
 # Output: ✅ All evidence manifests are valid
 ```
 
-### __Attestation**
+### **Attestation**
 
 ```bash
 # Generate attestations
@@ -62,9 +62,9 @@ AEGIS_HMAC_KEY=${{ secrets.AEGIS_HMAC_KEY }} node tools/attest.ts verify tools C
 # Output: ✅ All attestations verified successfully
 ```
 
-## 📊 __Telemetry Artifacts**
+## 📊 **Telemetry Artifacts**
 
-### __Planning Events**
+### **Planning Events**
 
 ```json
 {"timestamp":"2025-01-15T10:00:00Z","event":"planning.detected","planClass":"MVP-Fix","confidence":0.95,"prompt":"Add user authentication"}
@@ -72,52 +72,52 @@ AEGIS_HMAC_KEY=${{ secrets.AEGIS_HMAC_KEY }} node tools/attest.ts verify tools C
 {"timestamp":"2025-01-15T10:00:02Z","event":"planning.selected","planClass":"MVP-Fix","reasoning":["minimal scope","contract-driven","observable behavior"]}
 ```
 
-### __Generated Outputs**
+### **Generated Outputs**
 
 - `.Aegis/outputs/auth-plan-strict.JSON` - Planning optimization output
 - `.Aegis/Telemetry/planning-events.NDJSON` - Telemetry events
 - `.Aegis/attestations/<commit>/tools/*.sig` - Cryptographic attestations
 
-## 🎯 __VR Summary**
+## 🎯 **VR Summary**
 
-### __Visual Regression Tests**
+### **Visual Regression Tests**
 
 - [ ] __Baseline__: `.Aegis/VR-baselines/` contains reference screenshots
 - [ ] __Current__: `.Aegis/VR-report/` contains current run results
 - [ ] __Threshold__: Diff percentage < 0.01 (1%)
 - [ ] __Routes__: All public routes tested for visual consistency
 
-### __VR Results**
+### **VR Results**
 
 ```bash
 npx Playwright test --config=tests/VR/Playwright.config.ts
 # Output: ✅ All VR tests passed
 ```
 
-## 🚨 __Governance Violations**
+## 🚨 **Governance Violations**
 
-### __Fixed Violations**
+### **Fixed Violations**
 
 - [ ] __Path violations__: Moved unauthorized files to proper locations
 - [ ] __Provenance violations__: Added missing headers and generated hashes
 - [ ] __Version violations__: Synchronized all version references
 - [ ] __Evidence violations__: Created missing Telemetry and output files
 
-### __Current Status**
+### **Current Status**
 
 - [ ] __CI Status__: All governance jobs pass
 - [ ] __Required Statuses__: All required status checks enabled
 - [ ] __Artifacts__: All required artifacts uploaded
 
-## 📝 __Summary**
+## 📝 **Summary**
 
-### __What Changed**
+### **What Changed**
 
 - [ ] __Files modified__: List of files with changes
 - [ ] __Governance impact__: How changes affect Constitutional compliance
 - [ ] __Evidence provided__: Links to generated artifacts and receipts
 
-### __Compliance Verification**
+### **Compliance Verification**
 
 - [ ] __Blueprint primacy__: All changes trace to valid blueprints
 - [ ] __Provenance__: All AI-generated content has verifiable headers
