@@ -13,6 +13,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { z } from 'zod';
+import yaml from 'js-yaml';
 
 // Blueprint schema definition
 const BlueprintSchema = z.object({
@@ -118,35 +119,8 @@ class BlueprintValidator {
 
   private async parseYaml(content: string): Promise<any> {
     try {
-      // Simple YAML parsing for basic validation
-      const lines = content.split('\n');
-      const yaml: any = {};
-      let currentKey = '';
-      let currentValue = '';
-
-      for (const line of lines) {
-        const trimmed = line.trim();
-        if (trimmed.startsWith('#') || trimmed === '') continue;
-
-        const colonIndex = line.indexOf(':');
-        if (colonIndex > 0 && !line.substring(0, colonIndex).includes(' ')) {
-          // New key
-          if (currentKey && currentValue) {
-            yaml[currentKey] = this.parseValue(currentValue.trim());
-          }
-          currentKey = line.substring(0, colonIndex).trim();
-          currentValue = line.substring(colonIndex + 1).trim();
-        } else if (currentKey) {
-          // Continuation of value
-          currentValue += ' ' + trimmed;
-        }
-      }
-
-      if (currentKey && currentValue) {
-        yaml[currentKey] = this.parseValue(currentValue.trim());
-      }
-
-      return yaml;
+      const doc = yaml.load(content);
+      return doc ?? null;
     } catch (error) {
       return null;
     }
@@ -265,39 +239,4 @@ class BlueprintValidator {
 
     if (this.errors.length > 0) {
       console.log('❌ Errors:');
-      this.errors.forEach(error => console.log(`  • ${error}`));
-    }
-
-    if (this.warnings.length > 0) {
-      console.log('⚠️  Warnings:');
-      this.warnings.forEach(warning => console.log(`  • ${warning}`));
-    }
-  }
-}
-
-async function main() {
-  const validator = new BlueprintValidator();
-  const args = process.argv.slice(2);
-  
-  if (args.length === 0) {
-    console.error('Usage: node tools/validate-blueprint.ts <pattern>');
-    process.exit(1);
-  }
-
-  const pattern = args[0];
-  const success = await validator.validateAllBlueprints(pattern);
-  
-  if (!success && validator.isCI) {
-    process.exit(1);
-  }
-}
-
-// Run if called directly
-if (import.meta.url === `file://${process.argv[1]}`) {
-  main().catch((error) => {
-    console.error('❌ Blueprint validation failed:', error.message);
-    process.exit(1);
-  });
-}
-
-export { BlueprintValidator };
+      this.errors.forEach(error => console.log(`
