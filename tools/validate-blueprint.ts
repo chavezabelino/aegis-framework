@@ -239,4 +239,42 @@ class BlueprintValidator {
 
     if (this.errors.length > 0) {
       console.log('❌ Errors:');
-      this.errors.forEach(error => console.log(`
+      for (const error of this.errors) {
+        console.log(`  • ${error}`);
+      }
+    }
+
+    if (this.warnings.length > 0) {
+      console.log('⚠️  Warnings:');
+      for (const warning of this.warnings) {
+        console.log(`  • ${warning}`);
+      }
+    }
+  }
+}
+
+async function main(): Promise<void> {
+  const args = process.argv.slice(2);
+  if (args.length === 0) {
+    console.error('Usage: tsx tools/validate-blueprint.ts <glob> [--ci]');
+    process.exit(1);
+  }
+
+  const pattern = args[0];
+  const isCI = args.includes('--ci');
+
+  const validator = new BlueprintValidator();
+  const ok = await validator.validateAllBlueprints(pattern);
+  if (!ok && isCI) {
+    process.exit(1);
+  }
+}
+
+if (import.meta.url === `file://${process.argv[1]}`) {
+  main().catch((error) => {
+    console.error('❌ Blueprint validation failed:', error instanceof Error ? error.message : String(error));
+    process.exit(1);
+  });
+}
+
+export { BlueprintValidator };
