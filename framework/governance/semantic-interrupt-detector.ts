@@ -48,7 +48,7 @@ interface IntentCheckpoint {
 
 export class SemanticInterruptDetector {
   private projectRoot: string;
-  private interruptPatterns: SemanticInterrupt[];
+  private interruptPatterns!: SemanticInterrupt[];
   private checkpoints: IntentCheckpoint[] = [];
   private diagnosticHistory: DriftDiagnostic[] = [];
   private checkpointsFile: string;
@@ -66,95 +66,95 @@ export class SemanticInterruptDetector {
     this.interruptPatterns = [
       // Direct intent questioning
       {
-        pattern: "what are you trying to do",
+        pattern: 'what are you trying to do',
         confidence: 0.95,
         type: 'intent-doubt',
         urgency: 'high',
-        description: 'User directly questions agent intent - strong signal of perceived drift'
+        description: 'User directly questions agent intent - strong signal of perceived drift',
       },
       {
-        pattern: "why are you doing that",
-        confidence: 0.90,
+        pattern: 'why are you doing that',
+        confidence: 0.9,
         type: 'goal-confusion',
         urgency: 'high',
-        description: 'User questions current actions - potential goal misalignment'
+        description: 'User questions current actions - potential goal misalignment',
       },
       {
         pattern: "what's your goal here",
         confidence: 0.88,
         type: 'intent-doubt',
         urgency: 'medium',
-        description: 'User seeks clarification on objectives - moderate drift signal'
+        description: 'User seeks clarification on objectives - moderate drift signal',
       },
-      
+
       // Confusion signals
       {
         pattern: "I don't understand what you're doing",
         confidence: 0.85,
         type: 'drift-detection',
         urgency: 'high',
-        description: 'User expresses confusion about agent behavior'
+        description: 'User expresses confusion about agent behavior',
       },
       {
         pattern: "this doesn't make sense",
-        confidence: 0.80,
+        confidence: 0.8,
         type: 'alignment-check',
         urgency: 'medium',
-        description: 'User indicates logical disconnect in agent actions'
+        description: 'User indicates logical disconnect in agent actions',
       },
       {
         pattern: "that's not what I asked for",
         confidence: 0.92,
         type: 'goal-confusion',
         urgency: 'critical',
-        description: 'Direct statement of misalignment with user request'
+        description: 'Direct statement of misalignment with user request',
       },
 
       // Redirection signals
       {
-        pattern: "stop doing that",
+        pattern: 'stop doing that',
         confidence: 0.95,
         type: 'drift-detection',
         urgency: 'critical',
-        description: 'User explicitly requests cessation - critical drift'
+        description: 'User explicitly requests cessation - critical drift',
       },
       {
-        pattern: "go back to",
+        pattern: 'go back to',
         confidence: 0.75,
         type: 'alignment-check',
         urgency: 'medium',
-        description: 'User requests return to previous state - possible drift'
+        description: 'User requests return to previous state - possible drift',
       },
       {
         pattern: "that's not the priority",
         confidence: 0.85,
         type: 'goal-confusion',
         urgency: 'high',
-        description: 'User indicates priority misalignment'
+        description: 'User indicates priority misalignment',
       },
 
       // Meta-cognitive signals
       {
         pattern: "you're overthinking this",
-        confidence: 0.70,
+        confidence: 0.7,
         type: 'drift-detection',
         urgency: 'medium',
-        description: 'User indicates unnecessary complexity - possible scope drift'
+        description: 'User indicates unnecessary complexity - possible scope drift',
       },
       {
-        pattern: "focus on",
+        pattern: 'focus on',
         confidence: 0.65,
         type: 'alignment-check',
         urgency: 'low',
-        description: 'User provides focus direction - mild realignment needed'
+        description: 'User provides focus direction - mild realignment needed',
       },
       {
         pattern: "let's step back",
-        confidence: 0.80,
+        confidence: 0.8,
         type: 'intent-doubt',
         urgency: 'medium',
-        description: 'User requests perspective reset - moderate drift signal'
-      }
+        description: 'User requests perspective reset - moderate drift signal',
+      },
     ];
   }
 
@@ -163,15 +163,17 @@ export class SemanticInterruptDetector {
    */
   detectInterrupt(userInput: string): SemanticInterrupt | null {
     const normalizedInput = userInput.toLowerCase().trim();
-    
+
     for (const pattern of this.interruptPatterns) {
       if (normalizedInput.includes(pattern.pattern)) {
         console.log(`🚨 Semantic interrupt detected: ${pattern.description}`);
-        console.log(`📊 Pattern: "${pattern.pattern}" | Confidence: ${(pattern.confidence * 100).toFixed(1)}% | Urgency: ${pattern.urgency}`);
+        console.log(
+          `📊 Pattern: "${pattern.pattern}" | Confidence: ${(pattern.confidence * 100).toFixed(1)}% | Urgency: ${pattern.urgency}`
+        );
         return pattern;
       }
     }
-    
+
     return null;
   }
 
@@ -185,21 +187,21 @@ export class SemanticInterruptDetector {
     }
 
     console.log('\n🔍 Running Drift Diagnostic Reflex...\n');
-    
+
     // Get the most recent checkpoint
     const lastCheckpoint = this.getLastCheckpoint();
     const currentObjective = this.extractCurrentObjective(currentContext);
     const originalBlueprint = lastCheckpoint?.blueprint || 'No blueprint recorded';
-    
+
     // Calculate drift percentage
     const driftPercentage = this.calculateDriftPercentage(currentObjective, originalBlueprint);
-    
+
     // Generate recommendations
     const recommendations = this.generateRecommendations(interrupt, driftPercentage);
-    
+
     // Generate recovery options
     const recoveryOptions = this.generateRecoveryOptions(interrupt, driftPercentage);
-    
+
     const diagnostic: DriftDiagnostic = {
       timestamp: new Date(),
       triggeredBy: userInput,
@@ -208,23 +210,23 @@ export class SemanticInterruptDetector {
       driftPercentage,
       confidence: interrupt.confidence,
       recommendations,
-      recoveryOptions
+      recoveryOptions,
     };
-    
+
     this.diagnosticHistory.push(diagnostic);
     await this.persistDiagnostics();
-    
+
     console.log('🧭 **CURRENT OBJECTIVE**:');
     console.log(`   ${currentObjective}\n`);
-    
+
     console.log('📘 **ORIGINAL BLUEPRINT**:');
     console.log(`   ${originalBlueprint}\n`);
-    
+
     console.log('📊 **DRIFT ANALYSIS**:');
     console.log(`   Drift Percentage: ${driftPercentage.toFixed(1)}%`);
     console.log(`   Confidence: ${(interrupt.confidence * 100).toFixed(1)}%`);
     console.log(`   Urgency: ${interrupt.urgency.toUpperCase()}\n`);
-    
+
     if (driftPercentage > 30) {
       console.log('⚠️ **SIGNIFICANT DRIFT DETECTED** - Realignment recommended\n');
     } else if (driftPercentage > 15) {
@@ -232,38 +234,43 @@ export class SemanticInterruptDetector {
     } else {
       console.log('✅ **MINIMAL DRIFT** - Intent generally aligned\n');
     }
-    
+
     console.log('💡 **RECOMMENDATIONS**:');
     recommendations.forEach(rec => console.log(`   • ${rec}`));
     console.log('');
-    
+
     console.log('🔧 **RECOVERY OPTIONS**:');
     recoveryOptions.forEach((option, index) => {
       console.log(`   ${index + 1}. ${option.description} (${option.type}, ${option.impact} impact)`);
     });
     console.log('');
-    
+
     return diagnostic;
   }
 
   /**
    * Create intent checkpoint for future drift detection
    */
-  createCheckpoint(objective: string, blueprint: string, context: string, userConfirmed: boolean = false): IntentCheckpoint {
+  createCheckpoint(
+    objective: string,
+    blueprint: string,
+    context: string,
+    userConfirmed: boolean = false
+  ): IntentCheckpoint {
     const checkpoint: IntentCheckpoint = {
       timestamp: new Date(),
       objective,
       blueprint,
       context,
       confidence: userConfirmed ? 1.0 : 0.8,
-      userConfirmed
+      userConfirmed,
     };
-    
+
     this.checkpoints.push(checkpoint);
     this.persistCheckpoints();
-    
+
     console.log(`📍 Intent checkpoint created: ${objective.substring(0, 60)}...`);
-    
+
     return checkpoint;
   }
 
@@ -280,12 +287,13 @@ export class SemanticInterruptDetector {
   private extractCurrentObjective(context: string): string {
     // Simple extraction - could be enhanced with NLP
     const lines = context.split('\n');
-    const objectiveLine = lines.find(line => 
-      line.toLowerCase().includes('objective') || 
-      line.toLowerCase().includes('goal') || 
-      line.toLowerCase().includes('intent')
+    const objectiveLine = lines.find(
+      line =>
+        line.toLowerCase().includes('objective') ||
+        line.toLowerCase().includes('goal') ||
+        line.toLowerCase().includes('intent')
     );
-    
+
     return objectiveLine || 'Current objective unclear from context';
   }
 
@@ -294,14 +302,14 @@ export class SemanticInterruptDetector {
    */
   private calculateDriftPercentage(current: string, original: string): number {
     if (!current || !original) return 100;
-    
+
     // Simple word overlap calculation - could be enhanced with semantic similarity
     const currentWords = new Set(current.toLowerCase().split(/\s+/));
     const originalWords = new Set(original.toLowerCase().split(/\s+/));
-    
+
     const intersection = new Set([...currentWords].filter(word => originalWords.has(word)));
     const union = new Set([...currentWords, ...originalWords]);
-    
+
     const similarity = intersection.size / union.size;
     return (1 - similarity) * 100;
   }
@@ -311,12 +319,12 @@ export class SemanticInterruptDetector {
    */
   private generateRecommendations(interrupt: SemanticInterrupt, driftPercentage: number): string[] {
     const recommendations: string[] = [];
-    
+
     if (interrupt.urgency === 'critical') {
       recommendations.push('IMMEDIATE HALT: Stop current action and await user clarification');
       recommendations.push('Request explicit confirmation of intended objective');
     }
-    
+
     if (driftPercentage > 50) {
       recommendations.push('Complete intent realignment required');
       recommendations.push('Return to last confirmed checkpoint');
@@ -327,14 +335,14 @@ export class SemanticInterruptDetector {
       recommendations.push('Minor adjustment to current approach');
       recommendations.push('Confirm understanding of current priorities');
     }
-    
+
     if (interrupt.type === 'intent-doubt') {
       recommendations.push('Provide clear explanation of current reasoning');
       recommendations.push('Offer alternative approaches for consideration');
     }
-    
+
     recommendations.push('Create new checkpoint with clarified intent');
-    
+
     return recommendations;
   }
 
@@ -343,16 +351,16 @@ export class SemanticInterruptDetector {
    */
   private generateRecoveryOptions(interrupt: SemanticInterrupt, driftPercentage: number): RecoveryOption[] {
     const options: RecoveryOption[] = [];
-    
+
     // Always offer explanation
     options.push({
       id: 'explain-current',
       type: 'review',
       description: 'Explain current reasoning and approach',
       impact: 'low',
-      confidence: 0.9
+      confidence: 0.9,
     });
-    
+
     // Rollback options based on drift severity
     if (driftPercentage > 30) {
       options.push({
@@ -360,37 +368,37 @@ export class SemanticInterruptDetector {
         type: 'rollback',
         description: 'Return to last confirmed checkpoint',
         impact: 'medium',
-        confidence: 0.8
+        confidence: 0.8,
       });
     }
-    
+
     // Realignment options
     options.push({
       id: 'confirm-intent',
       type: 'confirm',
       description: 'Request user to confirm or update intended objective',
       impact: 'low',
-      confidence: 0.95
+      confidence: 0.95,
     });
-    
+
     if (interrupt.urgency === 'critical') {
       options.push({
         id: 'full-restart',
         type: 'restart',
         description: 'Restart from beginning with clear objective definition',
         impact: 'high',
-        confidence: 0.7
+        confidence: 0.7,
       });
     }
-    
+
     options.push({
       id: 'gradual-realign',
       type: 'realign',
       description: 'Gradually adjust approach based on user feedback',
       impact: 'medium',
-      confidence: 0.85
+      confidence: 0.85,
     });
-    
+
     return options;
   }
 
@@ -403,7 +411,7 @@ export class SemanticInterruptDetector {
         const data = fs.readFileSync(this.checkpointsFile, 'utf8');
         this.checkpoints = JSON.parse(data);
       }
-      
+
       if (fs.existsSync(this.diagnosticsFile)) {
         const data = fs.readFileSync(this.diagnosticsFile, 'utf8');
         this.diagnosticHistory = JSON.parse(data);
@@ -467,10 +475,10 @@ async function main() {
     console.log('Example: node semantic-interrupt-detector.ts "what are you trying to do?"');
     return;
   }
-  
+
   const userInput = process.argv[2];
   const detector = new SemanticInterruptDetector();
-  
+
   // Create a test checkpoint
   detector.createCheckpoint(
     'Test implementation of semantic interrupt detection system',
@@ -478,7 +486,7 @@ async function main() {
     'Framework development context',
     true
   );
-  
+
   const interrupt = detector.detectInterrupt(userInput);
   if (interrupt) {
     await detector.runDriftDiagnostic(userInput, 'Test context: implementing semantic interrupt detection');

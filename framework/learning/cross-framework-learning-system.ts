@@ -2,17 +2,17 @@
 
 /**
  * Cross-Framework Learning System
- * 
+ *
  * Advanced AI learning system that gathers insights from multiple frameworks,
  * cross-pollinates patterns, and provides evolutionary guidance
  * Part of Phase 3: Advanced Self-Healing Features
- * 
+ *
  * @aegisFrameworkVersion: 2.4.0-alpha
  * @intent: Implement cross-framework pattern learning and knowledge synthesis
  */
 
-import fs from "fs";
-import path from "path";
+import fs from 'fs';
+import path from 'path';
 
 interface FrameworkProfile {
   id: string;
@@ -155,7 +155,7 @@ class CrossFrameworkLearningSystem {
       paradigm: frameworkData.paradigm || ['unknown'],
       characteristics: frameworkData.characteristics || this.defaultCharacteristics(),
       patterns: frameworkData.patterns || [],
-      lastAnalyzed: new Date().toISOString()
+      lastAnalyzed: new Date().toISOString(),
     };
 
     // Enhance with pattern detection
@@ -176,13 +176,13 @@ class CrossFrameworkLearningSystem {
   }
 
   async synthesizePatterns(): Promise<CrossFrameworkInsight[]> {
-    console.log("🧠 Synthesizing cross-framework patterns...");
+    console.log('🧠 Synthesizing cross-framework patterns...');
 
     const newInsights: CrossFrameworkInsight[] = [];
 
     // Pattern synthesis across frameworks
     const patternGroups = this.groupPatternsByCategory();
-    
+
     for (const [category, patterns] of Object.entries(patternGroups)) {
       if (patterns.length < 2) continue;
 
@@ -202,12 +202,12 @@ class CrossFrameworkLearningSystem {
 
     this.insights.push(...newInsights);
     await this.persistInsights();
-    
+
     return newInsights;
   }
 
   async generateEvolutionGuidance(): Promise<EvolutionGuidance> {
-    console.log("🚀 Generating evolution guidance...");
+    console.log('🚀 Generating evolution guidance...');
 
     const recommendations = await this.generateEvolutionRecommendations();
     const trends = await this.identifyEvolutionTrends();
@@ -220,7 +220,7 @@ class CrossFrameworkLearningSystem {
       recommendations,
       trends,
       opportunities,
-      warnings
+      warnings,
     };
 
     await this.persistEvolutionGuidance(guidance);
@@ -242,7 +242,7 @@ class CrossFrameworkLearningSystem {
       language: this.inferLanguage(frameworkName),
       paradigm: this.inferParadigms(frameworkName),
       characteristics: await this.analyzeExternalCharacteristics(frameworkName),
-      patterns: await this.extractExternalPatterns(frameworkName)
+      patterns: await this.extractExternalPatterns(frameworkName),
     });
 
     // Generate insights from this new knowledge
@@ -256,7 +256,7 @@ class CrossFrameworkLearningSystem {
     adaptationStrategies: string[];
     implementationPlan: string[];
   }> {
-    console.log("🌱 Cross-pollinating patterns to Aegis Framework...");
+    console.log('🌱 Cross-pollinating patterns to Aegis Framework...');
 
     const applicablePatterns: DesignPattern[] = [];
     const adaptationStrategies: string[] = [];
@@ -266,7 +266,7 @@ class CrossFrameworkLearningSystem {
     for (const framework of this.knowledgeBase) {
       for (const pattern of framework.patterns) {
         const applicability = this.assessAegisApplicability(pattern, framework);
-        
+
         if (applicability.score > 0.7) {
           applicablePatterns.push(pattern);
           adaptationStrategies.push(applicability.strategy);
@@ -285,7 +285,7 @@ class CrossFrameworkLearningSystem {
     return {
       applicablePatterns: applicablePatterns.slice(0, 10), // Top 10
       adaptationStrategies,
-      implementationPlan
+      implementationPlan,
     };
   }
 
@@ -304,7 +304,7 @@ class CrossFrameworkLearningSystem {
         tradeoffs: ['Storage overhead', 'Complexity'],
         applicability: ['AI systems', 'ML pipelines'],
         complexity: 7,
-        confidence: 0.8
+        confidence: 0.8,
       });
     }
 
@@ -319,7 +319,7 @@ class CrossFrameworkLearningSystem {
         tradeoffs: ['Slower decisions', 'Coordination overhead'],
         applicability: ['Open source projects', 'Community platforms'],
         complexity: 8,
-        confidence: 0.9
+        confidence: 0.9,
       });
     }
 
@@ -328,7 +328,7 @@ class CrossFrameworkLearningSystem {
 
   private groupPatternsByCategory(): Record<string, DesignPattern[]> {
     const groups: Record<string, DesignPattern[]> = {};
-    
+
     for (const framework of this.knowledgeBase) {
       for (const pattern of framework.patterns) {
         if (!groups[pattern.category]) {
@@ -337,11 +337,14 @@ class CrossFrameworkLearningSystem {
         groups[pattern.category].push(pattern);
       }
     }
-    
+
     return groups;
   }
 
-  private async synthesizePatternsInCategory(category: string, patterns: DesignPattern[]): Promise<CrossFrameworkInsight | null> {
+  private async synthesizePatternsInCategory(
+    category: string,
+    patterns: DesignPattern[]
+  ): Promise<CrossFrameworkInsight | null> {
     if (patterns.length < 2) return null;
 
     // Find common themes and synthesize
@@ -360,7 +363,7 @@ class CrossFrameworkLearningSystem {
       tradeoffs: commonTradeoffs,
       applicability: ['Aegis Framework', 'Cross-framework projects'],
       complexity: avgComplexity,
-      confidence: avgConfidence * 0.8 // Reduce confidence for synthesis
+      confidence: avgConfidence * 0.8, // Reduce confidence for synthesis
     };
 
     return {
@@ -374,14 +377,14 @@ class CrossFrameworkLearningSystem {
         novelty: 0.7,
         feasibility: 0.8,
         benefits: commonBenefits,
-        risks: commonTradeoffs
+        risks: commonTradeoffs,
       },
       applicability: {
         aegisCompatibility: 0.8,
         implementationEffort: avgComplexity > 7 ? 'high' : avgComplexity > 4 ? 'medium' : 'low',
         prerequisites: [],
         blockers: [],
-        opportunities: [`Enhance ${category} capabilities`]
+        opportunities: [`Enhance ${category} capabilities`],
       },
       recommendation: {
         priority: avgConfidence > 0.8 ? 'high' : 'medium',
@@ -389,10 +392,10 @@ class CrossFrameworkLearningSystem {
         reasoning: `Strong pattern consensus across ${patterns.length} frameworks`,
         timeline: '2-4 weeks',
         resources: ['Development team', 'Architecture review'],
-        successCriteria: ['Successful integration', 'Improved metrics']
+        successCriteria: ['Successful integration', 'Improved metrics'],
       },
       confidence: avgConfidence,
-      impact: avgConfidence > 0.8 && avgComplexity > 6 ? 'high' : 'medium'
+      impact: avgConfidence > 0.8 && avgComplexity > 6 ? 'high' : 'medium',
     };
   }
 
@@ -421,20 +424,20 @@ class CrossFrameworkLearningSystem {
             tradeoffs: ['Unnecessary complexity', 'Maintenance burden'],
             applicability: ['All frameworks'],
             complexity: 8,
-            confidence: 0.9
+            confidence: 0.9,
           },
           sourcePatterns: problemPatterns.map(p => p.id),
           novelty: 0.2,
           feasibility: 1.0,
           benefits: ['Avoid technical debt'],
-          risks: ['Missing out on innovation']
+          risks: ['Missing out on innovation'],
         },
         applicability: {
           aegisCompatibility: 1.0,
           implementationEffort: 'low',
           prerequisites: [],
           blockers: [],
-          opportunities: ['Simplify architecture']
+          opportunities: ['Simplify architecture'],
         },
         recommendation: {
           priority: 'medium',
@@ -442,10 +445,10 @@ class CrossFrameworkLearningSystem {
           reasoning: 'Patterns with poor benefit-to-complexity ratio should be avoided',
           timeline: 'Immediate',
           resources: ['Architecture review'],
-          successCriteria: ['Simpler codebase', 'Better maintainability']
+          successCriteria: ['Simpler codebase', 'Better maintainability'],
         },
         confidence: 0.8,
-        impact: 'medium'
+        impact: 'medium',
       });
     }
 
@@ -456,8 +459,8 @@ class CrossFrameworkLearningSystem {
     const trends: CrossFrameworkInsight[] = [];
 
     // Analyze framework evolution patterns
-    const modernFrameworks = this.knowledgeBase.filter(f => 
-      f.characteristics.innovationRate > 7 && f.characteristics.maturity > 6
+    const modernFrameworks = this.knowledgeBase.filter(
+      f => f.characteristics.innovationRate > 7 && f.characteristics.maturity > 6
     );
 
     if (modernFrameworks.length > 0) {
@@ -477,20 +480,20 @@ class CrossFrameworkLearningSystem {
             tradeoffs: ['Learning curve', 'Ecosystem maturity'],
             applicability: ['Modern frameworks'],
             complexity: 6,
-            confidence: 0.85
+            confidence: 0.85,
           },
           sourcePatterns: [],
           novelty: 0.8,
           feasibility: 0.7,
           benefits: ['Competitive advantage', 'Developer attraction'],
-          risks: ['Bleeding edge instability']
+          risks: ['Bleeding edge instability'],
         },
         applicability: {
           aegisCompatibility: 0.9,
           implementationEffort: 'medium',
           prerequisites: ['Team training', 'Gradual migration'],
           blockers: [],
-          opportunities: ['Framework modernization']
+          opportunities: ['Framework modernization'],
         },
         recommendation: {
           priority: 'high',
@@ -498,10 +501,10 @@ class CrossFrameworkLearningSystem {
           reasoning: 'Modern frameworks show consistent patterns worth adopting',
           timeline: '1-3 months',
           resources: ['Research team', 'Prototype development'],
-          successCriteria: ['Improved developer experience', 'Better performance']
+          successCriteria: ['Improved developer experience', 'Better performance'],
         },
         confidence: 0.85,
-        impact: 'high'
+        impact: 'high',
       });
     }
 
@@ -520,11 +523,11 @@ class CrossFrameworkLearningSystem {
           category: insight.synthesis.pattern.category as any,
           title: `Adopt ${insight.synthesis.pattern.name}`,
           description: insight.synthesis.pattern.description,
-          priority: insight.recommendation.priority === 'high' ? 9 : 
-                   insight.recommendation.priority === 'medium' ? 6 : 3,
+          priority:
+            insight.recommendation.priority === 'high' ? 9 : insight.recommendation.priority === 'medium' ? 6 : 3,
           effort: insight.applicability.implementationEffort,
           impact: insight.impact,
-          inspiration: insight.sourceFrameworks
+          inspiration: insight.sourceFrameworks,
         });
       }
     }
@@ -538,7 +541,7 @@ class CrossFrameworkLearningSystem {
         priority: 8,
         effort: 'medium',
         impact: 'high',
-        inspiration: ['React', 'Next.js', 'Progressive Web Apps']
+        inspiration: ['React', 'Next.js', 'Progressive Web Apps'],
       },
       {
         category: 'governance',
@@ -547,7 +550,7 @@ class CrossFrameworkLearningSystem {
         priority: 7,
         effort: 'medium',
         impact: 'medium',
-        inspiration: ['Django', 'Python PEPs', 'TC39']
+        inspiration: ['Django', 'Python PEPs', 'TC39'],
       }
     );
 
@@ -561,22 +564,22 @@ class CrossFrameworkLearningSystem {
         direction: 'Increasing adoption of AI-native patterns',
         velocity: 8,
         evidence: ['GPT integration', 'AI-powered tooling', 'Automated code generation'],
-        implications: ['Need for AI governance', 'Quality assurance evolution', 'Developer skill adaptation']
+        implications: ['Need for AI governance', 'Quality assurance evolution', 'Developer skill adaptation'],
       },
       {
         domain: 'Developer Experience',
         direction: 'Focus on zero-configuration and intelligent defaults',
         velocity: 9,
         evidence: ['Next.js App Router', 'Vite defaults', 'Deno simplicity'],
-        implications: ['Reduced cognitive load', 'Faster onboarding', 'Convention over configuration']
+        implications: ['Reduced cognitive load', 'Faster onboarding', 'Convention over configuration'],
       },
       {
         domain: 'Observability',
         direction: 'Built-in telemetry and monitoring',
         velocity: 7,
         evidence: ['OpenTelemetry adoption', 'Built-in metrics', 'Automatic instrumentation'],
-        implications: ['Better debugging', 'Performance insights', 'Proactive issue detection']
-      }
+        implications: ['Better debugging', 'Performance insights', 'Proactive issue detection'],
+      },
     ];
   }
 
@@ -587,22 +590,22 @@ class CrossFrameworkLearningSystem {
         opportunity: 'Pioneer AI-assisted constitutional governance',
         potential: 9,
         requirements: ['AI integration', 'Governance frameworks', 'Community engagement'],
-        inspirationFrameworks: ['TC39', 'Rust RFC', 'Python PEP']
+        inspirationFrameworks: ['TC39', 'Rust RFC', 'Python PEP'],
       },
       {
         area: 'Cross-Framework Learning',
         opportunity: 'First framework with systematic cross-pollination',
         potential: 8,
         requirements: ['Pattern recognition', 'Analysis tools', 'Adaptation mechanisms'],
-        inspirationFrameworks: ['Babel', 'Webpack', 'PostCSS']
+        inspirationFrameworks: ['Babel', 'Webpack', 'PostCSS'],
       },
       {
         area: 'Self-Healing Systems',
         opportunity: 'Autonomous framework repair and optimization',
         potential: 10,
         requirements: ['Health monitoring', 'Automated fixes', 'Safe rollback'],
-        inspirationFrameworks: ['Kubernetes', 'Istio', 'AWS Auto Scaling']
-      }
+        inspirationFrameworks: ['Kubernetes', 'Istio', 'AWS Auto Scaling'],
+      },
     ];
   }
 
@@ -613,31 +616,31 @@ class CrossFrameworkLearningSystem {
         severity: 'medium',
         probability: 0.6,
         mitigation: ['Regular complexity audits', 'Simplicity principles', 'User feedback'],
-        observedIn: ['Enterprise frameworks', 'Academic projects']
+        observedIn: ['Enterprise frameworks', 'Academic projects'],
       },
       {
         risk: 'AI dependency without fallbacks',
         severity: 'high',
         probability: 0.4,
         mitigation: ['Manual override capabilities', 'Graceful degradation', 'Human oversight'],
-        observedIn: ['AI-first platforms', 'Automated systems']
-      }
+        observedIn: ['AI-first platforms', 'Automated systems'],
+      },
     ];
   }
 
   // Helper methods
   private findCommonElements(arrays: string[][]): string[] {
     if (arrays.length === 0) return [];
-    
+
     const elementCounts = new Map<string, number>();
-    
+
     arrays.forEach(array => {
       const unique = [...new Set(array)];
       unique.forEach(element => {
         elementCounts.set(element, (elementCounts.get(element) || 0) + 1);
       });
     });
-    
+
     const threshold = Math.ceil(arrays.length * 0.6); // 60% threshold
     return Array.from(elementCounts.entries())
       .filter(([, count]) => count >= threshold)
@@ -653,61 +656,73 @@ class CrossFrameworkLearningSystem {
     return 'unknown';
   }
 
-  private assessAegisApplicability(pattern: DesignPattern, framework: FrameworkProfile): {
+  private assessAegisApplicability(
+    pattern: DesignPattern,
+    framework: FrameworkProfile
+  ): {
     score: number;
     strategy: string;
     implementation: string;
   } {
     let score = 0;
-    
+
     // Category compatibility
     if (['governance', 'architecture', 'workflow'].includes(pattern.category)) {
       score += 0.3;
     }
-    
+
     // Confidence and complexity balance
     if (pattern.confidence > 0.7 && pattern.complexity < 8) {
       score += 0.4;
     }
-    
+
     // Framework type relevance
     if (framework.type === 'ai' || framework.paradigm.includes('declarative')) {
       score += 0.3;
     }
-    
-    const strategy = score > 0.8 ? 'Direct adoption' :
-                    score > 0.6 ? 'Adaptation needed' :
-                    score > 0.4 ? 'Significant modification' : 'Not applicable';
-    
-    const implementation = score > 0.8 ? 'Implement as-is with minor adjustments' :
-                          score > 0.6 ? 'Adapt core concepts to Aegis patterns' :
-                          score > 0.4 ? 'Extract principles, reimplementing for Aegis' :
-                          'Study for inspiration only';
-    
+
+    const strategy =
+      score > 0.8
+        ? 'Direct adoption'
+        : score > 0.6
+          ? 'Adaptation needed'
+          : score > 0.4
+            ? 'Significant modification'
+            : 'Not applicable';
+
+    const implementation =
+      score > 0.8
+        ? 'Implement as-is with minor adjustments'
+        : score > 0.6
+          ? 'Adapt core concepts to Aegis patterns'
+          : score > 0.4
+            ? 'Extract principles, reimplementing for Aegis'
+            : 'Study for inspiration only';
+
     return { score, strategy, implementation };
   }
 
   private generateImplementationRoadmap(patterns: DesignPattern[], strategies: string[]): string[] {
     const roadmap: string[] = [];
-    
+
     // Phase 1: Low complexity, high confidence
     const phase1 = patterns.filter(p => p.complexity < 5 && p.confidence > 0.8);
     if (phase1.length > 0) {
       roadmap.push(`Phase 1 (1-2 weeks): Implement ${phase1.length} simple, high-confidence patterns`);
     }
-    
+
     // Phase 2: Medium complexity or adaptation needed
     const phase2 = patterns.filter(p => (p.complexity >= 5 && p.complexity < 7) || p.confidence > 0.6);
     if (phase2.length > 0) {
       roadmap.push(`Phase 2 (3-6 weeks): Adapt ${phase2.length} medium-complexity patterns`);
     }
-    
+
     // Phase 3: High complexity or experimental
     const phase3 = patterns.filter(p => p.complexity >= 7 || p.confidence < 0.6);
     if (phase3.length > 0) {
       roadmap.push(`Phase 3 (2-3 months): Research and prototype ${phase3.length} complex patterns`);
     }
-    
+
     return roadmap;
   }
 
@@ -732,13 +747,13 @@ class CrossFrameworkLearningSystem {
   private inferParadigms(name: string): string[] {
     const paradigms: string[] = [];
     const nameLC = name.toLowerCase();
-    
+
     if (nameLC.includes('functional')) paradigms.push('functional');
     if (nameLC.includes('reactive')) paradigms.push('reactive');
     if (nameLC.includes('declarative')) paradigms.push('declarative');
     if (nameLC.includes('imperative')) paradigms.push('imperative');
     if (nameLC.includes('object')) paradigms.push('object-oriented');
-    
+
     return paradigms.length > 0 ? paradigms : ['unknown'];
   }
 
@@ -749,10 +764,10 @@ class CrossFrameworkLearningSystem {
 
   private async extractExternalPatterns(name: string): Promise<DesignPattern[]> {
     // In a real implementation, this would parse documentation, code samples, etc.
-    return await this.detectFrameworkPatterns({ 
-      name, 
+    return await this.detectFrameworkPatterns({
+      name,
       type: this.inferFrameworkType(name),
-      characteristics: this.defaultCharacteristics()
+      characteristics: this.defaultCharacteristics(),
     } as FrameworkProfile);
   }
 
@@ -764,7 +779,7 @@ class CrossFrameworkLearningSystem {
       stability: 5,
       innovationRate: 5,
       communitySize: 1000,
-      releaseFrequency: 12
+      releaseFrequency: 12,
     };
   }
 
@@ -785,7 +800,7 @@ class CrossFrameworkLearningSystem {
     if (!fs.existsSync(this.learningPath)) {
       fs.mkdirSync(this.learningPath, { recursive: true });
     }
-    
+
     this.loadKnowledgeBase();
     this.loadInsights();
   }
@@ -820,41 +835,41 @@ class CrossFrameworkLearningSystem {
   }
 
   displayEvolutionGuidance(guidance: EvolutionGuidance): void {
-    console.log("\n🚀 Evolution Guidance");
-    console.log("====================");
+    console.log('\n🚀 Evolution Guidance');
+    console.log('====================');
     console.log(`Framework Version: ${guidance.frameworkVersion}`);
     console.log(`Generated: ${new Date(guidance.timestamp).toLocaleString()}\n`);
-    
+
     if (guidance.recommendations.length > 0) {
-      console.log("🎯 Top Recommendations:");
+      console.log('🎯 Top Recommendations:');
       guidance.recommendations.slice(0, 5).forEach((rec, i) => {
         console.log(`  ${i + 1}. ${rec.title} (Priority: ${rec.priority})`);
         console.log(`     Impact: ${rec.impact}, Effort: ${rec.effort}`);
         console.log(`     Inspired by: ${rec.inspiration.join(', ')}`);
       });
-      console.log("");
+      console.log('');
     }
-    
+
     if (guidance.trends.length > 0) {
-      console.log("📈 Evolution Trends:");
+      console.log('📈 Evolution Trends:');
       guidance.trends.forEach(trend => {
         console.log(`  ${trend.domain}: ${trend.direction}`);
         console.log(`     Velocity: ${trend.velocity}/10`);
       });
-      console.log("");
+      console.log('');
     }
-    
+
     if (guidance.opportunities.length > 0) {
-      console.log("💡 Key Opportunities:");
+      console.log('💡 Key Opportunities:');
       guidance.opportunities.slice(0, 3).forEach(opp => {
         console.log(`  ${opp.area}: ${opp.opportunity}`);
         console.log(`     Potential: ${opp.potential}/10`);
       });
-      console.log("");
+      console.log('');
     }
-    
+
     if (guidance.warnings.length > 0) {
-      console.log("⚠️ Warnings:");
+      console.log('⚠️ Warnings:');
       guidance.warnings.forEach(warning => {
         console.log(`  ${warning.risk} (${warning.severity})`);
         console.log(`     Probability: ${(warning.probability * 100).toFixed(0)}%`);
@@ -867,20 +882,20 @@ class CrossFrameworkLearningSystem {
 async function main() {
   const args = process.argv.slice(2);
   const command = args[0];
-  
+
   const learningSystem = new CrossFrameworkLearningSystem();
-  
+
   switch (command) {
     case 'learn':
       const frameworkName = args[1];
       if (!frameworkName) {
-        console.error("Please provide a framework name to learn from");
+        console.error('Please provide a framework name to learn from');
         process.exit(1);
       }
       const profile = await learningSystem.learnFromExternalFramework(frameworkName);
       console.log(`Learned from ${profile.name}, found ${profile.patterns.length} patterns`);
       break;
-      
+
     case 'synthesize':
       const insights = await learningSystem.synthesizePatterns();
       console.log(`Generated ${insights.length} new insights`);
@@ -888,7 +903,7 @@ async function main() {
         console.log(`  ${insight.type}: ${insight.synthesis.pattern.name}`);
       });
       break;
-      
+
     case 'pollinate':
       const results = await learningSystem.crossPollinate();
       console.log(`Found ${results.applicablePatterns.length} applicable patterns:`);
@@ -896,19 +911,19 @@ async function main() {
         console.log(`  ${pattern.name} (confidence: ${pattern.confidence})`);
       });
       break;
-      
+
     case 'evolve':
       const guidance = await learningSystem.generateEvolutionGuidance();
       learningSystem.displayEvolutionGuidance(guidance);
       break;
-      
+
     default:
-      console.log("🧠 Cross-Framework Learning System");
-      console.log("Available commands:");
-      console.log("  learn <framework> - Learn from external framework");
-      console.log("  synthesize - Synthesize cross-framework patterns");
-      console.log("  pollinate - Cross-pollinate patterns to Aegis");
-      console.log("  evolve - Generate evolution guidance");
+      console.log('🧠 Cross-Framework Learning System');
+      console.log('Available commands:');
+      console.log('  learn <framework> - Learn from external framework');
+      console.log('  synthesize - Synthesize cross-framework patterns');
+      console.log('  pollinate - Cross-pollinate patterns to Aegis');
+      console.log('  evolve - Generate evolution guidance');
       break;
   }
 }

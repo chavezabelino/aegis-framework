@@ -105,8 +105,12 @@ async function main() {
 
   // 1) Planning optimization receipts
   receipts.commands['planning_help'] = run('npx --yes tsx cli/aegis-planning.ts help');
-  receipts.commands['planning_auto'] = run('npx --yes tsx cli/aegis-planning.ts auto "Add user authentication" --output .aegis/outputs/auth-plan-strict.json');
-  receipts.commands['planning_validate'] = run('npx --yes tsx cli/aegis-planning.ts validate MVP-Fix .aegis/outputs/auth-plan-strict.json 2');
+  receipts.commands['planning_auto'] = run(
+    'npx --yes tsx cli/aegis-planning.ts auto "Add user authentication" --output .aegis/outputs/auth-plan-strict.json'
+  );
+  receipts.commands['planning_validate'] = run(
+    'npx --yes tsx cli/aegis-planning.ts validate MVP-Fix .aegis/outputs/auth-plan-strict.json 2'
+  );
 
   // 2) Governance checks
   receipts.commands['check_paths'] = run('node tools/check-paths.js');
@@ -117,8 +121,20 @@ async function main() {
     receipts.commands['attest_tools'] = run('node tools/attest.ts attest tools');
     receipts.commands['verify_tools'] = run('node tools/attest.ts verify tools');
   } else {
-    receipts.commands['attest_tools'] = { command: 'node tools/attest.ts attest tools', exitCode: -1, stdout: '', stderr: 'AEGIS_HMAC_KEY not set', durationMs: 0 };
-    receipts.commands['verify_tools'] = { command: 'node tools/attest.ts verify tools', exitCode: -1, stdout: '', stderr: 'AEGIS_HMAC_KEY not set', durationMs: 0 };
+    receipts.commands['attest_tools'] = {
+      command: 'node tools/attest.ts attest tools',
+      exitCode: -1,
+      stdout: '',
+      stderr: 'AEGIS_HMAC_KEY not set',
+      durationMs: 0,
+    };
+    receipts.commands['verify_tools'] = {
+      command: 'node tools/attest.ts verify tools',
+      exitCode: -1,
+      stdout: '',
+      stderr: 'AEGIS_HMAC_KEY not set',
+      durationMs: 0,
+    };
   }
 
   // 4) Telemetry receipts (write minimal events if missing)
@@ -127,16 +143,42 @@ async function main() {
     fs.writeFileSync(telemetryFile, '');
   }
   const now = new Date().toISOString();
-  fs.appendFileSync(telemetryFile, JSON.stringify({ timestamp: now, event: 'planning.detected', planClass: 'MVP-Fix', confidence: 0.95, prompt: 'Add user authentication' }) + '\n');
-  fs.appendFileSync(telemetryFile, JSON.stringify({ timestamp: now, event: 'planning.validated', planClass: 'MVP-Fix', validationResult: 'passed', tokenCount: 1089 }) + '\n');
-  fs.appendFileSync(telemetryFile, JSON.stringify({ timestamp: now, event: 'planning.selected', planClass: 'MVP-Fix', reasoning: ['minimal scope', 'contract-driven', 'observable behavior'] }) + '\n');
+  fs.appendFileSync(
+    telemetryFile,
+    JSON.stringify({
+      timestamp: now,
+      event: 'planning.detected',
+      planClass: 'MVP-Fix',
+      confidence: 0.95,
+      prompt: 'Add user authentication',
+    }) + '\n'
+  );
+  fs.appendFileSync(
+    telemetryFile,
+    JSON.stringify({
+      timestamp: now,
+      event: 'planning.validated',
+      planClass: 'MVP-Fix',
+      validationResult: 'passed',
+      tokenCount: 1089,
+    }) + '\n'
+  );
+  fs.appendFileSync(
+    telemetryFile,
+    JSON.stringify({
+      timestamp: now,
+      event: 'planning.selected',
+      planClass: 'MVP-Fix',
+      reasoning: ['minimal scope', 'contract-driven', 'observable behavior'],
+    }) + '\n'
+  );
 
   // 5) File receipts
   const filesToCapture = [
     '.aegis/outputs/auth-plan-strict.json',
     '.aegis/telemetry/planning-events.ndjson',
     '.github/workflows/aegis-governance.yml',
-    'blueprints/planning-optimization/evidence.json'
+    'blueprints/planning-optimization/evidence.json',
   ];
   for (const f of filesToCapture) {
     receipts.files[f] = statFile(f);

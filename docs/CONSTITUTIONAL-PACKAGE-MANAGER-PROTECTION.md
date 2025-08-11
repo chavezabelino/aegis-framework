@@ -1,129 +1,146 @@
 # 🏛️ Constitutional Package Manager Protection
 
-## 🎯 **Constitutional Mandate**
+## 🎯 __Constitutional Mandate**
 
-The Aegis Framework Constitution (Article I, Section 1 - Traceability) requires **consistent, deterministic tooling** for all development operations. Package manager confusion violates this principle by creating:
+The Aegis Framework Constitution (Article I, Section 1 - Traceability) requires __consistent, deterministic tooling**
+for all development operations. Package manager confusion violates this principle by creating:
 
-- **Non-deterministic builds** (different tools, different results)
-- **Performance degradation** (slower development cycles)
-- **Maintenance drift** (hybrid tooling complexity)
-- **Onboarding confusion** (unclear developer setup)
+- __Non-deterministic builds__ (different tools, different results)
+- __Performance degradation__ (slower development cycles)
+- __Maintenance drift__ (hybrid tooling complexity)
+- __Onboarding confusion__ (unclear developer setup)
 
-## 🛡️ **Systematic Protection Mechanisms**
+## 🛡️ __Systematic Protection Mechanisms**
 
-### **1. Automated Validation** 
+### __1. Automated Validation**
+
 ```bash
 # Runs in CI/CD and pre-commit
-bun tools/validate-package-manager-consistency.ts
-```
+Bun tools/validate-package-manager-consistency.ts
+```text
 
 **Validates:**
-- ✅ All package.json scripts use `bun` (not `npm run` or `node`)
-- ✅ All GitHub Actions use `setup-bun` (not `setup-node`)
-- ✅ All workflows use `bun install` (not `npm install`)
-- ✅ All CLI execution uses `bun` (not `node`)
 
-### **2. Auto-Repair System**
+- ✅ All package.JSON scripts use `Bun` (not `npm run` or `node`)
+- ✅ All GitHub Actions use `setup-Bun` (not `setup-node`)
+- ✅ All workflows use `Bun install` (not `npm install`)
+- ✅ All CLI execution uses `Bun` (not `node`)
+
+### __2. Auto-Repair System**
+
 ```bash
 # Automatically fixes inconsistencies
-bun tools/fix-package-manager-consistency.ts
-```
+Bun tools/fix-package-manager-consistency.ts
+```text
 
 **Auto-fixes:**
-- 🔧 `npm run` → `bun run` in package.json scripts
-- 🔧 `node script.ts` → `bun script.ts` in scripts  
-- 🔧 `setup-node` → `setup-bun` in workflows
-- 🔧 `npm install` → `bun install` in CI/CD
 
-### **3. Pre-Commit Blocking**
+- 🔧 `npm run` → `Bun run` in package.JSON scripts
+- 🔧 `node script.ts` → `Bun script.ts` in scripts
+- 🔧 `setup-node` → `setup-Bun` in workflows
+- 🔧 `npm install` → `Bun install` in CI/CD
+
+### __3. Pre-Commit Blocking**
+
 ```bash
 # Prevents inconsistent commits
 tools/package-manager-pre-commit-hook.sh
-```
+```text
 
 **Prevents:**
-- ❌ Committing scripts with `npm run` 
+
+- ❌ Committing scripts with `npm run`
 - ❌ Committing workflows with `setup-node`
 - ❌ Committing any hybrid package manager usage
 
-### **4. CI/CD Integration**
-**Fast CI workflow** includes package manager validation:
+### __4. CI/CD Integration**
+
+**Fast CI workflow__ includes package manager validation:
+
 - Runs on every push/PR
 - Fails CI if inconsistencies detected
 - Provides clear error messages and fix instructions
 
-## 📋 **The Clear Rules**
+## 📋 __The Clear Rules**
 
-### **Development Commands (Internal):**
+### __Development Commands (Internal):**
+
 ```json
 {
   "scripts": {
-    "build": "bun run build:vite",           // ✅ bun run
-    "test": "bun test",                      // ✅ bun  
-    "dev": "bun --watch cli/script.ts",     // ✅ bun
-    "validate": "bun tools/validate.ts"     // ✅ bun
+    "build": "Bun run build:Vite", // ✅ Bun run
+    "test": "Bun test", // ✅ Bun
+    "dev": "Bun --watch CLI/script.ts", // ✅ Bun
+    "validate": "Bun tools/validate.ts" // ✅ Bun
   }
 }
-```
+```text
 
-### **GitHub Actions (CI/CD):**
+### __GitHub Actions (CI/CD):**
+
 ```yaml
 - name: Setup Bun
-  uses: oven-sh/setup-bun@v2              # ✅ setup-bun
-  
-- name: Install dependencies  
-  run: bun install                        # ✅ bun install
-  
+  uses: oven-sh/setup-Bun@v2 # ✅ setup-Bun
+
+- name: Install dependencies
+  run: Bun install # ✅ Bun install
+
 - name: Run CLI
-  run: bun cli/aegis-hydrate.ts          # ✅ bun execution
-```
+  run: Bun CLI/Aegis-hydrate.ts # ✅ Bun execution
+```text
 
-### **Distribution (External):**
+### __Distribution (External):**
+
 ```bash
-# Users still install via NPM (industry standard)
-npm install -g @aegis-framework/cli@2.4.0
-```
+# Users still install via npm (industry standard)
+npm install -g @Aegis-framework/CLI@2.4.0
+```text
 
-## 🚨 **Violation Detection**
+## 🚨 __Violation Detection**
 
-### **Examples of Constitutional Violations:**
+### __Examples of Constitutional Violations:**
+
 ```json
 // ❌ VIOLATION: Mixed package managers
 {
   "scripts": {
-    "build": "npm run validate && bun run build:vite",  // Mixed!
-    "test": "node cli/test.ts",                         // Wrong runtime!
-    "dev": "npm install && bun dev"                     // Inconsistent!
+    "build": "npm run validate && Bun run build:Vite", // Mixed!
+    "test": "node CLI/test.ts", // Wrong runtime!
+    "dev": "npm install && Bun dev" // Inconsistent!
   }
 }
-```
+```text
 
-### **Automatic Detection:**
-- 🔍 **Real-time**: Pre-commit hooks catch violations
-- 🔍 **Continuous**: CI/CD validates on every push
-- 🔍 **Comprehensive**: Scans scripts, workflows, docs, hooks
+### __Automatic Detection:**
 
-## 🔧 **Developer Workflow Protection**
+- 🔍 __Real-time__: Pre-commit hooks catch violations
+- 🔍 __Continuous__: CI/CD validates on every push
+- 🔍 __Comprehensive__: Scans scripts, workflows, docs, hooks
 
-### **Onboarding Safety:**
+## 🔧 __Developer Workflow Protection**
+
+### __Onboarding Safety:**
+
 ```bash
 # New developers get consistent setup
-git clone aegis-framework
-cd aegis-framework
-bun install                    # ✅ Single command
-bun run validate:all           # ✅ Includes package manager check
-```
+git clone Aegis-framework
+cd Aegis-framework
+Bun install                    # ✅ Single command
+Bun run validate:all           # ✅ Includes package manager check
+```text
 
-### **Development Safety:**
+### __Development Safety:**
+
 ```bash
 # All commands are consistent
-bun cli/aegis-hydrate.ts       # ✅ Direct execution
-bun run build                  # ✅ Fast builds  
-bun test                       # ✅ Instant testing
-bun tools/validate.ts          # ✅ Quick validation
-```
+Bun CLI/Aegis-hydrate.ts       # ✅ Direct execution
+Bun run build                  # ✅ Fast builds
+Bun test                       # ✅ Instant testing
+Bun tools/validate.ts          # ✅ Quick validation
+```text
 
-### **Contribution Safety:**
+### __Contribution Safety:**
+
 ```bash
 # Pre-commit prevents violations
 git add .
@@ -131,43 +148,47 @@ git commit -m "feature: add new capability"
 # → Automatically validates package manager consistency
 # → Blocks commit if violations found
 # → Provides auto-fix instructions
-```
+```text
 
-## 📊 **Protection Coverage**
+## 📊 __Protection Coverage**
 
-### **Protected Areas:**
-- ✅ **package.json scripts** (100% coverage)
-- ✅ **GitHub Actions workflows** (100% coverage)  
-- ✅ **Git hooks** (100% coverage)
-- ✅ **Documentation examples** (warning system)
-- ✅ **CLI script execution** (recommendation system)
+### __Protected Areas:**
 
-### **Enforcement Levels:**
-- 🔥 **BLOCKING**: Package.json scripts, workflows (CI fails)
-- ⚠️ **WARNING**: Documentation, shebangs (alerts only)
-- 📝 **LOGGING**: Historical analysis and drift tracking
+- ✅ __package.JSON scripts__ (100% coverage)
+- ✅ __GitHub Actions workflows__ (100% coverage)
+- ✅ __Git hooks__ (100% coverage)
+- ✅ __Documentation examples__ (warning system)
+- ✅ __CLI script execution__ (recommendation system)
 
-## 🎯 **Success Metrics**
+### __Enforcement Levels:**
 
-### **Zero Tolerance Policy:**
-- **0 errors** in package manager consistency validator
-- **0 CI failures** due to package manager drift  
-- **0 mixed commands** in package.json scripts
-- **0 node usage** for TypeScript execution in workflows
+- 🔥 __BLOCKING__: Package.JSON scripts, workflows (CI fails)
+- ⚠️ __WARNING__: Documentation, shebangs (alerts only)
+- 📝 __LOGGING__: Historical analysis and drift tracking
 
-### **Developer Experience:**
-- **Single setup command**: `bun install`
-- **Consistent execution**: All commands use `bun`
-- **Fast feedback**: Package manager validation in <5 seconds
-- **Auto-repair**: One-command fix for any violations
+## 🎯 __Success Metrics**
 
-## 🏛️ **Constitutional Integration**
+### __Zero Tolerance Policy:**
+
+- __0 errors__ in package manager consistency validator
+- __0 CI failures__ due to package manager drift
+- __0 mixed commands__ in package.JSON scripts
+- __0 node usage__ for TypeScript execution in workflows
+
+### __Developer Experience:**
+
+- __Single setup command__: `Bun install`
+- __Consistent execution__: All commands use `Bun`
+- __Fast feedback__: Package manager validation in <5 seconds
+- __Auto-repair__: One-command fix for any violations
+
+## 🏛️ __Constitutional Integration**
 
 This protection system enforces:
 
-- **Article I §1 (Traceability)**: Deterministic tooling for reproducible builds
-- **Article I §2 (Observability)**: Clear logging of package manager usage
-- **Article I §3 (Reproducibility)**: Consistent environment across all contexts  
-- **Article I §4 (Safety)**: Preventing drift through automated enforcement
+- __Article I §1 (Traceability)__: Deterministic tooling for reproducible builds
+- __Article I §2 (Observability)__: Clear logging of package manager usage
+- __Article I §3 (Reproducibility)__: Consistent environment across all contexts
+- __Article I §4 (Safety)__: Preventing drift through automated enforcement
 
-**Result: The Aegis Framework is constitutionally protected from package manager confusion!** 🛡️
+**Result: The Aegis Framework is constitutionally protected from package manager confusion!__ 🛡️

@@ -39,8 +39,8 @@ export class BlueprintCoverageAuditor {
    * Load existing blueprints for coverage analysis
    */
   async loadExistingBlueprints(): Promise<void> {
-    const blueprintFiles = await glob('patterns/**/blueprint.yaml', { 
-      cwd: this.projectRoot 
+    const blueprintFiles = await glob('patterns/**/blueprint.yaml', {
+      cwd: this.projectRoot,
     });
 
     for (const blueprintPath of blueprintFiles) {
@@ -48,11 +48,11 @@ export class BlueprintCoverageAuditor {
         const content = fs.readFileSync(path.join(this.projectRoot, blueprintPath), 'utf8');
         const yaml = await import('yaml');
         const blueprint = yaml.parse(content);
-        
+
         if (blueprint.id) {
           this.existingBlueprints.set(blueprint.id, {
             ...blueprint,
-            path: blueprintPath
+            path: blueprintPath,
           });
         }
       } catch (error) {
@@ -75,24 +75,25 @@ export class BlueprintCoverageAuditor {
         codePatterns: [
           /(?:login|register|authenticate|signin|signup)/i,
           /(?:password|hash|bcrypt|argon2)/i,
-          /(?:session|cookie|token).*(?:create|validate|destroy)/i
+          /(?:session|cookie|token).*(?:create|validate|destroy)/i,
         ],
-        constitutionalRequirement: 'Article I, Section 4: Safety - Security-critical functionality requires blueprint governance',
-        commonUseCases: ['User login', 'User registration', 'Session management', 'Password reset']
+        constitutionalRequirement:
+          'Article I, Section 4: Safety - Security-critical functionality requires blueprint governance',
+        commonUseCases: ['User login', 'User registration', 'Session management', 'Password reset'],
       },
 
       {
-        category: 'Security', 
+        category: 'Security',
         name: 'Authorization & Access Control',
         description: 'Role-based access, permissions, guards',
         priority: 'critical',
         codePatterns: [
           /(?:role|permission|access|authorize|guard)/i,
           /(?:canAccess|hasPermission|isAllowed|checkAuth)/i,
-          /(?:admin|user|moderator).*(?:check|role|permission)/i
+          /(?:admin|user|moderator).*(?:check|role|permission)/i,
         ],
         constitutionalRequirement: 'Article I, Section 4: Safety',
-        commonUseCases: ['Role management', 'Permission checking', 'Route guards', 'API authorization']
+        commonUseCases: ['Role management', 'Permission checking', 'Route guards', 'API authorization'],
       },
 
       // Data Management
@@ -104,10 +105,10 @@ export class BlueprintCoverageAuditor {
         codePatterns: [
           /db\.(?:select|insert|update|delete|query)/i,
           /(?:create|read|update|delete).*(?:record|entity|data)/i,
-          /(?:transaction|commit|rollback)/i
+          /(?:transaction|commit|rollback)/i,
         ],
         constitutionalRequirement: 'Article I, Section 1: Traceability - Database operations must be traceable',
-        commonUseCases: ['CRUD operations', 'Complex queries', 'Transactions', 'Data validation']
+        commonUseCases: ['CRUD operations', 'Complex queries', 'Transactions', 'Data validation'],
       },
 
       {
@@ -118,10 +119,10 @@ export class BlueprintCoverageAuditor {
         codePatterns: [
           /(?:validate|sanitize|schema|zod|joi)/i,
           /(?:isValid|checkInput|validateInput)/i,
-          /(?:required|min|max|pattern).*(?:validation|check)/i
+          /(?:required|min|max|pattern).*(?:validation|check)/i,
         ],
         constitutionalRequirement: 'Article I, Section 4: Safety',
-        commonUseCases: ['Form validation', 'API input validation', 'Data sanitization', 'Schema enforcement']
+        commonUseCases: ['Form validation', 'API input validation', 'Data sanitization', 'Schema enforcement'],
       },
 
       // API & Routing
@@ -133,10 +134,10 @@ export class BlueprintCoverageAuditor {
         codePatterns: [
           /(?:GET|POST|PUT|DELETE|PATCH).*\/api/i,
           /(?:route|endpoint|handler|controller)/i,
-          /(?:middleware|guard|interceptor)/i
+          /(?:middleware|guard|interceptor)/i,
         ],
         constitutionalRequirement: 'Article I, Section 2: Blueprint Primacy',
-        commonUseCases: ['REST endpoints', 'API middleware', 'Request handling', 'Response formatting']
+        commonUseCases: ['REST endpoints', 'API middleware', 'Request handling', 'Response formatting'],
       },
 
       {
@@ -147,10 +148,10 @@ export class BlueprintCoverageAuditor {
         codePatterns: [
           /(?:query|mutation|subscription|resolver)/i,
           /(?:graphql|gql|apollo)/i,
-          /(?:typeDefs|schema|resolver)/i
+          /(?:typeDefs|schema|resolver)/i,
         ],
         constitutionalRequirement: 'Article I, Section 2: Blueprint Primacy',
-        commonUseCases: ['GraphQL schemas', 'Resolvers', 'Subscriptions', 'Query optimization']
+        commonUseCases: ['GraphQL schemas', 'Resolvers', 'Subscriptions', 'Query optimization'],
       },
 
       // Error Handling
@@ -162,10 +163,10 @@ export class BlueprintCoverageAuditor {
         codePatterns: [
           /(?:try|catch|throw|error|exception)/i,
           /(?:errorBoundary|fallback|retry)/i,
-          /(?:handleError|onError|errorHandler)/i
+          /(?:handleError|onError|errorHandler)/i,
         ],
         constitutionalRequirement: 'Article I, Section 4: Safety - Fallback mechanisms required',
-        commonUseCases: ['Error boundaries', 'API error handling', 'Retry mechanisms', 'User error messages']
+        commonUseCases: ['Error boundaries', 'API error handling', 'Retry mechanisms', 'User error messages'],
       },
 
       {
@@ -176,10 +177,10 @@ export class BlueprintCoverageAuditor {
         codePatterns: [
           /(?:loading|pending|fetching|isLoading)/i,
           /(?:useState|useEffect|useQuery|useMutation)/i,
-          /(?:loading|success|error).*state/i
+          /(?:loading|success|error).*state/i,
         ],
         constitutionalRequirement: 'Article I, Section 1: Observability',
-        commonUseCases: ['Loading indicators', 'Async state', 'State machines', 'Optimistic updates']
+        commonUseCases: ['Loading indicators', 'Async state', 'State machines', 'Optimistic updates'],
       },
 
       // UI Patterns
@@ -191,10 +192,10 @@ export class BlueprintCoverageAuditor {
         codePatterns: [
           /(?:form|input|field|submit|validate)/i,
           /(?:onSubmit|handleSubmit|formData)/i,
-          /(?:fieldError|inputError|validationError)/i
+          /(?:fieldError|inputError|validationError)/i,
         ],
         constitutionalRequirement: 'Article I, Section 4: Safety',
-        commonUseCases: ['Form validation', 'Form submission', 'Field errors', 'Multi-step forms']
+        commonUseCases: ['Form validation', 'Form submission', 'Field errors', 'Multi-step forms'],
       },
 
       {
@@ -205,10 +206,10 @@ export class BlueprintCoverageAuditor {
         codePatterns: [
           /(?:route|router|navigate|link|href)/i,
           /(?:useRouter|useNavigate|push|replace)/i,
-          /(?:breadcrumb|navigation|menu)/i
+          /(?:breadcrumb|navigation|menu)/i,
         ],
         constitutionalRequirement: 'Article I, Section 2: Blueprint Primacy',
-        commonUseCases: ['SPA routing', 'Navigation menus', 'Breadcrumbs', 'Route guards']
+        commonUseCases: ['SPA routing', 'Navigation menus', 'Breadcrumbs', 'Route guards'],
       },
 
       // File & Media
@@ -220,10 +221,10 @@ export class BlueprintCoverageAuditor {
         codePatterns: [
           /(?:upload|file|multipart|formData)/i,
           /(?:fileInput|dropzone|fileSelect)/i,
-          /(?:imageUpload|documentUpload|fileHandler)/i
+          /(?:imageUpload|documentUpload|fileHandler)/i,
         ],
         constitutionalRequirement: 'Article I, Section 4: Safety',
-        commonUseCases: ['Image upload', 'Document upload', 'File validation', 'Progress indicators']
+        commonUseCases: ['Image upload', 'Document upload', 'File validation', 'Progress indicators'],
       },
 
       // Real-time Features
@@ -235,10 +236,10 @@ export class BlueprintCoverageAuditor {
         codePatterns: [
           /(?:websocket|socket|realtime|live)/i,
           /(?:subscribe|publish|emit|broadcast)/i,
-          /(?:notification|push|alert)/i
+          /(?:notification|push|alert)/i,
         ],
         constitutionalRequirement: 'Article I, Section 1: Observability',
-        commonUseCases: ['Live updates', 'Notifications', 'Chat systems', 'Real-time collaboration']
+        commonUseCases: ['Live updates', 'Notifications', 'Chat systems', 'Real-time collaboration'],
       },
 
       // Testing Patterns
@@ -250,11 +251,11 @@ export class BlueprintCoverageAuditor {
         codePatterns: [
           /(?:test|spec|mock|stub|fixture)/i,
           /(?:expect|assert|should|describe|it)/i,
-          /(?:testUtils|testHelper|mockData)/i
+          /(?:testUtils|testHelper|mockData)/i,
         ],
         constitutionalRequirement: 'Article I, Section 3: Reproducibility',
-        commonUseCases: ['Test utilities', 'Mock data', 'Test helpers', 'Integration tests']
-      }
+        commonUseCases: ['Test utilities', 'Mock data', 'Test helpers', 'Integration tests'],
+      },
     ];
   }
 
@@ -263,15 +264,14 @@ export class BlueprintCoverageAuditor {
    */
   checkPatternCoverage(pattern: FundamentalPattern): BlueprintCoverageGap {
     const relatedBlueprints: string[] = [];
-    
+
     // Check existing blueprints for coverage
     for (const [blueprintId, blueprint] of this.existingBlueprints) {
       const blueprintContent = JSON.stringify(blueprint).toLowerCase();
       const patternName = pattern.name.toLowerCase();
-      
+
       // Check if blueprint covers this pattern
-      if (blueprintContent.includes(patternName) || 
-          pattern.codePatterns.some(regex => regex.test(blueprintContent))) {
+      if (blueprintContent.includes(patternName) || pattern.codePatterns.some(regex => regex.test(blueprintContent))) {
         relatedBlueprints.push(blueprintId);
       }
     }
@@ -285,7 +285,7 @@ export class BlueprintCoverageAuditor {
       existingBlueprints: relatedBlueprints,
       gapSeverity,
       recommendedAction: this.getRecommendedAction(pattern, hasBlueprint),
-      exampleImplementations: this.getExampleImplementations(pattern)
+      exampleImplementations: this.getExampleImplementations(pattern),
     };
   }
 
@@ -317,7 +317,11 @@ export class BlueprintCoverageAuditor {
   private getExampleImplementations(pattern: FundamentalPattern): string[] {
     const examples: Record<string, string[]> = {
       'User Authentication': ['lucia-auth + drizzle', 'nextauth + prisma', 'firebase-auth', 'auth0'],
-      'Authorization & Access Control': ['role-based-access-control', 'attribute-based-access-control', 'permission-matrix'],
+      'Authorization & Access Control': [
+        'role-based-access-control',
+        'attribute-based-access-control',
+        'permission-matrix',
+      ],
       'Database Operations': ['drizzle-orm', 'prisma', 'typeorm', 'kysely'],
       'Data Validation': ['zod', 'joi', 'yup', 'ajv'],
       'REST API Endpoints': ['express + typescript', 'fastify', 'hapi', 'nest.js'],
@@ -328,7 +332,7 @@ export class BlueprintCoverageAuditor {
       'Navigation & Routing': ['react-router', 'next-router', 'reach-router', 'vue-router'],
       'File Upload': ['multer', 'formidable', 'busboy', 'dropzone'],
       'WebSocket Communication': ['socket.io', 'ws', 'pusher', 'ably'],
-      'Testing Utilities': ['jest', 'vitest', 'testing-library', 'cypress']
+      'Testing Utilities': ['jest', 'vitest', 'testing-library', 'cypress'],
     };
 
     return examples[pattern.name] || ['custom-implementation'];
@@ -346,7 +350,7 @@ export class BlueprintCoverageAuditor {
     frameworkCompleteness: number;
   }> {
     await this.loadExistingBlueprints();
-    
+
     console.log('🔍 Auditing Blueprint Coverage...\n');
     console.log(`📋 Found ${this.existingBlueprints.size} existing blueprints:`);
     for (const blueprintId of this.existingBlueprints.keys()) {
@@ -373,7 +377,7 @@ export class BlueprintCoverageAuditor {
       criticalGaps,
       highPriorityGaps,
       allGaps,
-      frameworkCompleteness
+      frameworkCompleteness,
     };
   }
 
@@ -381,7 +385,8 @@ export class BlueprintCoverageAuditor {
    * Generate detailed coverage report
    */
   generateCoverageReport(auditResults: Awaited<ReturnType<typeof this.auditBlueprintCoverage>>): string {
-    const { totalPatterns, coveredPatterns, criticalGaps, highPriorityGaps, allGaps, frameworkCompleteness } = auditResults;
+    const { totalPatterns, coveredPatterns, criticalGaps, highPriorityGaps, allGaps, frameworkCompleteness } =
+      auditResults;
 
     let report = '# Blueprint Coverage Audit Report\n\n';
     report += `**Generated:** ${new Date().toISOString()}\n`;
@@ -420,17 +425,22 @@ export class BlueprintCoverageAuditor {
       const categoryGaps = allGaps.filter(gap => gap.pattern.category === category);
       const categoryCovered = categoryGaps.filter(gap => gap.hasBlueprint).length;
       const categoryPercentage = Math.round((categoryCovered / categoryGaps.length) * 100);
-      
+
       report += `**${category}:** ${categoryPercentage}% (${categoryCovered}/${categoryGaps.length})\n`;
     }
 
     report += '\n## 📋 Complete Gap Analysis\n\n';
     for (const gap of allGaps) {
       const status = gap.hasBlueprint ? '✅' : '❌';
-      const priority = gap.pattern.priority === 'critical' ? '🚨' : 
-                     gap.pattern.priority === 'high' ? '⚠️' : 
-                     gap.pattern.priority === 'medium' ? '💡' : '📝';
-      
+      const priority =
+        gap.pattern.priority === 'critical'
+          ? '🚨'
+          : gap.pattern.priority === 'high'
+            ? '⚠️'
+            : gap.pattern.priority === 'medium'
+              ? '💡'
+              : '📝';
+
       report += `${status} ${priority} **${gap.pattern.name}** (${gap.pattern.category})\n`;
       if (gap.hasBlueprint) {
         report += `   - Covered by: ${gap.existingBlueprints.join(', ')}\n`;
@@ -450,13 +460,13 @@ export class BlueprintCoverageAuditor {
 export async function auditBlueprintCoverage(projectRoot?: string): Promise<void> {
   const auditor = new BlueprintCoverageAuditor(projectRoot);
   const results = await auditor.auditBlueprintCoverage();
-  
+
   console.log('📊 Blueprint Coverage Audit Results');
   console.log('===================================\n');
-  
+
   console.log(`🎯 Framework Completeness: ${results.frameworkCompleteness}%`);
   console.log(`📋 Patterns Covered: ${results.coveredPatterns}/${results.totalPatterns}\n`);
-  
+
   if (results.criticalGaps.length > 0) {
     console.log('🚨 Critical Gaps (Constitutional Requirement):');
     for (const gap of results.criticalGaps) {
@@ -464,7 +474,7 @@ export async function auditBlueprintCoverage(projectRoot?: string): Promise<void
     }
     console.log('');
   }
-  
+
   if (results.highPriorityGaps.length > 0) {
     console.log('⚠️ High Priority Gaps:');
     for (const gap of results.highPriorityGaps) {
@@ -478,12 +488,12 @@ export async function auditBlueprintCoverage(projectRoot?: string): Promise<void
   if (!fs.existsSync(reportDir)) {
     fs.mkdirSync(reportDir, { recursive: true });
   }
-  
+
   const reportFile = path.join(reportDir, `blueprint-coverage-${Date.now()}.md`);
   fs.writeFileSync(reportFile, auditor.generateCoverageReport(results));
-  
+
   console.log(`📄 Detailed report saved: ${reportFile}`);
-  
+
   if (results.criticalGaps.length > 0) {
     console.log('\n🏛️ Constitutional Action Required: Critical blueprint gaps must be addressed');
     process.exit(1);
@@ -492,9 +502,8 @@ export async function auditBlueprintCoverage(projectRoot?: string): Promise<void
 
 // CLI execution
 if (require.main === module) {
-  auditBlueprintCoverage()
-    .catch(error => {
-      console.error('Blueprint coverage audit error:', error);
-      process.exit(1);
-    });
+  auditBlueprintCoverage().catch(error => {
+    console.error('Blueprint coverage audit error:', error);
+    process.exit(1);
+  });
 }

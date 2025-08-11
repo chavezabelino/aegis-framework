@@ -1,5 +1,5 @@
-import { defineConfig } from 'vite'
-import { resolve } from 'path'
+import { defineConfig } from 'vite';
+import { resolve } from 'path';
 
 /**
  * @aegisFrameworkVersion: 2.4.0
@@ -21,7 +21,7 @@ export default defineConfig({
         'cursor-integration': resolve(__dirname, 'tools/cursor-integration.ts'),
         'cursor-realtime-integration': resolve(__dirname, 'tools/cursor-realtime-integration.ts'),
         'realtime-evolution-detection': resolve(__dirname, 'tools/realtime-evolution-detection.ts'),
-        'detect-evolution-stories': resolve(__dirname, 'tools/detect-evolution-stories.ts')
+        'detect-evolution-stories': resolve(__dirname, 'tools/detect-evolution-stories.ts'),
       },
       external: [
         // Node.js built-ins
@@ -49,7 +49,7 @@ export default defineConfig({
         'tty',
         'vm',
         'worker_threads',
-        
+
         // External dependencies
         'commander',
         'ejs',
@@ -58,15 +58,15 @@ export default defineConfig({
         'ora',
         'yargs',
         'zod',
-        'esbuild'
+        'esbuild',
       ],
       output: {
         format: 'es',
         entryFileNames: '[name].js',
         chunkFileNames: '[name]-[hash].js',
-        assetFileNames: '[name]-[hash].[ext]'
-      }
-    }
+        assetFileNames: '[name]-[hash].[ext]',
+      },
+    },
   },
 
   // Resolve configuration
@@ -76,19 +76,19 @@ export default defineConfig({
       '@framework': resolve(__dirname, 'framework'),
       '@tools': resolve(__dirname, 'tools'),
       '@cli': resolve(__dirname, 'cli'),
-      '@blueprints': resolve(__dirname, 'blueprints')
-    }
+      '@blueprints': resolve(__dirname, 'blueprints'),
+    },
   },
 
   // TypeScript configuration
   esbuild: {
     target: 'node18',
-    platform: 'node'
+    platform: 'node',
   },
 
   // Define environment variables
   define: {
     __AEGIS_VERSION__: JSON.stringify(process.env.npm_package_version || '2.1.0'),
-    __AEGIS_ENV__: JSON.stringify(process.env.NODE_ENV || 'development')
-  }
-})
+    __AEGIS_ENV__: JSON.stringify(process.env.NODE_ENV || 'development'),
+  },
+});

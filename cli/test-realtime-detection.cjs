@@ -15,7 +15,7 @@ const testPrompts = [
   'assess the pitfall in the current implementation',
   'should we document this somehow in a systematic way?',
   'how do we get detection in-flight from real-time prompts?',
-  'this field-driven approach is eating our own dog food'
+  'this field-driven approach is eating our own dog food',
 ];
 
 console.log('📋 Test prompts that would trigger evolution detection:');

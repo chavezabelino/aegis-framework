@@ -1,9 +1,9 @@
 /**
  * Langfuse Adapter for Aegis Framework
- * 
+ *
  * Out-of-the-box Langfuse integration for LLM observability UI
  * Provides team dashboards without additional configuration work
- * 
+ *
  * @aegisFrameworkVersion 2.4.0
  * @intent Production-ready LLM observability with zero configuration
  * @context Observability infrastructure hardening
@@ -81,7 +81,7 @@ class AegisLangfuseAdapter {
       environment: process.env.NODE_ENV || 'development',
       projectName: 'aegis-framework',
       ...this.loadConfig(),
-      ...config
+      ...config,
     };
 
     if (this.config.enabled) {
@@ -95,7 +95,7 @@ class AegisLangfuseAdapter {
       apiKey: process.env.LANGFUSE_API_KEY,
       secretKey: process.env.LANGFUSE_SECRET_KEY,
       baseUrl: process.env.LANGFUSE_BASE_URL || 'https://cloud.langfuse.com',
-      enabled: !!process.env.LANGFUSE_API_KEY
+      enabled: !!process.env.LANGFUSE_API_KEY,
     };
 
     // Try to load from config file
@@ -153,20 +153,10 @@ class AegisLangfuseAdapter {
         name: `generate-${data.blueprintId}`,
         model: data.model || 'unknown',
         modelParameters: {
-          temperature: data.temperature,
-          maxTokens: data.maxTokens,
+          temperature: data.temperature || 0.7,
+          maxTokens: data.maxTokens || 1000,
         },
-        prompt: [
-          {
-            role: 'system',
-            content: `Aegis Framework Blueprint Generation\nBlueprint: ${data.blueprintId}@${data.blueprintVersion}\nMode: ${data.mode}`
-          },
-          {
-            role: 'user', 
-            content: data.prompt
-          }
-        ],
-        completion: data.output,
+
         usage: {
           promptTokens: Math.floor(data.performance.tokensUsed * 0.7), // Estimate
           completionTokens: Math.floor(data.performance.tokensUsed * 0.3),
@@ -212,7 +202,6 @@ class AegisLangfuseAdapter {
 
       await this.langfuse!.flushAsync();
       return trace.id;
-
     } catch (error) {
       console.warn('⚠️  Failed to record generation in Langfuse:', error);
       return null;
@@ -273,7 +262,6 @@ class AegisLangfuseAdapter {
 
       await this.langfuse!.flushAsync();
       return trace.id;
-
     } catch (error) {
       console.warn('⚠️  Failed to record evaluation in Langfuse:', error);
       return null;
@@ -310,7 +298,6 @@ class AegisLangfuseAdapter {
 
       await this.langfuse!.flushAsync();
       return session.id;
-
     } catch (error) {
       console.warn('⚠️  Failed to record session in Langfuse:', error);
       return null;
@@ -351,7 +338,6 @@ class AegisLangfuseAdapter {
 
       console.log(`📊 Created Langfuse dataset: ${name} with ${items.length} items`);
       return dataset.id;
-
     } catch (error) {
       console.warn('⚠️  Failed to create dataset in Langfuse:', error);
       return null;
@@ -396,7 +382,7 @@ class AegisLangfuseAdapter {
 
     const configPath = path.join(configDir, 'langfuse.json');
     const sanitizedConfig = { ...config };
-    
+
     // Don't store secrets in file if they're in environment
     if (process.env.LANGFUSE_API_KEY) delete sanitizedConfig.apiKey;
     if (process.env.LANGFUSE_SECRET_KEY) delete sanitizedConfig.secretKey;
@@ -406,9 +392,4 @@ class AegisLangfuseAdapter {
   }
 }
 
-export { 
-  AegisLangfuseAdapter, 
-  type LangfuseConfig, 
-  type AegisGenerationData, 
-  type AegisEvaluationData 
-};
+export { AegisLangfuseAdapter, type LangfuseConfig, type AegisGenerationData, type AegisEvaluationData };

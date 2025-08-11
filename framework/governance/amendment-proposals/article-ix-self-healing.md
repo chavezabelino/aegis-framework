@@ -10,129 +10,144 @@
 
 ## 🏛️ Amendment Overview
 
-**Proposal ID**: AMEND-001-SELF-HEALING  
-**Proposed Date**: August 5, 2025  
-**Constitutional Authority**: Article VII (Amendment Process)  
-**Impact Level**: Major enhancement with new enforcement powers
+**Proposal ID__: AMEND-001-SELF-HEALING  
+**Proposed Date__: August 5, 2025  
+**Constitutional Authority__: Article VII (Amendment Process)  
+**Impact Level__: Major enhancement with new enforcement powers
 
 ## 🎯 Proposed Amendment Text
 
-### **Article IX: Self-Healing Governance**
+### __Article IX: Self-Healing Governance**
 
-#### **Section 1: Constitutional Monitoring**
-The framework shall continuously monitor its own constitutional compliance through:
+#### __Section 1: Constitutional Monitoring**
 
-1. **Automated Constitutional Audits**: Regular compliance assessments across all framework components
-2. **Real-time Drift Detection**: Immediate identification of constitutional violations as they occur
-3. **Compliance Scoring**: Quantitative measurement of framework constitutional health
-4. **Violation Logging**: Complete audit trail of all constitutional infractions
+The framework shall continuously monitor its own Constitutional compliance through:
 
-#### **Section 2: Enforcement Authority**
-The Constitutional Conductor (`aegis-conductor` CLI) is hereby established as the primary enforcement mechanism with authority to:
+1. __Automated Constitutional Audits__: Regular compliance assessments across all framework components
+2. __Real-time Drift Detection__: Immediate identification of Constitutional violations as they occur
+3. __Compliance Scoring__: Quantitative measurement of framework Constitutional health
+4. __Violation Logging__: Complete audit trail of all Constitutional infractions
 
-1. **Detect Constitutional Violations**: Automatically identify deviations from constitutional requirements
-2. **Apply Safe Auto-corrections**: Implement corrections for predetermined safe violation types
-3. **Block Non-compliant Changes**: Prevent constitutional violations from entering the framework
-4. **Generate Compliance Reports**: Provide transparency through comprehensive constitutional reporting
+#### __Section 2: Enforcement Authority**
 
-#### **Section 3: Self-Correction Principles**
-All automated constitutional corrections must adhere to these immutable principles:
+The Constitutional Conductor (`Aegis-conductor` CLI) is hereby established as the primary enforcement mechanism with
+authority to:
 
-1. **Dry-run by Default**: All enforcement actions must preview changes before application
-2. **Human Oversight**: Significant constitutional changes require explicit human approval
-3. **Complete Audit Trail**: Every enforcement action must be logged with full context
-4. **Rollback Capability**: All automated changes must be reversible
-5. **Origin Tracking**: Every change must declare its origin (human, agent, conductor, auto)
+1. __Detect Constitutional Violations__: Automatically identify deviations from Constitutional requirements
+2. __Apply Safe Auto-corrections__: Implement corrections for predetermined safe violation types
+3. __Block Non-compliant Changes__: Prevent Constitutional violations from entering the framework
+4. __Generate Compliance Reports__: Provide transparency through comprehensive Constitutional reporting
 
-#### **Section 4: Drift Management**
+#### __Section 3: Self-Correction Principles**
+
+All automated Constitutional corrections must adhere to these immutable principles:
+
+1. __Dry-run by Default__: All enforcement actions must preview changes before application
+2. __Human Oversight__: Significant Constitutional changes require explicit human approval
+3. __Complete Audit Trail__: Every enforcement action must be logged with full context
+4. __Rollback Capability__: All automated changes must be reversible
+5. __Origin Tracking__: Every change must declare its origin (human, agent, conductor, auto)
+
+#### __Section 4: Drift Management**
+
 Constitutional drift shall be managed through:
 
-1. **Automatic Detection**: Real-time identification of constitutional deviations
-2. **Categorization**: Classification by type, severity, and corrective complexity
-3. **Pattern Analysis**: Recognition of recurring violation patterns for prevention
-4. **Predictive Prevention**: Proactive measures to prevent constitutional drift before occurrence
+1. __Automatic Detection__: Real-time identification of Constitutional deviations
+2. __Categorization__: Classification by type, severity, and corrective complexity
+3. __Pattern Analysis__: Recognition of recurring violation patterns for prevention
+4. __Predictive Prevention__: Proactive measures to prevent Constitutional drift before occurrence
 
-#### **Section 5: Democratic Evolution**
+#### __Section 5: Democratic Evolution**
+
 Self-healing governance must maintain democratic principles:
 
-1. **Community Oversight**: Constitutional enforcement subject to community review
-2. **Amendment Transparency**: All constitutional changes logged and reviewable
-3. **Governance Limits**: Conductor cannot modify constitutional text without human approval
-4. **Emergency Procedures**: Crisis protocols maintain constitutional integrity under Article VII
+1. __Community Oversight__: Constitutional enforcement subject to community review
+2. __Amendment Transparency__: All Constitutional changes logged and reviewable
+3. __Governance Limits__: Conductor cannot modify Constitutional text without human approval
+4. __Emergency Procedures__: Crisis protocols maintain Constitutional integrity under Article VII
 
 ## 📊 Constitutional Impact Analysis
 
-### **Affected Articles**
+### __Affected Articles**
 
-| Article | Impact Level | Required Changes |
-|---------|--------------|------------------|
-| Article I (Core Principles) | **MEDIUM** | Add self-monitoring to fundamental values |
-| Article II (Framework Governance) | **HIGH** | Integrate conductor authority |
-| Article III (Evolution Process) | **MEDIUM** | Add automated compliance steps |
-| Article VIII (Enforcement) | **CRITICAL** | Complete reconstruction with conductor integration |
+| Article                           | Impact Level | Required Changes                                   |
+| --------------------------------- | ------------ | -------------------------------------------------- |
+| Article I (Core Principles)       | __MEDIUM__   | Add self-monitoring to fundamental values          |
+| Article II (Framework Governance) | __HIGH__     | Integrate conductor authority                      |
+| Article III (Evolution Process)   | __MEDIUM__   | Add automated compliance steps                     |
+| Article VIII (Enforcement)        | __CRITICAL__ | Complete reconstruction with conductor integration |
 
-### **New Constitutional Powers**
+### __New Constitutional Powers**
 
-1. **Enforcement Authority**: Conductor gains constitutional enforcement powers
-2. **Compliance Monitoring**: Framework gains self-awareness capabilities  
-3. **Democratic Safeguards**: Community oversight of automated governance
-4. **Emergency Protocols**: Crisis management within constitutional bounds
+1. __Enforcement Authority__: Conductor gains Constitutional enforcement powers
+2. __Compliance Monitoring__: Framework gains self-awareness capabilities
+3. __Democratic Safeguards__: Community oversight of automated governance
+4. __Emergency Protocols__: Crisis management within Constitutional bounds
 
 ## 🔧 Implementation Requirements
 
-### **Infrastructure Changes**
-- New `.framework/` directory for constitutional state management
+### __Infrastructure Changes**
+
+- New `.framework/` directory for Constitutional state management
 - Constitutional compliance monitoring system
 - Drift detection and logging infrastructure
 - Automated enforcement engine with safety controls
 
-### **Tool Requirements**
-- `aegis-conductor` CLI as primary constitutional interface
-- Enhanced validation tools with constitutional awareness
-- Automated changelog generation with constitutional compliance
+### __Tool Requirements**
+
+- `Aegis-conductor` CLI as primary Constitutional interface
+- Enhanced validation tools with Constitutional awareness
+- Automated changelog generation with Constitutional compliance
 - Pattern recognition system for drift prevention
 
-### **Process Changes**
-- Pre-commit constitutional validation
-- Continuous constitutional monitoring
+### __Process Changes**
+
+- Pre-commit Constitutional validation
+- Continuous Constitutional monitoring
 - Automated violation correction workflows
-- Democratic review process for constitutional changes
+- Democratic review process for Constitutional changes
 
 ## 🔐 Safety Measures
 
-### **Infinite Loop Prevention**
+### __Infinite Loop Prevention**
+
 - Maximum recursion depth for automated changes
 - Change origin tracking to prevent circular corrections
 - Dry-run enforcement by default
 - Human approval gates for significant changes
 
-### **Constitutional Safeguards**
+### __Constitutional Safeguards**
+
 - Conductor cannot modify CONSTITUTION.md without human approval
 - All enforcement actions require audit trail
 - Rollback capability for all automated changes
 - Community review process for governance changes
 
-### **Democratic Protection**
+### __Democratic Protection**
+
 - Constitutional text changes require Article VII process
 - Community oversight of enforcement policies
-- Transparent reporting of all constitutional actions
+- Transparent reporting of all Constitutional actions
 - Appeal process for enforcement decisions
 
 ## 📋 Community Review Process
 
-### **Phase 1: Technical Review** (1 week)
+### __Phase 1: Technical Review__ (1 week)
+
 - Technical feasibility assessment
 - Implementation complexity analysis
 - Safety measure validation
 - Integration impact evaluation
 
-### **Phase 2: Community Discussion** (2 weeks)
+### __Phase 2: Community Discussion__ (2 weeks)
+
 - Public discussion of amendment proposal
 - Feedback collection and integration
 - Alternative proposal consideration
 - Democratic consensus building
 
-### **Phase 3: Ratification Vote** (1 week)
+### __Phase 3: Ratification Vote__ (1 week)
+
 - Formal ratification process
 - Community voting on amendment adoption
 - Implementation timeline confirmation
@@ -140,33 +155,38 @@ Self-healing governance must maintain democratic principles:
 
 ## 🚀 Implementation Timeline
 
-### **Phase 1: Foundation** (v1.0.1-alpha - 2 weeks)
+### __Phase 1: Foundation__ (v1.0.1-alpha - 2 weeks)
+
 - Basic conductor CLI implementation
 - Constitutional state management
 - Simple drift detection and auto-correction
 - Constitutional amendment integration
 
-### **Phase 2: Intelligence** (v1.1.0-beta - 6 weeks)
+### __Phase 2: Intelligence__ (v1.1.0-beta - 6 weeks)
+
 - Pattern recognition and learning
 - Advanced enforcement capabilities
 - Democratic amendment proposals
 - Community review workflows
 
-### **Phase 3: Autonomy** (v2.0.0 - 3 months)
-- Full autonomous constitutional maintenance
+### __Phase 3: Autonomy__ (v2.0.0 - 3 months)
+
+- Full autonomous Constitutional maintenance
 - Predictive drift prevention
 - Constitutional evolution suggestions
 - Enterprise governance integration
 
 ## 📈 Success Metrics
 
-### **Constitutional Health**
+### __Constitutional Health**
+
 - Compliance score >95%
 - Violation detection accuracy >90%
 - Auto-correction success rate >85%
 - Community satisfaction >4.0/5
 
-### **Democratic Governance**
+### __Democratic Governance**
+
 - Amendment proposal participation rate
 - Community review engagement levels
 - Constitutional change transparency score
@@ -174,34 +194,39 @@ Self-healing governance must maintain democratic principles:
 
 ## 🤔 Rationale for Amendment
 
-### **Current State Limitations**
+### __Current State Limitations**
+
 - Constitution exists but lacks enforcement
 - No systematic compliance monitoring
-- Manual constitutional compliance prone to human error
-- No mechanism for constitutional self-improvement
+- Manual Constitutional compliance prone to human error
+- No mechanism for Constitutional self-improvement
 
-### **Benefits of Self-Healing Governance**
-- **Reliability**: Automated constitutional compliance ensures framework integrity
-- **Transparency**: Complete audit trail of all constitutional actions
-- **Democracy**: Community oversight maintains democratic governance
-- **Safety**: Multiple safeguards prevent constitutional damage
-- **Evolution**: Framework can improve constitutionally over time
+### __Benefits of Self-Healing Governance**
 
-### **Alignment with Core Principles**
-- **Traceability**: All constitutional actions logged and auditable
-- **Observability**: Constitutional health continuously monitored
-- **Reproducibility**: Constitutional state deterministic and recoverable
-- **Safety**: Multiple safeguards protect constitutional integrity
-- **Democratic Evolution**: Community maintains governance authority
+- __Reliability__: Automated Constitutional compliance ensures framework integrity
+- __Transparency__: Complete audit trail of all Constitutional actions
+- __Democracy__: Community oversight maintains democratic governance
+- __Safety__: Multiple safeguards prevent Constitutional damage
+- __Evolution__: Framework can improve constitutionally over time
+
+### __Alignment with Core Principles**
+
+- __Traceability__: All Constitutional actions logged and auditable
+- __Observability__: Constitutional health continuously monitored
+- __Reproducibility__: Constitutional state deterministic and recoverable
+- __Safety__: Multiple safeguards protect Constitutional integrity
+- __Democratic Evolution__: Community maintains governance authority
 
 ## 📝 Formal Amendment Text
 
-**RESOLVED**: That the Aegis Framework Constitution be amended by adding Article IX (Self-Healing Governance) as specified in this proposal, to take effect upon ratification and implementation of the Constitutional Conductor system.
+**RESOLVED__: That the Aegis Framework Constitution be amended by adding Article IX (Self-Healing Governance) as
+specified in this proposal, to take effect upon ratification and implementation of the Constitutional Conductor system.
 
-**AUTHORITY**: This amendment is proposed under Article VII (Amendment Process) of the Aegis Framework Constitution and requires community review, feedback, and ratification before implementation.
+**AUTHORITY__: This amendment is proposed under Article VII (Amendment Process) of the Aegis Framework Constitution and
+requires community review, feedback, and ratification before implementation.
 
 ---
 
-**Status**: Proposed  
-**Next Steps**: Technical review and community discussion phase  
-**Contact**: Framework governance team
+**Status__: Proposed  
+**Next Steps__: Technical review and community discussion phase  
+**Contact__: Framework governance team

@@ -11,7 +11,7 @@
       "rootCause": "lack-of-governance",
       "affectedFiles": [
         "COMPLETE-IMPLEMENTATION-SUMMARY.md",
-        "IMPLEMENTATION-SUMMARY.md", 
+        "IMPLEMENTATION-SUMMARY.md",
         "ARTICLE-IX-IMPLEMENTATION-SUMMARY.md",
         "RELEASE-v2.4.0-SUMMARY.md"
       ],
@@ -21,7 +21,7 @@
     }
   },
   {
-    "timestamp": "2025-08-06T19:15:00Z", 
+    "timestamp": "2025-08-06T19:15:00Z",
     "eventType": "drift.resolved",
     "driftType": "documentation-organization",
     "resolution": "constitutional-enforcement",
@@ -42,13 +42,13 @@
     "timestamp": "2025-08-06T19:30:00Z",
     "eventType": "framework.learning.captured",
     "learningType": "drift-prevention",
-    "agentId": "github-copilot", 
+    "agentId": "github-copilot",
     "blueprintId": "framework-governance",
     "correlationId": "rca-doc-drift-2025-08-06",
     "metadata": {
       "insights": [
         "governance-must-be-proactive",
-        "automation-essential-under-pressure", 
+        "automation-essential-under-pressure",
         "constitutional-law-works",
         "templates-prevent-drift"
       ],
@@ -64,7 +64,7 @@
   {
     "timestamp": "2025-08-06T19:45:00Z",
     "eventType": "constitutional.amendment.applied",
-    "amendmentType": "governance-enhancement", 
+    "amendmentType": "governance-enhancement",
     "agentId": "github-copilot",
     "blueprintId": "framework-governance",
     "correlationId": "rca-doc-drift-2025-08-06",
@@ -72,7 +72,7 @@
       "constitutionalAuthority": "Article IX",
       "enforcementMechanisms": [
         "validate-template-quality.cjs",
-        "validate-output-fidelity.cjs", 
+        "validate-output-fidelity.cjs",
         "pre-commit-hooks",
         "constitutional-compliance-checking"
       ],

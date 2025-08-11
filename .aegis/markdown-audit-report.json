@@ -1,0 +1,2465 @@
+{
+  "timestamp": "2025-08-11T12:38:58.282Z",
+  "summary": {
+    "totalFiles": 227,
+    "filesWithIssues": 109,
+    "totalErrors": 109,
+    "totalWarnings": 0,
+    "results": [
+      {
+        "file": "./CONSTITUTION.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./evals/judges/security-review.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./evals/judges/code-quality.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./evals/judges/framework-compliance.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./evals/README.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./tools/prompts/contract-driven-tests.kilo.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./tools/prompts/contract-driven-tests.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./tools/prompts/aegis-plan-optimizer.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./tools/prompts/aegis-vibe-coder.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./tools/prompts/aegis-plan-optimizer.kilo.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./tools/prompts/aegis-vibe-coder.kilo.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./CHANGELOG.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./framework/generated/instructions/archive/copilot-kilo-standards.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./framework/generated/instructions/archive/github-copilot.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./framework/generated/instructions/current/github-copilot-ready.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./framework/generated/instructions/current/github-copilot-ready-test-target.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./framework/generated/instructions/current/cursor-ready.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./framework/framework-core-v2.0.0-alpha-dev.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./framework/framework-core-v2.0.1.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./framework/framework-core-v2.1.0.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./framework/versions/framework-core-v1.0.1-alpha-spec.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./framework/versions/framework-core-v4.7-draft.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./framework/versions/instructions-github-copilot-v1.2.1.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./framework/versions/instructions-v1.0.0-alpha.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./framework/versions/framework-core-v1.0.0-alpha.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./framework/versions/instructions-v1.2.1.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./framework/versions/framework-core-v2.0.0-spec.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./framework/versions/framework-core-v1.1.0-beta-spec.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./framework/framework-core-v2.4.0.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./framework/governance/amendment-proposals/article-xi-agent-drift-prevention.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./framework/governance/amendment-proposals/article-ix-self-healing.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./framework/templates/sections/constitutional.template.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./framework/templates/sections/mcp-metadata.template.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./framework/templates/sections/multi-agent.template.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./framework/templates/sections/knowledge-base.template.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./framework/templates/sections/rca-debug-loop.template.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./framework/templates/sections/code-patterns.template.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./framework/templates/sections/planning-optimization.template.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./framework/templates/sections/decision-matrix.template.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./framework/templates/sections/agent-profile.template.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./framework/templates/sections/validation.template.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./framework/templates/sections/drift-detection.template.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./framework/templates/sections/ai-agent-mode.template.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./framework/templates/sections/cli-integration.template.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./framework/templates/sections/directory-structure.template.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./framework/templates/sections/framework-context.template.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./framework/templates/sections/blueprint-compliance.template.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./framework/templates/constitutional-remediation-plan-template.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./framework/templates/agent-instructions.template.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./framework/framework-core-v2.2.0.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./framework/framework-core-v2.3.0.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./.framework/dashboard-report.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./.framework/capability-map.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./website/docs/blueprints/overview.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./website/docs/blueprints/memory-governance.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./website/docs/blueprints/feat-public-viewing.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./website/docs/capabilities/overview.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./website/docs/capabilities/integration.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./website/docs/capabilities/governance.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./website/docs/capabilities/core.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./website/docs/capabilities/tools.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./website/docs/tutorial-basics/create-a-document.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./website/docs/tutorial-basics/create-a-page.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./website/docs/tutorial-basics/deploy-your-site.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./website/docs/tutorial-basics/congratulations.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./website/docs/tutorial-basics/create-a-blog-post.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./website/docs/intro.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./website/docs/tutorial-extras/translate-your-site.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./website/docs/tutorial-extras/manage-docs-versions.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./website/blog/2019-05-29-long-blog-post.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./website/blog/2021-08-26-welcome/index.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./website/blog/2019-05-28-first-blog-post.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./website/README.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./website/src/pages/markdown-page.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./tests/planning-optimization/test-plan-mvp.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./tests/planning-optimization/test-plan-surgical.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/guide/setup.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/guide/dependency-strategy-corrected.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/guide/understanding-distribution.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/guide/getting-started.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/guide/dependency-management-challenge.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/releases/v2.0.1-summary.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/releases/v2-migration-strategy.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/releases/v1.3.0-summary.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/releases/v1.4.0-summary.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/releases/README.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/releases/v1.3.1-summary.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/releases/v2.1.0-summary.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/releases/release-template.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/releases/v2.0.0-alpha-dev-release-validation.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/architecture.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/CONSTITUTIONAL-PACKAGE-MANAGER-PROTECTION.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/specifications/README.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/specifications/AI-AGENT-GOVERNANCE-SPEC-v1.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/BUN-MIGRATION.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/roadmap/memory-governance-roadmap.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/roadmap/self-healing-governance-roadmap.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/roadmap/feature-configurability-roadmap.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/roadmap/v1.3.0-roadmap.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/roadmap/README.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/roadmap/v2-hydration-roadmap.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/roadmap/tech-stack-neutrality-roadmap.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/roadmap/current-state.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/roadmap/planning-horizon.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/roadmap/strategic-vision.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/roadmap/immediate-horizon.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/aegis/planning/vibe-coding.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/aegis/planning/ide-integration.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/aegis/planning/IMPLEMENTATION-SUMMARY.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/aegis/planning/usage.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/aegis/planning/minimum-viable-plan.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/aegis/planning/decision-rubric.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/aegis/planning/README.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/aegis/governance/attestation.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/aegis/governance/evidence-manifest.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/aegis/governance/markdown-quality.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/aegis/governance/profiles.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/aegis/governance/ci-workflows.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/aegis/governance/runbook.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/aegis/governance/ENFORCEMENT-GUIDE.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/aegis/governance/visual-regression.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/aegis/governance/IMPLEMENTATION-COMPLETE.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/aegis/governance/GOVERNANCE-PROOF.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/aegis/governance/consumer-setup.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/NPM-PUBLISHING.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/planning/plan-alternative.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/planning/quick-start.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/planning/integration-guide.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/planning/plan.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/vision/neural-signal-exchange-protocol.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/vision/constitutional-hive-mind.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/vision/constitutional-hive-mind-implementation-roadmap.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/DOCUMENTATION-REORGANIZATION-PLAN.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/DEMOS.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/audit/CHANGELOG-backup-20250807.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/audit/validation-summary.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/audit/ROADMAP-VERSION-AUDIT-2025-08-07.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/deployment/DOCUSAURUS-SETUP.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/deployment/README.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/deployment/DEPLOY-TO-GITHUB-PAGES.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/evolution/evs-2025-08-07-006-auto-generated.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/evolution/evolution-documentation-standard.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/evolution/EVS-2025-08-06-001-remediation-plan-safeguards.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/evolution/evs-2025-08-07-003-auto-generated.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/evolution/evs-2025-01-XX-001-memory-subsystem-integration.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/evolution/evs-2025-01-15-001-ai-agent-traceability-violation.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/evolution/evs-2025-08-07-007-auto-generated.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/evolution/evs-2025-01-15-002-planning-optimization-integration.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/evolution/evs-2025-08-08-006-constitutional-safeguards-enhancement.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/evolution/evs-2025-08-07-002-auto-generated.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/evolution/evs-2025-08-08-001-destructive-action-protection.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/evolution/evs-2025-08-07-004-auto-generated.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/evolution/evs-2025-08-08-003-feature-configurability-complete.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/evolution/evs-2025-08-07-001-auto-generated.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/evolution/evs-2025-08-08-007-semantic-interrupt-breakthrough.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/evolution/evs-2025-08-07-005-auto-generated.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/evolution/evs-2025-01-15-001-authentication-blueprint-gap.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/evolution/evs-2025-08-07-008-dependency-bundling-drift.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/evolution/evs-2025-08-08-004-version-consistency-automation.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/evolution/evs-2025-08-08-005-constitutional-intelligence-failure.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/evolution/evs-2025-08-08-002-framework-intelligence-enhancement.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/implementation/bun-vite-migration-complete.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/implementation/automated-evolution-detection.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/implementation/apprenticeship-scaffolds.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/implementation/observability-debt-solution.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/implementation/bun-vite-migration.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/implementation/v2-paradigm-shift-summary.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/implementation/POSITIONING-MIGRATION-PLAN.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/implementation/article-ix-summary.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/implementation/v2.0.1-complete-implementation-summary.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/implementation/feature-configurability-integration-complete.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/implementation/tech-stack-neutrality-plan.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/implementation/IMPLEMENTATION-SUMMARY.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/implementation/PHASE-2-IMPLEMENTATION.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/implementation/tech-neutrality-detailed-requirements.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/implementation/documentation-drift-rca.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/implementation/feature-configurability-implementation-summary.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/implementation/PHASE-3-IMPLEMENTATION.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/implementation/proactive-evolution-detection.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/implementation/feature-configurability-phase3-complete.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/implementation/option-b-constitutional-safeguards-complete.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/implementation/README.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/implementation/cursor-realtime-integration.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/implementation/feature-configurability-audit.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/implementation/memory-subsystem-implementation-summary.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/implementation/realtime-copilot-integration.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/implementation/cursor-real-time-detection-implementation.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/implementation/v1.2.1-summary.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/implementation/semantic-interrupt-reflex-system.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/implementation/v2.0.1-stable-release-design.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/implementation/framework-evolution-recommendations.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/implementation/customization-enhancement-plan.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/implementation/foreground-hang-prevention-system.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/implementation/feature-configurability-phase2-complete.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/implementation/complete-summary.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/implementation/auto-repair-ml-engine.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/implementation/OPTION-C-IMPLEMENTATION.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/implementation/esm-build-pipeline.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/implementation/agent-drift-prevention-solution-summary.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/implementation/OPTION-B-IMPLEMENTATION.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/evolution-strategy.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/WORKFLOW-OPTIMIZATION-RESULTS.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/versioned-agent-instructions.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/feature-development-workflow.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/PACKAGE-MANAGER-STRATEGY.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/manifesto/integration-notes.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/manifesto/principles.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/manifesto/evs-index.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/manifesto/case-studies.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/manifesto/genai-os-manifesto.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/manifesto/README.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/manifesto/author-notes.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/reference/README.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/reference/pov-engineering-team.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/reference/FRAMEWORK-DASHBOARD.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/remediation/VERSION-ROADMAP-REMEDIATION-PLAN.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./docs/WORKFLOW-OPTIMIZATION.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./README.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./CONTRIBUTING.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./.github/SOCIAL-MEDIA-KIT.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./.github/REPOSITORY-CONFIG.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./.github/pull_request_template.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./.github/copilot-instructions.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./.github/ISSUE_TEMPLATE/feature-request.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./.github/ISSUE_TEMPLATE/bug-report.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      },
+      {
+        "file": "./.github/ISSUE_TEMPLATE/evolution-story.md",
+        "issues": [
+          "Error running markdownlint: Unexpected end of JSON input"
+        ],
+        "errorCount": 1,
+        "warningCount": 0
+      },
+      {
+        "file": "./templates/project-standards.md",
+        "issues": [],
+        "errorCount": 0,
+        "warningCount": 0
+      }
+    ]
+  },
+  "details": [
+    {
+      "file": "./evals/judges/security-review.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./evals/judges/code-quality.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./evals/judges/framework-compliance.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./tools/prompts/contract-driven-tests.kilo.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./tools/prompts/contract-driven-tests.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./tools/prompts/aegis-plan-optimizer.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./tools/prompts/aegis-plan-optimizer.kilo.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./CHANGELOG.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./framework/generated/instructions/archive/github-copilot.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./framework/framework-core-v2.0.0-alpha-dev.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./framework/framework-core-v2.0.1.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./framework/framework-core-v2.1.0.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./framework/versions/instructions-v1.0.0-alpha.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./framework/versions/framework-core-v1.0.0-alpha.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./framework/versions/framework-core-v2.0.0-spec.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./framework/versions/framework-core-v1.1.0-beta-spec.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./framework/governance/amendment-proposals/article-xi-agent-drift-prevention.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./framework/governance/amendment-proposals/article-ix-self-healing.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./framework/templates/constitutional-remediation-plan-template.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./framework/framework-core-v2.2.0.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./.framework/dashboard-report.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./website/docs/blueprints/memory-governance.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./website/docs/tutorial-basics/create-a-document.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./website/docs/tutorial-basics/create-a-page.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./website/docs/tutorial-basics/deploy-your-site.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./website/docs/tutorial-basics/congratulations.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./website/docs/tutorial-basics/create-a-blog-post.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./website/docs/intro.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./website/docs/tutorial-extras/translate-your-site.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./website/docs/tutorial-extras/manage-docs-versions.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./website/blog/2019-05-29-long-blog-post.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./website/blog/2021-08-26-welcome/index.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./website/blog/2019-05-28-first-blog-post.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./website/README.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./tests/planning-optimization/test-plan-mvp.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./tests/planning-optimization/test-plan-surgical.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/guide/getting-started.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/releases/v1.3.0-summary.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/releases/v1.4.0-summary.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/releases/README.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/releases/release-template.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/releases/v2.0.0-alpha-dev-release-validation.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/architecture.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/CONSTITUTIONAL-PACKAGE-MANAGER-PROTECTION.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/specifications/README.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/BUN-MIGRATION.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/roadmap/self-healing-governance-roadmap.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/roadmap/v1.3.0-roadmap.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/roadmap/README.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/roadmap/tech-stack-neutrality-roadmap.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/roadmap/current-state.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/roadmap/planning-horizon.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/roadmap/strategic-vision.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/roadmap/immediate-horizon.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/aegis/planning/usage.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/aegis/planning/minimum-viable-plan.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/aegis/governance/attestation.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/aegis/governance/evidence-manifest.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/aegis/governance/markdown-quality.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/aegis/governance/profiles.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/aegis/governance/ci-workflows.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/aegis/governance/runbook.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/aegis/governance/ENFORCEMENT-GUIDE.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/aegis/governance/visual-regression.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/aegis/governance/IMPLEMENTATION-COMPLETE.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/aegis/governance/GOVERNANCE-PROOF.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/NPM-PUBLISHING.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/planning/plan-alternative.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/planning/plan.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/deployment/README.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/deployment/DEPLOY-TO-GITHUB-PAGES.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/evolution/evolution-documentation-standard.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/evolution/evs-2025-01-XX-001-memory-subsystem-integration.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/evolution/evs-2025-01-15-002-planning-optimization-integration.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/evolution/evs-2025-08-08-003-feature-configurability-complete.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/evolution/evs-2025-08-08-004-version-consistency-automation.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/evolution/evs-2025-08-08-005-constitutional-intelligence-failure.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/implementation/bun-vite-migration-complete.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/implementation/apprenticeship-scaffolds.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/implementation/bun-vite-migration.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/implementation/v2-paradigm-shift-summary.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/implementation/POSITIONING-MIGRATION-PLAN.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/implementation/tech-stack-neutrality-plan.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/implementation/IMPLEMENTATION-SUMMARY.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/implementation/PHASE-2-IMPLEMENTATION.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/implementation/tech-neutrality-detailed-requirements.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/implementation/PHASE-3-IMPLEMENTATION.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/implementation/README.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/implementation/cursor-realtime-integration.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/implementation/feature-configurability-audit.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/implementation/cursor-real-time-detection-implementation.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/implementation/v1.2.1-summary.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/implementation/framework-evolution-recommendations.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/implementation/auto-repair-ml-engine.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/implementation/OPTION-C-IMPLEMENTATION.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/implementation/agent-drift-prevention-solution-summary.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/implementation/OPTION-B-IMPLEMENTATION.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/evolution-strategy.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/WORKFLOW-OPTIMIZATION-RESULTS.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/versioned-agent-instructions.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/feature-development-workflow.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/manifesto/integration-notes.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/manifesto/principles.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/reference/README.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./docs/WORKFLOW-OPTIMIZATION.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./.github/pull_request_template.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./.github/copilot-instructions.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./.github/ISSUE_TEMPLATE/feature-request.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    },
+    {
+      "file": "./.github/ISSUE_TEMPLATE/evolution-story.md",
+      "issues": [
+        "Error running markdownlint: Unexpected end of JSON input"
+      ],
+      "errorCount": 1,
+      "warningCount": 0
+    }
+  ]
+}

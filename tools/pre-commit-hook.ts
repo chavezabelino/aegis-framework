@@ -28,7 +28,7 @@ class PreCommitHook {
     'docs/roadmap/current-state.md',
     'docs/roadmap/README.md',
     'docs/releases/README.md',
-    'package.json'
+    'package.json',
   ];
 
   constructor(projectRoot: string = process.cwd()) {
@@ -43,7 +43,7 @@ class PreCommitHook {
     const result: PreCommitResult = {
       allowed: true,
       violations: [],
-      warnings: []
+      warnings: [],
     };
 
     console.log('🛡️ Pre-commit Constitutional Check');
@@ -100,10 +100,13 @@ class PreCommitHook {
     const warnings: string[] = [];
 
     try {
-      const stagedFiles = execSync('git diff --cached --name-only', { 
-        cwd: this.projectRoot, 
-        encoding: 'utf8' 
-      }).trim().split('\n').filter(Boolean);
+      const stagedFiles = execSync('git diff --cached --name-only', {
+        cwd: this.projectRoot,
+        encoding: 'utf8',
+      })
+        .trim()
+        .split('\n')
+        .filter(Boolean);
 
       const destructivePatterns = [
         'rm -rf',
@@ -124,7 +127,7 @@ class PreCommitHook {
         'rm README.md',
         'rm CHANGELOG.md',
         'rm CONTRIBUTING.md',
-        'rm LICENSE'
+        'rm LICENSE',
       ];
 
       const essentialFiles = [
@@ -135,7 +138,7 @@ class PreCommitHook {
         'README.md',
         'CHANGELOG.md',
         'CONTRIBUTING.md',
-        'LICENSE'
+        'LICENSE',
       ];
 
       const essentialDirs = [
@@ -148,15 +151,15 @@ class PreCommitHook {
         'tests',
         'examples',
         'templates',
-        'scaffolds'
+        'scaffolds',
       ];
 
       // Check staged files for destructive patterns
       for (const file of stagedFiles) {
         if (fs.existsSync(file)) {
-          const content = execSync(`git show ":${file}"`, { 
-            cwd: this.projectRoot, 
-            encoding: 'utf8' 
+          const content = execSync(`git show ":${file}"`, {
+            cwd: this.projectRoot,
+            encoding: 'utf8',
           });
 
           for (const pattern of destructivePatterns) {
@@ -170,9 +173,9 @@ class PreCommitHook {
       }
 
       // Check for deletion of essential files
-      const stagedChanges = execSync('git diff --cached --name-status', { 
-        cwd: this.projectRoot, 
-        encoding: 'utf8' 
+      const stagedChanges = execSync('git diff --cached --name-status', {
+        cwd: this.projectRoot,
+        encoding: 'utf8',
       });
 
       for (const file of essentialFiles) {
@@ -191,7 +194,6 @@ class PreCommitHook {
           console.log(`🚨 ${violation}`);
         }
       }
-
     } catch (error) {
       warnings.push(`Failed to check destructive actions: ${error}`);
     }
@@ -208,31 +210,33 @@ class PreCommitHook {
 
     try {
       // Check if recent commits have evolution stories
-      const recentCommits = execSync('git log --oneline -5', { 
-        cwd: this.projectRoot, 
-        encoding: 'utf8' 
+      const recentCommits = execSync('git log --oneline -5', {
+        cwd: this.projectRoot,
+        encoding: 'utf8',
       });
 
-      const constitutionalCommits = recentCommits.split('\n').filter(line => 
-        line.toLowerCase().includes('constitutional') || 
-        line.toLowerCase().includes('constitution') ||
-        line.toLowerCase().includes('breaking change')
-      );
+      const constitutionalCommits = recentCommits
+        .split('\n')
+        .filter(
+          line =>
+            line.toLowerCase().includes('constitutional') ||
+            line.toLowerCase().includes('constitution') ||
+            line.toLowerCase().includes('breaking change')
+        );
 
       for (const commit of constitutionalCommits) {
         const commitHash = commit.split(' ')[0];
-        
+
         // Check if this commit has an associated evolution story
         const evolutionStories = this.getExistingEvolutionStories();
         const hasStory = evolutionStories.some(story => story.includes(commitHash));
-        
+
         if (!hasStory) {
           const warning = `Commit without evolution story: ${commit}`;
           warnings.push(warning);
           console.log(`⚠️ ${warning}`);
         }
       }
-
     } catch (error) {
       warnings.push(`Failed to check evolution stories: ${error}`);
     }
@@ -285,7 +289,8 @@ class PreCommitHook {
         return [];
       }
 
-      return fs.readdirSync(evolutionDir)
+      return fs
+        .readdirSync(evolutionDir)
         .filter(file => file.endsWith('.md'))
         .map(file => path.join(evolutionDir, file));
     } catch (error) {
@@ -323,7 +328,7 @@ class PreCommitHook {
 async function main(): Promise<void> {
   const hook = new PreCommitHook();
   const result = await hook.run();
-  
+
   if (!result.allowed) {
     process.exit(1);
   }

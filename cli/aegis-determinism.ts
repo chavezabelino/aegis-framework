@@ -2,10 +2,10 @@
 
 /**
  * Aegis Determinism Controller
- * 
+ *
  * Provides deterministic generation controls with --seed override and generation receipts
  * Ensures bit-exact reproducibility across blueprint executions
- * 
+ *
  * @aegisFrameworkVersion 2.4.0
  * @intent Deterministic AI generation with provable reproducibility
  * @context Hardening Aegis from "promising" to "undeniable"
@@ -58,7 +58,7 @@ class DeterminismController {
   }
 
   async generateWithSeed(
-    blueprintPath: string, 
+    blueprintPath: string,
     options: {
       seed?: string | number;
       temperature?: number;
@@ -67,11 +67,11 @@ class DeterminismController {
     } = {}
   ): Promise<GenerationReceipt> {
     console.log(`🎲 Generating with deterministic controls...`);
-    
+
     // Load blueprint
     const blueprintContent = fs.readFileSync(blueprintPath, 'utf8');
     const blueprint = yaml.load(blueprintContent) as AegisBlueprint;
-    
+
     // Apply determinism config
     const determinismConfig: BlueprintDeterminismConfig = {
       seed: options.seed || blueprint.determinismConfig?.seed || this.generateSeed(),
@@ -84,7 +84,7 @@ class DeterminismController {
       blueprint: blueprintContent,
       seed: determinismConfig.seed,
       temperature: determinismConfig.temperature,
-      mode: options.mode || 'strict'
+      mode: options.mode || 'strict',
     };
     const inputHash = this.hashObject(inputData);
 
@@ -104,29 +104,29 @@ class DeterminismController {
       blueprint: {
         id: blueprint.id,
         version: blueprint.version,
-        path: blueprintPath
+        path: blueprintPath,
       },
       execution: {
-        seed: determinismConfig.seed,
-        temperature: determinismConfig.temperature,
-        mode: options.mode || 'strict'
+        seed: determinismConfig.seed || this.generateSeed(),
+        temperature: determinismConfig.temperature || 0.1,
+        mode: options.mode || 'strict',
       },
       validation: {
         buildPassed: false,
         testsPassed: false,
-        lintPassed: false
-      }
+        lintPassed: false,
+      },
     };
 
     // Store receipt
     await this.storeReceipt(receipt);
-    
+
     return receipt;
   }
 
   async verifyReproducibility(blueprintPath: string, outputPath: string): Promise<boolean> {
     console.log(`🔍 Verifying reproducibility...`);
-    
+
     const receipts = await this.getReceiptsForBlueprint(blueprintPath);
     if (receipts.length < 2) {
       console.log(`⚠️  Need at least 2 generation receipts for comparison`);
@@ -146,7 +146,7 @@ class DeterminismController {
     if (fs.existsSync(outputPath)) {
       const outputContent = fs.readFileSync(outputPath, 'utf8');
       const outputDigest = this.hashString(outputContent);
-      
+
       if (outputDigest === previous.outputDigest) {
         console.log(`✅ Bit-exact reproduction verified!`);
         latest.reproduced = true;
@@ -167,7 +167,7 @@ class DeterminismController {
   async updateReceiptWithOutput(receiptId: string, outputPath: string): Promise<void> {
     const receipts = await this.getAllReceipts();
     const receipt = receipts.find(r => r.inputHash === receiptId);
-    
+
     if (receipt && fs.existsSync(outputPath)) {
       const outputContent = fs.readFileSync(outputPath, 'utf8');
       receipt.outputDigest = this.hashString(outputContent);
@@ -177,10 +177,10 @@ class DeterminismController {
 
   async validateGeneration(receiptId: string): Promise<GenerationReceipt | null> {
     console.log(`🔬 Running validation checks...`);
-    
+
     const receipts = await this.getAllReceipts();
     const receipt = receipts.find(r => r.inputHash === receiptId);
-    
+
     if (!receipt) {
       console.log(`❌ Receipt not found: ${receiptId}`);
       return null;
@@ -190,23 +190,22 @@ class DeterminismController {
       // Build validation
       const buildResult = await this.runCommand('npm run build');
       receipt.validation.buildPassed = buildResult.success;
-      
+
       // Test validation
       const testResult = await this.runCommand('npm test');
       receipt.validation.testsPassed = testResult.success;
-      
+
       // Lint validation
       const lintResult = await this.runCommand('npm run lint');
       receipt.validation.lintPassed = lintResult.success;
-      
+
       await this.updateReceipt(receipt);
-      
-      const allPassed = receipt.validation.buildPassed && 
-                       receipt.validation.testsPassed && 
-                       receipt.validation.lintPassed;
-      
+
+      const allPassed =
+        receipt.validation.buildPassed && receipt.validation.testsPassed && receipt.validation.lintPassed;
+
       console.log(`${allPassed ? '✅' : '❌'} Validation ${allPassed ? 'passed' : 'failed'}`);
-      
+
       return receipt;
     } catch (error) {
       console.error(`❌ Validation error:`, error);
@@ -216,17 +215,15 @@ class DeterminismController {
 
   async listReceipts(blueprintId?: string): Promise<void> {
     const receipts = await this.getAllReceipts();
-    const filtered = blueprintId 
-      ? receipts.filter(r => r.blueprint.id === blueprintId)
-      : receipts;
-    
+    const filtered = blueprintId ? receipts.filter(r => r.blueprint.id === blueprintId) : receipts;
+
     console.log(`📋 Generation Receipts (${filtered.length}):`);
     console.log('');
-    
+
     filtered.forEach(receipt => {
       const status = receipt.reproduced ? '✅ Reproduced' : '🎲 Generated';
       const validation = this.getValidationStatus(receipt);
-      
+
       console.log(`${status} | ${receipt.blueprint.id}@${receipt.blueprint.version}`);
       console.log(`   Hash: ${receipt.inputHash.substring(0, 16)}...`);
       console.log(`   Time: ${receipt.timestamp}`);
@@ -241,15 +238,14 @@ class DeterminismController {
   }
 
   private hashObject(obj: any): string {
-    return crypto.createHash('sha256')
+    return crypto
+      .createHash('sha256')
       .update(JSON.stringify(obj, null, 0))
       .digest('hex');
   }
 
   private hashString(str: string): string {
-    return crypto.createHash('sha256')
-      .update(str)
-      .digest('hex');
+    return crypto.createHash('sha256').update(str).digest('hex');
   }
 
   private async storeReceipt(receipt: GenerationReceipt): Promise<void> {
@@ -264,11 +260,12 @@ class DeterminismController {
 
   private async getAllReceipts(): Promise<GenerationReceipt[]> {
     if (!fs.existsSync(this.receiptsPath)) return [];
-    
-    const files = fs.readdirSync(this.receiptsPath)
+
+    const files = fs
+      .readdirSync(this.receiptsPath)
       .filter(f => f.endsWith('.json'))
       .sort();
-    
+
     return files.map(file => {
       const content = fs.readFileSync(path.join(this.receiptsPath, file), 'utf8');
       return JSON.parse(content) as GenerationReceipt;
@@ -284,19 +281,19 @@ class DeterminismController {
     const { buildPassed, testsPassed, lintPassed } = receipt.validation;
     const passed = [buildPassed, testsPassed, lintPassed].filter(Boolean).length;
     const total = 3;
-    
+
     if (passed === total) return '✅ All passed';
     if (passed === 0) return '❌ All failed';
     return `⚠️  ${passed}/${total} passed`;
   }
 
   private async runCommand(cmd: string): Promise<{ success: boolean; output: string }> {
-    return new Promise((resolve) => {
+    return new Promise(resolve => {
       const { exec } = require('child_process');
       exec(cmd, (error: any, stdout: string, stderr: string) => {
         resolve({
           success: !error,
-          output: stdout + stderr
+          output: stdout + stderr,
         });
       });
     });
@@ -340,7 +337,7 @@ program
   .command('validate')
   .description('Run validation checks on generation')
   .argument('<receipt-id>', 'Generation receipt ID (input hash)')
-  .action(async (receiptId) => {
+  .action(async receiptId => {
     const controller = new DeterminismController();
     const receipt = await controller.validateGeneration(receiptId);
     if (!receipt) process.exit(1);
@@ -350,7 +347,7 @@ program
   .command('list')
   .description('List generation receipts')
   .option('--blueprint <id>', 'Filter by blueprint ID')
-  .action(async (options) => {
+  .action(async options => {
     const controller = new DeterminismController();
     await controller.listReceipts(options.blueprint);
   });

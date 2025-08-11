@@ -199,25 +199,25 @@
   .container {
     padding: 1rem;
   }
-  
+
   .statusGrid {
     grid-template-columns: 1fr;
   }
-  
+
   .categoriesGrid {
     grid-template-columns: 1fr;
   }
-  
+
   .actionButtons {
     flex-direction: column;
   }
-  
+
   .chartBar {
     flex-direction: column;
     align-items: stretch;
     gap: 0.5rem;
   }
-  
+
   .chartLabel {
     justify-content: space-between;
   }

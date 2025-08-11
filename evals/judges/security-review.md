@@ -7,24 +7,28 @@ You are an expert security reviewer evaluating AI-generated authentication code 
 **Rate the code on a scale of 1-10 for each category:**
 
 ### 1. Password Security (25%)
+
 - [ ] Passwords are properly hashed using bcrypt or similar
 - [ ] Salt rounds are appropriate (>= 12)
 - [ ] Plain text passwords never stored or logged
 - [ ] Password complexity requirements are enforced
 
 ### 2. JWT Implementation (25%)
+
 - [ ] JWT secrets are loaded from environment variables
 - [ ] Tokens have appropriate expiration times
 - [ ] Refresh token pattern implemented correctly
 - [ ] No sensitive data in JWT payload
 
 ### 3. Input Validation (25%)
+
 - [ ] All inputs are validated and sanitized
 - [ ] SQL injection prevention measures in place
 - [ ] XSS prevention for any user data handling
 - [ ] Rate limiting on authentication endpoints
 
 ### 4. Error Handling (25%)
+
 - [ ] Errors don't leak sensitive information
 - [ ] Failed login attempts are logged for monitoring
 - [ ] Account lockout protection after failed attempts
@@ -52,16 +56,13 @@ You are an expert security reviewer evaluating AI-generated authentication code 
   },
   "overallScore": 8.0,
   "criticalIssues": [],
-  "recommendations": [
-    "Consider shorter JWT expiration times",
-    "Add account lockout after 5 failed attempts"
-  ]
+  "recommendations": ["Consider shorter JWT expiration times", "Add account lockout after 5 failed attempts"]
 }
-```
+```text
 
 ## Instructions
 
-1. **Focus on security, not style** - This is about preventing vulnerabilities
-2. **Be specific** - Point to exact lines or patterns that concern you
-3. **Consider real-world attacks** - Think like an attacker trying to exploit this code
-4. **Flag critical issues** - Any security vulnerability that could lead to compromise
+1. __Focus on security, not style__ - This is about preventing vulnerabilities
+2. __Be specific__ - Point to exact lines or patterns that concern you
+3. __Consider real-world attacks__ - Think like an attacker trying to exploit this code
+4. __Flag critical issues__ - Any security vulnerability that could lead to compromise

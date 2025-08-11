@@ -1,0 +1,62 @@
+# Dependencies
+
+node_modules/
+website/node_modules/
+
+# Build outputs
+
+dist/
+build/
+.next/
+out/
+
+# Generated files
+
+.Aegis/
+coverage/
+*.min.js
+*.min.CSS
+
+# Lock files
+
+package-lock.JSON
+yarn.lock
+pnpm-lock.YAML
+Bun.lock
+
+# Environment files
+
+.env
+.env.local
+.env.*.local
+
+# IDE files
+
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+
+.DS_Store
+Thumbs.db
+
+# Git
+
+.git/
+
+# Documentation build
+
+website/build/
+website/static/
+
+# Framework generated
+
+framework/generated/
+_.generated._
+
+# Test outputs
+
+test-results/
+Playwright-report/

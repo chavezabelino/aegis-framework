@@ -12,11 +12,7 @@
 
 import { Server } from '@modelcontextprotocol/sdk/server/index.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
-import {
-  CallToolRequestSchema,
-  ListToolsRequestSchema,
-  Tool,
-} from '@modelcontextprotocol/sdk/types.js';
+import { CallToolRequestSchema, ListToolsRequestSchema, Tool } from '@modelcontextprotocol/sdk/types.js';
 
 // Initialize the server
 const server = new Server(
@@ -135,18 +131,18 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
 });
 
 // Handle tool calls
-server.setRequestHandler(CallToolRequestSchema, async (request) => {
+server.setRequestHandler(CallToolRequestSchema, async request => {
   const { name, arguments: args } = request.params;
 
   switch (name) {
     case 'aegis_plan_auto_detect': {
       const { userPrompt } = args as { userPrompt: string };
-      
+
       // Import and use the auto plan detector
       const { AutoPlanDetector } = await import('./auto-plan-detector.js');
       const detector = new AutoPlanDetector();
       const result = detector.analyzePrompt(userPrompt);
-      
+
       return {
         content: [
           {
@@ -163,21 +159,20 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         planContent: string;
         filesTouched: number;
       };
-      
+
       // Import and use the plan gate
       const { execSync } = await import('child_process');
       const fs = await import('fs');
-      
+
       // Write plan to temporary file
       const tempFile = `/tmp/aegis-plan-${Date.now()}.md`;
       fs.writeFileSync(tempFile, planContent);
-      
+
       try {
-        const result = execSync(
-          `node scripts/ci/plan-gate.mjs ${planClass} ${tempFile} ${filesTouched}`,
-          { encoding: 'utf8' }
-        );
-        
+        const result = execSync(`node scripts/ci/plan-gate.mjs ${planClass} ${tempFile} ${filesTouched}`, {
+          encoding: 'utf8',
+        });
+
         return {
           content: [
             {
@@ -212,15 +207,15 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         plan2Class: string;
         plan2Files: number;
       };
-      
+
       // Import and use the planner critic
       const { PlannerCritic } = await import('./planner-critic.js');
       const critic = new PlannerCritic();
-      
+
       const analysis1 = critic.analyzePlan(plan1Content, plan1Class, plan1Files);
       const analysis2 = critic.analyzePlan(plan2Content, plan2Class, plan2Files);
       const comparison = critic.comparePlans(analysis1, analysis2);
-      
+
       return {
         content: [
           {
@@ -236,12 +231,12 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         planClass: string;
         userPrompt: string;
       };
-      
+
       // Import and use the auto plan detector to generate plan
       const { AutoPlanDetector } = await import('./auto-plan-detector.js');
       const detector = new AutoPlanDetector();
       const result = detector.analyzePrompt(userPrompt);
-      
+
       return {
         content: [
           {
@@ -259,6 +254,6 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 
 // Start the server
 const transport = new StdioServerTransport();
-server.listen(transport);
+server.connect(transport);
 
 console.error('Aegis Planning Optimization MCP Server started');

@@ -22,53 +22,83 @@ const BlueprintSchema = z.object({
   version: z.string().regex(/^\d+\.\d+\.\d+/),
   aegisFrameworkVersion: z.string().regex(/^\d+\.\d+\.\d+/),
   description: z.string().min(1),
-  determinismConfig: z.object({
-    seed: z.string().min(1),
-    temperature: z.number().min(0).max(2),
-    strictMode: z.boolean()
-  }).optional(),
-  requiredRoutes: z.array(z.object({
-    path: z.string().min(1),
-    method: z.enum(['GET', 'POST', 'PUT', 'DELETE', 'PATCH']),
-    description: z.string().min(1)
-  })).optional(),
-  requiredProviders: z.array(z.object({
-    name: z.string().min(1),
-    type: z.string().min(1),
-    version: z.string().regex(/^\d+\.\d+\.\d+/)
-  })).optional(),
-  requiredSelectors: z.array(z.object({
-    name: z.string().min(1),
-    type: z.enum(['data', 'computed', 'action'])
-  })).optional(),
-  ruleContracts: z.array(z.object({
-    rule: z.string().min(1),
-    version: z.string().regex(/^\d+\.\d+\.\d+/),
-    enforcement: z.enum(['blocking', 'warning', 'optional']),
-    schema: z.object({
-      requirements: z.array(z.string().min(1))
+  determinismConfig: z
+    .object({
+      seed: z.string().min(1),
+      temperature: z.number().min(0).max(2),
+      strictMode: z.boolean(),
     })
-  })).optional(),
-  observability: z.object({
-    events: z.array(z.object({
-      name: z.string().min(1),
-      schema: z.string().min(1),
-      description: z.string().min(1)
+    .optional(),
+  requiredRoutes: z
+    .array(
+      z.object({
+        path: z.string().min(1),
+        method: z.enum(['GET', 'POST', 'PUT', 'DELETE', 'PATCH']),
+        description: z.string().min(1),
+      })
+    )
+    .optional(),
+  requiredProviders: z
+    .array(
+      z.object({
+        name: z.string().min(1),
+        type: z.string().min(1),
+        version: z.string().regex(/^\d+\.\d+\.\d+/),
+      })
+    )
+    .optional(),
+  requiredSelectors: z
+    .array(
+      z.object({
+        name: z.string().min(1),
+        type: z.enum(['data', 'computed', 'action']),
+      })
+    )
+    .optional(),
+  ruleContracts: z
+    .array(
+      z.object({
+        rule: z.string().min(1),
+        version: z.string().regex(/^\d+\.\d+\.\d+/),
+        enforcement: z.enum(['blocking', 'warning', 'optional']),
+        schema: z.object({
+          requirements: z.array(z.string().min(1)),
+        }),
+      })
+    )
+    .optional(),
+  observability: z
+    .object({
+      events: z.array(
+        z.object({
+          name: z.string().min(1),
+          schema: z.string().min(1),
+          description: z.string().min(1),
+        })
+      ),
+    })
+    .optional(),
+  errorStates: z
+    .array(
+      z.object({
+        code: z.string().min(1),
+        message: z.string().min(1),
+        recovery: z.string().min(1),
+      })
+    )
+    .optional(),
+  validation: z
+    .object({
+      required: z.array(z.string().min(1)),
+      optional: z.array(z.string().min(1)),
+    })
+    .optional(),
+  adapters: z
+    .record(z.string(), z.object({
+      mode: z.enum(['lean', 'strict', 'generative']),
+      config: z.record(z.string(), z.any()),
     }))
-  }).optional(),
-  errorStates: z.array(z.object({
-    code: z.string().min(1),
-    message: z.string().min(1),
-    recovery: z.string().min(1)
-  })).optional(),
-  validation: z.object({
-    required: z.array(z.string().min(1)),
-    optional: z.array(z.string().min(1))
-  }).optional(),
-  adapters: z.record(z.object({
-    mode: z.enum(['lean', 'strict', 'generative']),
-    config: z.record(z.any())
-  })).optional()
+    .optional(),
 });
 
 class BlueprintValidator {
@@ -89,7 +119,7 @@ class BlueprintValidator {
 
       const content = fs.readFileSync(filePath, 'utf8');
       const yaml = await this.parseYaml(content);
-      
+
       if (!yaml) {
         this.errors.push(`Invalid YAML in blueprint: ${filePath}`);
         return false;
@@ -153,7 +183,9 @@ class BlueprintValidator {
   private validateFrameworkVersion(filePath: string, frameworkVersion: string): void {
     const rootVersion = this.getRootVersion();
     if (frameworkVersion !== rootVersion) {
-      this.warnings.push(`Framework version mismatch in ${filePath}: expected "${rootVersion}", got "${frameworkVersion}"`);
+      this.warnings.push(
+        `Framework version mismatch in ${filePath}: expected "${rootVersion}", got "${frameworkVersion}"`
+      );
     }
   }
 
@@ -198,7 +230,7 @@ class BlueprintValidator {
 
   private glob(pattern: string): string[] {
     const files: string[] = [];
-    
+
     if (pattern.includes('**')) {
       // Simple recursive glob
       const baseDir = pattern.split('**')[0];
@@ -220,7 +252,7 @@ class BlueprintValidator {
     for (const item of items) {
       const fullPath = path.join(dir, item);
       const stat = fs.statSync(fullPath);
-      
+
       if (stat.isDirectory()) {
         this.walkDirectory(fullPath, files);
       } else if (item === 'blueprint.yaml') {
@@ -231,7 +263,7 @@ class BlueprintValidator {
 
   private printResults(): void {
     console.log('🔍 Blueprint Validation Results\n');
-    
+
     if (this.errors.length === 0 && this.warnings.length === 0) {
       console.log('✅ All blueprints are valid');
       return;
@@ -271,7 +303,7 @@ async function main(): Promise<void> {
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {
-  main().catch((error) => {
+  main().catch(error => {
     console.error('❌ Blueprint validation failed:', error instanceof Error ? error.message : String(error));
     process.exit(1);
   });

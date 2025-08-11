@@ -62,7 +62,7 @@ class AnnotationValidator {
         coverage: 1.0,
         violations: [],
         warnings: [],
-        recommendations: []
+        recommendations: [],
       };
     }
 
@@ -91,7 +91,7 @@ class AnnotationValidator {
       coverage,
       violations: this.violations,
       warnings: this.warnings,
-      recommendations: this.generateRecommendations(annotationResults, coverage, requiredCoverage)
+      recommendations: this.generateRecommendations(annotationResults, coverage, requiredCoverage),
     };
 
     this.printResults(result, enforcementLevel);
@@ -104,13 +104,8 @@ class AnnotationValidator {
   private validateFileAnnotations(filePath: string): FileAnnotation {
     const content = fs.readFileSync(filePath, 'utf8');
     const lines = content.split('\n');
-    
-    const requiredAnnotations = [
-      '@aegisFrameworkVersion',
-      '@intent',
-      '@context',
-      '@mode'
-    ];
+
+    const requiredAnnotations = ['@aegisFrameworkVersion', '@intent', '@context', '@mode'];
 
     const foundAnnotations: string[] = [];
     const missingAnnotations: string[] = [];
@@ -122,7 +117,7 @@ class AnnotationValidator {
       for (const annotation of requiredAnnotations) {
         if (line.includes(annotation)) {
           foundAnnotations.push(annotation);
-          
+
           // Validate annotation format
           if (!this.isValidAnnotation(line, annotation)) {
             invalidAnnotations.push(`${annotation}: ${line.trim()}`);
@@ -145,7 +140,7 @@ class AnnotationValidator {
         type: 'missing',
         severity: this.getSeverityForMissingAnnotations(missingAnnotations),
         message: `Missing required annotations: ${missingAnnotations.join(', ')}`,
-        suggestion: `Add the following annotations to the file header:\n${missingAnnotations.map(a => `<!--\n${a}: value\n-->`).join('\n')}`
+        suggestion: `Add the following annotations to the file header:\n${missingAnnotations.map(a => `<!--\n${a}: value\n-->`).join('\n')}`,
       });
     }
 
@@ -156,7 +151,7 @@ class AnnotationValidator {
         type: 'invalid',
         severity: 'medium',
         message: `Invalid annotation format: ${invalidAnnotations.join(', ')}`,
-        suggestion: 'Ensure annotations follow the format: @annotationName: value'
+        suggestion: 'Ensure annotations follow the format: @annotationName: value',
       });
     }
 
@@ -166,7 +161,7 @@ class AnnotationValidator {
       annotationCount: foundAnnotations.length,
       requiredAnnotations,
       missingAnnotations,
-      invalidAnnotations
+      invalidAnnotations,
     };
   }
 
@@ -175,18 +170,18 @@ class AnnotationValidator {
    */
   private isValidAnnotation(line: string, annotation: string): boolean {
     const trimmed = line.trim();
-    
+
     // Check for HTML comment format
     if (trimmed.startsWith('<!--') || trimmed.startsWith('-->')) {
       return true;
     }
-    
+
     // Check for direct annotation format
     if (trimmed.startsWith(annotation)) {
       const parts = trimmed.split(':');
       return parts.length >= 2 && parts[1].trim().length > 0;
     }
-    
+
     return false;
   }
 
@@ -210,15 +205,7 @@ class AnnotationValidator {
    * Find all framework files that should have annotations
    */
   private findFrameworkFiles(): string[] {
-    const frameworkDirs = [
-      'framework',
-      'cli',
-      'tools',
-      'blueprints',
-      'adapters',
-      'tests',
-      'docs'
-    ];
+    const frameworkDirs = ['framework', 'cli', 'tools', 'blueprints', 'adapters', 'tests', 'docs'];
 
     const extensions = ['.ts', '.js', '.md', '.yaml', '.yml', '.json'];
     const files: string[] = [];
@@ -238,7 +225,7 @@ class AnnotationValidator {
       'CONTRIBUTING.md',
       'package.json',
       'tsconfig.json',
-      'VERSION'
+      'VERSION',
     ];
 
     for (const file of rootFiles) {
@@ -256,14 +243,14 @@ class AnnotationValidator {
    */
   private getFilesRecursively(dir: string, extensions: string[]): string[] {
     const files: string[] = [];
-    
+
     try {
       const items = fs.readdirSync(dir);
-      
+
       for (const item of items) {
         const fullPath = path.join(dir, item);
         const stat = fs.statSync(fullPath);
-        
+
         if (stat.isDirectory()) {
           // Skip node_modules and .git
           if (item !== 'node_modules' && item !== '.git' && !item.startsWith('.')) {
@@ -279,18 +266,14 @@ class AnnotationValidator {
     } catch (error) {
       this.warnings.push(`Failed to read directory ${dir}: ${error}`);
     }
-    
+
     return files;
   }
 
   /**
    * Generate recommendations based on validation results
    */
-  private generateRecommendations(
-    results: FileAnnotation[], 
-    coverage: number, 
-    requiredCoverage: number
-  ): string[] {
+  private generateRecommendations(results: FileAnnotation[], coverage: number, requiredCoverage: number): string[] {
     const recommendations: string[] = [];
 
     if (coverage < requiredCoverage) {
@@ -330,7 +313,7 @@ class AnnotationValidator {
   private printResults(result: AnnotationValidationResult, enforcementLevel: string): void {
     console.log(`📊 Annotation Coverage: ${(result.coverage * 100).toFixed(1)}%`);
     console.log(`📋 Enforcement Level: ${enforcementLevel}`);
-    console.log(`📄 Files Validated: ${result.violations.length + (result.coverage * 100)}`);
+    console.log(`📄 Files Validated: ${result.violations.length + result.coverage * 100}`);
 
     if (result.violations.length > 0) {
       console.log('\n❌ Annotation Violations:');
@@ -372,9 +355,9 @@ class AnnotationValidator {
 async function main(): Promise<void> {
   const validator = new AnnotationValidator();
   const result = await validator.validateAll();
-  
+
   const enforcementLevel = validator['configLoader'].getAnnotationEnforcement();
-  
+
   if (!result.valid && enforcementLevel === 'error') {
     process.exit(1);
   }

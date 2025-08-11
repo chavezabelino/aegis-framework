@@ -1,0 +1,6 @@
+{
+  "policy": "types",
+  "justification": "Legacy TS debt detected by initial Aegis rollout. We will reduce error count in weekly sprints while keeping gates visible.",
+  "scope": "src/**",
+  "expiry": "2025-09-30"
+}

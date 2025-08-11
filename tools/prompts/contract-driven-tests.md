@@ -8,33 +8,36 @@
 
 # Contract-Driven Tests — IDE-Agnostic Prompt
 
-Task: Write/adjust tests that assert **promises** to users, not implementation.
-Must:
+Task: Write/adjust tests that assert __promises__ to users, not implementation. Must:
+
 - Accept multiple valid routes for auth (`/login` | `/(auth)/login`).
 - Avoid RGB/class name assertions for themes; prefer computed gradients or semantics.
 - Skip auth-only tests when TEST_EMAIL/TEST_PASSWORD not set.
 - Use role/label/data-testid selectors.
 
 Deliver:
+
 - Full Playwright spec files (no snippets).
 - README notes if new env vars/hooks needed.
 
-## 🎯 **IDE & MCP Integration**
+## 🎯 __IDE & MCP Integration**
 
-### **Works With Any IDE**
-- **Cursor**: Built-in AI agents and MCP features
-- **VS Code**: GitHub Copilot, Claude, and MCP extensions
-- **JetBrains**: AI Assistant and MCP plugins
-- **Any Editor**: MCP-compatible AI agents
+### __Works With Any IDE**
 
-### **MCP Test Integration**
+- __Cursor__: Built-in AI agents and MCP features
+- __VS Code__: GitHub Copilot, Claude, and MCP extensions
+- __JetBrains__: AI Assistant and MCP plugins
+- __Any Editor__: MCP-compatible AI agents
+
+### __MCP Test Integration**
+
 ```bash
 # Run tests (via MCP)
-aegis test:run --contracts
+Aegis test:run --contracts
 
 # Generate test files (via MCP)
-aegis test:generate --contract-driven
+Aegis test:generate --contract-driven
 
 # Validate test contracts (via MCP)
-aegis test:validate --behavioral
-```
+Aegis test:validate --behavioral
+```text

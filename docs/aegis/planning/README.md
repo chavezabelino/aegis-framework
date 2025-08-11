@@ -1,5 +1,7 @@
 <!--
 @aegisBlueprint: planning-optimization
+# Planning Optimization System
+
 @version: 1.0.0
 @mode: lean
 @intent: Overview and navigation for IDE-agnostic planning optimization system
@@ -8,122 +10,143 @@
 
 # Planning Optimization System
 
-> **Purpose**: Universal planning optimization that biases AI agents toward minimum viable, contract-driven solutions with automated plan gates. Works with any IDE through MCP (Model Context Protocol).
+> __Purpose__: Universal planning optimization that biases AI agents toward minimum viable, contract-driven solutions
+> with automated plan gates. Works with any IDE through MCP (Model Context Protocol).
 
-## 🎯 **Overview**
+## 🎯 __Overview**
 
-The Planning Optimization System is a constitutional capability that enforces lean planning practices and prevents plan bloat through automated validation gates. It represents a sophisticated governance pattern that enhances the framework's ability to guide AI agents toward better, more efficient solutions.
+The Planning Optimization System is a Constitutional capability that enforces lean planning practices and prevents plan
+bloat through automated validation gates. It represents a sophisticated governance pattern that enhances the framework's
+ability to guide AI agents toward better, more efficient solutions.
 
-**Universal Compatibility**: Works seamlessly with Cursor, VS Code, JetBrains, and any MCP-compatible IDE.
+**Universal Compatibility__: Works seamlessly with Cursor, VS Code, JetBrains, and any MCP-compatible IDE.
 
-## 📚 **Documentation**
+## 📚 __Documentation**
 
-### **Core Concepts**
-- **[Decision Rubric](./decision-rubric.md)** - Lean-first planning guidance
-- **[Minimum Viable Plan Template](./minimum-viable-plan.md)** - Standardized plan format
-- **[Usage Guide](./usage.md)** - How to use the planning system
-- **[Vibe Coding Guide](./vibe-coding.md)** - Frictionless development with automatic planning
-- **[IDE Integration Guide](./ide-integration.md)** - MCP support for any IDE
+### __Core Concepts**
 
-### **Tools & Scripts**
-- **[Plan Gate](./usage.md#ci-integration)** - CI enforcement of planning constraints
-- **[Planner Critic](./usage.md#with-ai-agents)** - Automated plan comparison
-- **[Contract-Driven Tests](./usage.md#contract-driven-development)** - Behavioral test generation
-- **[Auto Plan Detector](./vibe-coding.md#automatic-plan-detection)** - Automatic plan analysis
-- **[MCP Server](./ide-integration.md#mcp-server-setup)** - Universal IDE integration
+- __[Decision Rubric](./decision-rubric.md)__ - Lean-first planning guidance
+- __[Minimum Viable Plan Template](./minimum-viable-plan.md)__ - Standardized plan format
+- __[Usage Guide](./usage.md)__ - How to use the planning system
+- __[Vibe Coding Guide](./vibe-coding.md)__ - Frictionless development with automatic planning
+- __[IDE Integration Guide](./ide-integration.md)__ - MCP support for any IDE
 
-### **Prompts**
-- **[Vibe Coder](./vibe-coding.md#ai-agent-integration)** - Frictionless automatic planning
-- **[Plan Optimizer](./usage.md#kilo-cursor-integration)** - AI-assisted plan generation
-- **[Contract-Driven Tests](./usage.md#contract-driven-development)** - Test generation prompts
+### __Tools & Scripts**
 
-## 🏗️ **Architecture**
+- __[Plan Gate](./usage.md#ci-integration)__ - CI enforcement of planning constraints
+- __[Planner Critic](./usage.md#with-ai-agents)__ - Automated plan comparison
+- __[Contract-Driven Tests](./usage.md#contract-driven-development)__ - Behavioral test generation
+- __[Auto Plan Detector](./vibe-coding.md#automatic-plan-detection)__ - Automatic plan analysis
+- __[MCP Server](./ide-integration.md#mcp-server-setup)__ - Universal IDE integration
 
-### **Plan Classes**
-1. **MVP-Fix** (Recommended)
+### __Prompts**
+
+- __[Vibe Coder](./vibe-coding.md#ai-agent-integration)__ - Frictionless automatic planning
+- __[Plan Optimizer](./usage.md#kilo-cursor-integration)__ - AI-assisted plan generation
+- __[Contract-Driven Tests](./usage.md#contract-driven-development)__ - Test generation prompts
+
+## 🏗️ __Architecture**
+
+### __Plan Classes**
+
+1. __MVP-Fix__ (Recommended)
    - Scope: 1-2 files, < 2 hours
    - Use Case: Bug fixes, minor enhancements
    - Constraints: No schema changes
 
-2. **Surgical-Refactor**
+2. __Surgical-Refactor**
    - Scope: ≤ 5 files, < 8 hours
    - Use Case: Refactoring, component extraction
    - Constraints: No breaking changes
 
-3. **Systemic-Change** (Requires Justification)
+3. __Systemic-Change__ (Requires Justification)
    - Scope: ≤ 20 files, < 40 hours
    - Use Case: Schema changes, infrastructure changes
    - Requirements: Explicit justification, approval
 
-### **Constitutional Integration**
-- **Blueprint**: `patterns/planning-optimization/blueprint.yaml`
-- **Configuration**: `.aegis/config/planning.json`
-- **Validation**: `scripts/ci/plan-gate.mjs`
-- **Analysis**: `tools/planner-critic.ts`
-- **MCP Server**: `tools/mcp-aegis-server.ts`
+### __Constitutional Integration**
 
-## 🚀 **Quick Start**
+- __Blueprint__: `patterns/planning-optimization/Blueprint.YAML`
+- __Configuration__: `.Aegis/config/planning.JSON`
+- __Validation__: `scripts/ci/plan-gate.mjs`
+- __Analysis__: `tools/planner-critic.ts`
+- __MCP Server__: `tools/MCP-Aegis-server.ts`
 
-### **1. Universal IDE Setup**
+## 🚀 __Quick Start**
+
+### __1. Universal IDE Setup**
+
 ```bash
 # Install MCP dependencies
 npm install @modelcontextprotocol/sdk
 
 # Start MCP server
-npm run mcp:start
-```
+npm run MCP:start
+```text
 
-### **2. Configure Your IDE**
+### __2. Configure Your IDE**
+
 Follow the [IDE Integration Guide](./ide-integration.md) for your specific IDE:
-- **Cursor**: Built-in MCP support
-- **VS Code**: MCP extensions
-- **JetBrains**: MCP plugins
-- **Any MCP IDE**: Universal compatibility
 
-### **3. Just Prompt Naturally**
-```
+- __Cursor__: Built-in MCP support
+- __VS Code__: MCP extensions
+- __JetBrains__: MCP plugins
+- __Any MCP IDE__: Universal compatibility
+
+### __3. Just Prompt Naturally**
+
+```text
 "Add a user profile page"
 "Fix the navigation menu"
 "Refactor the data fetching"
 "Add dark mode support"
-```
+```text
 
 The AI automatically handles all planning optimization behind the scenes!
 
-## 🎯 **Key Principles**
+## 🎯 __Key Principles**
 
-### **Contract-Driven Development**
+### __Contract-Driven Development**
+
 Focus on observable behavior, not implementation:
+
 - ✅ "Unauthenticated users are redirected to login"
 - ❌ "Use blue background color"
 
-### **Route Equivalence**
+### __Route Equivalence**
+
 Accept multiple valid implementations:
+
 ```typescript
 // Both are valid
-const loginRoute = '/login';
-const loginRoute = '/(auth)/login';
-```
+const loginRoute = "/login"
+const loginRoute = "/(auth)/login"
+```text
 
-### **Theme Policy**
+### __Theme Policy**
+
 Prefer semantic tokens over exact RGB values:
+
 ```typescript
 // ✅ Good
-const primaryColor = 'var(--color-primary)';
+const primaryColor = "var(--color-primary)"
 
 // ❌ Bad
-const primaryColor = '#3B82F6';
-```
+const primaryColor = "#3B82F6"
+```text
 
-## 🔄 **Framework Integration**
+## 🔄 __Framework Integration**
 
-### **Execution Mode Alignment**
-- **MVP-Fix** → `lean` mode
-- **Surgical-Refactor** → `strict` mode
-- **Systemic-Change** → `generative` mode
+### __Execution Mode Alignment**
 
-### **Blueprint Compliance**
-All plans must include constitutional annotations:
+- __MVP-Fix__ → `lean` mode
+- __Surgical-Refactor__ → `strict` mode
+- __Systemic-Change__ → `generative` mode
+
+### __Blueprint Compliance**
+
+All plans must include Constitutional annotations:
+
 ```markdown
 <!--
 @aegisBlueprint: planning-optimization
@@ -132,72 +155,86 @@ All plans must include constitutional annotations:
 @intent: Brief description of plan purpose
 @context: Relevant context for plan execution
 -->
-```
+```text
 
-### **Observability**
-Planning decisions emit structured telemetry:
+### __Observability**
+
+Planning decisions emit structured Telemetry:
+
 - `plan.optimization.started`
 - `plan.class.selected`
 - `plan.gate.passed`
 - `plan.gate.failed`
 
-## 🎯 **IDE-Specific Features**
+## 🎯 __IDE-Specific Features**
 
-### **Cursor**
-- **Native AI**: Built-in AI agents use planning optimization automatically
-- **Command Palette**: Access Aegis commands directly
-- **Auto-completion**: Planning suggestions in real-time
+### __Cursor**
 
-### **VS Code**
-- **GitHub Copilot**: Enhanced with planning optimization
-- **Claude Extension**: Full planning optimization support
-- **MCP Extensions**: Native MCP protocol support
+- __Native AI__: Built-in AI agents use planning optimization automatically
+- __Command Palette__: Access Aegis commands directly
+- __Auto-completion__: Planning suggestions in real-time
 
-### **JetBrains**
-- **AI Assistant**: Planning optimization integration
-- **MCP Plugins**: Full MCP protocol support
-- **Tool Windows**: Dedicated Aegis planning panel
+### __VS Code**
 
-### **Any MCP IDE**
-- **Universal Support**: Works with any MCP-compatible editor
-- **Protocol Standard**: Uses Model Context Protocol
-- **Tool Integration**: Seamless command execution
+- __GitHub Copilot__: Enhanced with planning optimization
+- __Claude Extension__: Full planning optimization support
+- __MCP Extensions__: Native MCP protocol support
 
-## 📋 **Evolution Story**
+### __JetBrains**
 
-This planning optimization system was integrated as part of **Evolution Story EVS-2025-01-15-002**, representing real-time evolution detection and framework learning from field usage patterns.
+- __AI Assistant__: Planning optimization integration
+- __MCP Plugins__: Full MCP protocol support
+- __Tool Windows__: Dedicated Aegis planning panel
 
-**Learn More**: [Evolution Story Details](../evolution/evs-2025-01-15-002-planning-optimization-integration.md)
+### __Any MCP IDE**
 
-## 🛠️ **Troubleshooting**
+- __Universal Support__: Works with any MCP-compatible editor
+- __Protocol Standard__: Uses Model Context Protocol
+- __Tool Integration__: Seamless command execution
 
-### **Common Issues**
-1. **Plan Too Long**: Reduce scope or split into multiple plans
-2. **Too Many Files**: Consolidate changes or escalate to next plan class
-3. **Missing Justification**: Add explicit justification for systemic changes
-4. **Forbidden Assertions**: Remove implementation-specific requirements
+## 📋 __Evolution Story**
 
-### **Getting Help**
-- Check the decision rubric: `docs/aegis/planning/decision-rubric.md`
-- Review plan templates: `docs/aegis/planning/minimum-viable-plan.md`
-- Validate blueprint: `npm run plan:validate`
-- Test MCP integration: `npm run mcp:start`
+This planning optimization system was integrated as part of __Evolution Story EVS-2025-01-15-002__, representing
+real-time evolution detection and framework learning from field usage patterns.
 
-## 🚀 **Benefits**
+**Learn More__: [Evolution Story Details](../evolution/evs-2025-01-15-002-planning-optimization-integration.md)
 
-### **1. Universal Compatibility**
+## 🛠️ __Troubleshooting**
+
+### __Common Issues**
+
+1. __Plan Too Long__: Reduce scope or split into multiple plans
+2. __Too Many Files__: Consolidate changes or escalate to next plan class
+3. __Missing Justification__: Add explicit justification for systemic changes
+4. __Forbidden Assertions__: Remove implementation-specific requirements
+
+### __Getting Help**
+
+- Check the decision rubric: `docs/Aegis/planning/decision-rubric.md`
+- Review plan templates: `docs/Aegis/planning/minimum-viable-plan.md`
+- Validate Blueprint: `npm run plan:validate`
+- Test MCP integration: `npm run MCP:start`
+
+## 🚀 __Benefits**
+
+### __1. Universal Compatibility**
+
 - Works with any MCP-compatible IDE
 - No vendor lock-in
 - Standard protocol support
 
-### **2. Frictionless Development**
+### __2. Frictionless Development**
+
 - Just prompt naturally
 - AI handles planning optimization automatically
 - No manual steps required
 
-### **3. Consistent Quality**
+### __3. Consistent Quality**
+
 - Same planning optimization across all IDEs
 - Contract-driven development everywhere
 - Automatic validation and constraints
 
-**The result**: **Universal planning optimization** that works seamlessly across Cursor, VS Code, JetBrains, and any MCP-compatible IDE. Users get the same high-quality planning optimization regardless of their development environment! 🚀
+**The result__: __Universal planning optimization__ that works seamlessly across Cursor, VS Code, JetBrains, and any
+MCP-compatible IDE. Users get the same high-quality planning optimization regardless of their development environment!
+🚀

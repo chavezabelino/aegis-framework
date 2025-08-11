@@ -17,7 +17,7 @@
   },
   {
     "timestamp": "2025-08-06T20:35:00Z",
-    "eventType": "framework.capability.envisioned", 
+    "eventType": "framework.capability.envisioned",
     "capabilityType": "database-backed-observability",
     "agentId": "github-copilot",
     "blueprintId": "framework-evolution",
@@ -27,7 +27,7 @@
       "futureState": "database-backed-canonical-events",
       "evolutionDrivers": [
         "scalability-requirements",
-        "analytics-capabilities", 
+        "analytics-capabilities",
         "predictive-insights",
         "enterprise-integration",
         "self-healing-framework"
@@ -51,7 +51,7 @@
   {
     "timestamp": "2025-08-06T20:40:00Z",
     "eventType": "apprenticeship.learning.milestone",
-    "milestoneType": "strategic-vision-development", 
+    "milestoneType": "strategic-vision-development",
     "agentId": "github-copilot",
     "blueprintId": "framework-evolution",
     "correlationId": "observability-platform-vision-2025-08-06",

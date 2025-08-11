@@ -27,8 +27,7 @@ const argv = yargs(hideBin(process.argv))
     describe: 'Path to blueprint.yaml',
     type: 'string',
   })
-  .help()
-  .argv;
+  .help().argv;
 
 const { mode, blueprint } = argv;
 const blueprintContent = fs.readFileSync(blueprint, 'utf-8');

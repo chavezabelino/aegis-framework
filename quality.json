@@ -1,0 +1,9 @@
+{
+  "grade": "F",
+  "score": 10,
+  "checks": {
+    "types": false,
+    "format": false,
+    "depAudit": false
+  }
+}

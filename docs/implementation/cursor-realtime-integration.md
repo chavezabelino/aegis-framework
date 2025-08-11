@@ -1,39 +1,41 @@
 # 🔗 Cursor Real-Time Integration Implementation
 
-**@aegisFrameworkVersion**: 2.4.0  
-**@intent**: Real-time integration with Cursor IDE workflows  
-**@context**: Live pattern detection, evolution story generation, and immediate feedback
+**@aegisFrameworkVersion__: 2.4.0  
+**@intent__: Real-time integration with Cursor IDE workflows  
+**@context__: Live pattern detection, evolution story generation, and immediate feedback
 
 ## 📋 Overview
 
-The Cursor Real-Time Integration system provides live monitoring and intelligent response to Cursor IDE workflows. It detects patterns in real-time, generates evolution stories automatically, and provides immediate visual feedback to users.
+The Cursor Real-Time Integration system provides live monitoring and intelligent response to Cursor IDE workflows. It
+detects patterns in real-time, generates evolution stories automatically, and provides immediate visual feedback to
+users.
 
 ### Key Features
 
-- **🎯 Real-Time Pattern Detection**: Monitors user input and file changes for evolution triggers
-- **📡 Live Event Processing**: Processes Cursor events as they happen
-- **🎨 Immediate Visual Feedback**: Provides instant feedback for detected patterns
-- **📊 Session Analytics**: Tracks and analyzes user behavior patterns
-- **🔄 Evolution Story Generation**: Automatically creates evolution stories from patterns
-- **📝 Comprehensive Logging**: Logs all events and feedback for analysis
+- __🎯 Real-Time Pattern Detection__: Monitors user input and file changes for evolution triggers
+- __📡 Live Event Processing__: Processes Cursor events as they happen
+- __🎨 Immediate Visual Feedback__: Provides instant feedback for detected patterns
+- __📊 Session Analytics__: Tracks and analyzes user behavior patterns
+- __🔄 Evolution Story Generation__: Automatically creates evolution stories from patterns
+- __📝 Comprehensive Logging__: Logs all events and feedback for analysis
 
 ## 🏗️ Architecture
 
 ### Core Components
 
-1. **CursorRealtimeIntegration** (`tools/cursor-realtime-integration.ts`)
+1. __CursorRealtimeIntegration__ (`tools/cursor-realtime-integration.ts`)
    - Main integration class extending EventEmitter
    - Handles real-time event processing
    - Manages file watchers and pattern monitoring
    - Provides immediate feedback
 
-2. **CursorRealtimeCLI** (`cli/cursor-realtime-cli.ts`)
+2. __CursorRealtimeCLI__ (`CLI/cursor-realtime-CLI.ts`)
    - Command-line interface for managing integration
    - Start/stop/status commands
    - Monitoring and analytics features
    - Testing and debugging tools
 
-3. **Event Processing Pipeline**
+3. __Event Processing Pipeline**
    - File change detection
    - User input analysis
    - Pattern matching
@@ -44,12 +46,12 @@ The Cursor Real-Time Integration system provides live monitoring and intelligent
 
 ```typescript
 interface CursorWorkflowEvent {
-  type: 'file-change' | 'cursor-move' | 'user-input' | 'pattern-detected' | 'evolution-trigger';
-  timestamp: string;
-  data: any;
-  sessionId: string;
+  type: "file-change" | "cursor-move" | "user-input" | "pattern-detected" | "evolution-trigger"
+  timestamp: string
+  data: any
+  sessionId: string
 }
-```
+```text
 
 ## 🚀 Usage
 
@@ -64,7 +66,7 @@ npm run cursor:start -- --daemon
 
 # Start with verbose logging
 npm run cursor:start -- --verbose
-```
+```text
 
 ### Monitoring Events
 
@@ -77,7 +79,7 @@ npm run cursor:monitor -- --follow
 
 # Limit number of events
 npm run cursor:monitor -- --limit 20
-```
+```text
 
 ### Viewing Analytics
 
@@ -96,7 +98,7 @@ npm run cursor:feedback
 
 # View patterns
 npm run cursor:patterns -- --session <session-id>
-```
+```text
 
 ### Testing
 
@@ -106,25 +108,25 @@ npm run cursor:test
 
 # Test with specific number of events
 npm run cursor:test -- --events 10
-```
+```text
 
 ## 🎯 Pattern Detection
 
 ### Supported Patterns
 
-| Pattern | Trigger | Response |
-|---------|---------|----------|
-| `does this break` | Breaking change concern | Framework protection activation |
-| `will this cause` | Risk assessment request | Risk analysis initiation |
-| `runtime failures` | Runtime concern | Safeguard engagement |
-| `assess the pitfall` | Pitfall analysis | Constitutional analysis |
-| `enhance the framework` | Enhancement request | Evolution story generation |
-| `guard against` | Protection request | Guard mechanism activation |
-| `should we document somehow` | Documentation need | Auto-documentation trigger |
-| `systematic way` | Systematic approach | Framework methodology |
-| `field-driven` | Field experience | Framework learning |
-| `eating dog food` | Dogfooding pattern | Real-world validation |
-| `real-world usage` | Real-world usage | Framework adaptation |
+| Pattern                      | Trigger                 | Response                        |
+| ---------------------------- | ----------------------- | ------------------------------- |
+| `does this break`            | Breaking change concern | Framework protection activation |
+| `will this cause`            | Risk assessment request | Risk analysis initiation        |
+| `runtime failures`           | Runtime concern         | Safeguard engagement            |
+| `assess the pitfall`         | Pitfall analysis        | Constitutional analysis         |
+| `enhance the framework`      | Enhancement request     | Evolution story generation      |
+| `guard against`              | Protection request      | Guard mechanism activation      |
+| `should we document somehow` | Documentation need      | Auto-documentation trigger      |
+| `systematic way`             | Systematic approach     | Framework methodology           |
+| `field-driven`               | Field experience        | Framework learning              |
+| `eating dog food`            | Dogfooding pattern      | Real-world validation           |
+| `real-world usage`           | Real-world usage        | Framework adaptation            |
 
 ### Pattern Matching Logic
 
@@ -138,7 +140,7 @@ private async checkImmediatePatterns(context: LiveCursorContext): Promise<void> 
   ];
 
   const userPrompt = context.userPrompt.toLowerCase();
-  
+
   for (const pattern of patterns) {
     if (userPrompt.includes(pattern)) {
       // Immediate pattern detected
@@ -153,23 +155,23 @@ private async checkImmediatePatterns(context: LiveCursorContext): Promise<void> 
     }
   }
 }
-```
+```text
 
 ## 🎨 Visual Feedback System
 
 ### Feedback Types
 
-1. **Immediate Feedback**
+1. __Immediate Feedback**
    - Real-time pattern detection
    - Instant user notification
    - Visual indicators
 
-2. **Contextual Messages**
+2. __Contextual Messages**
    - Pattern-specific responses
    - Framework status updates
    - Action recommendations
 
-3. **Visual Elements**
+3. __Visual Elements**
    - Icons and colors
    - Animations
    - Position indicators
@@ -187,7 +189,7 @@ private generateFeedbackMessage(pattern: string): string {
 
   return messages[pattern] || '🎨 Pattern detected - framework intelligence active';
 }
-```
+```text
 
 ## 📊 Session Management
 
@@ -195,65 +197,56 @@ private generateFeedbackMessage(pattern: string): string {
 
 ```typescript
 interface SessionData {
-  sessionId: string;
-  startTime: string;
-  endTime: string;
-  totalEvents: number;
-  patterns: Pattern[];
+  sessionId: string
+  startTime: string
+  endTime: string
+  totalEvents: number
+  patterns: Pattern[]
   summary: {
-    eventTypes: Record<string, number>;
-    duration: number;
-    activeFiles: string[];
-  };
+    eventTypes: Record<string, number>
+    duration: number
+    activeFiles: string[]
+  }
 }
-```
+```text
 
 ### Session Analytics
 
-- **Event Tracking**: All events logged with timestamps
-- **Pattern Analysis**: Detected patterns and frequencies
-- **File Activity**: Active files and change patterns
-- **Duration Metrics**: Session length and activity periods
-- **Performance Data**: Response times and processing metrics
+- __Event Tracking__: All events logged with timestamps
+- __Pattern Analysis__: Detected patterns and frequencies
+- __File Activity__: Active files and change patterns
+- __Duration Metrics__: Session length and activity periods
+- __Performance Data__: Response times and processing metrics
 
 ## 🔄 File Monitoring
 
 ### Watched Directories
 
 ```typescript
-const watchDirs = [
-  'src',
-  'components', 
-  'utils',
-  'tools',
-  'cli'
-];
-```
+const watchDirs = ["src", "components", "utils", "tools", "CLI"]
+```text
 
 ### Watched Files
 
 ```typescript
-const cursorFiles = [
-  '.cursorrules',
-  'cursor-ready.md',
-  'framework/generated/instructions/current/cursor-ready.md'
-];
-```
+const cursorFiles = [".cursorrules", "cursor-ready.md", "framework/generated/instructions/current/cursor-ready.md"]
+```text
 
 ### File Change Detection
 
-- **Created**: New file detection
-- **Modified**: File content changes
-- **Deleted**: File removal events
-- **Recursive**: Directory tree monitoring
+- __Created__: New file detection
+- __Modified__: File content changes
+- __Deleted__: File removal events
+- __Recursive__: Directory tree monitoring
 
 ## 📝 Logging and Storage
 
 ### Feedback Logs
 
-Location: `.aegis/cursor-feedback/`
+Location: `.Aegis/cursor-feedback/`
 
 Format: JSONL (JSON Lines)
+
 ```json
 {
   "type": "immediate-feedback",
@@ -263,13 +256,14 @@ Format: JSONL (JSON Lines)
   "message": "🔍 Framework protections active - checking for breaking changes",
   "visual": {...}
 }
-```
+```text
 
 ### Session Files
 
-Location: `.aegis/cursor-feedback/session-{sessionId}.json`
+Location: `.Aegis/cursor-feedback/session-{sessionId}.JSON`
 
 Contains:
+
 - Session metadata
 - Event history
 - Pattern analysis
@@ -279,22 +273,22 @@ Contains:
 
 ### Test Scenarios
 
-1. **Pattern Detection Tests**
+1. __Pattern Detection Tests**
    - All supported patterns
    - Case sensitivity
    - Context accuracy
 
-2. **Event Processing Tests**
+2. __Event Processing Tests**
    - File change events
    - User input events
    - Cursor movement events
 
-3. **Feedback Generation Tests**
+3. __Feedback Generation Tests**
    - Message accuracy
    - Visual element generation
    - Timing validation
 
-4. **Integration Tests**
+4. __Integration Tests**
    - End-to-end workflows
    - Error handling
    - Performance validation
@@ -310,7 +304,7 @@ npm run cursor:test -- --events 5
 
 # Validate feedback generation
 npm run cursor:feedback -- --limit 10
-```
+```text
 
 ## 🔧 Configuration
 
@@ -321,38 +315,38 @@ npm run cursor:feedback -- --limit 10
 CURSOR_VERBOSE=true
 
 # Set feedback directory
-CURSOR_FEEDBACK_DIR=.aegis/cursor-feedback
+CURSOR_FEEDBACK_DIR=.Aegis/cursor-feedback
 
 # Set evolution check interval (ms)
 CURSOR_EVOLUTION_INTERVAL=5000
-```
+```text
 
 ### Integration Settings
 
 ```typescript
 interface IntegrationConfig {
-  evolutionCheckInterval: number; // 5 seconds
-  patternBufferSize: number;      // 10 events
-  feedbackRetention: number;      // 30 days
-  maxSessionDuration: number;     // 24 hours
+  evolutionCheckInterval: number // 5 seconds
+  patternBufferSize: number // 10 events
+  feedbackRetention: number // 30 days
+  maxSessionDuration: number // 24 hours
 }
-```
+```text
 
 ## 📈 Performance Metrics
 
 ### Real-Time Performance
 
-- **Event Processing**: < 10ms per event
-- **Pattern Detection**: < 5ms per pattern
-- **Feedback Generation**: < 2ms per feedback
-- **File Monitoring**: < 1ms per file change
+- __Event Processing__: < 10ms per event
+- __Pattern Detection__: < 5ms per pattern
+- __Feedback Generation__: < 2ms per feedback
+- __File Monitoring__: < 1ms per file change
 
 ### Resource Usage
 
-- **Memory**: ~50MB baseline
-- **CPU**: < 5% during normal operation
-- **Disk I/O**: Minimal (JSONL logging)
-- **Network**: None (local operation)
+- __Memory__: ~50MB baseline
+- __CPU__: < 5% during normal operation
+- __Disk I/O__: Minimal (JSONL logging)
+- __Network__: None (local operation)
 
 ## 🔍 Monitoring and Debugging
 
@@ -370,7 +364,7 @@ npm run cursor:stats -- --session <id>
 
 # Check feedback logs
 npm run cursor:feedback -- --date 2025-08-08
-```
+```text
 
 ### Log Analysis
 
@@ -382,8 +376,8 @@ npm run cursor:patterns -- --session <id>
 npm run cursor:stats
 
 # Check for errors
-grep "error" .aegis/cursor-feedback/*.jsonl
-```
+grep "error" .Aegis/cursor-feedback/*.jsonl
+```text
 
 ## 🔄 Integration with Framework
 
@@ -391,50 +385,50 @@ grep "error" .aegis/cursor-feedback/*.jsonl
 
 The real-time integration automatically triggers evolution story generation when patterns are detected:
 
-1. **Pattern Detection**: Real-time monitoring identifies evolution triggers
-2. **Context Capture**: User context and file information captured
-3. **Story Generation**: Evolution stories created automatically
-4. **Feedback Loop**: Stories contribute to framework learning
+1. __Pattern Detection__: Real-time monitoring identifies evolution triggers
+2. __Context Capture__: User context and file information captured
+3. __Story Generation__: Evolution stories created automatically
+4. __Feedback Loop__: Stories contribute to framework learning
 
-### Constitutional Compliance
+### ConstitutionalConstitutional Compliance
 
 All real-time operations comply with Aegis Framework Constitution:
 
-- **Blueprint Primacy**: No code generation without blueprints
-- **Mandatory Annotations**: All generated content properly annotated
-- **Traceability**: All events traceable through session logs
-- **Semantic Versioning**: Proper version management
+- __Blueprint Primacy__: No code generation without Blueprints
+- __Mandatory Annotations__: All generated content properly annotated
+- __Traceability__: All events traceable through session logs
+- __Semantic Versioning__: Proper version management
 
 ## 🎯 Future Enhancements
 
 ### Planned Features
 
-1. **Advanced Pattern Recognition**
+1. __Advanced Pattern Recognition**
    - Machine learning-based pattern detection
    - Contextual pattern analysis
    - Predictive pattern identification
 
-2. **Enhanced Visual Feedback**
+2. __Enhanced Visual Feedback**
    - Rich UI components
    - Interactive feedback elements
    - Customizable themes
 
-3. **Integration APIs**
+3. __Integration APIs**
    - REST API for external tools
    - WebSocket for real-time updates
    - Plugin system for extensions
 
-4. **Analytics Dashboard**
+4. __Analytics Dashboard**
    - Web-based monitoring interface
    - Real-time metrics visualization
    - Historical trend analysis
 
 ### Roadmap
 
-- **v2.1.0**: Advanced pattern recognition
-- **v2.2.0**: Enhanced visual feedback
-- **v2.3.0**: Integration APIs
-- **v2.4.0**: Analytics dashboard
+- __v2.1.0__: Advanced pattern recognition
+- __v2.2.0__: Enhanced visual feedback
+- __v2.3.0__: Integration APIs
+- __v2.4.0__: Analytics dashboard
 
 ## 📚 References
 
@@ -445,6 +439,6 @@ All real-time operations comply with Aegis Framework Constitution:
 
 ---
 
-**Status**: ✅ Production Ready  
-**Last Updated**: 2025-08-08  
-**Maintainer**: Aegis Framework Team
+**Status__: ✅ Production Ready  
+**Last Updated__: 2025-08-08  
+**Maintainer__: Aegis Framework Team

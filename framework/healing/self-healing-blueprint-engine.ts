@@ -2,17 +2,17 @@
 
 /**
  * Self-Healing Blueprint Engine
- * 
+ *
  * Automatically detects, analyzes, and repairs blueprint inconsistencies and validation errors
  * Part of Phase 3: Advanced Self-Healing Features
- * 
+ *
  * @aegisFrameworkVersion: 2.4.0-alpha
  * @intent: Implement autonomous blueprint repair and validation enhancement
  */
 
-import fs from "fs";
-import path from "path";
-import yaml from "js-yaml";
+import fs from 'fs';
+import path from 'path';
+import yaml from 'js-yaml';
 
 interface BlueprintHealth {
   blueprintId: string;
@@ -78,12 +78,12 @@ class SelfHealingBlueprintEngine {
   }
 
   async healAllBlueprints(autoFix: boolean = false): Promise<HealingReport> {
-    console.log("🔧 Starting blueprint self-healing scan...");
+    console.log('🔧 Starting blueprint self-healing scan...');
 
     const startTime = new Date();
     const blueprints = await this.discoverBlueprints();
     const healthChecks: BlueprintHealth[] = [];
-    
+
     let repairedCount = 0;
     let issuesDetected = 0;
     let issuesFixed = 0;
@@ -91,13 +91,13 @@ class SelfHealingBlueprintEngine {
 
     for (const blueprintPath of blueprints) {
       console.log(`  🔍 Analyzing ${path.basename(blueprintPath)}...`);
-      
+
       const health = await this.analyzeBlueprint(blueprintPath);
       healthChecks.push(health);
-      
+
       issuesDetected += health.issues.length;
       criticalIssues += health.issues.filter(i => i.severity === 'critical').length;
-      
+
       if (autoFix && health.autoRepairable) {
         const fixed = await this.repairBlueprint(health);
         if (fixed) {
@@ -108,7 +108,7 @@ class SelfHealingBlueprintEngine {
     }
 
     const healthyCount = healthChecks.filter(h => h.status === 'healthy').length;
-    
+
     const report: HealingReport = {
       timestamp: new Date().toISOString(),
       blueprintsScanned: blueprints.length,
@@ -118,42 +118,42 @@ class SelfHealingBlueprintEngine {
       issuesFixed,
       criticalIssues,
       summary: this.generateHealingSummary(healthChecks, autoFix),
-      recommendations: this.generateHealingRecommendations(healthChecks)
+      recommendations: this.generateHealingRecommendations(healthChecks),
     };
 
     await this.saveHealingReport(report);
     this.displayHealingReport(report);
 
     console.log(`✨ Blueprint healing completed in ${Date.now() - startTime.getTime()}ms`);
-    
+
     return report;
   }
 
   async analyzeBlueprint(blueprintPath: string): Promise<BlueprintHealth> {
     const issues: BlueprintIssue[] = [];
     const repairActions: RepairAction[] = [];
-    
+
     let blueprintData: any = {};
     let blueprintId = 'unknown';
-    
+
     try {
       // Load and parse blueprint
       const content = fs.readFileSync(blueprintPath, 'utf8');
       blueprintData = yaml.load(content) as any;
       blueprintId = blueprintData.id || path.basename(path.dirname(blueprintPath));
-      
+
       // Validate schema structure
       await this.validateBlueprintSchema(blueprintData, blueprintPath, issues);
-      
+
       // Check annotations and metadata
       await this.validateAnnotations(blueprintData, blueprintPath, issues);
-      
+
       // Validate contracts and rules
       await this.validateContracts(blueprintData, blueprintPath, issues);
-      
+
       // Check version consistency
       await this.validateVersionConsistency(blueprintData, blueprintPath, issues);
-      
+
       // Generate repair actions for detected issues
       for (const issue of issues) {
         const repairAction = await this.generateRepairAction(issue, blueprintData);
@@ -161,7 +161,6 @@ class SelfHealingBlueprintEngine {
           repairActions.push(repairAction);
         }
       }
-      
     } catch (error) {
       issues.push({
         id: 'parse-error',
@@ -172,7 +171,7 @@ class SelfHealingBlueprintEngine {
         expected: 'Valid YAML structure',
         actual: 'Parse error',
         repairSuggestion: 'Fix YAML syntax errors',
-        autoFixAvailable: false
+        autoFixAvailable: false,
       });
     }
 
@@ -188,13 +187,13 @@ class SelfHealingBlueprintEngine {
       repairActions,
       validationScore,
       lastChecked: new Date().toISOString(),
-      autoRepairable
+      autoRepairable,
     };
   }
 
   private async validateBlueprintSchema(blueprint: any, filePath: string, issues: BlueprintIssue[]): Promise<void> {
     const requiredFields = ['id', 'name', 'version'];
-    
+
     for (const field of requiredFields) {
       if (!blueprint[field]) {
         issues.push({
@@ -206,7 +205,7 @@ class SelfHealingBlueprintEngine {
           expected: `${field}: <value>`,
           actual: 'undefined',
           repairSuggestion: `Add required ${field} field to blueprint root`,
-          autoFixAvailable: field === 'version' // We can auto-generate version
+          autoFixAvailable: field === 'version', // We can auto-generate version
         });
       }
     }
@@ -222,7 +221,7 @@ class SelfHealingBlueprintEngine {
         expected: 'observability.events: []',
         actual: 'undefined',
         repairSuggestion: 'Add observability.events array for telemetry',
-        autoFixAvailable: true
+        autoFixAvailable: true,
       });
     }
 
@@ -237,7 +236,7 @@ class SelfHealingBlueprintEngine {
         expected: 'errorStates: [...]',
         actual: 'undefined or empty',
         repairSuggestion: 'Add error state definitions for fallback UX',
-        autoFixAvailable: true
+        autoFixAvailable: true,
       });
     }
   }
@@ -245,7 +244,7 @@ class SelfHealingBlueprintEngine {
   private async validateAnnotations(blueprint: any, filePath: string, issues: BlueprintIssue[]): Promise<void> {
     // Check if blueprint has proper framework version annotation
     const content = fs.readFileSync(filePath, 'utf8');
-    
+
     if (!content.includes('@aegisFrameworkVersion')) {
       issues.push({
         id: 'missing-framework-annotation',
@@ -256,7 +255,7 @@ class SelfHealingBlueprintEngine {
         expected: '@aegisFrameworkVersion: 1.2.0-alpha',
         actual: 'no annotation',
         repairSuggestion: 'Add framework version annotation to blueprint header',
-        autoFixAvailable: true
+        autoFixAvailable: true,
       });
     }
 
@@ -270,7 +269,7 @@ class SelfHealingBlueprintEngine {
         expected: '@intent: <description>',
         actual: 'no annotation',
         repairSuggestion: 'Add intent annotation describing blueprint purpose',
-        autoFixAvailable: true
+        autoFixAvailable: true,
       });
     }
   }
@@ -288,7 +287,7 @@ class SelfHealingBlueprintEngine {
             expected: 'Valid contract object',
             actual: typeof contract,
             repairSuggestion: 'Fix or remove invalid rule contract',
-            autoFixAvailable: false
+            autoFixAvailable: false,
           });
         }
       }
@@ -297,7 +296,7 @@ class SelfHealingBlueprintEngine {
 
   private async validateVersionConsistency(blueprint: any, filePath: string, issues: BlueprintIssue[]): Promise<void> {
     const currentVersion = this.loadCurrentFrameworkVersion();
-    
+
     if (blueprint.version && blueprint.version !== currentVersion) {
       // Check if it's a valid version format
       const versionPattern = /^\d+\.\d+\.\d+(-\w+)?$/;
@@ -311,7 +310,7 @@ class SelfHealingBlueprintEngine {
           expected: 'Semantic version (e.g., 1.2.0-alpha)',
           actual: blueprint.version,
           repairSuggestion: 'Update to valid semantic version format',
-          autoFixAvailable: true
+          autoFixAvailable: true,
         });
       }
     }
@@ -330,7 +329,7 @@ class SelfHealingBlueprintEngine {
           path: 'version',
           operation: 'add',
           newValue: this.loadCurrentFrameworkVersion(),
-          rationale: 'Add current framework version'
+          rationale: 'Add current framework version',
         });
         action = 'add-field';
         break;
@@ -343,10 +342,10 @@ class SelfHealingBlueprintEngine {
             {
               name: 'blueprint-initialized',
               description: 'Blueprint instance created',
-              level: 'info'
-            }
+              level: 'info',
+            },
           ],
-          rationale: 'Add default observability events for telemetry'
+          rationale: 'Add default observability events for telemetry',
         });
         action = 'add-field';
         break;
@@ -359,10 +358,10 @@ class SelfHealingBlueprintEngine {
             {
               name: 'initialization-failed',
               fallbackUX: 'Show generic error message',
-              recovery: 'Retry initialization'
-            }
+              recovery: 'Retry initialization',
+            },
           ],
-          rationale: 'Add default error state for fallback UX'
+          rationale: 'Add default error state for fallback UX',
         });
         action = 'add-field';
         break;
@@ -372,7 +371,7 @@ class SelfHealingBlueprintEngine {
           path: 'metadata-header',
           operation: 'add',
           newValue: `@aegisFrameworkVersion: ${this.loadCurrentFrameworkVersion()}`,
-          rationale: 'Add required framework version annotation'
+          rationale: 'Add required framework version annotation',
         });
         action = 'fix-annotation';
         break;
@@ -382,7 +381,7 @@ class SelfHealingBlueprintEngine {
           path: 'metadata-header',
           operation: 'add',
           newValue: `@intent: ${blueprint.description || 'Blueprint implementation'}`,
-          rationale: 'Add intent annotation based on blueprint description'
+          rationale: 'Add intent annotation based on blueprint description',
         });
         action = 'fix-annotation';
         riskLevel = 'moderate';
@@ -394,9 +393,20 @@ class SelfHealingBlueprintEngine {
           operation: 'update',
           oldValue: blueprint.version,
           newValue: this.normalizeVersion(blueprint.version),
-          rationale: 'Fix version format to semantic versioning'
+          rationale: 'Fix version format to semantic versioning',
         });
         riskLevel = 'safe';
+        break;
+
+      case 'critical-schema-violation':
+        changes.push({
+          path: 'schema',
+          operation: 'update',
+          oldValue: blueprint.schema,
+          newValue: '2.0.0',
+          rationale: 'Update to latest schema version',
+        });
+        riskLevel = 'high';
         break;
 
       default:
@@ -409,7 +419,7 @@ class SelfHealingBlueprintEngine {
       description: `Auto-repair: ${issue.repairSuggestion}`,
       changes,
       riskLevel,
-      requiresUserApproval: riskLevel === 'high'
+      requiresUserApproval: riskLevel === 'high',
     };
   }
 
@@ -432,7 +442,7 @@ class SelfHealingBlueprintEngine {
             // Add annotation to file header
             const lines = content.split('\n');
             const yamlStart = lines.findIndex(line => line.trim() && !line.startsWith('#'));
-            
+
             if (yamlStart > 0) {
               lines.splice(yamlStart, 0, `# ${change.newValue}`);
               content = lines.join('\n');
@@ -442,16 +452,16 @@ class SelfHealingBlueprintEngine {
             // Modify YAML data
             const pathParts = change.path.split('.');
             let target = blueprintData;
-            
+
             for (let i = 0; i < pathParts.length - 1; i++) {
               if (!target[pathParts[i]]) {
                 target[pathParts[i]] = {};
               }
               target = target[pathParts[i]];
             }
-            
+
             const finalKey = pathParts[pathParts.length - 1];
-            
+
             if (change.operation === 'add' || change.operation === 'update') {
               target[finalKey] = change.newValue;
               modified = true;
@@ -473,12 +483,12 @@ class SelfHealingBlueprintEngine {
           const newContent = yaml.dump(blueprintData, { indent: 2 });
           fs.writeFileSync(health.filePath, newContent);
         }
-        
+
         console.log(`    ✅ Repaired ${health.repairActions.length} issues in ${health.blueprintId}`);
-        
+
         // Log repair action
         await this.logRepairAction(health, health.repairActions[0]);
-        
+
         return true;
       }
     } catch (error) {
@@ -491,13 +501,13 @@ class SelfHealingBlueprintEngine {
   // Helper methods
   private async discoverBlueprints(): Promise<string[]> {
     const blueprints: string[] = [];
-    
+
     if (!fs.existsSync(this.blueprintsPath)) {
       return blueprints;
     }
 
     const entries = fs.readdirSync(this.blueprintsPath, { withFileTypes: true });
-    
+
     for (const entry of entries) {
       if (entry.isDirectory()) {
         const blueprintFile = path.join(this.blueprintsPath, entry.name, 'blueprint.yaml');
@@ -515,13 +525,13 @@ class SelfHealingBlueprintEngine {
 
     const severityWeights = { low: 1, medium: 3, high: 7, critical: 15 };
     const totalPenalty = issues.reduce((sum, issue) => sum + severityWeights[issue.severity], 0);
-    
+
     return Math.max(0, 100 - totalPenalty);
   }
 
   private determineHealthStatus(score: number, issues: BlueprintIssue[]): BlueprintHealth['status'] {
     const hasCritical = issues.some(i => i.severity === 'critical');
-    
+
     if (hasCritical) return 'corrupted';
     if (score >= 90) return 'healthy';
     if (score >= 70) return 'warning';
@@ -540,10 +550,10 @@ class SelfHealingBlueprintEngine {
   private normalizeVersion(version: string): string {
     // Simple version normalization
     if (!version) return '1.0.0';
-    
+
     const parts = version.split('.');
     while (parts.length < 3) parts.push('0');
-    
+
     return parts.slice(0, 3).join('.');
   }
 
@@ -551,49 +561,47 @@ class SelfHealingBlueprintEngine {
     const total = healthChecks.length;
     const healthy = healthChecks.filter(h => h.status === 'healthy').length;
     const critical = healthChecks.filter(h => h.status === 'critical' || h.status === 'corrupted').length;
-    
+
     let summary = `Scanned ${total} blueprints: ${healthy} healthy, ${critical} critical issues`;
-    
+
     if (autoFix) {
       const repaired = healthChecks.filter(h => h.autoRepairable).length;
       summary += `, ${repaired} auto-repaired`;
     }
-    
+
     return summary;
   }
 
   private generateHealingRecommendations(healthChecks: BlueprintHealth[]): string[] {
     const recommendations: string[] = [];
-    
+
     const needsAttention = healthChecks.filter(h => h.status !== 'healthy');
     if (needsAttention.length > 0) {
       recommendations.push(`Review ${needsAttention.length} blueprints requiring attention`);
     }
-    
-    const manualRepairs = healthChecks.filter(h => 
-      h.repairActions.some(action => action.requiresUserApproval)
-    );
+
+    const manualRepairs = healthChecks.filter(h => h.repairActions.some(action => action.requiresUserApproval));
     if (manualRepairs.length > 0) {
       recommendations.push(`${manualRepairs.length} blueprints need manual review for complex repairs`);
     }
-    
+
     recommendations.push('Schedule regular blueprint health checks');
     recommendations.push('Consider implementing blueprint validation in CI/CD pipeline');
-    
+
     return recommendations;
   }
 
   private async saveHealingReport(report: HealingReport): Promise<void> {
     this.healingHistory.push(report);
-    
+
     const reportsPath = path.join(this.frameworkRoot, 'framework/healing');
     if (!fs.existsSync(reportsPath)) {
       fs.mkdirSync(reportsPath, { recursive: true });
     }
-    
+
     const reportFile = path.join(reportsPath, 'healing-history.json');
     fs.writeFileSync(reportFile, JSON.stringify(this.healingHistory, null, 2));
-    
+
     // Also save individual report
     const timestamp = report.timestamp.replace(/[:.]/g, '-');
     const individualReport = path.join(reportsPath, `healing-report-${timestamp}.json`);
@@ -613,26 +621,26 @@ class SelfHealingBlueprintEngine {
 
   private async logRepairAction(health: BlueprintHealth, action: RepairAction): Promise<void> {
     const logPath = path.join(this.frameworkRoot, 'framework/healing/repair-log.json');
-    
+
     let log: any[] = [];
     if (fs.existsSync(logPath)) {
       log = JSON.parse(fs.readFileSync(logPath, 'utf8'));
     }
-    
+
     log.push({
       timestamp: new Date().toISOString(),
       blueprintId: health.blueprintId,
       action: action.description,
       changes: action.changes,
-      automated: true
+      automated: true,
     });
-    
+
     fs.writeFileSync(logPath, JSON.stringify(log, null, 2));
   }
 
   displayHealingReport(report: HealingReport): void {
-    console.log("\n🔧 Blueprint Self-Healing Report");
-    console.log("==============================");
+    console.log('\n🔧 Blueprint Self-Healing Report');
+    console.log('==============================');
     console.log(`Scan Time: ${new Date(report.timestamp).toLocaleString()}`);
     console.log(`Blueprints Scanned: ${report.blueprintsScanned}`);
     console.log(`Healthy: ${report.healthyCount}`);
@@ -640,11 +648,11 @@ class SelfHealingBlueprintEngine {
     console.log(`Issues Detected: ${report.issuesDetected}`);
     console.log(`Issues Fixed: ${report.issuesFixed}`);
     console.log(`Critical Issues: ${report.criticalIssues}`);
-    console.log("");
+    console.log('');
     console.log(`Summary: ${report.summary}`);
-    
+
     if (report.recommendations.length > 0) {
-      console.log("\n💡 Recommendations:");
+      console.log('\n💡 Recommendations:');
       report.recommendations.forEach(rec => console.log(`  ${rec}`));
     }
   }
@@ -655,24 +663,24 @@ async function main() {
   const args = process.argv.slice(2);
   const command = args[0];
   const autoFix = args.includes('--auto-fix') || args.includes('-f');
-  
+
   const engine = new SelfHealingBlueprintEngine();
-  
+
   switch (command) {
     case 'heal':
       await engine.healAllBlueprints(autoFix);
       break;
-      
+
     case 'scan':
       await engine.healAllBlueprints(false);
       break;
-      
+
     default:
-      console.log("🔧 Self-Healing Blueprint Engine");
-      console.log("Available commands:");
-      console.log("  scan - Analyze blueprint health without repairs");
-      console.log("  heal - Analyze and auto-repair blueprints");
-      console.log("  heal --auto-fix - Enable automatic repairs");
+      console.log('🔧 Self-Healing Blueprint Engine');
+      console.log('Available commands:');
+      console.log('  scan - Analyze blueprint health without repairs');
+      console.log('  heal - Analyze and auto-repair blueprints');
+      console.log('  heal --auto-fix - Enable automatic repairs');
       break;
   }
 }

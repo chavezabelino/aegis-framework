@@ -47,22 +47,21 @@ class FrameworkDashboardUpdater {
    */
   async updateDashboard(): Promise<void> {
     console.log('📊 Updating Framework Dashboard...');
-    
+
     try {
       // Gather current framework data
       const data = await this.gatherDashboardData();
-      
+
       // Generate updated dashboard content
       const dashboardContent = this.generateDashboardContent(data);
-      
+
       // Write to file
       fs.writeFileSync(this.dashboardFile, dashboardContent);
-      
+
       console.log(`✅ Dashboard updated: ${this.dashboardFile}`);
       console.log(`📈 Framework Status: ${data.healthStatus}`);
       console.log(`🔧 Capabilities: ${data.totalCapabilities}`);
       console.log(`📋 Blueprints: ${data.blueprintCount}`);
-      
     } catch (error) {
       console.error('❌ Dashboard update failed:', error);
       throw error;
@@ -76,7 +75,7 @@ class FrameworkDashboardUpdater {
     const [capabilityMap, blueprintStats, executionStats] = await Promise.all([
       this.mapper.discoverCapabilities(),
       this.getBlueprintStats(),
-      this.getExecutionStats()
+      this.getExecutionStats(),
     ]);
 
     // Calculate category distribution
@@ -119,7 +118,7 @@ class FrameworkDashboardUpdater {
       testCoverage,
       blueprintCount: blueprintStats.total,
       lastUpdated: new Date().toISOString(),
-      executionStats
+      executionStats,
     };
   }
 
@@ -129,7 +128,7 @@ class FrameworkDashboardUpdater {
   private generateDashboardContent(data: DashboardData): string {
     const date = new Date().toLocaleDateString();
     const healthBadge = data.healthStatus === 'healthy' ? 'HEALTHY-green' : 'ISSUES-red';
-    
+
     let content = `# Aegis Framework Dashboard
 
 [![Framework Version](https://img.shields.io/badge/Framework-v${data.version}-orange?style=for-the-badge)](VERSION)
@@ -354,11 +353,11 @@ ${data.documentationCoverage >= 80 ? '✅' : '⚠️'} **Documentation Coverage*
     if (data.testCoverage < 80) {
       content += `\n⚠️ **Test Coverage**: Currently at ${data.testCoverage.toFixed(1)}%, target is 80%+`;
     }
-    
+
     if (data.healthStatus !== 'healthy') {
       content += `\n⚠️ **Health Issues**: Framework health requires attention`;
     }
-    
+
     content += `\n📈 **Performance Metrics**: Baseline established, optimization opportunities identified  
 🔧 **Tool Integration**: Additional CLI enhancements and workflow improvements planned
 
@@ -387,7 +386,7 @@ ${data.documentationCoverage >= 80 ? '✅' : '⚠️'} **Documentation Coverage*
       totalExecutions: stats.totalExecutions,
       sessionTraces: this.tracer.getCurrentSession().totalTraces,
       uniqueFeatures: stats.uniqueFeatures,
-      mostUsed: stats.mostUsedFeatures
+      mostUsed: stats.mostUsedFeatures,
     };
   }
 
@@ -404,7 +403,7 @@ ${data.documentationCoverage >= 80 ? '✅' : '⚠️'} **Documentation Coverage*
   private findTestFiles(): string[] {
     const testDir = path.join(this.projectRoot, 'tests');
     if (!fs.existsSync(testDir)) return [];
-    
+
     const files: string[] = [];
     const walk = (dir: string) => {
       const entries = fs.readdirSync(dir, { withFileTypes: true });
@@ -417,7 +416,7 @@ ${data.documentationCoverage >= 80 ? '✅' : '⚠️'} **Documentation Coverage*
         }
       }
     };
-    
+
     walk(testDir);
     return files;
   }
@@ -425,7 +424,7 @@ ${data.documentationCoverage >= 80 ? '✅' : '⚠️'} **Documentation Coverage*
   private findSourceFiles(): string[] {
     const dirs = ['tools', 'framework', 'cli'];
     const files: string[] = [];
-    
+
     for (const dir of dirs) {
       const fullDir = path.join(this.projectRoot, dir);
       if (fs.existsSync(fullDir)) {
@@ -443,7 +442,7 @@ ${data.documentationCoverage >= 80 ? '✅' : '⚠️'} **Documentation Coverage*
         walk(fullDir);
       }
     }
-    
+
     return files;
   }
 
@@ -453,7 +452,7 @@ ${data.documentationCoverage >= 80 ? '✅' : '⚠️'} **Documentation Coverage*
       tool: '🔧',
       governance: '⚖️',
       integration: '🔗',
-      experimental: '🧪'
+      experimental: '🧪',
     };
     return icons[category] || '📦';
   }
@@ -464,7 +463,7 @@ ${data.documentationCoverage >= 80 ? '✅' : '⚠️'} **Documentation Coverage*
       tool: 'CLI utilities, validation tools, enforcement engines',
       governance: 'Constitutional enforcement, semantic interrupts',
       integration: 'Blueprint implementations, external connections',
-      experimental: 'Proof-of-concept, research phase features'
+      experimental: 'Proof-of-concept, research phase features',
     };
     return descriptions[category] || 'Framework components';
   }
@@ -475,7 +474,7 @@ ${data.documentationCoverage >= 80 ? '✅' : '⚠️'} **Documentation Coverage*
       beta: '🟡',
       alpha: '🟠',
       experimental: '🧪',
-      deprecated: '⚠️'
+      deprecated: '⚠️',
     };
     return icons[status] || '❓';
   }
@@ -486,7 +485,7 @@ ${data.documentationCoverage >= 80 ? '✅' : '⚠️'} **Documentation Coverage*
       beta: 'Feature-complete, undergoing validation',
       alpha: 'Early implementation, active development',
       experimental: 'Proof-of-concept, research phase',
-      deprecated: 'Legacy feature, migration recommended'
+      deprecated: 'Legacy feature, migration recommended',
     };
     return descriptions[status] || 'Status unknown';
   }
@@ -501,13 +500,12 @@ ${data.documentationCoverage >= 80 ? '✅' : '⚠️'} **Documentation Coverage*
  */
 async function main() {
   const updater = new FrameworkDashboardUpdater();
-  
+
   try {
     await updater.updateDashboard();
     console.log('\n💡 Dashboard updated successfully!');
     console.log('📁 Check FRAMEWORK-DASHBOARD.md for the latest status');
     console.log('🔧 Run this script after major changes to keep dashboard current');
-    
   } catch (error) {
     console.error('❌ Dashboard update failed:', error);
     process.exit(1);

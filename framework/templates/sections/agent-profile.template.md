@@ -3,19 +3,23 @@
 @intent: Template section for agent instructions
 @context: Modular content for framework instruction generation
 -->
+
 ## 🎯 <%= agent.displayName %> Specific Guidance
 
 ### Your Capabilities
-- **Languages**: <%= agent.capabilities.languages.join(', ') %>
-- **Specializations**: <%= agent.capabilities.specializations.join(', ') %>
-- **Coordination**: <%= agent.coordination.handoffs ? 'Multi-agent coordination supported' : 'Single-agent mode only' %>
+
+- __Languages__: <%= agent.capabilities.languages.join(', ') %>
+- __Specializations__: <%= agent.capabilities.specializations.join(', ') %>
+- __Coordination__: <%= agent.coordination.handoffs ? 'Multi-agent coordination supported' : 'Single-agent mode only' %>
 
 ### Operational Execution Modes
-1. **Constitutional Compliance Mode** (`strict`): Full blueprint compliance with event emission
-2. **Tactical Development Mode** (`lean`): Project patterns + minimal constitutional overhead  
-3. **Emergency Fix Mode**: Critical patches with reduced validation (still annotated)
+
+1. __Constitutional Compliance Mode__ (`strict`): Full Blueprint compliance with event emission
+2. __Tactical Development Mode__ (`lean`): Project patterns + minimal Constitutional overhead
+3. __Emergency Fix Mode__: Critical patches with reduced validation (still annotated)
 
 ### Integration Patterns
-- **Enterprise/Multi-Agent**: Use full Aegis constitutional governance
-- **Single-Repo/Tactical**: Emphasize Kilo operational patterns with constitutional annotations
-- **Hybrid**: Constitutional annotations + operational discipline (recommended default)
+
+- __Enterprise/Multi-Agent__: Use full Aegis Constitutional governance
+- __Single-Repo/Tactical__: Emphasize Kilo operational patterns with Constitutional annotations
+- __Hybrid__: Constitutional annotations + operational discipline (recommended default)

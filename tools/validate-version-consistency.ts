@@ -40,7 +40,7 @@ class VersionConsistencyValidator {
     'docs/roadmap/README.md',
     'docs/releases/README.md',
     'package.json',
-    'framework/framework-core-v2.2.0.md'
+    'framework/framework-core-v2.2.0.md',
   ];
 
   private comprehensiveFiles: string[] = [
@@ -55,7 +55,7 @@ class VersionConsistencyValidator {
     'docs/releases/v2.1.0-summary.md',
     'framework/framework-core-v2.1.0.md',
     'framework/generated/instructions/current/cursor-ready.md',
-    'framework/generated/instructions/current/github-copilot-ready.md'
+    'framework/generated/instructions/current/github-copilot-ready.md',
   ];
 
   private versionPatterns: RegExp[] = [
@@ -70,7 +70,7 @@ class VersionConsistencyValidator {
     /framework.*version.*([0-9]+\.[0-9]+\.[0-9]+)/i,
     /npm install.*@([0-9]+\.[0-9]+\.[0-9]+)/,
     /currently.*v([0-9]+\.[0-9]+\.[0-9]+)/i,
-    /release.*v([0-9]+\.[0-9]+\.[0-9]+)/i
+    /release.*v([0-9]+\.[0-9]+\.[0-9]+)/i,
   ];
 
   constructor(projectRoot: string = process.cwd()) {
@@ -129,7 +129,7 @@ class VersionConsistencyValidator {
       checks,
       violations,
       recommendations: this.generateRecommendations(violations),
-      criticalFiles: this.criticalFiles
+      criticalFiles: this.criticalFiles,
     };
 
     this.displayResults(result);
@@ -141,21 +141,21 @@ class VersionConsistencyValidator {
    */
   private validateFile(filePath: string): VersionCheck {
     const fullPath = path.join(this.projectRoot, filePath);
-    
+
     if (!fs.existsSync(fullPath)) {
       return {
         file: filePath,
         expectedVersion: this.currentVersion,
         foundVersion: null,
         status: 'error',
-        context: 'File does not exist'
+        context: 'File does not exist',
       };
     }
 
     try {
       const content = fs.readFileSync(fullPath, 'utf8');
       const lines = content.split('\n');
-      
+
       // Check for version patterns
       for (let i = 0; i < lines.length; i++) {
         const line = lines[i];
@@ -164,14 +164,14 @@ class VersionConsistencyValidator {
           if (match) {
             const foundVersion = match[1];
             const status = foundVersion === this.currentVersion ? 'match' : 'mismatch';
-            
+
             return {
               file: filePath,
               expectedVersion: this.currentVersion,
               foundVersion,
               status,
               line: i + 1,
-              context: line.trim()
+              context: line.trim(),
             };
           }
         }
@@ -183,16 +183,15 @@ class VersionConsistencyValidator {
         expectedVersion: this.currentVersion,
         foundVersion: null,
         status: 'missing',
-        context: 'No version reference found'
+        context: 'No version reference found',
       };
-
     } catch (error) {
       return {
         file: filePath,
         expectedVersion: this.currentVersion,
         foundVersion: null,
         status: 'error',
-        context: `Failed to read file: ${error}`
+        context: `Failed to read file: ${error}`,
       };
     }
   }
@@ -202,31 +201,33 @@ class VersionConsistencyValidator {
    */
   private getAllFiles(): string[] {
     const files: string[] = [];
-    
+
     // Start with comprehensive files for thorough coverage
     for (const file of this.comprehensiveFiles) {
       if (fs.existsSync(path.join(this.projectRoot, file))) {
         files.push(file);
       }
     }
-    
+
     const walkDir = (dir: string, baseDir: string = '') => {
       try {
         const items = fs.readdirSync(dir);
-        
+
         for (const item of items) {
           const fullPath = path.join(dir, item);
           const relativePath = path.join(baseDir, item);
           const stat = fs.statSync(fullPath);
-          
+
           if (stat.isDirectory()) {
             // Enhanced directory filtering for better coverage
-            if (item !== 'node_modules' && 
-                item !== '.git' && 
-                !item.startsWith('.') &&
-                item !== 'dist' &&
-                item !== 'build' &&
-                item !== 'coverage') {
+            if (
+              item !== 'node_modules' &&
+              item !== '.git' &&
+              !item.startsWith('.') &&
+              item !== 'dist' &&
+              item !== 'build' &&
+              item !== 'coverage'
+            ) {
               walkDir(fullPath, relativePath);
             }
           } else if (stat.isFile()) {
@@ -277,7 +278,9 @@ class VersionConsistencyValidator {
       recommendations.push(`⚠️ ${otherViolations.length} other files have version mismatches`);
     }
 
-    recommendations.push('💡 Run "node tools/validate-version-consistency.ts --auto-fix" to apply automatic corrections');
+    recommendations.push(
+      '💡 Run "node tools/validate-version-consistency.ts --auto-fix" to apply automatic corrections'
+    );
     recommendations.push('💡 Add version validation to pre-commit hooks to prevent future issues');
 
     return recommendations;
@@ -349,12 +352,12 @@ class VersionConsistencyValidator {
           const fullPath = path.join(this.projectRoot, violation.file);
           const content = fs.readFileSync(fullPath, 'utf8');
           const lines = content.split('\n');
-          
+
           // Replace version in the specific line
           const lineIndex = violation.line - 1;
           const oldLine = lines[lineIndex];
           const newLine = oldLine.replace(violation.foundVersion!, this.currentVersion);
-          
+
           if (newLine !== oldLine) {
             lines[lineIndex] = newLine;
             fs.writeFileSync(fullPath, lines.join('\n'));
@@ -374,12 +377,12 @@ class VersionConsistencyValidator {
 // CLI interface
 async function main(): Promise<void> {
   const validator = new VersionConsistencyValidator();
-  
+
   if (process.argv.includes('--auto-fix')) {
     await validator.autoFix();
   } else {
     const result = await validator.validateAll();
-    
+
     if (result.overallStatus === 'fail') {
       process.exit(1);
     }

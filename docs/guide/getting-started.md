@@ -16,35 +16,35 @@ Welcome to Aegis — the first governance framework for consistent, compliant AI
 ## 🚀 Quickstart
 
 ```bash
-# Clone your blueprint-enabled repo
+# Clone your Blueprint-enabled repo
 git clone git@github.com:your-org/aegis-framework-app.git
-cd aegis-framework-app
+cd Aegis-framework-app
 
-# Run pattern init (optional CLI)  
-npx aegis-cli init feat-public-viewing
+# Run pattern init (optional CLI)
+npx Aegis-CLI init feat-public-viewing
 
 # Edit AI code pattern YAML
-code patterns/feat-public-viewing/pattern.yaml
+code patterns/feat-public-viewing/pattern.YAML
 
 # Generate with your AI agent following the pattern
-# Save outputs in: patterns/feat-public-viewing/output.{lean,strict,full}.json
+# Save outputs in: patterns/feat-public-viewing/output.{lean,strict,full}.JSON
 
 # Run snapshot tests
 npm run test:snapshots
-```
+```text
 
 ---
 
 ## 🧪 Validating a Blueprint
 
 ```bash
-node tools/validate-blueprint.js blueprints/feat-my-feature/blueprint.yaml
-```
+node tools/validate-Blueprint.js blueprints/feat-my-feature/Blueprint.YAML
+```text
 
 ---
 
 ## 📘 Next Steps
 
-- Learn how to create adapters: `adapters/<tech>/blueprint-adapter.ts`
+- Learn how to create adapters: `adapters/<tech>/Blueprint-adapter.ts`
 - Learn how to test for drift: `tools/detect-drift.ts`
 - Reference schema docs in `framework/contracts/`

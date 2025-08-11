@@ -3,45 +3,50 @@
 @intent: Template section for agent instructions
 @context: Modular content for framework instruction generation
 -->
+
 ## 🛠️ CLI Integration
 
 ### Blueprint Management
-```bash
-# Initialize new blueprint
-node cli/init-blueprint.ts feat-your-feature
 
-# Validate blueprint schema
-node tools/validate-blueprint.ts blueprints/feat-your-feature/blueprint.yaml
+```bash
+# Initialize new Blueprint
+node CLI/init-Blueprint.ts feat-your-feature
+
+# Validate Blueprint schema
+node tools/validate-Blueprint.ts blueprints/feat-your-feature/Blueprint.YAML
 
 # Generate agent instructions
-node cli/generate-agent-instructions-v2.cjs github-copilot --project-profile templates/project-standards.md
+node CLI/generate-agent-instructions-v2.cjs GitHub-copilot --project-profile templates/project-standards.md
 
 # Migration audit
-node cli/aegis-migration-audit.cjs ../target-app --output migration-plan.md --strict
-```
+node CLI/Aegis-migration-audit.cjs ../target-app --output migration-plan.md --strict
+```text
 
 ### Drift Detection & Control
+
 ```bash
 # Constitutional conductor (governance automation)
-node cli/aegis-conductor.ts
+node CLI/Aegis-conductor.ts
 
 # Drift monitoring
-node cli/drift-cli.ts --check
+node CLI/drift-CLI.ts --check
 
 # Amendment proposals
-node cli/amendment-cli.ts propose --title "Feature Enhancement" --description "..."
-```
+node CLI/amendment-CLI.ts propose --title "Feature Enhancement" --description "..."
+```text
 
 ### Output Management
-- `output.lean.json` — Minimal implementation
-- `output.strict.json` — Full compliance mode
-- `output.full.json` — Generative/creative mode
+
+- `output.lean.JSON` — Minimal implementation
+- `output.strict.JSON` — Full compliance mode
+- `output.full.JSON` — Generative/creative mode
 
 ### Validation Tools
+
 ```bash
 # Constitutional compliance
 node tools/validate-constitution.ts
 
 # Blueprint validation
-node tools/validate-blueprint.ts blueprints/*/blueprint.yaml
-```
+node tools/validate-Blueprint.ts blueprints/*/Blueprint.YAML
+```text

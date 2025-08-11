@@ -59,18 +59,18 @@ export class ExecutionTraceHooks {
   private constructor(projectRoot: string = process.cwd()) {
     this.projectRoot = projectRoot;
     const observabilityDir = path.join(projectRoot, '.framework/observability');
-    
+
     // Ensure directory exists
     if (!fs.existsSync(observabilityDir)) {
       fs.mkdirSync(observabilityDir, { recursive: true });
     }
-    
+
     this.tracesFile = path.join(observabilityDir, 'execution-traces.jsonl');
     this.sessionsFile = path.join(observabilityDir, 'trace-sessions.json');
-    
+
     this.currentSession = this.createNewSession();
     this.loadExistingData();
-    
+
     // Auto-save on process exit
     process.on('exit', () => this.saveData());
     process.on('SIGINT', () => this.endSession());
@@ -117,7 +117,7 @@ export class ExecutionTraceHooks {
 
     const traceId = this.generateTraceId();
     const startTime = Date.now();
-    
+
     const trace: ExecutionTrace = {
       timestamp: new Date(),
       feature,
@@ -128,7 +128,7 @@ export class ExecutionTraceHooks {
       documentation,
       context,
       sessionId: this.currentSession.sessionId,
-      traceId
+      traceId,
     };
 
     // Update session tracking
@@ -137,11 +137,11 @@ export class ExecutionTraceHooks {
     this.currentSession.capabilities.add(capability);
 
     console.log(`🔍 [TRACE] ${feature}.${capability}${method ? `.${method}` : ''} (${traceId})`);
-    
+
     if (blueprint) {
       console.log(`   📋 Blueprint: ${blueprint}`);
     }
-    
+
     if (documentation) {
       console.log(`   📖 Docs: ${documentation}`);
     }
@@ -157,7 +157,7 @@ export class ExecutionTraceHooks {
   private completeTrace(trace: ExecutionTrace, result?: any, error?: any, duration?: number): void {
     trace.result = error ? { error: error.message } : this.sanitizeParameters(result);
     trace.duration = duration;
-    
+
     if (error) {
       this.currentSession.errors++;
       console.log(`❌ [TRACE-ERROR] ${trace.feature}.${trace.capability} failed in ${duration}ms: ${error.message}`);
@@ -182,10 +182,10 @@ export class ExecutionTraceHooks {
   ): T {
     return ((...args: any[]) => {
       const traceCtx = this.trace(feature, capability, method, args, blueprint, documentation);
-      
+
       try {
         const result = fn(...args);
-        
+
         // Handle promises
         if (result && typeof result.then === 'function') {
           return result
@@ -214,24 +214,26 @@ export class ExecutionTraceHooks {
   getStatistics(): TraceStatistics {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
-    
+
     const todaysTraces = this.traces.filter(t => t.timestamp >= today);
     const todaysSessions = this.sessions.filter(s => s.startTime >= today);
-    
+
     const featureCounts = new Map<string, number>();
     for (const trace of this.traces) {
       featureCounts.set(trace.feature, (featureCounts.get(trace.feature) || 0) + 1);
     }
-    
+
     const mostUsedFeatures = Array.from(featureCounts.entries())
       .map(([feature, count]) => ({ feature, count }))
       .sort((a, b) => b.count - a.count)
       .slice(0, 10);
-    
+
     const completedSessions = this.sessions.filter(s => s.endTime);
-    const averageSessionDuration = completedSessions.length > 0
-      ? completedSessions.reduce((sum, s) => sum + (s.endTime!.getTime() - s.startTime.getTime()), 0) / completedSessions.length
-      : 0;
+    const averageSessionDuration =
+      completedSessions.length > 0
+        ? completedSessions.reduce((sum, s) => sum + (s.endTime!.getTime() - s.startTime.getTime()), 0) /
+          completedSessions.length
+        : 0;
 
     return {
       totalExecutions: this.traces.length,
@@ -240,7 +242,7 @@ export class ExecutionTraceHooks {
       mostUsedFeatures,
       recentActivity: this.traces.slice(-10),
       sessionsToday: todaysSessions.length,
-      averageSessionDuration: averageSessionDuration / 1000 // Convert to seconds
+      averageSessionDuration: averageSessionDuration / 1000, // Convert to seconds
     };
   }
 
@@ -264,19 +266,19 @@ export class ExecutionTraceHooks {
   generateExecutionReport(): string {
     const stats = this.getStatistics();
     const session = this.getCurrentSession();
-    
+
     let report = '# Framework Execution Report\n\n';
     report += `**Generated**: ${new Date().toISOString()}\n`;
     report += `**Current Session**: ${session.sessionId}\n`;
     report += `**Session Start**: ${session.startTime.toISOString()}\n\n`;
-    
+
     report += '## Execution Statistics\n\n';
     report += `- **Total Executions**: ${stats.totalExecutions}\n`;
     report += `- **Unique Features**: ${stats.uniqueFeatures}\n`;
     report += `- **Unique Capabilities**: ${stats.uniqueCapabilities}\n`;
     report += `- **Sessions Today**: ${stats.sessionsToday}\n`;
     report += `- **Average Session Duration**: ${stats.averageSessionDuration.toFixed(1)}s\n\n`;
-    
+
     if (stats.mostUsedFeatures.length > 0) {
       report += '## Most Used Features\n\n';
       for (const { feature, count } of stats.mostUsedFeatures) {
@@ -284,14 +286,14 @@ export class ExecutionTraceHooks {
       }
       report += '\n';
     }
-    
+
     report += '## Current Session\n\n';
     report += `- **Session ID**: ${session.sessionId}\n`;
     report += `- **Total Traces**: ${session.totalTraces}\n`;
     report += `- **Features Used**: ${session.features.size}\n`;
     report += `- **Capabilities Used**: ${session.capabilities.size}\n`;
     report += `- **Errors**: ${session.errors}\n\n`;
-    
+
     if (stats.recentActivity.length > 0) {
       report += '## Recent Activity\n\n';
       for (const trace of stats.recentActivity.reverse()) {
@@ -300,7 +302,7 @@ export class ExecutionTraceHooks {
         report += `- **${time}**: ${trace.feature}.${trace.capability}${duration}\n`;
       }
     }
-    
+
     return report;
   }
 
@@ -322,7 +324,7 @@ export class ExecutionTraceHooks {
     this.traces = [];
     this.sessions = [];
     this.currentSession = this.createNewSession();
-    
+
     // Clear files
     if (fs.existsSync(this.tracesFile)) {
       fs.unlinkSync(this.tracesFile);
@@ -330,7 +332,7 @@ export class ExecutionTraceHooks {
     if (fs.existsSync(this.sessionsFile)) {
       fs.unlinkSync(this.sessionsFile);
     }
-    
+
     console.log('🗑️ All execution traces cleared');
   }
 
@@ -344,7 +346,7 @@ export class ExecutionTraceHooks {
       totalTraces: 0,
       features: new Set(),
       capabilities: new Set(),
-      errors: 0
+      errors: 0,
     };
   }
 
@@ -360,13 +362,13 @@ export class ExecutionTraceHooks {
     if (params === null || params === undefined) {
       return params;
     }
-    
+
     // Limit size and remove sensitive data
     const str = JSON.stringify(params);
     if (str.length > 1000) {
       return { _truncated: true, _size: str.length, _preview: str.substring(0, 200) + '...' };
     }
-    
+
     return params;
   }
 
@@ -389,10 +391,10 @@ export class ExecutionTraceHooks {
           startTime: new Date(s.startTime),
           endTime: s.endTime ? new Date(s.endTime) : undefined,
           features: new Set(s.features),
-          capabilities: new Set(s.capabilities)
+          capabilities: new Set(s.capabilities),
         }));
       }
-      
+
       // Load recent traces (last 1000)
       if (fs.existsSync(this.tracesFile)) {
         const lines = fs.readFileSync(this.tracesFile, 'utf8').trim().split('\n');
@@ -412,7 +414,7 @@ export class ExecutionTraceHooks {
       const sessionsData = this.sessions.map(s => ({
         ...s,
         features: Array.from(s.features),
-        capabilities: Array.from(s.capabilities)
+        capabilities: Array.from(s.capabilities),
       }));
       fs.writeFileSync(this.sessionsFile, JSON.stringify(sessionsData, null, 2));
     } catch (error) {
@@ -468,25 +470,13 @@ export class TraceContext {
 /**
  * Decorator for automatic tracing
  */
-export function traced(
-  feature: string,
-  capability: string,
-  blueprint?: string,
-  documentation?: string
-) {
+export function traced(feature: string, capability: string, blueprint?: string, documentation?: string) {
   return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
     const originalMethod = descriptor.value;
     const hooks = ExecutionTraceHooks.getInstance();
-    
-    descriptor.value = hooks.wrap(
-      feature,
-      capability,
-      propertyKey,
-      originalMethod,
-      blueprint,
-      documentation
-    );
-    
+
+    descriptor.value = hooks.wrap(feature, capability, propertyKey, originalMethod, blueprint, documentation);
+
     return descriptor;
   };
 }
@@ -512,9 +502,9 @@ export function trace(
  */
 async function main() {
   const hooks = ExecutionTraceHooks.getInstance();
-  
+
   const command = process.argv[2];
-  
+
   switch (command) {
     case 'stats':
       const stats = hooks.getStatistics();
@@ -523,16 +513,16 @@ async function main() {
       console.log(`   Unique Features: ${stats.uniqueFeatures}`);
       console.log(`   Sessions Today: ${stats.sessionsToday}`);
       break;
-      
+
     case 'report':
       const reportPath = hooks.saveExecutionReport();
       console.log(`📄 Report saved to: ${reportPath}`);
       break;
-      
+
     case 'clear':
       hooks.clearTraces();
       break;
-      
+
     case 'session':
       const session = hooks.getCurrentSession();
       console.log('📊 Current Session:');
@@ -541,7 +531,7 @@ async function main() {
       console.log(`   Features: ${session.features.size}`);
       console.log(`   Errors: ${session.errors}`);
       break;
-      
+
     default:
       console.log('🔍 Execution Trace Hooks');
       console.log('Usage:');

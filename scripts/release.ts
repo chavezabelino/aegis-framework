@@ -15,43 +15,43 @@ type ReleaseType = 'patch' | 'minor' | 'major' | 'prerelease';
 
 class ReleaseManager {
   private currentVersion: string;
-  
+
   constructor() {
     this.currentVersion = fs.readFileSync('VERSION', 'utf8').trim();
   }
-  
+
   async createRelease(releaseType: ReleaseType): Promise<void> {
     console.log(`🚀 Creating ${releaseType} release from v${this.currentVersion}...\n`);
-    
+
     // Pre-release validation
     await this.validatePreRelease();
-    
+
     // Calculate new version
     const newVersion = this.calculateNewVersion(releaseType);
     console.log(`📈 Version bump: ${this.currentVersion} → ${newVersion}`);
-    
+
     // Update version files
     await this.updateVersion(newVersion);
-    
+
     // Run full validation
     await this.runValidation();
-    
+
     // Build packages
     await this.buildPackages();
-    
+
     // Generate release notes
     await this.generateReleaseNotes(newVersion);
-    
+
     // Commit and tag
     await this.commitAndTag(newVersion);
-    
+
     console.log(`\n✅ Release v${newVersion} created successfully!`);
     this.showReleaseInfo(newVersion);
   }
-  
+
   private async validatePreRelease(): Promise<void> {
     console.log('🔍 Running pre-release validation...');
-    
+
     // Check git status
     try {
       const gitStatus = execSync('git status --porcelain', { encoding: 'utf8' });
@@ -61,27 +61,27 @@ class ReleaseManager {
     } catch (error) {
       throw new Error(`Git validation failed: ${error}`);
     }
-    
+
     // Check constitutional compliance
     try {
       execSync('npm run validate:all', { stdio: 'inherit' });
     } catch (error) {
       throw new Error('Constitutional validation failed. Fix compliance issues before release.');
     }
-    
+
     // Check tests
     try {
       execSync('npm test', { stdio: 'inherit' });
     } catch (error) {
       console.warn('⚠️ Tests failed, but continuing release...');
     }
-    
+
     console.log('✅ Pre-release validation passed');
   }
-  
+
   private calculateNewVersion(releaseType: ReleaseType): string {
     const [major, minor, patch] = this.currentVersion.split('.').map(Number);
-    
+
     switch (releaseType) {
       case 'major':
         return `${major + 1}.0.0`;
@@ -103,23 +103,23 @@ class ReleaseManager {
         throw new Error(`Unknown release type: ${releaseType}`);
     }
   }
-  
+
   private async updateVersion(newVersion: string): Promise<void> {
     console.log('📝 Updating version files...');
-    
+
     // Update VERSION file
     fs.writeFileSync('VERSION', newVersion);
-    
+
     // Synchronize all version references
     const synchronizer = new VersionSynchronizer();
     await synchronizer.syncVersions();
-    
+
     this.currentVersion = newVersion;
   }
-  
+
   private async runValidation(): Promise<void> {
     console.log('🔍 Running full validation suite...');
-    
+
     try {
       execSync('npm run validate:all', { stdio: 'inherit' });
       console.log('✅ All validations passed');
@@ -127,27 +127,27 @@ class ReleaseManager {
       throw new Error(`Validation failed: ${error}`);
     }
   }
-  
+
   private async buildPackages(): Promise<void> {
     console.log('🏗️ Building release packages...');
-    
+
     const builder = new PackageBuilder();
     await builder.buildAllPackages();
   }
-  
+
   private async generateReleaseNotes(version: string): Promise<void> {
     console.log('📝 Generating release notes...');
-    
+
     const releaseNotes = this.createReleaseNotes(version);
     const releaseNotesPath = `dist/RELEASE-NOTES-v${version}.md`;
-    
+
     fs.writeFileSync(releaseNotesPath, releaseNotes);
     console.log(`📄 Release notes: ${releaseNotesPath}`);
   }
-  
+
   private createReleaseNotes(version: string): string {
     const releaseDate = new Date().toISOString().split('T')[0];
-    
+
     return `# Aegis Framework v${version} Release Notes
 
 ## Release Information
@@ -279,14 +279,14 @@ aegis-hydrate /path/to/v1/project --migrate-from-v1
 *"Stable, reliable, constitutional."*
 `;
   }
-  
+
   private async commitAndTag(version: string): Promise<void> {
     console.log('📝 Committing release...');
-    
+
     try {
       // Add all changes
       execSync('git add -A');
-      
+
       // Commit release
       execSync(`git commit -m "release: v${version}
 
@@ -310,17 +310,16 @@ Migration Required: None
 Constitutional Compliance: 100%
 Release Validation: Passed
 Package Integrity: Verified"`);
-      
+
       // Create tag
       execSync(`git tag -a v${version} -m "v${version}: Stable release with package distribution"`);
-      
+
       console.log('✅ Release committed and tagged');
-      
     } catch (error) {
       throw new Error(`Git operations failed: ${error}`);
     }
   }
-  
+
   private showReleaseInfo(version: string): void {
     console.log('\n🎉 Release Summary:');
     console.log(`Version: v${version}`);
@@ -338,12 +337,12 @@ Package Integrity: Verified"`);
 // CLI execution
 async function main() {
   const releaseType = (process.argv[2] as ReleaseType) || 'patch';
-  
+
   if (!['patch', 'minor', 'major', 'prerelease'].includes(releaseType)) {
     console.error('❌ Invalid release type. Use: patch, minor, major, or prerelease');
     process.exit(1);
   }
-  
+
   try {
     const releaseManager = new ReleaseManager();
     await releaseManager.createRelease(releaseType);

@@ -38,7 +38,7 @@ const ALLOWED_DIRECTORIES = {
   'dist/': 'Build outputs (ignored in VCS)',
   'logs/': 'Log outputs (ignored in VCS)',
   'scaffolds/': 'Scaffold templates',
-  'templates/': 'General templates'
+  'templates/': 'General templates',
 };
 
 // Files that are allowed in root
@@ -62,7 +62,7 @@ const ALLOWED_ROOT_FILES = [
   '.eslintrc.js',
   '.prettierrc',
   '.prettierignore',
-  'CODEOWNERS'
+  'CODEOWNERS',
 ];
 
 const IGNORED_ROOT_DIRS = new Set(['node_modules', '.git', '.framework']);
@@ -81,11 +81,11 @@ class PathChecker {
       }
 
       const items = fs.readdirSync(dirPath);
-      
+
       for (const item of items) {
         const fullPath = path.join(dirPath, item);
         const stat = fs.statSync(fullPath);
-        
+
         if (stat.isDirectory()) {
           const relativePath = path.relative('.', fullPath) + '/';
           if (!this.isAllowedDirectory(relativePath)) {
@@ -128,7 +128,7 @@ class PathChecker {
   checkRootDirectory() {
     try {
       const items = fs.readdirSync('.');
-      
+
       for (const item of items) {
         const stat = fs.statSync(item);
         if (stat.isDirectory()) {
@@ -158,7 +158,8 @@ class PathChecker {
     if (this.errors.length > 0) {
       console.log('❌ Errors:');
       for (const e of this.errors) {
-        const label = e.type === 'dir' ? 'Unauthorized directory' : e.type === 'file' ? 'Unauthorized file' : 'Internal error';
+        const label =
+          e.type === 'dir' ? 'Unauthorized directory' : e.type === 'file' ? 'Unauthorized file' : 'Internal error';
         console.log(`  • ${label}: ${e.path}${e.message ? ` (${e.message})` : ''}`);
       }
     }
@@ -213,7 +214,7 @@ async function main() {
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {
-  main().catch((error) => {
+  main().catch(error => {
     console.error('❌ Path check failed:', error.message);
     process.exit(1);
   });

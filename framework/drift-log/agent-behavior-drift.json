@@ -63,7 +63,7 @@
     },
     "alerts": [
       {
-        "type": "requirement-misinterpretation", 
+        "type": "requirement-misinterpretation",
         "frequency": 1,
         "lastOccurrence": "2025-08-05T18:30:00Z",
         "pattern": "Confusing git exclusion with file deletion in development setup",

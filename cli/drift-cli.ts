@@ -38,7 +38,7 @@ function replayDrift(blueprintId: string, fixMode: string) {
   console.log(`Replaying drift for blueprint ${blueprintId} with fix mode ${fixMode}`);
 }
 
-const [,, cmd, ...args] = process.argv;
+const [, , cmd, ...args] = process.argv;
 if (cmd === 'list') {
   listDriftEvents(args[0]);
 } else if (cmd === 'review') {
@@ -46,5 +46,7 @@ if (cmd === 'list') {
 } else if (cmd === 'replay') {
   replayDrift(args[0], args[1]?.replace('--fix-mode=', ''));
 } else {
-  console.log('Usage: drift list [severity] | drift review <id> --approve | drift replay <blueprintId> --fix-mode=<mode>');
+  console.log(
+    'Usage: drift list [severity] | drift review <id> --approve | drift replay <blueprintId> --fix-mode=<mode>'
+  );
 }

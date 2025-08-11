@@ -52,16 +52,16 @@ class CursorRealtimeIntegration extends EventEmitter {
   async start(): Promise<void> {
     console.log('🎯 Starting Cursor Real-time Integration...');
     this.isActive = true;
-    
+
     // Initialize file watchers
     await this.initializeFileWatchers();
-    
+
     // Start pattern monitoring
     this.startPatternMonitoring();
-    
+
     // Start evolution story detection
     this.startEvolutionDetection();
-    
+
     console.log('✅ Cursor Real-time Integration active');
     this.emit('started', { sessionId: this.sessionId });
   }
@@ -72,10 +72,10 @@ class CursorRealtimeIntegration extends EventEmitter {
   async stop(): Promise<void> {
     console.log('🛑 Stopping Cursor Real-time Integration...');
     this.isActive = false;
-    
+
     // Save final session data
     await this.saveSessionData();
-    
+
     console.log('✅ Cursor Real-time Integration stopped');
     this.emit('stopped', { sessionId: this.sessionId });
   }
@@ -87,7 +87,7 @@ class CursorRealtimeIntegration extends EventEmitter {
     if (!this.isActive) return;
 
     this.workflowEvents.push(event);
-    
+
     // Create context for pattern detection
     const context: LiveCursorContext = {
       activeFile: event.data.activeFile || '',
@@ -96,7 +96,7 @@ class CursorRealtimeIntegration extends EventEmitter {
       workspaceRoot: process.cwd(),
       sessionId: this.sessionId,
       eventType: event.type,
-      metadata: event.data.metadata || {}
+      metadata: event.data.metadata || {},
     };
 
     // Capture context for evolution detection
@@ -120,9 +120,9 @@ class CursorRealtimeIntegration extends EventEmitter {
         filePath,
         changeType,
         activeFile: filePath,
-        cursorPosition: { line: 1, character: 1 }
+        cursorPosition: { line: 1, character: 1 },
       },
-      sessionId: this.sessionId
+      sessionId: this.sessionId,
     };
 
     await this.processCursorEvent(event);
@@ -139,9 +139,9 @@ class CursorRealtimeIntegration extends EventEmitter {
         filePath,
         position,
         activeFile: filePath,
-        cursorPosition: position
+        cursorPosition: position,
       },
-      sessionId: this.sessionId
+      sessionId: this.sessionId,
     };
 
     await this.processCursorEvent(event);
@@ -150,7 +150,11 @@ class CursorRealtimeIntegration extends EventEmitter {
   /**
    * Handle user input events
    */
-  async handleUserInput(prompt: string, filePath: string, position: { line: number; character: number }): Promise<void> {
+  async handleUserInput(
+    prompt: string,
+    filePath: string,
+    position: { line: number; character: number }
+  ): Promise<void> {
     const event: CursorWorkflowEvent = {
       type: 'user-input',
       timestamp: new Date().toISOString(),
@@ -160,9 +164,9 @@ class CursorRealtimeIntegration extends EventEmitter {
         position,
         activeFile: filePath,
         cursorPosition: position,
-        userPrompt: prompt
+        userPrompt: prompt,
       },
-      sessionId: this.sessionId
+      sessionId: this.sessionId,
     };
 
     await this.processCursorEvent(event);
@@ -173,13 +177,7 @@ class CursorRealtimeIntegration extends EventEmitter {
    */
   private async initializeFileWatchers(): Promise<void> {
     // Watch for changes in key directories
-    const watchDirs = [
-      'src',
-      'components',
-      'utils',
-      'tools',
-      'cli'
-    ];
+    const watchDirs = ['src', 'components', 'utils', 'tools', 'cli'];
 
     for (const dir of watchDirs) {
       const dirPath = path.resolve(process.cwd(), dir);
@@ -189,11 +187,7 @@ class CursorRealtimeIntegration extends EventEmitter {
     }
 
     // Watch for Cursor-specific files
-    const cursorFiles = [
-      '.cursorrules',
-      'cursor-ready.md',
-      'framework/generated/instructions/current/cursor-ready.md'
-    ];
+    const cursorFiles = ['.cursorrules', 'cursor-ready.md', 'framework/generated/instructions/current/cursor-ready.md'];
 
     for (const file of cursorFiles) {
       const filePath = path.resolve(process.cwd(), file);
@@ -212,7 +206,7 @@ class CursorRealtimeIntegration extends EventEmitter {
 
       const filePath = path.join(dirPath, filename);
       const changeType = eventType === 'rename' ? 'deleted' : 'modified';
-      
+
       await this.handleFileChange(filePath, changeType);
     });
   }
@@ -221,7 +215,7 @@ class CursorRealtimeIntegration extends EventEmitter {
    * Watch a specific file for changes
    */
   private watchFile(filePath: string): void {
-    fs.watch(filePath, async (eventType) => {
+    fs.watch(filePath, async eventType => {
       const changeType = eventType === 'rename' ? 'deleted' : 'modified';
       await this.handleFileChange(filePath, changeType);
     });
@@ -246,9 +240,9 @@ class CursorRealtimeIntegration extends EventEmitter {
             data: {
               pattern,
               activeFile: pattern.filePath || '',
-              cursorPosition: { line: 1, character: 1 }
+              cursorPosition: { line: 1, character: 1 },
             },
-            sessionId: this.sessionId
+            sessionId: this.sessionId,
           };
 
           await this.processCursorEvent(event);
@@ -272,21 +266,21 @@ class CursorRealtimeIntegration extends EventEmitter {
       // Check for evolution stories
       try {
         const stories = await detectCursorEvolutionStories();
-        
+
         if (stories && Array.isArray(stories) && stories.length > 0) {
           for (const story of stories) {
-          const event: CursorWorkflowEvent = {
-            type: 'evolution-trigger',
-            timestamp: new Date().toISOString(),
-            data: {
-              story,
-              activeFile: story.context?.activeFile || '',
-              cursorPosition: { line: 1, character: 1 }
-            },
-            sessionId: this.sessionId
-          };
+            const event: CursorWorkflowEvent = {
+              type: 'evolution-trigger',
+              timestamp: new Date().toISOString(),
+              data: {
+                story,
+                activeFile: story.context?.activeFile || '',
+                cursorPosition: { line: 1, character: 1 },
+              },
+              sessionId: this.sessionId,
+            };
 
-                      await this.processCursorEvent(event);
+            await this.processCursorEvent(event);
           }
         }
       } catch (error) {
@@ -311,18 +305,18 @@ class CursorRealtimeIntegration extends EventEmitter {
       'systematic way',
       'field-driven',
       'eating dog food',
-      'real-world usage'
+      'real-world usage',
     ];
 
     const userPrompt = context.userPrompt.toLowerCase();
-    
+
     for (const pattern of patterns) {
       if (userPrompt.includes(pattern)) {
         // Immediate pattern detected
         this.emit('immediate-pattern', {
           pattern,
           context,
-          timestamp: new Date().toISOString()
+          timestamp: new Date().toISOString(),
         });
 
         // Provide immediate visual feedback
@@ -336,32 +330,35 @@ class CursorRealtimeIntegration extends EventEmitter {
    */
   private extractPatterns(events: CursorWorkflowEvent[]): any[] {
     const patterns: any[] = [];
-    
+
     // Analyze file changes
     const fileChanges = events.filter(e => e.type === 'file-change');
     if (fileChanges.length > 3) {
       patterns.push({
         type: 'rapid-file-changes',
         count: fileChanges.length,
-        files: fileChanges.map(e => e.data.filePath)
+        files: fileChanges.map(e => e.data.filePath),
       });
     }
 
     // Analyze user input patterns
     const userInputs = events.filter(e => e.type === 'user-input');
-    const prompts = userInputs.map(e => e.data.prompt).join(' ').toLowerCase();
-    
+    const prompts = userInputs
+      .map(e => e.data.prompt)
+      .join(' ')
+      .toLowerCase();
+
     if (prompts.includes('error') || prompts.includes('fail')) {
       patterns.push({
         type: 'error-concern',
-        prompts: userInputs.map(e => e.data.prompt)
+        prompts: userInputs.map(e => e.data.prompt),
       });
     }
 
     if (prompts.includes('document') || prompts.includes('explain')) {
       patterns.push({
         type: 'documentation-need',
-        prompts: userInputs.map(e => e.data.prompt)
+        prompts: userInputs.map(e => e.data.prompt),
       });
     }
 
@@ -378,7 +375,7 @@ class CursorRealtimeIntegration extends EventEmitter {
       context,
       timestamp: new Date().toISOString(),
       message: this.generateFeedbackMessage(pattern),
-      visual: this.generateVisualFeedback(pattern)
+      visual: this.generateVisualFeedback(pattern),
     };
 
     // Save feedback
@@ -403,7 +400,7 @@ class CursorRealtimeIntegration extends EventEmitter {
       'systematic way': '🔧 Systematic approach requested - framework methodology applied',
       'field-driven': '🌱 Field-driven insight captured - contributing to framework learning',
       'eating dog food': '🐕 Dogfooding pattern detected - real-world validation active',
-      'real-world usage': '🌍 Real-world usage pattern - framework adaptation in progress'
+      'real-world usage': '🌍 Real-world usage pattern - framework adaptation in progress',
     };
 
     return messages[pattern] || '🎨 Pattern detected - framework intelligence active';
@@ -419,7 +416,7 @@ class CursorRealtimeIntegration extends EventEmitter {
       animation: 'pulse',
       position: 'top-right',
       duration: 3000,
-      message: this.generateFeedbackMessage(pattern)
+      message: this.generateFeedbackMessage(pattern),
     };
   }
 
@@ -429,7 +426,7 @@ class CursorRealtimeIntegration extends EventEmitter {
   private async saveFeedback(feedback: any): Promise<void> {
     const feedbackFile = path.join(this.feedbackDir, `${new Date().toISOString().split('T')[0]}.jsonl`);
     const feedbackLine = JSON.stringify(feedback) + '\n';
-    
+
     fs.appendFileSync(feedbackFile, feedbackLine);
   }
 
@@ -444,7 +441,7 @@ class CursorRealtimeIntegration extends EventEmitter {
       endTime: new Date().toISOString(),
       totalEvents: this.workflowEvents.length,
       patterns: this.extractPatterns(this.workflowEvents),
-      summary: this.generateSessionSummary()
+      summary: this.generateSessionSummary(),
     };
 
     fs.writeFileSync(sessionFile, JSON.stringify(sessionData, null, 2));
@@ -454,18 +451,22 @@ class CursorRealtimeIntegration extends EventEmitter {
    * Generate session summary
    */
   private generateSessionSummary(): any {
-    const eventTypes = this.workflowEvents.reduce((acc, event) => {
-      acc[event.type] = (acc[event.type] || 0) + 1;
-      return acc;
-    }, {} as Record<string, number>);
+    const eventTypes = this.workflowEvents.reduce(
+      (acc, event) => {
+        acc[event.type] = (acc[event.type] || 0) + 1;
+        return acc;
+      },
+      {} as Record<string, number>
+    );
 
     return {
       eventTypes,
-      duration: this.workflowEvents.length > 0 
-        ? new Date(this.workflowEvents[this.workflowEvents.length - 1].timestamp).getTime() - 
-          new Date(this.workflowEvents[0].timestamp).getTime()
-        : 0,
-      activeFiles: [...new Set(this.workflowEvents.map(e => e.data.activeFile).filter(Boolean))]
+      duration:
+        this.workflowEvents.length > 0
+          ? new Date(this.workflowEvents[this.workflowEvents.length - 1].timestamp).getTime() -
+            new Date(this.workflowEvents[0].timestamp).getTime()
+          : 0,
+      activeFiles: [...new Set(this.workflowEvents.map(e => e.data.activeFile).filter(Boolean))],
     };
   }
 
@@ -494,7 +495,7 @@ class CursorRealtimeIntegration extends EventEmitter {
       isActive: this.isActive,
       totalEvents: this.workflowEvents.length,
       patterns: this.extractPatterns(this.workflowEvents),
-      lastEvent: this.workflowEvents[this.workflowEvents.length - 1]
+      lastEvent: this.workflowEvents[this.workflowEvents.length - 1],
     };
   }
 }
@@ -505,39 +506,38 @@ export { CursorRealtimeIntegration, type CursorWorkflowEvent, type LiveCursorCon
 // Run if this file is executed directly
 if (import.meta.url === `file://${process.argv[1]}`) {
   const integration = new CursorRealtimeIntegration();
-  
+
   // Set up event listeners
-  integration.on('started', (data) => {
+  integration.on('started', data => {
     console.log('🎯 Real-time integration started:', data.sessionId);
   });
 
-  integration.on('cursor-event', (data) => {
+  integration.on('cursor-event', data => {
     console.log('📡 Cursor event:', data.event.type);
   });
 
-  integration.on('immediate-pattern', (data) => {
+  integration.on('immediate-pattern', data => {
     console.log('🎯 Immediate pattern detected:', data.pattern);
   });
 
-  integration.on('immediate-feedback', (data) => {
+  integration.on('immediate-feedback', data => {
     console.log('🎨 Immediate feedback:', data.message);
   });
 
-  integration.on('stopped', (data) => {
+  integration.on('stopped', data => {
     console.log('🛑 Real-time integration stopped:', data.sessionId);
   });
 
   // Start integration
   integration.start().then(() => {
     console.log('✅ Cursor Real-time Integration running');
-    
+
     // Simulate some events for testing
     setTimeout(async () => {
-      await integration.handleUserInput(
-        'does this break the framework?',
-        'src/components/TestComponent.tsx',
-        { line: 10, character: 5 }
-      );
+      await integration.handleUserInput('does this break the framework?', 'src/components/TestComponent.tsx', {
+        line: 10,
+        character: 5,
+      });
     }, 2000);
 
     setTimeout(async () => {

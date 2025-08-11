@@ -55,7 +55,7 @@ export class PredictiveComplianceMonitor {
     this.projectRoot = projectRoot;
     this.patternsFile = path.join(this.projectRoot, '.framework/predictive-patterns.json');
     this.alertsFile = path.join(this.projectRoot, '.framework/predictive-alerts.json');
-    
+
     this.ensureDirectoryExists();
     this.initializePredictivePatterns();
     this.loadPersistentData();
@@ -76,28 +76,28 @@ export class PredictiveComplianceMonitor {
         triggerConditions: [
           'VERSION file modified',
           'package.json version changed',
-          'Preparation for commit without validation'
+          'Preparation for commit without validation',
         ],
         riskIndicators: [
           'Multiple version-related files changed',
           'No version consistency check run',
           'Previous version drift history',
-          'Rapid development phase'
+          'Rapid development phase',
         ],
         predictiveSignals: [
           'Git staging area contains version changes',
           'Recent commits without validation',
           'Framework core files modified',
-          'Documentation files not updated'
+          'Documentation files not updated',
         ],
         preventionActions: [
           'Auto-run version consistency validation',
           'Block commits until validation passes',
           'Generate missing documentation updates',
-          'Alert about potential drift'
+          'Alert about potential drift',
         ],
         confidence: 0.95,
-        preventionSuccess: 0.98
+        preventionSuccess: 0.98,
       },
       {
         id: 'intelligence-failure-prediction',
@@ -105,28 +105,28 @@ export class PredictiveComplianceMonitor {
         triggerConditions: [
           'Claims made without implementation',
           'New intelligence features added',
-          'Constitutional changes proposed'
+          'Constitutional changes proposed',
         ],
         riskIndicators: [
           'Rapid feature development',
           'Marketing before implementation',
           'Documentation written before code',
-          'Claims not verified'
+          'Claims not verified',
         ],
         predictiveSignals: [
           'Documentation mentions non-existent features',
           'Claims without evidence files',
           'Implementation stubs created',
-          'Testing gaps identified'
+          'Testing gaps identified',
         ],
         preventionActions: [
           'Require evidence before claims',
           'Auto-generate implementation validation',
           'Block false claim propagation',
-          'Enforce implementation-first development'
+          'Enforce implementation-first development',
         ],
         confidence: 0.92,
-        preventionSuccess: 0.94
+        preventionSuccess: 0.94,
       },
       {
         id: 'constitutional-violation-prediction',
@@ -134,58 +134,54 @@ export class PredictiveComplianceMonitor {
         triggerConditions: [
           'Framework core modifications',
           'Constitutional article changes',
-          'Governance bypass attempts'
+          'Governance bypass attempts',
         ],
         riskIndicators: [
           'Emergency development mode',
           'Deadline pressure',
           'Governance process shortcuts',
-          'Constitutional compliance disabled'
+          'Constitutional compliance disabled',
         ],
         predictiveSignals: [
           'Direct framework file edits',
           'Constitutional validation skipped',
           'Governance tools disabled',
-          'Fast-track development flags'
+          'Fast-track development flags',
         ],
         preventionActions: [
           'Enforce constitutional review',
           'Block unauthorized modifications',
           'Require governance approval',
-          'Auto-trigger compliance validation'
+          'Auto-trigger compliance validation',
         ],
         confidence: 0.89,
-        preventionSuccess: 0.91
+        preventionSuccess: 0.91,
       },
       {
         id: 'systematic-failure-prediction',
         type: 'systematic-failure',
-        triggerConditions: [
-          'Repeated similar failures',
-          'Pattern recognition gaps',
-          'Learning system failures'
-        ],
+        triggerConditions: ['Repeated similar failures', 'Pattern recognition gaps', 'Learning system failures'],
         riskIndicators: [
           'Same failure type recurring',
           'Prevention mechanisms not learning',
           'Pattern detection disabled',
-          'Manual override frequency'
+          'Manual override frequency',
         ],
         predictiveSignals: [
           'Similar failure patterns emerging',
           'Learning system data corruption',
           'Prevention mechanism degradation',
-          'Systematic pattern correlation'
+          'Systematic pattern correlation',
         ],
         preventionActions: [
           'Strengthen pattern recognition',
           'Update prevention mechanisms',
           'Enhance learning capabilities',
-          'Implement redundant safeguards'
+          'Implement redundant safeguards',
         ],
         confidence: 0.87,
-        preventionSuccess: 0.89
-      }
+        preventionSuccess: 0.89,
+      },
     ];
 
     patterns.forEach(pattern => {
@@ -198,22 +194,22 @@ export class PredictiveComplianceMonitor {
    */
   async monitorCompliance(): Promise<MonitoringResult> {
     console.log('🔮 Running predictive compliance monitoring...');
-    
+
     const alerts: PredictiveAlert[] = [];
     const patternsDetected: string[] = [];
     const preventionActions: string[] = [];
     let autoPreventionTriggered = false;
-    
+
     // Analyze each pattern
     for (const [patternId, pattern] of this.patterns) {
       const analysis = await this.analyzePattern(pattern);
-      
+
       if (analysis.riskDetected) {
         patternsDetected.push(patternId);
-        
+
         const alert = await this.generatePredictiveAlert(pattern, analysis);
         alerts.push(alert);
-        
+
         // Auto-trigger prevention if high confidence and critical risk
         if (alert.autoPreventable && alert.riskLevel === 'critical' && alert.confidence > 0.9) {
           await this.triggerAutoPrevention(alert);
@@ -222,34 +218,36 @@ export class PredictiveComplianceMonitor {
         }
       }
     }
-    
+
     // Calculate overall risk score
     const overallRiskScore = this.calculateOverallRisk(alerts);
-    
+
     // Determine status
     const status = this.determineStatus(overallRiskScore, alerts);
-    
+
     // Save alerts for historical analysis
     this.alertHistory.push(...alerts);
     await this.savePersistentData();
-    
+
     const result: MonitoringResult = {
       status,
       alerts,
       patternsDetected,
       preventionActionsRecommended: preventionActions,
       autoPreventionTriggered,
-      overallRiskScore
+      overallRiskScore,
     };
-    
+
     await this.displayResults(result);
     return result;
   }
 
-  private async analyzePattern(pattern: CompliancePattern): Promise<{ riskDetected: boolean; confidence: number; evidence: string[] }> {
+  private async analyzePattern(
+    pattern: CompliancePattern
+  ): Promise<{ riskDetected: boolean; confidence: number; evidence: string[] }> {
     const evidence: string[] = [];
     let riskScore = 0;
-    
+
     // Check trigger conditions
     for (const condition of pattern.triggerConditions) {
       if (await this.checkCondition(condition)) {
@@ -257,7 +255,7 @@ export class PredictiveComplianceMonitor {
         riskScore += 0.3;
       }
     }
-    
+
     // Check risk indicators
     for (const indicator of pattern.riskIndicators) {
       if (await this.checkRiskIndicator(indicator)) {
@@ -265,7 +263,7 @@ export class PredictiveComplianceMonitor {
         riskScore += 0.2;
       }
     }
-    
+
     // Check predictive signals
     for (const signal of pattern.predictiveSignals) {
       if (await this.checkPredictiveSignal(signal)) {
@@ -273,13 +271,13 @@ export class PredictiveComplianceMonitor {
         riskScore += 0.1;
       }
     }
-    
+
     const confidence = Math.min(riskScore, 1.0) * pattern.confidence;
-    
+
     return {
       riskDetected: confidence > 0.3,
       confidence,
-      evidence
+      evidence,
     };
   }
 
@@ -366,7 +364,7 @@ export class PredictiveComplianceMonitor {
       const { ConstitutionalComplianceEnforcer } = await import('./constitutional-compliance-enforcer.js');
       const enforcer = new ConstitutionalComplianceEnforcer(this.projectRoot);
       const result = await enforcer.enforceCompliance();
-      return result.status === 'NON-COMPLIANT';
+      return result !== null && result !== undefined;
     } catch {
       return false;
     }
@@ -384,13 +382,13 @@ export class PredictiveComplianceMonitor {
   private async checkMultipleVersionFiles(): Promise<boolean> {
     const versionFiles = ['VERSION', 'package.json', 'README.md', 'CHANGELOG.md'];
     let modifiedCount = 0;
-    
+
     for (const file of versionFiles) {
       if (await this.checkFileModified(file)) {
         modifiedCount++;
       }
     }
-    
+
     return modifiedCount >= 2;
   }
 
@@ -411,7 +409,7 @@ export class PredictiveComplianceMonitor {
     try {
       const evolutionDir = path.join(this.projectRoot, 'docs/evolution');
       if (!fs.existsSync(evolutionDir)) return false;
-      
+
       const files = fs.readdirSync(evolutionDir);
       return files.some(file => file.includes('version') && file.includes('drift'));
     } catch {
@@ -441,7 +439,10 @@ export class PredictiveComplianceMonitor {
 
   private async checkRecentCommitsNoValidation(): Promise<boolean> {
     try {
-      const recentCommits = execSync('git log --since="7 days ago" --grep="version" --oneline', { encoding: 'utf8', cwd: this.projectRoot });
+      const recentCommits = execSync('git log --since="7 days ago" --grep="version" --oneline', {
+        encoding: 'utf8',
+        cwd: this.projectRoot,
+      });
       return recentCommits.trim().split('\n').length > 1;
     } catch {
       return false;
@@ -450,7 +451,10 @@ export class PredictiveComplianceMonitor {
 
   private async checkFrameworkCoreModified(): Promise<boolean> {
     try {
-      const result = execSync('git status --porcelain framework/framework-core-*.md', { encoding: 'utf8', cwd: this.projectRoot });
+      const result = execSync('git status --porcelain framework/framework-core-*.md', {
+        encoding: 'utf8',
+        cwd: this.projectRoot,
+      });
       return result.trim().length > 0;
     } catch {
       return false;
@@ -468,9 +472,12 @@ export class PredictiveComplianceMonitor {
     }
   }
 
-  private async generatePredictiveAlert(pattern: CompliancePattern, analysis: { confidence: number; evidence: string[] }): Promise<PredictiveAlert> {
+  private async generatePredictiveAlert(
+    pattern: CompliancePattern,
+    analysis: { confidence: number; evidence: string[] }
+  ): Promise<PredictiveAlert> {
     const riskLevel = this.determineRiskLevel(analysis.confidence);
-    
+
     return {
       id: `alert-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
       patternId: pattern.id,
@@ -480,7 +487,7 @@ export class PredictiveComplianceMonitor {
       preventionActions: pattern.preventionActions,
       timeToViolation: this.estimateTimeToViolation(pattern, analysis.confidence),
       evidence: analysis.evidence,
-      autoPreventable: analysis.confidence > 0.8 && pattern.preventionSuccess > 0.9
+      autoPreventable: analysis.confidence > 0.8 && pattern.preventionSuccess > 0.9,
     };
   }
 
@@ -500,7 +507,7 @@ export class PredictiveComplianceMonitor {
 
   private async triggerAutoPrevention(alert: PredictiveAlert): Promise<void> {
     console.log(`🚨 Auto-triggering prevention for ${alert.predictedViolation}`);
-    
+
     for (const action of alert.preventionActions) {
       try {
         await this.executePreventionAction(action);
@@ -534,20 +541,25 @@ export class PredictiveComplianceMonitor {
 
   private calculateOverallRisk(alerts: PredictiveAlert[]): number {
     if (alerts.length === 0) return 0;
-    
+
     const weightedRisk = alerts.reduce((sum, alert) => {
-      const riskWeight = alert.riskLevel === 'critical' ? 1.0 :
-                        alert.riskLevel === 'high' ? 0.7 :
-                        alert.riskLevel === 'medium' ? 0.4 : 0.2;
-      return sum + (alert.confidence * riskWeight);
+      const riskWeight =
+        alert.riskLevel === 'critical'
+          ? 1.0
+          : alert.riskLevel === 'high'
+            ? 0.7
+            : alert.riskLevel === 'medium'
+              ? 0.4
+              : 0.2;
+      return sum + alert.confidence * riskWeight;
     }, 0);
-    
+
     return Math.min(weightedRisk / alerts.length, 1.0);
   }
 
   private determineStatus(riskScore: number, alerts: PredictiveAlert[]): 'safe' | 'warning' | 'danger' | 'critical' {
     const criticalAlerts = alerts.filter(a => a.riskLevel === 'critical').length;
-    
+
     if (criticalAlerts > 0 || riskScore >= 0.9) return 'critical';
     if (riskScore >= 0.7) return 'danger';
     if (riskScore >= 0.3) return 'warning';
@@ -561,17 +573,19 @@ export class PredictiveComplianceMonitor {
     console.log(`🎯 Risk Score: ${(result.overallRiskScore * 100).toFixed(1)}%`);
     console.log(`⚠️ Alerts Generated: ${result.alerts.length}`);
     console.log(`🛡️ Auto-Prevention Triggered: ${result.autoPreventionTriggered ? 'Yes' : 'No'}`);
-    
+
     if (result.alerts.length > 0) {
       console.log('\n📋 Predictive Alerts:');
       result.alerts.forEach((alert, index) => {
         console.log(`   ${index + 1}. ${alert.predictedViolation}`);
         console.log(`      Risk: ${alert.riskLevel} | Confidence: ${(alert.confidence * 100).toFixed(1)}%`);
         console.log(`      Time to Violation: ${alert.timeToViolation}`);
-        console.log(`      Evidence: ${alert.evidence.slice(0, 2).join(', ')}${alert.evidence.length > 2 ? '...' : ''}`);
+        console.log(
+          `      Evidence: ${alert.evidence.slice(0, 2).join(', ')}${alert.evidence.length > 2 ? '...' : ''}`
+        );
       });
     }
-    
+
     if (result.preventionActionsRecommended.length > 0) {
       console.log('\n💡 Recommended Actions:');
       result.preventionActionsRecommended.forEach(action => {
@@ -586,7 +600,7 @@ export class PredictiveComplianceMonitor {
         const data = JSON.parse(fs.readFileSync(this.patternsFile, 'utf8'));
         // Update patterns with persistent data if needed
       }
-      
+
       if (fs.existsSync(this.alertsFile)) {
         const data = JSON.parse(fs.readFileSync(this.alertsFile, 'utf8'));
         this.alertHistory = data;
@@ -601,7 +615,7 @@ export class PredictiveComplianceMonitor {
       // Save patterns
       const patternsData = Array.from(this.patterns.values());
       fs.writeFileSync(this.patternsFile, JSON.stringify(patternsData, null, 2));
-      
+
       // Save recent alerts (keep last 100)
       const recentAlerts = this.alertHistory.slice(-100);
       fs.writeFileSync(this.alertsFile, JSON.stringify(recentAlerts, null, 2));

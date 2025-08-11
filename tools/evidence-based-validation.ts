@@ -70,7 +70,7 @@ export class EvidenceBasedValidation {
     this.profilesFile = path.join(this.projectRoot, '.framework/evidence-profiles.json');
     this.evidenceFile = path.join(this.projectRoot, '.framework/evidence-database.json');
     this.reportsDir = path.join(this.projectRoot, '.framework/evidence-reports');
-    
+
     this.ensureDirectoryExists();
     this.initializeClaimProfiles();
     this.loadEvidenceData();
@@ -81,7 +81,7 @@ export class EvidenceBasedValidation {
     if (!fs.existsSync(frameworkDir)) {
       fs.mkdirSync(frameworkDir, { recursive: true });
     }
-    
+
     if (!fs.existsSync(this.reportsDir)) {
       fs.mkdirSync(this.reportsDir, { recursive: true });
     }
@@ -100,7 +100,7 @@ export class EvidenceBasedValidation {
             validationMethod: 'file-exists',
             requiredEvidence: ['tools/validate-version-consistency.ts'],
             acceptanceCriteria: ['File exists', 'File is executable', 'Contains validation logic'],
-            criticalityLevel: 'critical'
+            criticalityLevel: 'critical',
           },
           {
             id: 'detection-functionality',
@@ -108,8 +108,12 @@ export class EvidenceBasedValidation {
             description: 'System can detect version inconsistencies',
             validationMethod: 'execution-test',
             requiredEvidence: ['Inconsistency detection output', 'Validation report generation'],
-            acceptanceCriteria: ['Detects version mismatches', 'Reports specific violations', 'Provides recommendations'],
-            criticalityLevel: 'critical'
+            acceptanceCriteria: [
+              'Detects version mismatches',
+              'Reports specific violations',
+              'Provides recommendations',
+            ],
+            criticalityLevel: 'critical',
           },
           {
             id: 'auto-fix-capability',
@@ -118,7 +122,7 @@ export class EvidenceBasedValidation {
             validationMethod: 'execution-test',
             requiredEvidence: ['Auto-fix execution', 'Fixed inconsistencies'],
             acceptanceCriteria: ['Auto-fix method exists', 'Successfully corrects issues', 'Maintains file integrity'],
-            criticalityLevel: 'high'
+            criticalityLevel: 'high',
           },
           {
             id: 'performance-metrics',
@@ -127,7 +131,7 @@ export class EvidenceBasedValidation {
             validationMethod: 'metric-collection',
             requiredEvidence: ['Execution time measurements', 'Resource usage data'],
             acceptanceCriteria: ['Validation completes < 30 seconds', 'Memory usage < 100MB', 'CPU usage reasonable'],
-            criticalityLevel: 'medium'
+            criticalityLevel: 'medium',
           },
           {
             id: 'historical-prevention',
@@ -136,15 +140,15 @@ export class EvidenceBasedValidation {
             validationMethod: 'data-verification',
             requiredEvidence: ['Prevention logs', 'Historical success data', 'Drift incident records'],
             acceptanceCriteria: ['Prevention events logged', 'Success rate > 95%', 'Minimal false positives'],
-            criticalityLevel: 'high'
-          }
+            criticalityLevel: 'high',
+          },
         ],
         validationResults: [],
         overallEvidenceScore: 0,
         evidenceCompleteness: 0,
         lastValidated: new Date(0),
         nextValidation: new Date(),
-        evidenceStatus: 'missing'
+        evidenceStatus: 'missing',
       },
       {
         claimId: 'constitutional-compliance-enforcement',
@@ -157,7 +161,7 @@ export class EvidenceBasedValidation {
             validationMethod: 'file-exists',
             requiredEvidence: ['tools/constitutional-compliance-enforcer.ts'],
             acceptanceCriteria: ['File exists', 'Contains enforcement logic', 'Validates all claims'],
-            criticalityLevel: 'critical'
+            criticalityLevel: 'critical',
           },
           {
             id: 'violation-detection',
@@ -165,8 +169,12 @@ export class EvidenceBasedValidation {
             description: 'System detects constitutional violations',
             validationMethod: 'execution-test',
             requiredEvidence: ['Violation detection output', 'Compliance status reporting'],
-            acceptanceCriteria: ['Detects non-compliance', 'Reports specific violations', 'Blocks violating operations'],
-            criticalityLevel: 'critical'
+            acceptanceCriteria: [
+              'Detects non-compliance',
+              'Reports specific violations',
+              'Blocks violating operations',
+            ],
+            criticalityLevel: 'critical',
           },
           {
             id: 'claim-validation',
@@ -175,7 +183,7 @@ export class EvidenceBasedValidation {
             validationMethod: 'execution-test',
             requiredEvidence: ['Claim validation results', 'Evidence verification'],
             acceptanceCriteria: ['All claims checked', 'Evidence requirements enforced', 'Status accurately reported'],
-            criticalityLevel: 'critical'
+            criticalityLevel: 'critical',
           },
           {
             id: 'enforcement-effectiveness',
@@ -183,16 +191,20 @@ export class EvidenceBasedValidation {
             description: 'Enforcement actually prevents violations',
             validationMethod: 'data-verification',
             requiredEvidence: ['Blocked operations log', 'Compliance metrics'],
-            acceptanceCriteria: ['Operations blocked when non-compliant', 'Compliance rate > 98%', 'No bypasses possible'],
-            criticalityLevel: 'critical'
-          }
+            acceptanceCriteria: [
+              'Operations blocked when non-compliant',
+              'Compliance rate > 98%',
+              'No bypasses possible',
+            ],
+            criticalityLevel: 'critical',
+          },
         ],
         validationResults: [],
         overallEvidenceScore: 0,
         evidenceCompleteness: 0,
         lastValidated: new Date(0),
         nextValidation: new Date(),
-        evidenceStatus: 'missing'
+        evidenceStatus: 'missing',
       },
       {
         claimId: 'self-healing-governance',
@@ -205,7 +217,7 @@ export class EvidenceBasedValidation {
             validationMethod: 'file-exists',
             requiredEvidence: ['framework/healing/self-healing-governance.ts'],
             acceptanceCriteria: ['File exists', 'Contains healing logic', 'Pattern recognition capability'],
-            criticalityLevel: 'critical'
+            criticalityLevel: 'critical',
           },
           {
             id: 'pattern-recognition',
@@ -214,7 +226,7 @@ export class EvidenceBasedValidation {
             validationMethod: 'execution-test',
             requiredEvidence: ['Pattern detection output', 'Failure analysis results'],
             acceptanceCriteria: ['Identifies recurring failures', 'Categorizes patterns', 'Learns from incidents'],
-            criticalityLevel: 'critical'
+            criticalityLevel: 'critical',
           },
           {
             id: 'healing-actions',
@@ -222,8 +234,12 @@ export class EvidenceBasedValidation {
             description: 'System executes healing actions',
             validationMethod: 'execution-test',
             requiredEvidence: ['Healing action execution', 'Prevention mechanism implementation'],
-            acceptanceCriteria: ['Actions executed correctly', 'Prevention mechanisms installed', 'Effectiveness measured'],
-            criticalityLevel: 'critical'
+            acceptanceCriteria: [
+              'Actions executed correctly',
+              'Prevention mechanisms installed',
+              'Effectiveness measured',
+            ],
+            criticalityLevel: 'critical',
           },
           {
             id: 'persistence-mechanism',
@@ -232,7 +248,7 @@ export class EvidenceBasedValidation {
             validationMethod: 'data-verification',
             requiredEvidence: ['Persistent storage files', 'State recovery capability'],
             acceptanceCriteria: ['Data persisted to disk', 'State recovers after restart', 'No learning loss'],
-            criticalityLevel: 'high'
+            criticalityLevel: 'high',
           },
           {
             id: 'prevention-effectiveness',
@@ -241,15 +257,15 @@ export class EvidenceBasedValidation {
             validationMethod: 'data-verification',
             requiredEvidence: ['Prevented failure incidents', 'Recurrence reduction metrics'],
             acceptanceCriteria: ['Repeat failures prevented', 'Recurrence rate < 5%', 'Improvement over time'],
-            criticalityLevel: 'critical'
-          }
+            criticalityLevel: 'critical',
+          },
         ],
         validationResults: [],
         overallEvidenceScore: 0,
         evidenceCompleteness: 0,
         lastValidated: new Date(0),
         nextValidation: new Date(),
-        evidenceStatus: 'missing'
+        evidenceStatus: 'missing',
       },
       {
         claimId: 'evolution-learning-system',
@@ -262,7 +278,7 @@ export class EvidenceBasedValidation {
             validationMethod: 'file-exists',
             requiredEvidence: ['tools/evolution-learning-system.ts'],
             acceptanceCriteria: ['File exists', 'Contains learning logic', 'Pattern analysis capability'],
-            criticalityLevel: 'critical'
+            criticalityLevel: 'critical',
           },
           {
             id: 'pattern-learning',
@@ -271,7 +287,7 @@ export class EvidenceBasedValidation {
             validationMethod: 'execution-test',
             requiredEvidence: ['Learning process output', 'Pattern storage mechanism'],
             acceptanceCriteria: ['New patterns recognized', 'Learning algorithms functional', 'Knowledge base updated'],
-            criticalityLevel: 'critical'
+            criticalityLevel: 'critical',
           },
           {
             id: 'prevention-implementation',
@@ -280,7 +296,7 @@ export class EvidenceBasedValidation {
             validationMethod: 'execution-test',
             requiredEvidence: ['Prevention mechanism creation', 'Policy implementation'],
             acceptanceCriteria: ['Prevention rules created', 'Policies automatically updated', 'Learning applied'],
-            criticalityLevel: 'high'
+            criticalityLevel: 'high',
           },
           {
             id: 'knowledge-persistence',
@@ -289,15 +305,15 @@ export class EvidenceBasedValidation {
             validationMethod: 'data-verification',
             requiredEvidence: ['Knowledge base files', 'Learning history'],
             acceptanceCriteria: ['Knowledge stored permanently', 'Cumulative learning', 'No knowledge loss'],
-            criticalityLevel: 'high'
-          }
+            criticalityLevel: 'high',
+          },
         ],
         validationResults: [],
         overallEvidenceScore: 0,
         evidenceCompleteness: 0,
         lastValidated: new Date(0),
         nextValidation: new Date(),
-        evidenceStatus: 'missing'
+        evidenceStatus: 'missing',
       },
       {
         claimId: 'agent-drift-prevention',
@@ -310,7 +326,7 @@ export class EvidenceBasedValidation {
             validationMethod: 'file-exists',
             requiredEvidence: ['tools/intent-enforcement-engine.ts'],
             acceptanceCriteria: ['File exists', 'Contains enforcement logic', 'Intent validation capability'],
-            criticalityLevel: 'high'
+            criticalityLevel: 'high',
           },
           {
             id: 'drift-detection',
@@ -319,7 +335,7 @@ export class EvidenceBasedValidation {
             validationMethod: 'execution-test',
             requiredEvidence: ['Drift detection output', 'Intent violation reporting'],
             acceptanceCriteria: ['Drift detected accurately', 'Real-time monitoring', 'Violation alerts generated'],
-            criticalityLevel: 'high'
+            criticalityLevel: 'high',
           },
           {
             id: 'enforcement-effectiveness',
@@ -328,15 +344,15 @@ export class EvidenceBasedValidation {
             validationMethod: 'data-verification',
             requiredEvidence: ['Blocked drift attempts', 'Agent compliance metrics'],
             acceptanceCriteria: ['Drift attempts blocked', 'Compliance rate > 95%', 'Minimal false positives'],
-            criticalityLevel: 'high'
-          }
+            criticalityLevel: 'high',
+          },
         ],
         validationResults: [],
         overallEvidenceScore: 0,
         evidenceCompleteness: 0,
         lastValidated: new Date(0),
         nextValidation: new Date(),
-        evidenceStatus: 'missing'
+        evidenceStatus: 'missing',
       },
       {
         claimId: 'predictive-compliance-monitoring',
@@ -349,7 +365,7 @@ export class EvidenceBasedValidation {
             validationMethod: 'file-exists',
             requiredEvidence: ['tools/predictive-compliance-monitor.ts'],
             acceptanceCriteria: ['File exists', 'Contains prediction logic', 'Pattern analysis capability'],
-            criticalityLevel: 'high'
+            criticalityLevel: 'high',
           },
           {
             id: 'prediction-accuracy',
@@ -358,7 +374,7 @@ export class EvidenceBasedValidation {
             validationMethod: 'execution-test',
             requiredEvidence: ['Prediction output', 'Risk assessment results'],
             acceptanceCriteria: ['Predictions generated', 'Risk levels assigned', 'Accuracy > 80%'],
-            criticalityLevel: 'high'
+            criticalityLevel: 'high',
           },
           {
             id: 'prevention-triggering',
@@ -367,7 +383,7 @@ export class EvidenceBasedValidation {
             validationMethod: 'execution-test',
             requiredEvidence: ['Prevention action execution', 'Automated response'],
             acceptanceCriteria: ['Prevention actions triggered', 'Automated responses work', 'Violations prevented'],
-            criticalityLevel: 'medium'
+            criticalityLevel: 'medium',
           },
           {
             id: 'prediction-effectiveness',
@@ -376,16 +392,16 @@ export class EvidenceBasedValidation {
             validationMethod: 'data-verification',
             requiredEvidence: ['Prevented violations', 'Prediction success rate'],
             acceptanceCriteria: ['Violations prevented proactively', 'Success rate > 75%', 'Reduced incident rate'],
-            criticalityLevel: 'high'
-          }
+            criticalityLevel: 'high',
+          },
         ],
         validationResults: [],
         overallEvidenceScore: 0,
         evidenceCompleteness: 0,
         lastValidated: new Date(0),
         nextValidation: new Date(),
-        evidenceStatus: 'missing'
-      }
+        evidenceStatus: 'missing',
+      },
     ];
 
     profiles.forEach(profile => {
@@ -399,7 +415,7 @@ export class EvidenceBasedValidation {
   async validateAllEvidence(): Promise<EvidenceValidationReport> {
     console.log('📋 Starting evidence-based validation...');
     console.log(`🔍 Validating evidence for ${this.claimProfiles.size} claims`);
-    
+
     const claimProfiles: ClaimEvidenceProfile[] = [];
     let fullyValidatedClaims = 0;
     let partiallyValidatedClaims = 0;
@@ -408,12 +424,12 @@ export class EvidenceBasedValidation {
 
     for (const [claimId, profile] of this.claimProfiles) {
       console.log(`\n🧐 Validating evidence for: ${profile.claimDescription}`);
-      
+
       const updatedProfile = await this.validateClaimEvidence(profile);
       claimProfiles.push(updatedProfile);
-      
+
       totalEvidenceScore += updatedProfile.overallEvidenceScore;
-      
+
       switch (updatedProfile.evidenceStatus) {
         case 'complete':
           fullyValidatedClaims++;
@@ -426,13 +442,12 @@ export class EvidenceBasedValidation {
           insufficientClaims++;
           break;
       }
-      
+
       // Update stored profile
       this.claimProfiles.set(claimId, updatedProfile);
     }
 
-    const overallEvidenceScore = this.claimProfiles.size > 0 ? 
-      totalEvidenceScore / this.claimProfiles.size : 0;
+    const overallEvidenceScore = this.claimProfiles.size > 0 ? totalEvidenceScore / this.claimProfiles.size : 0;
 
     const report: EvidenceValidationReport = {
       timestamp: new Date(),
@@ -444,12 +459,12 @@ export class EvidenceBasedValidation {
       claimProfiles,
       criticalGaps: this.identifyCriticalGaps(claimProfiles),
       recommendations: this.generateEvidenceRecommendations(claimProfiles),
-      nextValidationCycle: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000) // 7 days
+      nextValidationCycle: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000), // 7 days
     };
 
     // Save evidence data
     await this.saveEvidenceData();
-    
+
     // Generate detailed evidence report
     await this.generateEvidenceReport(report);
 
@@ -464,25 +479,30 @@ export class EvidenceBasedValidation {
 
     for (const requirement of profile.evidenceRequirements) {
       console.log(`   🔍 Validating: ${requirement.description}`);
-      
+
       const result = await this.validateEvidenceRequirement(requirement);
       validationResults.push(result);
-      
+
       totalScore += result.validationScore;
       if (result.status === 'validated') {
         completedRequirements++;
       }
     }
 
-    const overallEvidenceScore = profile.evidenceRequirements.length > 0 ? 
-      totalScore / profile.evidenceRequirements.length : 0;
-    
+    const overallEvidenceScore =
+      profile.evidenceRequirements.length > 0 ? totalScore / profile.evidenceRequirements.length : 0;
+
     const evidenceCompleteness = (completedRequirements / profile.evidenceRequirements.length) * 100;
-    
+
     // Determine evidence status
-    const evidenceStatus = evidenceCompleteness >= 90 ? 'complete' :
-                          evidenceCompleteness >= 60 ? 'partial' :
-                          evidenceCompleteness >= 20 ? 'insufficient' : 'missing';
+    const evidenceStatus =
+      evidenceCompleteness >= 90
+        ? 'complete'
+        : evidenceCompleteness >= 60
+          ? 'partial'
+          : evidenceCompleteness >= 20
+            ? 'insufficient'
+            : 'missing';
 
     return {
       ...profile,
@@ -491,7 +511,7 @@ export class EvidenceBasedValidation {
       evidenceCompleteness,
       lastValidated: new Date(),
       nextValidation: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
-      evidenceStatus
+      evidenceStatus,
     };
   }
 
@@ -561,7 +581,6 @@ export class EvidenceBasedValidation {
       if (validationScore < 80) {
         recommendations.push('Strengthen evidence collection and validation');
       }
-
     } catch (error) {
       evidenceMissing.push(`Validation failed: ${error}`);
       details.push(`Error during validation: ${error}`);
@@ -569,9 +588,14 @@ export class EvidenceBasedValidation {
     }
 
     // Determine status
-    const status = validationScore >= 80 ? 'validated' :
-                  validationScore >= 50 ? 'insufficient' :
-                  evidenceFound.length > 0 ? 'insufficient' : 'missing';
+    const status =
+      validationScore >= 80
+        ? 'validated'
+        : validationScore >= 50
+          ? 'insufficient'
+          : evidenceFound.length > 0
+            ? 'insufficient'
+            : 'missing';
 
     return {
       requirementId: requirement.id,
@@ -581,13 +605,16 @@ export class EvidenceBasedValidation {
       validationScore,
       details,
       recommendations,
-      timestamp: new Date()
+      timestamp: new Date(),
     };
   }
 
   // Validation method implementations
   private async validateFileExists(requirement: EvidenceRequirement): Promise<{
-    found: string[]; missing: string[]; score: number; details: string[]
+    found: string[];
+    missing: string[];
+    score: number;
+    details: string[];
   }> {
     const found: string[] = [];
     const missing: string[] = [];
@@ -598,7 +625,7 @@ export class EvidenceBasedValidation {
       if (fs.existsSync(filePath)) {
         found.push(evidence);
         details.push(`File exists: ${evidence}`);
-        
+
         // Additional file validation
         const stats = fs.statSync(filePath);
         if (stats.size > 0) {
@@ -612,14 +639,17 @@ export class EvidenceBasedValidation {
       }
     }
 
-    const score = requirement.requiredEvidence.length > 0 ? 
-      (found.length / requirement.requiredEvidence.length) * 100 : 0;
+    const score =
+      requirement.requiredEvidence.length > 0 ? (found.length / requirement.requiredEvidence.length) * 100 : 0;
 
     return { found, missing, score, details };
   }
 
   private async validateExecution(requirement: EvidenceRequirement): Promise<{
-    found: string[]; missing: string[]; score: number; details: string[]
+    found: string[];
+    missing: string[];
+    score: number;
+    details: string[];
   }> {
     const found: string[] = [];
     const missing: string[] = [];
@@ -628,17 +658,17 @@ export class EvidenceBasedValidation {
     // Enhanced execution testing with evidence collection
     for (const evidence of requirement.requiredEvidence) {
       const testResults = await this.performExecutionTest(evidence);
-      
+
       if (testResults.success) {
         found.push(`${evidence}: ${testResults.evidence.join(', ')}`);
         details.push(...testResults.details);
-        
+
         // Store evidence in database
         this.evidenceDatabase.set(`execution-${evidence}`, {
           timestamp: new Date(),
           evidence: testResults.evidence,
           score: testResults.score,
-          details: testResults.details
+          details: testResults.details,
         });
       } else {
         missing.push(evidence);
@@ -646,27 +676,32 @@ export class EvidenceBasedValidation {
       }
     }
 
-    const score = requirement.requiredEvidence.length > 0 ? 
-      (found.length / requirement.requiredEvidence.length) * 100 : 0;
+    const score =
+      requirement.requiredEvidence.length > 0 ? (found.length / requirement.requiredEvidence.length) * 100 : 0;
 
     return { found, missing, score, details };
   }
 
   private async performExecutionTest(evidenceType: string): Promise<{
-    success: boolean; evidence: string[]; score: number; details: string[]
+    success: boolean;
+    evidence: string[];
+    score: number;
+    details: string[];
   }> {
     const evidence: string[] = [];
     const details: string[] = [];
     let score = 0;
+    let versionResult = '';
+    let complianceResult = '';
 
     try {
       switch (evidenceType) {
         case 'Inconsistency detection output':
-          const versionResult = execSync('node tools/validate-version-consistency.ts', { 
-            cwd: this.projectRoot, 
+          versionResult = execSync('node tools/validate-version-consistency.ts', {
+            cwd: this.projectRoot,
             stdio: 'pipe',
             encoding: 'utf8',
-            timeout: 30000
+            timeout: 30000,
           });
           if (versionResult.includes('Found') && versionResult.includes('inconsistencies')) {
             evidence.push('Version inconsistency detection confirmed');
@@ -683,11 +718,11 @@ export class EvidenceBasedValidation {
           break;
 
         case 'Auto-fix execution':
-          const autoFixResult = execSync('node tools/validate-version-consistency.ts --auto-fix', { 
-            cwd: this.projectRoot, 
+          const autoFixResult = execSync('node tools/validate-version-consistency.ts --auto-fix', {
+            cwd: this.projectRoot,
             stdio: 'pipe',
             encoding: 'utf8',
-            timeout: 30000
+            timeout: 30000,
           });
           if (autoFixResult.includes('Fixed') || autoFixResult.includes('Auto-fix completed')) {
             evidence.push('Auto-fix capability confirmed');
@@ -696,11 +731,11 @@ export class EvidenceBasedValidation {
           break;
 
         case 'Compliance status reporting':
-          const complianceResult = execSync('node tools/constitutional-compliance-enforcer.ts', { 
-            cwd: this.projectRoot, 
+          complianceResult = execSync('node tools/constitutional-compliance-enforcer.ts', {
+            cwd: this.projectRoot,
             stdio: 'pipe',
             encoding: 'utf8',
-            timeout: 30000
+            timeout: 30000,
           });
           if (complianceResult.includes('Status:')) {
             evidence.push('Constitutional compliance status reporting confirmed');
@@ -716,11 +751,11 @@ export class EvidenceBasedValidation {
           break;
 
         case 'Pattern detection output':
-          const healingResult = execSync('node framework/healing/self-healing-governance.ts', { 
-            cwd: this.projectRoot, 
+          const healingResult = execSync('node framework/healing/self-healing-governance.ts', {
+            cwd: this.projectRoot,
             stdio: 'pipe',
             encoding: 'utf8',
-            timeout: 30000
+            timeout: 30000,
           });
           if (healingResult.includes('patterns') || healingResult.includes('Self-Healing')) {
             evidence.push('Self-healing pattern detection confirmed');
@@ -729,11 +764,11 @@ export class EvidenceBasedValidation {
           break;
 
         case 'Learning process output':
-          const learningResult = execSync('node tools/evolution-learning-system.ts', { 
-            cwd: this.projectRoot, 
+          const learningResult = execSync('node tools/evolution-learning-system.ts', {
+            cwd: this.projectRoot,
             stdio: 'pipe',
             encoding: 'utf8',
-            timeout: 30000
+            timeout: 30000,
           });
           if (learningResult.includes('Learning') || learningResult.includes('patterns')) {
             evidence.push('Evolution learning process confirmed');
@@ -742,11 +777,11 @@ export class EvidenceBasedValidation {
           break;
 
         case 'Prediction output':
-          const predictiveResult = execSync('node tools/predictive-compliance-monitor.ts', { 
-            cwd: this.projectRoot, 
+          const predictiveResult = execSync('node tools/predictive-compliance-monitor.ts', {
+            cwd: this.projectRoot,
             stdio: 'pipe',
             encoding: 'utf8',
-            timeout: 30000
+            timeout: 30000,
           });
           if (predictiveResult.includes('Alerts') || predictiveResult.includes('Predictive')) {
             evidence.push('Predictive compliance monitoring confirmed');
@@ -761,17 +796,17 @@ export class EvidenceBasedValidation {
             'tools/constitutional-compliance-enforcer.ts',
             'framework/healing/self-healing-governance.ts',
             'tools/evolution-learning-system.ts',
-            'tools/predictive-compliance-monitor.ts'
+            'tools/predictive-compliance-monitor.ts',
           ];
 
           for (const file of possibleFiles) {
             if (fs.existsSync(path.join(this.projectRoot, file))) {
               try {
-                const result = execSync(`node ${file}`, { 
-                  cwd: this.projectRoot, 
+                const result = execSync(`node ${file}`, {
+                  cwd: this.projectRoot,
                   stdio: 'pipe',
                   encoding: 'utf8',
-                  timeout: 10000
+                  timeout: 10000,
                 });
                 evidence.push(`${file} executed successfully`);
                 score = 75;
@@ -788,22 +823,24 @@ export class EvidenceBasedValidation {
         success: evidence.length > 0,
         evidence,
         score,
-        details
+        details,
       };
-
     } catch (error) {
       details.push(`Execution test failed: ${error}`);
       return {
         success: false,
         evidence: [],
         score: 0,
-        details
+        details,
       };
     }
   }
 
   private async validateOutput(requirement: EvidenceRequirement): Promise<{
-    found: string[]; missing: string[]; score: number; details: string[]
+    found: string[];
+    missing: string[];
+    score: number;
+    details: string[];
   }> {
     const found: string[] = [];
     const missing: string[] = [];
@@ -817,7 +854,10 @@ export class EvidenceBasedValidation {
   }
 
   private async validateData(requirement: EvidenceRequirement): Promise<{
-    found: string[]; missing: string[]; score: number; details: string[]
+    found: string[];
+    missing: string[];
+    score: number;
+    details: string[];
   }> {
     const found: string[] = [];
     const missing: string[] = [];
@@ -827,13 +867,14 @@ export class EvidenceBasedValidation {
     const frameworkDir = path.join(this.projectRoot, '.framework');
     if (fs.existsSync(frameworkDir)) {
       const files = fs.readdirSync(frameworkDir);
-      
+
       for (const evidence of requirement.requiredEvidence) {
-        const matchingFiles = files.filter(file => 
-          file.includes(evidence.toLowerCase().replace(/\s+/g, '-')) ||
-          evidence.toLowerCase().includes(file.replace('.json', ''))
+        const matchingFiles = files.filter(
+          file =>
+            file.includes(evidence.toLowerCase().replace(/\s+/g, '-')) ||
+            evidence.toLowerCase().includes(file.replace('.json', ''))
         );
-        
+
         if (matchingFiles.length > 0) {
           found.push(`Data files found: ${matchingFiles.join(', ')}`);
           details.push(`Located data evidence: ${matchingFiles.join(', ')}`);
@@ -847,14 +888,17 @@ export class EvidenceBasedValidation {
       details.push('Framework data directory not found');
     }
 
-    const score = requirement.requiredEvidence.length > 0 ? 
-      (found.length / requirement.requiredEvidence.length) * 100 : 0;
+    const score =
+      requirement.requiredEvidence.length > 0 ? (found.length / requirement.requiredEvidence.length) * 100 : 0;
 
     return { found, missing, score, details };
   }
 
   private async validateMetrics(requirement: EvidenceRequirement): Promise<{
-    found: string[]; missing: string[]; score: number; details: string[]
+    found: string[];
+    missing: string[];
+    score: number;
+    details: string[];
   }> {
     const found: string[] = [];
     const missing: string[] = [];
@@ -863,24 +907,28 @@ export class EvidenceBasedValidation {
     // Simulate metric collection
     found.push('Performance metrics available');
     details.push('Metrics collection capability verified');
-    
+
     const score = 75; // Simplified scoring
 
     return { found, missing, score, details };
   }
 
-  private async checkAcceptanceCriteria(requirement: EvidenceRequirement, evidenceFound: string[]): Promise<{
-    score: number; details: string[]
+  private async checkAcceptanceCriteria(
+    requirement: EvidenceRequirement,
+    evidenceFound: string[]
+  ): Promise<{
+    score: number;
+    details: string[];
   }> {
     const details: string[] = [];
     let metCriteria = 0;
 
     for (const criterion of requirement.acceptanceCriteria) {
       // Simple heuristic: if evidence mentions the criterion, consider it met
-      const criterionMet = evidenceFound.some(evidence => 
+      const criterionMet = evidenceFound.some(evidence =>
         evidence.toLowerCase().includes(criterion.toLowerCase().substring(0, 10))
       );
-      
+
       if (criterionMet) {
         metCriteria++;
         details.push(`Acceptance criterion met: ${criterion}`);
@@ -889,8 +937,8 @@ export class EvidenceBasedValidation {
       }
     }
 
-    const score = requirement.acceptanceCriteria.length > 0 ? 
-      (metCriteria / requirement.acceptanceCriteria.length) * 100 : 100;
+    const score =
+      requirement.acceptanceCriteria.length > 0 ? (metCriteria / requirement.acceptanceCriteria.length) * 100 : 100;
 
     return { score, details };
   }
@@ -899,9 +947,7 @@ export class EvidenceBasedValidation {
     const criticalGaps: string[] = [];
 
     for (const profile of profiles) {
-      const criticalRequirements = profile.evidenceRequirements.filter(req => 
-        req.criticalityLevel === 'critical'
-      );
+      const criticalRequirements = profile.evidenceRequirements.filter(req => req.criticalityLevel === 'critical');
 
       for (const requirement of criticalRequirements) {
         const result = profile.validationResults.find(r => r.requirementId === requirement.id);
@@ -917,12 +963,14 @@ export class EvidenceBasedValidation {
   private generateEvidenceRecommendations(profiles: ClaimEvidenceProfile[]): string[] {
     const recommendations: string[] = [];
 
-    const insufficientProfiles = profiles.filter(p => 
-      p.evidenceStatus === 'insufficient' || p.evidenceStatus === 'missing'
+    const insufficientProfiles = profiles.filter(
+      p => p.evidenceStatus === 'insufficient' || p.evidenceStatus === 'missing'
     );
 
     if (insufficientProfiles.length > 0) {
-      recommendations.push(`Strengthen evidence for ${insufficientProfiles.length} claims with insufficient validation`);
+      recommendations.push(
+        `Strengthen evidence for ${insufficientProfiles.length} claims with insufficient validation`
+      );
     }
 
     const lowScoreProfiles = profiles.filter(p => p.overallEvidenceScore < 70);
@@ -933,14 +981,14 @@ export class EvidenceBasedValidation {
     recommendations.push('Implement automated evidence collection where possible');
     recommendations.push('Establish regular evidence validation cycles');
     recommendations.push('Create evidence templates for consistent documentation');
-    
+
     return recommendations;
   }
 
   private async generateEvidenceReport(report: EvidenceValidationReport): Promise<void> {
     const reportPath = path.join(this.reportsDir, `evidence-report-${Date.now()}.json`);
     fs.writeFileSync(reportPath, JSON.stringify(report, null, 2));
-    
+
     console.log(`\n📊 Evidence report generated: ${reportPath}`);
   }
 
@@ -952,29 +1000,31 @@ export class EvidenceBasedValidation {
     console.log(`✅ Fully Validated: ${report.fullyValidatedClaims}`);
     console.log(`⚠️ Partially Validated: ${report.partiallyValidatedClaims}`);
     console.log(`❌ Insufficient Evidence: ${report.insufficientClaims}`);
-    
+
     if (report.criticalGaps.length > 0) {
       console.log('\n🚨 Critical Evidence Gaps:');
       report.criticalGaps.forEach(gap => {
         console.log(`   • ${gap}`);
       });
     }
-    
+
     console.log('\n📋 Evidence Status by Claim:');
     report.claimProfiles.forEach(profile => {
-      const statusIcon = profile.evidenceStatus === 'complete' ? '✅' : 
-                        profile.evidenceStatus === 'partial' ? '⚠️' : '❌';
+      const statusIcon =
+        profile.evidenceStatus === 'complete' ? '✅' : profile.evidenceStatus === 'partial' ? '⚠️' : '❌';
       console.log(`   ${statusIcon} ${profile.claimId}: ${profile.evidenceStatus.toUpperCase()}`);
-      console.log(`      Score: ${profile.overallEvidenceScore.toFixed(1)}% | Completeness: ${profile.evidenceCompleteness.toFixed(1)}%`);
+      console.log(
+        `      Score: ${profile.overallEvidenceScore.toFixed(1)}% | Completeness: ${profile.evidenceCompleteness.toFixed(1)}%`
+      );
     });
-    
+
     if (report.recommendations.length > 0) {
       console.log('\n💡 Recommendations:');
       report.recommendations.forEach(rec => {
         console.log(`   • ${rec}`);
       });
     }
-    
+
     console.log(`\n⏰ Next validation cycle: ${report.nextValidationCycle.toLocaleDateString()}`);
   }
 
@@ -984,7 +1034,7 @@ export class EvidenceBasedValidation {
         const data = JSON.parse(fs.readFileSync(this.profilesFile, 'utf8'));
         // Load existing profiles if any
       }
-      
+
       if (fs.existsSync(this.evidenceFile)) {
         const data = JSON.parse(fs.readFileSync(this.evidenceFile, 'utf8'));
         // Load evidence database if any
@@ -999,7 +1049,7 @@ export class EvidenceBasedValidation {
       // Save claim profiles
       const profilesData = Array.from(this.claimProfiles.values());
       fs.writeFileSync(this.profilesFile, JSON.stringify(profilesData, null, 2));
-      
+
       // Save evidence database
       const evidenceData = Array.from(this.evidenceDatabase.entries());
       fs.writeFileSync(this.evidenceFile, JSON.stringify(evidenceData, null, 2));

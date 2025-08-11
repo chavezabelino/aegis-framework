@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AegisQualityWaiver",
+  "type": "object",
+  "required": ["policy", "justification", "scope", "expiry"],
+  "properties": {
+    "policy": { "type": "string" },
+    "justification": { "type": "string", "minLength": 20 },
+    "scope": { "type": "string" },
+    "expiry": { "type": "string", "format": "date" }
+  },
+  "additionalProperties": false
+}

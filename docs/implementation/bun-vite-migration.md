@@ -1,16 +1,18 @@
 # 🚀 Bun + Vite Migration: Modern TypeScript/ESM Toolchain
 
-**@aegisFrameworkVersion**: 2.4.0  
-**@intent**: Migration to modern Bun + Vite toolchain  
-**@context**: Eliminating ESM/TypeScript configuration paradox with modern tools
+**@aegisFrameworkVersion__: 2.4.0  
+**@intent__: Migration to modern Bun + Vite toolchain  
+**@context__: Eliminating ESM/TypeScript configuration paradox with modern tools
 
 ## 📋 Overview
 
-This migration addresses the fundamental architecture issues we encountered with the ESM + TypeScript configuration paradox by adopting modern tooling that handles these complexities automatically.
+This migration addresses the fundamental architecture issues we encountered with the ESM + TypeScript configuration
+paradox by adopting modern tooling that handles these complexities automatically.
 
-### **The Problem We Solved**
+### __The Problem We Solved**
 
 **Before (Flawed Architecture):**
+
 - Mixed CJS/ESM module systems
 - Manual esbuild configuration
 - TypeScript compilation paradox
@@ -18,6 +20,7 @@ This migration addresses the fundamental architecture issues we encountered with
 - Runtime/compile-time mismatches
 
 **After (Modern Solution):**
+
 - Pure ESM throughout
 - Vite for building
 - Bun for runtime execution
@@ -26,121 +29,131 @@ This migration addresses the fundamental architecture issues we encountered with
 
 ## 🏗️ Architecture Comparison
 
-### **Old Architecture (Problematic)**
+### __Old Architecture (Problematic)**
 
 ```typescript
 // Complex manual build pipeline
-// vite.cli.config.ts
+// Vite.CLI.config.ts
 class ESMBuilder {
   private async buildEntryPoint(entryPoint: string): Promise<void> {
     const esbuildCommand = [
-      'npx', 'esbuild', entryPath,
-      '--bundle', '--platform=node',
-      '--target=node18', '--format=esm',
+      "npx",
+      "esbuild",
+      entryPath,
+      "--bundle",
+      "--platform=node",
+      "--target=node18",
+      "--format=esm"
       // ... complex configuration
-    ];
+    ]
   }
 }
 
 // Runtime execution issues
 // npx ts-node --esm --experimental-specifier-resolution=node
-```
+```text
 
-### **New Architecture (Modern)**
+### __New Architecture (Modern)**
 
 ```typescript
 // Simple Vite configuration
-// vite.cli.config.ts
+// Vite.CLI.config.ts
 export default defineConfig({
   build: {
-    target: 'node18',
+    target: "node18",
     rollupOptions: {
       input: {
-        'cursor-integration': resolve(__dirname, 'tools/cursor-integration.ts'),
+        "cursor-integration": resolve(__dirname, "tools/cursor-integration.ts")
         // ... automatic entry point detection
       }
     }
   }
-});
+})
 
 // Simple runtime execution
-// bun run tools/cursor-integration.ts
-```
+// Bun run tools/cursor-integration.ts
+```text
 
 ## 🚀 Migration Benefits
 
-### **1. Eliminated Configuration Paradox**
+### __1. Eliminated Configuration Paradox**
 
-| Issue | Old Solution | New Solution |
-|-------|-------------|--------------|
-| **Module Resolution** | Manual `.js` extension handling | Automatic bundler resolution |
-| **TypeScript Compilation** | Complex esbuild setup | Vite handles everything |
-| **Runtime Execution** | `ts-node --esm` with flags | `bun run` - zero config |
-| **Import.meta Support** | Configuration gymnastics | Native support |
-| **Shebang Handling** | Manual processing | Automatic handling |
+| Issue                      | Old Solution                    | New Solution                 |
+| -------------------------- | ------------------------------- | ---------------------------- |
+| __Module Resolution__      | Manual `.js` extension handling | Automatic bundler resolution |
+| __TypeScript Compilation__ | Complex esbuild setup           | Vite handles everything      |
+| __Runtime Execution__      | `ts-node --esm` with flags      | `Bun run` - zero config      |
+| __Import.meta Support__    | Configuration gymnastics        | Native support               |
+| __Shebang Handling__       | Manual processing               | Automatic handling           |
 
-### **2. Performance Improvements**
+### __2. Performance Improvements**
 
-| Metric | Before | After | Improvement |
-|--------|--------|-------|-------------|
-| **Build Time** | ~20ms per module | ~5ms per module | 75% faster |
-| **Runtime Startup** | ~500ms | ~50ms | 90% faster |
-| **Memory Usage** | ~100MB | ~50MB | 50% reduction |
-| **Configuration** | 200+ lines | 50 lines | 75% simpler |
+| Metric              | Before           | After           | Improvement   |
+| ------------------- | ---------------- | --------------- | ------------- |
+| __Build Time__      | ~20ms per module | ~5ms per module | 75% faster    |
+| __Runtime Startup__ | ~500ms           | ~50ms           | 90% faster    |
+| __Memory Usage__    | ~100MB           | ~50MB           | 50% reduction |
+| __Configuration__   | 200+ lines       | 50 lines        | 75% simpler   |
 
-### **3. Developer Experience**
+### __3. Developer Experience**
 
-| Feature | Before | After |
-|---------|--------|-------|
-| **Hot Reload** | Manual setup | Built-in |
-| **Type Checking** | Complex config | Zero config |
-| **Error Messages** | Cryptic | Clear |
-| **Debugging** | Manual source maps | Automatic |
-| **Package Management** | npm + manual scripts | Bun integrated |
+| Feature                | Before               | After          |
+| ---------------------- | -------------------- | -------------- |
+| __Hot Reload__         | Manual setup         | Built-in       |
+| __Type Checking__      | Complex config       | Zero config    |
+| __Error Messages__     | Cryptic              | Clear          |
+| __Debugging__          | Manual source maps   | Automatic      |
+| __Package Management__ | npm + manual scripts | Bun integrated |
 
 ## 🔧 Technical Implementation
 
-### **1. Vite Configuration**
+### __1. Vite Configuration**
 
 ```typescript
-// vite.cli.config.ts
-import { defineConfig } from 'vite'
-import { resolve } from 'path'
+// Vite.CLI.config.ts
+import {defineConfig} from "Vite"
+import {resolve} from "path"
 
 export default defineConfig({
   build: {
-    target: 'node18',
-    outDir: 'dist',
+    target: "node18",
+    outDir: "dist",
     sourcemap: true,
     rollupOptions: {
       input: {
-        'cursor-integration': resolve(__dirname, 'tools/cursor-integration.ts'),
-        'cursor-realtime-cli': resolve(__dirname, 'cli/cursor-realtime-cli.ts'),
+        "cursor-integration": resolve(__dirname, "tools/cursor-integration.ts"),
+        "cursor-realtime-CLI": resolve(__dirname, "CLI/cursor-realtime-CLI.ts")
         // ... automatic entry points
       },
       external: [
         // Node.js built-ins
-        'fs', 'path', 'url', 'events',
+        "fs",
+        "path",
+        "url",
+        "events",
         // External dependencies
-        'commander', 'ejs', 'js-yaml', 'zod'
+        "commander",
+        "EJS",
+        "js-YAML",
+        "zod"
       ]
     }
   },
-  
+
   resolve: {
     alias: {
-      '@': resolve(__dirname, '.'),
-      '@tools': resolve(__dirname, 'tools'),
-      '@cli': resolve(__dirname, 'cli')
+      "@": resolve(__dirname, "."),
+      "@tools": resolve(__dirname, "tools"),
+      "@CLI": resolve(__dirname, "CLI")
     }
   }
 })
-```
+```text
 
-### **2. TypeScript Configuration**
+### __2. TypeScript Configuration**
 
 ```json
-// tsconfig.json
+// tsconfig.JSON
 {
   "compilerOptions": {
     "target": "ESNext",
@@ -156,139 +169,139 @@ export default defineConfig({
     "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"],
-      "@tools/*": ["tools/*"],
-      "@cli/*": ["cli/*"]
+      "@/_": ["./_"],
+      "@tools/_": ["tools/_"],
+      "@CLI/_": ["CLI/_"]
     }
   }
 }
-```
+```text
 
-### **3. Package.json Scripts**
+### __3. Package.JSON Scripts**
 
 ```json
 {
   "scripts": {
-    "build": "npm run validate:all && npm run build:vite",
-    "build:vite": "vite build --config vite.cli.config.ts",
-    "dev": "vite",
+    "build": "npm run validate:all && npm run build:Vite",
+    "build:Vite": "Vite build --config Vite.CLI.config.ts",
+    "dev": "Vite",
     "type-check": "tsc --noEmit",
-    "cursor:test": "bun run cli/cursor-realtime-cli.ts test",
-    "cursor:start": "bun run cli/cursor-realtime-cli.ts start",
-    "bun:dev": "bun --watch cli/cursor-realtime-cli.ts start"
+    "cursor:test": "Bun run CLI/cursor-realtime-CLI.ts test",
+    "cursor:start": "Bun run CLI/cursor-realtime-CLI.ts start",
+    "Bun:dev": "Bun --watch CLI/cursor-realtime-CLI.ts start"
   }
 }
-```
+```text
 
 ## 🎯 Key Features
 
-### **1. Zero-Config TypeScript**
+### __1. Zero-Config TypeScript**
 
 ```bash
 # Before: Complex configuration
 npx ts-node --esm --experimental-specifier-resolution=node
 
 # After: Simple execution
-bun run tools/cursor-integration.ts
-```
+Bun run tools/cursor-integration.ts
+```text
 
-### **2. Automatic Module Resolution**
+### __2. Automatic Module Resolution**
 
 ```typescript
 // Before: Manual extension handling
-import { something } from './module.js';
+import {something} from "./module.js"
 
 // After: Automatic resolution
-import { something } from './module';
-```
+import {something} from "./module"
+```text
 
-### **3. Built-in Hot Reload**
+### __3. Built-in Hot Reload**
 
 ```bash
 # Development with hot reload
-bun --watch cli/cursor-realtime-cli.ts start
-```
+Bun --watch CLI/cursor-realtime-CLI.ts start
+```text
 
-### **4. Integrated Package Management**
+### __4. Integrated Package Management**
 
 ```bash
 # Install dependencies
-bun install
+Bun install
 
 # Run scripts
-bun run cursor:test
+Bun run cursor:test
 
 # Execute directly
-bun cli/cursor-realtime-cli.ts
-```
+Bun CLI/cursor-realtime-CLI.ts
+```text
 
 ## 📊 Migration Results
 
-### **Configuration Complexity**
+### __Configuration Complexity**
 
-| Component | Before | After | Reduction |
-|-----------|--------|-------|-----------|
-| **Build Scripts** | 200+ lines | 50 lines | 75% |
-| **TypeScript Config** | Complex | Simple | 80% |
-| **Package Scripts** | 20+ scripts | 10 scripts | 50% |
-| **Runtime Flags** | Multiple | None | 100% |
+| Component             | Before      | After      | Reduction |
+| --------------------- | ----------- | ---------- | --------- |
+| __Build Scripts__     | 200+ lines  | 50 lines   | 75%       |
+| __TypeScript Config__ | Complex     | Simple     | 80%       |
+| __Package Scripts__   | 20+ scripts | 10 scripts | 50%       |
+| __Runtime Flags__     | Multiple    | None       | 100%      |
 
-### **Performance Metrics**
+### __Performance Metrics**
 
-| Metric | Before | After | Improvement |
-|--------|--------|-------|-------------|
-| **Build Time** | 2.5s | 0.5s | 80% faster |
-| **Startup Time** | 500ms | 50ms | 90% faster |
-| **Memory Usage** | 100MB | 50MB | 50% less |
-| **Bundle Size** | 120KB | 80KB | 33% smaller |
+| Metric           | Before | After | Improvement |
+| ---------------- | ------ | ----- | ----------- |
+| __Build Time__   | 2.5s   | 0.5s  | 80% faster  |
+| __Startup Time__ | 500ms  | 50ms  | 90% faster  |
+| __Memory Usage__ | 100MB  | 50MB  | 50% less    |
+| __Bundle Size__  | 120KB  | 80KB  | 33% smaller |
 
-### **Developer Experience**
+### __Developer Experience**
 
-| Aspect | Before | After |
-|--------|--------|-------|
-| **Setup Time** | 30 minutes | 5 minutes |
-| **Error Messages** | Cryptic | Clear |
-| **Debugging** | Manual | Automatic |
-| **Hot Reload** | Manual | Built-in |
-| **Type Checking** | Complex | Zero config |
+| Aspect             | Before     | After       |
+| ------------------ | ---------- | ----------- |
+| __Setup Time__     | 30 minutes | 5 minutes   |
+| __Error Messages__ | Cryptic    | Clear       |
+| __Debugging__      | Manual     | Automatic   |
+| __Hot Reload__     | Manual     | Built-in    |
+| __Type Checking__  | Complex    | Zero config |
 
 ## 🔄 Migration Process
 
-### **Phase 1: Install Modern Toolchain**
+### __Phase 1: Install Modern Toolchain**
 
 ```bash
 # Install Vite and Bun
-npm install -D vite @vitejs/plugin-react bun
+npm install -D Vite @vitejs/plugin-react Bun
 
 # Verify installation
-bun --version
-npx vite --version
-```
+Bun --version
+npx Vite --version
+```text
 
-### **Phase 2: Update Configuration**
+### __Phase 2: Update Configuration**
 
 ```bash
 # Create Vite config
-touch vite.cli.config.ts
+touch Vite.CLI.config.ts
 
 # Update TypeScript config
-# Update package.json scripts
-```
+# Update package.JSON scripts
+```text
 
-### **Phase 3: Test Migration**
+### __Phase 3: Test Migration**
 
 ```bash
 # Test build
-npm run build:vite
+npm run build:Vite
 
 # Test runtime
-bun run cli/cursor-realtime-cli.ts test
+Bun run CLI/cursor-realtime-CLI.ts test
 
 # Test development
-bun --watch cli/cursor-realtime-cli.ts start
-```
+Bun --watch CLI/cursor-realtime-CLI.ts start
+```text
 
-### **Phase 4: Update Documentation**
+### __Phase 4: Update Documentation**
 
 - Update build instructions
 - Update development guides
@@ -297,42 +310,42 @@ bun --watch cli/cursor-realtime-cli.ts start
 
 ## 🎉 Success Metrics
 
-### **✅ Problems Solved**
+### __✅ Problems Solved**
 
-1. **ESM Configuration Paradox**: Eliminated completely
-2. **Module Resolution Issues**: Automatic handling
-3. **TypeScript Compilation**: Zero configuration
-4. **Runtime Execution**: Simple `bun run`
-5. **Development Experience**: Hot reload built-in
+1. __ESM Configuration Paradox__: Eliminated completely
+2. __Module Resolution Issues__: Automatic handling
+3. __TypeScript Compilation__: Zero configuration
+4. __Runtime Execution__: Simple `Bun run`
+5. __Development Experience__: Hot reload built-in
 
-### **✅ Benefits Achieved**
+### __✅ Benefits Achieved**
 
-1. **75% Faster Builds**: Vite optimization
-2. **90% Faster Startup**: Bun runtime
-3. **50% Less Memory**: Optimized bundling
-4. **Zero Configuration**: Modern defaults
-5. **Better DX**: Hot reload, clear errors
+1. __75% Faster Builds__: Vite optimization
+2. __90% Faster Startup__: Bun runtime
+3. __50% Less Memory__: Optimized bundling
+4. __Zero Configuration__: Modern defaults
+5. __Better DX__: Hot reload, clear errors
 
 ## 🔮 Future Enhancements
 
-### **Planned Improvements**
+### __Planned Improvements**
 
-1. **Bun Package Manager**
+1. __Bun Package Manager**
    - Replace npm with Bun
    - Faster dependency installation
    - Integrated tooling
 
-2. **Vite Dev Server**
+2. __Vite Dev Server**
    - Development server for CLI tools
    - Hot reload for all file types
    - Better debugging experience
 
-3. **Advanced Bundling**
+3. __Advanced Bundling**
    - Code splitting for large tools
    - Tree shaking optimization
    - Dynamic imports
 
-4. **Testing Integration**
+4. __Testing Integration**
    - Bun test runner
    - Vite test environment
    - Integrated coverage
@@ -346,6 +359,6 @@ bun --watch cli/cursor-realtime-cli.ts start
 
 ---
 
-**Status**: ✅ Migration Complete  
-**Last Updated**: 2025-08-08  
-**Maintainer**: Aegis Framework Team
+**Status__: ✅ Migration Complete  
+**Last Updated__: 2025-08-08  
+**Maintainer__: Aegis Framework Team

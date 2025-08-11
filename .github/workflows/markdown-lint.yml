@@ -1,0 +1,50 @@
+name: Markdown Lint
+
+on:
+  push:
+    paths:
+      - "**.md"
+      - ".markdownlint.json"
+      - "tools/audit-markdown.ts"
+      - "tools/fix-markdown.ts"
+  pull_request:
+    paths:
+      - "**.md"
+      - ".markdownlint.json"
+      - "tools/audit-markdown.ts"
+      - "tools/fix-markdown.ts"
+
+jobs:
+  markdown-lint:
+    name: Markdown Lint
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20.16.0"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check Prettier formatting
+        run: npm run format:markdown:check
+
+      - name: Run markdownlint
+        run: npm run lint:markdown
+
+      - name: Run markdown audit
+        run: npm run audit:markdown
+
+      - name: Upload audit report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: markdown-audit-report
+          path: .aegis/markdown-audit-report.json
+          retention-days: 30

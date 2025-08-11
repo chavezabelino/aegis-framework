@@ -2,112 +2,120 @@
 
 ## Current Workflow Analysis
 
-### ✅ **Keep These Workflows:**
+### ✅ __Keep These Workflows:**
 
-#### 1. `deploy-docs-simple.yml` 
-- **Purpose**: Deploy Docusaurus documentation to GitHub Pages
-- **Trigger**: Push to main
-- **Status**: ✅ Working well
-- **Recommendation**: Keep as-is
+#### 1. `deploy-docs-simple.yml`
 
-#### 2. `constitutional-compliance.yml`
-- **Purpose**: Comprehensive framework validation
-- **Trigger**: Push/PR to main  
-- **Status**: ⚠️ Too heavy - runs 15+ validation steps
-- **Recommendation**: Optimize (see below)
+- __Purpose__: Deploy Docusaurus documentation to GitHub Pages
+- __Trigger__: Push to main
+- __Status__: ✅ Working well
+- __Recommendation__: Keep as-is
 
-### ❌ **Remove/Modify These Workflows:**
+#### 2. `Constitutional-compliance.yml`
+
+- __Purpose__: Comprehensive framework validation
+- __Trigger__: Push/PR to main
+- __Status__: ⚠️ Too heavy - runs 15+ validation steps
+- __Recommendation__: Optimize (see below)
+
+### ❌ __Remove/Modify These Workflows:**
 
 #### 3. `validate.yml`
-- **Purpose**: Basic validation (placeholder)
-- **Status**: ❌ Just echoes "TODO"
-- **Recommendation**: **DELETE** - redundant with constitutional-compliance.yml
 
-#### 4. `aegis-eval.yml` 
-- **Purpose**: Run evaluation pipeline
-- **Status**: ⚠️ Disabled (workflow_dispatch only)
-- **Recommendation**: **Enable selectively** - only for releases
+- __Purpose__: Basic validation (placeholder)
+- __Status__: ❌ Just echoes "TODO"
+- __Recommendation__: __DELETE__ - redundant with Constitutional-compliance.yml
+
+#### 4. `Aegis-eval.yml`
+
+- __Purpose__: Run evaluation pipeline
+- __Status__: ⚠️ Disabled (workflow_dispatch only)
+- __Recommendation__: __Enable selectively__ - only for releases
 
 #### 5. `deploy-docs.yml`
-- **Status**: ⚠️ Disabled 
-- **Recommendation**: **DELETE** - replaced by deploy-docs-simple.yml
+
+- __Status__: ⚠️ Disabled
+- __Recommendation__: __DELETE__ - replaced by deploy-docs-simple.yml
 
 ## Optimization Plan
 
-### 🚀 **Phase 1: Immediate Cleanup**
+### 🚀 __Phase 1: Immediate Cleanup**
 
 ```bash
 # Delete redundant workflows
-rm .github/workflows/validate.yml
-rm .github/workflows/deploy-docs.yml
+rm .GitHub/workflows/validate.yml
+rm .GitHub/workflows/deploy-docs.yml
 
 # Keep but optimize others
-```
+```text
 
-### 🎯 **Phase 2: Optimize Constitutional Compliance**
+### 🎯 __Phase 2: Optimize Constitutional Compliance**
 
-**Problem**: Runs 15+ steps on every push (expensive)
+**Problem__: Runs 15+ steps on every push (expensive)
 
-**Solution**: Split into focused workflows:
+**Solution__: Split into focused workflows:
 
-1. **Fast CI** (on every push):
+1. __Fast CI__ (on every push):
    - Version consistency
-   - Blueprint validation  
+   - Blueprint validation
    - Basic linting
 
-2. **Full Compliance** (on PR to main):
+2. __Full Compliance__ (on PR to main):
    - Constitutional validation
    - Remediation plans
    - Evolution story detection
 
-3. **Release Validation** (on tag):
+3. __Release Validation__ (on tag):
    - Complete evaluation pipeline
    - Full test suite
    - Documentation build
 
-### 🔧 **Phase 3: Enable Evaluations Selectively**
+### 🔧 __Phase 3: Enable Evaluations Selectively**
 
-**Current**: Disabled because it was failing
-**Fix**: Enable for releases only
+**Current__: Disabled because it was failing __Fix__: Enable for releases only
 
 ```yaml
 on:
   release:
     types: [published]
-  workflow_dispatch:  # Manual trigger
-```
+  workflow_dispatch: # Manual trigger
+```text
 
 ## Recommended Final State
 
-### Workflows to Keep:
-1. **Fast CI** (`ci.yml`) - Quick validation on every push
-2. **PR Validation** (`pr-validation.yml`) - Full checks on PR
-3. **Documentation** (`deploy-docs-simple.yml`) - Deploy docs
-4. **Release** (`release.yml`) - Full evaluation on releases
+### Workflows to Keep
 
-### Benefits:
-- ✅ **Faster feedback** (30s vs 5min for basic CI)
-- ✅ **Lower GitHub Actions costs** 
-- ✅ **Focused validation** per context
-- ✅ **Cleaner run history**
+1. __Fast CI__ (`ci.yml`) - Quick validation on every push
+2. __PR Validation__ (`pr-validation.yml`) - Full checks on PR
+3. __Documentation__ (`deploy-docs-simple.yml`) - Deploy docs
+4. __Release__ (`release.yml`) - Full evaluation on releases
+
+### Benefits
+
+- ✅ __Faster feedback__ (30s vs 5min for basic CI)
+- ✅ __Lower GitHub Actions costs**
+- ✅ __Focused validation__ per context
+- ✅ __Cleaner run history**
 
 ## Migration Steps
 
-1. **Delete redundant workflows**
-2. **Split constitutional-compliance.yml** into focused workflows  
-3. **Enable aegis-eval.yml** for releases only
-4. **Test new workflow setup**
-5. **Clean up failed run history**
+1. __Delete redundant workflows**
+2. __Split Constitutional-compliance.yml__ into focused workflows
+3. __Enable Aegis-eval.yml__ for releases only
+4. __Test new workflow setup**
+5. __Clean up failed run history**
 
 ## Cost Analysis
 
-### Before:
+### Before
+
 - Constitutional compliance: ~5 minutes × every push = expensive
 - Multiple redundant workflows
 - High failure rate due to complexity
 
-### After:  
+### After
+
 - Fast CI: ~30 seconds × every push
 - Full validation: ~3 minutes × PRs only
 - Evaluations: ~2 minutes × releases only
-- **~80% reduction in compute time**
+- __~80% reduction in compute time**

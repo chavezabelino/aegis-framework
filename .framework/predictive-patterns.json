@@ -89,11 +89,7 @@
   {
     "id": "systematic-failure-prediction",
     "type": "systematic-failure",
-    "triggerConditions": [
-      "Repeated similar failures",
-      "Pattern recognition gaps",
-      "Learning system failures"
-    ],
+    "triggerConditions": ["Repeated similar failures", "Pattern recognition gaps", "Learning system failures"],
     "riskIndicators": [
       "Same failure type recurring",
       "Prevention mechanisms not learning",

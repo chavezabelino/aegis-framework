@@ -36,6 +36,8 @@ interface CommandAnalysis {
   intentAlignment: number; // 0-100 score
   riskLevel: 'low' | 'medium' | 'high' | 'critical';
   constitutionalCompliance: boolean;
+  explanation?: string;
+  timestamp?: Date;
 }
 
 export class IntentEnforcementEngine {
@@ -73,7 +75,8 @@ export class IntentEnforcementEngine {
       category: this.categorizeCommand(command),
       intentAlignment: this.calculateIntentAlignment(command, explanation),
       riskLevel: this.assessRiskLevel(command),
-      constitutionalCompliance: this.checkConstitutionalCompliance(command)
+      constitutionalCompliance: this.checkConstitutionalCompliance(command),
+      explanation,
     };
 
     this.commandHistory.push(analysis);
@@ -85,11 +88,11 @@ export class IntentEnforcementEngine {
    */
   enforceIntent(command: string, explanation?: string): { allowed: boolean; violations: IntentViolation[] } {
     const traceCtx = trace(
-      'constitutional-enforcement', 
-      'intent-enforcement', 
-      'enforceIntent', 
-      { command, explanation }, 
-      undefined, 
+      'constitutional-enforcement',
+      'intent-enforcement',
+      'enforceIntent',
+      { command, explanation },
+      undefined,
       'docs/implementation/intent-enforcement.md',
       `command: ${command.substring(0, 50)}`
     );
@@ -103,45 +106,46 @@ export class IntentEnforcementEngine {
         return result;
       }
 
-    if (!this.currentIntent) {
-      return {
-        allowed: false,
-        violations: [{
-          type: 'constitutional-violation',
-          severity: 'critical',
-          description: 'No execution intent set - violates traceability principle',
-          evidence: 'Command attempted without constitutional intent declaration',
-          suggestedCorrection: 'Set execution intent using setExecutionIntent() before any commands',
-          blockExecution: true
-        }]
-      };
-    }
+      if (!this.currentIntent) {
+        return {
+          allowed: false,
+          violations: [
+            {
+              type: 'constitutional-violation',
+              severity: 'critical',
+              description: 'No execution intent set - violates traceability principle',
+              evidence: 'Command attempted without constitutional intent declaration',
+              suggestedCorrection: 'Set execution intent using setExecutionIntent() before any commands',
+              blockExecution: true,
+            },
+          ],
+        };
+      }
 
-    const analysis = this.analyzeCommand(command, explanation);
-    const violations = this.detectViolations(analysis, explanation);
-    
-    // Apply team configuration mode
-    const mode = this.configLoader.getConstitutionalMode();
-    const blocking = this.configLoader.loadConfig()?.required.constitutionalEnforcement.blocking ?? true;
-    
-    // Adjust violations based on mode
-    const adjustedViolations = violations.map(violation => ({
-      ...violation,
-      blockExecution: mode === 'strict' ? violation.blockExecution : 
-                     mode === 'guided' ? violation.severity === 'critical' :
-                     false // advisory mode - never block
-    }));
-    
-    // Log enforcement decision
-    this.logEnforcementDecision(command, analysis, adjustedViolations);
-    
-    const result = {
-      allowed: adjustedViolations.filter(v => v.blockExecution).length === 0,
-      violations
-    };
-    
-    traceCtx.complete(result);
-    return result;
+      const analysis = this.analyzeCommand(command, explanation);
+      const violations = this.detectViolations(analysis, explanation);
+
+      // Apply team configuration mode
+      const mode = this.configLoader.getConstitutionalMode();
+      const blocking = this.configLoader.loadConfig()?.required.constitutionalEnforcement.blocking ?? true;
+
+      // Adjust violations based on mode
+      const adjustedViolations = violations.map(violation => ({
+        ...violation,
+        blockExecution:
+          mode === 'strict' ? violation.blockExecution : mode === 'guided' ? violation.severity === 'critical' : false, // advisory mode - never block
+      }));
+
+      // Log enforcement decision
+      this.logEnforcementDecision(command, analysis, adjustedViolations);
+
+      const result = {
+        allowed: adjustedViolations.filter(v => v.blockExecution).length === 0,
+        violations,
+      };
+
+      traceCtx.complete(result);
+      return result;
     } catch (error) {
       traceCtx.error(error);
       throw error;
@@ -194,9 +198,10 @@ export class IntentEnforcementEngine {
     let score = 50; // Base score
 
     // Check if command aligns with expected actions
-    const matchesExpected = this.currentIntent.expectedActions.some(action =>
-      command.toLowerCase().includes(action.toLowerCase()) ||
-      (explanation && explanation.toLowerCase().includes(action.toLowerCase()))
+    const matchesExpected = this.currentIntent.expectedActions.some(
+      action =>
+        command.toLowerCase().includes(action.toLowerCase()) ||
+        (explanation && explanation.toLowerCase().includes(action.toLowerCase()))
     );
 
     if (matchesExpected) score += 30;
@@ -209,14 +214,12 @@ export class IntentEnforcementEngine {
     if (violatesForbidden) score -= 40;
 
     // Demonstrative commands get heavy penalty for functional intent
-    if (this.categorizeCommand(command) === 'demonstrative' && 
-        this.currentIntent.primaryGoal.includes('test')) {
+    if (this.categorizeCommand(command) === 'demonstrative' && this.currentIntent.primaryGoal.includes('test')) {
       score -= 30;
     }
 
     // Functional commands get bonus for functional intent
-    if (this.categorizeCommand(command) === 'functional' && 
-        this.currentIntent.primaryGoal.includes('test')) {
+    if (this.categorizeCommand(command) === 'functional' && this.currentIntent.primaryGoal.includes('test')) {
       score += 20;
     }
 
@@ -264,14 +267,14 @@ export class IntentEnforcementEngine {
     const systematicIssuePatterns = [
       /git\s+commit.*-m.*version/i,
       /git\s+commit.*-m.*update/i,
-      /git\s+commit.*-m.*fix/i
+      /git\s+commit.*-m.*fix/i,
     ];
 
     // Detect version-related commits without validation
     if (systematicIssuePatterns.some(pattern => pattern.test(command))) {
       console.log('🚨 Systematic issue pattern detected: Version-related commit');
       console.log('💡 Recommendation: Run version consistency validation before commits');
-      
+
       // Record this as a potential drift pattern
       this.violationHistory.push({
         type: 'constitutional-violation',
@@ -279,7 +282,7 @@ export class IntentEnforcementEngine {
         description: 'Version-related commit without prior validation - systematic drift pattern detected',
         evidence: `Command: ${command}`,
         suggestedCorrection: 'Run "node tools/validate-version-consistency.ts" before version-related commits',
-        blockExecution: false
+        blockExecution: false,
       });
     }
 
@@ -300,20 +303,19 @@ export class IntentEnforcementEngine {
         description: `Command has low intent alignment (${analysis.intentAlignment}%)`,
         evidence: `Command: ${analysis.command}`,
         suggestedCorrection: 'Ensure command directly serves the stated execution intent',
-        blockExecution: false
+        blockExecution: false,
       });
     }
 
     // Demonstrative command for functional intent
-    if (analysis.category === 'demonstrative' && 
-        this.currentIntent?.primaryGoal.includes('test')) {
+    if (analysis.category === 'demonstrative' && this.currentIntent?.primaryGoal.includes('test')) {
       violations.push({
         type: 'functional-drift',
         severity: 'error',
         description: 'Using demonstrative command when functional action is required',
         evidence: `Echo command: ${analysis.command}`,
         suggestedCorrection: 'Replace echo with actual functional test command',
-        blockExecution: true
+        blockExecution: true,
       });
     }
 
@@ -325,7 +327,7 @@ export class IntentEnforcementEngine {
         description: 'Command violates constitutional principles',
         evidence: `Non-compliant command: ${analysis.command}`,
         suggestedCorrection: 'Use constitutional-compliant alternative or request approval',
-        blockExecution: true
+        blockExecution: true,
       });
     }
 
@@ -337,7 +339,7 @@ export class IntentEnforcementEngine {
         description: 'High-risk command without adequate justification',
         evidence: `Risk level: ${analysis.riskLevel}, Command: ${analysis.command}`,
         suggestedCorrection: 'Provide detailed justification for high-risk operations',
-        blockExecution: true
+        blockExecution: true,
       });
     }
 
@@ -347,11 +349,7 @@ export class IntentEnforcementEngine {
   /**
    * Log enforcement decision
    */
-  private logEnforcementDecision(
-    command: string, 
-    analysis: CommandAnalysis, 
-    violations: IntentViolation[]
-  ): void {
+  private logEnforcementDecision(command: string, analysis: CommandAnalysis, violations: IntentViolation[]): void {
     const timestamp = new Date().toISOString();
     const logEntry = {
       timestamp,
@@ -359,13 +357,13 @@ export class IntentEnforcementEngine {
       analysis,
       violations,
       intent: this.currentIntent?.primaryGoal || 'none',
-      decision: violations.filter(v => v.blockExecution).length === 0 ? 'ALLOWED' : 'BLOCKED'
+      decision: violations.filter(v => v.blockExecution).length === 0 ? 'ALLOWED' : 'BLOCKED',
     };
 
     // Write to enforcement log
     const logPath = path.join(this.projectRoot, 'logs', 'intent-enforcement.log');
     const logDir = path.dirname(logPath);
-    
+
     if (!fs.existsSync(logDir)) {
       fs.mkdirSync(logDir, { recursive: true });
     }
@@ -375,7 +373,7 @@ export class IntentEnforcementEngine {
     // Console output
     const statusIcon = logEntry.decision === 'ALLOWED' ? '✅' : '🚫';
     console.log(`${statusIcon} ${logEntry.decision}: ${command}`);
-    
+
     if (violations.length > 0) {
       violations.forEach(v => {
         const icon = v.severity === 'critical' ? '🚨' : v.severity === 'error' ? '❌' : '⚠️';
@@ -389,15 +387,16 @@ export class IntentEnforcementEngine {
    * Generate intent violation report
    */
   generateViolationReport(): string {
-    const allViolations = this.violationHistory.concat(
-      this.commandHistory.flatMap(cmd => this.detectViolations(cmd))
-    );
+    const allViolations = this.violationHistory.concat(this.commandHistory.flatMap(cmd => this.detectViolations(cmd)));
 
-    const grouped = allViolations.reduce((acc, violation) => {
-      if (!acc[violation.type]) acc[violation.type] = [];
-      acc[violation.type].push(violation);
-      return acc;
-    }, {} as Record<string, IntentViolation[]>);
+    const grouped = allViolations.reduce(
+      (acc, violation) => {
+        if (!acc[violation.type]) acc[violation.type] = [];
+        acc[violation.type].push(violation);
+        return acc;
+      },
+      {} as Record<string, IntentViolation[]>
+    );
 
     let report = '# Intent Enforcement Violation Report\n\n';
     report += `**Generated**: ${new Date().toISOString()}\n`;
@@ -438,7 +437,10 @@ export class IntentEnforcementEngine {
   /**
    * Execute command with foreground hang prevention
    */
-  async executeWithHangPrevention(command: string, explanation?: string): Promise<{
+  async executeWithHangPrevention(
+    command: string,
+    explanation?: string
+  ): Promise<{
     success: boolean;
     result?: any;
     violations: IntentViolation[];
@@ -446,47 +448,48 @@ export class IntentEnforcementEngine {
     message: string;
   }> {
     console.log(`🛡️ Executing with constitutional enforcement and hang prevention: ${command}`);
-    
+
     // First, check intent enforcement
     const intentResult = this.enforceIntent(command, explanation);
-    
+
     if (!intentResult.allowed) {
       return {
         success: false,
         violations: intentResult.violations,
-        message: `Command blocked by constitutional enforcement: ${intentResult.violations[0]?.description || 'Intent violation'}`
+        message: `Command blocked by constitutional enforcement: ${intentResult.violations[0]?.description || 'Intent violation'}`,
       };
     }
-    
+
     // Check if this is a long-running process
     const longRunningPattern = this.hangPrevention.detectLongRunningProcess(command);
-    
+
     if (longRunningPattern) {
       console.log(`🎯 Long-running process detected: ${longRunningPattern.name}`);
       console.log(`📋 Category: ${longRunningPattern.category}`);
       console.log(`🚀 Automatically backgrounding to prevent agent hang...`);
     }
-    
+
     // Execute with hang prevention
     const result = await this.hangPrevention.runWithHangPrevention(command);
-    
+
     if (result.success) {
       // Record successful execution
       this.commandHistory.push({
         command,
+        category: this.categorizeCommand(command),
         explanation: explanation || 'No explanation provided',
         timestamp: new Date(),
         intentAlignment: 100, // Passed all checks
         riskLevel: result.backgrounded ? 'medium' : 'low',
-        constitutionalCompliance: true
+        constitutionalCompliance: true,
       });
-      
+
       return {
         success: true,
         result,
         violations: [],
         backgrounded: result.backgrounded,
-        message: result.message
+        message: result.message,
       };
     } else {
       // Record failed execution
@@ -496,16 +499,16 @@ export class IntentEnforcementEngine {
         description: `Command execution failed: ${result.message}`,
         evidence: `Command: ${command}`,
         suggestedCorrection: 'Check command syntax and dependencies',
-        blockExecution: false
+        blockExecution: false,
       };
-      
+
       this.violationHistory.push(violation);
-      
+
       return {
         success: false,
         violations: [violation],
         backgrounded: result.backgrounded,
-        message: result.message
+        message: result.message,
       };
     }
   }
@@ -515,13 +518,13 @@ export class IntentEnforcementEngine {
    */
   getBackgroundProcessStatus(): string {
     const running = this.hangPrevention.getRunningProcesses();
-    
+
     if (running.size === 0) {
       return '📝 No background processes running';
     }
-    
+
     let status = `📝 ${running.size} background processes running:\n`;
-    
+
     for (const [name, process] of running.entries()) {
       const uptime = Math.round((Date.now() - process.startTime.getTime()) / 1000);
       status += `  • ${name} (PID: ${process.pid}, uptime: ${uptime}s)\n`;
@@ -531,7 +534,7 @@ export class IntentEnforcementEngine {
         status += `    Health: ${process.healthCheck}\n`;
       }
     }
-    
+
     return status;
   }
 
@@ -562,9 +565,9 @@ export function enforceIntentBeforeExecution(
 ): { proceed: boolean; violations: IntentViolation[] } {
   const engine = new IntentEnforcementEngine();
   engine.setExecutionIntent(intent);
-  
+
   const result = engine.enforceIntent(command, explanation);
-  
+
   if (!result.allowed) {
     console.log('\n🚫 EXECUTION BLOCKED - Constitutional Violation Detected');
     console.log('📋 Violations:');
@@ -574,7 +577,7 @@ export function enforceIntentBeforeExecution(
     });
     console.log('\n🏛️ Framework requires adherence to constitutional principles.');
   }
-  
+
   return { proceed: result.allowed, violations: result.violations };
 }
 
@@ -583,50 +586,50 @@ export function enforceIntentBeforeExecution(
  */
 export async function testIntentEnforcement(): Promise<void> {
   const engine = new IntentEnforcementEngine();
-  
+
   // Test scenario: Agent claims to test but uses echo commands
   console.log('🧪 Testing Intent Enforcement Engine\n');
-  
+
   // Set functional testing intent
   engine.setExecutionIntent({
     primaryGoal: 'test evolution story detection system',
     mode: 'strict',
     expectedActions: ['run actual tests', 'validate functionality', 'check outputs'],
     forbiddenActions: ['echo only', 'demonstrative commands'],
-    safetyConstraints: ['must produce real results', 'must validate actual functionality']
+    safetyConstraints: ['must produce real results', 'must validate actual functionality'],
   });
-  
+
   // Test various commands
   const testCommands = [
     {
       command: 'echo "Testing evolution story detection..."',
-      explanation: 'Running evolution story detection test'
+      explanation: 'Running evolution story detection test',
     },
     {
       command: 'node tools/detect-evolution-stories.ts',
-      explanation: 'Actually testing the evolution story detection functionality'
+      explanation: 'Actually testing the evolution story detection functionality',
     },
     {
       command: 'npm test',
-      explanation: 'Running the full test suite'
+      explanation: 'Running the full test suite',
     },
     {
       command: 'rm -rf node_modules',
-      explanation: 'Cleaning dependencies'
-    }
+      explanation: 'Cleaning dependencies',
+    },
   ];
-  
+
   for (const test of testCommands) {
     console.log(`\n🔍 Analyzing: ${test.command}`);
     const result = engine.enforceIntent(test.command, test.explanation);
-    
+
     if (!result.allowed) {
       console.log('   🚫 BLOCKED');
     } else {
       console.log('   ✅ ALLOWED');
     }
   }
-  
+
   // Generate report
   console.log('\n📊 Session Report:');
   console.log(engine.generateViolationReport());

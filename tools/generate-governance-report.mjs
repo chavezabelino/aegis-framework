@@ -23,25 +23,35 @@ const OUT_FILE_CI = path.join(OUT_DIR, 'governance-report.ci.json');
 const CI = !!process.env.GITHUB_ACTIONS;
 const NOW = new Date().toISOString();
 
-function ensureDir(p) { fs.mkdirSync(p, { recursive: true }); }
+function ensureDir(p) {
+  fs.mkdirSync(p, { recursive: true });
+}
 
 function sha256File(p) {
   try {
     const buf = fs.readFileSync(p);
     return crypto.createHash('sha256').update(buf).digest('hex');
-  } catch { return null; }
+  } catch {
+    return null;
+  }
 }
 
 function safeStat(p) {
   try {
     const s = fs.statSync(p);
     return { size: s.size, mtime: s.mtime.toISOString(), isFile: s.isFile(), isDir: s.isDirectory() };
-  } catch { return null; }
+  } catch {
+    return null;
+  }
 }
 
 function walk(dir, filter = () => true, out = []) {
   let entries;
-  try { entries = fs.readdirSync(dir, { withFileTypes: true }); } catch { return out; }
+  try {
+    entries = fs.readdirSync(dir, { withFileTypes: true });
+  } catch {
+    return out;
+  }
   for (const e of entries) {
     const fp = path.join(dir, e.name);
     if (e.isDirectory()) walk(fp, filter, out);
@@ -61,7 +71,7 @@ function safeRun(command) {
       exitCode: typeof e.status === 'number' ? e.status : 1,
       stdout: e.stdout?.toString?.() ?? '',
       stderr: e.stderr?.toString?.() ?? String(e),
-      durationMs: Date.now() - started
+      durationMs: Date.now() - started,
     };
   }
 }
@@ -75,11 +85,14 @@ async function main() {
     // Best-effort telemetry line so report always has something to reference.
     const telemetryFile = path.join('.aegis/telemetry', 'planning-events.ndjson');
     if (!fs.existsSync(telemetryFile)) fs.writeFileSync(telemetryFile, '');
-    fs.appendFileSync(telemetryFile, JSON.stringify({
-      timestamp: NOW,
-      event: 'report.generated',
-      source: 'generate-governance-report.mjs'
-    }) + '\n');
+    fs.appendFileSync(
+      telemetryFile,
+      JSON.stringify({
+        timestamp: NOW,
+        event: 'report.generated',
+        source: 'generate-governance-report.mjs',
+      }) + '\n'
+    );
 
     // Collect file receipts from key areas
     const roots = [
@@ -87,8 +100,8 @@ async function main() {
       '.aegis/telemetry',
       '.aegis/validation',
       '.aegis/vr-baselines',
-      '.aegis/artifacts',                     // downloaded artifacts from other jobs
-      '.github/workflows/aegis-governance.yml'
+      '.aegis/artifacts', // downloaded artifacts from other jobs
+      '.github/workflows/aegis-governance.yml',
     ];
 
     const files = [];
@@ -129,13 +142,17 @@ async function main() {
         skipSignatureChecks: process.env.SKIP_SIGNATURE_CHECKS === 'true',
       },
       commands,
-      files
+      files,
     };
 
     // Write local; in CI also mirror to ci.json (the workflow already copies, but be kind)
     fs.writeFileSync(OUT_FILE_LOCAL, JSON.stringify(report, null, 2));
     if (CI) {
-      try { fs.writeFileSync(OUT_FILE_CI, JSON.stringify(report, null, 2)); } catch { /* ignore */ }
+      try {
+        fs.writeFileSync(OUT_FILE_CI, JSON.stringify(report, null, 2));
+      } catch {
+        /* ignore */
+      }
     }
 
     console.log(`✅ Governance report written: ${CI ? OUT_FILE_CI : OUT_FILE_LOCAL}`);
@@ -147,12 +164,15 @@ async function main() {
       ensureDir(OUT_DIR);
       const fallback = {
         meta: { generatedAtUtc: NOW, ci: CI, error: String(err?.message || err) },
-        files: [], commands: {}
+        files: [],
+        commands: {},
       };
       fs.writeFileSync(OUT_FILE_LOCAL, JSON.stringify(fallback, null, 2));
       if (CI) fs.writeFileSync(OUT_FILE_CI, JSON.stringify(fallback, null, 2));
       console.log(`⚠️ Wrote fallback report to ${CI ? OUT_FILE_CI : OUT_FILE_LOCAL}`);
-    } catch { /* ignore */ }
+    } catch {
+      /* ignore */
+    }
     process.exit(0);
   }
 }

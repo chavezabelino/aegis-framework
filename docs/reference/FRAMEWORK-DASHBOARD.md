@@ -11,199 +11,217 @@
 [![Capabilities](https://img.shields.io/badge/Capabilities-64-blue?style=for-the-badge)](#capability-overview)
 [![Health](https://img.shields.io/badge/Health-HEALTHY-green?style=for-the-badge)](#health-status)
 
-**Last Updated**: 8/8/2025  
-**Auto-Generated**: This dashboard is automatically maintained by the framework's observability system.
+**Last Updated__: 8/8/2025  
+**Auto-Generated__: This dashboard is automatically maintained by the framework's observability system.
 
 ---
 
 ## 📊 Framework Overview
 
-| Metric | Value | Status |
-|--------|-------|--------|
-| **Version** | 2.4.0 | Current |
-| **Total Capabilities** | 64 | Active |
-| **Categories** | 4 | Complete |
-| **Health Status** | HEALTHY ✅ | Operational |
-| **Documentation Coverage** | 100.0% | Complete |
-| **Test Coverage** | 11.0% | Needs Improvement |
+| Metric                     | Value      | Status            |
+| -------------------------- | ---------- | ----------------- |
+| __Version__                | 2.4.0      | Current           |
+| __Total Capabilities__     | 64         | Active            |
+| __Categories__             | 4          | Complete          |
+| __Health Status__          | HEALTHY ✅ | Operational       |
+| __Documentation Coverage__ | 100.0%     | Complete          |
+| __Test Coverage__          | 11.0%      | Needs Improvement |
 
 ## 🎯 What Aegis Does
 
-**Aegis Framework** is a production-ready system for AI-assisted engineering that provides:
+**Aegis Framework__ is a production-ready system for AI-assisted engineering that provides:
 
-- **Constitutional Governance**: Foundational principles with democratic amendment processes
-- **Drift Detection & Prevention**: Real-time monitoring of agent behavior and intent alignment
-- **Configuration Management**: Team-configurable enforcement levels and feature controls
-- **Version Consistency**: Automated validation across all framework files
-- **Semantic Interrupt Handling**: Detection and response to user confusion or misalignment
-- **Foreground Hang Prevention**: Automatic backgrounding of long-running processes
-- **Observability & Tracing**: Comprehensive monitoring and execution tracking
+- __Constitutional Governance__: Foundational principles with democratic amendment processes
+- __Drift Detection & Prevention__: Real-time monitoring of agent behavior and intent alignment
+- __Configuration Management__: Team-configurable enforcement levels and feature controls
+- __Version Consistency__: Automated validation across all framework files
+- __Semantic Interrupt Handling__: Detection and response to user confusion or misalignment
+- __Foreground Hang Prevention__: Automatic backgrounding of long-running processes
+- __Observability & Tracing__: Comprehensive monitoring and execution tracking
 
 ## 📋 Capability Overview
 
 ### Distribution by Category
 
-| Category | Count | Percentage | Key Capabilities |
-|----------|-------|------------|-----------------|
-| 🔧 **Tool** | 38 | 59% | CLI utilities, validation tools, enforcement engines |
-| 🏛️ **Core** | 20 | 31% | Framework foundations, specifications, templates |
-| ⚖️ **Governance** | 4 | 6% | Constitutional enforcement, semantic interrupts |
-| 🔗 **Integration** | 2 | 3% | Blueprint implementations, external connections |
+| Category           | Count | Percentage | Key Capabilities                                     |
+| ------------------ | ----- | ---------- | ---------------------------------------------------- |
+| 🔧 __Tool__        | 38    | 59%        | CLI utilities, validation tools, enforcement engines |
+| 🏛️ __Core__        | 20    | 31%        | Framework foundations, specifications, templates     |
+| ⚖️ __Governance__  | 4     | 6%         | Constitutional enforcement, semantic interrupts      |
+| 🔗 __Integration__ | 2     | 3%         | Blueprint implementations, external connections      |
 
 ### Status Distribution
 
-| Status | Count | Description |
-|--------|-------|-------------|
-| 🧪 **Experimental** | 6 | Proof-of-concept, research phase |
-| ✅ **Stable** | 40 | Production-ready, fully tested |
-| 🟠 **Alpha** | 9 | Early implementation, active development |
-| 🟡 **Beta** | 9 | Feature-complete, undergoing validation |
+| Status              | Count | Description                              |
+| ------------------- | ----- | ---------------------------------------- |
+| 🧪 __Experimental__ | 6     | Proof-of-concept, research phase         |
+| ✅ __Stable__       | 40    | Production-ready, fully tested           |
+| 🟠 __Alpha__        | 9     | Early implementation, active development |
+| 🟡 __Beta__         | 9     | Feature-complete, undergoing validation  |
 
 ## 🔧 Key Tools & Capabilities
 
 ### Constitutional Governance
-- **Constitutional Compliance Enforcer**: Validates framework intelligence claims
-- **Intent Enforcement Engine**: Real-time drift prevention and command validation
-- **Semantic Interrupt Detector**: Responds to user expressions of confusion
-- **Constitutional Reflex Engine**: Orchestrates responses to semantic interrupts
+
+- __Constitutional Compliance Enforcer__: Validates framework intelligence claims
+- __Intent Enforcement Engine__: Real-time drift prevention and command validation
+- __Semantic Interrupt Detector__: Responds to user expressions of confusion
+- __Constitutional Reflex Engine__: Orchestrates responses to semantic interrupts
 
 ### Development Tools
-- **Version Consistency Validator**: Ensures consistency across framework files
-- **Framework Capability Mapper**: Auto-discovers and catalogs capabilities
-- **Blueprint Registry**: Single source of truth for framework features
-- **Execution Trace Hooks**: Real-time feature usage tracking
+
+- __Version Consistency Validator__: Ensures consistency across framework files
+- __Framework Capability Mapper__: Auto-discovers and catalogs capabilities
+- __Blueprint Registry__: Single source of truth for framework features
+- __Execution Trace Hooks__: Real-time feature usage tracking
 
 ### Safety & Prevention
-- **Foreground Hang Prevention**: Prevents agent blocking on long-running processes
-- **Self-Healing Governance**: Detects and prevents repeat failures
-- **Evolution Learning System**: Learns from patterns to prevent recurrence
-- **Predictive Compliance Monitor**: Predicts and prevents violations
+
+- __Foreground Hang Prevention__: Prevents agent blocking on long-running processes
+- __Self-Healing Governance__: Detects and prevents repeat failures
+- __Evolution Learning System__: Learns from patterns to prevent recurrence
+- __Predictive Compliance Monitor__: Predicts and prevents violations
 
 ### CLI & User Interface
-- **Aegis Orient**: Instant framework orientation and capability overview
-- **Aegis Dashboard**: Live framework monitoring and health status
-- **Aegis Conductor**: Core framework orchestration and control
-- **Aegis Hydrate**: One-command project setup and migration
+
+- __Aegis Orient__: Instant framework orientation and capability overview
+- __Aegis Dashboard__: Live framework monitoring and health status
+- __Aegis Conductor__: Core framework orchestration and control
+- __Aegis Hydrate__: One-command project setup and migration
 
 ## 🏥 Health Status
 
-### Overall Health: ✅ **HEALTHY**
+### Overall Health: ✅ __HEALTHY**
 
-| Component | Status | Notes |
-|-----------|--------|-------|
-| **Framework Core** | ✅ Healthy | Version 2.4.0 |
-| **Blueprint Registry** | ✅ Valid | 13 blueprints registered |
-| **Documentation** | ✅ Complete | 100.0% coverage |
-| **Test Coverage** | ⚠️ Low | 11.0% coverage |
-| **Version Consistency** | ✅ Synchronized | Auto-validated |
+| Component               | Status          | Notes                    |
+| ----------------------- | --------------- | ------------------------ |
+| __Framework Core__      | ✅ Healthy      | Version 2.4.0            |
+| __Blueprint Registry__  | ✅ Valid        | 13 blueprints registered |
+| __Documentation__       | ✅ Complete     | 100.0% coverage          |
+| __Test Coverage__       | ⚠️ Low          | 11.0% coverage           |
+| __Version Consistency__ | ✅ Synchronized | Auto-validated           |
 
 ## 🚀 Quick Start
 
 ### Installation
+
 ```bash
 # Install globally
-npm install -g @aegis-framework/cli@2.4.0
+npm install -g @Aegis-framework/CLI@2.4.0
 
 # Initialize in a project
-aegis-hydrate /path/to/your/project
-```
+Aegis-hydrate /path/to/your/project
+```text
 
 ### Essential Commands
+
 ```bash
 # Framework orientation
-aegis-orient                    # Quick overview
-aegis-orient detailed          # Comprehensive breakdown
-aegis-orient category tool     # Explore specific category
+Aegis-orient                    # Quick overview
+Aegis-orient detailed          # Comprehensive breakdown
+Aegis-orient category tool     # Explore specific category
 
 # Live monitoring
-aegis-dashboard                 # Full dashboard
-aegis-dashboard health          # Health check
-aegis-dashboard monitor         # Live monitoring mode
+Aegis-dashboard                 # Full dashboard
+Aegis-dashboard health          # Health check
+Aegis-dashboard monitor         # Live monitoring mode
 
 # Core operations
-aegis-conductor init            # Initialize framework
-aegis-conductor check           # Run compliance checks
-aegis-conductor enforce         # Apply enforcement rules
-```
+Aegis-conductor init            # Initialize framework
+Aegis-conductor check           # Run compliance checks
+Aegis-conductor enforce         # Apply enforcement rules
+```text
 
 ## 📊 Usage Analytics
 
 ### Current Session
-- **Total Executions**: 23
-- **Session Traces**: 1
-- **Unique Features**: 1
+
+- __Total Executions__: 23
+- __Session Traces__: 1
+- __Unique Features__: 1
 
 ### Most Used Features
-1. **blueprint-registry**: 23 executions
+
+1. __Blueprint-registry__: 23 executions
 
 ## 🧭 Navigation Guide
 
 ### For New Users
-1. **Start Here**: Run `aegis-orient` for framework overview
-2. **Explore Capabilities**: Use `aegis-orient category <name>` to browse features
-3. **Search Features**: Use `aegis-orient search <term>` to find specific capabilities
-4. **Check Health**: Run `aegis-dashboard health` for system status
+
+1. __Start Here__: Run `Aegis-orient` for framework overview
+2. __Explore Capabilities__: Use `Aegis-orient category <name>` to browse features
+3. __Search Features__: Use `Aegis-orient search <term>` to find specific capabilities
+4. __Check Health__: Run `Aegis-dashboard health` for system status
 
 ### For Developers
-1. **Capability Inventory**: Check `tools/framework-capability-mapper.ts`
-2. **Blueprint Management**: Explore `framework/registry/blueprint-registry.ts`
-3. **Execution Tracing**: Review `framework/observability/execution-trace-hooks.ts`
-4. **Constitutional Framework**: Study `CONSTITUTION.md` and governance tools
+
+1. __Capability Inventory__: Check `tools/framework-capability-mapper.ts`
+2. __Blueprint Management__: Explore `framework/registry/Blueprint-registry.ts`
+3. __Execution Tracing__: Review `framework/observability/execution-trace-hooks.ts`
+4. __Constitutional Framework__: Study `CONSTITUTION.md` and governance tools
 
 ### For Framework Maintainers
-1. **Health Monitoring**: Use `aegis-dashboard monitor` for live oversight
-2. **Comprehensive Reports**: Generate with `aegis-dashboard report`
-3. **Blueprint Validation**: Run `framework/registry/blueprint-registry.ts validate`
-4. **Dashboard Updates**: Run `tools/update-framework-dashboard.ts`
+
+1. __Health Monitoring__: Use `Aegis-dashboard monitor` for live oversight
+2. __Comprehensive Reports__: Generate with `Aegis-dashboard report`
+3. __Blueprint Validation__: Run `framework/registry/Blueprint-registry.ts validate`
+4. __Dashboard Updates__: Run `tools/update-framework-dashboard.ts`
 
 ## 🤝 Contributing
 
 ### Framework Development
-- **Read**: [CONTRIBUTING.md](CONTRIBUTING.md) for development guidelines
-- **Follow**: Constitutional principles defined in [CONSTITUTION.md](CONSTITUTION.md)
-- **Validate**: Use framework tools for consistency checking
-- **Update Dashboard**: Run `tools/update-framework-dashboard.ts` after changes
+
+- __Read__: [CONTRIBUTING.md](CONTRIBUTING.md) for development guidelines
+- __Follow__: Constitutional principles defined in [CONSTITUTION.md](CONSTITUTION.md)
+- __Validate__: Use framework tools for consistency checking
+- __Update Dashboard__: Run `tools/update-framework-dashboard.ts` after changes
 
 ### Issue Reporting
-- **Health Check**: Run `aegis-dashboard health` before reporting
-- **Context Collection**: Use `aegis-dashboard report` for comprehensive state
-- **Blueprint Reference**: Include relevant blueprint information
-- **Dashboard State**: Include current dashboard metrics
+
+- __Health Check__: Run `Aegis-dashboard health` before reporting
+- __Context Collection__: Use `Aegis-dashboard report` for comprehensive state
+- __Blueprint Reference__: Include relevant Blueprint information
+- __Dashboard State__: Include current dashboard metrics
 
 ## 📄 Documentation
 
 ### Core Documentation
-- **[Constitution](CONSTITUTION.md)**: Framework governance and principles
-- **[Contributing Guide](CONTRIBUTING.md)**: Development and contribution guidelines
-- **[Implementation Docs](docs/implementation/)**: Detailed technical documentation
-- **[Evolution Stories](docs/evolution/)**: Framework development history
+
+- __[Constitution](CONSTITUTION.md)__: Framework governance and principles
+- __[Contributing Guide](CONTRIBUTING.md)__: Development and contribution guidelines
+- __[Implementation Docs](docs/implementation/)__: Detailed technical documentation
+- __[Evolution Stories](docs/evolution/)__: Framework development history
 
 ### Auto-Generated Reports
-- **[Capability Map](.framework/capability-map.md)**: Complete capability inventory
-- **[Blueprint Registry](.framework/blueprint-registry.md)**: Feature definitions
-- **[Dashboard Report](.framework/dashboard-report.md)**: Comprehensive framework status
-- **[Execution Traces](.framework/execution-traces.jsonl)**: Real-time usage data
+
+- __[Capability Map](.framework/capability-map.md)__: Complete capability inventory
+- __[Blueprint Registry](.framework/blueprint-registry.md)__: Feature definitions
+- __[Dashboard Report](.framework/dashboard-report.md)__: Comprehensive framework status
+- __[Execution Traces](.framework/execution-traces.jsonl)__: Real-time usage data
 
 ---
 
 ## 🏛️ Framework Status Summary
 
-**The Aegis Framework v2.4.0 is a mature, production-ready system for AI-assisted engineering with comprehensive governance, monitoring, and safety features.**
+**The Aegis Framework v2.4.0 is a mature, production-ready system for AI-assisted engineering with comprehensive
+governance, monitoring, and safety features.**
 
 ### Key Strengths
-✅ **Constitutional Governance**: Robust foundational principles with democratic evolution  
-✅ **Real-time Monitoring**: Comprehensive observability and health tracking  
-✅ **Safety Systems**: Multiple layers of drift prevention and error detection  
-✅ **Developer Experience**: Intuitive tools and comprehensive documentation  
-✅ **Documentation Coverage**: 100.0% complete
+
+✅ __Constitutional Governance__: Robust foundational principles with democratic evolution  
+✅ __Real-time Monitoring__: Comprehensive observability and health tracking  
+✅ __Safety Systems__: Multiple layers of drift prevention and error detection  
+✅ __Developer Experience__: Intuitive tools and comprehensive documentation  
+✅ __Documentation Coverage__: 100.0% complete
 
 ### Areas for Improvement
-⚠️ **Test Coverage**: Currently at 11.0%, target is 80%+
-📈 **Performance Metrics**: Baseline established, optimization opportunities identified  
-🔧 **Tool Integration**: Additional CLI enhancements and workflow improvements planned
+
+⚠️ __Test Coverage__: Currently at 11.0%, target is 80%+ 📈 __Performance Metrics__: Baseline established, optimization
+opportunities identified  
+🔧 __Tool Integration__: Additional CLI enhancements and workflow improvements planned
 
 ---
 
-**Last Dashboard Update**: 8/8/2025  
-**Next Scheduled Update**: Automatic on next capability scan  
-**Framework Health**: ✅ **HEALTHY** - All systems operational
+**Last Dashboard Update__: 8/8/2025  
+**Next Scheduled Update__: Automatic on next capability scan  
+**Framework Health__: ✅ __HEALTHY__ - All systems operational

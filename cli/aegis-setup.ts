@@ -2,11 +2,11 @@
 
 /**
  * Aegis Setup - Zero to Value Project Setup
- * 
+ *
  * Drop everything needed for immediate Aegis value:
  * - CI workflows, eval pack, policy pack, tracing config, PR template
  * - Status badge, npm package setup, governance structure
- * 
+ *
  * @aegisFrameworkVersion: 2.4.0
  * @intent: Perfect zero-to-value developer experience
  * @context: One command to production-ready Aegis integration
@@ -45,7 +45,7 @@ interface ProjectSetupConfig {
 class AegisProjectSetup {
   private projectRoot: string;
   private config: ProjectSetupConfig;
-  private spinner: ora.Ora;
+  private spinner: any;
 
   constructor(projectRoot: string, config: ProjectSetupConfig) {
     this.projectRoot = projectRoot;
@@ -112,33 +112,27 @@ class AegisProjectSetup {
       frameworkVersion: '2.4.0',
       setupDate: new Date().toISOString(),
       features: this.config.features,
-      techStack: this.config.techStack
+      techStack: this.config.techStack,
     };
 
-    fs.writeFileSync(
-      path.join(this.projectRoot, '.aegis', 'config.json'),
-      JSON.stringify(aegisConfig, null, 2)
-    );
+    fs.writeFileSync(path.join(this.projectRoot, '.aegis', 'config.json'), JSON.stringify(aegisConfig, null, 2));
 
     // Observability configuration
     const obsConfig = {
       jaeger: {
         enabled: this.config.observability.jaeger,
-        endpoint: 'http://localhost:14268/api/traces'
+        endpoint: 'http://localhost:14268/api/traces',
       },
       langfuse: {
         enabled: this.config.observability.langfuse,
-        endpoint: 'https://cloud.langfuse.com/api/public/ingestion'
+        endpoint: 'https://cloud.langfuse.com/api/public/ingestion',
       },
       console: {
-        enabled: this.config.observability.console
-      }
+        enabled: this.config.observability.console,
+      },
     };
 
-    fs.writeFileSync(
-      path.join(this.projectRoot, '.aegis', 'observability.json'),
-      JSON.stringify(obsConfig, null, 2)
-    );
+    fs.writeFileSync(path.join(this.projectRoot, '.aegis', 'observability.json'), JSON.stringify(obsConfig, null, 2));
 
     // Team configuration
     const teamConfig = {
@@ -146,22 +140,19 @@ class AegisProjectSetup {
       enforcement: {
         blueprintValidation: true,
         constitutionalCompliance: true,
-        evolutionStoryDetection: true
+        evolutionStoryDetection: true,
       },
       features: {
         precommitHooks: true,
         annotations: {
           required: true,
           coverage: 0.8,
-          enforcement: 'warning'
-        }
-      }
+          enforcement: 'warning',
+        },
+      },
     };
 
-    fs.writeFileSync(
-      path.join(this.projectRoot, '.aegis', 'team-config.yaml'),
-      yaml.dump(teamConfig)
-    );
+    fs.writeFileSync(path.join(this.projectRoot, '.aegis', 'team-config.yaml'), yaml.dump(teamConfig));
 
     this.spinner.succeed('⚙️  Configuration files created');
   }
@@ -220,10 +211,7 @@ jobs:
         path: .aegis/
 `;
 
-    fs.writeFileSync(
-      path.join(workflowsDir, 'aegis-quality.yml'),
-      evalWorkflow
-    );
+    fs.writeFileSync(path.join(workflowsDir, 'aegis-quality.yml'), evalWorkflow);
 
     // PR template
     const prTemplateDir = path.join(this.projectRoot, '.github');
@@ -253,10 +241,7 @@ jobs:
 *Auto-validated by Aegis Framework CI*
 `;
 
-    fs.writeFileSync(
-      path.join(prTemplateDir, 'pull_request_template.md'),
-      prTemplate
-    );
+    fs.writeFileSync(path.join(prTemplateDir, 'pull_request_template.md'), prTemplate);
 
     this.spinner.succeed('🔄 CI workflows configured');
   }
@@ -281,45 +266,35 @@ jobs:
           validationRules: [
             'contains proper TypeScript types',
             'includes Aegis annotations',
-            'follows project structure'
-          ]
-        }
+            'follows project structure',
+          ],
+        },
       ],
       qualityChecks: {
-        codeQuality: [
-          'proper TypeScript usage',
-          'consistent naming conventions',
-          'appropriate comments'
-        ],
-        frameworkCompliance: [
-          'includes @aegisBlueprint annotation',
-          'follows constitutional requirements'
-        ]
+        codeQuality: ['proper TypeScript usage', 'consistent naming conventions', 'appropriate comments'],
+        frameworkCompliance: ['includes @aegisBlueprint annotation', 'follows constitutional requirements'],
       },
       performance: {
         maxGenerationTime: 15000,
         maxTokens: 2048,
         expectedFiles: 1,
-        expectedLines: 50
+        expectedLines: 50,
       },
       judges: [
         {
           name: 'code-quality',
           prompt: 'judges/code-quality.md',
-          weight: 0.6
+          weight: 0.6,
         },
         {
           name: 'framework-compliance',
           prompt: 'judges/framework-compliance.md',
-          weight: 0.4
-        }
-      ]
+          weight: 0.4,
+        },
+      ],
     };
 
-    fs.writeFileSync(
-      path.join(this.projectRoot, 'evals', 'golden-prompts', 'sample-eval.yaml'),
-      yaml.dump(sampleEval)
-    );
+    fs.writeFileSync(path.join(this.projectRoot, 'evals', 'golden-prompts', 'sample-eval.yaml'), yaml.dump(sampleEval));
 
     // Create judge prompts
     const codeQualityJudge = `# Code Quality Judge
@@ -346,10 +321,7 @@ Evaluate the generated code for quality and best practices.
 Output JSON with scores and reasoning.
 `;
 
-    fs.writeFileSync(
-      path.join(this.projectRoot, 'evals', 'judges', 'code-quality.md'),
-      codeQualityJudge
-    );
+    fs.writeFileSync(path.join(this.projectRoot, 'evals', 'judges', 'code-quality.md'), codeQualityJudge);
 
     this.spinner.succeed('🧪 Evaluation framework configured');
   }
@@ -364,21 +336,18 @@ Output JSON with scores and reasoning.
         'generation_success_rate',
         'validation_pass_rate',
         'constitutional_compliance_rate',
-        'evaluation_scores'
+        'evaluation_scores',
       ],
       alerts: [
         {
           name: 'quality_degradation',
           condition: 'evaluation_score < 0.8',
-          action: 'notify_team'
-        }
-      ]
+          action: 'notify_team',
+        },
+      ],
     };
 
-    fs.writeFileSync(
-      path.join(this.projectRoot, '.aegis', 'dashboard.json'),
-      JSON.stringify(dashboardConfig, null, 2)
-    );
+    fs.writeFileSync(path.join(this.projectRoot, '.aegis', 'dashboard.json'), JSON.stringify(dashboardConfig, null, 2));
 
     this.spinner.succeed('📊 Observability configured');
   }
@@ -396,16 +365,16 @@ Output JSON with scores and reasoning.
             description: 'Prevent console.log in production code',
             pattern: 'console\\.log\\(',
             enforcement: 'warning',
-            excludePaths: ['**/test/**', '**/spec/**']
+            excludePaths: ['**/test/**', '**/spec/**'],
           },
           {
             id: 'require-typescript',
             description: 'All new files must use TypeScript',
             pattern: '\\.js$',
             enforcement: 'error',
-            excludePaths: ['**/legacy/**']
-          }
-        ]
+            excludePaths: ['**/legacy/**'],
+          },
+        ],
       },
       security: {
         rules: [
@@ -413,9 +382,9 @@ Output JSON with scores and reasoning.
             id: 'no-hardcoded-secrets',
             description: 'Prevent hardcoded API keys or secrets',
             pattern: '(api_key|secret_key|password)\\s*=\\s*["\']\\w+["\']',
-            enforcement: 'error'
-          }
-        ]
+            enforcement: 'error',
+          },
+        ],
       },
       framework: {
         rules: [
@@ -424,10 +393,10 @@ Output JSON with scores and reasoning.
             description: 'All AI-generated files must have Aegis annotations',
             pattern: '@aegisBlueprint',
             enforcement: 'warning',
-            fileTypes: ['.ts', '.tsx', '.js', '.jsx']
-          }
-        ]
-      }
+            fileTypes: ['.ts', '.tsx', '.js', '.jsx'],
+          },
+        ],
+      },
     };
 
     fs.writeFileSync(
@@ -450,14 +419,11 @@ Output JSON with scores and reasoning.
       labels: {
         compliant: 'Aegis: Compliant',
         drift: 'Aegis: Drift Detected',
-        error: 'Aegis: Error'
-      }
+        error: 'Aegis: Error',
+      },
     };
 
-    fs.writeFileSync(
-      path.join(this.projectRoot, '.aegis', 'badge-config.json'),
-      JSON.stringify(badgeConfig, null, 2)
-    );
+    fs.writeFileSync(path.join(this.projectRoot, '.aegis', 'badge-config.json'), JSON.stringify(badgeConfig, null, 2));
 
     this.spinner.succeed('🏷️  Status badge configured');
   }
@@ -479,13 +445,13 @@ Output JSON with scores and reasoning.
       'aegis:check': 'aegis-conductor check',
       'aegis:determinism': 'aegis-determinism list',
       'aegis:setup': 'aegis-setup',
-      'quality:check': 'npm run aegis:eval && npm run aegis:check'
+      'quality:check': 'npm run aegis:eval && npm run aegis:check',
     };
 
     // Add dependencies
     packageJson.devDependencies = {
       ...packageJson.devDependencies,
-      '@aegis-framework/cli': '^2.4.0'
+      '@aegis-framework/cli': '^2.4.0',
     };
 
     // Add Aegis configuration section
@@ -493,7 +459,7 @@ Output JSON with scores and reasoning.
       version: '2.4.0',
       projectType: this.config.projectType,
       features: this.config.features,
-      setupDate: new Date().toISOString()
+      setupDate: new Date().toISOString(),
     };
 
     fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2));
@@ -545,10 +511,7 @@ Every PR is automatically validated for:
 *Powered by Aegis Framework v2.4.0*
 `;
 
-    fs.writeFileSync(
-      path.join(this.projectRoot, '.aegis', 'README-addition.md'),
-      readmeAddition
-    );
+    fs.writeFileSync(path.join(this.projectRoot, '.aegis', 'README-addition.md'), readmeAddition);
 
     this.spinner.succeed('📝 README updates prepared');
   }
@@ -567,14 +530,11 @@ Every PR is automatically validated for:
         'Add Aegis section to README',
         'Configure observability endpoints',
         'Create first blueprint',
-        'Run initial evaluation'
-      ]
+        'Run initial evaluation',
+      ],
     };
 
-    fs.writeFileSync(
-      path.join(this.projectRoot, '.aegis', 'setup-complete.json'),
-      JSON.stringify(setupInfo, null, 2)
-    );
+    fs.writeFileSync(path.join(this.projectRoot, '.aegis', 'setup-complete.json'), JSON.stringify(setupInfo, null, 2));
 
     this.spinner.succeed('✨ Setup finalized');
   }
@@ -610,10 +570,7 @@ Every PR is automatically validated for:
 // CLI Implementation
 const program = new Command();
 
-program
-  .name('aegis-setup')
-  .description('Zero-to-value Aegis Framework setup')
-  .version('2.4.0');
+program.name('aegis-setup').description('Zero-to-value Aegis Framework setup').version('2.4.0');
 
 program
   .argument('<project-path>', 'Path to project directory')
@@ -623,7 +580,7 @@ program
   .option('--minimal', 'Minimal setup without optional features')
   .action(async (projectPath, options) => {
     const fullPath = path.resolve(projectPath);
-    
+
     if (!fs.existsSync(fullPath)) {
       console.error(`❌ Project path does not exist: ${fullPath}`);
       process.exit(1);
@@ -637,60 +594,51 @@ program
           type: 'input',
           name: 'projectName',
           message: 'Project name:',
-          default: options.name || path.basename(fullPath)
+          default: options.name || path.basename(fullPath),
         },
         {
           type: 'list',
           name: 'projectType',
           message: 'Project type:',
           choices: ['frontend', 'backend', 'fullstack', 'library'],
-          default: options.type
+          default: options.type,
         },
         {
           type: 'checkbox',
           name: 'techStack',
           message: 'Tech stack (select all that apply):',
-          choices: [
-            'React',
-            'Next.js',
-            'TypeScript',
-            'Node.js',
-            'Express',
-            'FastAPI',
-            'Deno',
-            'Other'
-          ]
+          choices: ['React', 'Next.js', 'TypeScript', 'Node.js', 'Express', 'FastAPI', 'Deno', 'Other'],
         },
         {
           type: 'confirm',
           name: 'evaluations',
           message: 'Enable evaluation framework?',
-          default: true
+          default: true,
         },
         {
           type: 'confirm',
           name: 'observability',
           message: 'Enable observability (OpenTelemetry)?',
-          default: true
+          default: true,
         },
         {
           type: 'confirm',
           name: 'langfuse',
           message: 'Enable Langfuse integration?',
-          default: false
+          default: false,
         },
         {
           type: 'confirm',
           name: 'policyEngine',
           message: 'Enable policy engine?',
-          default: !options.minimal
+          default: !options.minimal,
         },
         {
           type: 'confirm',
           name: 'statusBadge',
           message: 'Create status badge?',
-          default: !options.minimal
-        }
+          default: !options.minimal,
+        },
       ]);
 
       config = {
@@ -700,18 +648,18 @@ program
         observability: {
           jaeger: answers.observability,
           langfuse: answers.langfuse,
-          console: true
+          console: true,
         },
         ci: {
           github: true,
-          gitlab: false
+          gitlab: false,
         },
         features: {
           evaluations: answers.evaluations,
           determinism: true,
           policyEngine: answers.policyEngine,
-          statusBadge: answers.statusBadge
-        }
+          statusBadge: answers.statusBadge,
+        },
       };
     } else {
       config = {
@@ -721,18 +669,18 @@ program
         observability: {
           jaeger: false,
           langfuse: false,
-          console: true
+          console: true,
         },
         ci: {
           github: true,
-          gitlab: false
+          gitlab: false,
         },
         features: {
           evaluations: !options.minimal,
           determinism: true,
           policyEngine: !options.minimal,
-          statusBadge: !options.minimal
-        }
+          statusBadge: !options.minimal,
+        },
       };
     }
 

@@ -76,10 +76,10 @@ class EvolutionLearningSystem {
       evidence: [
         'Version documentation drift occurred in previous update',
         'Same issue repeated in current update despite intelligence claims',
-        'Framework claimed evolution learning that didn\'t exist',
-        'Pattern recognition failed to prevent repeat occurrence'
+        "Framework claimed evolution learning that didn't exist",
+        'Pattern recognition failed to prevent repeat occurrence',
       ],
-      status: 'learned'
+      status: 'learned',
     });
 
     // Register learning action for version drift
@@ -92,11 +92,11 @@ class EvolutionLearningSystem {
         'Pattern recognition for version documentation drift',
         'Learning from repeat occurrences',
         'Implementation of prevention mechanisms',
-        'Validation of learning effectiveness'
+        'Validation of learning effectiveness',
       ],
       effectiveness: 1.0,
       lastExecuted: new Date(),
-      status: 'active'
+      status: 'active',
     });
 
     // Register prevention action for version drift
@@ -109,11 +109,11 @@ class EvolutionLearningSystem {
         'Automated version consistency validation',
         'Pre-commit hooks block version mismatches',
         'Critical file protection',
-        'Auto-fix capability for version inconsistencies'
+        'Auto-fix capability for version inconsistencies',
       ],
       effectiveness: 1.0,
       lastExecuted: new Date(),
-      status: 'active'
+      status: 'active',
     });
 
     // Register implementation action for version drift
@@ -126,11 +126,11 @@ class EvolutionLearningSystem {
         'Implementation of version consistency validator',
         'Integration with pre-commit hooks',
         'Automated correction capabilities',
-        'Comprehensive pattern recognition'
+        'Comprehensive pattern recognition',
       ],
       effectiveness: 1.0,
       lastExecuted: new Date(),
-      status: 'active'
+      status: 'active',
     });
 
     // Register validation action for version drift
@@ -143,11 +143,11 @@ class EvolutionLearningSystem {
         'Validation of version consistency across all files',
         'Testing of prevention mechanisms',
         'Verification of learning effectiveness',
-        'Confirmation of pattern prevention'
+        'Confirmation of pattern prevention',
       ],
       effectiveness: 1.0,
       lastExecuted: new Date(),
-      status: 'active'
+      status: 'active',
     });
   }
 
@@ -181,7 +181,7 @@ class EvolutionLearningSystem {
       preventionImplemented: false,
       repeatPatternsPrevented: false,
       evidence: [],
-      recommendations: []
+      recommendations: [],
     };
 
     // Check for patterns that have been learned from
@@ -218,7 +218,7 @@ class EvolutionLearningSystem {
     if (newPatterns.length > 0) {
       result.patternsLearned = true;
       result.evidence.push(`Detected new patterns: ${newPatterns.join(', ')}`);
-      
+
       // Implement learning for new patterns
       const learningImplemented = await this.implementLearningForPatterns(newPatterns);
       if (learningImplemented) {
@@ -235,7 +235,7 @@ class EvolutionLearningSystem {
     if (constitutionalViolations.length > 0) {
       result.patternsLearned = true;
       result.evidence.push(`Detected constitutional violations: ${constitutionalViolations.join(', ')}`);
-      
+
       // Learn from constitutional violations
       const violationsLearned = await this.learnFromConstitutionalViolations(constitutionalViolations);
       if (violationsLearned) {
@@ -252,7 +252,7 @@ class EvolutionLearningSystem {
     if (intelligenceFailures.length > 0) {
       result.patternsLearned = true;
       result.evidence.push(`Detected intelligence failures: ${intelligenceFailures.join(', ')}`);
-      
+
       // Learn from intelligence failures
       const failuresLearned = await this.learnFromIntelligenceFailures(intelligenceFailures);
       if (failuresLearned) {
@@ -272,8 +272,9 @@ class EvolutionLearningSystem {
    * Verify prevention mechanisms are working
    */
   private async verifyPreventionMechanisms(patternId: string): Promise<boolean> {
-    const actions = Array.from(this.learningActions.values())
-      .filter(action => action.patternId === patternId && action.action === 'prevent');
+    const actions = Array.from(this.learningActions.values()).filter(
+      action => action.patternId === patternId && action.action === 'prevent'
+    );
 
     for (const action of actions) {
       if (action.status === 'active') {
@@ -292,7 +293,7 @@ class EvolutionLearningSystem {
    */
   private async verifyMechanism(implementation: string): Promise<boolean> {
     const implementationPath = path.join(this.projectRoot, implementation);
-    
+
     // Check if implementation file exists
     if (!fs.existsSync(implementationPath)) {
       return false;
@@ -340,7 +341,7 @@ class EvolutionLearningSystem {
 
       for (const file of recentFiles) {
         const content = fs.readFileSync(path.join(evolutionStoriesDir, file), 'utf8');
-        
+
         // Look for patterns in evolution stories
         if (content.includes('repeat') || content.includes('failure') || content.includes('violation')) {
           const pattern = this.extractPatternFromContent(content);
@@ -365,7 +366,7 @@ class EvolutionLearningSystem {
       'intelligence failure',
       'prevention failure',
       'repeat pattern',
-      'systematic failure'
+      'systematic failure',
     ];
 
     for (const indicator of patternIndicators) {
@@ -394,7 +395,7 @@ class EvolutionLearningSystem {
           learnedFrom: true,
           preventionImplemented: false,
           evidence: [`Pattern detected in evolution stories`, `Learning system activated`],
-          status: 'active'
+          status: 'active',
         });
 
         // Implement learning action
@@ -406,7 +407,7 @@ class EvolutionLearningSystem {
           evidence: [`Pattern recognition for ${pattern}`, `Learning implementation`],
           effectiveness: 1.0,
           lastExecuted: new Date(),
-          status: 'active'
+          status: 'active',
         });
       }
 
@@ -461,7 +462,7 @@ class EvolutionLearningSystem {
           learnedFrom: true,
           preventionImplemented: true,
           evidence: [`Constitutional violation detected`, `Learning system activated`],
-          status: 'learned'
+          status: 'learned',
         });
 
         // Implement learning action
@@ -473,7 +474,7 @@ class EvolutionLearningSystem {
           evidence: [`Constitutional violation learning`, `Prevention implementation`],
           effectiveness: 1.0,
           lastExecuted: new Date(),
-          status: 'active'
+          status: 'active',
         });
       }
 
@@ -493,7 +494,7 @@ class EvolutionLearningSystem {
     // Check for false claims about intelligence features
     const falseClaims = [
       'Self-healing governance prevents repeat failures',
-      'Evolution learning prevents repeat patterns'
+      'Evolution learning prevents repeat patterns',
     ];
 
     for (const claim of falseClaims) {
@@ -542,7 +543,7 @@ class EvolutionLearningSystem {
           learnedFrom: true,
           preventionImplemented: true,
           evidence: [`Intelligence failure detected`, `Learning system activated`],
-          status: 'learned'
+          status: 'learned',
         });
 
         // Implement learning action
@@ -554,7 +555,7 @@ class EvolutionLearningSystem {
           evidence: [`Intelligence failure learning`, `Prevention implementation`],
           effectiveness: 1.0,
           lastExecuted: new Date(),
-          status: 'active'
+          status: 'active',
         });
       }
 
@@ -606,9 +607,8 @@ class EvolutionLearningSystem {
 
     console.log('\n🧠 Learning Patterns:');
     for (const [patternId, pattern] of this.learningPatterns) {
-      const actions = Array.from(this.learningActions.values())
-        .filter(action => action.patternId === patternId);
-      
+      const actions = Array.from(this.learningActions.values()).filter(action => action.patternId === patternId);
+
       console.log(`   ${pattern.description}:`);
       actions.forEach(action => {
         const status = action.status === 'active' ? '✅' : action.status === 'inactive' ? '⚠️' : '❌';
@@ -643,7 +643,7 @@ class EvolutionLearningSystem {
       if (!fs.existsSync(patternsDir)) {
         fs.mkdirSync(patternsDir, { recursive: true });
       }
-      
+
       const patterns = Array.from(this.learningPatterns.values());
       fs.writeFileSync(this.patternsFile, JSON.stringify(patterns, null, 2));
     } catch (error) {
@@ -677,7 +677,7 @@ class EvolutionLearningSystem {
       if (!fs.existsSync(actionsDir)) {
         fs.mkdirSync(actionsDir, { recursive: true });
       }
-      
+
       const actions = Array.from(this.learningActions.values());
       fs.writeFileSync(this.actionsFile, JSON.stringify(actions, null, 2));
     } catch (error) {

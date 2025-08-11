@@ -42,7 +42,7 @@ class VersionedInstructionGenerator {
 
   private getFrameworkFeatures(): string[] {
     const features: string[] = [];
-    
+
     // Check for core alpha features
     if (fs.existsSync(path.join(this.frameworkRoot, 'framework', 'framework-core-v1.0.0-alpha.md'))) {
       features.push('blueprint-driven-development', 'constitutional-governance', 'semantic-versioning');
@@ -68,7 +68,7 @@ class VersionedInstructionGenerator {
 
   private getAgentCapabilities(): AgentInstructionTemplate[] {
     const manifestPath = path.join(this.frameworkRoot, 'framework', 'agent-manifest.json');
-    
+
     if (!fs.existsSync(manifestPath)) {
       return this.getDefaultAgentTemplates();
     }
@@ -79,7 +79,7 @@ class VersionedInstructionGenerator {
         agent: agent.agentId,
         capabilities: agent.capabilities?.languages || [],
         specializations: agent.capabilities?.specializations || [],
-        coordination: agent.coordinationSupport?.handoffs || false
+        coordination: agent.coordinationSupport?.handoffs || false,
       }));
     } catch (error) {
       console.warn('Failed to parse agent manifest, using defaults');
@@ -93,20 +93,20 @@ class VersionedInstructionGenerator {
         agent: 'github-copilot',
         capabilities: ['typescript', 'python', 'go', 'javascript'],
         specializations: ['full-stack', 'documentation', 'testing'],
-        coordination: true
+        coordination: true,
       },
       {
         agent: 'claude-3-5-sonnet',
         capabilities: ['typescript', 'python', 'rust'],
         specializations: ['architecture', 'analysis', 'planning'],
-        coordination: true
+        coordination: true,
       },
       {
         agent: 'cursor',
         capabilities: ['typescript', 'javascript', 'css'],
         specializations: ['frontend', 'ui-components', 'styling'],
-        coordination: true
-      }
+        coordination: true,
+      },
     ];
   }
 
@@ -158,9 +158,10 @@ ${referenceSection}
   }
 
   private formatAgentName(agentId: string): string {
-    return agentId.split('-').map(word => 
-      word.charAt(0).toUpperCase() + word.slice(1)
-    ).join(' ');
+    return agentId
+      .split('-')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
   }
 
   private generateConstitutionalSection(): string {
@@ -180,7 +181,7 @@ ${referenceSection}
       'multi-agent-orchestration': '**Multi-Agent**: v1.1.0-beta orchestration with agent coordination and handoffs',
       'apprenticeship-scaffolds': '**Apprenticeship**: v1.3.0 scaffolding system with mentor guidance',
       'advanced-observability': '**Observability**: MCP metadata emission, drift logging, run logs',
-      'constitutional-governance': '**Governance**: Constitutional framework with democratic evolution'
+      'constitutional-governance': '**Governance**: Constitutional framework with democratic evolution',
     };
 
     const capabilities = features.map(f => capabilityMap[f]).filter(Boolean);
@@ -376,7 +377,7 @@ aegis test snapshot feat-user-auth
   public async generateForAgent(agentId: string): Promise<void> {
     const agents = this.getAgentCapabilities();
     const agent = agents.find(a => a.agent === agentId);
-    
+
     if (!agent) {
       throw new Error(`Agent ${agentId} not found in manifest`);
     }
@@ -391,7 +392,7 @@ aegis test snapshot feat-user-auth
 
   public async generateForAllAgents(): Promise<void> {
     const agents = this.getAgentCapabilities();
-    
+
     for (const agent of agents) {
       await this.generateForAgent(agent.agent);
     }
@@ -401,7 +402,7 @@ aegis test snapshot feat-user-auth
       agent: 'generic-ai-agent',
       capabilities: ['typescript', 'python', 'javascript'],
       specializations: ['full-stack', 'documentation'],
-      coordination: true
+      coordination: true,
     });
 
     const genericFilename = `instructions-v${this.currentVersion}.md`;
@@ -411,7 +412,8 @@ aegis test snapshot feat-user-auth
   }
 
   public listVersions(): void {
-    const files = fs.readdirSync(this.versionsDir)
+    const files = fs
+      .readdirSync(this.versionsDir)
       .filter((f: string) => f.startsWith('instructions-') && f.endsWith('.md'))
       .sort();
 

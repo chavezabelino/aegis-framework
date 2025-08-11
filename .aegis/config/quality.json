@@ -1,0 +1,20 @@
+{
+  "gradeBands": { "A": 90, "B": 80, "C": 70 },
+  "thresholds": {
+    "eslintErrors": 0,
+    "typeErrors": 0,
+    "coverage": { "lines": 85, "branches": 80 },
+    "mutationScore": 60
+  },
+  "weights": {
+    "types": 25,
+    "lint": 10,
+    "coverage": 20,
+    "mutation": 20,
+    "e2e": 15,
+    "security": 5,
+    "deps": 5
+  },
+  "failBelowGrade": "C",
+  "criticalE2ETag": "@critical"
+}

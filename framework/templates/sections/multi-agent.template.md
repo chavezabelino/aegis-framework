@@ -7,54 +7,57 @@
 ## 🔁 Multi-Agent Orchestration Protocol
 
 ### Agent Coordination Schema
+
 ```typescript
 interface AgentHandoff {
-  fromAgent: string;
-  toAgent: string;
-  reason: 'complex_analysis' | 'specialized_domain' | 'workload_distribution';
+  fromAgent: string
+  toAgent: string
+  reason: "complex_analysis" | "specialized_domain" | "workload_distribution"
   context: {
-    blueprintId: string;
-    currentState: string;
-    requirements: string[];
-  };
-  continuationPlan: string;
+    blueprintId: string
+    currentState: string
+    requirements: string[]
+  }
+  continuationPlan: string
 }
-```
+```text
 
 ### Handoff Patterns
+
 ```typescript
 // Complex analysis handoff
 await handoffToAgent({
-  fromAgent: 'github-copilot',
-  toAgent: 'claude-3-5-sonnet',
-  reason: 'complex_analysis',
+  fromAgent: "GitHub-copilot",
+  toAgent: "claude-3-5-sonnet",
+  reason: "complex_analysis",
   context: {
-    blueprintId: 'feat-advanced-analytics',
-    currentState: 'initial_implementation',
-    requirements: ['performance_optimization', 'error_handling']
+    blueprintId: "feat-advanced-analytics",
+    currentState: "initial_implementation",
+    requirements: ["performance_optimization", "error_handling"]
   }
-});
+})
 
 // Specialized domain handoff
 await handoffToAgent({
-  fromAgent: 'claude-3-5-sonnet',
-  toAgent: 'github-copilot',
-  reason: 'specialized_domain',
+  fromAgent: "claude-3-5-sonnet",
+  toAgent: "GitHub-copilot",
+  reason: "specialized_domain",
   context: {
-    blueprintId: 'feat-ui-components',
-    currentState: 'design_complete',
-    requirements: ['react_implementation', 'typescript_types']
+    blueprintId: "feat-ui-components",
+    currentState: "design_complete",
+    requirements: ["react_implementation", "typescript_types"]
   }
-});
-```
+})
+```text
 
 ### Agent Manifest System
+
 ```json
 {
   "agents": [
     {
-      "id": "github-copilot",
-      "capabilities": ["typescript", "python", "go", "javascript"],
+      "id": "GitHub-copilot",
+      "capabilities": ["TypeScript", "python", "go", "JavaScript"],
       "specializations": ["full-stack", "documentation", "testing"],
       "coordinationSupported": true
     },
@@ -66,9 +69,10 @@ await handoffToAgent({
     }
   ]
 }
-```
+```text
 
 ### Coordination Events
+
 - `agent.handoff.initiated`
 - `agent.handoff.completed`
 - `agent.coordination.sync`

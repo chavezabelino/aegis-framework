@@ -2,10 +2,10 @@
 
 /**
  * Aegis Traceability Gate
- * 
+ *
  * Constitutional enforcement tool preventing claims without code lineage.
  * Verifies blueprint→contract→artifact trace before allowing "implemented" status.
- * 
+ *
  * @aegisFrameworkVersion: 2.4.0
  * @intent: Prevent Article I §1 violations through automated verification
  * @context: Response to EVS-2025-01-15-002 constitutional violation
@@ -62,7 +62,7 @@ class TraceabilityGate {
 
   async verifyCapabilityClaim(claim: CapabilityClaim): Promise<TraceabilityRecord> {
     console.log(`🔍 Verifying: ${claim.name} (${claim.status})`);
-    
+
     const record: TraceabilityRecord = {
       featureId: claim.id,
       claimedStatus: claim.status,
@@ -77,9 +77,9 @@ class TraceabilityGate {
         testsExist: false,
         documentationExists: false,
         lastVerified: new Date().toISOString(),
-        commitHash: this.getCommitHash()
+        commitHash: this.getCommitHash(),
       },
-      violations: []
+      violations: [],
     };
 
     // Step 1: Verify blueprint exists if claimed
@@ -207,7 +207,7 @@ class TraceabilityGate {
       totalClaims: claims.length,
       verifiedClaims,
       violations: this.violations,
-      auditReport
+      auditReport,
     };
   }
 
@@ -217,7 +217,7 @@ class TraceabilityGate {
     }
 
     const content = fs.readFileSync(claimsPath, 'utf8');
-    
+
     if (claimsPath.endsWith('.yaml') || claimsPath.endsWith('.yml')) {
       const data = yaml.load(content) as any;
       // Handle YAML structure with capabilities array
@@ -246,19 +246,21 @@ class TraceabilityGate {
         constitutionalAuthority: 'CONSTITUTION.md Article I §1 (Traceability)',
         totalClaims: auditResults.totalClaims,
         verifiedClaims: auditResults.verifiedClaims,
-        passed: auditResults.passed
+        passed: auditResults.passed,
       },
       violations: auditResults.violations,
       records: auditResults.auditReport,
       remediation: {
         required: !auditResults.passed,
-        actions: auditResults.passed ? [] : [
-          'Retract unverifiable implementation claims',
-          'Mark features as "architected" or "roadmap" until artifacts exist',
-          'Provide code lineage for all "implemented" features',
-          'Update documentation to match actual implementation state'
-        ]
-      }
+        actions: auditResults.passed
+          ? []
+          : [
+              'Retract unverifiable implementation claims',
+              'Mark features as "architected" or "roadmap" until artifacts exist',
+              'Provide code lineage for all "implemented" features',
+              'Update documentation to match actual implementation state',
+            ],
+      },
     };
 
     fs.writeFileSync(outputPath, JSON.stringify(report, null, 2));
@@ -269,18 +271,18 @@ class TraceabilityGate {
   static async enforceTraceability(capabilityClaimsPath: string): Promise<boolean> {
     const gate = new TraceabilityGate();
     const results = await gate.auditCapabilityClaims(capabilityClaimsPath);
-    
+
     if (!results.passed) {
       console.error(`\n🚨 CONSTITUTIONAL VIOLATION: Traceability requirements not met`);
       console.error(`Cannot proceed with capability claims containing unverifiable "implemented" status.`);
-      
+
       // Generate violation report
       const reportPath = path.join(process.cwd(), '.aegis', 'traceability-violations.json');
       await gate.generateTraceabilityReport(results, reportPath);
-      
+
       return false;
     }
-    
+
     return true;
   }
 }
@@ -302,9 +304,9 @@ program
   .action(async (claimsFile, options) => {
     const gate = new TraceabilityGate();
     const results = await gate.auditCapabilityClaims(claimsFile);
-    
+
     await gate.generateTraceabilityReport(results, options.report);
-    
+
     if (!results.passed && options.strict) {
       console.error(`\n🚨 Traceability Gate FAILED - Constitutional violation detected`);
       process.exit(1);
@@ -321,7 +323,7 @@ program
   .option('--artifacts <paths...>', 'Expected artifact paths')
   .action(async (featureId, status, options) => {
     const gate = new TraceabilityGate();
-    
+
     const claim: CapabilityClaim = {
       id: featureId,
       name: featureId,
@@ -329,11 +331,11 @@ program
       description: 'Single verification',
       blueprintId: options.blueprint,
       cliCommand: options.cli,
-      expectedArtifacts: options.artifacts || []
+      expectedArtifacts: options.artifacts || [],
     };
-    
+
     const record = await gate.verifyCapabilityClaim(claim);
-    
+
     console.log(`\nVerification Result: ${record.verificationStatus}`);
     if (record.violations.length > 0) {
       console.log(`Violations: ${record.violations.join(', ')}`);

@@ -6,7 +6,7 @@ on:
       profile:
         type: string
         required: true
-        default: lite   # lite | standard | core
+        default: lite # lite | standard | core
 
 permissions:
   id-token: write
@@ -14,9 +14,9 @@ permissions:
   security-events: write
 
 env:
-  NODE_VERSION: '20.16.0'
-  NPM_CONFIG_AUDIT: 'false'
-  NPM_CONFIG_FUND: 'false'
+  NODE_VERSION: "20.16.0"
+  NPM_CONFIG_AUDIT: "false"
+  NPM_CONFIG_FUND: "false"
 
 concurrency:
   group: governance-${{ github.ref }}
@@ -58,7 +58,7 @@ jobs:
       - run: npm ci --prefer-offline --no-audit --no-fund
       - uses: ./.github/actions/provenance
         with:
-          mode: attest   # attest+verify if secret, relaxed on PRs
+          mode: attest # attest+verify if secret, relaxed on PRs
       - uses: ./.github/actions/prove-evidence
 
   vr:

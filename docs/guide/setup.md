@@ -6,21 +6,21 @@ This guide will help you set up the Aegis Framework locally for development, tes
 
 ### Required Software
 
-- **Node.js** >= 18.0.0 ([Download](https://nodejs.org/))
-- **npm** >= 8.0.0 (included with Node.js)
-- **Git** for version control
+- __Node.js__ >= 18.0.0 ([Download](https://nodejs.org/))
+- __npm__ >= 8.0.0 (included with Node.js)
+- __Git__ for version control
 
 ### System Requirements
 
-- **Operating System**: macOS, Linux, or Windows with WSL2
-- **Memory**: Minimum 4GB RAM (8GB recommended)
-- **Storage**: At least 500MB free space for framework and dependencies
+- __Operating System__: macOS, Linux, or Windows with WSL2
+- __Memory__: Minimum 4GB RAM (8GB recommended)
+- __Storage__: At least 500MB free space for framework and dependencies
 
 ### Optional but Recommended
 
-- **VS Code** with the Aegis Framework extension (coming soon)
-- **TypeScript** knowledge for advanced customization
-- **YAML** familiarity for blueprint authoring
+- __VS Code__ with the Aegis Framework extension (coming soon)
+- __TypeScript__ knowledge for advanced customization
+- __YAML__ familiarity for Blueprint authoring
 
 ## 🛠️ Installation Steps
 
@@ -29,11 +29,11 @@ This guide will help you set up the Aegis Framework locally for development, tes
 ```bash
 # Clone from GitHub
 git clone https://github.com/your-org/aegis-framework.git
-cd aegis-framework
+cd Aegis-framework
 
 # Or download and extract the latest release
 # wget https://github.com/your-org/aegis-framework/archive/refs/tags/v2.4.0-alpha.tar.gz
-```
+```text
 
 ### 2. Install Dependencies
 
@@ -44,63 +44,63 @@ npm install
 # Verify installation
 node --version  # Should be >= 18.0.0
 npm --version   # Should be >= 8.0.0
-```
+```text
 
 ### 3. Initialize Constitutional Framework
 
 ```bash
-# Initialize the constitutional governance system
+# Initialize the Constitutional governance system
 npm run conductor init
 
 # This creates:
-# - .framework/constitutional-state.json
-# - .framework/enforcement-config.yaml
+# - .framework/Constitutional-state.JSON
+# - .framework/enforcement-config.YAML
 # - framework/drift-log/ directory with initial logs
-```
+```text
 
 ### 4. Verify Installation
 
 ```bash
-# Run constitutional compliance check
+# Run Constitutional compliance check
 npm run check
 
 # Expected output:
-# 🔍 Running constitutional compliance audit...
+# 🔍 Running Constitutional compliance audit...
 # ✅ Framework is constitutionally compliant!
 
 # Run comprehensive validation
 npm run validate
 
-# Show constitutional conductor status
+# Show Constitutional conductor status
 npm run conductor status
-```
+```text
 
 ## 🔧 Configuration
 
-### Constitutional Enforcement Configuration
+### ConstitutionalConstitutional Enforcement Configuration
 
-Edit `.framework/enforcement-config.yaml` to customize governance behavior:
+Edit `.framework/enforcement-config.YAML` to customize governance behavior:
 
 ```yaml
 enforcement:
-  mode: strict  # strict, moderate, permissive
-  
+  mode: strict # strict, moderate, permissive
+
 autoCorrect:
   enabled: true
-  dryRun: false  # Set to true for testing
-  
+  dryRun: false # Set to true for testing
+
 validation:
-  frequency: "on-commit"  # on-commit, daily, weekly
-  
+  frequency: "on-commit" # on-commit, daily, weekly
+
 drift:
-  sensitivity: medium  # low, medium, high
+  sensitivity: medium # low, medium, high
   monitoring:
     - agent-behavior
     - user-workflows
     - framework-evolution
-```
+```text
 
-### Package.json Scripts
+### Package.JSON Scripts
 
 The framework provides these npm scripts:
 
@@ -108,12 +108,12 @@ The framework provides these npm scripts:
 {
   "scripts": {
     "validate": "node tools/validate-constitution.ts",
-    "conductor": "node cli/aegis-conductor.ts",
-    "check": "node cli/aegis-conductor.ts check",
-    "init": "node cli/aegis-conductor.ts init"
+    "conductor": "node CLI/Aegis-conductor.ts",
+    "check": "node CLI/Aegis-conductor.ts check",
+    "init": "node CLI/Aegis-conductor.ts init"
   }
 }
-```
+```text
 
 ## 📊 Constitutional Commands Reference
 
@@ -126,17 +126,17 @@ npm run conductor status
 # Run compliance audit
 npm run check
 
-# Comprehensive constitutional validation
+# Comprehensive Constitutional validation
 npm run validate
-```
+```text
 
 ### Advanced Operations
 
 ```bash
-# Initialize constitutional framework
+# Initialize Constitutional framework
 npm run conductor init
 
-# Enforce constitutional compliance (dry-run)
+# Enforce Constitutional compliance (dry-run)
 npm run conductor enforce --dry-run
 
 # Apply auto-corrections
@@ -149,21 +149,21 @@ npm run conductor drift-report
 npm run conductor enforce --scope=annotations
 npm run conductor enforce --scope=versioning
 npm run conductor enforce --scope=blueprints
-```
+```text
 
 ## 🧪 Testing Your Setup
 
 ### 1. Basic Functionality Test
 
 ```bash
-# Test constitutional conductor
+# Test Constitutional conductor
 npm run conductor status
 # Expected: "🏛️ Aegis Constitutional Conductor v1.0.1-alpha"
 
 # Test compliance checking
 npm run check
 # Expected: Overall compliance score and breakdown
-```
+```text
 
 ### 2. Blueprint Validation Test
 
@@ -175,25 +175,25 @@ npm run validate
 # Test enforcement system
 npm run conductor enforce --dry-run
 # Expected: Preview of any needed corrections
-```
+```text
 
 ### 3. Framework Structure Test
 
 Check that these directories exist after setup:
 
-```
+```text
 .framework/
-├── constitutional-state.json
-└── enforcement-config.yaml
+├── Constitutional-state.JSON
+└── enforcement-config.YAML
 
 framework/
 ├── drift-log/
-│   ├── framework-system-drift.json
-│   ├── agent-behavior-drift.json
-│   └── user-workflow-drift.json
+│   ├── framework-system-drift.JSON
+│   ├── agent-behavior-drift.JSON
+│   └── user-workflow-drift.JSON
 └── governance/
     └── amendment-proposals/
-```
+```text
 
 ## 🐛 Troubleshooting
 
@@ -203,38 +203,38 @@ framework/
 
 ```bash
 # Delete node_modules and reinstall
-rm -rf node_modules package-lock.json
+rm -rf node_modules package-lock.JSON
 npm install
-```
+```text
 
 #### TypeScript compilation errors
 
 ```bash
 # These are expected in development - the tools work despite TS warnings
 # To see actual runtime issues, check the command output, not TS errors
-```
+```text
 
-#### Constitutional state file missing
+#### ConstitutionalConstitutional state file missing
 
 ```bash
 # Reinitialize the framework
 npm run conductor init
-```
+```text
 
 #### Permission denied on CLI tools
 
 ```bash
 # Make sure the tools are executable
-chmod +x cli/aegis-conductor.ts
+chmod +x CLI/Aegis-conductor.ts
 chmod +x tools/validate-constitution.ts
-```
+```text
 
 ### Getting Help
 
-- **Documentation**: Check `docs/` directory for detailed guides
-- **Issues**: Report bugs on GitHub Issues
-- **Constitution**: Read `CONSTITUTION.md` for governance questions
-- **Roadmap**: See `docs/roadmap/` for planned features
+- __Documentation__: Check `docs/` directory for detailed guides
+- __Issues__: Report bugs on GitHub Issues
+- __Constitution__: Read `CONSTITUTION.md` for governance questions
+- __Roadmap__: See `docs/roadmap/` for planned features
 
 ## 🔄 Development Workflow
 
@@ -244,7 +244,7 @@ chmod +x tools/validate-constitution.ts
 # Make changes to framework files
 # ...
 
-# Validate constitutional compliance
+# Validate Constitutional compliance
 npm run validate
 
 # Check for drift patterns
@@ -255,28 +255,28 @@ npm run conductor enforce --dry-run
 
 # Apply corrections if needed
 npm run conductor enforce --auto-fix
-```
+```text
 
 ### For Blueprint Authors
 
 ```bash
-# Create new blueprint
+# Create new Blueprint
 mkdir blueprints/your-feature
-# Edit blueprint.yaml
+# Edit Blueprint.YAML
 
-# Validate blueprint
+# Validate Blueprint
 npm run check
 
-# Test constitutional compliance
+# Test Constitutional compliance
 npm run validate
-```
+```text
 
 ## 📚 Next Steps
 
-1. **Read the Constitution**: Understand framework governance in `CONSTITUTION.md`
-2. **Explore Examples**: Check existing blueprints in `blueprints/`
-3. **Study the Roadmap**: See planned features in `docs/roadmap/`
-4. **Contribute**: Follow guidelines in `CONTRIBUTING.md`
+1. __Read the Constitution__: Understand framework governance in `CONSTITUTION.md`
+2. __Explore Examples__: Check existing Blueprints in `blueprints/`
+3. __Study the Roadmap__: See planned features in `docs/roadmap/`
+4. __Contribute__: Follow guidelines in `CONTRIBUTING.md`
 
 ---
 
@@ -291,4 +291,5 @@ After setup, verify:
 - [ ] Constitutional drift logs are present
 - [ ] All npm scripts execute without module errors
 
-**Setup complete!** Your Aegis Framework installation is ready for constitutional governance and blueprint-driven development. 🎉
+**Setup complete!__ Your Aegis Framework installation is ready for Constitutional governance and Blueprint-driven
+development. 🎉

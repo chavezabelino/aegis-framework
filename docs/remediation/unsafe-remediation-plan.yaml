@@ -12,11 +12,11 @@ phases:
     name: "Unsafe Phase"
     description: "Phase without proper safety mechanisms"
     order: 1
-    
+
     validationSteps: []
-    
+
     riskLevel: "high"
-    
+
     estimatedDuration: "unknown"
     dependencies: []
     parallelizable: false

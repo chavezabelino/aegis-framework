@@ -10,19 +10,19 @@
 
 import { Server } from '@modelcontextprotocol/sdk/server/index.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
-import { AutoPlanDetector } from '../../tools/auto-plan-detector.js';
-import { PlannerCritic } from '../../tools/planner-critic.js';
+import { AutoPlanDetector } from '../../../tools/auto-plan-detector';
+import { PlannerCritic } from '../../../tools/planner-critic';
 import { z } from 'zod';
 
 // Schema definitions
 const PlanAutoDetectArgsSchema = z.object({
-  prompt: z.string().describe('User prompt to analyze')
+  prompt: z.string().describe('User prompt to analyze'),
 });
 
 const PlanValidateArgsSchema = z.object({
   planClass: z.enum(['MVP-Fix', 'Surgical-Refactor', 'Systemic-Change']),
   planContent: z.string(),
-  filesTouched: z.number()
+  filesTouched: z.number(),
 });
 
 const PlanCompareArgsSchema = z.object({
@@ -31,7 +31,7 @@ const PlanCompareArgsSchema = z.object({
   plan1Class: z.enum(['MVP-Fix', 'Surgical-Refactor', 'Systemic-Change']),
   plan2Class: z.enum(['MVP-Fix', 'Surgical-Refactor', 'Systemic-Change']),
   files1: z.number(),
-  files2: z.number()
+  files2: z.number(),
 });
 
 class PlanningMCPServer {
@@ -43,12 +43,12 @@ class PlanningMCPServer {
     this.server = new Server(
       {
         name: 'aegis-planning',
-        version: '1.0.0'
+        version: '1.0.0',
       },
       {
         capabilities: {
-          tools: {}
-        }
+          tools: {},
+        },
       }
     );
 
@@ -59,39 +59,43 @@ class PlanningMCPServer {
 
   private setupTools(): void {
     // Tool: Auto plan detection
-    this.server.setRequestHandler('tools/call', async (request) => {
-      const { name, arguments: args } = request.params;
+    (this.server as any).setRequestHandler('tools/call', async (request: any) => {
+      const { name, arguments: args } = (request as any).params || {};
 
       try {
         switch (name) {
           case 'aegis_plan_auto_detect': {
             const validatedArgs = PlanAutoDetectArgsSchema.parse(args);
             const result = this.detector.analyzePrompt(validatedArgs.prompt);
-            
+
             return {
               content: [
                 {
                   type: 'text',
-                  text: JSON.stringify({
-                    planClass: result.planClass,
-                    confidence: result.confidence,
-                    reasoning: result.reasoning,
-                    suggestedPlan: result.suggestedPlan,
-                    validationCommand: result.validationCommand
-                  }, null, 2)
-                }
-              ]
+                  text: JSON.stringify(
+                    {
+                      planClass: result.planClass,
+                      confidence: result.confidence,
+                      reasoning: result.reasoning,
+                      suggestedPlan: result.suggestedPlan,
+                      validationCommand: result.validationCommand,
+                    },
+                    null,
+                    2
+                  ),
+                },
+              ],
             };
           }
 
           case 'aegis_plan_validate': {
             const validatedArgs = PlanValidateArgsSchema.parse(args);
-            
+
             // Perform validation logic
             const constraints = {
               'MVP-Fix': { maxTokens: 2500, maxFiles: 2 },
               'Surgical-Refactor': { maxTokens: 6000, maxFiles: 5 },
-              'Systemic-Change': { maxTokens: 15000, maxFiles: 10 }
+              'Systemic-Change': { maxTokens: 15000, maxFiles: 10 },
             };
 
             const constraint = constraints[validatedArgs.planClass];
@@ -108,9 +112,11 @@ class PlanningMCPServer {
             }
 
             // Check for behavioral contracts
-            if (!validatedArgs.planContent.includes('observable') && 
-                !validatedArgs.planContent.includes('behavioral') && 
-                !validatedArgs.planContent.includes('user-facing')) {
+            if (
+              !validatedArgs.planContent.includes('observable') &&
+              !validatedArgs.planContent.includes('behavioral') &&
+              !validatedArgs.planContent.includes('user-facing')
+            ) {
               errors.push('Plan must include behavioral contracts');
             }
 
@@ -118,30 +124,34 @@ class PlanningMCPServer {
               content: [
                 {
                   type: 'text',
-                  text: JSON.stringify({
-                    valid: errors.length === 0,
-                    errors,
-                    warnings,
-                    planClass: validatedArgs.planClass,
-                    estimatedTokens,
-                    filesTouched: validatedArgs.filesTouched
-                  }, null, 2)
-                }
-              ]
+                  text: JSON.stringify(
+                    {
+                      valid: errors.length === 0,
+                      errors,
+                      warnings,
+                      planClass: validatedArgs.planClass,
+                      estimatedTokens,
+                      filesTouched: validatedArgs.filesTouched,
+                    },
+                    null,
+                    2
+                  ),
+                },
+              ],
             };
           }
 
           case 'aegis_plan_compare': {
             const validatedArgs = PlanCompareArgsSchema.parse(args);
-            
+
             const analysis1 = this.critic.analyzePlan(
-              validatedArgs.plan1Content, 
-              validatedArgs.plan1Class, 
+              validatedArgs.plan1Content,
+              validatedArgs.plan1Class,
               validatedArgs.files1
             );
             const analysis2 = this.critic.analyzePlan(
-              validatedArgs.plan2Content, 
-              validatedArgs.plan2Class, 
+              validatedArgs.plan2Content,
+              validatedArgs.plan2Class,
               validatedArgs.files2
             );
             const comparison = this.critic.comparePlans(analysis1, analysis2);
@@ -150,13 +160,17 @@ class PlanningMCPServer {
               content: [
                 {
                   type: 'text',
-                  text: JSON.stringify({
-                    analysis1,
-                    analysis2,
-                    comparison
-                  }, null, 2)
-                }
-              ]
+                  text: JSON.stringify(
+                    {
+                      analysis1,
+                      analysis2,
+                      comparison,
+                    },
+                    null,
+                    2
+                  ),
+                },
+              ],
             };
           }
 
@@ -168,17 +182,21 @@ class PlanningMCPServer {
           content: [
             {
               type: 'text',
-              text: JSON.stringify({
-                error: error instanceof Error ? error.message : String(error)
-              }, null, 2)
-            }
-          ]
+              text: JSON.stringify(
+                {
+                  error: error instanceof Error ? error.message : String(error),
+                },
+                null,
+                2
+              ),
+            },
+          ],
         };
       }
     });
 
     // Tool definitions
-    this.server.setRequestHandler('tools/list', async () => {
+    (this.server as any).setRequestHandler('tools/list', async (request: any) => {
       return {
         tools: [
           {
@@ -189,11 +207,11 @@ class PlanningMCPServer {
               properties: {
                 prompt: {
                   type: 'string',
-                  description: 'User prompt to analyze'
-                }
+                  description: 'User prompt to analyze',
+                },
               },
-              required: ['prompt']
-            }
+              required: ['prompt'],
+            },
           },
           {
             name: 'aegis_plan_validate',
@@ -203,19 +221,19 @@ class PlanningMCPServer {
               properties: {
                 planClass: {
                   type: 'string',
-                  enum: ['MVP-Fix', 'Surgical-Refactor', 'Systemic-Change']
+                  enum: ['MVP-Fix', 'Surgical-Refactor', 'Systemic-Change'],
                 },
                 planContent: {
                   type: 'string',
-                  description: 'Plan content to validate'
+                  description: 'Plan content to validate',
                 },
                 filesTouched: {
                   type: 'number',
-                  description: 'Number of files the plan will touch'
-                }
+                  description: 'Number of files the plan will touch',
+                },
               },
-              required: ['planClass', 'planContent', 'filesTouched']
-            }
+              required: ['planClass', 'planContent', 'filesTouched'],
+            },
           },
           {
             name: 'aegis_plan_compare',
@@ -225,33 +243,33 @@ class PlanningMCPServer {
               properties: {
                 plan1Content: {
                   type: 'string',
-                  description: 'First plan content'
+                  description: 'First plan content',
                 },
                 plan2Content: {
                   type: 'string',
-                  description: 'Second plan content'
+                  description: 'Second plan content',
                 },
                 plan1Class: {
                   type: 'string',
-                  enum: ['MVP-Fix', 'Surgical-Refactor', 'Systemic-Change']
+                  enum: ['MVP-Fix', 'Surgical-Refactor', 'Systemic-Change'],
                 },
                 plan2Class: {
                   type: 'string',
-                  enum: ['MVP-Fix', 'Surgical-Refactor', 'Systemic-Change']
+                  enum: ['MVP-Fix', 'Surgical-Refactor', 'Systemic-Change'],
                 },
                 files1: {
                   type: 'number',
-                  description: 'Number of files for first plan'
+                  description: 'Number of files for first plan',
                 },
                 files2: {
                   type: 'number',
-                  description: 'Number of files for second plan'
-                }
+                  description: 'Number of files for second plan',
+                },
               },
-              required: ['plan1Content', 'plan2Content', 'plan1Class', 'plan2Class', 'files1', 'files2']
-            }
-          }
-        ]
+              required: ['plan1Content', 'plan2Content', 'plan1Class', 'plan2Class', 'files1', 'files2'],
+            },
+          },
+        ],
       };
     });
   }
@@ -265,7 +283,7 @@ class PlanningMCPServer {
 
 // Start server
 const server = new PlanningMCPServer();
-server.start().catch((error) => {
+server.start().catch(error => {
   console.error('Failed to start MCP server:', error);
   process.exit(1);
 });

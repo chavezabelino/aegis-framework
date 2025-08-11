@@ -2,14 +2,14 @@
 
 /**
  * Constitutional Validator
- * 
+ *
  * Validates framework structure and constitutional compliance
  * Integrates with the Constitutional Conductor for comprehensive governance
  */
 
-import fs from "fs";
-import path from "path";
-import yaml from "js-yaml";
+import fs from 'fs';
+import path from 'path';
+import yaml from 'js-yaml';
 
 interface ConstitutionalValidationResult {
   overall: number;
@@ -108,7 +108,7 @@ class ConstitutionalValidator {
   }
 
   async validateAll(): Promise<ConstitutionalValidationResult> {
-    console.log("🏛️ Running comprehensive constitutional validation...");
+    console.log('🏛️ Running comprehensive constitutional validation...');
 
     const structure = await this.validateStructure();
     const annotations = await this.validateAnnotations();
@@ -126,12 +126,12 @@ class ConstitutionalValidator {
       versioning,
       blueprints,
       violations,
-      recommendations
+      recommendations,
     };
   }
 
   private async validateStructure(): Promise<StructureValidation> {
-    console.log("  📁 Validating framework structure...");
+    console.log('  📁 Validating framework structure...');
 
     const requiredDirectories = [
       { path: 'framework', required: true },
@@ -142,10 +142,10 @@ class ConstitutionalValidator {
       { path: 'cli', required: true },
       { path: '.framework', required: true },
       { path: 'docs', required: true },
-      { path: 'docs/roadmap', required: true }
+      { path: 'docs/roadmap', required: true },
     ].map(dir => ({
       ...dir,
-      exists: fs.existsSync(path.join(this.frameworkRoot, dir.path))
+      exists: fs.existsSync(path.join(this.frameworkRoot, dir.path)),
     }));
 
     const requiredFiles = [
@@ -156,19 +156,21 @@ class ConstitutionalValidator {
       { path: `.framework/constitutional-state.json`, required: true },
       { path: `.framework/enforcement-config.yaml`, required: true },
       { path: `framework/framework-core-v${this.currentVersion}.md`, required: true },
-      { path: 'cli/aegis-conductor.ts', required: true }
+      { path: 'cli/aegis-conductor.ts', required: true },
     ].map(file => {
       const exists = fs.existsSync(path.join(this.frameworkRoot, file.path));
       return {
         ...file,
         exists,
-        hasCorrectAnnotations: exists ? this.checkFileAnnotations(file.path) : false
+        hasCorrectAnnotations: exists ? this.checkFileAnnotations(file.path) : false,
       };
     });
 
     const issues = [
-      ...requiredDirectories.filter(dir => dir.required && !dir.exists).map(dir => `Missing required directory: ${dir.path}`),
-      ...requiredFiles.filter(file => file.required && !file.exists).map(file => `Missing required file: ${file.path}`)
+      ...requiredDirectories
+        .filter(dir => dir.required && !dir.exists)
+        .map(dir => `Missing required directory: ${dir.path}`),
+      ...requiredFiles.filter(file => file.required && !file.exists).map(file => `Missing required file: ${file.path}`),
     ];
 
     const score = this.calculateStructureScore(requiredDirectories, requiredFiles);
@@ -177,12 +179,12 @@ class ConstitutionalValidator {
       score,
       requiredDirectories,
       requiredFiles,
-      issues
+      issues,
     };
   }
 
   private async validateAnnotations(): Promise<AnnotationValidation> {
-    console.log("  📝 Validating constitutional annotations...");
+    console.log('  📝 Validating constitutional annotations...');
 
     const frameworkFiles = await this.checkFrameworkFileAnnotations();
     const blueprintFiles = await this.checkBlueprintFileAnnotations();
@@ -191,7 +193,7 @@ class ConstitutionalValidator {
     const missingAnnotations = [
       ...frameworkFiles.filter(f => !f.hasAnnotations).map(f => f.file),
       ...blueprintFiles.filter(f => !f.hasAnnotations).map(f => f.file),
-      ...generatedFiles.filter(f => !f.hasAnnotations).map(f => f.file)
+      ...generatedFiles.filter(f => !f.hasAnnotations).map(f => f.file),
     ];
 
     const totalFiles = frameworkFiles.length + blueprintFiles.length + generatedFiles.length;
@@ -203,18 +205,18 @@ class ConstitutionalValidator {
       frameworkFiles,
       blueprintFiles,
       generatedFiles,
-      missingAnnotations
+      missingAnnotations,
     };
   }
 
   private async validateVersioning(): Promise<VersionValidation> {
-    console.log("  🔢 Validating version consistency...");
+    console.log('  🔢 Validating version consistency...');
 
     let references = await this.findAllVersionReferences();
     let inconsistencies = references
       .filter(ref => ref.version !== this.currentVersion)
       .map(ref => `${ref.file}: found ${ref.version}, expected ${this.currentVersion}`);
-    
+
     let criticalFilesMissing: string[] = [];
     let comprehensiveCheck = false;
 
@@ -223,15 +225,17 @@ class ConstitutionalValidator {
       const { VersionConsistencyValidator } = await import('./validate-version-consistency.js');
       const validator = new VersionConsistencyValidator(this.frameworkRoot);
       const result = await validator.validateAll();
-      
+
       comprehensiveCheck = true;
-      
+
       // Extract information from comprehensive validation
       inconsistencies = [];
       for (const violation of result.violations) {
         if (violation.status === 'mismatch' || violation.status === 'missing') {
-          inconsistencies.push(`${violation.file}: expected ${violation.expectedVersion}, found ${violation.foundVersion || 'missing'}`);
-          
+          inconsistencies.push(
+            `${violation.file}: expected ${violation.expectedVersion}, found ${violation.foundVersion || 'missing'}`
+          );
+
           // Track critical files specifically
           if (result.criticalFiles.includes(violation.file)) {
             criticalFilesMissing.push(violation.file);
@@ -239,11 +243,11 @@ class ConstitutionalValidator {
         }
       }
     } catch (error) {
-      console.warn("  ⚠️ Comprehensive version validation failed, using basic validation");
+      console.warn('  ⚠️ Comprehensive version validation failed, using basic validation');
     }
 
     const versionConsistency = inconsistencies.length === 0;
-    const score = versionConsistency ? 1 : Math.max(0, 1 - (inconsistencies.length / Math.max(references.length, 10)));
+    const score = versionConsistency ? 1 : Math.max(0, 1 - inconsistencies.length / Math.max(references.length, 10));
 
     return {
       score,
@@ -252,26 +256,20 @@ class ConstitutionalValidator {
       references,
       inconsistencies,
       criticalFilesMissing,
-      comprehensiveCheck
+      comprehensiveCheck,
     };
   }
 
   private async validateBlueprints(): Promise<BlueprintValidation> {
-    console.log("  📋 Validating blueprint compliance...");
+    console.log('  📋 Validating blueprint compliance...');
 
     const blueprintFiles = await this.findBlueprintFiles();
-    const blueprints = await Promise.all(
-      blueprintFiles.map(file => this.validateBlueprintFile(file))
-    );
+    const blueprints = await Promise.all(blueprintFiles.map(file => this.validateBlueprintFile(file)));
 
     const schemaIssues = blueprints
       .filter(bp => !bp.schemaCompliant)
       .map(bp => `${bp.file}: schema compliance issues`)
-      .concat(
-        blueprints
-          .filter(bp => !bp.hasRequiredFields)
-          .map(bp => `${bp.file}: missing required fields`)
-      );
+      .concat(blueprints.filter(bp => !bp.hasRequiredFields).map(bp => `${bp.file}: missing required fields`));
 
     const missingFields: { [blueprint: string]: string[] } = {};
     blueprints.forEach(bp => {
@@ -287,7 +285,7 @@ class ConstitutionalValidator {
       score,
       blueprints,
       schemaIssues,
-      missingFields
+      missingFields,
     };
   }
 
@@ -298,9 +296,9 @@ class ConstitutionalValidator {
         return fs.readFileSync(versionPath, 'utf8').trim();
       }
     } catch (error) {
-      console.warn("⚠️ Could not load VERSION file, using default");
+      console.warn('⚠️ Could not load VERSION file, using default');
     }
-    return "1.0.0-alpha";
+    return '1.0.0-alpha';
   }
 
   private checkFileAnnotations(filePath: string): boolean {
@@ -309,12 +307,12 @@ class ConstitutionalValidator {
       if (!fs.existsSync(fullPath)) return false;
 
       const content = fs.readFileSync(fullPath, 'utf8');
-      
+
       // Check for constitutional annotations
       if (filePath.startsWith('framework/')) {
         return content.includes('@aegisFrameworkVersion');
       }
-      
+
       if (filePath.includes('blueprint')) {
         return content.includes('@aegisBlueprint');
       }
@@ -326,10 +324,7 @@ class ConstitutionalValidator {
   }
 
   private async checkFrameworkFileAnnotations(): Promise<AnnotationCheck[]> {
-    const frameworkFiles = [
-      'framework/framework-core-v2.4.0.md',
-      'CONSTITUTION.md'
-    ];
+    const frameworkFiles = ['framework/framework-core-v2.4.0.md', 'CONSTITUTION.md'];
 
     return frameworkFiles.map(file => this.checkAnnotationInFile(file, ['@aegisFrameworkVersion']));
   }
@@ -354,21 +349,19 @@ class ConstitutionalValidator {
           hasAnnotations: false,
           requiredAnnotations,
           missingAnnotations: requiredAnnotations,
-          validFormat: false
+          validFormat: false,
         };
       }
 
       const content = fs.readFileSync(fullPath, 'utf8');
-      const missingAnnotations = requiredAnnotations.filter(annotation => 
-        !content.includes(annotation)
-      );
+      const missingAnnotations = requiredAnnotations.filter(annotation => !content.includes(annotation));
 
       return {
         file: filePath,
         hasAnnotations: missingAnnotations.length === 0,
         requiredAnnotations,
         missingAnnotations,
-        validFormat: content.includes('<!--') && content.includes('-->')
+        validFormat: content.includes('<!--') && content.includes('-->'),
       };
     } catch (error) {
       return {
@@ -376,7 +369,7 @@ class ConstitutionalValidator {
         hasAnnotations: false,
         requiredAnnotations,
         missingAnnotations: requiredAnnotations,
-        validFormat: false
+        validFormat: false,
       };
     }
   }
@@ -387,7 +380,7 @@ class ConstitutionalValidator {
       'README.md',
       'CHANGELOG.md',
       'framework/framework-core-v2.1.0.md',
-      '.github/copilot-instructions.md'
+      '.github/copilot-instructions.md',
     ];
 
     return files.map(file => {
@@ -396,7 +389,7 @@ class ConstitutionalValidator {
       return {
         file,
         version: version || 'unknown',
-        consistent
+        consistent,
       };
     });
   }
@@ -456,7 +449,7 @@ class ConstitutionalValidator {
       if (!fs.existsSync(fullPath)) return null;
 
       const content = fs.readFileSync(fullPath, 'utf8');
-      
+
       if (filePath === 'VERSION') {
         return content.trim();
       }
@@ -519,7 +512,7 @@ class ConstitutionalValidator {
 
       const requiredFields = ['id', 'name', 'version'];
       const missingFields = requiredFields.filter(field => !blueprint[field]);
-      
+
       const hasRequiredFields = missingFields.length === 0;
       const schemaCompliant = this.validateBlueprintSchema(blueprint);
       const valid = hasRequiredFields && schemaCompliant;
@@ -529,7 +522,7 @@ class ConstitutionalValidator {
         valid,
         hasRequiredFields,
         schemaCompliant,
-        issues: missingFields
+        issues: missingFields,
       };
     } catch (error) {
       return {
@@ -537,7 +530,7 @@ class ConstitutionalValidator {
         valid: false,
         hasRequiredFields: false,
         schemaCompliant: false,
-        issues: ['Parse error or file not found']
+        issues: ['Parse error or file not found'],
       };
     }
   }
@@ -549,8 +542,9 @@ class ConstitutionalValidator {
 
   private calculateStructureScore(directories: DirectoryCheck[], files: FileCheck[]): number {
     const totalRequired = directories.filter(d => d.required).length + files.filter(f => f.required).length;
-    const existingRequired = directories.filter(d => d.required && d.exists).length + files.filter(f => f.required && f.exists).length;
-    
+    const existingRequired =
+      directories.filter(d => d.required && d.exists).length + files.filter(f => f.required && f.exists).length;
+
     return totalRequired > 0 ? existingRequired / totalRequired : 1;
   }
 
@@ -570,7 +564,7 @@ class ConstitutionalValidator {
         severity: 'high',
         description: issue,
         autoCorrectible: true,
-        recommendation: 'Run aegis-conductor init to create missing structure'
+        recommendation: 'Run aegis-conductor init to create missing structure',
       });
     });
 
@@ -583,7 +577,7 @@ class ConstitutionalValidator {
         description: `Missing constitutional annotations in ${file}`,
         file,
         autoCorrectible: true,
-        recommendation: 'Add required @aegisBlueprint or @aegisFrameworkVersion annotations'
+        recommendation: 'Add required @aegisBlueprint or @aegisFrameworkVersion annotations',
       });
     });
 
@@ -595,7 +589,7 @@ class ConstitutionalValidator {
         severity: 'high',
         description: issue,
         autoCorrectible: true,
-        recommendation: 'Update version references to match current version'
+        recommendation: 'Update version references to match current version',
       });
     });
 
@@ -608,7 +602,7 @@ class ConstitutionalValidator {
         description: `Blueprint issues in ${file}: ${issues.join(', ')}`,
         file,
         autoCorrectible: false,
-        recommendation: 'Review and update blueprint schema compliance'
+        recommendation: 'Review and update blueprint schema compliance',
       });
     });
 
@@ -643,7 +637,7 @@ class ConstitutionalValidator {
       structure: 0.3,
       annotations: 0.25,
       versioning: 0.25,
-      blueprints: 0.2
+      blueprints: 0.2,
     };
 
     return (
@@ -655,37 +649,37 @@ class ConstitutionalValidator {
   }
 
   displayResults(results: ConstitutionalValidationResult): void {
-    console.log("\n🏛️ Constitutional Validation Report");
-    console.log("====================================");
+    console.log('\n🏛️ Constitutional Validation Report');
+    console.log('====================================');
     console.log(`Overall Compliance: ${(results.overall * 100).toFixed(1)}%`);
-    console.log("");
+    console.log('');
 
-    console.log("📁 Structure Compliance:", `${(results.structure.score * 100).toFixed(1)}%`);
+    console.log('📁 Structure Compliance:', `${(results.structure.score * 100).toFixed(1)}%`);
     if (results.structure.issues.length > 0) {
       results.structure.issues.forEach(issue => console.log(`  ⚠️ ${issue}`));
     }
 
-    console.log("📝 Annotation Compliance:", `${(results.annotations.score * 100).toFixed(1)}%`);
+    console.log('📝 Annotation Compliance:', `${(results.annotations.score * 100).toFixed(1)}%`);
     if (results.annotations.missingAnnotations.length > 0) {
       console.log(`  ⚠️ ${results.annotations.missingAnnotations.length} files missing annotations`);
     }
 
-    console.log("🔢 Version Consistency:", `${(results.versioning.score * 100).toFixed(1)}%`);
+    console.log('🔢 Version Consistency:', `${(results.versioning.score * 100).toFixed(1)}%`);
     if (results.versioning.inconsistencies.length > 0) {
       results.versioning.inconsistencies.forEach(issue => console.log(`  ⚠️ ${issue}`));
     }
 
-    console.log("📋 Blueprint Compliance:", `${(results.blueprints.score * 100).toFixed(1)}%`);
+    console.log('📋 Blueprint Compliance:', `${(results.blueprints.score * 100).toFixed(1)}%`);
     if (results.blueprints.schemaIssues.length > 0) {
       results.blueprints.schemaIssues.forEach(issue => console.log(`  ⚠️ ${issue}`));
     }
 
     if (results.violations.length > 0) {
       console.log(`\n⚠️ ${results.violations.length} constitutional violations detected`);
-      console.log("\nRecommendations:");
+      console.log('\nRecommendations:');
       results.recommendations.forEach(rec => console.log(`  💡 ${rec}`));
     } else {
-      console.log("\n✅ Framework is fully constitutionally compliant!");
+      console.log('\n✅ Framework is fully constitutionally compliant!');
     }
   }
 }

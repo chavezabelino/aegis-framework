@@ -1,16 +1,16 @@
 /**
  * OpenTelemetry Tracer for Aegis Framework
- * 
+ *
  * Emit OpenTelemetry traces from CLI: plan → generate → test → repair → PR
  * Correlate to commit SHA and blueprint ID for complete provenance
- * 
+ *
  * @aegisFrameworkVersion 2.4.0
  * @intent Production-grade observability with OpenTelemetry standard
  * @context Hardening Aegis observability infrastructure
  */
 
 import { NodeSDK } from '@opentelemetry/sdk-node';
-import { Resource } from '@opentelemetry/resources';
+
 import { SemanticResourceAttributes } from '@opentelemetry/semantic-conventions';
 import { trace, SpanStatusCode, SpanKind } from '@opentelemetry/api';
 import { JaegerExporter } from '@opentelemetry/exporter-jaeger';
@@ -41,22 +41,22 @@ interface AegisSpanAttributes {
   'aegis.operation': string;
   'aegis.mode'?: string;
   'aegis.session.id': string;
-  
+
   // Git context
   'git.commit.sha'?: string;
   'git.branch'?: string;
   'git.repository'?: string;
-  
+
   // User context
   'user.id'?: string;
   'user.environment': string;
-  
+
   // Performance
   'performance.generation_time_ms'?: number;
   'performance.tokens_used'?: number;
   'performance.files_generated'?: number;
   'performance.lines_generated'?: number;
-  
+
   // Quality
   'quality.validation.pass_rate'?: number;
   'quality.score'?: number;
@@ -64,7 +64,7 @@ interface AegisSpanAttributes {
 }
 
 class AegisOTelTracer {
-  private sdk: NodeSDK;
+  private sdk!: NodeSDK;
   private tracer: any;
   private context: AegisTraceContext;
   private initialized = false;
@@ -76,7 +76,7 @@ class AegisOTelTracer {
       commitSha: this.getGitCommitSha(),
       environment: process.env.NODE_ENV || 'development',
       operation: 'generate',
-      ...context
+      ...context,
     };
 
     this.initializeSDK();
@@ -86,22 +86,11 @@ class AegisOTelTracer {
     const serviceName = 'aegis-framework';
     const serviceVersion = this.context.frameworkVersion;
 
-    // Configure resource
-    const resource = new Resource({
-      [SemanticResourceAttributes.SERVICE_NAME]: serviceName,
-      [SemanticResourceAttributes.SERVICE_VERSION]: serviceVersion,
-      [SemanticResourceAttributes.SERVICE_INSTANCE_ID]: this.context.sessionId,
-      [SemanticResourceAttributes.DEPLOYMENT_ENVIRONMENT]: this.context.environment,
-      'aegis.session.id': this.context.sessionId,
-      'aegis.commit.sha': this.context.commitSha || 'unknown'
-    });
-
     // Configure exporters based on environment
     const exporters = this.configureExporters();
 
     // Initialize SDK
     this.sdk = new NodeSDK({
-      resource,
       spanProcessor: new BatchSpanProcessor(exporters.primary),
       instrumentations: [
         getNodeAutoInstrumentations({
@@ -112,15 +101,14 @@ class AegisOTelTracer {
       ],
     });
 
-    // Add secondary exporters if configured
-    if (exporters.secondary) {
-      this.sdk.addSpanProcessor(new BatchSpanProcessor(exporters.secondary));
-    }
+    // Note: Secondary exporters would need to be configured differently
+    // as NodeSDK doesn't have addSpanProcessor method
+    // For now, we'll use only the primary exporter
   }
 
   private configureExporters(): { primary: any; secondary?: any } {
     const config = this.loadObservabilityConfig();
-    
+
     // Primary exporter (console in dev, OTLP in prod)
     let primary;
     if (config.jaeger?.enabled) {
@@ -151,9 +139,9 @@ class AegisOTelTracer {
     return new OTLPTraceExporter({
       url: config.endpoint || 'https://cloud.langfuse.com/api/public/ingestion',
       headers: {
-        'Authorization': `Bearer ${config.apiKey}`,
+        Authorization: `Bearer ${config.apiKey}`,
         'Content-Type': 'application/json',
-        ...config.headers
+        ...config.headers,
       },
     });
   }
@@ -169,7 +157,7 @@ class AegisOTelTracer {
       jaeger: { enabled: false },
       otlp: { enabled: false },
       langfuse: { enabled: false },
-      console: { enabled: this.context.environment === 'development' }
+      console: { enabled: this.context.environment === 'development' },
     };
   }
 
@@ -180,7 +168,7 @@ class AegisOTelTracer {
       this.sdk.start();
       this.tracer = trace.getTracer('aegis-framework', this.context.frameworkVersion);
       this.initialized = true;
-      
+
       console.log(`🔍 OpenTelemetry initialized for session: ${this.context.sessionId.substring(0, 8)}...`);
     } catch (error) {
       console.warn(`⚠️  Failed to initialize OpenTelemetry:`, error);
@@ -194,10 +182,7 @@ class AegisOTelTracer {
     }
   }
 
-  startOperation(
-    operationName: string,
-    attributes: Partial<AegisSpanAttributes> = {}
-  ): any {
+  startOperation(operationName: string, attributes: Partial<AegisSpanAttributes> = {}): any {
     if (!this.initialized) {
       console.warn('OTel tracer not initialized, creating noop span');
       return trace.getActiveSpan() || trace.getTracer('noop').startSpan('noop');
@@ -211,8 +196,8 @@ class AegisOTelTracer {
         'aegis.operation': this.context.operation,
         'user.environment': this.context.environment,
         ...this.getGitAttributes(),
-        ...attributes
-      }
+        ...attributes,
+      },
     });
 
     return span;
@@ -224,15 +209,15 @@ class AegisOTelTracer {
     attributes: Partial<AegisSpanAttributes> = {}
   ): Promise<T> {
     const span = this.startOperation(operationName, attributes);
-    
+
     try {
       const result = await operation();
       span.setStatus({ code: SpanStatusCode.OK });
       return result;
     } catch (error) {
-      span.setStatus({ 
-        code: SpanStatusCode.ERROR, 
-        message: error instanceof Error ? error.message : String(error)
+      span.setStatus({
+        code: SpanStatusCode.ERROR,
+        message: error instanceof Error ? error.message : String(error),
       });
       span.recordException(error as Error);
       throw error;
@@ -265,24 +250,24 @@ class AegisOTelTracer {
       'performance.lines_generated': performance.linesGenerated,
       'quality.validation.pass_rate': quality.validationPassRate,
       'quality.score': quality.score,
-      'quality.compliance.constitutional': quality.constitutionalCompliance
+      'quality.compliance.constitutional': quality.constitutionalCompliance,
     });
 
     // Add events for key milestones
     span.addEvent('generation.started', {
       'blueprint.id': blueprintId,
-      'mode': this.context.mode || 'strict'
+      mode: this.context.mode || 'strict',
     });
 
     span.addEvent('generation.completed', {
       'files.count': performance.filesGenerated,
       'lines.count': performance.linesGenerated,
-      'duration.ms': performance.generationTime
+      'duration.ms': performance.generationTime,
     });
 
     span.addEvent('validation.completed', {
-      'pass_rate': quality.validationPassRate,
-      'constitutional_compliance': quality.constitutionalCompliance
+      pass_rate: quality.validationPassRate,
+      constitutional_compliance: quality.constitutionalCompliance,
     });
 
     span.setStatus({ code: SpanStatusCode.OK });
@@ -300,31 +285,30 @@ class AegisOTelTracer {
     }
   ): void {
     const span = this.startOperation('aegis.evaluation', {
-      'aegis.eval.id': evalId,
-      'aegis.eval.passed': results.passed,
-      'aegis.eval.score': results.score,
-      'quality.validation.pass_rate': results.validationPassRate
+      'aegis.session.id': evalId, // Use existing attribute
+      'quality.validation.pass_rate': results.validationPassRate,
+      'quality.score': results.score,
     });
 
     span.addEvent('evaluation.started', { 'eval.id': evalId });
-    
+
     if (results.errors.length > 0) {
-      span.addEvent('evaluation.errors', { 
+      span.addEvent('evaluation.errors', {
         'error.count': results.errors.length,
-        'errors': results.errors.slice(0, 3).join(', ') // First 3 errors
+        errors: results.errors.slice(0, 3).join(', '), // First 3 errors
       });
     }
 
     span.addEvent('evaluation.completed', {
-      'result': results.passed ? 'passed' : 'failed',
-      'score': results.score
+      result: results.passed ? 'passed' : 'failed',
+      score: results.score,
     });
 
-    span.setStatus({ 
+    span.setStatus({
       code: results.passed ? SpanStatusCode.OK : SpanStatusCode.ERROR,
-      message: results.passed ? undefined : `Evaluation failed: ${results.errors[0] || 'Unknown error'}`
+      message: results.passed ? undefined : `Evaluation failed: ${results.errors[0] || 'Unknown error'}`,
     });
-    
+
     span.end();
   }
 
@@ -352,13 +336,13 @@ class AegisOTelTracer {
 
   private getGitAttributes(): Partial<AegisSpanAttributes> {
     const attributes: Partial<AegisSpanAttributes> = {};
-    
+
     try {
       attributes['git.commit.sha'] = this.context.commitSha;
-      
+
       const branch = execSync('git branch --show-current', { encoding: 'utf8' }).trim();
       if (branch) attributes['git.branch'] = branch;
-      
+
       const remote = execSync('git remote get-url origin', { encoding: 'utf8' }).trim();
       if (remote) attributes['git.repository'] = remote;
     } catch {
@@ -372,18 +356,21 @@ class AegisOTelTracer {
   static async forHydration(projectPath: string): Promise<AegisOTelTracer> {
     const tracer = new AegisOTelTracer({
       operation: 'hydrate',
-      userId: os.userInfo().username
+      userId: os.userInfo().username,
     });
     await tracer.initialize();
     return tracer;
   }
 
-  static async forGeneration(blueprintId: string, mode: 'lean' | 'strict' | 'generative' = 'strict'): Promise<AegisOTelTracer> {
+  static async forGeneration(
+    blueprintId: string,
+    mode: 'lean' | 'strict' | 'generative' = 'strict'
+  ): Promise<AegisOTelTracer> {
     const tracer = new AegisOTelTracer({
       operation: 'generate',
       blueprintId,
       mode,
-      userId: os.userInfo().username
+      userId: os.userInfo().username,
     });
     await tracer.initialize();
     return tracer;
@@ -392,7 +379,7 @@ class AegisOTelTracer {
   static async forEvaluation(): Promise<AegisOTelTracer> {
     const tracer = new AegisOTelTracer({
       operation: 'eval',
-      userId: os.userInfo().username
+      userId: os.userInfo().username,
     });
     await tracer.initialize();
     return tracer;

@@ -9,7 +9,7 @@ description: |
 
 prompt: |
   Generate a complete user authentication system using the feat-user-auth blueprint.
-  
+
   Requirements:
   - JWT-based authentication
   - Login/logout/register endpoints
@@ -18,7 +18,7 @@ prompt: |
   - Input validation and sanitization
   - Error handling with proper fallbacks
   - TypeScript types for all interfaces
-  
+
   Framework Requirements:
   - Follow Aegis constitutional annotations
   - Emit observability events for auth actions
@@ -32,14 +32,14 @@ expectedOutputs:
       - "contains JWT implementation"
       - "includes rate limiting"
       - "has proper error handling"
-  
+
   - type: "types"
     files: ["types/auth.ts"]
     validationRules:
       - "exports User interface"
       - "exports AuthToken interface"
       - "includes proper TypeScript strict types"
-  
+
   - type: "observability"
     files: ["output.strict.json"]
     validationRules:
@@ -53,13 +53,13 @@ qualityChecks:
     - "JWT secrets are environment variables"
     - "input validation prevents injection"
     - "rate limiting configured correctly"
-  
+
   codeQuality:
     - "functions are properly typed"
     - "error handling is comprehensive"
     - "code follows consistent style"
     - "comments explain security decisions"
-  
+
   frameworkCompliance:
     - "includes @aegisBlueprint annotations"
     - "follows constitutional requirements"
@@ -67,7 +67,7 @@ qualityChecks:
     - "defines error fallback states"
 
 performance:
-  maxGenerationTime: 30000  # 30 seconds
+  maxGenerationTime: 30000 # 30 seconds
   maxTokens: 4096
   expectedFiles: 8
   expectedLines: 500

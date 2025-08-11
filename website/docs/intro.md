@@ -1,17 +1,18 @@
 # AI Agent Development Governance Framework
 
-Welcome to **Aegis v2.5.0** - the first governance framework for consistent, compliant AI agent code generation.
+Welcome to __Aegis v2.5.0__ - the first governance framework for consistent, compliant AI agent code generation.
 
 ## What is AI Agent Development Governance?
 
-Aegis solves the critical problem of inconsistent, non-compliant AI-generated code by providing governance frameworks that ensure AI agents generate code that follows your standards and patterns:
+Aegis solves the critical problem of inconsistent, non-compliant AI-generated code by providing governance frameworks
+that ensure AI agents generate code that follows your standards and patterns:
 
-- **Constitutional Governance**: Foundational principles with democratic amendment processes
-- **Drift Detection & Prevention**: Real-time monitoring of agent behavior and intent alignment  
-- **Configuration Management**: Team-configurable enforcement levels and feature controls
-- **Version Consistency**: Automated validation across all framework files
-- **Semantic Interrupt Handling**: Detection and response to user confusion or misalignment
-- **Observability & Tracing**: Comprehensive monitoring and execution tracking
+- __Constitutional Governance__: Foundational principles with democratic amendment processes
+- __Drift Detection & Prevention__: Real-time monitoring of agent behavior and intent alignment
+- __Configuration Management__: Team-configurable enforcement levels and feature controls
+- __Version Consistency__: Automated validation across all framework files
+- __Semantic Interrupt Handling__: Detection and response to user confusion or misalignment
+- __Observability & Tracing__: Comprehensive monitoring and execution tracking
 
 ## Quick Start
 
@@ -19,27 +20,27 @@ Aegis solves the critical problem of inconsistent, non-compliant AI-generated co
 
 ```bash
 # Install globally
-npm install -g @aegis-framework/cli@2.5.0
+npm install -g @Aegis-framework/CLI@2.5.0
 
 # Initialize in a project
-aegis-hydrate /path/to/your/project
-```
+Aegis-hydrate /path/to/your/project
+```text
 
 ### Essential Commands
 
 ```bash
 # Framework orientation
-aegis-orient                    # Quick overview
-aegis-orient detailed          # Comprehensive breakdown
+Aegis-orient                    # Quick overview
+Aegis-orient detailed          # Comprehensive breakdown
 
-# Live monitoring  
-aegis-dashboard                 # Full dashboard
-aegis-dashboard health          # Health check
+# Live monitoring
+Aegis-dashboard                 # Full dashboard
+Aegis-dashboard health          # Health check
 
 # Core operations
-aegis-conductor init            # Initialize framework
-aegis-conductor check           # Run compliance checks
-```
+Aegis-conductor init            # Initialize framework
+Aegis-conductor check           # Run compliance checks
+```text
 
 ## Current Framework Status
 
@@ -49,36 +50,39 @@ import FrameworkStatus from '@site/src/components/FrameworkStatus';
 
 ## Core Capabilities
 
-The framework currently provides **64 capabilities** across **4 categories**:
+The framework currently provides __64 capabilities__ across __4 categories__:
 
-- **🔧 Tools (38)**: CLI utilities, validation tools, enforcement engines
-- **🏛️ Core (20)**: Framework foundations, specifications, templates  
-- **⚖️ Governance (4)**: Constitutional enforcement, semantic interrupts
-- **🔗 Integration (2)**: Blueprint implementations, external connections
+- __🔧 Tools (38)__: CLI utilities, validation tools, enforcement engines
+- __🏛️ Core (20)__: Framework foundations, specifications, templates
+- __⚖️ Governance (4)__: Constitutional enforcement, semantic interrupts
+- __🔗 Integration (2)__: Blueprint implementations, external connections
 
 ## Key Features
 
 ### Constitutional Governance
-- **Constitutional Compliance Enforcer**: Validates framework intelligence claims
-- **Intent Enforcement Engine**: Real-time drift prevention and command validation
-- **Democratic Amendment Engine**: Formal process for framework evolution
+
+- __Constitutional Compliance Enforcer__: Validates framework intelligence claims
+- __Intent Enforcement Engine__: Real-time drift prevention and command validation
+- __Democratic Amendment Engine__: Formal process for framework evolution
 
 ### Safety & Prevention
-- **Semantic Interrupt Detector**: Responds to user expressions of confusion
-- **Foreground Hang Prevention**: Prevents agent blocking on long-running processes
-- **Self-Healing Governance**: Detects and prevents repeat failures
+
+- __Semantic Interrupt Detector__: Responds to user expressions of confusion
+- __Foreground Hang Prevention__: Prevents agent blocking on long-running processes
+- __Self-Healing Governance__: Detects and prevents repeat failures
 
 ### Observability & Monitoring
-- **Framework Capability Mapper**: Auto-discovers and catalogs capabilities
-- **Execution Trace Hooks**: Real-time feature usage tracking
-- **Live Dashboard**: Comprehensive framework monitoring
+
+- __Framework Capability Mapper__: Auto-discovers and catalogs capabilities
+- __Execution Trace Hooks__: Real-time feature usage tracking
+- __Live Dashboard__: Comprehensive framework monitoring
 
 ## Getting Started
 
-1. **Explore the [Live Dashboard](/dashboard)** to see current framework status
-2. **Browse [Capabilities](./capabilities/overview)** to understand available features
-3. **Review [AI Code Patterns](./blueprints/overview)** for implementation examples
-4. **Check [Evolution Stories](../blog)** for framework development history
+1. __Explore the [Live Dashboard](/dashboard)__ to see current framework status
+2. __Browse [Capabilities](./capabilities/overview)__ to understand available features
+3. __Review [AI Code Patterns](./blueprints/overview)__ for implementation examples
+4. __Check [Evolution Stories](../blog)__ for framework development history
 
 ## Architecture Overview
 
@@ -90,17 +94,19 @@ graph TD
     D --> E[Observability Layer]
     E --> F[Feedback Loop]
     F --> B
-    
+
     B --> G[Semantic Interrupts]
     B --> H[Governance Rules]
     D --> I[Blueprint Registry]
     E --> J[Execution Traces]
-```
+```text
 
 ## Next Steps
 
-- **For New Users**: Start with the [Getting Started Guide](./tutorial-basics/create-a-document)
-- **For Developers**: Explore the [Capabilities Documentation](./capabilities/overview)
-- **For Maintainers**: Review the [Blueprint Registry](./blueprints/overview)
+- __For New Users__: Start with the [Getting Started Guide](./tutorial-basics/create-a-document)
+- __For Developers__: Explore the [Capabilities Documentation](./capabilities/overview)
+- __For Maintainers__: Review the [Blueprint Registry](./blueprints/overview)
 
-The Aegis Framework is designed to grow with your team while maintaining constitutional governance and safety principles. Every capability is monitored, every execution is traced, and every change respects the framework's foundational principles.
+The Aegis Framework is designed to grow with your team while maintaining Constitutional governance and safety
+principles. Every capability is monitored, every execution is traced, and every change respects the framework's
+foundational principles.

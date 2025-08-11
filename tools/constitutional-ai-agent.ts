@@ -50,11 +50,11 @@ export class ConstitutionalAIAgent {
         mode: 'strict',
         expectedActions: [],
         forbiddenActions: ['non-functional commands', 'demonstrative only'],
-        safetyConstraints: ['constitutional compliance', 'traceability', 'functional purpose']
+        safetyConstraints: ['constitutional compliance', 'traceability', 'functional purpose'],
       },
       actions: [],
       violations: [],
-      status: 'active'
+      status: 'active',
     };
   }
 
@@ -64,7 +64,7 @@ export class ConstitutionalAIAgent {
   setIntent(intent: Partial<ExecutionIntent>): void {
     this.session.intent = { ...this.session.intent, ...intent };
     this.enforcement.setExecutionIntent(this.session.intent);
-    
+
     console.log('🤖 Constitutional AI Agent Initialized');
     console.log(`📋 Session: ${this.session.sessionId}`);
     console.log(`🎯 Goal: ${this.session.intent.primaryGoal}`);
@@ -74,17 +74,20 @@ export class ConstitutionalAIAgent {
   /**
    * Execute command with constitutional enforcement
    */
-  async executeCommand(command: string, reasoning: string): Promise<{ success: boolean; output?: string; violations: IntentViolation[] }> {
+  async executeCommand(
+    command: string,
+    reasoning: string
+  ): Promise<{ success: boolean; output?: string; violations: IntentViolation[] }> {
     const action: AgentAction = {
       type: 'command',
       description: `Execute: ${command}`,
       command,
-      reasoning
+      reasoning,
     };
 
     // Constitutional pre-check
     const enforcement = this.enforcement.enforceIntent(command, reasoning);
-    
+
     if (!enforcement.allowed) {
       this.handleViolations(enforcement.violations);
       return { success: false, violations: enforcement.violations };
@@ -93,20 +96,20 @@ export class ConstitutionalAIAgent {
     // Execute command if constitutionally compliant
     try {
       console.log(`🔨 Executing: ${command}`);
-      const output = execSync(command, { 
-        cwd: this.projectRoot, 
+      const output = execSync(command, {
+        cwd: this.projectRoot,
         encoding: 'utf8',
-        stdio: 'pipe'
+        stdio: 'pipe',
       });
-      
+
       action.description = `✅ Executed: ${command}`;
       this.session.actions.push(action);
-      
+
       return { success: true, output, violations: [] };
     } catch (error) {
       action.description = `❌ Failed: ${command}`;
       this.session.actions.push(action);
-      
+
       console.error(`❌ Command failed: ${error instanceof Error ? error.message : String(error)}`);
       return { success: false, violations: [] };
     }
@@ -115,19 +118,23 @@ export class ConstitutionalAIAgent {
   /**
    * Write file with constitutional validation
    */
-  async writeFile(filePath: string, content: string, reasoning: string): Promise<{ success: boolean; violations: IntentViolation[] }> {
+  async writeFile(
+    filePath: string,
+    content: string,
+    reasoning: string
+  ): Promise<{ success: boolean; violations: IntentViolation[] }> {
     const action: AgentAction = {
       type: 'file-write',
       description: `Write file: ${filePath}`,
       filePath,
       content,
-      reasoning
+      reasoning,
     };
 
     // Check if file modification aligns with intent
     const pseudoCommand = `create file ${filePath}`;
     const enforcement = this.enforcement.enforceIntent(pseudoCommand, reasoning);
-    
+
     if (!enforcement.allowed) {
       this.handleViolations(enforcement.violations);
       return { success: false, violations: enforcement.violations };
@@ -138,17 +145,17 @@ export class ConstitutionalAIAgent {
       if (!fs.existsSync(dir)) {
         fs.mkdirSync(dir, { recursive: true });
       }
-      
+
       fs.writeFileSync(filePath, content);
       action.description = `✅ Created: ${filePath}`;
       this.session.actions.push(action);
-      
+
       console.log(`📄 File created: ${filePath}`);
       return { success: true, violations: [] };
     } catch (error) {
       action.description = `❌ Failed to create: ${filePath}`;
       this.session.actions.push(action);
-      
+
       console.error(`❌ File creation failed: ${error instanceof Error ? error.message : String(error)}`);
       return { success: false, violations: [] };
     }
@@ -157,7 +164,10 @@ export class ConstitutionalAIAgent {
   /**
    * Run functional test with verification
    */
-  async runFunctionalTest(testCommand: string, reasoning: string): Promise<{ success: boolean; output?: string; violations: IntentViolation[] }> {
+  async runFunctionalTest(
+    testCommand: string,
+    reasoning: string
+  ): Promise<{ success: boolean; output?: string; violations: IntentViolation[] }> {
     // Validate this is actually a functional test
     if (testCommand.trim().startsWith('echo ')) {
       const violation: IntentViolation = {
@@ -166,9 +176,9 @@ export class ConstitutionalAIAgent {
         description: 'Attempting to use echo command for functional test',
         evidence: `Command: ${testCommand}`,
         suggestedCorrection: 'Use actual test runner or validation tool',
-        blockExecution: true
+        blockExecution: true,
       };
-      
+
       this.handleViolations([violation]);
       return { success: false, violations: [violation] };
     }
@@ -181,12 +191,12 @@ export class ConstitutionalAIAgent {
    */
   async validateFrameworkState(): Promise<{ constitutional: boolean; violations: IntentViolation[] }> {
     console.log('🏛️ Running constitutional validation...');
-    
+
     const validations = [
       { command: 'node tools/validate-constitution.ts', name: 'Constitution' },
       { command: 'node tools/validate-template-quality.ts', name: 'Template Quality' },
       { command: 'npm run build', name: 'Build' },
-      { command: 'npm test', name: 'Tests' }
+      { command: 'npm test', name: 'Tests' },
     ];
 
     let constitutional = true;
@@ -203,7 +213,7 @@ export class ConstitutionalAIAgent {
             description: `${validation.name} validation failed`,
             evidence: `Command failed: ${validation.command}`,
             suggestedCorrection: `Fix ${validation.name} issues before proceeding`,
-            blockExecution: false
+            blockExecution: false,
           });
         }
       } catch (error) {
@@ -214,7 +224,7 @@ export class ConstitutionalAIAgent {
           description: `${validation.name} validation error`,
           evidence: `Error: ${error instanceof Error ? error.message : String(error)}`,
           suggestedCorrection: `Investigate and fix ${validation.name} validation`,
-          blockExecution: false
+          blockExecution: false,
         });
       }
     }
@@ -227,13 +237,13 @@ export class ConstitutionalAIAgent {
    */
   private handleViolations(violations: IntentViolation[]): void {
     this.session.violations.push(...violations);
-    
+
     const criticalViolations = violations.filter(v => v.severity === 'critical');
     if (criticalViolations.length > 0) {
       this.session.status = 'violated';
       console.log('\n🚨 CRITICAL CONSTITUTIONAL VIOLATION DETECTED');
       console.log('🛑 Agent session suspended for constitutional review');
-      
+
       // Generate violation report
       this.generateViolationReport();
     }
@@ -258,20 +268,32 @@ export class ConstitutionalAIAgent {
 - **Forbidden Actions**: ${this.session.intent.forbiddenActions.join(', ')}
 
 ## Actions Performed
-${this.session.actions.map((action, index) => `
+${this.session.actions
+  .map(
+    (action, index) => `
 ${index + 1}. **${action.type}**: ${action.description}
    - **Reasoning**: ${action.reasoning}
    ${action.command ? `- **Command**: \`${action.command}\`` : ''}
    ${action.filePath ? `- **File**: ${action.filePath}` : ''}
-`).join('')}
+`
+  )
+  .join('')}
 
 ## Constitutional Violations
-${this.session.violations.length === 0 ? 'None detected ✅' : this.session.violations.map((v, index) => `
+${
+  this.session.violations.length === 0
+    ? 'None detected ✅'
+    : this.session.violations
+        .map(
+          (v, index) => `
 ${index + 1}. **${v.type}** (${v.severity})
    - **Description**: ${v.description}
    - **Evidence**: ${v.evidence}
    - **Correction**: ${v.suggestedCorrection}
-`).join('')}
+`
+        )
+        .join('')
+}
 
 ## Summary
 - **Total Actions**: ${this.session.actions.length}
@@ -292,12 +314,12 @@ ${index + 1}. **${v.type}** (${v.severity})
   private generateViolationReport(): void {
     const report = this.generateSessionReport();
     const reportPath = path.join(this.projectRoot, 'logs', 'constitutional-violations', `${this.session.sessionId}.md`);
-    
+
     const dir = path.dirname(reportPath);
     if (!fs.existsSync(dir)) {
       fs.mkdirSync(dir, { recursive: true });
     }
-    
+
     fs.writeFileSync(reportPath, report);
     console.log(`📋 Violation report saved: ${reportPath}`);
   }
@@ -308,12 +330,12 @@ ${index + 1}. **${v.type}** (${v.severity})
   completeSession(): string {
     this.session.status = 'completed';
     const report = this.generateSessionReport();
-    
+
     console.log('\n🏁 Constitutional AI Agent Session Complete');
     console.log(`📊 Actions: ${this.session.actions.length}`);
     console.log(`⚖️ Violations: ${this.session.violations.length}`);
     console.log(`📋 Status: ${this.session.status}`);
-    
+
     return report;
   }
 }
@@ -332,50 +354,50 @@ export function createConstitutionalAgent(intent: ExecutionIntent, projectRoot?:
  */
 export async function demonstrateConstitutionalAgent(): Promise<void> {
   console.log('🧪 Demonstrating Constitutional AI Agent\n');
-  
+
   // Create agent with proper intent
   const agent = createConstitutionalAgent({
     primaryGoal: 'validate evolution story detection system functionality',
     mode: 'strict',
     expectedActions: ['run actual tests', 'validate tools', 'check framework state'],
     forbiddenActions: ['echo-only commands', 'demonstrative actions'],
-    safetyConstraints: ['constitutional compliance', 'functional verification', 'real outputs']
+    safetyConstraints: ['constitutional compliance', 'functional verification', 'real outputs'],
   });
 
   // Demonstrate proper testing approach
   console.log('🔍 Testing with constitutional enforcement:\n');
-  
+
   // This should be BLOCKED - echo command for functional test
   console.log('❌ Attempting non-functional test...');
   const badResult = await agent.runFunctionalTest(
     'echo "Testing evolution story detection..."',
     'Testing the evolution story system'
   );
-  
+
   if (!badResult.success) {
     console.log('   ✅ Constitutional enforcement blocked non-functional command\n');
   }
-  
+
   // This should be ALLOWED - actual functional test
   console.log('✅ Attempting functional test...');
   const goodResult = await agent.executeCommand(
     'node tools/detect-evolution-stories.ts',
     'Actually testing the evolution story detection functionality'
   );
-  
+
   if (goodResult.success) {
     console.log('   ✅ Constitutional enforcement allowed functional command\n');
   }
-  
+
   // Validate framework state
   console.log('🏛️ Validating constitutional compliance...');
   const validation = await agent.validateFrameworkState();
   console.log(`   Constitutional status: ${validation.constitutional ? '✅ Compliant' : '❌ Violations'}\n`);
-  
+
   // Complete session
   const report = agent.completeSession();
   console.log('📋 Session Report Generated');
-  
+
   return;
 }
 

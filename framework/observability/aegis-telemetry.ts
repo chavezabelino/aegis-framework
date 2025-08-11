@@ -1,9 +1,9 @@
 /**
  * Aegis Framework Telemetry System
- * 
+ *
  * Lightweight, purpose-built observability for AI operations
  * Focused on constitutional governance and evaluation metrics
- * 
+ *
  * @aegisFrameworkVersion 2.4.0
  * @intent Constitutional observability without vendor lock-in
  * @context ES module native, framework-specific telemetry
@@ -33,19 +33,19 @@ interface AegisMetrics {
   tokensUsed?: number;
   filesGenerated?: number;
   linesGenerated?: number;
-  
+
   // Quality
   validationPassRate?: number;
   overallScore?: number;
   securityScore?: number;
   qualityScore?: number;
   complianceScore?: number;
-  
+
   // Constitutional
   constitutionalCompliance?: boolean;
   driftDetected?: boolean;
   traceabilityVerified?: boolean;
-  
+
   // System
   memoryUsage?: number;
   cpuUsage?: number;
@@ -74,21 +74,24 @@ export class AegisTelemetry {
   private commitSha?: string;
   private metrics: AegisMetrics = {};
 
-  constructor(operation: 'hydrate' | 'generate' | 'evaluate' | 'validate' | 'repair', context: {
-    blueprintId?: string;
-    projectPath?: string;
-  } = {}) {
+  constructor(
+    operation: 'hydrate' | 'generate' | 'evaluate' | 'validate' | 'repair',
+    context: {
+      blueprintId?: string;
+      projectPath?: string;
+    } = {}
+  ) {
     this.sessionId = this.generateSessionId();
     this.operation = operation;
     this.startTime = Date.now();
     this.frameworkVersion = this.getFrameworkVersion();
     this.commitSha = this.getGitCommitSha();
-    
+
     // Setup telemetry paths
     const workspaceRoot = context.projectPath || process.cwd();
     this.telemetryPath = path.join(workspaceRoot, '.aegis', 'telemetry');
     this.sessionPath = path.join(this.telemetryPath, 'sessions');
-    
+
     this.ensureDirectories();
     this.emitSessionStart(context.blueprintId);
   }
@@ -130,7 +133,7 @@ export class AegisTelemetry {
       nodeVersion: process.version,
       platform: process.platform,
       arch: process.arch,
-      pid: process.pid
+      pid: process.pid,
     });
   }
 
@@ -142,13 +145,13 @@ export class AegisTelemetry {
       id: `${this.sessionId}-${this.events.length + 1}`,
       timestamp: new Date().toISOString(),
       sessionId: this.sessionId,
-      operation: this.operation,
+      operation: this.operation as 'hydrate' | 'generate' | 'evaluate' | 'validate' | 'repair',
       type,
       frameworkVersion: this.frameworkVersion,
       commitSha: this.commitSha,
       duration: type !== 'start' ? Date.now() - this.startTime : undefined,
       success: type !== 'error',
-      metadata
+      metadata,
     };
 
     this.events.push(event);
@@ -172,21 +175,24 @@ export class AegisTelemetry {
   /**
    * Record blueprint generation with full context
    */
-  recordGeneration(blueprintId: string, results: {
-    success: boolean;
-    performance: {
-      generationTime: number;
-      tokensUsed: number;
-      filesGenerated: number;
-      linesGenerated: number;
-    };
-    quality: {
-      validationPassRate: number;
-      overallScore: number;
-      constitutionalCompliance: boolean;
-    };
-    errors?: string[];
-  }): void {
+  recordGeneration(
+    blueprintId: string,
+    results: {
+      success: boolean;
+      performance: {
+        generationTime: number;
+        tokensUsed: number;
+        filesGenerated: number;
+        linesGenerated: number;
+      };
+      quality: {
+        validationPassRate: number;
+        overallScore: number;
+        constitutionalCompliance: boolean;
+      };
+      errors?: string[];
+    }
+  ): void {
     this.recordMetrics({
       generationTime: results.performance.generationTime,
       tokensUsed: results.performance.tokensUsed,
@@ -194,35 +200,41 @@ export class AegisTelemetry {
       linesGenerated: results.performance.linesGenerated,
       validationPassRate: results.quality.validationPassRate,
       overallScore: results.quality.overallScore,
-      constitutionalCompliance: results.quality.constitutionalCompliance
+      constitutionalCompliance: results.quality.constitutionalCompliance,
     });
 
     this.emit(results.success ? 'complete' : 'error', {
       blueprintId,
       ...results.performance,
       ...results.quality,
-      errors: results.errors
+      errors: results.errors,
     });
   }
 
   /**
    * Record evaluation results
    */
-  recordEvaluation(evalId: string, results: {
-    passed: boolean;
-    score: number;
-    validationPassRate: number;
-    judgeResults: Array<{
-      name: string;
+  recordEvaluation(
+    evalId: string,
+    results: {
+      passed: boolean;
       score: number;
-      weight: number;
-    }>;
-    errors: string[];
-  }): void {
-    const judgeBreakdown = results.judgeResults.reduce((acc, judge) => ({
-      ...acc,
-      [`${judge.name}Score`]: judge.score
-    }), {});
+      validationPassRate: number;
+      judgeResults: Array<{
+        name: string;
+        score: number;
+        weight: number;
+      }>;
+      errors: string[];
+    }
+  ): void {
+    const judgeBreakdown: Record<string, number> = results.judgeResults.reduce(
+      (acc, judge) => ({
+        ...acc,
+        [`${judge.name}Score`]: judge.score,
+      }),
+      {}
+    );
 
     this.recordMetrics({
       overallScore: results.score,
@@ -230,7 +242,7 @@ export class AegisTelemetry {
       securityScore: judgeBreakdown['security-reviewScore'],
       qualityScore: judgeBreakdown['code-qualityScore'],
       complianceScore: judgeBreakdown['framework-complianceScore'],
-      errorCount: results.errors.length
+      errorCount: results.errors.length,
     });
 
     this.emit(results.passed ? 'complete' : 'error', {
@@ -238,14 +250,14 @@ export class AegisTelemetry {
       ...judgeBreakdown,
       totalScore: results.score,
       validationRate: results.validationPassRate,
-      errors: results.errors
+      errors: results.errors,
     });
   }
 
   /**
    * Start operation timing
    */
-  startOperation(operationName: string, metadata: Record<string, any> = {}): () => void {
+  startOperation(operationName: string, metadata: Record<string, any> = {}): (success?: boolean, additionalMetadata?: Record<string, any>) => void {
     const startTime = Date.now();
     this.emit('start', { operation: operationName, ...metadata });
 
@@ -255,7 +267,7 @@ export class AegisTelemetry {
       this.emit(success ? 'complete' : 'error', {
         operation: operationName,
         duration,
-        ...additionalMetadata
+        ...additionalMetadata,
       });
     };
   }
@@ -269,15 +281,15 @@ export class AegisTelemetry {
     metadata: Record<string, any> = {}
   ): Promise<T> {
     const complete = this.startOperation(operationName, metadata);
-    
+
     try {
       const result = await operation();
       complete(true, { success: true });
       return result;
     } catch (error) {
-      complete(false, { 
+      complete(false, {
         error: error instanceof Error ? error.message : String(error),
-        stack: error instanceof Error ? error.stack : undefined
+        stack: error instanceof Error ? error.stack : undefined,
       });
       throw error;
     }
@@ -295,7 +307,7 @@ export class AegisTelemetry {
       events: this.events,
       totalDuration: Date.now() - this.startTime,
       success: !this.events.some(e => e.type === 'error'),
-      summary: this.metrics
+      summary: this.metrics,
     };
 
     // Save session summary
@@ -318,12 +330,12 @@ export class AegisTelemetry {
       start: '🚀',
       complete: '✅',
       error: '❌',
-      metric: '📊'
+      metric: '📊',
     }[event.type];
 
     const duration = event.duration ? ` (${event.duration}ms)` : '';
     console.log(`${emoji} ${event.operation}.${event.type}${duration}`);
-    
+
     if (event.metadata.operation) {
       console.log(`   └─ ${event.metadata.operation}`);
     }
@@ -367,13 +379,13 @@ export class AegisTelemetry {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          ...config.headers
+          ...config.headers,
         },
         body: JSON.stringify({
           session,
           framework: 'aegis',
-          version: this.frameworkVersion
-        })
+          version: this.frameworkVersion,
+        }),
       });
 
       if (!response.ok) {
@@ -402,21 +414,21 @@ export class AegisTelemetry {
   }
 
   private exportToCSV(session: AegisSession, exportPath: string): void {
-    const csvLines = [
-      'timestamp,operation,type,duration,success,blueprintId,score,validationRate'
-    ];
+    const csvLines = ['timestamp,operation,type,duration,success,blueprintId,score,validationRate'];
 
     session.events.forEach(event => {
-      csvLines.push([
-        event.timestamp,
-        event.operation,
-        event.type,
-        event.duration || '',
-        event.success,
-        event.metadata.blueprintId || '',
-        event.metadata.totalScore || '',
-        event.metadata.validationRate || ''
-      ].join(','));
+      csvLines.push(
+        [
+          event.timestamp,
+          event.operation,
+          event.type,
+          event.duration || '',
+          event.success,
+          event.metadata.blueprintId || '',
+          event.metadata.totalScore || '',
+          event.metadata.validationRate || '',
+        ].join(',')
+      );
     });
 
     const csvFile = path.join(exportPath, `${session.id}.csv`);
@@ -432,7 +444,7 @@ export class AegisTelemetry {
       `# HELP aegis_evaluation_score Current evaluation score`,
       `# TYPE aegis_evaluation_score gauge`,
       `aegis_evaluation_score{operation="${session.operation}"} ${session.summary.overallScore || 0}`,
-      ''
+      '',
     ];
 
     const metricsFile = path.join(exportPath, `${session.id}.prom`);

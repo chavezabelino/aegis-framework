@@ -25,10 +25,7 @@
     "occurrences": 1,
     "learnedFrom": true,
     "preventionImplemented": false,
-    "evidence": [
-      "Pattern detected in evolution stories",
-      "Learning system activated"
-    ],
+    "evidence": ["Pattern detected in evolution stories", "Learning system activated"],
     "status": "active"
   },
   {
@@ -40,10 +37,7 @@
     "occurrences": 1,
     "learnedFrom": true,
     "preventionImplemented": false,
-    "evidence": [
-      "Pattern detected in evolution stories",
-      "Learning system activated"
-    ],
+    "evidence": ["Pattern detected in evolution stories", "Learning system activated"],
     "status": "active"
   },
   {
@@ -55,10 +49,7 @@
     "occurrences": 1,
     "learnedFrom": true,
     "preventionImplemented": false,
-    "evidence": [
-      "Pattern detected in evolution stories",
-      "Learning system activated"
-    ],
+    "evidence": ["Pattern detected in evolution stories", "Learning system activated"],
     "status": "active"
   },
   {
@@ -70,10 +61,7 @@
     "occurrences": 1,
     "learnedFrom": true,
     "preventionImplemented": true,
-    "evidence": [
-      "Constitutional violation detected",
-      "Learning system activated"
-    ],
+    "evidence": ["Constitutional violation detected", "Learning system activated"],
     "status": "learned"
   }
 ]

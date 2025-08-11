@@ -1,0 +1,10 @@
+{
+  "report": true,
+  "low": true,
+  "moderate": true,
+  "high": true,
+  "critical": true,
+  "allowlist": ["GHSA-67mh-4wv8-2f99"],
+  "skip-dev": false,
+  "pass-enoaudit": true
+}

@@ -1,0 +1,113 @@
+name: Aegis Quality Gates
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+permissions:
+  contents: read
+  pull-requests: write
+  checks: read
+concurrency:
+  group: quality-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "pnpm"
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Restore pnpm cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.pnpm-store
+          key: pnpm-${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+
+      - name: Install
+        run: pnpm -w install --frozen-lockfile
+
+      - name: Install Playwright deps
+        run: npx playwright install --with-deps
+        if: ${{ !github.event.pull_request.draft }}
+
+      # Native GitHub dependency review (action form, not npx)
+      - name: Dependency review
+        uses: actions/dependency-review-action@v4
+        with:
+          fail-on-severity: high
+
+      - name: Run Quality (CI)
+        id: quality
+        run: |
+          set +e
+          OUT=$(pnpm -s quality:ci || true)
+          echo "$OUT"
+          echo "$OUT" | grep "__AegisQuality__=" | sed 's/__AegisQuality__=//' > quality.json
+          if [ ! -s quality.json ]; then
+            echo '{"grade":"F","score":0,"details":{}}' > quality.json
+          fi
+          echo "summary=$(cat quality.json)" >> $GITHUB_OUTPUT
+
+      - name: Upload artifact (quality.json)
+        uses: actions/upload-artifact@v4
+        with:
+          name: aegis-quality
+          path: quality.json
+
+      - name: PR comment
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const summary = JSON.parse(fs.readFileSync('quality.json','utf8'));
+            const d = summary.details || {};
+            const body = [
+              `## Aegis Quality Report`,
+              `**Grade:** ${summary.grade} (${summary.score})`,
+              ``,
+              `- Types: ${d.types?.ok ? '✅' : '❌'}`,
+              `- Lint: ${d.lint?.ok ? '✅' : '❌'} (eslintErrors=${d.lint?.eslintErrors ?? 0})`,
+              `- Coverage: ${d.coverage?.ok ? '✅' : '❌'} (lines=${d.coverage?.lines ?? 0}%, branches=${d.coverage?.branches ?? 0}%)`,
+              `- Mutation: ${d.mutation?.ok ? '✅' : '❌'} (score=${d.mutation?.mutationScore ?? 0}%)`,
+              `- E2E (@critical): ${d.e2e?.ok ? '✅' : '❌'}`,
+              `- Deps: ${d.deps?.ok ? '✅' : '❌'}`,
+              `- Security: ${d.security?.ok ? '✅' : '❌'}`,
+              `- Provenance: ${d.provenance?.ok ? '✅' : '❌'}`,
+              `- Waivers: ${d.waivers?.ok ? '✅' : '❌'}`
+            ].join('\n');
+            const { owner, repo } = context.repo;
+            const issue_number = context.issue.number;
+            const list = await github.rest.issues.listComments({ owner, repo, issue_number });
+            const prev = list.data.find(c => c.user.type === 'Bot' && c.body?.startsWith('## Aegis Quality Report'));
+            if (prev) {
+              await github.rest.issues.updateComment({ owner, repo, comment_id: prev.id, body });
+            } else {
+              await github.rest.issues.createComment({ owner, repo, issue_number, body });
+            }
+
+      - name: Enforce minimum grade
+        run: |
+          GRADE=$(jq -r '.grade' quality.json)
+          REQ=$(jq -r '.failBelowGrade' .aegis/config/quality.json)
+          declare -A map=( ["A"]=90 ["B"]=80 ["C"]=70 ["F"]=0 )
+          SCORE=$(jq -r '.score' quality.json)
+          MIN=${map[$REQ]}
+          if [ "$SCORE" -lt "$MIN" ]; then
+            echo "Quality score $SCORE is below minimum for grade $REQ ($MIN). Failing build."
+            exit 1
+          fi
+
+      # Heavy steps opt-out on drafts/forks to keep PRs fast
+      - name: Mutation test (Stryker)
+        run: pnpm -s mutate
+        if: ${{ !github.event.pull_request.draft && github.event.pull_request.head.repo.full_name == github.repository }}

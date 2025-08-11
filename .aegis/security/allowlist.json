@@ -1,0 +1,9 @@
+{
+  "entries": [
+    {
+      "id": "GHSA-67mh-4wv8-2f99",
+      "reason": "Transitive via vitest; dev-only; no runtime exposure",
+      "expires": "2025-10-15"
+    }
+  ]
+}

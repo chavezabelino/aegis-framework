@@ -34,7 +34,7 @@ class AttestationGenerator {
     const content = fs.readFileSync(filePath, 'utf8');
     const normalizedContent = this.normalizeContent(content);
     const hash = crypto.createHash('sha256').update(normalizedContent).digest('hex');
-    
+
     // Create HMAC signature
     const hmac = crypto.createHmac('sha256', this.config.hmacKey);
     hmac.update(hash);
@@ -47,7 +47,7 @@ class AttestationGenerator {
       signature: signature,
       timestamp: new Date().toISOString(),
       commit: this.config.commitSha,
-      algorithm: 'sha256+hmac-sha256'
+      algorithm: 'sha256+hmac-sha256',
     };
 
     // Write attestation file
@@ -103,7 +103,7 @@ class AttestationGenerator {
     // Remove the @hash line to avoid circular dependency
     const lines = content.split('\n');
     const normalizedLines = lines.filter(line => !line.includes('@hash:'));
-    
+
     // Normalize line endings to LF
     return normalizedLines.join('\n').replace(/\r\n/g, '\n');
   }
@@ -119,11 +119,14 @@ class AttestationGenerator {
   /**
    * Attest all files in a directory
    */
-  async attestDirectory(dirPath: string, extensions: string[] = ['.ts', '.js', '.tsx', '.jsx']): Promise<Map<string, string>> {
+  async attestDirectory(
+    dirPath: string,
+    extensions: string[] = ['.ts', '.js', '.tsx', '.jsx']
+  ): Promise<Map<string, string>> {
     const signatures = new Map<string, string>();
-    
+
     const files = this.getFilesRecursively(dirPath, extensions);
-    
+
     for (const file of files) {
       try {
         const signature = await this.attestFile(file);
@@ -159,17 +162,17 @@ class AttestationGenerator {
    */
   private getFilesRecursively(dirPath: string, extensions: string[]): string[] {
     const files: string[] = [];
-    
+
     if (!fs.existsSync(dirPath)) {
       return files;
     }
 
     const items = fs.readdirSync(dirPath);
-    
+
     for (const item of items) {
       const fullPath = path.join(dirPath, item);
       const stat = fs.statSync(fullPath);
-      
+
       if (stat.isDirectory()) {
         // Skip node_modules and .git
         if (item !== 'node_modules' && item !== '.git') {
@@ -190,7 +193,7 @@ class AttestationGenerator {
 async function main() {
   const args = process.argv.slice(2);
   const command = args[0];
-  
+
   if (!command || !['attest', 'verify'].includes(command)) {
     console.error('Usage: node tools/attest.ts <attest|verify> [directory]');
     process.exit(1);
@@ -209,7 +212,7 @@ async function main() {
   const generator = new AttestationGenerator({
     hmacKey,
     outputDir,
-    commitSha
+    commitSha,
   });
 
   try {
@@ -217,23 +220,20 @@ async function main() {
       console.log(`🔐 Attesting files in ${targetDir}...`);
       const signatures = await generator.attestDirectory(targetDir);
       console.log(`✅ Attested ${signatures.size} files`);
-      
+
       // Write summary
       const summary = {
         timestamp: new Date().toISOString(),
         commit: commitSha,
         filesAttested: signatures.size,
-        signatures: Object.fromEntries(signatures)
+        signatures: Object.fromEntries(signatures),
       };
-      
-      fs.writeFileSync(
-        path.join(outputDir, commitSha, 'attestation-summary.json'),
-        JSON.stringify(summary, null, 2)
-      );
+
+      fs.writeFileSync(path.join(outputDir, commitSha, 'attestation-summary.json'), JSON.stringify(summary, null, 2));
     } else if (command === 'verify') {
       console.log(`🔍 Verifying attestations in ${targetDir}...`);
       const isValid = await generator.verifyDirectory(targetDir);
-      
+
       if (isValid) {
         console.log('✅ All attestations verified successfully');
       } else {
@@ -249,7 +249,7 @@ async function main() {
 
 // Run if called directly
 if (import.meta.url === `file://${process.argv[1]}`) {
-  main().catch((error) => {
+  main().catch(error => {
     console.error('❌ Attestation failed:', error.message);
     process.exit(1);
   });

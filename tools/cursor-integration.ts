@@ -22,7 +22,7 @@ interface CursorContext {
 
 class CursorEvolutionDetector extends RealTimeEvolutionDetector {
   private cursorSessionLog: CursorContext[] = [];
-  
+
   /**
    * Cursor-specific patterns optimized for real-time interface
    */
@@ -34,7 +34,7 @@ class CursorEvolutionDetector extends RealTimeEvolutionDetector {
       severity: 'high',
       autoGenerate: false,
       description: 'Cursor user expressing real-time editing concerns',
-      visualFeedback: true
+      visualFeedback: true,
     },
     // Framework enhancement during development
     {
@@ -43,7 +43,7 @@ class CursorEvolutionDetector extends RealTimeEvolutionDetector {
       severity: 'critical',
       autoGenerate: true,
       description: 'Cursor user identifying framework gaps during development',
-      visualFeedback: true
+      visualFeedback: true,
     },
     // Documentation needs during coding
     {
@@ -52,7 +52,7 @@ class CursorEvolutionDetector extends RealTimeEvolutionDetector {
       severity: 'medium',
       autoGenerate: false,
       description: 'Cursor user requesting documentation during development',
-      visualFeedback: false
+      visualFeedback: false,
     },
     // Field experience during real-time development
     {
@@ -61,7 +61,7 @@ class CursorEvolutionDetector extends RealTimeEvolutionDetector {
       severity: 'high',
       autoGenerate: false,
       description: 'Cursor user reporting field experience during development',
-      visualFeedback: true
+      visualFeedback: true,
     },
     // Cursor-specific interface patterns
     {
@@ -70,8 +70,8 @@ class CursorEvolutionDetector extends RealTimeEvolutionDetector {
       severity: 'medium',
       autoGenerate: false,
       description: 'Cursor user requesting interface improvements',
-      visualFeedback: true
-    }
+      visualFeedback: true,
+    },
   ];
 
   /**
@@ -80,7 +80,7 @@ class CursorEvolutionDetector extends RealTimeEvolutionDetector {
   async analyzeCursorContext(context: CursorContext): Promise<any[]> {
     this.cursorSessionLog.push(context);
     const triggers: any[] = [];
-    
+
     // Analyze user prompt with Cursor-specific patterns
     for (const pattern of this.cursorPatterns) {
       if (pattern.pattern.test(context.userPrompt)) {
@@ -93,22 +93,22 @@ class CursorEvolutionDetector extends RealTimeEvolutionDetector {
             `Timestamp: ${context.timestamp.toISOString()}`,
             `Session: ${context.sessionId || 'unknown'}`,
             `Active file: ${context.activeFile || 'unknown'}`,
-            `Visual feedback: ${pattern.visualFeedback ? 'enabled' : 'disabled'}`
+            `Visual feedback: ${pattern.visualFeedback ? 'enabled' : 'disabled'}`,
           ],
           suggestedStoryTitle: this.generateCursorStoryTitle(pattern, context),
           autoGenerate: pattern.autoGenerate,
-          visualFeedback: pattern.visualFeedback
+          visualFeedback: pattern.visualFeedback,
         };
-        
+
         triggers.push(trigger);
-        
+
         // Provide immediate visual feedback if enabled
         if (pattern.visualFeedback) {
           await this.provideCursorVisualFeedback(trigger, context);
         }
       }
     }
-    
+
     return triggers;
   }
 
@@ -119,7 +119,7 @@ class CursorEvolutionDetector extends RealTimeEvolutionDetector {
     const baseTitle = pattern.description.replace('Cursor user ', '').replace(' during development', '');
     const timestamp = context.timestamp.toISOString().split('T')[0];
     const sessionId = context.sessionId?.split('-')[2] || 'unknown';
-    
+
     return `Cursor ${baseTitle} - ${timestamp}-${sessionId}`;
   }
 
@@ -128,7 +128,7 @@ class CursorEvolutionDetector extends RealTimeEvolutionDetector {
    */
   private async provideCursorVisualFeedback(trigger: any, context: CursorContext): Promise<void> {
     const feedbackMessage = this.generateCursorFeedbackMessage(trigger);
-    
+
     // Log visual feedback for Cursor interface
     const feedbackLog = {
       timestamp: new Date().toISOString(),
@@ -137,9 +137,9 @@ class CursorEvolutionDetector extends RealTimeEvolutionDetector {
       severity: trigger.severity,
       message: feedbackMessage,
       activeFile: context.activeFile,
-      cursorPosition: context.cursorPosition
+      cursorPosition: context.cursorPosition,
     };
-    
+
     await this.saveCursorFeedback(feedbackLog);
   }
 
@@ -152,9 +152,10 @@ class CursorEvolutionDetector extends RealTimeEvolutionDetector {
       'cursor-constitutional-insight': '🚨 Constitutional insight captured - evolution story auto-generated',
       'cursor-documentation-gap': '📝 Documentation gap identified - will be captured for framework evolution',
       'cursor-field-experience': '💡 Field experience insight captured - contributing to framework learning',
-      'cursor-interface-improvement': '🎨 Interface improvement request noted - will be considered for Cursor integration'
+      'cursor-interface-improvement':
+        '🎨 Interface improvement request noted - will be considered for Cursor integration',
     };
-    
+
     return messages[trigger.type] || '🔍 Evolution trigger detected - framework learning in progress';
   }
 
@@ -166,10 +167,10 @@ class CursorEvolutionDetector extends RealTimeEvolutionDetector {
     if (!fs.existsSync(logDir)) {
       fs.mkdirSync(logDir, { recursive: true });
     }
-    
+
     const logFile = path.join(logDir, `${feedback.timestamp.split('T')[0]}.jsonl`);
     const logEntry = JSON.stringify(feedback);
-    
+
     fs.appendFileSync(logFile, logEntry + '\n');
   }
 
@@ -178,11 +179,11 @@ class CursorEvolutionDetector extends RealTimeEvolutionDetector {
    */
   private calculateCursorSessionDuration(conversations: CursorContext[]): string {
     if (conversations.length < 2) return 'N/A';
-    
+
     const start = conversations[0].timestamp;
     const end = conversations[conversations.length - 1].timestamp;
     const durationMinutes = Math.round((end.getTime() - start.getTime()) / (1000 * 60));
-    
+
     return `${durationMinutes} minutes`;
   }
 
@@ -192,19 +193,19 @@ class CursorEvolutionDetector extends RealTimeEvolutionDetector {
   async analyzeCursorSession(sessionId: string): Promise<any[]> {
     const sessionConversations = this.cursorSessionLog.filter(c => c.sessionId === sessionId);
     const triggers: any[] = [];
-    
+
     if (sessionConversations.length < 2) return triggers;
-    
+
     // Analyze Cursor-specific session patterns
     const allPrompts = sessionConversations.map(c => c.userPrompt).join(' ');
     const activeFiles = sessionConversations.map(c => c.activeFile).filter(Boolean);
-    
+
     // Check for Cursor-specific patterns
     const cursorKeywords = ['cursor', 'interface', 'real-time', 'visual', 'feedback', 'break', 'error'];
     const cursorCount = cursorKeywords.reduce((count, keyword) => {
       return count + (allPrompts.toLowerCase().match(new RegExp(keyword, 'g')) || []).length;
     }, 0);
-    
+
     if (cursorCount > 3) {
       triggers.push({
         type: 'cursor-session-pattern',
@@ -213,14 +214,14 @@ class CursorEvolutionDetector extends RealTimeEvolutionDetector {
           `High Cursor-specific indicators: ${cursorCount} instances`,
           `Session length: ${sessionConversations.length} exchanges`,
           `Active files: ${Array.from(new Set(activeFiles)).join(', ')}`,
-          `Session duration: ${this.calculateCursorSessionDuration(sessionConversations)}`
+          `Session duration: ${this.calculateCursorSessionDuration(sessionConversations)}`,
         ],
         suggestedStoryTitle: `Cursor Session Analysis - Interface Patterns`,
         autoGenerate: false,
-        visualFeedback: true
+        visualFeedback: true,
       });
     }
-    
+
     return triggers;
   }
 }
@@ -246,7 +247,7 @@ export function createCursorContext(
     cursorRules,
     activeFile,
     cursorPosition,
-    visualFeedback: true
+    visualFeedback: true,
   };
 }
 
@@ -269,10 +270,10 @@ export async function captureCursorContext(
 ): Promise<void> {
   try {
     const detector = new CursorEvolutionDetector(workspaceRoot);
-    
+
     // Get Cursor rules from environment or parameters
     const rules = cursorRules || getCursorRules(workspaceRoot);
-    
+
     // Create Cursor-specific context
     const context = createCursorContext(
       userPrompt,
@@ -283,26 +284,31 @@ export async function captureCursorContext(
       activeFile,
       cursorPosition
     );
-    
+
     // Analyze for Cursor-specific triggers
     const triggers = await detector.analyzeCursorContext(context);
-    
+
     // Save Cursor conversation context
     await detector.saveConversationContext(context);
-    
+
     // If triggers found, provide Cursor-specific feedback
     if (triggers.length > 0) {
       console.log('🔍 Cursor real-time evolution triggers detected:');
       triggers.forEach(trigger => {
-        const icon = trigger.severity === 'critical' ? '🚨' : 
-                    trigger.severity === 'high' ? '⚠️' : 
-                    trigger.severity === 'medium' ? '💡' : '📝';
+        const icon =
+          trigger.severity === 'critical'
+            ? '🚨'
+            : trigger.severity === 'high'
+              ? '⚠️'
+              : trigger.severity === 'medium'
+                ? '💡'
+                : '📝';
         console.log(`   ${icon} ${trigger.suggestedStoryTitle}`);
         if (trigger.visualFeedback) {
           console.log(`   🎨 Visual feedback: ${trigger.evidence.find((e: string) => e.includes('Visual feedback'))}`);
         }
       });
-      
+
       // Auto-generate critical stories
       const criticalTriggers = triggers.filter(t => t.autoGenerate);
       if (criticalTriggers.length > 0) {
@@ -324,14 +330,10 @@ export async function captureCursorContext(
  */
 function getCursorRules(workspaceRoot?: string): string | undefined {
   const root = workspaceRoot || process.cwd();
-  
+
   // Try Cursor-specific rule locations
-  const rulePaths = [
-    '.cursorrules',
-    'cursor-rules.md',
-    '.cursor/rules.md'
-  ];
-  
+  const rulePaths = ['.cursorrules', 'cursor-rules.md', '.cursor/rules.md'];
+
   for (const rulePath of rulePaths) {
     const fullPath = path.join(root, rulePath);
     if (fs.existsSync(fullPath)) {
@@ -342,7 +344,7 @@ function getCursorRules(workspaceRoot?: string): string | undefined {
       }
     }
   }
-  
+
   return undefined;
 }
 
@@ -351,22 +353,24 @@ function getCursorRules(workspaceRoot?: string): string | undefined {
  */
 function getWorkspaceFiles(workspaceRoot?: string): string[] {
   const root = workspaceRoot || process.cwd();
-  
+
   try {
     // Get recently modified files relevant to Cursor
-    const recentFiles = fs.readdirSync(root, { withFileTypes: true })
+    const recentFiles = fs
+      .readdirSync(root, { withFileTypes: true })
       .filter(dirent => dirent.isFile())
-      .filter(dirent => 
-        dirent.name.endsWith('.ts') || 
-        dirent.name.endsWith('.tsx') || 
-        dirent.name.endsWith('.js') || 
-        dirent.name.endsWith('.jsx') ||
-        dirent.name.endsWith('.css') ||
-        dirent.name.endsWith('.md')
+      .filter(
+        dirent =>
+          dirent.name.endsWith('.ts') ||
+          dirent.name.endsWith('.tsx') ||
+          dirent.name.endsWith('.js') ||
+          dirent.name.endsWith('.jsx') ||
+          dirent.name.endsWith('.css') ||
+          dirent.name.endsWith('.md')
       )
       .map(dirent => dirent.name)
       .slice(0, 10); // Limit context for Cursor
-    
+
     return recentFiles;
   } catch (error) {
     return [];
@@ -382,55 +386,62 @@ export async function detectCursorEvolutionStories(
   cursorRules?: string,
   activeFile?: string,
   cursorPosition?: { line: number; character: number }
-): Promise<void> {
+): Promise<any[]> {
   const detector = new CursorEvolutionDetector();
-  
+
   console.log('🔍 Scanning for Cursor evolution story triggers...\n');
-  
+
   // Run standard detection
   const standardTriggers = await detector.detectTriggers();
-  
+
   // Add Cursor-specific analysis if conversation context provided
   let cursorTriggers: any[] = [];
   if (userPrompt) {
     const context = createCursorContext(
-      userPrompt, 
-      aiResponse, 
-      undefined, 
-      undefined, 
+      userPrompt,
+      aiResponse,
+      undefined,
+      undefined,
       cursorRules,
       activeFile,
       cursorPosition
     );
-    
+
     cursorTriggers = await detector.analyzeCursorContext(context);
     await detector.saveConversationContext(context);
   }
-  
+
   // Analyze recent Cursor conversation logs
   const recentTriggers = await detector.analyzeRecentConversations(1);
-  
+
   const allTriggers = [...standardTriggers, ...cursorTriggers, ...recentTriggers];
-  
+
   // Report all triggers with Cursor-specific formatting
   if (allTriggers.length === 0) {
     console.log('✅ No Cursor evolution story triggers detected');
-    return;
+    return [];
   }
-  
+
   detector.reportTriggers();
-  
+
   // Report Cursor-specific findings
   if (cursorTriggers.length > 0) {
     console.log('\n🎨 Cursor Real-Time Triggers:');
     cursorTriggers.forEach(trigger => {
-      const icon = trigger.severity === 'critical' ? '🚨' : 
-                  trigger.severity === 'high' ? '⚠️' : 
-                  trigger.severity === 'medium' ? '💡' : '📝';
-      
+      const icon =
+        trigger.severity === 'critical'
+          ? '🚨'
+          : trigger.severity === 'high'
+            ? '⚠️'
+            : trigger.severity === 'medium'
+              ? '💡'
+              : '📝';
+
       console.log(`   ${icon} [${trigger.severity}] ${trigger.suggestedStoryTitle}`);
       console.log(`      Auto-generate: ${trigger.autoGenerate ? 'Yes' : 'No'}`);
       console.log(`      Visual feedback: ${trigger.visualFeedback ? 'Enabled' : 'Disabled'}`);
     });
   }
+
+  return allTriggers;
 }

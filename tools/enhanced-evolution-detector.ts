@@ -83,7 +83,7 @@ class EnhancedEvolutionDetector {
     const context = this.conversationContext.join(' ').toLowerCase();
 
     // Pattern: User had to point out systematic issues
-    if (context.includes('shouldn\'t you have asked') || context.includes('should you have caught')) {
+    if (context.includes("shouldn't you have asked") || context.includes('should you have caught')) {
       triggers.push({
         id: `INTELLIGENCE-GAP-${Date.now()}`,
         type: 'intelligence-gap',
@@ -97,18 +97,18 @@ class EnhancedEvolutionDetector {
           evidence: [
             'User had to ask if single violation was symptom of larger issue',
             'Framework treated isolated incident without systematic analysis',
-            'Failed to apply pattern recognition across similar files'
+            'Failed to apply pattern recognition across similar files',
           ],
           suggestedActions: [
             'Implement automated systematic pattern detection',
             'Add intelligent questioning capabilities',
             'Create cross-file analysis automation',
-            'Build predictive validation systems'
+            'Build predictive validation systems',
           ],
-          frameworkImpact: 'Reduces framework intelligence and user trust'
+          frameworkImpact: 'Reduces framework intelligence and user trust',
         },
         frameworkEnhancement: 'Intelligent Pattern Recognition System',
-        constitutionalAmendment: 'Article XII: Framework Intelligence Standards'
+        constitutionalAmendment: 'Article XII: Framework Intelligence Standards',
       });
     }
 
@@ -127,19 +127,19 @@ class EnhancedEvolutionDetector {
           evidence: [
             '45 files found with version inconsistencies',
             'Manual comprehensive scanning required',
-            'Framework didn\'t suggest systematic analysis',
-            'User had to identify pattern gap'
+            "Framework didn't suggest systematic analysis",
+            'User had to identify pattern gap',
           ],
           suggestedActions: [
             'Implement automated systematic questioning',
             'Add cross-file pattern analysis',
             'Create intelligent validation systems',
-            'Build predictive issue detection'
+            'Build predictive issue detection',
           ],
-          frameworkImpact: 'Undermines framework reliability and automation'
+          frameworkImpact: 'Undermines framework reliability and automation',
         },
         frameworkEnhancement: 'Automated Systematic Questioning System',
-        constitutionalAmendment: 'Article XIII: Systematic Pattern Detection'
+        constitutionalAmendment: 'Article XIII: Systematic Pattern Detection',
       });
     }
 
@@ -168,19 +168,19 @@ class EnhancedEvolutionDetector {
           evidence: [
             'Treated single file violation as isolated incident',
             'Failed to question if issue was systematic',
-            'Didn\'t automatically scan for related problems',
-            'Manual intervention required for comprehensive fix'
+            "Didn't automatically scan for related problems",
+            'Manual intervention required for comprehensive fix',
           ],
           suggestedActions: [
             'Implement systematic thinking algorithms',
             'Add automated pattern recognition',
             'Create intelligent questioning systems',
-            'Build systematic analysis automation'
+            'Build systematic analysis automation',
           ],
-          frameworkImpact: 'Reduces framework effectiveness and user confidence'
+          frameworkImpact: 'Reduces framework effectiveness and user confidence',
         },
         frameworkEnhancement: 'Systematic Thinking Engine',
-        constitutionalAmendment: 'Article XIV: Intelligent Questioning Requirements'
+        constitutionalAmendment: 'Article XIV: Intelligent Questioning Requirements',
       });
     }
 
@@ -210,18 +210,18 @@ class EnhancedEvolutionDetector {
             'Intelligence gaps identified through user feedback',
             'Systematic thinking failures revealed',
             'Pattern recognition weaknesses exposed',
-            'Opportunity for framework enhancement identified'
+            'Opportunity for framework enhancement identified',
           ],
           suggestedActions: [
             'Implement learning from intelligence failures',
             'Add pattern recognition improvement',
             'Create systematic thinking enhancement',
-            'Build automated learning systems'
+            'Build automated learning systems',
           ],
-          frameworkImpact: 'Improves framework intelligence and reliability'
+          frameworkImpact: 'Improves framework intelligence and reliability',
         },
         frameworkEnhancement: 'Framework Learning System',
-        constitutionalAmendment: 'Article XV: Framework Learning Standards'
+        constitutionalAmendment: 'Article XV: Framework Learning Standards',
       });
     }
 
@@ -251,18 +251,18 @@ class EnhancedEvolutionDetector {
             'Version update process missed 45 files',
             'Manual intervention required for systematic issues',
             'Intelligence gaps in pattern detection',
-            'Process automation insufficient'
+            'Process automation insufficient',
           ],
           suggestedActions: [
             'Implement comprehensive process automation',
             'Add intelligent process validation',
             'Create automated process enhancement',
-            'Build systematic process improvement'
+            'Build systematic process improvement',
           ],
-          frameworkImpact: 'Improves framework reliability and automation'
+          frameworkImpact: 'Improves framework reliability and automation',
         },
         frameworkEnhancement: 'Process Enhancement System',
-        constitutionalAmendment: 'Article XVI: Process Automation Standards'
+        constitutionalAmendment: 'Article XVI: Process Automation Standards',
       });
     }
 
@@ -274,16 +274,16 @@ class EnhancedEvolutionDetector {
    */
   async generateIntelligentQuestions(violation: any): Promise<string[]> {
     return [
-      "Is this isolated or systematic?",
-      "What else might be affected?",
-      "Should I have caught this earlier?",
-      "What patterns am I missing?",
-      "How can we prevent this in the future?",
-      "Are there similar files that might have the same issue?",
-      "What systematic thinking should I apply here?",
-      "What learning opportunity does this represent?",
-      "How can I enhance the framework to prevent this?",
-      "What constitutional amendments might be needed?"
+      'Is this isolated or systematic?',
+      'What else might be affected?',
+      'Should I have caught this earlier?',
+      'What patterns am I missing?',
+      'How can we prevent this in the future?',
+      'Are there similar files that might have the same issue?',
+      'What systematic thinking should I apply here?',
+      'What learning opportunity does this represent?',
+      'How can I enhance the framework to prevent this?',
+      'What constitutional amendments might be needed?',
     ];
   }
 
@@ -296,7 +296,7 @@ class EnhancedEvolutionDetector {
       systematicPattern: [],
       affectedFiles: [],
       cascadingEffects: [],
-      preventionStrategies: []
+      preventionStrategies: [],
     };
 
     // Apply systematic thinking to determine if isolated
@@ -316,14 +316,14 @@ class EnhancedEvolutionDetector {
    */
   private async findSimilarFiles(filePath: string): Promise<string[]> {
     const similarFiles: string[] = [];
-    
+
     // Look for files with similar patterns
     if (filePath.includes('docs/')) {
-      similarFiles.push(...await this.findFilesInDirectory('docs/'));
+      similarFiles.push(...(await this.findFilesInDirectory('docs/')));
     }
-    
+
     if (filePath.includes('tools/')) {
-      similarFiles.push(...await this.findFilesInDirectory('tools/'));
+      similarFiles.push(...(await this.findFilesInDirectory('tools/')));
     }
 
     return similarFiles;
@@ -344,7 +344,7 @@ class EnhancedEvolutionDetector {
         if (item.isFile()) {
           files.push(path.join(dirPath, item.name));
         } else if (item.isDirectory()) {
-          files.push(...await this.findFilesInDirectory(path.join(dirPath, item.name)));
+          files.push(...(await this.findFilesInDirectory(path.join(dirPath, item.name))));
         }
       }
 
@@ -356,12 +356,13 @@ class EnhancedEvolutionDetector {
 }
 
 // Export for use in other tools
-export { EnhancedEvolutionDetector, EnhancedEvolutionTrigger, IntelligenceGapAnalysis, SystematicAnalysis };
+export { EnhancedEvolutionDetector };
+export type { EnhancedEvolutionTrigger, IntelligenceGapAnalysis, SystematicAnalysis };
 
 // CLI interface
 async function main() {
   const detector = new EnhancedEvolutionDetector();
-  
+
   if (process.argv.length < 3) {
     console.log('Usage: node enhanced-evolution-detector.ts <context-file>');
     console.log('Example: node enhanced-evolution-detector.ts conversation-context.txt');
@@ -380,7 +381,7 @@ async function main() {
   }
 
   const triggers = await detector.detectEnhancedEvolutionStories(context);
-  
+
   console.log('🔍 Enhanced Evolution Story Detection Results');
   console.log('============================================');
   console.log(`Found ${triggers.length} evolution triggers`);

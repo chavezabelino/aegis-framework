@@ -43,7 +43,7 @@ class DestructiveActionProtector {
       'README.md',
       'CHANGELOG.md',
       'CONTRIBUTING.md',
-      'LICENSE'
+      'LICENSE',
     ];
     this.essentialDirectories = [
       'framework/',
@@ -55,13 +55,13 @@ class DestructiveActionProtector {
       'tests/',
       'examples/',
       'templates/',
-      'scaffolds/'
+      'scaffolds/',
     ];
     this.constitutionalFiles = [
       'CONSTITUTION.md',
       'VERSION',
       '.framework/constitutional-state.json',
-      '.aegis/framework-state.json'
+      '.aegis/framework-state.json',
     ];
   }
 
@@ -75,7 +75,7 @@ class DestructiveActionProtector {
       riskLevel: 'low',
       warnings: [],
       requiredApprovals: [],
-      constitutionalViolations: []
+      constitutionalViolations: [],
     };
 
     // Check for constitutional violations
@@ -132,7 +132,7 @@ class DestructiveActionProtector {
       directories: [],
       riskLevel: 'low',
       requiresApproval: false,
-      constitutionalImpact: []
+      constitutionalImpact: [],
     };
 
     // Parse targets
@@ -276,7 +276,7 @@ class DestructiveActionProtector {
   async emergencyRecovery(): Promise<void> {
     console.log('🚨 EMERGENCY RECOVERY INITIATED');
     console.log('📋 Restoring essential framework files...');
-    
+
     // This would implement recovery logic
     // For now, just log the recovery attempt
     console.log('✅ Emergency recovery protocol activated');
@@ -289,7 +289,7 @@ export { DestructiveActionProtector };
 // CLI interface
 async function main() {
   const protector = new DestructiveActionProtector();
-  
+
   if (process.argv.length < 4) {
     console.log('Usage: node destructive-action-protection.ts <action> <target1> [target2] ...');
     console.log('Example: node destructive-action-protection.ts delete .DS_Store');
@@ -300,14 +300,14 @@ async function main() {
   const targets = process.argv.slice(3);
 
   const result = await protector.validateDestructiveAction(action, targets);
-  
+
   console.log('🛡️ Destructive Action Protection Check');
   console.log('=====================================');
   console.log(`Action: ${action}`);
   console.log(`Targets: ${targets.join(', ')}`);
   console.log(`Risk Level: ${result.riskLevel.toUpperCase()}`);
   console.log(`Allowed: ${result.allowed ? '✅ YES' : '❌ NO'}`);
-  
+
   if (result.warnings.length > 0) {
     console.log('\n⚠️ Warnings:');
     result.warnings.forEach(warning => console.log(`  - ${warning}`));

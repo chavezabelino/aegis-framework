@@ -2,16 +2,16 @@
 
 /**
  * Predictive Constitutional Enforcement
- * 
+ *
  * Uses pattern recognition to predict and prevent constitutional violations before they occur
  * Part of Phase 2: Intelligent Governance
- * 
+ *
  * @aegisFrameworkVersion: 2.4.0-beta
  * @intent: Implement predictive enforcement based on learned patterns
  */
 
-import fs from "fs";
-import path from "path";
+import fs from 'fs';
+import path from 'path';
 
 interface PreventionRule {
   id: string;
@@ -70,27 +70,30 @@ class PredictiveEnforcement {
         { type: 'keyword', condition: 'node_modules', weight: 0.8 },
         { type: 'keyword', condition: 'gitignore', weight: 0.7 },
         { type: 'keyword', condition: 'commit', weight: 0.5 },
-        { type: 'pattern', condition: 'file-operation-suggestion', weight: 0.9 }
+        { type: 'pattern', condition: 'file-operation-suggestion', weight: 0.9 },
       ],
       interventions: [
         {
           type: 'clarification',
-          message: '🤔 Clarification needed: Do you want to exclude files from git tracking (.gitignore) or remove them from the filesystem?',
-          priority: 1
+          message:
+            '🤔 Clarification needed: Do you want to exclude files from git tracking (.gitignore) or remove them from the filesystem?',
+          priority: 1,
         },
         {
           type: 'suggestion',
-          message: '💡 For development dependencies, typically you want to ignore them in git but keep them locally for development.',
-          priority: 2
+          message:
+            '💡 For development dependencies, typically you want to ignore them in git but keep them locally for development.',
+          priority: 2,
         },
         {
           type: 'guidance',
-          message: '📚 Git exclusion (.gitignore) vs File deletion are different operations. Most Node.js projects ignore node_modules/ but keep it locally.',
-          priority: 3
-        }
+          message:
+            '📚 Git exclusion (.gitignore) vs File deletion are different operations. Most Node.js projects ignore node_modules/ but keep it locally.',
+          priority: 3,
+        },
       ],
       confidence: 0.8,
-      enabled: true
+      enabled: true,
     });
 
     // Rule for version consistency
@@ -101,22 +104,22 @@ class PredictiveEnforcement {
       triggers: [
         { type: 'keyword', condition: 'version', weight: 0.7 },
         { type: 'keyword', condition: 'VERSION', weight: 0.8 },
-        { type: 'pattern', condition: 'version-change', weight: 0.9 }
+        { type: 'pattern', condition: 'version-change', weight: 0.9 },
       ],
       interventions: [
         {
           type: 'warning',
           message: '⚠️ Version change detected. Ensure all references are updated consistently.',
-          priority: 1
+          priority: 1,
         },
         {
           type: 'suggestion',
           message: '🔧 Run constitutional validation to check version consistency: npm run validate',
-          priority: 2
-        }
+          priority: 2,
+        },
       ],
       confidence: 0.9,
-      enabled: true
+      enabled: true,
     });
 
     // Rule for annotation compliance
@@ -126,22 +129,23 @@ class PredictiveEnforcement {
       description: 'Ensures all framework files include proper constitutional annotations',
       triggers: [
         { type: 'pattern', condition: 'new-framework-file', weight: 1.0 },
-        { type: 'pattern', condition: 'blueprint-creation', weight: 0.9 }
+        { type: 'pattern', condition: 'blueprint-creation', weight: 0.9 },
       ],
       interventions: [
         {
           type: 'guidance',
           message: '📝 Remember to include constitutional annotations: @aegisFrameworkVersion and @intent',
-          priority: 1
+          priority: 1,
         },
         {
           type: 'suggestion',
-          message: '✅ Use this template:\n<!--\n@aegisFrameworkVersion: 1.1.0-beta\n@intent: Description of purpose\n-->',
-          priority: 2
-        }
+          message:
+            '✅ Use this template:\n<!--\n@aegisFrameworkVersion: 1.1.0-beta\n@intent: Description of purpose\n-->',
+          priority: 2,
+        },
       ],
       confidence: 0.95,
-      enabled: true
+      enabled: true,
     });
   }
 
@@ -150,20 +154,20 @@ class PredictiveEnforcement {
       const analysisPath = path.join(this.frameworkRoot, 'framework/learning/pattern-analysis.json');
       if (fs.existsSync(analysisPath)) {
         const analysis = JSON.parse(fs.readFileSync(analysisPath, 'utf8'));
-        
+
         // Convert learned patterns into prevention rules
         for (const pattern of analysis.patterns) {
           this.convertPatternToRule(pattern);
         }
       }
     } catch (error) {
-      console.warn("⚠️ Could not load learned prevention rules");
+      console.warn('⚠️ Could not load learned prevention rules');
     }
   }
 
   private convertPatternToRule(pattern: any): void {
     const ruleId = `learned-${pattern.id}`;
-    
+
     const rule: PreventionRule = {
       id: ruleId,
       name: `Learned: ${pattern.type}`,
@@ -171,16 +175,16 @@ class PredictiveEnforcement {
       triggers: pattern.preventionStrategy.triggers.map((trigger: string) => ({
         type: 'pattern' as const,
         condition: trigger,
-        weight: 0.8
+        weight: 0.8,
       })),
       interventions: pattern.preventionStrategy.interventions.map((intervention: any, index: number) => ({
         type: intervention.type,
         message: intervention.message,
         action: intervention.action,
-        priority: intervention.priority || index + 1
+        priority: intervention.priority || index + 1,
       })),
       confidence: pattern.prediction.confidence,
-      enabled: true
+      enabled: true,
     };
 
     this.preventionRules.set(ruleId, rule);
@@ -200,8 +204,9 @@ class PredictiveEnforcement {
       if (!rule.enabled) continue;
 
       const ruleScore = this.evaluateRule(rule, context);
-      
-      if (ruleScore > 0.5) { // Threshold for intervention
+
+      if (ruleScore > 0.5) {
+        // Threshold for intervention
         triggeredRules.push(rule);
         allInterventions.push(...rule.interventions);
         totalConfidence += rule.confidence * ruleScore;
@@ -209,17 +214,15 @@ class PredictiveEnforcement {
     }
 
     const avgConfidence = triggeredRules.length > 0 ? totalConfidence / triggeredRules.length : 0;
-    
+
     // Sort interventions by priority
-    const recommendedInterventions = allInterventions
-      .sort((a, b) => a.priority - b.priority)
-      .slice(0, 3); // Top 3 interventions
+    const recommendedInterventions = allInterventions.sort((a, b) => a.priority - b.priority).slice(0, 3); // Top 3 interventions
 
     return {
       shouldIntervene: triggeredRules.length > 0,
       triggeredRules,
       recommendedInterventions,
-      confidence: avgConfidence
+      confidence: avgConfidence,
     };
   }
 
@@ -229,7 +232,7 @@ class PredictiveEnforcement {
 
     for (const trigger of rule.triggers) {
       totalWeight += trigger.weight;
-      
+
       switch (trigger.type) {
         case 'keyword':
           if (this.containsKeyword(context, trigger.condition)) {
@@ -266,15 +269,15 @@ class PredictiveEnforcement {
     // Pattern matching logic
     switch (pattern) {
       case 'file-operation-suggestion':
-        return context.agentAction.includes('remove') || 
-               context.agentAction.includes('delete') ||
-               context.riskFactors.includes('file-operation');
+        return (
+          context.agentAction.includes('remove') ||
+          context.agentAction.includes('delete') ||
+          context.riskFactors.includes('file-operation')
+        );
       case 'version-change':
-        return context.userInput.includes('version') ||
-               context.currentContext.includes('version');
+        return context.userInput.includes('version') || context.currentContext.includes('version');
       case 'new-framework-file':
-        return context.currentContext.includes('framework') &&
-               context.agentAction.includes('create');
+        return context.currentContext.includes('framework') && context.agentAction.includes('create');
       default:
         return false;
     }
@@ -287,7 +290,7 @@ class PredictiveEnforcement {
     if (evaluation.shouldIntervene) {
       guidance.push(`🛡️ Preventive Constitutional Guidance (${(evaluation.confidence * 100).toFixed(1)}% confidence):`);
       guidance.push('');
-      
+
       evaluation.recommendedInterventions.forEach((intervention, index) => {
         const icon = this.getInterventionIcon(intervention.type);
         guidance.push(`${icon} ${intervention.message}`);
@@ -305,23 +308,28 @@ class PredictiveEnforcement {
 
   private getInterventionIcon(type: string): string {
     switch (type) {
-      case 'warning': return '⚠️';
-      case 'suggestion': return '💡';
-      case 'clarification': return '🤔';
-      case 'guidance': return '📋';
-      default: return '🔧';
+      case 'warning':
+        return '⚠️';
+      case 'suggestion':
+        return '💡';
+      case 'clarification':
+        return '🤔';
+      case 'guidance':
+        return '📋';
+      default:
+        return '🔧';
     }
   }
 
   async logPreventionEvent(context: PreventionContext, evaluation: any): Promise<void> {
     const logPath = path.join(this.frameworkRoot, 'framework/learning/prevention-log.json');
-    
-    let log = { events: [] };
+
+    let log: { events: any[] } = { events: [] };
     if (fs.existsSync(logPath)) {
       try {
         log = JSON.parse(fs.readFileSync(logPath, 'utf8'));
       } catch (error) {
-        console.warn("Could not parse existing prevention log");
+        console.warn('Could not parse existing prevention log');
       }
     }
 
@@ -331,12 +339,12 @@ class PredictiveEnforcement {
       evaluation: {
         shouldIntervene: evaluation.shouldIntervene,
         confidence: evaluation.confidence,
-        triggeredRules: evaluation.triggeredRules.map((r: PreventionRule) => r.id)
-      }
+        triggeredRules: evaluation.triggeredRules.map((r: PreventionRule) => r.id),
+      },
     };
 
     log.events.push(event);
-    
+
     // Keep only last 100 events
     if (log.events.length > 100) {
       log.events = log.events.slice(-100);
@@ -346,9 +354,9 @@ class PredictiveEnforcement {
   }
 
   displayPreventionRules(): void {
-    console.log("\n🛡️ Active Prevention Rules:");
-    console.log("==========================");
-    
+    console.log('\n🛡️ Active Prevention Rules:');
+    console.log('==========================');
+
     for (const rule of this.preventionRules.values()) {
       if (rule.enabled) {
         console.log(`${rule.name} (${(rule.confidence * 100).toFixed(1)}% confidence)`);
@@ -363,24 +371,24 @@ class PredictiveEnforcement {
 // CLI usage for testing
 async function main() {
   const enforcement = new PredictiveEnforcement();
-  
+
   enforcement.displayPreventionRules();
-  
+
   // Test with the node_modules scenario
   const testContext: PreventionContext = {
     userInput: "don't we need to commit node modules? i would think this folder should be ignored",
-    agentAction: "suggested removing node_modules directory",
-    currentContext: ["development-setup", "gitignore"],
-    riskFactors: ["file-operation", "user-correction-needed"]
+    agentAction: 'suggested removing node_modules directory',
+    currentContext: ['development-setup', 'gitignore'],
+    riskFactors: ['file-operation', 'user-correction-needed'],
   };
 
-  console.log("\n🧪 Testing Prevention System with Node.js Scenario:");
-  console.log("==================================================");
-  
+  console.log('\n🧪 Testing Prevention System with Node.js Scenario:');
+  console.log('==================================================');
+
   const guidance = await enforcement.generatePreventiveGuidance(testContext);
   guidance.forEach(line => console.log(line));
-  
-  console.log("\n✨ Predictive enforcement system ready!");
+
+  console.log('\n✨ Predictive enforcement system ready!');
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {

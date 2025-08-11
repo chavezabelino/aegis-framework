@@ -10,7 +10,7 @@
     },
     "strict": {
       "description": "Full schema compliance",
-      "tokenLimit": "medium", 
+      "tokenLimit": "medium",
       "useCase": "CI/QA environments"
     },
     "generative": {
@@ -20,24 +20,20 @@
     }
   },
   "behavioralAnnotations": {
-    "required": [
-      "@aegisBlueprint",
-      "@version",
-      "@mode",
-      "@intent",
-      "@context"
-    ],
+    "required": ["@aegisBlueprint", "@version", "@mode", "@intent", "@context"],
     "pattern": "<!--\n@aegisBlueprint: <blueprint-id>\n@version: <version>\n@mode: lean|strict|generative\n@intent: <brief description>\n@context: <relevant context>\n-->"
   },
-  "supportedAgents": [
-    "github-copilot",
-    "cursor",
-    "windsurf",
-    "anthropic-claude"
-  ],
+  "supportedAgents": ["github-copilot", "cursor", "windsurf", "anthropic-claude"],
   "blueprintSchema": {
     "required": ["id", "name", "version"],
-    "optional": ["requiredRoutes", "requiredProviders", "requiredSelectors", "ruleContracts", "observability", "errorStates"]
+    "optional": [
+      "requiredRoutes",
+      "requiredProviders",
+      "requiredSelectors",
+      "ruleContracts",
+      "observability",
+      "errorStates"
+    ]
   },
   "validationTools": {
     "blueprint": "tools/validate-blueprint.ts",

@@ -69,7 +69,7 @@ class CursorInstructionGenerator {
     if (!fs.existsSync(profilePath)) {
       throw new Error(`Cursor profile not found: ${profilePath}`);
     }
-    
+
     const profileContent = fs.readFileSync(profilePath, 'utf8');
     return yaml.load(profileContent) as CursorAgentProfile;
   }
@@ -92,11 +92,11 @@ class CursorInstructionGenerator {
 
   private renderSections(): Record<string, string> {
     const sections: Record<string, string> = {};
-    
+
     // Load and render each section with Cursor-specific context
     const sectionNames = [
       'constitutional',
-      'frameworkContext', 
+      'frameworkContext',
       'agentProfile',
       'multiAgent',
       'blueprintCompliance',
@@ -109,16 +109,16 @@ class CursorInstructionGenerator {
       'directoryStructure',
       'rcaDebugLoop',
       'codePatterns',
-      'decisionMatrix'
+      'decisionMatrix',
     ];
 
     for (const sectionName of sectionNames) {
       try {
         const sectionContent = this.loadTemplateSection(sectionName);
-        sections[sectionName] = ejs.render(sectionContent, { 
+        sections[sectionName] = ejs.render(sectionContent, {
           agent: this.cursorProfile,
           frameworkVersion: this.currentVersion,
-          lastUpdated: new Date().toISOString()
+          lastUpdated: new Date().toISOString(),
         });
       } catch (error) {
         console.warn(`Section ${sectionName} not found, skipping...`);
@@ -205,22 +205,22 @@ Store AI agent outputs as:
   public async generateInstructions(): Promise<void> {
     const sections = this.renderSections();
     const mainTemplate = this.loadMainTemplate();
-    
+
     // Add Cursor-specific section
     sections.cursorSpecific = this.generateCursorSpecificSection();
-    
+
     // Create custom template with Cursor-specific section
     const customTemplate = mainTemplate.replace(
       '<%- sections.decisionMatrix %>',
       '<%- sections.decisionMatrix %>\n\n<%- sections.cursorSpecific %>'
     );
-    
+
     const output = ejs.render(customTemplate, {
       agent: this.cursorProfile,
       frameworkVersion: this.currentVersion,
       lastUpdated: new Date().toISOString(),
       sections,
-      projectStandards: null
+      projectStandards: null,
     });
 
     // Ensure output directory exists
@@ -231,9 +231,11 @@ Store AI agent outputs as:
 
     const outPath = path.join(outputDir, 'cursor-ready.md');
     fs.writeFileSync(outPath, output);
-    
+
     console.log(`✅ Generated Cursor-specific instructions: ${outPath}`);
-    console.log(`🎨 Real-time detection: ${this.cursorProfile.interface.realTimeDetection.enabled ? 'Enabled' : 'Disabled'}`);
+    console.log(
+      `🎨 Real-time detection: ${this.cursorProfile.interface.realTimeDetection.enabled ? 'Enabled' : 'Disabled'}`
+    );
     console.log(`🔍 Pattern recognition: ${this.cursorProfile.interface.realTimeDetection.patterns.length} patterns`);
     console.log(`🎯 Visual feedback: Integrated with Cursor interface`);
   }
@@ -245,7 +247,9 @@ async function main() {
     const generator = new CursorInstructionGenerator();
     await generator.generateInstructions();
   } catch (error) {
-    console.error(`❌ Failed to generate Cursor instructions: ${error instanceof Error ? error.message : 'Unknown error'}`);
+    console.error(
+      `❌ Failed to generate Cursor instructions: ${error instanceof Error ? error.message : 'Unknown error'}`
+    );
     process.exit(1);
   }
 }

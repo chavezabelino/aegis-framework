@@ -1,64 +1,72 @@
 # 🚀 Planning Optimization - Quick Start Guide
 
-> **Get started in 5 minutes** with universal planning optimization for frictionless "vibe coding"
+> __Get started in 5 minutes__ with universal planning optimization for frictionless "vibe coding"
 
-## ⚡ **Immediate Setup (5 minutes)**
+## ⚡ __Immediate Setup (5 minutes)**
 
-### **1. Install Dependencies**
+### __1. Install Dependencies**
+
 ```bash
 npm install @modelcontextprotocol/sdk
-```
+```text
 
-### **2. Test the System**
+### __2. Test the System**
+
 ```bash
 # Test auto plan detection
-npm run aegis:planning auto "Add user authentication"
+npm run Aegis:planning auto "Add user authentication"
 
 # Test plan validation
 npm run plan:gate:mvp
 
 # Run complete demo
 ./demo/planning-optimization-demo.sh
-```
+```text
 
-### **3. Configure Your IDE**
+### __3. Configure Your IDE**
 
-#### **Cursor (Recommended)**
-1. Open `.cursor/settings.json` (already configured)
+#### __Cursor (Recommended)**
+
+1. Open `.cursor/settings.JSON` (already configured)
 2. Restart Cursor
 3. The MCP server will auto-connect
 
-#### **VS Code**
-1. Install MCP extension: `ms-vscode.mcp`
-2. Open `.vscode/settings.json` (already configured)
+#### __VS Code**
+
+1. Install MCP extension: `ms-vscode.MCP`
+2. Open `.vscode/settings.JSON` (already configured)
 3. Restart VS Code
 
-#### **Any MCP IDE**
+#### __Any MCP IDE**
+
 1. Add MCP server configuration
-2. Point to `tools/mcp-aegis-server.ts`
+2. Point to `tools/MCP-Aegis-server.ts`
 3. Restart your IDE
 
-### **4. Start Using (Just Prompt!)**
-```
+### __4. Start Using (Just Prompt!)**
+
+```text
 "Add user authentication to the app"
 "Fix the login button not working"
 "Refactor the search to use a new API"
 "Add dark mode support"
-```
+```text
 
 The AI automatically handles all planning optimization behind the scenes!
 
-## 🎯 **What Happens Automatically**
+## 🎯 __What Happens Automatically**
 
-### **Behind the Scenes**
-1. **Auto Detection**: Analyzes your prompt for scope and complexity
-2. **Plan Classification**: Determines MVP-Fix, Surgical-Refactor, or Systemic-Change
-3. **Plan Generation**: Creates contract-driven plan with observable behavior focus
-4. **Validation**: Checks against constraints and best practices
-5. **Implementation**: Executes with constitutional governance
+### __Behind the Scenes**
 
-### **Example Flow**
-```
+1. __Auto Detection__: Analyzes your prompt for scope and complexity
+2. __Plan Classification__: Determines MVP-Fix, Surgical-Refactor, or Systemic-Change
+3. __Plan Generation__: Creates contract-driven plan with observable behavior focus
+4. __Validation__: Checks against constraints and best practices
+5. __Implementation__: Executes with Constitutional governance
+
+### __Example Flow**
+
+```text
 User: "Add user authentication"
 ↓
 AI: Detects MVP-Fix (new feature, simple scope)
@@ -70,26 +78,28 @@ AI: Validates against constraints
 AI: Implements with observable behavior focus
 ↓
 Result: High-quality, contract-driven authentication system
-```
+```text
 
-## 🚀 **Advanced Features**
+## 🚀 __Advanced Features**
 
-### **CLI Commands**
+### __CLI Commands**
+
 ```bash
 # Auto plan detection
-npm run aegis:planning auto "your prompt here"
+npm run Aegis:planning auto "your prompt here"
 
 # Plan validation
-npm run aegis:planning validate MVP-Fix ./PLAN.md 2
+npm run Aegis:planning validate MVP-Fix ./PLAN.md 2
 
 # Plan comparison
-npm run aegis:planning compare plan1.md plan2.md
+npm run Aegis:planning compare plan1.md plan2.md
 
 # MCP server
-npm run mcp:start
-```
+npm run MCP:start
+```text
 
-### **Package Scripts**
+### __Package Scripts**
+
 ```bash
 # Quick vibe analysis
 npm run vibe "your prompt here"
@@ -101,114 +111,128 @@ npm run plan:gate:systemic
 
 # Plan comparison
 npm run plan:critic plan1.md plan2.md
-```
+```text
 
-## 🎯 **Key Benefits**
+## 🎯 __Key Benefits**
 
-### **Universal Compatibility**
-- ✅ **Works Everywhere**: Cursor, VS Code, JetBrains, any MCP IDE
-- ✅ **No Vendor Lock-in**: Standard MCP protocol
-- ✅ **Future-Proof**: Compatible with emerging IDE features
+### __Universal Compatibility**
 
-### **Frictionless Development**
-- ✅ **Just Prompt**: No manual planning steps required
-- ✅ **Automatic Optimization**: AI handles everything behind the scenes
-- ✅ **Better Quality**: Contract-driven development by default
+- ✅ __Works Everywhere__: Cursor, VS Code, JetBrains, any MCP IDE
+- ✅ __No Vendor Lock-in__: Standard MCP protocol
+- ✅ __Future-Proof__: Compatible with emerging IDE features
 
-### **Constitutional Governance**
-- ✅ **Framework Compliance**: Maintains Aegis governance standards
-- ✅ **Traceability**: Every plan is traceable through annotations
-- ✅ **Observability**: Planning decisions emit telemetry events
+### __Frictionless Development**
 
-## 🚀 **Real-World Examples**
+- ✅ __Just Prompt__: No manual planning steps required
+- ✅ __Automatic Optimization__: AI handles everything behind the scenes
+- ✅ __Better Quality__: Contract-driven development by default
 
-### **Simple Feature Addition**
-```
+### __Constitutional Governance**
+
+- ✅ __Framework Compliance__: Maintains Aegis governance standards
+- ✅ __Traceability__: Every plan is traceable through annotations
+- ✅ __Observability__: Planning decisions emit Telemetry events
+
+## 🚀 __Real-World Examples**
+
+### __Simple Feature Addition**
+
+```text
 User: "Add user authentication"
 AI automatically:
 1. Detects MVP-Fix (new feature, simple scope)
 2. Generates contract-driven plan
 3. Validates against constraints
 4. Implements with observable behavior focus
-```
+```text
 
-### **Bug Fix**
-```
+### __Bug Fix**
+
+```text
 User: "Fix the search not working"
 AI automatically:
 1. Detects MVP-Fix (bug fix, simple scope)
 2. Focuses on search behavior
 3. Generates behavioral contracts
 4. Implements observable behavior fix
-```
+```text
 
-### **Refactoring**
-```
+### __Refactoring**
+
+```text
 User: "Refactor auth to use JWT"
 AI automatically:
 1. Detects Surgical-Refactor (refactoring, multiple files)
 2. Preserves existing contracts
 3. Maintains observable behavior
 4. Implements with contract preservation
-```
+```text
 
-## 🎯 **Troubleshooting**
+## 🎯 __Troubleshooting**
 
-### **Common Issues**
+### __Common Issues**
 
-#### **MCP Server Not Starting**
+#### __MCP Server Not Starting**
+
 ```bash
 # Check if MCP server is running
-npm run mcp:start
+npm run MCP:start
 
 # Verify configuration
-cat .cursor/settings.json
-cat .vscode/settings.json
-```
+cat .cursor/settings.JSON
+cat .vscode/settings.JSON
+```text
 
-#### **Plan Validation Failing**
+#### __Plan Validation Failing**
+
 ```bash
 # Check plan constraints
-npm run aegis:planning validate MVP-Fix ./PLAN.md 2
+npm run Aegis:planning validate MVP-Fix ./PLAN.md 2
 
 # Review plan gate configuration
-cat .aegis/config/planning.json
-```
+cat .Aegis/config/planning.JSON
+```text
 
-#### **Auto Detection Not Working**
+#### __Auto Detection Not Working**
+
 ```bash
 # Test auto detection
-npm run aegis:planning auto "your prompt here"
+npm run Aegis:planning auto "your prompt here"
 
 # Check auto detector configuration
 cat tools/auto-plan-detector.ts
-```
+```text
 
-### **Getting Help**
-- **Documentation**: `docs/aegis/planning/README.md`
-- **IDE Integration**: `docs/aegis/planning/ide-integration.md`
-- **Vibe Coding**: `docs/aegis/planning/vibe-coding.md`
-- **Implementation Summary**: `docs/aegis/planning/IMPLEMENTATION-SUMMARY.md`
+### __Getting Help**
 
-## 🚀 **Next Steps**
+- __Documentation__: `docs/Aegis/planning/README.md`
+- __IDE Integration__: `docs/Aegis/planning/ide-integration.md`
+- __Vibe Coding__: `docs/Aegis/planning/vibe-coding.md`
+- __Implementation Summary__: `docs/Aegis/planning/IMPLEMENTATION-SUMMARY.md`
 
-### **Immediate (Today)**
-1. ✅ **Test the System**: Run the demo script
-2. ✅ **Configure IDE**: Follow IDE integration guide
-3. ✅ **Try Vibe Coding**: Just prompt naturally with your AI agent
+## 🚀 __Next Steps**
 
-### **This Week**
-1. **Team Adoption**: Share with development team
-2. **Project Integration**: Add to existing projects
-3. **Measure Impact**: Track productivity improvements
+### __Immediate (Today)**
 
-### **This Month**
-1. **Optimize Detection**: Fine-tune based on usage patterns
-2. **Extend Features**: Add more sophisticated planning tools
-3. **Scale Adoption**: Deploy across multiple teams and projects
+1. ✅ __Test the System__: Run the demo script
+2. ✅ __Configure IDE__: Follow IDE integration guide
+3. ✅ __Try Vibe Coding__: Just prompt naturally with your AI agent
 
-## 🎉 **Success!**
+### __This Week**
 
-You now have **universal planning optimization** that works seamlessly across all IDEs and provides frictionless "vibe coding" experience while maintaining constitutional governance and quality standards.
+1. __Team Adoption__: Share with development team
+2. __Project Integration__: Add to existing projects
+3. __Measure Impact__: Track productivity improvements
+
+### __This Month**
+
+1. __Optimize Detection__: Fine-tune based on usage patterns
+2. __Extend Features__: Add more sophisticated planning tools
+3. __Scale Adoption__: Deploy across multiple teams and projects
+
+## 🎉 __Success!**
+
+You now have __universal planning optimization__ that works seamlessly across all IDEs and provides frictionless "vibe
+coding" experience while maintaining Constitutional governance and quality standards.
 
 **The Planning Optimization System is ready for production use! 🚀**

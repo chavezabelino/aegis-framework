@@ -6,7 +6,7 @@
 
 ## 📁 Directory Structure & Enforcement
 
-```
+```text
 /project-root/
 ├── /generated/               # AI-generated code or structured diffs not yet merged into /src
 │   ├── /functions/           # Refactored or scaffolded edge functions
@@ -24,47 +24,53 @@
 ├── /wiki/                    # Docs and guidance
 ├── /public/
 ├── /docs/
-```
+```text
 
 ### 🚫 Forbidden Patterns
-- No utility logic in `/src/**`
+
+- No utility logic in `/src/__`
 - No app imports in utility scripts
 - No usage of `any`, `unknown`, or unsafe types
 - No raw Tailwind utilities (use semantic tokens)
 
 ## 🏗️ Legacy Handling
+
 ```ts
 // LEGACY: Guard all legacy logic blocks
 if (isLegacyFormat(data)) {
   // LEGACY: Handle old data structure
-  return transformLegacyData(data);
+  return transformLegacyData(data)
 }
-```
+```text
 
 ## 🧰 Kilo Rule: Project-Level Utilities Management
 
 ### ✅ Allowed Directories
-* `/utils/**` — Dev utilities  
-* `/templates/` — AI prompt templates  
-* `/wiki/` — Docs and guidance
+
+- `/utils/__` — Dev utilities
+- `/templates/` — AI prompt templates
+- `/wiki/` — Docs and guidance
 
 ### 🧱 Required Utility Structure
+
 Each tool in `/utils/[namespace]/` must include:
-```
-README.md  
-.env.example  
-test-[x]-script.js  
-```
+
+```text
+README.md
+.env.example
+test-[x]-script.js
+```text
 
 ## 💻 VSCode Integration
+
 ```json
 {
   "copilot.exclude": {
-    "**/.env*": true,
-    "**/node_modules/**": true,
-    "**/dist/**": true,
-    "**/bun.lockb": true,
-    "**/rebuild-plan/**": "This directory contains AI-generated RCA artifacts and should not be used as a source for code generation."
+    "__/.env*": true,
+    "__/node_modules/__": true,
+    "__/dist/__": true,
+    "__/Bun.lockb": true,
+    "__/rebuild-plan/__": "This directory contains AI-generated RCA artifacts and should not be used as a source for code generation."
   }
 }
-```
+```text

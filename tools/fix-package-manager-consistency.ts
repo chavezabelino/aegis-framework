@@ -24,26 +24,26 @@ class PackageManagerFixer {
 
     // 1. Fix package.json scripts
     await this.fixPackageJsonScripts();
-    
+
     // 2. Fix GitHub Actions workflows
     await this.fixGitHubWorkflows();
-    
+
     // 3. Fix documentation
     await this.fixDocumentation();
-    
+
     // 4. Fix git hooks
     await this.fixGitHooks();
 
     return {
       filesFixed: this.filesFixed,
-      changesApplied: this.changesApplied
+      changesApplied: this.changesApplied,
     };
   }
 
   private async fixPackageJsonScripts(): Promise<void> {
     try {
       console.log('📋 Fixing package.json scripts...');
-      
+
       const packageJson = JSON.parse(readFileSync('package.json', 'utf8'));
       const scripts = packageJson.scripts || {};
       let modified = false;
@@ -66,7 +66,7 @@ class PackageManagerFixer {
             modified = true;
           }
 
-          // Fix node cli/ → bun cli/ 
+          // Fix node cli/ → bun cli/
           if (script.includes('node cli/') && !script.includes('.cjs')) {
             newScript = newScript.replace(/node cli\//g, 'bun cli/');
             this.changesApplied.push(`Script "${name}": node cli/ → bun cli/`);
@@ -114,13 +114,13 @@ class PackageManagerFixer {
   private async fixGitHubWorkflows(): Promise<void> {
     try {
       console.log('🔄 Fixing GitHub Actions workflows...');
-      
+
       const workflowFiles = await glob('.github/workflows/*.yml');
-      
+
       for (const file of workflowFiles) {
         let content = readFileSync(file, 'utf8');
         let modified = false;
-        
+
         // Fix setup-node → setup-bun
         if (content.includes('setup-node@') && !content.includes('setup-bun@')) {
           content = content.replace(/actions\/setup-node@v\d+/g, 'oven-sh/setup-bun@v2');
@@ -174,14 +174,14 @@ class PackageManagerFixer {
   private async fixDocumentation(): Promise<void> {
     try {
       console.log('📚 Fixing documentation...');
-      
+
       const docFiles = ['CONTRIBUTING.md'];
-      
+
       for (const file of docFiles) {
         try {
           let content = readFileSync(file, 'utf8');
           let modified = false;
-          
+
           // Fix development instructions
           if (content.includes('npm install') && content.includes('dependencies')) {
             // Only fix development sections, not user installation
@@ -191,7 +191,7 @@ class PackageManagerFixer {
                 .replace(/npm install/g, 'bun install')
                 .replace(/npm run /g, 'bun run ')
                 .replace(/npm test/g, 'bun test');
-              
+
               content = content.replace(developmentSection[0], fixedSection);
               modified = true;
               this.changesApplied.push(`${file}: Fixed development instructions`);
@@ -217,13 +217,13 @@ class PackageManagerFixer {
   private async fixGitHooks(): Promise<void> {
     try {
       console.log('🎣 Fixing git hooks...');
-      
+
       const hookFiles = await glob('tools/*hook*.sh');
-      
+
       for (const file of hookFiles) {
         let content = readFileSync(file, 'utf8');
         let modified = false;
-        
+
         // Fix node cli/ → bun cli/
         if (content.includes('node cli/')) {
           content = content.replace(/node cli\//g, 'bun cli/');
@@ -252,15 +252,8 @@ class PackageManagerFixer {
   }
 
   private isDistributionScript(scriptName: string): boolean {
-    const distributionScripts = [
-      'publish',
-      'prepublish', 
-      'postpublish',
-      'pack',
-      'prepack',
-      'postpack'
-    ];
-    
+    const distributionScripts = ['publish', 'prepublish', 'postpublish', 'pack', 'prepack', 'postpack'];
+
     return distributionScripts.includes(scriptName);
   }
 }
@@ -268,23 +261,26 @@ class PackageManagerFixer {
 // CLI execution
 if (import.meta.url === `file://${process.argv[1]}`) {
   const fixer = new PackageManagerFixer();
-  
-  fixer.autoFix().then(result => {
-    console.log('\n🔧 Package Manager Auto-Fix Report');
-    console.log('===================================');
-    console.log(`Files fixed: ${result.filesFixed}`);
-    
-    if (result.changesApplied.length > 0) {
-      console.log('\n✅ Changes applied:');
-      result.changesApplied.forEach(change => console.log(`   ${change}`));
-      console.log('\n🎯 Package manager consistency restored!');
-    } else {
-      console.log('\n✅ No fixes needed - already consistent!');
-    }
-  }).catch(error => {
-    console.error('💥 Auto-fix failed:', error);
-    process.exit(1);
-  });
+
+  fixer
+    .autoFix()
+    .then(result => {
+      console.log('\n🔧 Package Manager Auto-Fix Report');
+      console.log('===================================');
+      console.log(`Files fixed: ${result.filesFixed}`);
+
+      if (result.changesApplied.length > 0) {
+        console.log('\n✅ Changes applied:');
+        result.changesApplied.forEach(change => console.log(`   ${change}`));
+        console.log('\n🎯 Package manager consistency restored!');
+      } else {
+        console.log('\n✅ No fixes needed - already consistent!');
+      }
+    })
+    .catch(error => {
+      console.error('💥 Auto-fix failed:', error);
+      process.exit(1);
+    });
 }
 
 export { PackageManagerFixer };

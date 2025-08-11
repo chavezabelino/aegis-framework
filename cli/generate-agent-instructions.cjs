@@ -23,7 +23,7 @@ class VersionedInstructionGenerator {
 
   getFrameworkFeatures() {
     const features = [];
-    
+
     // Check for core alpha features
     if (fs.existsSync(path.join(this.frameworkRoot, 'framework', 'framework-core-v1.0.0-alpha.md'))) {
       features.push('blueprint-driven-development', 'constitutional-governance', 'semantic-versioning');
@@ -49,37 +49,39 @@ class VersionedInstructionGenerator {
 
   getAgentCapabilities() {
     const manifestPath = path.join(this.frameworkRoot, 'framework', 'agent-manifest.json');
-    
+
     if (!fs.existsSync(manifestPath)) {
       return this.getDefaultAgentTemplates();
     }
 
     try {
       const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
-      
+
       // Handle the actual manifest structure
       if (manifest.agentManifests && Array.isArray(manifest.agentManifests)) {
-        return manifest.agentManifests.map((agent) => ({
+        return manifest.agentManifests.map(agent => ({
           agent: agent.agentId,
           capabilities: agent.capabilities?.languages || [],
           specializations: agent.capabilities?.specializations || [],
-          coordination: agent.coordinationSupport?.handoffs || false
+          coordination: agent.coordinationSupport?.handoffs || false,
         }));
       }
-      
+
       // Fallback to supportedAgents if agentManifests is not available
       if (manifest.supportedAgents && Array.isArray(manifest.supportedAgents)) {
         return manifest.supportedAgents.map(agentId => {
           const defaultTemplate = this.getDefaultAgentTemplates().find(t => t.agent === agentId);
-          return defaultTemplate || {
-            agent: agentId,
-            capabilities: ['typescript', 'javascript'],
-            specializations: ['general'],
-            coordination: true
-          };
+          return (
+            defaultTemplate || {
+              agent: agentId,
+              capabilities: ['typescript', 'javascript'],
+              specializations: ['general'],
+              coordination: true,
+            }
+          );
         });
       }
-      
+
       return this.getDefaultAgentTemplates();
     } catch (error) {
       console.warn('Failed to parse agent manifest, using defaults');
@@ -93,32 +95,33 @@ class VersionedInstructionGenerator {
         agent: 'github-copilot',
         capabilities: ['typescript', 'python', 'go', 'javascript'],
         specializations: ['full-stack', 'documentation', 'testing'],
-        coordination: true
+        coordination: true,
       },
       {
         agent: 'claude-3-5-sonnet',
         capabilities: ['typescript', 'python', 'rust'],
         specializations: ['architecture', 'analysis', 'planning'],
-        coordination: true
+        coordination: true,
       },
       {
         agent: 'cursor',
         capabilities: ['typescript', 'javascript', 'css'],
         specializations: ['frontend', 'ui-components', 'styling'],
-        coordination: true
-      }
+        coordination: true,
+      },
     ];
   }
 
   formatAgentName(agentId) {
-    return agentId.split('-').map(word => 
-      word.charAt(0).toUpperCase() + word.slice(1)
-    ).join(' ');
+    return agentId
+      .split('-')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
   }
 
   generateInstructionContent(agent) {
     const features = this.getFrameworkFeatures();
-    
+
     return `<!--
 @aegisFrameworkVersion: ${this.currentVersion}
 @intent: Versioned ${agent.agent} agent instructions for current framework state
@@ -162,16 +165,20 @@ class VersionedInstructionGenerator {
 - **Coordination**: ${agent.coordination ? 'Multi-agent coordination supported' : 'Single-agent mode only'}
 
 ### Your Role in Multi-Agent Workflows
-${agent.coordination ? `
+${
+  agent.coordination
+    ? `
 When working in coordinated environments:
 - Recognize handoff triggers and coordination strategies
 - Emit clear completion signals for downstream agents
 - Provide detailed context during agent transitions
-- Validate your output meets coordination requirements` : `
+- Validate your output meets coordination requirements`
+    : `
 Your agent operates in single-agent mode:
 - Focus on independent task completion
 - Ensure all outputs are self-contained
-- Document any dependencies for manual coordination`}
+- Document any dependencies for manual coordination`
+}
 
 ## 🔁 Multi-Agent Orchestration Protocol
 
@@ -374,7 +381,7 @@ aegis apprentice submit --component=<name>
   async generateForAgent(agentId) {
     const agents = this.getAgentCapabilities();
     const agent = agents.find(a => a.agent === agentId);
-    
+
     if (!agent) {
       throw new Error(`Agent ${agentId} not found in manifest`);
     }
@@ -389,7 +396,7 @@ aegis apprentice submit --component=<name>
 
   async generateForAllAgents() {
     const agents = this.getAgentCapabilities();
-    
+
     for (const agent of agents) {
       await this.generateForAgent(agent.agent);
     }
@@ -399,7 +406,7 @@ aegis apprentice submit --component=<name>
       agent: 'generic-ai-agent',
       capabilities: ['typescript', 'python', 'javascript'],
       specializations: ['full-stack', 'documentation'],
-      coordination: true
+      coordination: true,
     });
 
     const genericFilename = `instructions-v${this.currentVersion}.md`;
@@ -409,7 +416,8 @@ aegis apprentice submit --component=<name>
   }
 
   listVersions() {
-    const files = fs.readdirSync(this.versionsDir)
+    const files = fs
+      .readdirSync(this.versionsDir)
       .filter(f => f.startsWith('instructions-') && f.endsWith('.md'))
       .sort();
 

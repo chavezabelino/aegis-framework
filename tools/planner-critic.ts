@@ -47,18 +47,19 @@ export class PlannerCritic {
   analyzePlan(planContent: string, planClass: string, filesTouched: number): PlanAnalysis {
     const tokens = Math.ceil(planContent.length / 4);
     const planConfig = this.config.planClasses[planClass];
-    
+
     if (!planConfig) {
       throw new Error(`Unknown plan class: ${planClass}`);
     }
 
-    const hasBehavioralContracts = /contracts?/i.test(planContent) && 
-      /observable|behavioral|user-facing/i.test(planContent);
-    
+    const hasBehavioralContracts =
+      /contracts?/i.test(planContent) && /observable|behavioral|user-facing/i.test(planContent);
+
     const hasJustification = /justification/i.test(planContent);
-    
-    const forbiddenAssertions = this.config.contractValidation.forbiddenAssertions
-      .filter(pattern => planContent.toLowerCase().includes(pattern.toLowerCase()));
+
+    const forbiddenAssertions = this.config.contractValidation.forbiddenAssertions.filter((pattern: string) =>
+      planContent.toLowerCase().includes(pattern.toLowerCase())
+    );
 
     // Calculate complexity score (lower is better)
     const complexityScore = this.calculateComplexityScore({
@@ -67,7 +68,7 @@ export class PlannerCritic {
       planClass,
       hasBehavioralContracts,
       hasJustification,
-      forbiddenAssertions: forbiddenAssertions.length
+      forbiddenAssertions: forbiddenAssertions.length,
     });
 
     const recommendation = this.determineRecommendation({
@@ -77,7 +78,7 @@ export class PlannerCritic {
       hasBehavioralContracts,
       hasJustification,
       forbiddenAssertions: forbiddenAssertions.length,
-      complexityScore
+      complexityScore,
     });
 
     const reasoning = this.generateReasoning({
@@ -88,7 +89,7 @@ export class PlannerCritic {
       hasJustification,
       forbiddenAssertions: forbiddenAssertions.length,
       complexityScore,
-      recommendation
+      recommendation,
     });
 
     return {
@@ -101,7 +102,7 @@ export class PlannerCritic {
       forbiddenAssertions,
       complexityScore,
       recommendation,
-      reasoning
+      reasoning,
     };
   }
 
@@ -186,7 +187,7 @@ export class PlannerCritic {
       planA,
       planB,
       winner,
-      reasoning
+      reasoning,
     };
   }
 
@@ -199,18 +200,18 @@ export class PlannerCritic {
     forbiddenAssertions: number;
   }): number {
     const { tokens, filesTouched, planClass, hasBehavioralContracts, hasJustification, forbiddenAssertions } = params;
-    
+
     const planConfig = this.config.planClasses[planClass];
     const tokenRatio = tokens / planConfig.maxTokens;
     const fileRatio = filesTouched / planConfig.maxFiles;
-    
+
     let score = (tokenRatio + fileRatio) / 2;
-    
+
     // Penalties
     if (!hasBehavioralContracts) score += 0.5;
     if (planClass === 'Systemic-Change' && !hasJustification) score += 0.3;
     if (forbiddenAssertions > 0) score += 0.2 * forbiddenAssertions;
-    
+
     return Math.round(score * 100) / 100;
   }
 
@@ -223,7 +224,15 @@ export class PlannerCritic {
     forbiddenAssertions: number;
     complexityScore: number;
   }): 'accept' | 'reject' | 'escalate' {
-    const { planClass, tokens, filesTouched, hasBehavioralContracts, hasJustification, forbiddenAssertions, complexityScore } = params;
+    const {
+      planClass,
+      tokens,
+      filesTouched,
+      hasBehavioralContracts,
+      hasJustification,
+      forbiddenAssertions,
+      complexityScore,
+    } = params;
     const planConfig = this.config.planClasses[planClass];
 
     // Automatic rejections
@@ -241,7 +250,16 @@ export class PlannerCritic {
 
   private generateReasoning(params: any): string[] {
     const reasoning: string[] = [];
-    const { planClass, tokens, filesTouched, hasBehavioralContracts, hasJustification, forbiddenAssertions, complexityScore, recommendation } = params;
+    const {
+      planClass,
+      tokens,
+      filesTouched,
+      hasBehavioralContracts,
+      hasJustification,
+      forbiddenAssertions,
+      complexityScore,
+      recommendation,
+    } = params;
     const planConfig = this.config.planClasses[planClass];
 
     reasoning.push(`Plan class: ${planClass}`);
@@ -249,11 +267,11 @@ export class PlannerCritic {
     reasoning.push(`Files touched: ${filesTouched}/${planConfig.maxFiles}`);
     reasoning.push(`Complexity score: ${complexityScore}`);
     reasoning.push(`Behavioral contracts: ${hasBehavioralContracts ? 'Yes' : 'No'}`);
-    
+
     if (planClass === 'Systemic-Change') {
       reasoning.push(`Justification provided: ${hasJustification ? 'Yes' : 'No'}`);
     }
-    
+
     if (forbiddenAssertions > 0) {
       reasoning.push(`Forbidden assertions: ${forbiddenAssertions} violations`);
     }
@@ -267,30 +285,32 @@ export class PlannerCritic {
 // CLI interface
 if (import.meta.url === `file://${process.argv[1]}`) {
   const critic = new PlannerCritic();
-  
+
   if (process.argv.length < 4) {
-    console.error('Usage: node tools/planner-critic.ts <plan1.md> <plan2.md> [plan1Class] [plan2Class] [files1] [files2]');
+    console.error(
+      'Usage: node tools/planner-critic.ts <plan1.md> <plan2.md> [plan1Class] [plan2Class] [files1] [files2]'
+    );
     process.exit(1);
   }
 
-  const [,, plan1Path, plan2Path, plan1Class = 'MVP', plan2Class = 'MVP', files1 = '2', files2 = '2'] = process.argv;
-  
+  const [, , plan1Path, plan2Path, plan1Class = 'MVP', plan2Class = 'MVP', files1 = '2', files2 = '2'] = process.argv;
+
   try {
     const plan1Content = fs.readFileSync(plan1Path, 'utf8');
     const plan2Content = fs.readFileSync(plan2Path, 'utf8');
-    
+
     const analysis1 = critic.analyzePlan(plan1Content, plan1Class, parseInt(files1));
     const analysis2 = critic.analyzePlan(plan2Content, plan2Class, parseInt(files2));
-    
+
     const comparison = critic.comparePlans(analysis1, analysis2);
-    
+
     console.log('\n📊 Plan Comparison Results\n');
     console.log('Plan A Analysis:');
     analysis1.reasoning.forEach(reason => console.log(`  • ${reason}`));
-    
+
     console.log('\nPlan B Analysis:');
     analysis2.reasoning.forEach(reason => console.log(`  • ${reason}`));
-    
+
     console.log('\n🏆 Comparison Result:');
     if (comparison.winner === 'A') {
       console.log('✅ Plan A is leaner and recommended');
@@ -299,11 +319,11 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     } else {
       console.log('🤝 Plans are equivalent - manual review recommended');
     }
-    
+
     comparison.reasoning.forEach(reason => console.log(`  • ${reason}`));
-    
   } catch (error) {
-    console.error('❌ Error analyzing plans:', error.message);
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    console.error('❌ Error analyzing plans:', errorMessage);
     process.exit(1);
   }
 }

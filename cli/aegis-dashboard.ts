@@ -38,16 +38,16 @@ class AegisDashboard {
     this.mapper = new FrameworkCapabilityMapper(this.projectRoot);
     this.registry = BlueprintRegistry.getInstance(this.projectRoot);
     this.tracer = ExecutionTraceHooks.getInstance(this.projectRoot);
-    
+
     this.config = {
       refreshInterval: 5000,
       maxRecentTraces: 10,
       categories: ['core', 'tool', 'governance', 'integration'],
       showTracing: true,
       showBlueprints: true,
-      showHealth: true
+      showHealth: true,
     };
-    
+
     this.setupCommands();
   }
 
@@ -64,7 +64,7 @@ class AegisDashboard {
       .option('--no-tracing', 'Hide execution tracing')
       .option('--no-blueprints', 'Hide blueprint information')
       .option('--no-health', 'Hide health status')
-      .action((options) => this.showDashboard(options));
+      .action(options => this.showDashboard(options));
 
     // Quick status
     this.program
@@ -79,7 +79,7 @@ class AegisDashboard {
       .alias('m')
       .description('Live monitoring mode (auto-refresh)')
       .option('-i, --interval <seconds>', 'Refresh interval in seconds', '5')
-      .action((options) => this.startMonitoring(parseInt(options.interval)));
+      .action(options => this.startMonitoring(parseInt(options.interval)));
 
     // Health check
     this.program
@@ -94,7 +94,7 @@ class AegisDashboard {
       .alias('r')
       .description('Generate comprehensive framework report')
       .option('-o, --output <path>', 'Output file path')
-      .action((options) => this.generateReport(options.output));
+      .action(options => this.generateReport(options.output));
   }
 
   private async showDashboard(options: any): Promise<void> {
@@ -109,7 +109,7 @@ class AegisDashboard {
       const [capabilityMap, blueprintStats, tracingStats] = await Promise.all([
         this.mapper.discoverCapabilities(),
         this.getBluerintStats(),
-        this.getTracingStats()
+        this.getTracingStats(),
       ]);
 
       // Framework Overview
@@ -137,7 +137,6 @@ class AegisDashboard {
 
       // Quick Actions
       this.showQuickActions();
-
     } catch (error) {
       console.error(chalk.red('❌ Dashboard failed:'), error);
     }
@@ -145,19 +144,19 @@ class AegisDashboard {
 
   private async showFrameworkOverview(map: any): Promise<void> {
     console.log(chalk.cyan.bold('📊 FRAMEWORK OVERVIEW'));
-    
+
     const stats = {
       version: map.frameworkVersion,
       capabilities: map.totalCapabilities,
       categories: Object.keys(map.categories).length,
-      health: map.healthStatus
+      health: map.healthStatus,
     };
 
     console.log(`${chalk.yellow('Version:')} ${stats.version}`);
     console.log(`${chalk.yellow('Capabilities:')} ${stats.capabilities}`);
     console.log(`${chalk.yellow('Categories:')} ${stats.categories}`);
     console.log(`${chalk.yellow('Health:')} ${this.formatHealthStatus(stats.health)}`);
-    
+
     // Visual capability distribution
     console.log(chalk.yellow('\nCapability Distribution:'));
     for (const [category, capabilities] of Object.entries(map.categories)) {
@@ -165,47 +164,47 @@ class AegisDashboard {
       const percentage = Math.round((count / map.totalCapabilities) * 100);
       const bar = '█'.repeat(Math.round(percentage / 5));
       const icon = this.getCategoryIcon(category);
-      
+
       console.log(`${icon} ${category.padEnd(12)} ${count.toString().padStart(2)} ${bar} ${percentage}%`);
     }
-    
+
     console.log();
   }
 
   private async showCapabilityBreakdown(map: any): Promise<void> {
     console.log(chalk.cyan.bold('🔧 CAPABILITY BREAKDOWN'));
-    
+
     // Show status distribution
     const statusCounts = this.getStatusBreakdown(map);
     console.log(chalk.yellow('Status Distribution:'));
-    
+
     for (const [status, count] of Object.entries(statusCounts)) {
       const icon = this.getStatusIcon(status);
       console.log(`  ${icon} ${status}: ${count}`);
     }
-    
+
     // Show recent modifications
     const allCapabilities = Object.values(map.categories).flat() as any[];
     const recentMods = allCapabilities
       .sort((a, b) => new Date(b.lastModified).getTime() - new Date(a.lastModified).getTime())
       .slice(0, 5);
-    
+
     console.log(chalk.yellow('\nRecently Modified:'));
     for (const cap of recentMods) {
       const timeAgo = this.timeAgo(new Date(cap.lastModified));
       console.log(`  • ${cap.name} (${timeAgo})`);
     }
-    
+
     console.log();
   }
 
   private async showBlueprintSummary(stats: any): Promise<void> {
     console.log(chalk.cyan.bold('📋 BLUEPRINT REGISTRY'));
-    
+
     console.log(`${chalk.yellow('Total Blueprints:')} ${stats.total}`);
     console.log(`${chalk.yellow('Active:')} ${stats.active}`);
     console.log(`${chalk.yellow('Experimental:')} ${stats.experimental}`);
-    
+
     if (stats.recent.length > 0) {
       console.log(chalk.yellow('\nRecent Blueprints:'));
       for (const bp of stats.recent) {
@@ -213,7 +212,7 @@ class AegisDashboard {
         console.log(`  ${statusIcon} ${bp.name} (${bp.category})`);
       }
     }
-    
+
     console.log();
   }
 
@@ -226,18 +225,18 @@ class AegisDashboard {
     }
 
     console.log(chalk.cyan.bold('🔍 EXECUTION TRACING'));
-    
+
     console.log(`${chalk.yellow('Total Executions:')} ${stats.totalExecutions}`);
     console.log(`${chalk.yellow('Session Traces:')} ${stats.sessionTraces}`);
     console.log(`${chalk.yellow('Active Session:')} ${stats.sessionId.substring(0, 12)}...`);
-    
+
     if (stats.mostUsed.length > 0) {
       console.log(chalk.yellow('\nMost Used Features:'));
       for (const feature of stats.mostUsed.slice(0, 5)) {
         console.log(`  • ${feature.feature}: ${feature.count} executions`);
       }
     }
-    
+
     if (stats.recentActivity.length > 0) {
       console.log(chalk.yellow('\nRecent Activity:'));
       for (const trace of stats.recentActivity.slice(0, 5)) {
@@ -246,32 +245,34 @@ class AegisDashboard {
         console.log(`  • ${trace.feature}.${trace.capability}${duration} - ${timeAgo}`);
       }
     }
-    
+
     console.log();
   }
 
   private async showHealthSummary(map: any): Promise<void> {
     console.log(chalk.cyan.bold('🏥 HEALTH STATUS'));
-    
+
     const healthMetrics = {
       overall: map.healthStatus,
       issues: map.issues.length,
       documentation: this.calculateDocumentationCoverage(map),
-      testing: await this.calculateTestCoverage()
+      testing: await this.calculateTestCoverage(),
     };
 
     console.log(`${chalk.yellow('Overall:')} ${this.formatHealthStatus(healthMetrics.overall)}`);
-    console.log(`${chalk.yellow('Issues:')} ${healthMetrics.issues === 0 ? chalk.green('0') : chalk.red(healthMetrics.issues)}`);
+    console.log(
+      `${chalk.yellow('Issues:')} ${healthMetrics.issues === 0 ? chalk.green('0') : chalk.red(healthMetrics.issues)}`
+    );
     console.log(`${chalk.yellow('Documentation:')} ${this.formatPercentage(healthMetrics.documentation)}`);
     console.log(`${chalk.yellow('Test Coverage:')} ${this.formatPercentage(healthMetrics.testing)}`);
-    
+
     if (map.issues.length > 0 && map.issues.length <= 3) {
       console.log(chalk.yellow('\nTop Issues:'));
       for (const issue of map.issues.slice(0, 3)) {
         console.log(`  ${chalk.red('•')} ${issue}`);
       }
     }
-    
+
     console.log();
   }
 
@@ -287,23 +288,22 @@ class AegisDashboard {
 
   private async showQuickStatus(): Promise<void> {
     console.log(chalk.blue.bold('🚀 Aegis Framework Status'));
-    
+
     try {
       const map = await this.mapper.discoverCapabilities();
       const tracingStats = this.getTracingStats();
-      
+
       console.log(`Version: ${chalk.yellow(map.frameworkVersion)}`);
       console.log(`Capabilities: ${chalk.yellow(map.totalCapabilities)}`);
       console.log(`Health: ${this.formatHealthStatus(map.healthStatus)}`);
-      
+
       if (tracingStats.hasTraces) {
         console.log(`Active Session: ${chalk.yellow(tracingStats.sessionTraces)} traces`);
       }
-      
+
       if (map.issues.length > 0) {
         console.log(`${chalk.red('Issues:')} ${map.issues.length}`);
       }
-      
     } catch (error) {
       console.error(chalk.red('❌ Status check failed:'), error);
     }
@@ -312,18 +312,18 @@ class AegisDashboard {
   private async startMonitoring(interval: number): Promise<void> {
     console.log(chalk.blue.bold(`🔄 Starting live monitoring (${interval}s intervals)`));
     console.log(chalk.gray('Press Ctrl+C to stop\n'));
-    
+
     const monitor = async () => {
       await this.showDashboard({ tracing: true, blueprints: false, health: false });
       console.log(chalk.gray(`\nNext refresh in ${interval}s... (Ctrl+C to stop)`));
     };
-    
+
     // Initial display
     await monitor();
-    
+
     // Set up interval
     const intervalId = setInterval(monitor, interval * 1000);
-    
+
     // Handle cleanup
     process.on('SIGINT', () => {
       clearInterval(intervalId);
@@ -335,16 +335,16 @@ class AegisDashboard {
   private async showHealthCheck(): Promise<void> {
     console.log(chalk.blue.bold('🏥 Comprehensive Health Check'));
     console.log(chalk.gray('='.repeat(40)));
-    
+
     try {
       const map = await this.mapper.discoverCapabilities();
       const validation = this.registry.validate();
-      
+
       // Overall health
       console.log(chalk.cyan('\n📊 Overall Health'));
       console.log(`Framework Status: ${this.formatHealthStatus(map.healthStatus)}`);
       console.log(`Blueprint Registry: ${validation.valid ? chalk.green('VALID') : chalk.red('INVALID')}`);
-      
+
       // Detailed issues
       if (map.issues.length > 0) {
         console.log(chalk.red('\n⚠️ Framework Issues'));
@@ -352,14 +352,14 @@ class AegisDashboard {
           console.log(`  • ${issue}`);
         }
       }
-      
+
       if (validation.issues.length > 0) {
         console.log(chalk.red('\n📋 Blueprint Issues'));
         for (const issue of validation.issues) {
           console.log(`  • ${issue}`);
         }
       }
-      
+
       // Recommendations
       console.log(chalk.blue('\n💡 Recommendations'));
       if (map.issues.length === 0 && validation.valid) {
@@ -368,7 +368,6 @@ class AegisDashboard {
         console.log(`${chalk.yellow('•')} Address documentation gaps`);
         console.log(`${chalk.yellow('•')} Run capability rescan after fixes`);
       }
-      
     } catch (error) {
       console.error(chalk.red('❌ Health check failed:'), error);
     }
@@ -376,25 +375,25 @@ class AegisDashboard {
 
   private async generateReport(outputPath?: string): Promise<void> {
     console.log(chalk.blue.bold('📄 Generating Comprehensive Report'));
-    
+
     try {
       const [map, blueprintStats, tracingStats] = await Promise.all([
         this.mapper.discoverCapabilities(),
         this.getBluerintStats(),
-        this.getTracingStats()
+        this.getTracingStats(),
       ]);
-      
+
       let report = '# Aegis Framework Dashboard Report\n\n';
       report += `**Generated**: ${new Date().toISOString()}\n`;
       report += `**Framework Version**: ${map.frameworkVersion}\n\n`;
-      
+
       // Framework summary
       report += '## Framework Overview\n\n';
       report += `- **Total Capabilities**: ${map.totalCapabilities}\n`;
       report += `- **Categories**: ${Object.keys(map.categories).length}\n`;
       report += `- **Health Status**: ${map.healthStatus.toUpperCase()}\n`;
       report += `- **Issues**: ${map.issues.length}\n\n`;
-      
+
       // Capability breakdown
       report += '## Capability Breakdown\n\n';
       for (const [category, capabilities] of Object.entries(map.categories)) {
@@ -402,13 +401,13 @@ class AegisDashboard {
         report += `- **${category}**: ${count} capabilities\n`;
       }
       report += '\n';
-      
+
       // Blueprint registry
       report += '## Blueprint Registry\n\n';
       report += `- **Total Blueprints**: ${blueprintStats.total}\n`;
       report += `- **Active**: ${blueprintStats.active}\n`;
       report += `- **Experimental**: ${blueprintStats.experimental}\n\n`;
-      
+
       // Execution tracing
       if (tracingStats.hasTraces) {
         report += '## Execution Tracing\n\n';
@@ -416,7 +415,7 @@ class AegisDashboard {
         report += `- **Session Traces**: ${tracingStats.sessionTraces}\n`;
         report += `- **Unique Features**: ${tracingStats.uniqueFeatures}\n\n`;
       }
-      
+
       // Issues
       if (map.issues.length > 0) {
         report += '## Issues\n\n';
@@ -425,13 +424,12 @@ class AegisDashboard {
         }
         report += '\n';
       }
-      
+
       // Save report
       const filePath = outputPath || path.join(this.projectRoot, '.framework/dashboard-report.md');
       fs.writeFileSync(filePath, report);
-      
+
       console.log(`✅ Report generated: ${filePath}`);
-      
     } catch (error) {
       console.error(chalk.red('❌ Report generation failed:'), error);
     }
@@ -441,21 +439,19 @@ class AegisDashboard {
   private async getBluerintStats(): Promise<any> {
     await this.registry.discover();
     const blueprints = this.registry.getAll();
-    
+
     return {
       total: blueprints.length,
       active: blueprints.filter(bp => bp.status === 'stable' || bp.status === 'beta').length,
-      experimental: blueprints.filter(bp => bp.status === 'alpha' || bp.status === 'experimental').length,
-      recent: blueprints
-        .sort((a, b) => b.lastModified.getTime() - a.lastModified.getTime())
-        .slice(0, 3)
+      experimental: blueprints.filter(bp => bp.status === 'alpha').length,
+      recent: blueprints.sort((a, b) => b.lastModified.getTime() - a.lastModified.getTime()).slice(0, 3),
     };
   }
 
   private getTracingStats(): any {
     const stats = this.tracer.getStatistics();
     const session = this.tracer.getCurrentSession();
-    
+
     return {
       hasTraces: stats.totalExecutions > 0,
       totalExecutions: stats.totalExecutions,
@@ -463,26 +459,26 @@ class AegisDashboard {
       sessionId: session.sessionId,
       uniqueFeatures: stats.uniqueFeatures,
       mostUsed: stats.mostUsedFeatures,
-      recentActivity: stats.recentActivity
+      recentActivity: stats.recentActivity,
     };
   }
 
   private getStatusBreakdown(map: any): Record<string, number> {
     const counts: Record<string, number> = {};
-    
+
     for (const capabilities of Object.values(map.categories)) {
       for (const capability of capabilities as any[]) {
         counts[capability.status] = (counts[capability.status] || 0) + 1;
       }
     }
-    
+
     return counts;
   }
 
   private calculateDocumentationCoverage(map: any): number {
     let documented = 0;
     let total = 0;
-    
+
     for (const capabilities of Object.values(map.categories)) {
       for (const capability of capabilities as any[]) {
         total++;
@@ -491,7 +487,7 @@ class AegisDashboard {
         }
       }
     }
-    
+
     return total > 0 ? (documented / total) * 100 : 0;
   }
 
@@ -500,7 +496,7 @@ class AegisDashboard {
     try {
       const testFiles = this.findTestFiles();
       const sourceFiles = this.findSourceFiles();
-      
+
       return sourceFiles.length > 0 ? (testFiles.length / sourceFiles.length) * 100 : 0;
     } catch (error) {
       return 0;
@@ -510,23 +506,23 @@ class AegisDashboard {
   private findTestFiles(): string[] {
     const testDir = path.join(this.projectRoot, 'tests');
     if (!fs.existsSync(testDir)) return [];
-    
+
     const files: string[] = [];
     const entries = fs.readdirSync(testDir, { withFileTypes: true });
-    
+
     for (const entry of entries) {
       if (entry.isFile() && entry.name.endsWith('.test.ts')) {
         files.push(entry.name);
       }
     }
-    
+
     return files;
   }
 
   private findSourceFiles(): string[] {
     const dirs = ['tools', 'framework', 'cli'];
     const files: string[] = [];
-    
+
     for (const dir of dirs) {
       const fullDir = path.join(this.projectRoot, dir);
       if (fs.existsSync(fullDir)) {
@@ -538,7 +534,7 @@ class AegisDashboard {
         }
       }
     }
-    
+
     return files;
   }
 
@@ -548,7 +544,7 @@ class AegisDashboard {
       tool: '🔧',
       governance: '⚖️',
       integration: '🔗',
-      experimental: '🧪'
+      experimental: '🧪',
     };
     return icons[category] || '📦';
   }
@@ -559,7 +555,7 @@ class AegisDashboard {
       beta: '🟡',
       alpha: '🟠',
       experimental: '🧪',
-      deprecated: '⚠️'
+      deprecated: '⚠️',
     };
     return icons[status] || '❓';
   }
@@ -593,7 +589,7 @@ class AegisDashboard {
     const minutes = Math.floor(diff / 60000);
     const hours = Math.floor(minutes / 60);
     const days = Math.floor(hours / 24);
-    
+
     if (days > 0) return `${days}d ago`;
     if (hours > 0) return `${hours}h ago`;
     if (minutes > 0) return `${minutes}m ago`;

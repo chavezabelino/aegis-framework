@@ -4,7 +4,7 @@
     "eventType": "framework.learning.session",
     "sessionType": "rca-analysis",
     "agentId": "github-copilot",
-    "blueprintId": "framework-governance", 
+    "blueprintId": "framework-governance",
     "correlationId": "rca-doc-drift-2025-08-06",
     "metadata": {
       "learningOutcomes": [
@@ -20,7 +20,7 @@
         },
         {
           "principle": "Constitutional Evolution",
-          "insight": "Framework problems require constitutional solutions, not ad-hoc fixes", 
+          "insight": "Framework problems require constitutional solutions, not ad-hoc fixes",
           "application": "Systematic amendment process with validation infrastructure"
         },
         {
@@ -32,7 +32,7 @@
       "methodologyValidated": "constitutional-rca-approach",
       "toolsProven": [
         "git-history-analysis",
-        "pattern-recognition", 
+        "pattern-recognition",
         "constitutional-authority-mapping",
         "automated-resolution-implementation"
       ]
@@ -44,7 +44,7 @@
     "enhancementType": "drift-detection-and-resolution",
     "agentId": "github-copilot",
     "blueprintId": "framework-governance",
-    "correlationId": "rca-doc-drift-2025-08-06", 
+    "correlationId": "rca-doc-drift-2025-08-06",
     "metadata": {
       "newCapabilities": [
         "systematic-drift-detection",
@@ -60,7 +60,7 @@
       ],
       "processImprovements": [
         "pre-commit-constitutional-validation",
-        "release-template-standardization", 
+        "release-template-standardization",
         "documentation-index-navigation",
         "cross-reference-maintenance"
       ],

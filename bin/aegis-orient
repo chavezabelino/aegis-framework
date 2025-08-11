@@ -17,7 +17,7 @@ try {
   // Execute the CLI directly with Node.js TypeScript support
   execSync(`node --experimental-strip-types "${cliPath}" ${process.argv.slice(2).join(' ')}`, {
     stdio: 'inherit',
-    env: process.env
+    env: process.env,
   });
 } catch (error) {
   // If TypeScript stripping not available, fall back to the original method

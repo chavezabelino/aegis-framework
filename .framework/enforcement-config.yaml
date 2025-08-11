@@ -32,7 +32,7 @@ framework:
         - "examples/"
         - "templates/"
         - "scaffolds/"
-    
+
     preCommitHooks:
       enabled: true
       destructivePatterns:
@@ -47,7 +47,7 @@ framework:
         - "rm -rf .aegis"
         - "rm -rf .vscode"
         - "rm -rf .cursor"
-    
+
     constitutionalCompliance:
       requiredAnnotations:
         - "@aegisFrameworkVersion"
@@ -62,7 +62,7 @@ framework:
           - "CHANGELOG.md"
           - "framework/framework-core-v2.1.0.md"
           - ".github/copilot-instructions.md"
-    
+
     emergencyRecovery:
       enabled: true
       autoRestore:

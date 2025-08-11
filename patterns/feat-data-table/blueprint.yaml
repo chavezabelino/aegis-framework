@@ -51,7 +51,7 @@ ruleContracts:
         - "Keyboard navigation support"
         - "Screen reader compatibility"
         - "Focus management"
-  
+
   - rule: "performance-optimization"
     version: "1.0.0"
     enforcement: "warning"
@@ -93,11 +93,11 @@ errorStates:
   - code: "DATA_LOAD_FAILED"
     fallback: "Show retry button with error message"
     recovery: "Implement exponential backoff retry logic"
-  
+
   - code: "FILTER_VALIDATION_ERROR"
     fallback: "Reset to last valid filter state"
     recovery: "Display validation error inline"
-  
+
   - code: "EXPORT_FAILED"
     fallback: "Show export error notification"
     recovery: "Offer alternative export formats"
@@ -146,7 +146,7 @@ examples:
         role: "User"
         status: "Pending"
         lastLogin: "2024-01-14T15:45:00Z"
-  
+
   filterConfig:
     - field: "role"
       type: "select"

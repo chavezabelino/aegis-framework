@@ -14,9 +14,7 @@
     "constitutionalSafeguards": true,
     "emergencyRecovery": true
   },
-  "evolutionStories": [
-    "EVS-2025-08-08-001-destructive-action-protection"
-  ],
+  "evolutionStories": ["EVS-2025-08-08-001-destructive-action-protection"],
   "governanceState": {
     "lastAudit": "2025-08-08",
     "protectionSystemActive": true,

@@ -12,7 +12,6 @@ import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 import { GhostMentor } from '../framework/mentors/ghost-mentor-plugin';
 
-
 const apprenticeshipEventsPath = path.join(__dirname, '../framework/observability/apprenticeship-events.jsonl');
 
 function emitEvent(event: object) {
@@ -23,7 +22,6 @@ function loadBlueprint(blueprintPath: string) {
   if (!fs.existsSync(blueprintPath)) throw new Error('Blueprint not found: ' + blueprintPath);
   return fs.readFileSync(blueprintPath, 'utf-8');
 }
-
 
 const argv = yargs(hideBin(process.argv))
   .option('mode', {
@@ -39,8 +37,7 @@ const argv = yargs(hideBin(process.argv))
     describe: 'Path to blueprint.yaml',
     type: 'string',
   })
-  .help()
-  .argv;
+  .help().argv;
 
 const { mode, blueprint } = argv as any;
 const blueprintContent = fs.readFileSync(blueprint, 'utf-8');
@@ -98,7 +95,7 @@ emitMCPEvent({
   agentId: 'github-copilot',
   modelProvider: 'openai',
   contextTokens: 4096,
-  timestamp: new Date().toISOString()
+  timestamp: new Date().toISOString(),
 });
 
 // Example run log emission
@@ -109,5 +106,5 @@ emitRunLog({
   agents: [{ agentId: 'github-copilot', role: 'primary', outputMode: mode, tokenUsage: 1024, status: 'completed' }],
   coordination: { strategy: 'sequential' },
   outputs: { [mode]: 'output.' + mode + '.json' },
-  validation: { schemaCompliance: true }
+  validation: { schemaCompliance: true },
 });

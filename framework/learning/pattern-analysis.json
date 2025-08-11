@@ -38,18 +38,11 @@
           "drift-type:requirement-misinterpretation",
           "low-compliance"
         ],
-        "riskFactors": [
-          "user-correction-required",
-          "low-confidence",
-          "behavioral-drift"
-        ],
+        "riskFactors": ["user-correction-required", "low-confidence", "behavioral-drift"],
         "confidence": 0.6
       },
       "preventionStrategy": {
-        "triggers": [
-          "file-operation-suggestion",
-          "gitignore-setup-request"
-        ],
+        "triggers": ["file-operation-suggestion", "gitignore-setup-request"],
         "interventions": [
           {
             "type": "user-prompt",
@@ -78,26 +71,18 @@
           "sessionId": "drift-001",
           "agent": "system",
           "userInteraction": "none",
-          "triggerConditions": [
-            "framework-structure"
-          ],
+          "triggerConditions": ["framework-structure"],
           "resolution": "auto-created"
         }
       ],
       "prediction": {
         "likelihood": 0.3,
-        "conditions": [
-          "Article II: Framework Governance"
-        ],
-        "riskFactors": [
-          "framework-structure"
-        ],
+        "conditions": ["Article II: Framework Governance"],
+        "riskFactors": ["framework-structure"],
         "confidence": 0.8
       },
       "preventionStrategy": {
-        "triggers": [
-          ".framework/constitutional-state.json"
-        ],
+        "triggers": [".framework/constitutional-state.json"],
         "interventions": [
           {
             "type": "auto-correction",
@@ -115,20 +100,14 @@
       "pattern": "requirement-interpretation",
       "insight": "Agents need clearer guidance on distinguishing between git exclusion and file operations",
       "confidence": 0.8,
-      "applicability": [
-        "agent-training",
-        "requirement-clarification"
-      ],
+      "applicability": ["agent-training", "requirement-clarification"],
       "recommendation": "Add context validation step before suggesting file operations"
     },
     {
       "pattern": "compliance-challenges",
       "insight": "1 patterns show low compliance confidence",
       "confidence": 0.7,
-      "applicability": [
-        "validation",
-        "training"
-      ],
+      "applicability": ["validation", "training"],
       "recommendation": "Enhance validation checks for low-confidence scenarios"
     }
   ],

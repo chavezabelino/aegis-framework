@@ -9,11 +9,7 @@
       "priority": 8,
       "effort": "medium",
       "impact": "high",
-      "inspiration": [
-        "React",
-        "Next.js",
-        "Progressive Web Apps"
-      ]
+      "inspiration": ["React", "Next.js", "Progressive Web Apps"]
     },
     {
       "category": "governance",
@@ -22,11 +18,7 @@
       "priority": 7,
       "effort": "medium",
       "impact": "medium",
-      "inspiration": [
-        "Django",
-        "Python PEPs",
-        "TC39"
-      ]
+      "inspiration": ["Django", "Python PEPs", "TC39"]
     }
   ],
   "trends": [
@@ -34,46 +26,22 @@
       "domain": "AI Integration",
       "direction": "Increasing adoption of AI-native patterns",
       "velocity": 8,
-      "evidence": [
-        "GPT integration",
-        "AI-powered tooling",
-        "Automated code generation"
-      ],
-      "implications": [
-        "Need for AI governance",
-        "Quality assurance evolution",
-        "Developer skill adaptation"
-      ]
+      "evidence": ["GPT integration", "AI-powered tooling", "Automated code generation"],
+      "implications": ["Need for AI governance", "Quality assurance evolution", "Developer skill adaptation"]
     },
     {
       "domain": "Developer Experience",
       "direction": "Focus on zero-configuration and intelligent defaults",
       "velocity": 9,
-      "evidence": [
-        "Next.js App Router",
-        "Vite defaults",
-        "Deno simplicity"
-      ],
-      "implications": [
-        "Reduced cognitive load",
-        "Faster onboarding",
-        "Convention over configuration"
-      ]
+      "evidence": ["Next.js App Router", "Vite defaults", "Deno simplicity"],
+      "implications": ["Reduced cognitive load", "Faster onboarding", "Convention over configuration"]
     },
     {
       "domain": "Observability",
       "direction": "Built-in telemetry and monitoring",
       "velocity": 7,
-      "evidence": [
-        "OpenTelemetry adoption",
-        "Built-in metrics",
-        "Automatic instrumentation"
-      ],
-      "implications": [
-        "Better debugging",
-        "Performance insights",
-        "Proactive issue detection"
-      ]
+      "evidence": ["OpenTelemetry adoption", "Built-in metrics", "Automatic instrumentation"],
+      "implications": ["Better debugging", "Performance insights", "Proactive issue detection"]
     }
   ],
   "opportunities": [
@@ -81,46 +49,22 @@
       "area": "AI-Native Governance",
       "opportunity": "Pioneer AI-assisted constitutional governance",
       "potential": 9,
-      "requirements": [
-        "AI integration",
-        "Governance frameworks",
-        "Community engagement"
-      ],
-      "inspirationFrameworks": [
-        "TC39",
-        "Rust RFC",
-        "Python PEP"
-      ]
+      "requirements": ["AI integration", "Governance frameworks", "Community engagement"],
+      "inspirationFrameworks": ["TC39", "Rust RFC", "Python PEP"]
     },
     {
       "area": "Cross-Framework Learning",
       "opportunity": "First framework with systematic cross-pollination",
       "potential": 8,
-      "requirements": [
-        "Pattern recognition",
-        "Analysis tools",
-        "Adaptation mechanisms"
-      ],
-      "inspirationFrameworks": [
-        "Babel",
-        "Webpack",
-        "PostCSS"
-      ]
+      "requirements": ["Pattern recognition", "Analysis tools", "Adaptation mechanisms"],
+      "inspirationFrameworks": ["Babel", "Webpack", "PostCSS"]
     },
     {
       "area": "Self-Healing Systems",
       "opportunity": "Autonomous framework repair and optimization",
       "potential": 10,
-      "requirements": [
-        "Health monitoring",
-        "Automated fixes",
-        "Safe rollback"
-      ],
-      "inspirationFrameworks": [
-        "Kubernetes",
-        "Istio",
-        "AWS Auto Scaling"
-      ]
+      "requirements": ["Health monitoring", "Automated fixes", "Safe rollback"],
+      "inspirationFrameworks": ["Kubernetes", "Istio", "AWS Auto Scaling"]
     }
   ],
   "warnings": [
@@ -128,29 +72,15 @@
       "risk": "Over-engineering complexity",
       "severity": "medium",
       "probability": 0.6,
-      "mitigation": [
-        "Regular complexity audits",
-        "Simplicity principles",
-        "User feedback"
-      ],
-      "observedIn": [
-        "Enterprise frameworks",
-        "Academic projects"
-      ]
+      "mitigation": ["Regular complexity audits", "Simplicity principles", "User feedback"],
+      "observedIn": ["Enterprise frameworks", "Academic projects"]
     },
     {
       "risk": "AI dependency without fallbacks",
       "severity": "high",
       "probability": 0.4,
-      "mitigation": [
-        "Manual override capabilities",
-        "Graceful degradation",
-        "Human oversight"
-      ],
-      "observedIn": [
-        "AI-first platforms",
-        "Automated systems"
-      ]
+      "mitigation": ["Manual override capabilities", "Graceful degradation", "Human oversight"],
+      "observedIn": ["AI-first platforms", "Automated systems"]
     }
   ]
 }

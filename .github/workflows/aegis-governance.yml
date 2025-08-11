@@ -229,23 +229,27 @@ jobs:
           npx --yes tsx cli/aegis-planning.ts auto "Add user authentication" --output .aegis/outputs/auth-plan-strict.json
           npx --yes tsx cli/aegis-planning.ts validate MVP-Fix .aegis/outputs/auth-plan-strict.json 2
 
-      - name: Generate telemetry
+      - name: Emit planning event
+        shell: bash
         run: |
+          set -euo pipefail
           mkdir -p .aegis/telemetry
-          echo '{"timestamp":"'"$(date -u +%FT%TZ)"'","event":"planning.detected","planClass":"MVP-Fix","confidence":0.95,"prompt":"Add user authentication"}' > .aegis/telemetry/planning-events.ndjson
-          echo '{"timestamp":"'"$(date -u +%FT%TZ)"'","event":"planning.validated","planClass":"MVP-Fix","validationResult":"passed","tokenCount":1089}' >> .aegis/telemetry/planning-events.ndjson
-          echo '{"timestamp":"'"$(date -u +%FT%TZ)"'","event":"planning.selected","planClass":"MVP-Fix","reasoning":["minimal scope","contract-driven","observable behavior"]}' >> .aegis/telemetry/planning-events.ndjson
+          ts="$(date -u +%FT%TZ)"
+          printf '{"timestamp":"%s","event":"planning.detected","context":"user authentication"}\n' "$ts" >> .aegis/telemetry/planning-events.ndjson
 
       - name: Plan gate (MVP)
+        shell: bash
         env:
           PLAN_GATE_ALLOW_MISSING: ${{ github.event_name == 'pull_request' && 'true' || 'false' }}
-        run: node scripts/ci/plan-gate.mjs .aegis/outputs/auth-plan-strict.json
+        run: |
+          node scripts/ci/plan-gate.mjs .aegis/outputs/auth-plan-strict.json
 
       - name: Prove evidence (PREC)
-        env:
-          # relax missing .sig only when no secret is present (PR/fork)
-          SKIP_SIGNATURE_CHECKS: ${{ secrets.AEGIS_HMAC_KEY == '' && 'true' || 'false' }}
-        run: npx --yes tsx tools/check-evidence.ts "blueprints/**/evidence.json" --ci
+        shell: bash
+        run: |
+          node tools/prove-evidence.mjs
+
+
 
       - name: Upload evidence
         if: always()

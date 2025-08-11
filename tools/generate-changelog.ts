@@ -2,14 +2,14 @@
 
 /**
  * Aegis Framework Changelog Generator
- * 
+ *
  * This tool analyzes framework changes and generates meaningful changelog entries
  * based on the impact assessment framework defined in docs/evolution-strategy.md
  */
 
-import fs from "fs";
-import path from "path";
-import yaml from "js-yaml";
+import fs from 'fs';
+import path from 'path';
+import yaml from 'js-yaml';
 
 interface ChangeAnalysis {
   type: 'breaking' | 'added' | 'enhanced' | 'infrastructure';
@@ -47,9 +47,9 @@ class ChangelogGenerator {
             blueprints: true,
             users: true,
             migration: true,
-            docs: true
+            docs: true,
           },
-          files: [filePath]
+          files: [filePath],
         });
       }
 
@@ -63,9 +63,9 @@ class ChangelogGenerator {
             blueprints: true,
             users: false,
             migration: false,
-            docs: true
+            docs: true,
           },
-          files: [filePath]
+          files: [filePath],
         });
       }
 
@@ -79,9 +79,9 @@ class ChangelogGenerator {
             blueprints: false,
             users: true,
             migration: false,
-            docs: true
+            docs: true,
           },
-          files: [filePath]
+          files: [filePath],
         });
       }
 
@@ -95,9 +95,9 @@ class ChangelogGenerator {
             blueprints: false,
             users: false,
             migration: false,
-            docs: true
+            docs: true,
           },
-          files: [filePath]
+          files: [filePath],
         });
       }
     });
@@ -110,7 +110,7 @@ class ChangelogGenerator {
       breaking: [] as string[],
       added: [] as string[],
       enhanced: [] as string[],
-      infrastructure: [] as string[]
+      infrastructure: [] as string[],
     };
 
     changes.forEach(change => {
@@ -141,18 +141,18 @@ class ChangelogGenerator {
 
   generateMigrationGuide(changes: ChangeAnalysis[]): string {
     const migrationNeeded = changes.filter(c => c.impact.migration);
-    
+
     if (migrationNeeded.length === 0) {
-      return "No migration required for this version.\n";
+      return 'No migration required for this version.\n';
     }
 
     let guide = `# Migration Guide to ${this.version}\n\n`;
-    
+
     migrationNeeded.forEach(change => {
       guide += `## ${change.category}\n`;
       guide += `${change.description}\n\n`;
       guide += `**Files affected**: ${change.files.join(', ')}\n\n`;
-      
+
       if (change.type === 'breaking') {
         guide += `⚠️ **Breaking Change**: This requires manual updates to existing projects.\n\n`;
       }
@@ -163,11 +163,11 @@ class ChangelogGenerator {
 }
 
 // CLI Usage
-const [,, version, ...filePaths] = process.argv;
+const [, , version, ...filePaths] = process.argv;
 
 if (!version) {
-  console.error("Usage: node generate-changelog.ts <version> [file1] [file2] ...");
-  console.error("Example: node generate-changelog.ts 1.0.0-alpha framework/framework-core.md");
+  console.error('Usage: node generate-changelog.ts <version> [file1] [file2] ...');
+  console.error('Example: node generate-changelog.ts 1.0.0-alpha framework/framework-core.md');
   process.exit(1);
 }
 
@@ -176,12 +176,13 @@ const changes = generator.analyzeFileChanges(filePaths);
 const changelogEntry = generator.generateChangelogEntry(changes);
 const migrationGuide = generator.generateMigrationGuide(changes);
 
-console.log("📝 Generated Changelog Entry:");
-console.log("=" .repeat(50));
+console.log('📝 Generated Changelog Entry:');
+console.log('='.repeat(50));
 console.log(changelogEntry);
 
-console.log("🔄 Migration Guide:");
-console.log("=" .repeat(50));
+console.log('🔄 Migration Guide:');
+console.log('='.repeat(50));
 console.log(migrationGuide);
 
-export { ChangelogGenerator, ChangeAnalysis };
+export { ChangelogGenerator };
+export type { ChangeAnalysis };

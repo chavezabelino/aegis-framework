@@ -10,9 +10,7 @@
         "score": 0,
         "executionTime": 111,
         "evidence": [],
-        "errors": [
-          "Version validation test failed: Error: Command failed: node tools/validate-version-consistency.ts"
-        ],
+        "errors": ["Version validation test failed: Error: Command failed: node tools/validate-version-consistency.ts"],
         "message": "Version drift prevention test failed"
       },
       {
@@ -21,9 +19,7 @@
         "score": 0,
         "executionTime": 82,
         "evidence": [],
-        "errors": [
-          "Version validation test failed: Error: Command failed: node tools/validate-version-consistency.ts"
-        ],
+        "errors": ["Version validation test failed: Error: Command failed: node tools/validate-version-consistency.ts"],
         "message": "Version drift prevention test failed"
       },
       {
@@ -32,9 +28,7 @@
         "score": 0,
         "executionTime": 160,
         "evidence": [],
-        "errors": [
-          "Version validation test failed: Error: Command failed: node tools/validate-version-consistency.ts"
-        ],
+        "errors": ["Version validation test failed: Error: Command failed: node tools/validate-version-consistency.ts"],
         "message": "Version drift prevention test failed"
       }
     ],
@@ -69,9 +63,7 @@
         "status": "pass",
         "score": 98,
         "executionTime": 69,
-        "evidence": [
-          "Constitutional compliance enforcer operational"
-        ],
+        "evidence": ["Constitutional compliance enforcer operational"],
         "errors": [],
         "message": "Constitutional compliance enforcer validated"
       },
@@ -80,9 +72,7 @@
         "status": "pass",
         "score": 98,
         "executionTime": 67,
-        "evidence": [
-          "Constitutional compliance enforcer operational"
-        ],
+        "evidence": ["Constitutional compliance enforcer operational"],
         "errors": [],
         "message": "Constitutional compliance enforcer validated"
       }
@@ -112,9 +102,7 @@
         "status": "pass",
         "score": 92,
         "executionTime": 74,
-        "evidence": [
-          "Self-healing governance operational"
-        ],
+        "evidence": ["Self-healing governance operational"],
         "errors": [],
         "message": "Self-healing governance validated"
       },
@@ -123,9 +111,7 @@
         "status": "pass",
         "score": 92,
         "executionTime": 71,
-        "evidence": [
-          "Self-healing governance operational"
-        ],
+        "evidence": ["Self-healing governance operational"],
         "errors": [],
         "message": "Self-healing governance validated"
       }
@@ -155,9 +141,7 @@
         "status": "pass",
         "score": 88,
         "executionTime": 73,
-        "evidence": [
-          "Evolution learning system operational"
-        ],
+        "evidence": ["Evolution learning system operational"],
         "errors": [],
         "message": "Evolution learning system validated"
       }
@@ -186,9 +170,7 @@
         "status": "pass",
         "score": 90,
         "executionTime": 0,
-        "evidence": [
-          "Intent enforcement engine exists"
-        ],
+        "evidence": ["Intent enforcement engine exists"],
         "errors": [],
         "message": "Agent drift prevention operational"
       }
@@ -217,9 +199,7 @@
         "status": "pass",
         "score": 85,
         "executionTime": 233,
-        "evidence": [
-          "Predictive compliance monitor operational"
-        ],
+        "evidence": ["Predictive compliance monitor operational"],
         "errors": [],
         "message": "Predictive compliance validated"
       }
@@ -249,9 +229,7 @@
         "score": 0,
         "executionTime": 116,
         "evidence": [],
-        "errors": [
-          "Version validation test failed: Error: Command failed: node tools/validate-version-consistency.ts"
-        ],
+        "errors": ["Version validation test failed: Error: Command failed: node tools/validate-version-consistency.ts"],
         "message": "Version drift prevention test failed"
       },
       {
@@ -260,9 +238,7 @@
         "score": 0,
         "executionTime": 84,
         "evidence": [],
-        "errors": [
-          "Version validation test failed: Error: Command failed: node tools/validate-version-consistency.ts"
-        ],
+        "errors": ["Version validation test failed: Error: Command failed: node tools/validate-version-consistency.ts"],
         "message": "Version drift prevention test failed"
       },
       {
@@ -271,9 +247,7 @@
         "score": 0,
         "executionTime": 79,
         "evidence": [],
-        "errors": [
-          "Version validation test failed: Error: Command failed: node tools/validate-version-consistency.ts"
-        ],
+        "errors": ["Version validation test failed: Error: Command failed: node tools/validate-version-consistency.ts"],
         "message": "Version drift prevention test failed"
       }
     ],
@@ -308,9 +282,7 @@
         "status": "pass",
         "score": 98,
         "executionTime": 68,
-        "evidence": [
-          "Constitutional compliance enforcer operational"
-        ],
+        "evidence": ["Constitutional compliance enforcer operational"],
         "errors": [],
         "message": "Constitutional compliance enforcer validated"
       },
@@ -319,9 +291,7 @@
         "status": "pass",
         "score": 98,
         "executionTime": 70,
-        "evidence": [
-          "Constitutional compliance enforcer operational"
-        ],
+        "evidence": ["Constitutional compliance enforcer operational"],
         "errors": [],
         "message": "Constitutional compliance enforcer validated"
       }
@@ -351,9 +321,7 @@
         "status": "pass",
         "score": 92,
         "executionTime": 70,
-        "evidence": [
-          "Self-healing governance operational"
-        ],
+        "evidence": ["Self-healing governance operational"],
         "errors": [],
         "message": "Self-healing governance validated"
       },
@@ -362,9 +330,7 @@
         "status": "pass",
         "score": 92,
         "executionTime": 76,
-        "evidence": [
-          "Self-healing governance operational"
-        ],
+        "evidence": ["Self-healing governance operational"],
         "errors": [],
         "message": "Self-healing governance validated"
       }
@@ -394,9 +360,7 @@
         "status": "pass",
         "score": 88,
         "executionTime": 72,
-        "evidence": [
-          "Evolution learning system operational"
-        ],
+        "evidence": ["Evolution learning system operational"],
         "errors": [],
         "message": "Evolution learning system validated"
       }
@@ -425,9 +389,7 @@
         "status": "pass",
         "score": 90,
         "executionTime": 0,
-        "evidence": [
-          "Intent enforcement engine exists"
-        ],
+        "evidence": ["Intent enforcement engine exists"],
         "errors": [],
         "message": "Agent drift prevention operational"
       }
@@ -456,9 +418,7 @@
         "status": "pass",
         "score": 85,
         "executionTime": 252,
-        "evidence": [
-          "Predictive compliance monitor operational"
-        ],
+        "evidence": ["Predictive compliance monitor operational"],
         "errors": [],
         "message": "Predictive compliance validated"
       }
@@ -488,9 +448,7 @@
         "score": 0,
         "executionTime": 91,
         "evidence": [],
-        "errors": [
-          "Version validation test failed: Error: Command failed: node tools/validate-version-consistency.ts"
-        ],
+        "errors": ["Version validation test failed: Error: Command failed: node tools/validate-version-consistency.ts"],
         "message": "Version drift prevention test failed"
       },
       {
@@ -499,9 +457,7 @@
         "score": 0,
         "executionTime": 78,
         "evidence": [],
-        "errors": [
-          "Version validation test failed: Error: Command failed: node tools/validate-version-consistency.ts"
-        ],
+        "errors": ["Version validation test failed: Error: Command failed: node tools/validate-version-consistency.ts"],
         "message": "Version drift prevention test failed"
       },
       {
@@ -510,9 +466,7 @@
         "score": 0,
         "executionTime": 75,
         "evidence": [],
-        "errors": [
-          "Version validation test failed: Error: Command failed: node tools/validate-version-consistency.ts"
-        ],
+        "errors": ["Version validation test failed: Error: Command failed: node tools/validate-version-consistency.ts"],
         "message": "Version drift prevention test failed"
       }
     ],
@@ -547,9 +501,7 @@
         "status": "pass",
         "score": 98,
         "executionTime": 58,
-        "evidence": [
-          "Constitutional compliance enforcer operational"
-        ],
+        "evidence": ["Constitutional compliance enforcer operational"],
         "errors": [],
         "message": "Constitutional compliance enforcer validated"
       },
@@ -558,9 +510,7 @@
         "status": "pass",
         "score": 98,
         "executionTime": 62,
-        "evidence": [
-          "Constitutional compliance enforcer operational"
-        ],
+        "evidence": ["Constitutional compliance enforcer operational"],
         "errors": [],
         "message": "Constitutional compliance enforcer validated"
       }
@@ -590,9 +540,7 @@
         "status": "pass",
         "score": 92,
         "executionTime": 72,
-        "evidence": [
-          "Self-healing governance operational"
-        ],
+        "evidence": ["Self-healing governance operational"],
         "errors": [],
         "message": "Self-healing governance validated"
       },
@@ -601,9 +549,7 @@
         "status": "pass",
         "score": 92,
         "executionTime": 70,
-        "evidence": [
-          "Self-healing governance operational"
-        ],
+        "evidence": ["Self-healing governance operational"],
         "errors": [],
         "message": "Self-healing governance validated"
       }
@@ -633,9 +579,7 @@
         "status": "pass",
         "score": 88,
         "executionTime": 73,
-        "evidence": [
-          "Evolution learning system operational"
-        ],
+        "evidence": ["Evolution learning system operational"],
         "errors": [],
         "message": "Evolution learning system validated"
       }
@@ -664,9 +608,7 @@
         "status": "pass",
         "score": 90,
         "executionTime": 0,
-        "evidence": [
-          "Intent enforcement engine exists"
-        ],
+        "evidence": ["Intent enforcement engine exists"],
         "errors": [],
         "message": "Agent drift prevention operational"
       }
@@ -695,9 +637,7 @@
         "status": "pass",
         "score": 85,
         "executionTime": 231,
-        "evidence": [
-          "Predictive compliance monitor operational"
-        ],
+        "evidence": ["Predictive compliance monitor operational"],
         "errors": [],
         "message": "Predictive compliance validated"
       }
@@ -727,9 +667,7 @@
         "score": 0,
         "executionTime": 81,
         "evidence": [],
-        "errors": [
-          "Version validation test failed: Error: Command failed: node tools/validate-version-consistency.ts"
-        ],
+        "errors": ["Version validation test failed: Error: Command failed: node tools/validate-version-consistency.ts"],
         "message": "Version drift prevention test failed"
       },
       {
@@ -738,9 +676,7 @@
         "score": 0,
         "executionTime": 76,
         "evidence": [],
-        "errors": [
-          "Version validation test failed: Error: Command failed: node tools/validate-version-consistency.ts"
-        ],
+        "errors": ["Version validation test failed: Error: Command failed: node tools/validate-version-consistency.ts"],
         "message": "Version drift prevention test failed"
       },
       {
@@ -749,9 +685,7 @@
         "score": 0,
         "executionTime": 77,
         "evidence": [],
-        "errors": [
-          "Version validation test failed: Error: Command failed: node tools/validate-version-consistency.ts"
-        ],
+        "errors": ["Version validation test failed: Error: Command failed: node tools/validate-version-consistency.ts"],
         "message": "Version drift prevention test failed"
       }
     ],
@@ -786,9 +720,7 @@
         "status": "pass",
         "score": 98,
         "executionTime": 63,
-        "evidence": [
-          "Constitutional compliance enforcer operational"
-        ],
+        "evidence": ["Constitutional compliance enforcer operational"],
         "errors": [],
         "message": "Constitutional compliance enforcer validated"
       },
@@ -797,9 +729,7 @@
         "status": "pass",
         "score": 98,
         "executionTime": 62,
-        "evidence": [
-          "Constitutional compliance enforcer operational"
-        ],
+        "evidence": ["Constitutional compliance enforcer operational"],
         "errors": [],
         "message": "Constitutional compliance enforcer validated"
       }
@@ -829,9 +759,7 @@
         "status": "pass",
         "score": 92,
         "executionTime": 70,
-        "evidence": [
-          "Self-healing governance operational"
-        ],
+        "evidence": ["Self-healing governance operational"],
         "errors": [],
         "message": "Self-healing governance validated"
       },
@@ -840,9 +768,7 @@
         "status": "pass",
         "score": 92,
         "executionTime": 70,
-        "evidence": [
-          "Self-healing governance operational"
-        ],
+        "evidence": ["Self-healing governance operational"],
         "errors": [],
         "message": "Self-healing governance validated"
       }
@@ -872,9 +798,7 @@
         "status": "pass",
         "score": 88,
         "executionTime": 72,
-        "evidence": [
-          "Evolution learning system operational"
-        ],
+        "evidence": ["Evolution learning system operational"],
         "errors": [],
         "message": "Evolution learning system validated"
       }
@@ -903,9 +827,7 @@
         "status": "pass",
         "score": 90,
         "executionTime": 0,
-        "evidence": [
-          "Intent enforcement engine exists"
-        ],
+        "evidence": ["Intent enforcement engine exists"],
         "errors": [],
         "message": "Agent drift prevention operational"
       }
@@ -934,9 +856,7 @@
         "status": "pass",
         "score": 85,
         "executionTime": 209,
-        "evidence": [
-          "Predictive compliance monitor operational"
-        ],
+        "evidence": ["Predictive compliance monitor operational"],
         "errors": [],
         "message": "Predictive compliance validated"
       }
@@ -966,9 +886,7 @@
         "score": 0,
         "executionTime": 78,
         "evidence": [],
-        "errors": [
-          "Detection test failed: Error: Command failed: node tools/validate-version-consistency.ts"
-        ],
+        "errors": ["Detection test failed: Error: Command failed: node tools/validate-version-consistency.ts"],
         "message": "Version drift detection test failed"
       },
       {
@@ -976,9 +894,7 @@
         "status": "pass",
         "score": 90,
         "executionTime": 78,
-        "evidence": [
-          "Auto-correction capability verified"
-        ],
+        "evidence": ["Auto-correction capability verified"],
         "errors": [],
         "message": "Auto-correction validated"
       },
@@ -987,10 +903,7 @@
         "status": "fail",
         "score": 0,
         "executionTime": 229,
-        "evidence": [
-          "Prevention reliability verified: 0/3 runs successful",
-          "Reliability rate: 0.0%"
-        ],
+        "evidence": ["Prevention reliability verified: 0/3 runs successful", "Reliability rate: 0.0%"],
         "errors": [],
         "message": "Prevention reliability issues detected"
       }
@@ -1026,9 +939,7 @@
         "status": "pass",
         "score": 98,
         "executionTime": 59,
-        "evidence": [
-          "Constitutional compliance enforcer operational"
-        ],
+        "evidence": ["Constitutional compliance enforcer operational"],
         "errors": [],
         "message": "Constitutional compliance enforcer validated"
       },
@@ -1037,9 +948,7 @@
         "status": "pass",
         "score": 98,
         "executionTime": 66,
-        "evidence": [
-          "Constitutional compliance enforcer operational"
-        ],
+        "evidence": ["Constitutional compliance enforcer operational"],
         "errors": [],
         "message": "Constitutional compliance enforcer validated"
       }
@@ -1069,9 +978,7 @@
         "status": "pass",
         "score": 92,
         "executionTime": 72,
-        "evidence": [
-          "Self-healing governance operational"
-        ],
+        "evidence": ["Self-healing governance operational"],
         "errors": [],
         "message": "Self-healing governance validated"
       },
@@ -1080,9 +987,7 @@
         "status": "pass",
         "score": 92,
         "executionTime": 75,
-        "evidence": [
-          "Self-healing governance operational"
-        ],
+        "evidence": ["Self-healing governance operational"],
         "errors": [],
         "message": "Self-healing governance validated"
       }
@@ -1112,9 +1017,7 @@
         "status": "pass",
         "score": 88,
         "executionTime": 72,
-        "evidence": [
-          "Evolution learning system operational"
-        ],
+        "evidence": ["Evolution learning system operational"],
         "errors": [],
         "message": "Evolution learning system validated"
       }
@@ -1143,9 +1046,7 @@
         "status": "pass",
         "score": 90,
         "executionTime": 0,
-        "evidence": [
-          "Intent enforcement engine exists"
-        ],
+        "evidence": ["Intent enforcement engine exists"],
         "errors": [],
         "message": "Agent drift prevention operational"
       }
@@ -1174,9 +1075,7 @@
         "status": "pass",
         "score": 85,
         "executionTime": 220,
-        "evidence": [
-          "Predictive compliance monitor operational"
-        ],
+        "evidence": ["Predictive compliance monitor operational"],
         "errors": [],
         "message": "Predictive compliance validated"
       }

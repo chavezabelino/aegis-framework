@@ -23,17 +23,14 @@ class CursorRealtimeCLI {
   }
 
   private setupCommands(): void {
-    this.program
-      .name('cursor-realtime')
-      .description('Cursor Real-time Integration CLI')
-      .version('2.1.0');
+    this.program.name('cursor-realtime').description('Cursor Real-time Integration CLI').version('2.1.0');
 
     this.program
       .command('start')
       .description('Start Cursor real-time integration')
       .option('-v, --verbose', 'Enable verbose logging')
       .option('-d, --daemon', 'Run as daemon process')
-      .action(async (options) => {
+      .action(async options => {
         await this.startIntegration(options);
       });
 
@@ -56,7 +53,7 @@ class CursorRealtimeCLI {
       .description('Monitor real-time events')
       .option('-f, --follow', 'Follow events in real-time')
       .option('-l, --limit <number>', 'Limit number of events to show', '50')
-      .action(async (options) => {
+      .action(async options => {
         await this.monitorEvents(options);
       });
 
@@ -64,7 +61,7 @@ class CursorRealtimeCLI {
       .command('stats')
       .description('Show session statistics')
       .option('-s, --session <id>', 'Show specific session stats')
-      .action(async (options) => {
+      .action(async options => {
         await this.showStats(options);
       });
 
@@ -73,7 +70,7 @@ class CursorRealtimeCLI {
       .description('Show recent feedback')
       .option('-d, --date <date>', 'Show feedback for specific date (YYYY-MM-DD)')
       .option('-l, --limit <number>', 'Limit number of feedback items', '20')
-      .action(async (options) => {
+      .action(async options => {
         await this.showFeedback(options);
       });
 
@@ -82,7 +79,7 @@ class CursorRealtimeCLI {
       .description('Show detected patterns')
       .option('-s, --session <id>', 'Show patterns for specific session')
       .option('-t, --type <type>', 'Filter by pattern type')
-      .action(async (options) => {
+      .action(async options => {
         await this.showPatterns(options);
       });
 
@@ -90,7 +87,7 @@ class CursorRealtimeCLI {
       .command('test')
       .description('Test integration with sample events')
       .option('-e, --events <number>', 'Number of test events to generate', '5')
-      .action(async (options) => {
+      .action(async options => {
         await this.testIntegration(options);
       });
   }
@@ -98,26 +95,26 @@ class CursorRealtimeCLI {
   private async startIntegration(options: any): Promise<void> {
     try {
       console.log('🎯 Starting Cursor Real-time Integration...');
-      
+
       this.integration = new CursorRealtimeIntegration();
-      
+
       // Set up event listeners
       this.setupEventListeners(options.verbose);
-      
+
       // Start integration
       await this.integration.start();
-      
+
       if (options.daemon) {
         console.log('✅ Integration running as daemon process');
         console.log('Use "cursor-realtime stop" to stop the integration');
-        
+
         // Keep process alive
         process.on('SIGINT', async () => {
           console.log('\n🛑 Received SIGINT, stopping integration...');
           await this.stopIntegration();
           process.exit(0);
         });
-        
+
         process.on('SIGTERM', async () => {
           console.log('\n🛑 Received SIGTERM, stopping integration...');
           await this.stopIntegration();
@@ -126,7 +123,7 @@ class CursorRealtimeCLI {
       } else {
         console.log('✅ Integration started successfully');
         console.log('Press Ctrl+C to stop');
-        
+
         // Wait for user to stop
         process.on('SIGINT', async () => {
           console.log('\n🛑 Stopping integration...');
@@ -162,14 +159,14 @@ class CursorRealtimeCLI {
     }
 
     const stats = this.integration.getSessionStats();
-    
+
     console.log('📊 Integration Status:');
     console.log('=====================');
     console.log(`Session ID: ${stats.sessionId}`);
     console.log(`Status: ${stats.isActive ? '🟢 Active' : '🔴 Inactive'}`);
     console.log(`Total Events: ${stats.totalEvents}`);
     console.log(`Patterns Detected: ${stats.patterns.length}`);
-    
+
     if (stats.lastEvent) {
       console.log(`Last Event: ${stats.lastEvent.type} at ${stats.lastEvent.timestamp}`);
     }
@@ -179,13 +176,14 @@ class CursorRealtimeCLI {
     const feedbackDir = path.resolve(__dirname, '..', '.aegis', 'cursor-feedback');
     const today = new Date().toISOString().split('T')[0];
     const feedbackFile = path.join(feedbackDir, `${today}.jsonl`);
-    
+
     if (!fs.existsSync(feedbackFile)) {
       console.log('📡 No events found for today');
       return;
     }
 
-    const events = fs.readFileSync(feedbackFile, 'utf8')
+    const events = fs
+      .readFileSync(feedbackFile, 'utf8')
       .split('\n')
       .filter(line => line.trim())
       .map(line => JSON.parse(line))
@@ -202,16 +200,17 @@ class CursorRealtimeCLI {
     if (options.follow) {
       console.log('\n🔄 Following events in real-time...');
       console.log('Press Ctrl+C to stop monitoring');
-      
+
       // Watch for new events
-      fs.watch(feedbackFile, (eventType) => {
+      fs.watch(feedbackFile, eventType => {
         if (eventType === 'change') {
-          const newEvents = fs.readFileSync(feedbackFile, 'utf8')
+          const newEvents = fs
+            .readFileSync(feedbackFile, 'utf8')
             .split('\n')
             .filter(line => line.trim())
             .map(line => JSON.parse(line))
             .slice(-1);
-          
+
           if (newEvents.length > 0) {
             const event = newEvents[0];
             const timestamp = new Date(event.timestamp).toLocaleTimeString();
@@ -229,7 +228,7 @@ class CursorRealtimeCLI {
 
   private async showStats(options: any): Promise<void> {
     const feedbackDir = path.resolve(__dirname, '..', '.aegis', 'cursor-feedback');
-    
+
     if (options.session) {
       const sessionFile = path.join(feedbackDir, `session-${options.session}.json`);
       if (!fs.existsSync(sessionFile)) {
@@ -238,7 +237,7 @@ class CursorRealtimeCLI {
       }
 
       const sessionData = JSON.parse(fs.readFileSync(sessionFile, 'utf8'));
-      
+
       console.log(`📊 Session Statistics: ${options.session}`);
       console.log('==============================');
       console.log(`Start Time: ${sessionData.startTime}`);
@@ -249,7 +248,7 @@ class CursorRealtimeCLI {
       Object.entries(sessionData.summary.eventTypes).forEach(([type, count]) => {
         console.log(`  ${type}: ${count}`);
       });
-      
+
       if (sessionData.summary.activeFiles.length > 0) {
         console.log('\nActive Files:');
         sessionData.summary.activeFiles.forEach((file: string) => {
@@ -258,7 +257,8 @@ class CursorRealtimeCLI {
       }
     } else {
       // Show all sessions
-      const sessionFiles = fs.readdirSync(feedbackDir)
+      const sessionFiles = fs
+        .readdirSync(feedbackDir)
         .filter(file => file.startsWith('session-') && file.endsWith('.json'))
         .map(file => {
           const sessionData = JSON.parse(fs.readFileSync(path.join(feedbackDir, file), 'utf8'));
@@ -266,14 +266,14 @@ class CursorRealtimeCLI {
             sessionId: sessionData.sessionId,
             startTime: sessionData.startTime,
             totalEvents: sessionData.totalEvents,
-            duration: sessionData.summary.duration
+            duration: sessionData.summary.duration,
           };
         })
         .sort((a, b) => new Date(b.startTime).getTime() - new Date(a.startTime).getTime());
 
       console.log('📊 All Sessions:');
       console.log('===============');
-      
+
       for (const session of sessionFiles) {
         console.log(`Session: ${session.sessionId}`);
         console.log(`  Start: ${session.startTime}`);
@@ -288,13 +288,14 @@ class CursorRealtimeCLI {
     const feedbackDir = path.resolve(__dirname, '..', '.aegis', 'cursor-feedback');
     const date = options.date || new Date().toISOString().split('T')[0];
     const feedbackFile = path.join(feedbackDir, `${date}.jsonl`);
-    
+
     if (!fs.existsSync(feedbackFile)) {
       console.log(`📝 No feedback found for ${date}`);
       return;
     }
 
-    const feedback = fs.readFileSync(feedbackFile, 'utf8')
+    const feedback = fs
+      .readFileSync(feedbackFile, 'utf8')
       .split('\n')
       .filter(line => line.trim())
       .map(line => JSON.parse(line))
@@ -315,7 +316,7 @@ class CursorRealtimeCLI {
 
   private async showPatterns(options: any): Promise<void> {
     const feedbackDir = path.resolve(__dirname, '..', '.aegis', 'cursor-feedback');
-    
+
     if (options.session) {
       const sessionFile = path.join(feedbackDir, `session-${options.session}.json`);
       if (!fs.existsSync(sessionFile)) {
@@ -325,12 +326,12 @@ class CursorRealtimeCLI {
 
       const sessionData = JSON.parse(fs.readFileSync(sessionFile, 'utf8'));
       const patterns = sessionData.patterns;
-      
+
       if (options.type) {
         const filteredPatterns = patterns.filter((p: any) => p.type === options.type);
         console.log(`🎯 Patterns (${options.type}): ${filteredPatterns.length}`);
         console.log('========================');
-        
+
         for (const pattern of filteredPatterns) {
           console.log(`Type: ${pattern.type}`);
           if (pattern.count) console.log(`Count: ${pattern.count}`);
@@ -341,7 +342,7 @@ class CursorRealtimeCLI {
       } else {
         console.log(`🎯 All Patterns: ${patterns.length}`);
         console.log('==================');
-        
+
         for (const pattern of patterns) {
           console.log(`Type: ${pattern.type}`);
           if (pattern.count) console.log(`Count: ${pattern.count}`);
@@ -357,19 +358,19 @@ class CursorRealtimeCLI {
 
   private async testIntegration(options: any): Promise<void> {
     console.log('🧪 Testing Cursor Real-time Integration...');
-    
+
     const integration = new CursorRealtimeIntegration();
-    
+
     // Set up event listeners
     integration.on('started', () => {
       console.log('✅ Integration started for testing');
     });
 
-    integration.on('immediate-pattern', (data) => {
+    integration.on('immediate-pattern', data => {
       console.log(`🎯 Pattern detected: ${data.pattern}`);
     });
 
-    integration.on('immediate-feedback', (data) => {
+    integration.on('immediate-feedback', data => {
       console.log(`🎨 Feedback: ${data.message}`);
     });
 
@@ -385,28 +386,28 @@ class CursorRealtimeCLI {
       {
         prompt: 'does this break the framework?',
         file: 'src/components/TestComponent.tsx',
-        position: { line: 10, character: 5 }
+        position: { line: 10, character: 5 },
       },
       {
         prompt: 'will this cause runtime failures?',
         file: 'src/utils/api.ts',
-        position: { line: 25, character: 10 }
+        position: { line: 25, character: 10 },
       },
       {
         prompt: 'should we document somehow?',
         file: 'docs/README.md',
-        position: { line: 5, character: 1 }
+        position: { line: 5, character: 1 },
       },
       {
         prompt: 'enhance the framework',
         file: 'framework/core.ts',
-        position: { line: 15, character: 20 }
+        position: { line: 15, character: 20 },
       },
       {
         prompt: 'real-world usage patterns',
         file: 'examples/demo.ts',
-        position: { line: 8, character: 12 }
-      }
+        position: { line: 8, character: 12 },
+      },
     ];
 
     const numEvents = parseInt(options.events);
@@ -416,40 +417,46 @@ class CursorRealtimeCLI {
 
     for (let i = 0; i < eventsToSend.length; i++) {
       const event = eventsToSend[i];
-      setTimeout(async () => {
-        await integration.handleUserInput(event.prompt, event.file, event.position);
-        console.log(`📝 Test event ${i + 1}/${eventsToSend.length} sent`);
-      }, (i + 1) * 1000);
+      setTimeout(
+        async () => {
+          await integration.handleUserInput(event.prompt, event.file, event.position);
+          console.log(`📝 Test event ${i + 1}/${eventsToSend.length} sent`);
+        },
+        (i + 1) * 1000
+      );
     }
 
     // Stop after all events
-    setTimeout(async () => {
-      await integration.stop();
-      console.log('🧪 Test completed');
-      process.exit(0);
-    }, (eventsToSend.length + 2) * 1000);
+    setTimeout(
+      async () => {
+        await integration.stop();
+        console.log('🧪 Test completed');
+        process.exit(0);
+      },
+      (eventsToSend.length + 2) * 1000
+    );
   }
 
   private setupEventListeners(verbose: boolean): void {
     if (!this.integration) return;
 
-    this.integration.on('started', (data) => {
+    this.integration.on('started', data => {
       if (verbose) console.log('🎯 Real-time integration started:', data.sessionId);
     });
 
-    this.integration.on('cursor-event', (data) => {
+    this.integration.on('cursor-event', data => {
       if (verbose) console.log('📡 Cursor event:', data.event.type);
     });
 
-    this.integration.on('immediate-pattern', (data) => {
+    this.integration.on('immediate-pattern', data => {
       console.log('🎯 Immediate pattern detected:', data.pattern);
     });
 
-    this.integration.on('immediate-feedback', (data) => {
+    this.integration.on('immediate-feedback', data => {
       console.log('🎨 Immediate feedback:', data.message);
     });
 
-    this.integration.on('stopped', (data) => {
+    this.integration.on('stopped', data => {
       if (verbose) console.log('🛑 Real-time integration stopped:', data.sessionId);
     });
   }

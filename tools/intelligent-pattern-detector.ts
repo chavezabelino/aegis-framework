@@ -57,17 +57,17 @@ class IntelligentPatternDetector {
       affectedFiles: [],
       cascadingEffects: ['build failures', 'documentation drift', 'constitutional violations'],
       preventionStrategies: ['automated version scanning', 'comprehensive update scripts'],
-      systematicIssue: true
+      systematicIssue: true,
     });
 
     // Documentation drift patterns
     this.knownPatterns.set('documentation-drift', {
       pattern: 'documentation inconsistencies across similar files',
-      confidence: 0.90,
+      confidence: 0.9,
       affectedFiles: [],
       cascadingEffects: ['user confusion', 'maintenance issues', 'constitutional violations'],
       preventionStrategies: ['automated documentation validation', 'cross-file consistency checks'],
-      systematicIssue: true
+      systematicIssue: true,
     });
 
     // Build configuration patterns
@@ -77,17 +77,17 @@ class IntelligentPatternDetector {
       affectedFiles: [],
       cascadingEffects: ['build failures', 'deployment issues', 'development friction'],
       preventionStrategies: ['automated build validation', 'configuration templates'],
-      systematicIssue: true
+      systematicIssue: true,
     });
 
     // Tool script patterns
     this.knownPatterns.set('tool-scripts', {
       pattern: 'tool script inconsistencies',
-      confidence: 0.80,
+      confidence: 0.8,
       affectedFiles: [],
       cascadingEffects: ['tool failures', 'automation breakdowns', 'user frustration'],
       preventionStrategies: ['automated tool validation', 'script templates'],
-      systematicIssue: true
+      systematicIssue: true,
     });
   }
 
@@ -102,7 +102,7 @@ class IntelligentPatternDetector {
       cascadingEffects: [],
       preventionStrategies: [],
       intelligentQuestions: [],
-      recommendedActions: []
+      recommendedActions: [],
     };
 
     // Determine violation type and apply systematic thinking
@@ -119,7 +119,7 @@ class IntelligentPatternDetector {
 
     // Generate intelligent questions
     analysis.intelligentQuestions = await this.generateIntelligentQuestions(violation, analysis);
-    
+
     // Generate recommended actions
     analysis.recommendedActions = this.generateRecommendedActions(analysis);
 
@@ -134,7 +134,7 @@ class IntelligentPatternDetector {
     if (violation.file?.includes('docs/')) return 'documentation-drift';
     if (violation.file?.includes('vite.config') || violation.file?.includes('tsconfig')) return 'build-config';
     if (violation.file?.includes('tools/') || violation.file?.includes('scripts/')) return 'tool-scripts';
-    
+
     return 'unknown';
   }
 
@@ -146,16 +146,16 @@ class IntelligentPatternDetector {
 
     switch (violationType) {
       case 'version-consistency':
-        similarFiles.push(...await this.findVersionConsistencyFiles());
+        similarFiles.push(...(await this.findVersionConsistencyFiles()));
         break;
       case 'documentation-drift':
-        similarFiles.push(...await this.findDocumentationFiles());
+        similarFiles.push(...(await this.findDocumentationFiles()));
         break;
       case 'build-config':
-        similarFiles.push(...await this.findBuildConfigFiles());
+        similarFiles.push(...(await this.findBuildConfigFiles()));
         break;
       case 'tool-scripts':
-        similarFiles.push(...await this.findToolScriptFiles());
+        similarFiles.push(...(await this.findToolScriptFiles()));
         break;
     }
 
@@ -166,22 +166,13 @@ class IntelligentPatternDetector {
    * Find files that might have version consistency issues
    */
   private async findVersionConsistencyFiles(): Promise<string[]> {
-    const patterns = [
-      '**/*.ts',
-      '**/*.js',
-      '**/*.md',
-      '**/*.yaml',
-      '**/*.yml',
-      '**/*.json',
-      '**/*.sh',
-      '**/*.cjs'
-    ];
+    const patterns = ['**/*.ts', '**/*.js', '**/*.md', '**/*.yaml', '**/*.yml', '**/*.json', '**/*.sh', '**/*.cjs'];
 
     const files: string[] = [];
     for (const pattern of patterns) {
       const matches = await glob(pattern, {
         cwd: this.frameworkRoot,
-        ignore: ['node_modules/**', 'dist/**', '.git/**', '**/*.map', '**/*.d.ts']
+        ignore: ['node_modules/**', 'dist/**', '.git/**', '**/*.map', '**/*.d.ts'],
       });
       files.push(...matches);
     }
@@ -193,18 +184,12 @@ class IntelligentPatternDetector {
    * Find documentation files
    */
   private async findDocumentationFiles(): Promise<string[]> {
-    const patterns = [
-      'docs/**/*.md',
-      'README.md',
-      'CHANGELOG.md',
-      'CONTRIBUTING.md',
-      'LICENSE'
-    ];
+    const patterns = ['docs/**/*.md', 'README.md', 'CHANGELOG.md', 'CONTRIBUTING.md', 'LICENSE'];
 
     const files: string[] = [];
     for (const pattern of patterns) {
       const matches = await glob(pattern, {
-        cwd: this.frameworkRoot
+        cwd: this.frameworkRoot,
       });
       files.push(...matches);
     }
@@ -223,13 +208,13 @@ class IntelligentPatternDetector {
       'tsconfig.dev.json',
       'package.json',
       'webpack.config.js',
-      'rollup.config.js'
+      'rollup.config.js',
     ];
 
     const files: string[] = [];
     for (const pattern of patterns) {
       const matches = await glob(pattern, {
-        cwd: this.frameworkRoot
+        cwd: this.frameworkRoot,
       });
       files.push(...matches);
     }
@@ -251,13 +236,13 @@ class IntelligentPatternDetector {
       'scripts/**/*.sh',
       'scripts/**/*.cjs',
       'cli/**/*.ts',
-      'cli/**/*.js'
+      'cli/**/*.js',
     ];
 
     const files: string[] = [];
     for (const pattern of patterns) {
       const matches = await glob(pattern, {
-        cwd: this.frameworkRoot
+        cwd: this.frameworkRoot,
       });
       files.push(...matches);
     }
@@ -268,61 +253,64 @@ class IntelligentPatternDetector {
   /**
    * Generate intelligent questions for systematic analysis
    */
-  private async generateIntelligentQuestions(violation: any, analysis: SystematicAnalysis): Promise<IntelligentQuestion[]> {
+  private async generateIntelligentQuestions(
+    violation: any,
+    analysis: SystematicAnalysis
+  ): Promise<IntelligentQuestion[]> {
     const questions: IntelligentQuestion[] = [];
 
     // Always ask systematic thinking questions
     questions.push({
-      question: "Is this isolated or systematic?",
+      question: 'Is this isolated or systematic?',
       priority: 'critical',
       reasoning: 'Single violations often indicate systematic patterns',
-      actionRequired: true
+      actionRequired: true,
     });
 
     questions.push({
-      question: "What else might be affected?",
+      question: 'What else might be affected?',
       priority: 'high',
       reasoning: 'Similar files likely have the same issue',
-      actionRequired: true
+      actionRequired: true,
     });
 
     questions.push({
-      question: "Should I have caught this earlier?",
+      question: 'Should I have caught this earlier?',
       priority: 'high',
       reasoning: 'Framework should automatically detect systematic issues',
-      actionRequired: true
+      actionRequired: true,
     });
 
     questions.push({
-      question: "What patterns am I missing?",
+      question: 'What patterns am I missing?',
       priority: 'medium',
       reasoning: 'Pattern recognition is key to systematic thinking',
-      actionRequired: false
+      actionRequired: false,
     });
 
     questions.push({
-      question: "How can we prevent this in the future?",
+      question: 'How can we prevent this in the future?',
       priority: 'high',
       reasoning: 'Prevention is better than reactive fixes',
-      actionRequired: true
+      actionRequired: true,
     });
 
     // Add specific questions based on violation type
     if (analysis.systematicPattern.includes('version references across multiple files')) {
       questions.push({
-        question: "Are there other files with version references that need updating?",
+        question: 'Are there other files with version references that need updating?',
         priority: 'critical',
         reasoning: 'Version updates are rarely isolated to single files',
-        actionRequired: true
+        actionRequired: true,
       });
     }
 
     if (analysis.systematicPattern.includes('documentation inconsistencies')) {
       questions.push({
-        question: "Are there similar documentation files that might have the same issue?",
+        question: 'Are there similar documentation files that might have the same issue?',
         priority: 'high',
         reasoning: 'Documentation patterns are usually consistent across files',
-        actionRequired: true
+        actionRequired: true,
       });
     }
 
@@ -385,12 +373,13 @@ class IntelligentPatternDetector {
 }
 
 // Export for use in other tools
-export { IntelligentPatternDetector, PatternAnalysis, IntelligentQuestion, SystematicAnalysis };
+export { IntelligentPatternDetector };
+export type { PatternAnalysis, IntelligentQuestion, SystematicAnalysis };
 
 // CLI interface
 async function main() {
   const detector = new IntelligentPatternDetector();
-  
+
   if (process.argv.length < 3) {
     console.log('Usage: node intelligent-pattern-detector.ts <violation-file>');
     console.log('Example: node intelligent-pattern-detector.ts violation.json');
@@ -410,7 +399,7 @@ async function main() {
 
   const analysis = await detector.analyzeSingleViolation(violation);
   const suggestions = await detector.suggestSystematicAnalysis(violation);
-  
+
   console.log('🧠 Intelligent Pattern Analysis Results');
   console.log('=====================================');
   console.log(`Isolated Issue: ${analysis.isIsolated ? 'No' : 'Yes'}`);

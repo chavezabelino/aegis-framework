@@ -7,8 +7,10 @@
  * @mode: strict
  */
 
-import fs from 'fs';
-import path from 'path';
+import * as fs from 'fs';
+import * as path from 'path';
+import { VersionConsistencyValidator } from '../../tools/validate-version-consistency';
+import { ConstitutionalComplianceEnforcer } from '../../tools/constitutional-compliance-enforcer';
 
 interface FailurePattern {
   id: string;
@@ -75,8 +77,8 @@ class SelfHealingGovernance {
       evidence: [
         'Version documentation drift occurred in previous update',
         'Same issue repeated in current update',
-        'Framework claimed intelligence features that didn\'t exist'
-      ]
+        "Framework claimed intelligence features that didn't exist",
+      ],
     });
 
     // Register prevention action for version drift
@@ -89,11 +91,11 @@ class SelfHealingGovernance {
         'Automated version consistency validation',
         'Pre-commit hooks block version mismatches',
         'Critical file protection',
-        'Auto-fix capability for version inconsistencies'
+        'Auto-fix capability for version inconsistencies',
       ],
       effectiveness: 1.0,
       lastExecuted: new Date(),
-      status: 'active'
+      status: 'active',
     });
 
     // Register detection action for version drift
@@ -106,11 +108,11 @@ class SelfHealingGovernance {
         'Pattern recognition for version mismatches',
         'Line-level analysis of version references',
         'Comprehensive file scanning',
-        'Real-time validation during commits'
+        'Real-time validation during commits',
       ],
       effectiveness: 1.0,
       lastExecuted: new Date(),
-      status: 'active'
+      status: 'active',
     });
 
     // Register correction action for version drift
@@ -123,11 +125,11 @@ class SelfHealingGovernance {
         'Auto-fix capability for version inconsistencies',
         'Automated correction of version mismatches',
         'Batch processing of multiple files',
-        'Validation of corrections'
+        'Validation of corrections',
       ],
       effectiveness: 1.0,
       lastExecuted: new Date(),
-      status: 'active'
+      status: 'active',
     });
   }
 
@@ -161,18 +163,19 @@ class SelfHealingGovernance {
       actionTaken: false,
       preventionImplemented: false,
       evidence: [],
-      recommendations: []
+      recommendations: [],
     };
 
     // Check for active failure patterns
-    for (const [patternId, pattern] of this.failurePatterns) {
+    for (const [patternId, pattern] of this.failurePatterns.entries()) {
       if (pattern.status === 'active' && pattern.occurrences > 1) {
         result.patternDetected = true;
         result.evidence.push(`Detected repeat pattern: ${pattern.description} (${pattern.occurrences} occurrences)`);
 
         // Find prevention actions for this pattern
-        const preventionActions = Array.from(this.healingActions.values())
-          .filter(action => action.patternId === patternId && action.action === 'prevent');
+        const preventionActions = Array.from(this.healingActions.values()).filter(
+          action => action.patternId === patternId && action.action === 'prevent'
+        );
 
         for (const action of preventionActions) {
           if (action.status === 'active') {
@@ -199,7 +202,7 @@ class SelfHealingGovernance {
     if (constitutionalViolations.length > 0) {
       result.patternDetected = true;
       result.evidence.push(`Detected constitutional violations: ${constitutionalViolations.join(', ')}`);
-      
+
       // Implement constitutional compliance enforcement
       const complianceEnforced = await this.enforceConstitutionalCompliance();
       if (complianceEnforced) {
@@ -217,7 +220,7 @@ class SelfHealingGovernance {
     if (intelligenceFailures.length > 0) {
       result.patternDetected = true;
       result.evidence.push(`Detected intelligence failures: ${intelligenceFailures.join(', ')}`);
-      
+
       // Implement intelligence validation
       const intelligenceValidated = await this.validateIntelligenceClaims();
       if (intelligenceValidated) {
@@ -239,7 +242,7 @@ class SelfHealingGovernance {
    */
   private async verifyPreventionMechanism(implementation: string): Promise<boolean> {
     const implementationPath = path.join(this.projectRoot, implementation);
-    
+
     // Check if implementation file exists
     if (!fs.existsSync(implementationPath)) {
       return false;
@@ -249,7 +252,6 @@ class SelfHealingGovernance {
     try {
       // For version consistency validation, check if it can actually validate
       if (implementation.includes('validate-version-consistency')) {
-        const { VersionConsistencyValidator } = await import('../tools/validate-version-consistency.js');
         const validator = new VersionConsistencyValidator(this.projectRoot);
         const result = await validator.validateAll();
         return result.overallStatus !== 'fail';
@@ -257,7 +259,6 @@ class SelfHealingGovernance {
 
       // For constitutional compliance enforcer, check if it can actually enforce
       if (implementation.includes('constitutional-compliance-enforcer')) {
-        const { ConstitutionalComplianceEnforcer } = await import('../tools/constitutional-compliance-enforcer.js');
         const enforcer = new ConstitutionalComplianceEnforcer(this.projectRoot);
         const result = await enforcer.enforceCompliance();
         return result.overallStatus !== 'constitutional-crisis';
@@ -277,7 +278,6 @@ class SelfHealingGovernance {
     const violations: string[] = [];
 
     try {
-      const { ConstitutionalComplianceEnforcer } = await import('../tools/constitutional-compliance-enforcer.js');
       const enforcer = new ConstitutionalComplianceEnforcer(this.projectRoot);
       const result = await enforcer.enforceCompliance();
 
@@ -285,7 +285,7 @@ class SelfHealingGovernance {
         violations.push('Constitutional crisis detected');
       }
 
-      result.violations.forEach(violation => {
+      result.violations.forEach((violation: string) => {
         if (violation.includes('FALSE CLAIM') || violation.includes('FAILED PREVENTION')) {
           violations.push(violation);
         }
@@ -302,7 +302,6 @@ class SelfHealingGovernance {
    */
   private async enforceConstitutionalCompliance(): Promise<boolean> {
     try {
-      const { ConstitutionalComplianceEnforcer } = await import('../tools/constitutional-compliance-enforcer.js');
       const enforcer = new ConstitutionalComplianceEnforcer(this.projectRoot);
       const result = await enforcer.enforceCompliance();
       return result.overallStatus !== 'constitutional-crisis';
@@ -320,7 +319,7 @@ class SelfHealingGovernance {
     // Check for false claims about intelligence features
     const falseClaims = [
       'Self-healing governance prevents repeat failures',
-      'Evolution learning prevents repeat patterns'
+      'Evolution learning prevents repeat patterns',
     ];
 
     for (const claim of falseClaims) {
@@ -356,10 +355,9 @@ class SelfHealingGovernance {
    */
   private async validateIntelligenceClaims(): Promise<boolean> {
     try {
-      const { ConstitutionalComplianceEnforcer } = await import('../tools/constitutional-compliance-enforcer.js');
       const enforcer = new ConstitutionalComplianceEnforcer(this.projectRoot);
       const result = await enforcer.enforceCompliance();
-      return !result.violations.some(v => v.includes('FALSE CLAIM'));
+      return !result.violations.some((v: string) => v.includes('FALSE CLAIM'));
     } catch (error) {
       return false;
     }
@@ -405,10 +403,9 @@ class SelfHealingGovernance {
     }
 
     console.log('\n🛡️ Prevention Mechanisms:');
-    for (const [patternId, pattern] of this.failurePatterns) {
-      const actions = Array.from(this.healingActions.values())
-        .filter(action => action.patternId === patternId);
-      
+    for (const [patternId, pattern] of this.failurePatterns.entries()) {
+      const actions = Array.from(this.healingActions.values()).filter(action => action.patternId === patternId);
+
       console.log(`   ${pattern.description}:`);
       actions.forEach(action => {
         const status = action.status === 'active' ? '✅' : action.status === 'inactive' ? '⚠️' : '❌';
@@ -443,7 +440,7 @@ class SelfHealingGovernance {
       if (!fs.existsSync(patternsDir)) {
         fs.mkdirSync(patternsDir, { recursive: true });
       }
-      
+
       const patterns = Array.from(this.failurePatterns.values());
       fs.writeFileSync(this.patternsFile, JSON.stringify(patterns, null, 2));
     } catch (error) {
@@ -477,7 +474,7 @@ class SelfHealingGovernance {
       if (!fs.existsSync(actionsDir)) {
         fs.mkdirSync(actionsDir, { recursive: true });
       }
-      
+
       const actions = Array.from(this.healingActions.values());
       fs.writeFileSync(this.actionsFile, JSON.stringify(actions, null, 2));
     } catch (error) {

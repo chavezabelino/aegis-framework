@@ -15,14 +15,14 @@ ruleContracts:
     schema:
       planClass: ["MVP-Fix", "Surgical-Refactor", "Systemic-Change"]
       escalationJustification: "string"
-  
+
   - rule: "Assert behavioral contracts only, not implementation details"
-    version: "1.0.0" 
+    version: "1.0.0"
     enforcement: "blocking"
     schema:
       contractType: ["observable", "behavioral", "user-facing"]
       forbiddenAssertions: ["rgb-colors", "class-names", "internal-implementation"]
-  
+
   - rule: "Plan gate must pass before execution"
     version: "1.0.0"
     enforcement: "blocking"
@@ -70,11 +70,11 @@ errorStates:
   - code: "PLAN_GATE_FAILED"
     fallback: "Plan exceeds complexity limits - revise to smaller scope"
     recovery: "Run plan optimization with reduced scope or justify escalation"
-  
+
   - code: "INSUFFICIENT_JUSTIFICATION"
     fallback: "Systemic change requires explicit justification"
     recovery: "Add justification section explaining why MVP/Surgical cannot meet contracts"
-  
+
   - code: "CONTRACT_VIOLATION"
     fallback: "Plan violates behavioral contract requirements"
     recovery: "Revise plan to focus on observable behavior, not implementation details"
@@ -90,14 +90,14 @@ adapters:
     config:
       promptTemplate: "tools/prompts/aegis-plan-optimizer.kilo.md"
       maxTokens: 4000
-  
+
   cursor:
     framework: "aegis"
     version: "2.4.0"
     config:
       promptTemplate: "tools/prompts/aegis-plan-optimizer.kilo.md"
       maxTokens: 6000
-  
+
   claude:
     framework: "aegis"
     version: "2.4.0"

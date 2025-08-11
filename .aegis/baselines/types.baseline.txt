@@ -1,0 +1,209 @@
+
+> aegis-framework@2.5.0 types /Users/nino/Workspace/02-local-dev/aegis-framework
+> tsc -p tsconfig.json --noEmit
+
+cli/aegis-conductor.ts(181,65): error TS18046: 'error' is of type 'unknown'.
+cli/aegis-conductor.ts(528,58): error TS18046: 'error' is of type 'unknown'.
+cli/aegis-dashboard.ts(448,70): error TS2367: This comparison appears to be unintentional because the types '"stable" | "beta" | "deprecated"' and '"experimental"' have no overlap.
+cli/aegis-determinism.ts(110,9): error TS2322: Type 'string | number | undefined' is not assignable to type 'string | number'.
+  Type 'undefined' is not assignable to type 'string | number'.
+cli/aegis-determinism.ts(111,9): error TS2322: Type 'number | undefined' is not assignable to type 'number'.
+  Type 'undefined' is not assignable to type 'number'.
+cli/aegis-eval.ts(164,58): error TS2345: Argument of type 'EvalResult' is not assignable to parameter of type '{ passed: boolean; score: number; validationPassRate: number; judgeResults: { name: string; score: number; weight: number; }[]; errors: string[]; }'.
+  Property 'validationPassRate' is missing in type 'EvalResult' but required in type '{ passed: boolean; score: number; validationPassRate: number; judgeResults: { name: string; score: number; weight: number; }[]; errors: string[]; }'.
+cli/aegis-memory.ts(144,62): error TS18046: 'error' is of type 'unknown'.
+cli/aegis-memory.ts(200,53): error TS18046: 'error' is of type 'unknown'.
+cli/aegis-memory.ts(238,55): error TS18046: 'error' is of type 'unknown'.
+cli/aegis-memory.ts(291,60): error TS18046: 'error' is of type 'unknown'.
+cli/aegis-memory.ts(347,54): error TS18046: 'error' is of type 'unknown'.
+cli/aegis-memory.ts(410,56): error TS18046: 'error' is of type 'unknown'.
+cli/aegis-memory.ts(485,37): error TS18046: 'error' is of type 'unknown'.
+cli/aegis-planning.ts(116,73): error TS2339: Property 'errors' does not exist on type 'ZodError<{ planClass: "MVP-Fix" | "Surgical-Refactor" | "Systemic-Change"; contracts: string[]; changes: { file: string; action: string; reason: string; }[]; tests: string[]; risks: string[]; rollback: string[]; doneWhen: string[]; }>'.
+cli/aegis-planning.ts(164,84): error TS2339: Property 'errors' does not exist on type 'ZodError<{ planClass: "MVP-Fix" | "Surgical-Refactor" | "Systemic-Change"; contracts: string[]; changes: { file: string; action: string; reason: string; }[]; tests: string[]; risks: string[]; rollback: string[]; doneWhen: string[]; }>'.
+cli/aegis-setup.ts(48,20): error TS2503: Cannot find namespace 'ora'.
+cli/init-agent-context.ts(65,56): error TS18046: 'error' is of type 'unknown'.
+framework/governance/constitutional-reflex-engine.ts(32,11): error TS2564: Property 'reflexPatterns' has no initializer and is not definitely assigned in the constructor.
+framework/governance/foreground-hang-prevention.ts(45,11): error TS2564: Property 'processPatterns' has no initializer and is not definitely assigned in the constructor.
+framework/governance/semantic-interrupt-detector.ts(51,11): error TS2564: Property 'interruptPatterns' has no initializer and is not definitely assigned in the constructor.
+framework/healing/self-healing-blueprint-engine.ts(412,29): error TS2367: This comparison appears to be unintentional because the types '"safe" | "moderate"' and '"high"' have no overlap.
+framework/healing/self-healing-governance.ts(252,62): error TS2307: Cannot find module '../tools/validate-version-consistency.js' or its corresponding type declarations.
+framework/healing/self-healing-governance.ts(260,67): error TS2307: Cannot find module '../tools/constitutional-compliance-enforcer.js' or its corresponding type declarations.
+framework/healing/self-healing-governance.ts(280,65): error TS2307: Cannot find module '../tools/constitutional-compliance-enforcer.js' or its corresponding type declarations.
+framework/healing/self-healing-governance.ts(288,33): error TS7006: Parameter 'violation' implicitly has an 'any' type.
+framework/healing/self-healing-governance.ts(305,65): error TS2307: Cannot find module '../tools/constitutional-compliance-enforcer.js' or its corresponding type declarations.
+framework/healing/self-healing-governance.ts(359,65): error TS2307: Cannot find module '../tools/constitutional-compliance-enforcer.js' or its corresponding type declarations.
+framework/healing/self-healing-governance.ts(362,38): error TS7006: Parameter 'v' implicitly has an 'any' type.
+framework/learning/predictive-enforcement.ts(338,21): error TS2345: Argument of type '{ timestamp: string; context: PreventionContext; evaluation: { shouldIntervene: any; confidence: any; triggeredRules: any; }; }' is not assignable to parameter of type 'never'.
+framework/memory/memory-core.ts(9,10): error TS2305: Module '"../adapters/adapter-interface"' has no exported member 'AegisModule'.
+framework/memory/memory-core.ts(40,35): error TS2554: Expected 2-3 arguments, but got 1.
+framework/memory/memory-core.ts(44,15): error TS2554: Expected 2-3 arguments, but got 1.
+framework/observability/aegis-telemetry.ts(145,7): error TS2322: Type 'string' is not assignable to type '"validate" | "generate" | "hydrate" | "evaluate" | "repair"'.
+framework/observability/aegis-telemetry.ts(230,22): error TS7053: Element implicitly has an 'any' type because expression of type '"security-reviewScore"' can't be used to index type '{}'.
+  Property 'security-reviewScore' does not exist on type '{}'.
+framework/observability/aegis-telemetry.ts(231,21): error TS7053: Element implicitly has an 'any' type because expression of type '"code-qualityScore"' can't be used to index type '{}'.
+  Property 'code-qualityScore' does not exist on type '{}'.
+framework/observability/aegis-telemetry.ts(232,24): error TS7053: Element implicitly has an 'any' type because expression of type '"framework-complianceScore"' can't be used to index type '{}'.
+  Property 'framework-complianceScore' does not exist on type '{}'.
+framework/observability/aegis-telemetry.ts(275,16): error TS2554: Expected 0 arguments, but got 2.
+framework/observability/aegis-telemetry.ts(278,16): error TS2554: Expected 0 arguments, but got 2.
+framework/observability/langfuse-adapter.ts(12,26): error TS2307: Cannot find module 'langfuse' or its corresponding type declarations.
+framework/observability/otel-tracer.ts(67,11): error TS2564: Property 'sdk' has no initializer and is not definitely assigned in the constructor.
+framework/observability/otel-tracer.ts(90,26): error TS2693: 'Resource' only refers to a type, but is being used as a value here.
+framework/observability/otel-tracer.ts(117,16): error TS2339: Property 'addSpanProcessor' does not exist on type 'NodeSDK'.
+framework/observability/otel-tracer.ts(303,7): error TS2353: Object literal may only specify known properties, and ''aegis.eval.id'' does not exist in type 'Partial<AegisSpanAttributes>'.
+packages/planning-cli/src/index.ts(15,34): error TS2307: Cannot find module '../../tools/auto-plan-detector.js' or its corresponding type declarations.
+packages/planning-cli/src/index.ts(16,31): error TS2307: Cannot find module '../../tools/planner-critic.js' or its corresponding type declarations.
+packages/planning-cli/src/index.ts(77,38): error TS7006: Parameter 'reason' implicitly has an 'any' type.
+packages/planning-cli/src/index.ts(123,73): error TS2339: Property 'errors' does not exist on type 'ZodError<{ planClass: "MVP-Fix" | "Surgical-Refactor" | "Systemic-Change"; contracts: string[]; changes: { file: string; action: string; reason: string; }[]; tests: string[]; risks: string[]; rollback: string[]; doneWhen: string[]; }>'.
+packages/planning-cli/src/index.ts(171,84): error TS2339: Property 'errors' does not exist on type 'ZodError<{ planClass: "MVP-Fix" | "Surgical-Refactor" | "Systemic-Change"; contracts: string[]; changes: { file: string; action: string; reason: string; }[]; tests: string[]; risks: string[]; rollback: string[]; doneWhen: string[]; }>'.
+packages/planning-cli/src/index.ts(266,39): error TS7006: Parameter 'reason' implicitly has an 'any' type.
+packages/planning-cli/src/index.ts(269,39): error TS7006: Parameter 'reason' implicitly has an 'any' type.
+packages/planning-cli/src/index.ts(280,40): error TS7006: Parameter 'reason' implicitly has an 'any' type.
+packages/planning-mcp/src/server.ts(13,34): error TS2307: Cannot find module '../../tools/auto-plan-detector.js' or its corresponding type declarations.
+packages/planning-mcp/src/server.ts(14,31): error TS2307: Cannot find module '../../tools/planner-critic.js' or its corresponding type declarations.
+packages/planning-mcp/src/server.ts(62,35): error TS2345: Argument of type 'string' is not assignable to parameter of type 'ZodObject<{ method: ZodLiteral<string>; }, UnknownKeysParam, ZodTypeAny, { method: string; }, { method: string; }>'.
+packages/planning-mcp/src/server.ts(63,49): error TS2339: Property 'params' does not exist on type '{ method: string; }'.
+packages/planning-mcp/src/server.ts(181,35): error TS2345: Argument of type 'string' is not assignable to parameter of type 'ZodObject<{ method: ZodLiteral<string>; }, UnknownKeysParam, ZodTypeAny, { method: string; }, { method: string; }>'.
+playwright.config.ts(1,39): error TS2307: Cannot find module '@playwright/test' or its corresponding type declarations.
+tools/continuous-compliance-monitor.ts(66,11): error TS2564: Property 'config' has no initializer and is not definitely assigned in the constructor.
+tools/cursor-realtime-integration.ts(276,13): error TS1345: An expression of type 'void' cannot be tested for truthiness.
+tools/cursor-realtime-integration.ts(276,13): error TS1345: An expression of type 'void' cannot be tested for truthiness.
+tools/cursor-realtime-integration.ts(276,13): error TS1345: An expression of type 'void' cannot be tested for truthiness.
+tools/cursor-realtime-integration.ts(276,58): error TS2339: Property 'length' does not exist on type 'never'.
+tools/cursor-realtime-integration.ts(277,31): error TS2488: Type 'never' must have a '[Symbol.iterator]()' method that returns an iterator.
+tools/enhanced-evolution-detector.ts(359,37): error TS1205: Re-exporting a type when 'isolatedModules' is enabled requires using 'export type'.
+tools/enhanced-evolution-detector.ts(359,63): error TS1205: Re-exporting a type when 'isolatedModules' is enabled requires using 'export type'.
+tools/enhanced-evolution-detector.ts(359,88): error TS1205: Re-exporting a type when 'isolatedModules' is enabled requires using 'export type'.
+tools/evidence-based-validation.ts(679,15): error TS2454: Variable 'versionResult' is used before being assigned.
+tools/evidence-based-validation.ts(712,15): error TS2454: Variable 'complianceResult' is used before being assigned.
+tools/evidence-based-validation.ts(712,61): error TS2454: Variable 'complianceResult' is used before being assigned.
+tools/generate-changelog.ts(187,30): error TS1205: Re-exporting a type when 'isolatedModules' is enabled requires using 'export type'.
+tools/intelligent-pattern-detector.ts(388,38): error TS1205: Re-exporting a type when 'isolatedModules' is enabled requires using 'export type'.
+tools/intelligent-pattern-detector.ts(388,55): error TS1205: Re-exporting a type when 'isolatedModules' is enabled requires using 'export type'.
+tools/intelligent-pattern-detector.ts(388,76): error TS1205: Re-exporting a type when 'isolatedModules' is enabled requires using 'export type'.
+tools/intent-enforcement-engine.ts(477,9): error TS2353: Object literal may only specify known properties, and 'explanation' does not exist in type 'CommandAnalysis'.
+tools/mcp-aegis-server.ts(262,8): error TS2339: Property 'listen' does not exist on type 'Server<{ method: string; params?: objectOutputType<{ _meta: ZodOptional<ZodObject<{ progressToken: ZodOptional<ZodUnion<[ZodString, ZodNumber]>>; }, "passthrough", ZodTypeAny, objectOutputType<...>, objectInputType<...>>>; }, ZodTypeAny, "passthrough"> | undefined; }, { ...; }, objectOutputType<...>>'.
+tools/planner-critic.ts(61,15): error TS7006: Parameter 'pattern' implicitly has an 'any' type.
+tools/planner-critic.ts(306,47): error TS18046: 'error' is of type 'unknown'.
+tools/predictive-compliance-monitor.ts(369,21): error TS2339: Property 'status' does not exist on type 'ComplianceResult'.
+tools/realtime-evolution-detection.ts(30,7): error TS2415: Class 'RealTimeEvolutionDetector' incorrectly extends base class 'EvolutionStoryDetector'.
+  Types have separate declarations of a private property 'configLoader'.
+tools/realtime-evolution-detection.ts(82,7): error TS2322: Type '"blueprint-gap"' is not assignable to type '"constitutional-violation" | "user-question" | "validation-failure" | "migration-friction" | "ai-quality-gap"'.
+tools/realtime-evolution-detection.ts(90,7): error TS2322: Type '"framework-abstraction"' is not assignable to type '"constitutional-violation" | "user-question" | "validation-failure" | "migration-friction" | "ai-quality-gap"'.
+tools/systematic-prevention-validator.ts(463,25): error TS2339: Property 'status' does not exist on type 'ComplianceResult'.
+tools/systematic-prevention-validator.ts(488,25): error TS2339: Property 'status' does not exist on type 'SelfHealingResult'.
+tools/systematic-prevention-validator.ts(508,25): error TS2339: Property 'status' does not exist on type 'LearningResult'.
+tools/validate-blueprint.ts(68,15): error TS2554: Expected 2-3 arguments, but got 1.
+tools/validate-blueprint.ts(70,15): error TS2554: Expected 2-3 arguments, but got 1.
+vite.config.ts(96,5): error TS2769: No overload matches this call.
+  The last overload gave the following error.
+    Type '{ js: string; }' is not assignable to type 'string'.
+website/src/components/FrameworkStatus.tsx(18,12): error TS2307: Cannot find module '@site/.docusaurus/aegis-data-generator/default/framework-data.json' or its corresponding type declarations.
+website/src/components/FrameworkStatus.tsx(43,12): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/components/FrameworkStatus.tsx(47,12): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/components/FrameworkStatus.tsx(53,5): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/components/FrameworkStatus.tsx(59,7): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/components/FrameworkStatus.tsx(61,7): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/components/FrameworkStatus.tsx(67,9): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/components/FrameworkStatus.tsx(68,11): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/components/FrameworkStatus.tsx(71,11): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/components/FrameworkStatus.tsx(77,11): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/components/FrameworkStatus.tsx(78,13): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/components/FrameworkStatus.tsx(79,15): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/components/FrameworkStatus.tsx(82,15): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/components/FrameworkStatus.tsx(87,13): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/components/FrameworkStatus.tsx(88,15): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/components/FrameworkStatus.tsx(91,15): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/components/FrameworkStatus.tsx(96,13): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/components/FrameworkStatus.tsx(97,15): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/components/FrameworkStatus.tsx(100,15): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/components/FrameworkStatus.tsx(109,9): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/components/FrameworkStatus.tsx(110,11): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/components/FrameworkStatus.tsx(111,11): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/components/FrameworkStatus.tsx(113,15): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/components/HomepageFeatures/index.tsx(17,7): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/components/HomepageFeatures/index.tsx(27,7): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/components/HomepageFeatures/index.tsx(37,7): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/components/HomepageFeatures/index.tsx(47,5): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/components/HomepageFeatures/index.tsx(48,7): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/components/HomepageFeatures/index.tsx(49,9): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/components/HomepageFeatures/index.tsx(51,7): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/components/HomepageFeatures/index.tsx(52,9): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/components/HomepageFeatures/index.tsx(53,9): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/components/HomepageFeatures/index.tsx(61,5): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/components/HomepageFeatures/index.tsx(62,7): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/components/HomepageFeatures/index.tsx(63,9): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/components/HomepageFeatures/index.tsx(65,13): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/Dashboard.tsx(24,5): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/Dashboard.tsx(25,7): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/Dashboard.tsx(29,11): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/Dashboard.tsx(30,13): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/Dashboard.tsx(31,15): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/Dashboard.tsx(34,15): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/Dashboard.tsx(35,15): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/Dashboard.tsx(37,13): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/Dashboard.tsx(38,15): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/Dashboard.tsx(43,13): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/Dashboard.tsx(58,5): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/Dashboard.tsx(59,7): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/Dashboard.tsx(60,7): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/Dashboard.tsx(61,9): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/Dashboard.tsx(62,9): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/Dashboard.tsx(94,12): error TS2307: Cannot find module '@site/.docusaurus/aegis-data-generator/default/framework-data.json' or its corresponding type declarations.
+website/src/pages/Dashboard.tsx(107,7): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/Dashboard.tsx(108,9): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/Dashboard.tsx(109,11): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/Dashboard.tsx(117,7): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/Dashboard.tsx(118,9): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/Dashboard.tsx(119,11): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/Dashboard.tsx(120,13): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/Dashboard.tsx(121,13): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/Dashboard.tsx(131,5): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/Dashboard.tsx(132,7): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/Dashboard.tsx(133,9): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/Dashboard.tsx(134,11): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/Dashboard.tsx(135,11): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/Dashboard.tsx(141,11): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/Dashboard.tsx(142,13): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/Dashboard.tsx(143,15): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/Dashboard.tsx(144,15): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/Dashboard.tsx(145,17): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/Dashboard.tsx(151,17): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/Dashboard.tsx(157,17): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/Dashboard.tsx(163,17): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/Dashboard.tsx(172,13): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/Dashboard.tsx(173,15): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/Dashboard.tsx(176,13): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/Dashboard.tsx(177,15): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/Dashboard.tsx(178,15): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/Dashboard.tsx(180,19): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/Dashboard.tsx(181,21): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/Dashboard.tsx(182,23): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/Dashboard.tsx(185,23): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/Dashboard.tsx(187,21): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/Dashboard.tsx(190,21): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/Dashboard.tsx(191,23): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/Dashboard.tsx(203,11): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/Dashboard.tsx(204,13): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/Dashboard.tsx(205,13): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/Dashboard.tsx(206,15): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/Dashboard.tsx(216,9): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/Dashboard.tsx(217,11): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/Dashboard.tsx(218,11): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/Dashboard.tsx(219,13): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/Dashboard.tsx(222,13): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/Dashboard.tsx(225,13): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/Dashboard.tsx(228,13): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/index.tsx(6,30): error TS2307: Cannot find module '@site/src/components/HomepageFeatures' or its corresponding type declarations.
+website/src/pages/index.tsx(14,5): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/index.tsx(15,7): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/index.tsx(16,9): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/index.tsx(19,9): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/index.tsx(20,9): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/index.tsx(21,11): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/index.tsx(26,11): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/index.tsx(41,5): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/index.tsx(44,7): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/index.tsx(45,7): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+website/src/pages/index.tsx(46,9): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+ ELIFECYCLE  Command failed with exit code 2.

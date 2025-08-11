@@ -39,68 +39,68 @@ export class EnhancedTestRunner {
 
   async runAllIntelligenceTests(): Promise<EnhancedTestReport> {
     console.log('🚀 Running enhanced intelligence tests...');
-    
+
     const tests = [
       {
         id: 'version-drift-detection',
         name: 'Version Drift Detection',
         target: 'tools/validate-version-consistency.ts',
-        expectedOutput: ['Overall Status', 'inconsistencies']
+        expectedOutput: ['Overall Status', 'inconsistencies'],
       },
       {
         id: 'constitutional-compliance',
         name: 'Constitutional Compliance',
         target: 'tools/constitutional-compliance-enforcer.ts',
-        expectedOutput: ['Status:', 'Claims Status']
+        expectedOutput: ['Status:', 'Claims Status'],
       },
       {
         id: 'self-healing-governance',
         name: 'Self-Healing Governance',
         target: 'framework/healing/self-healing-governance.ts',
-        expectedOutput: ['Self-Healing', 'patterns']
+        expectedOutput: ['Self-Healing', 'patterns'],
       },
       {
         id: 'evolution-learning',
         name: 'Evolution Learning',
         target: 'tools/evolution-learning-system.ts',
-        expectedOutput: ['Evolution Learning', 'patterns']
+        expectedOutput: ['Evolution Learning', 'patterns'],
       },
       {
         id: 'predictive-compliance',
         name: 'Predictive Compliance',
         target: 'tools/predictive-compliance-monitor.ts',
-        expectedOutput: ['Predictive', 'Alerts']
+        expectedOutput: ['Predictive', 'Alerts'],
       },
       {
         id: 'comprehensive-testing',
         name: 'Comprehensive Testing',
         target: 'tools/comprehensive-intelligence-testing.ts',
-        expectedOutput: ['Testing Report', 'Overall Status']
+        expectedOutput: ['Testing Report', 'Overall Status'],
       },
       {
         id: 'evidence-validation',
         name: 'Evidence Validation',
         target: 'tools/evidence-based-validation.ts',
-        expectedOutput: ['Evidence', 'Validation Report']
+        expectedOutput: ['Evidence', 'Validation Report'],
       },
       {
         id: 'systematic-validation',
         name: 'Systematic Validation',
         target: 'tools/systematic-prevention-validator.ts',
-        expectedOutput: ['Systematic', 'Validation Report']
+        expectedOutput: ['Systematic', 'Validation Report'],
       },
       {
         id: 'intelligence-certification',
         name: 'Intelligence Certification',
         target: 'tools/framework-intelligence-certification.ts',
-        expectedOutput: ['Certification Report', 'Certified Claims']
+        expectedOutput: ['Certification Report', 'Certified Claims'],
       },
       {
         id: 'continuous-monitoring',
         name: 'Continuous Monitoring',
         target: 'tools/continuous-compliance-monitor.ts',
-        expectedOutput: ['Monitoring Report', 'Status']
-      }
+        expectedOutput: ['Monitoring Report', 'Status'],
+      },
     ];
 
     const results: TestResult[] = [];
@@ -109,10 +109,10 @@ export class EnhancedTestRunner {
 
     for (const test of tests) {
       console.log(`\n🧪 Testing: ${test.name}`);
-      
+
       const result = await this.runSingleTest(test);
       results.push(result);
-      
+
       if (result.status === 'pass') {
         passedTests++;
         console.log(`   ✅ ${test.name} - PASSED`);
@@ -122,8 +122,7 @@ export class EnhancedTestRunner {
       }
     }
 
-    const overallStatus = failedTests === 0 ? 'pass' : 
-                         passedTests > failedTests ? 'warning' : 'fail';
+    const overallStatus = failedTests === 0 ? 'pass' : passedTests > failedTests ? 'warning' : 'fail';
 
     const report: EnhancedTestReport = {
       timestamp: new Date(),
@@ -131,7 +130,7 @@ export class EnhancedTestRunner {
       totalTests: tests.length,
       passedTests,
       failedTests,
-      results
+      results,
     };
 
     await this.displayResults(report);
@@ -154,7 +153,7 @@ export class EnhancedTestRunner {
           executionTime: Date.now() - startTime,
           message: `Target file not found: ${test.target}`,
           evidence: [],
-          errors: [`File not found: ${test.target}`]
+          errors: [`File not found: ${test.target}`],
         };
       }
 
@@ -168,7 +167,7 @@ export class EnhancedTestRunner {
           cwd: this.projectRoot,
           stdio: 'pipe',
           encoding: 'utf8',
-          timeout: 60000 // 60 second timeout
+          timeout: 60000, // 60 second timeout
         });
       } catch (execError: any) {
         // Even if execution "fails", check if it produced expected output
@@ -192,26 +191,28 @@ export class EnhancedTestRunner {
       }
 
       // Calculate score based on found outputs
-      const score = test.expectedOutput.length > 0 ? 
-        (foundOutputs / test.expectedOutput.length) * 100 : 
-        (result.length > 0 ? 100 : 0);
+      const score =
+        test.expectedOutput.length > 0
+          ? (foundOutputs / test.expectedOutput.length) * 100
+          : result.length > 0
+            ? 100
+            : 0;
 
       // Determine status
-      const status = score >= 70 ? 'pass' : 
-                    score >= 30 ? 'fail' : 'fail';
+      const status = score >= 70 ? 'pass' : score >= 30 ? 'fail' : 'fail';
 
       return {
         testId: test.id,
         status,
         score,
         executionTime: Date.now() - startTime,
-        message: status === 'pass' ? 
-          `Test passed with ${foundOutputs}/${test.expectedOutput.length} expected outputs` :
-          `Test failed: ${errors.join(', ')}`,
+        message:
+          status === 'pass'
+            ? `Test passed with ${foundOutputs}/${test.expectedOutput.length} expected outputs`
+            : `Test failed: ${errors.join(', ')}`,
         evidence,
-        errors
+        errors,
       };
-
     } catch (error) {
       return {
         testId: test.id,
@@ -220,7 +221,7 @@ export class EnhancedTestRunner {
         executionTime: Date.now() - startTime,
         message: `Test execution failed: ${error}`,
         evidence,
-        errors: [...errors, `Unexpected error: ${error}`]
+        errors: [...errors, `Unexpected error: ${error}`],
       };
     }
   }
@@ -240,11 +241,13 @@ export class EnhancedTestRunner {
         const statusIcon = result.status === 'pass' ? '✅' : '❌';
         console.log(`   ${statusIcon} ${result.testId}: ${result.status.toUpperCase()}`);
         console.log(`      Score: ${result.score.toFixed(1)}% | Time: ${result.executionTime}ms`);
-        
+
         if (result.evidence.length > 0) {
-          console.log(`      Evidence: ${result.evidence.slice(0, 2).join(', ')}${result.evidence.length > 2 ? '...' : ''}`);
+          console.log(
+            `      Evidence: ${result.evidence.slice(0, 2).join(', ')}${result.evidence.length > 2 ? '...' : ''}`
+          );
         }
-        
+
         if (result.errors.length > 0) {
           console.log(`      Errors: ${result.errors.slice(0, 1).join(', ')}${result.errors.length > 1 ? '...' : ''}`);
         }

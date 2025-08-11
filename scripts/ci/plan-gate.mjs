@@ -25,9 +25,7 @@ import { globSync } from 'glob';
 const argv = process.argv.slice(2);
 
 // Legacy arg shim: if first arg looks like a class, ignore and fall back to JSON detection
-const legacyClassValues = new Set([
-  'MVP','MVP-Fix','SURGICAL','Surgical-Refactor','SYSTEMIC','Systemic-Change'
-]);
+const legacyClassValues = new Set(['MVP', 'MVP-Fix', 'SURGICAL', 'Surgical-Refactor', 'SYSTEMIC', 'Systemic-Change']);
 const looksLegacy = argv.length >= 2 && legacyClassValues.has(argv[0]);
 
 const planArg = looksLegacy ? null : argv[0];

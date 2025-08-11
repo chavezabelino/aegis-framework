@@ -64,17 +64,17 @@ export class BlueprintRegistry {
     this.projectRoot = projectRoot;
     this.blueprintsDir = path.join(projectRoot, 'blueprints');
     this.registryFile = path.join(projectRoot, '.framework/blueprint-registry.json');
-    
+
     // Ensure directories exist
     if (!fs.existsSync(this.blueprintsDir)) {
       fs.mkdirSync(this.blueprintsDir, { recursive: true });
     }
-    
+
     const registryDir = path.dirname(this.registryFile);
     if (!fs.existsSync(registryDir)) {
       fs.mkdirSync(registryDir, { recursive: true });
     }
-    
+
     this.loadRegistry();
   }
 
@@ -122,12 +122,12 @@ export class BlueprintRegistry {
         lastModified: new Date(),
         tags: blueprint.tags || [],
         codeReferences: blueprint.codeReferences || [],
-        testCoverage: blueprint.testCoverage
+        testCoverage: blueprint.testCoverage,
       };
 
       this.blueprints.set(blueprint.id, metadata);
       this.saveRegistry();
-      
+
       console.log(`📋 Blueprint registered: ${metadata.name} (${metadata.id})`);
       traceCtx.complete(metadata);
       return metadata;
@@ -170,10 +170,11 @@ export class BlueprintRegistry {
    */
   search(query: string): BlueprintMetadata[] {
     const lowercaseQuery = query.toLowerCase();
-    return this.getAll().filter(bp => 
-      bp.name.toLowerCase().includes(lowercaseQuery) ||
-      bp.description.toLowerCase().includes(lowercaseQuery) ||
-      bp.tags.some(tag => tag.toLowerCase().includes(lowercaseQuery))
+    return this.getAll().filter(
+      bp =>
+        bp.name.toLowerCase().includes(lowercaseQuery) ||
+        bp.description.toLowerCase().includes(lowercaseQuery) ||
+        bp.tags.some(tag => tag.toLowerCase().includes(lowercaseQuery))
     );
   }
 
@@ -192,18 +193,19 @@ export class BlueprintRegistry {
 
     try {
       console.log('🔍 Discovering blueprints from filesystem...');
-      
+
       let discovered = 0;
-      
+
       // Discover from blueprints directory
       if (fs.existsSync(this.blueprintsDir)) {
-        const blueprintDirs = fs.readdirSync(this.blueprintsDir, { withFileTypes: true })
+        const blueprintDirs = fs
+          .readdirSync(this.blueprintsDir, { withFileTypes: true })
           .filter(dirent => dirent.isDirectory());
-        
+
         for (const dir of blueprintDirs) {
           const blueprintPath = path.join(this.blueprintsDir, dir.name);
           const yamlFile = path.join(blueprintPath, 'blueprint.yaml');
-          
+
           if (fs.existsSync(yamlFile)) {
             const blueprint = await this.parseYamlBlueprint(yamlFile);
             if (blueprint) {
@@ -213,10 +215,10 @@ export class BlueprintRegistry {
           }
         }
       }
-      
+
       // Discover from code annotations
       await this.discoverFromCodeAnnotations();
-      
+
       console.log(`✅ Discovered ${discovered} blueprints`);
       traceCtx.complete({ discovered });
     } catch (error) {
@@ -232,14 +234,14 @@ export class BlueprintRegistry {
     const blueprints = this.getAll();
     const categories: Record<string, string[]> = {};
     const tags: Record<string, string[]> = {};
-    
+
     for (const bp of blueprints) {
       // Group by category
       if (!categories[bp.category]) {
         categories[bp.category] = [];
       }
       categories[bp.category].push(bp.id);
-      
+
       // Group by tags
       for (const tag of bp.tags) {
         if (!tags[tag]) {
@@ -248,14 +250,14 @@ export class BlueprintRegistry {
         tags[tag].push(bp.id);
       }
     }
-    
+
     return {
       version: this.getFrameworkVersion(),
       generated: new Date(),
       blueprints,
       categories,
       tags,
-      totalBlueprints: blueprints.length
+      totalBlueprints: blueprints.length,
     };
   }
 
@@ -264,16 +266,16 @@ export class BlueprintRegistry {
    */
   exportToMarkdown(): string {
     const index = this.generateIndex();
-    
+
     let markdown = `# Blueprint Registry\n\n`;
     markdown += `**Generated**: ${index.generated.toISOString()}\n`;
     markdown += `**Framework Version**: ${index.version}\n`;
     markdown += `**Total Blueprints**: ${index.totalBlueprints}\n\n`;
-    
+
     // Categories
     for (const [category, ids] of Object.entries(index.categories)) {
       markdown += `## ${category.toUpperCase()}\n\n`;
-      
+
       for (const id of ids) {
         const bp = this.get(id)!;
         markdown += `### ${bp.name}\n\n`;
@@ -281,27 +283,27 @@ export class BlueprintRegistry {
         markdown += `**Version**: ${bp.version}\n`;
         markdown += `**Status**: ${bp.status}\n`;
         markdown += `**Description**: ${bp.description}\n`;
-        
+
         if (bp.implementation.length > 0) {
           markdown += `**Implementation**: ${bp.implementation.join(', ')}\n`;
         }
-        
+
         if (bp.dependencies.length > 0) {
           markdown += `**Dependencies**: ${bp.dependencies.join(', ')}\n`;
         }
-        
+
         if (bp.documentation.length > 0) {
           markdown += `**Documentation**: ${bp.documentation.map(doc => `[${path.basename(doc)}](${doc})`).join(', ')}\n`;
         }
-        
+
         if (bp.tags.length > 0) {
           markdown += `**Tags**: ${bp.tags.join(', ')}\n`;
         }
-        
+
         markdown += `**Last Modified**: ${bp.lastModified.toISOString()}\n\n`;
       }
     }
-    
+
     return markdown;
   }
 
@@ -310,17 +312,17 @@ export class BlueprintRegistry {
    */
   validate(): { valid: boolean; issues: string[] } {
     const issues: string[] = [];
-    
+
     for (const bp of this.getAll()) {
       // Check required fields
       if (!bp.name) {
         issues.push(`Blueprint ${bp.id} missing name`);
       }
-      
+
       if (!bp.description) {
         issues.push(`Blueprint ${bp.id} missing description`);
       }
-      
+
       // Check implementation files exist
       for (const impl of bp.implementation) {
         const fullPath = path.isAbsolute(impl) ? impl : path.join(this.projectRoot, impl);
@@ -328,7 +330,7 @@ export class BlueprintRegistry {
           issues.push(`Blueprint ${bp.id} references non-existent file: ${impl}`);
         }
       }
-      
+
       // Check documentation files exist
       for (const doc of bp.documentation) {
         const fullPath = path.isAbsolute(doc) ? doc : path.join(this.projectRoot, doc);
@@ -337,10 +339,10 @@ export class BlueprintRegistry {
         }
       }
     }
-    
+
     return {
       valid: issues.length === 0,
-      issues
+      issues,
     };
   }
 
@@ -351,41 +353,41 @@ export class BlueprintRegistry {
     try {
       const content = fs.readFileSync(yamlFile, 'utf8');
       const dirName = path.basename(path.dirname(yamlFile));
-      
+
       // Simple YAML parsing for blueprint metadata
       const metadata: Partial<BlueprintMetadata> = {
-        id: dirName
+        id: dirName,
       };
-      
+
       const lines = content.split('\n');
       for (const line of lines) {
         const nameMatch = line.match(/name:\s*(.+)/);
         if (nameMatch) {
           metadata.name = nameMatch[1].trim().replace(/['"]/g, '');
         }
-        
+
         const descMatch = line.match(/description:\s*(.+)/);
         if (descMatch) {
           metadata.description = descMatch[1].trim().replace(/['"]/g, '');
         }
-        
+
         const versionMatch = line.match(/version:\s*(.+)/);
         if (versionMatch) {
           metadata.version = versionMatch[1].trim().replace(/['"]/g, '');
         }
-        
+
         const statusMatch = line.match(/status:\s*(.+)/);
         if (statusMatch) {
           metadata.status = statusMatch[1].trim().replace(/['"]/g, '') as any;
         }
       }
-      
+
       metadata.implementation = [yamlFile];
       metadata.category = 'integration';
-      
+
       const stats = fs.statSync(yamlFile);
       metadata.lastModified = stats.mtime;
-      
+
       return metadata;
     } catch (error) {
       console.warn(`Failed to parse blueprint YAML: ${yamlFile}`, error);
@@ -396,20 +398,20 @@ export class BlueprintRegistry {
   private async discoverFromCodeAnnotations(): Promise<void> {
     // Discover blueprints from @aegisBlueprint annotations in code
     const codeFiles = this.getCodeFiles();
-    
+
     for (const file of codeFiles) {
       try {
         const content = fs.readFileSync(file, 'utf8');
         const blueprintMatches = content.match(/@aegisBlueprint:\s*(.+)/g);
-        
+
         if (blueprintMatches) {
           for (const match of blueprintMatches) {
             const blueprintId = match.replace('@aegisBlueprint:', '').trim();
-            
+
             // Extract intent as description
             const intentMatch = content.match(/@intent:\s*(.+)/);
             const description = intentMatch ? intentMatch[1].trim() : '';
-            
+
             // Check if blueprint already exists
             if (!this.get(blueprintId)) {
               const blueprint: Partial<BlueprintMetadata> = {
@@ -419,12 +421,14 @@ export class BlueprintRegistry {
                 category: 'experimental',
                 status: 'alpha',
                 implementation: [file],
-                codeReferences: [{
-                  file,
-                  description: 'Blueprint annotation found in code'
-                }]
+                codeReferences: [
+                  {
+                    file,
+                    description: 'Blueprint annotation found in code',
+                  },
+                ],
               };
-              
+
               this.register(blueprint);
             }
           }
@@ -438,14 +442,14 @@ export class BlueprintRegistry {
   private getCodeFiles(): string[] {
     const files: string[] = [];
     const extensions = ['.ts', '.js', '.tsx', '.jsx'];
-    
+
     function walkDir(dir: string) {
       if (!fs.existsSync(dir)) return;
-      
+
       const entries = fs.readdirSync(dir, { withFileTypes: true });
       for (const entry of entries) {
         const fullPath = path.join(dir, entry.name);
-        
+
         if (entry.isDirectory() && !entry.name.startsWith('.') && entry.name !== 'node_modules') {
           walkDir(fullPath);
         } else if (entry.isFile() && extensions.some(ext => entry.name.endsWith(ext))) {
@@ -453,7 +457,7 @@ export class BlueprintRegistry {
         }
       }
     }
-    
+
     walkDir(this.projectRoot);
     return files;
   }
@@ -482,15 +486,15 @@ export class BlueprintRegistry {
       if (fs.existsSync(this.registryFile)) {
         const data = fs.readFileSync(this.registryFile, 'utf8');
         const index: RegistryIndex = JSON.parse(data);
-        
+
         for (const bp of index.blueprints) {
           this.blueprints.set(bp.id, {
             ...bp,
             created: new Date(bp.created),
-            lastModified: new Date(bp.lastModified)
+            lastModified: new Date(bp.lastModified),
           });
         }
-        
+
         console.log(`📋 Loaded ${this.blueprints.size} blueprints from registry`);
       }
     } catch (error) {
@@ -514,12 +518,12 @@ export class BlueprintRegistry {
 async function main() {
   const registry = BlueprintRegistry.getInstance();
   const command = process.argv[2];
-  
+
   switch (command) {
     case 'discover':
       await registry.discover();
       break;
-      
+
     case 'list':
       const blueprints = registry.getAll();
       console.log(`📋 ${blueprints.length} blueprints found:`);
@@ -527,14 +531,14 @@ async function main() {
         console.log(`   ${bp.id}: ${bp.name} (${bp.status})`);
       }
       break;
-      
+
     case 'export':
       const markdown = registry.exportToMarkdown();
       const exportPath = path.join(process.cwd(), '.framework/blueprint-registry.md');
       fs.writeFileSync(exportPath, markdown);
       console.log(`📄 Registry exported to: ${exportPath}`);
       break;
-      
+
     case 'validate':
       const validation = registry.validate();
       if (validation.valid) {
@@ -546,7 +550,7 @@ async function main() {
         }
       }
       break;
-      
+
     default:
       console.log('📋 Blueprint Registry');
       console.log('Usage:');

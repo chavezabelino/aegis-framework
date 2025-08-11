@@ -64,10 +64,7 @@
     "patternId": "constitutional-violation",
     "action": "learn",
     "implementation": "tools/evolution-learning-system.ts",
-    "evidence": [
-      "Pattern recognition for constitutional-violation",
-      "Learning implementation"
-    ],
+    "evidence": ["Pattern recognition for constitutional-violation", "Learning implementation"],
     "effectiveness": 1,
     "lastExecuted": "2025-08-08T21:20:42.972Z",
     "status": "active"
@@ -77,10 +74,7 @@
     "patternId": "intelligence-failure",
     "action": "learn",
     "implementation": "tools/evolution-learning-system.ts",
-    "evidence": [
-      "Pattern recognition for intelligence-failure",
-      "Learning implementation"
-    ],
+    "evidence": ["Pattern recognition for intelligence-failure", "Learning implementation"],
     "effectiveness": 1,
     "lastExecuted": "2025-08-08T21:20:42.972Z",
     "status": "active"
@@ -90,10 +84,7 @@
     "patternId": "version-documentation-drift",
     "action": "learn",
     "implementation": "tools/evolution-learning-system.ts",
-    "evidence": [
-      "Pattern recognition for version-documentation-drift",
-      "Learning implementation"
-    ],
+    "evidence": ["Pattern recognition for version-documentation-drift", "Learning implementation"],
     "effectiveness": 1,
     "lastExecuted": "2025-08-08T21:20:42.973Z",
     "status": "active"
@@ -103,10 +94,7 @@
     "patternId": "constitutional-constitutional-violation-detection-failed",
     "action": "learn",
     "implementation": "tools/constitutional-compliance-enforcer.ts",
-    "evidence": [
-      "Constitutional violation learning",
-      "Prevention implementation"
-    ],
+    "evidence": ["Constitutional violation learning", "Prevention implementation"],
     "effectiveness": 1,
     "lastExecuted": "2025-08-08T22:00:56.962Z",
     "status": "active"

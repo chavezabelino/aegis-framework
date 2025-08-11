@@ -2,16 +2,16 @@
 
 /**
  * Enhanced Pattern Recognition Engine
- * 
+ *
  * Analyzes drift logs and learns from violations to predict and prevent future issues
  * Part of Phase 2: Intelligent Governance
- * 
+ *
  * @aegisFrameworkVersion: 2.4.0-beta
  * @intent: Implement intelligent pattern recognition for constitutional drift prevention
  */
 
-import fs from "fs";
-import path from "path";
+import fs from 'fs';
+import path from 'path';
 
 interface DriftPattern {
   id: string;
@@ -77,7 +77,7 @@ class PatternRecognitionEngine {
     predictions: PatternPrediction[];
     recommendations: string[];
   }> {
-    console.log("🧠 Analyzing drift patterns for intelligent predictions...");
+    console.log('🧠 Analyzing drift patterns for intelligent predictions...');
 
     // Load all drift logs
     const agentDrift = await this.loadAgentDriftLog();
@@ -109,7 +109,7 @@ class PatternRecognitionEngine {
       patterns,
       insights: this.insights,
       predictions,
-      recommendations
+      recommendations,
     };
   }
 
@@ -120,7 +120,7 @@ class PatternRecognitionEngine {
         return JSON.parse(fs.readFileSync(logPath, 'utf8'));
       }
     } catch (error) {
-      console.warn("⚠️ Could not load agent drift log");
+      console.warn('⚠️ Could not load agent drift log');
     }
     return { agentSessions: [], patterns: {} };
   }
@@ -132,7 +132,7 @@ class PatternRecognitionEngine {
         return JSON.parse(fs.readFileSync(logPath, 'utf8'));
       }
     } catch (error) {
-      console.warn("⚠️ Could not load system drift log");
+      console.warn('⚠️ Could not load system drift log');
     }
     return { driftEvents: [], patterns: {} };
   }
@@ -144,13 +144,13 @@ class PatternRecognitionEngine {
         return JSON.parse(fs.readFileSync(logPath, 'utf8'));
       }
     } catch (error) {
-      console.warn("⚠️ Could not load user drift log");
+      console.warn('⚠️ Could not load user drift log');
     }
     return { userInteractions: [], workflows: {} };
   }
 
   private async extractPatternsFromAgentDrift(agentDrift: any): Promise<void> {
-    console.log("  🤖 Analyzing agent behavior patterns...");
+    console.log('  🤖 Analyzing agent behavior patterns...');
 
     if (!agentDrift.agentSessions) return;
 
@@ -164,25 +164,27 @@ class PatternRecognitionEngine {
             severity: this.mapSeverity(behavior.severity || 'medium'),
             firstOccurrence: session.timestamp,
             lastOccurrence: session.timestamp,
-            contexts: [{
-              sessionId: session.sessionId,
-              agent: session.agent,
-              userInteraction: behavior.userCorrection || 'none',
-              triggerConditions: this.extractTriggerConditions(behavior),
-              resolution: behavior.notes
-            }],
+            contexts: [
+              {
+                sessionId: session.sessionId,
+                agent: session.agent,
+                userInteraction: behavior.userCorrection || 'none',
+                triggerConditions: this.extractTriggerConditions(behavior),
+                resolution: behavior.notes,
+              },
+            ],
             prediction: {
               likelihood: this.calculateLikelihood(behavior),
               conditions: this.extractConditions(behavior),
               riskFactors: this.extractRiskFactors(behavior),
-              confidence: behavior.complianceScore
+              confidence: behavior.complianceScore,
             },
             preventionStrategy: {
               triggers: this.generateTriggers(behavior),
               interventions: this.generateInterventions(behavior),
               autoCorrectible: this.isAutoCorrectible(behavior),
-              userGuidance: this.generateUserGuidance(behavior)
-            }
+              userGuidance: this.generateUserGuidance(behavior),
+            },
           });
         }
       }
@@ -190,7 +192,7 @@ class PatternRecognitionEngine {
   }
 
   private async extractPatternsFromSystemDrift(systemDrift: any): Promise<void> {
-    console.log("  🏗️ Analyzing system drift patterns...");
+    console.log('  🏗️ Analyzing system drift patterns...');
 
     if (!systemDrift.driftEvents) return;
 
@@ -202,48 +204,52 @@ class PatternRecognitionEngine {
         severity: this.mapSeverity(event.severity),
         firstOccurrence: event.timestamp,
         lastOccurrence: event.timestamp,
-        contexts: [{
-          sessionId: event.id,
-          agent: 'system',
-          userInteraction: 'none',
-          triggerConditions: [event.detected.component],
-          resolution: event.resolution?.action || 'pending'
-        }],
+        contexts: [
+          {
+            sessionId: event.id,
+            agent: 'system',
+            userInteraction: 'none',
+            triggerConditions: [event.detected.component],
+            resolution: event.resolution?.action || 'pending',
+          },
+        ],
         prediction: {
           likelihood: 0.3,
           conditions: [event.detected.rule],
           riskFactors: [event.detected.component],
-          confidence: 0.8
+          confidence: 0.8,
         },
         preventionStrategy: {
           triggers: [event.detected.expected],
-          interventions: [{
-            type: 'auto-correction',
-            message: `Ensure ${event.detected.expected} exists`,
-            priority: 1
-          }],
+          interventions: [
+            {
+              type: 'auto-correction',
+              message: `Ensure ${event.detected.expected} exists`,
+              priority: 1,
+            },
+          ],
           autoCorrectible: true,
-          userGuidance: `Monitor ${event.detected.component} for compliance`
-        }
+          userGuidance: `Monitor ${event.detected.component} for compliance`,
+        },
       });
     }
   }
 
   private async extractPatternsFromUserDrift(userDrift: any): Promise<void> {
-    console.log("  👤 Analyzing user workflow patterns...");
+    console.log('  👤 Analyzing user workflow patterns...');
     // Simplified implementation for user patterns
     // Would analyze user interaction patterns in full implementation
   }
 
   private async recordPattern(pattern: DriftPattern): Promise<void> {
     const existingPattern = this.patterns.get(pattern.id);
-    
+
     if (existingPattern) {
       // Update existing pattern
       existingPattern.frequency += 1;
       existingPattern.lastOccurrence = pattern.lastOccurrence;
       existingPattern.contexts.push(...pattern.contexts);
-      
+
       // Update prediction confidence based on frequency
       existingPattern.prediction.confidence = Math.min(1, existingPattern.prediction.confidence + 0.1);
       existingPattern.prediction.likelihood = Math.min(1, existingPattern.frequency * 0.2);
@@ -253,11 +259,11 @@ class PatternRecognitionEngine {
   }
 
   private async generateLearningInsights(): Promise<void> {
-    console.log("  💡 Generating learning insights...");
+    console.log('  💡 Generating learning insights...');
 
     // Analyze pattern relationships
     const patterns = Array.from(this.patterns.values());
-    
+
     // High-frequency patterns insight
     const highFrequencyPatterns = patterns.filter(p => p.frequency > 1);
     if (highFrequencyPatterns.length > 0) {
@@ -266,7 +272,7 @@ class PatternRecognitionEngine {
         insight: `${highFrequencyPatterns.length} patterns show recurring behavior, indicating systematic issues`,
         confidence: 0.9,
         applicability: ['enforcement', 'training', 'documentation'],
-        recommendation: 'Implement proactive checks for recurring patterns'
+        recommendation: 'Implement proactive checks for recurring patterns',
       });
     }
 
@@ -278,7 +284,7 @@ class PatternRecognitionEngine {
         insight: 'Agents need clearer guidance on distinguishing between git exclusion and file operations',
         confidence: 0.8,
         applicability: ['agent-training', 'requirement-clarification'],
-        recommendation: 'Add context validation step before suggesting file operations'
+        recommendation: 'Add context validation step before suggesting file operations',
       });
     }
 
@@ -290,13 +296,13 @@ class PatternRecognitionEngine {
         insight: `${lowCompliancePatterns.length} patterns show low compliance confidence`,
         confidence: 0.7,
         applicability: ['validation', 'training'],
-        recommendation: 'Enhance validation checks for low-confidence scenarios'
+        recommendation: 'Enhance validation checks for low-confidence scenarios',
       });
     }
   }
 
   private async generatePredictions(): Promise<PatternPrediction[]> {
-    console.log("  🔮 Generating predictive insights...");
+    console.log('  🔮 Generating predictive insights...');
 
     const predictions: PatternPrediction[] = [];
     const patterns = Array.from(this.patterns.values());
@@ -309,13 +315,13 @@ class PatternRecognitionEngine {
           conditions: [
             ...pattern.prediction.conditions,
             `Pattern frequency: ${pattern.frequency}`,
-            `Last seen: ${pattern.lastOccurrence}`
+            `Last seen: ${pattern.lastOccurrence}`,
           ],
           riskFactors: [
             ...pattern.prediction.riskFactors,
-            pattern.frequency > 1 ? 'recurring-pattern' : 'isolated-incident'
+            pattern.frequency > 1 ? 'recurring-pattern' : 'isolated-incident',
           ],
-          confidence: pattern.prediction.confidence
+          confidence: pattern.prediction.confidence,
         });
       }
     }
@@ -330,7 +336,7 @@ class PatternRecognitionEngine {
     // General recommendations
     recommendations.push('🔍 Monitor agent behavior for requirement interpretation accuracy');
     recommendations.push('📚 Enhance documentation for common developer workflow scenarios');
-    
+
     // Pattern-specific recommendations
     const autoCorrectibleCount = patterns.filter(p => p.preventionStrategy.autoCorrectible).length;
     if (autoCorrectibleCount > 0) {
@@ -354,31 +360,35 @@ class PatternRecognitionEngine {
   // Helper methods
   private mapSeverity(severity: string): 'low' | 'medium' | 'high' | 'critical' {
     switch (severity.toLowerCase()) {
-      case 'critical': return 'critical';
-      case 'high': return 'high';
-      case 'low': return 'low';
-      default: return 'medium';
+      case 'critical':
+        return 'critical';
+      case 'high':
+        return 'high';
+      case 'low':
+        return 'low';
+      default:
+        return 'medium';
     }
   }
 
   private calculateLikelihood(behavior: any): number {
     // Base likelihood calculation
     let likelihood = 0.3;
-    
+
     if (behavior.driftType === 'requirement-misinterpretation') likelihood += 0.4;
     if (behavior.complianceScore < 0.7) likelihood += 0.2;
     if (behavior.userCorrection) likelihood += 0.1;
-    
+
     return Math.min(1, likelihood);
   }
 
   private extractTriggerConditions(behavior: any): string[] {
     const conditions = [];
-    
+
     if (behavior.action) conditions.push(`action-type:${behavior.action}`);
     if (behavior.driftType) conditions.push(`drift-type:${behavior.driftType}`);
     if (behavior.complianceScore < 0.8) conditions.push('low-compliance');
-    
+
     return conditions;
   }
 
@@ -388,42 +398,42 @@ class PatternRecognitionEngine {
 
   private extractRiskFactors(behavior: any): string[] {
     const factors = [];
-    
+
     if (behavior.userCorrection) factors.push('user-correction-required');
     if (behavior.complianceScore < 0.7) factors.push('low-confidence');
     if (behavior.driftType) factors.push('behavioral-drift');
-    
+
     return factors;
   }
 
   private generateTriggers(behavior: any): string[] {
     const triggers = [];
-    
+
     if (behavior.action === 'node-modules-misconception') {
       triggers.push('file-operation-suggestion');
       triggers.push('gitignore-setup-request');
     }
-    
+
     return triggers;
   }
 
   private generateInterventions(behavior: any): Intervention[] {
     const interventions: Intervention[] = [];
-    
+
     if (behavior.driftType === 'requirement-misinterpretation') {
       interventions.push({
         type: 'user-prompt',
         message: 'Clarify: Do you want to exclude files from git or remove them from filesystem?',
-        priority: 1
+        priority: 1,
       });
-      
+
       interventions.push({
         type: 'suggestion',
         message: 'Consider creating .gitignore entry instead of file deletion',
-        priority: 2
+        priority: 2,
       });
     }
-    
+
     return interventions;
   }
 
@@ -436,29 +446,29 @@ class PatternRecognitionEngine {
     if (behavior.driftType === 'requirement-misinterpretation') {
       return 'Always clarify user intent before suggesting file operations. Distinguish between git exclusion and file deletion.';
     }
-    
+
     return 'Monitor for recurring patterns and apply learned interventions.';
   }
 
   async savePatternAnalysis(results: any): Promise<void> {
     const analysisPath = path.join(this.frameworkRoot, 'framework/learning/pattern-analysis.json');
-    
+
     const analysis = {
       metadata: {
         generated: new Date().toISOString(),
-        version: "1.1.0-beta",
-        engine: "enhanced-pattern-recognition"
+        version: '1.1.0-beta',
+        engine: 'enhanced-pattern-recognition',
       },
       summary: {
         totalPatterns: results.patterns.length,
         insights: results.insights.length,
         predictions: results.predictions.length,
-        recommendations: results.recommendations.length
+        recommendations: results.recommendations.length,
       },
       patterns: results.patterns,
       insights: results.insights,
       predictions: results.predictions,
-      recommendations: results.recommendations
+      recommendations: results.recommendations,
     };
 
     fs.writeFileSync(analysisPath, JSON.stringify(analysis, null, 2));
@@ -466,26 +476,26 @@ class PatternRecognitionEngine {
   }
 
   displayResults(results: any): void {
-    console.log("\n🧠 Enhanced Pattern Recognition Report");
-    console.log("=====================================");
+    console.log('\n🧠 Enhanced Pattern Recognition Report');
+    console.log('=====================================');
     console.log(`Patterns Identified: ${results.patterns.length}`);
     console.log(`Learning Insights: ${results.insights.length}`);
     console.log(`Predictions: ${results.predictions.length}`);
-    console.log("");
+    console.log('');
 
-    console.log("🔍 Key Patterns:");
+    console.log('🔍 Key Patterns:');
     results.patterns.forEach((pattern: DriftPattern) => {
       console.log(`  ${pattern.id}: ${pattern.type} (frequency: ${pattern.frequency}, severity: ${pattern.severity})`);
     });
 
-    console.log("\n💡 Learning Insights:");
+    console.log('\n💡 Learning Insights:');
     results.insights.forEach((insight: LearningInsight) => {
       console.log(`  ${insight.pattern}: ${insight.insight}`);
       console.log(`    Confidence: ${(insight.confidence * 100).toFixed(1)}%`);
       console.log(`    Recommendation: ${insight.recommendation}`);
     });
 
-    console.log("\n🎯 Recommendations:");
+    console.log('\n🎯 Recommendations:');
     results.recommendations.forEach((rec: string) => {
       console.log(`  ${rec}`);
     });
@@ -496,11 +506,11 @@ class PatternRecognitionEngine {
 async function main() {
   const engine = new PatternRecognitionEngine();
   const results = await engine.analyzeAllDriftLogs();
-  
+
   engine.displayResults(results);
   await engine.savePatternAnalysis(results);
-  
-  console.log("\n✨ Pattern recognition analysis complete!");
+
+  console.log('\n✨ Pattern recognition analysis complete!');
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {

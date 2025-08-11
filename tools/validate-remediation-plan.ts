@@ -7,7 +7,11 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as yaml from 'js-yaml';
-import { RemediationPlanSchema, validateRemediationPlan, ConstitutionalViolationError } from '../framework/contracts/RemediationPlan.schema.js';
+import {
+  RemediationPlanSchema,
+  validateRemediationPlan,
+  ConstitutionalViolationError,
+} from '../framework/contracts/RemediationPlan.schema.js';
 
 interface ValidationResult {
   isValid: boolean;
@@ -29,7 +33,7 @@ interface ToolManifest {
 
 export class RemediationPlanValidator {
   private projectRoot: string;
-  
+
   constructor(projectRoot: string = process.cwd()) {
     this.projectRoot = projectRoot;
   }
@@ -44,7 +48,7 @@ export class RemediationPlanValidator {
       warnings: [],
       constitutionalViolations: [],
       suggestions: [],
-      score: 0
+      score: 0,
     };
 
     try {
@@ -65,24 +69,23 @@ export class RemediationPlanValidator {
       try {
         const validatedPlan = validateRemediationPlan(plan);
         result.score += 30; // Base schema compliance
-        
+
         // Constitutional compliance checks
         await this.performConstitutionalChecks(validatedPlan, result);
-        
+
         // Safety mechanism validation
         await this.validateSafetyMechanisms(validatedPlan, result);
-        
+
         // Tooling validation
         await this.validateToolingRequirements(validatedPlan, result);
-        
+
         // Preflight gate validation
         await this.validatePreflightGates(validatedPlan, result);
-        
+
         // Success criteria validation
         this.validateSuccessCriteria(validatedPlan, result);
-        
+
         result.isValid = result.errors.length === 0 && result.constitutionalViolations.length === 0;
-        
       } catch (error) {
         if (error instanceof ConstitutionalViolationError) {
           result.constitutionalViolations.push(error.message);
@@ -95,7 +98,6 @@ export class RemediationPlanValidator {
           result.errors.push(`Schema validation failed: ${error instanceof Error ? error.message : String(error)}`);
         }
       }
-
     } catch (error) {
       result.errors.push(`Failed to load plan file: ${error instanceof Error ? error.message : String(error)}`);
     }
@@ -110,11 +112,9 @@ export class RemediationPlanValidator {
     // Check for required constitutional annotations
     const requiredFields = ['aegisFrameworkVersion', 'intent', 'context', 'mode'];
     const missingFields = requiredFields.filter(field => !plan[field]);
-    
+
     if (missingFields.length > 0) {
-      result.constitutionalViolations.push(
-        `Missing constitutional annotations: ${missingFields.join(', ')}`
-      );
+      result.constitutionalViolations.push(`Missing constitutional annotations: ${missingFields.join(', ')}`);
     } else {
       result.score += 10;
     }
@@ -129,9 +129,7 @@ export class RemediationPlanValidator {
     // Check for proper semantic versioning
     const versionRegex = /^\d+\.\d+\.\d+$/;
     if (!versionRegex.test(plan.version)) {
-      result.constitutionalViolations.push(
-        'Plan version must follow semantic versioning (X.Y.Z)'
-      );
+      result.constitutionalViolations.push('Plan version must follow semantic versioning (X.Y.Z)');
     } else {
       result.score += 5;
     }
@@ -152,12 +150,10 @@ export class RemediationPlanValidator {
   private async validateSafetyMechanisms(plan: any, result: ValidationResult): Promise<void> {
     // Check rollback strategy
     if (!plan.overallRollbackStrategy) {
-      result.constitutionalViolations.push(
-        'CRITICAL: Missing overall rollback strategy - violates safety principle'
-      );
+      result.constitutionalViolations.push('CRITICAL: Missing overall rollback strategy - violates safety principle');
     } else {
       result.score += 15;
-      
+
       // Validate rollback testing
       if (!plan.overallRollbackStrategy.testRollback) {
         result.warnings.push('Rollback strategy should include testing');
@@ -179,9 +175,7 @@ export class RemediationPlanValidator {
     const highRiskPhases = plan.phases?.filter((p: any) => ['high', 'critical'].includes(p.riskLevel)) || [];
     for (const phase of highRiskPhases) {
       if (!phase.dryRunSimulation?.enabled) {
-        result.constitutionalViolations.push(
-          `High-risk phase "${phase.name}" must include dry-run simulation`
-        );
+        result.constitutionalViolations.push(`High-risk phase "${phase.name}" must include dry-run simulation`);
       }
     }
 
@@ -222,13 +216,9 @@ export class RemediationPlanValidator {
       for (const scaffoldedTool of phase.toolingRequirements.scaffoldedTools || []) {
         const toolPath = path.resolve(this.projectRoot, scaffoldedTool.path);
         if (!fs.existsSync(toolPath)) {
-          result.errors.push(
-            `Scaffolded tool "${scaffoldedTool.name}" not found at ${scaffoldedTool.path}`
-          );
+          result.errors.push(`Scaffolded tool "${scaffoldedTool.name}" not found at ${scaffoldedTool.path}`);
         } else if (!scaffoldedTool.validated) {
-          result.warnings.push(
-            `Scaffolded tool "${scaffoldedTool.name}" has not been validated`
-          );
+          result.warnings.push(`Scaffolded tool "${scaffoldedTool.name}" has not been validated`);
         } else {
           result.score += 3;
         }
@@ -242,17 +232,15 @@ export class RemediationPlanValidator {
   private async validatePreflightGates(plan: any, result: ValidationResult): Promise<void> {
     const requiredGates = ['build', 'test', 'lint'];
     const ciGates = plan.ciIntegration?.preflightGates || [];
-    
+
     for (const requiredGate of requiredGates) {
-      const hasGate = ciGates.some((gate: any) => 
-        gate.name.toLowerCase().includes(requiredGate) ||
-        gate.command.toLowerCase().includes(requiredGate)
+      const hasGate = ciGates.some(
+        (gate: any) =>
+          gate.name.toLowerCase().includes(requiredGate) || gate.command.toLowerCase().includes(requiredGate)
       );
-      
+
       if (!hasGate) {
-        result.constitutionalViolations.push(
-          `Missing required preflight gate: ${requiredGate} validation`
-        );
+        result.constitutionalViolations.push(`Missing required preflight gate: ${requiredGate} validation`);
       } else {
         result.score += 5;
       }
@@ -262,16 +250,13 @@ export class RemediationPlanValidator {
     const firstPhase = plan.phases?.find((p: any) => p.order === 1);
     if (firstPhase) {
       const hasValidation = firstPhase.validationSteps?.some((step: any) =>
-        ['build', 'test', 'lint'].some(type => 
-          step.name.toLowerCase().includes(type) || 
-          step.command.toLowerCase().includes(type)
+        ['build', 'test', 'lint'].some(
+          type => step.name.toLowerCase().includes(type) || step.command.toLowerCase().includes(type)
         )
       );
-      
+
       if (!hasValidation) {
-        result.constitutionalViolations.push(
-          'First phase must include build/test/lint validation steps'
-        );
+        result.constitutionalViolations.push('First phase must include build/test/lint validation steps');
       } else {
         result.score += 10;
       }
@@ -283,7 +268,7 @@ export class RemediationPlanValidator {
    */
   private validateSuccessCriteria(plan: any, result: ValidationResult): void {
     const criteria = plan.successCriteria || [];
-    
+
     if (criteria.length < 3) {
       result.errors.push('Plan must define at least 3 success criteria');
       return;
@@ -291,11 +276,10 @@ export class RemediationPlanValidator {
 
     const requiredCriteria = ['build', 'test', 'compliance'];
     for (const required of requiredCriteria) {
-      const hasCriterion = criteria.some((c: any) => 
-        c.criterion.toLowerCase().includes(required) ||
-        c.measurementMethod.toLowerCase().includes(required)
+      const hasCriterion = criteria.some(
+        (c: any) => c.criterion.toLowerCase().includes(required) || c.measurementMethod.toLowerCase().includes(required)
       );
-      
+
       if (!hasCriterion) {
         result.warnings.push(`Missing recommended success criterion: ${required}`);
       } else {
@@ -306,9 +290,7 @@ export class RemediationPlanValidator {
     // Check for measurable criteria
     for (const criterion of criteria) {
       if (!criterion.measurementMethod || criterion.measurementMethod.length < 10) {
-        result.warnings.push(
-          `Success criterion "${criterion.criterion}" lacks detailed measurement method`
-        );
+        result.warnings.push(`Success criterion "${criterion.criterion}" lacks detailed measurement method`);
       }
     }
 
@@ -332,9 +314,7 @@ export class RemediationPlanValidator {
     }
 
     if (result.errors.some(e => e.includes('tool missing'))) {
-      result.suggestions.push(
-        'Create tool manifest file and validate all required tools exist before plan execution'
-      );
+      result.suggestions.push('Create tool manifest file and validate all required tools exist before plan execution');
     }
 
     if (result.warnings.some(w => w.includes('rollback'))) {
@@ -349,7 +329,7 @@ export class RemediationPlanValidator {
    */
   async validateToolsManifest(): Promise<{ exists: boolean; valid: boolean; tools: string[] }> {
     const manifestPath = path.join(this.projectRoot, 'tools', 'manifest.json');
-    
+
     if (!fs.existsSync(manifestPath)) {
       return { exists: false, valid: false, tools: [] };
     }
@@ -357,7 +337,7 @@ export class RemediationPlanValidator {
     try {
       const manifest: ToolManifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
       const toolNames = manifest.tools.map(t => t.name);
-      
+
       // Verify tools exist
       const { execSync } = await import('child_process');
       for (const tool of manifest.tools) {
@@ -374,7 +354,7 @@ export class RemediationPlanValidator {
           }
         }
       }
-      
+
       return { exists: true, valid: true, tools: toolNames };
     } catch (error) {
       return { exists: true, valid: false, tools: [] };
@@ -387,7 +367,7 @@ export class RemediationPlanValidator {
  */
 export async function validateRemediationPlanCLI(): Promise<void> {
   const args = process.argv.slice(2);
-  
+
   if (args.length === 0) {
     console.error('Usage: node validate-remediation-plan.js <plan-file>');
     process.exit(1);
@@ -395,36 +375,34 @@ export async function validateRemediationPlanCLI(): Promise<void> {
 
   const planPath = args[0];
   const validator = new RemediationPlanValidator();
-  
+
   console.log('🔍 Validating remediation plan against constitutional requirements...\n');
-  
+
   const result = await validator.validatePlanFile(planPath);
-  
+
   // Report results
   console.log(`📊 Validation Score: ${result.score}/100`);
-  
+
   if (result.constitutionalViolations.length > 0) {
     console.log('\n🏛️ Constitutional Violations:');
-    result.constitutionalViolations.forEach(violation => 
-      console.log(`   ❌ ${violation}`)
-    );
+    result.constitutionalViolations.forEach(violation => console.log(`   ❌ ${violation}`));
   }
-  
+
   if (result.errors.length > 0) {
     console.log('\n🚨 Errors:');
     result.errors.forEach(error => console.log(`   ❌ ${error}`));
   }
-  
+
   if (result.warnings.length > 0) {
     console.log('\n⚠️ Warnings:');
     result.warnings.forEach(warning => console.log(`   ⚠️ ${warning}`));
   }
-  
+
   if (result.suggestions.length > 0) {
     console.log('\n💡 Suggestions:');
     result.suggestions.forEach(suggestion => console.log(`   💡 ${suggestion}`));
   }
-  
+
   // Tools manifest validation
   const toolsResult = await validator.validateToolsManifest();
   console.log(`\n🛠️ Tools Manifest: ${toolsResult.exists ? 'Found' : 'Missing'}`);
@@ -433,9 +411,9 @@ export async function validateRemediationPlanCLI(): Promise<void> {
   } else if (toolsResult.valid) {
     console.log(`   ✅ ${toolsResult.tools.length} tools validated`);
   }
-  
+
   console.log(`\n${result.isValid ? '✅' : '❌'} Overall: ${result.isValid ? 'VALID' : 'INVALID'}\n`);
-  
+
   if (!result.isValid) {
     console.log('🚫 Remediation plan does not meet constitutional requirements and cannot be executed safely.');
     process.exit(1);

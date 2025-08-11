@@ -10,13 +10,13 @@ import fs from 'fs';
 import path from 'path';
 import yaml from 'js-yaml';
 import inquirer from 'inquirer';
-import { 
-  AegisFrameworkConfigSchema, 
-  ConfigurationProfiles, 
+import {
+  AegisFrameworkConfigSchema,
+  ConfigurationProfiles,
   validateConstitutionalCompliance,
   getProfileTemplate,
   type AegisFrameworkConfig,
-  type ConfigurationProfileType 
+  type ConfigurationProfileType,
 } from '../framework/contracts/team-configuration.schema.js';
 
 class TeamConfigurationManager {
@@ -40,7 +40,7 @@ class TeamConfigurationManager {
         type: 'confirm',
         name: 'overwrite',
         message: 'Configuration already exists. Overwrite?',
-        default: false
+        default: false,
       });
 
       if (!proceed.overwrite) {
@@ -51,30 +51,30 @@ class TeamConfigurationManager {
 
     // Gather team information
     const teamInfo = await this.gatherTeamInfo();
-    
+
     // Choose configuration profile
     const profile = await this.chooseProfile();
-    
+
     // Configure overrides if needed
     const overrides = await this.configureOverrides(profile, teamInfo);
-    
+
     // Generate configuration
     const config = await this.generateConfiguration(teamInfo, profile, overrides);
-    
+
     // Validate constitutional compliance
     const compliance = validateConstitutionalCompliance(config);
-    
+
     if (!compliance.valid) {
       console.log('\n❌ Constitutional Compliance Issues:');
       compliance.violations.forEach(v => console.log(`   - ${v}`));
-      
+
       const proceed = await inquirer.prompt({
         type: 'confirm',
         name: 'proceed',
         message: 'Proceed with constitutional violations?',
-        default: false
+        default: false,
       });
-      
+
       if (!proceed.proceed) {
         console.log('Configuration setup cancelled due to constitutional violations.');
         return;
@@ -88,10 +88,10 @@ class TeamConfigurationManager {
 
     // Save configuration
     await this.saveConfiguration(config);
-    
+
     console.log('\n✅ Team configuration saved successfully!');
     console.log(`📄 Configuration: ${this.configPath}`);
-    
+
     // Show next steps
     this.showNextSteps(config);
   }
@@ -105,7 +105,7 @@ class TeamConfigurationManager {
         type: 'input',
         name: 'name',
         message: 'Team name:',
-        validate: (input: string) => input.length > 0 || 'Team name is required'
+        validate: (input: string) => input.length > 0 || 'Team name is required',
       },
       {
         type: 'input',
@@ -114,8 +114,8 @@ class TeamConfigurationManager {
         validate: (input: string) => {
           const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
           return emailRegex.test(input) || 'Valid email is required';
-        }
-      }
+        },
+      },
     ]);
   }
 
@@ -135,8 +135,8 @@ class TeamConfigurationManager {
       choices: [
         { name: 'Balanced (Recommended)', value: 'balanced' },
         { name: 'Strict (Maximum Compliance)', value: 'strict' },
-        { name: 'Minimal (Maximum Flexibility)', value: 'minimal' }
-      ]
+        { name: 'Minimal (Maximum Flexibility)', value: 'minimal' },
+      ],
     });
 
     return profile as ConfigurationProfileType;
@@ -155,14 +155,14 @@ class TeamConfigurationManager {
           type: 'input',
           name: 'reason',
           message: 'Reason for constitutional override:',
-          validate: (input: string) => input.length >= 10 || 'Reason must be at least 10 characters'
+          validate: (input: string) => input.length >= 10 || 'Reason must be at least 10 characters',
         },
         {
           type: 'confirm',
           name: 'acknowledge',
           message: 'I acknowledge this disables constitutional protections:',
-          default: false
-        }
+          default: false,
+        },
       ]);
 
       if (!acknowledgment.acknowledge) {
@@ -177,7 +177,7 @@ class TeamConfigurationManager {
         constitutionalAcknowledgment: new Date().toISOString().split('T')[0],
         reason: acknowledgment.reason,
         approvedBy: teamInfo.email,
-        overrideExpiry: expiry.toISOString().split('T')[0]
+        overrideExpiry: expiry.toISOString().split('T')[0],
       };
     }
 
@@ -188,74 +188,74 @@ class TeamConfigurationManager {
    * Generate complete configuration
    */
   private async generateConfiguration(
-    teamInfo: any, 
-    profile: ConfigurationProfileType, 
+    teamInfo: any,
+    profile: ConfigurationProfileType,
     overrides?: any
   ): Promise<AegisFrameworkConfig> {
     const profileTemplate = getProfileTemplate(profile);
-    
+
     const config: AegisFrameworkConfig = {
       team: {
         name: teamInfo.name,
         profile,
-        constitutionalAcknowledgment: overrides?.constitutionalAcknowledgment
+        constitutionalAcknowledgment: overrides?.constitutionalAcknowledgment,
       },
       core: {
         blueprintValidation: true,
         agentDriftPrevention: true,
         intentEnforcement: true,
-        versionConsistency: true
+        versionConsistency: true,
       },
       required: {
         evolutionStoryDetection: {
           enabled: profileTemplate.required.evolutionStoryDetection?.enabled ?? true,
           autoGenerate: (profileTemplate.required.evolutionStoryDetection as any)?.autoGenerate ?? false,
-          triggerThreshold: 'medium'
+          triggerThreshold: 'medium',
         },
         constitutionalEnforcement: {
           mode: profileTemplate.required.constitutionalEnforcement?.mode ?? 'guided',
           blocking: profileTemplate.required.constitutionalEnforcement?.blocking ?? true,
-          autoCorrection: true
+          autoCorrection: true,
         },
         precommitHooks: {
           enabled: profileTemplate.required.precommitHooks?.enabled ?? true,
           evolutionDetection: true,
-          constitutionalValidation: true
+          constitutionalValidation: true,
         },
         annotations: {
           required: profileTemplate.required.annotations?.required ?? true,
           coverage: 0.8,
-          enforcement: (profileTemplate.required.annotations as any)?.enforcement ?? 'warning'
+          enforcement: (profileTemplate.required.annotations as any)?.enforcement ?? 'warning',
         },
         templateQuality: {
           validation: true,
-          encodingChecks: true
-        }
+          encodingChecks: true,
+        },
       },
       optional: {
         realtimePatternDetection: {
           enabled: profileTemplate.optional.realtimePatternDetection?.enabled ?? false,
-          sensitivity: 'medium'
+          sensitivity: 'medium',
         },
         autoGeneratedEvolutionStories: {
           enabled: profileTemplate.optional.autoGeneratedEvolutionStories?.enabled ?? false,
-          severity: 'critical'
+          severity: 'critical',
         },
         driftMonitoringDashboard: {
           enabled: profileTemplate.optional.driftMonitoringDashboard?.enabled ?? false,
-          updateInterval: 'daily'
+          updateInterval: 'daily',
         },
         automatedChangelog: {
           enabled: false,
-          format: 'constitutional'
+          format: 'constitutional',
         },
         predictiveEnforcement: {
           enabled: false,
           confidence: 0.8,
-          learning: true
-        }
+          learning: true,
+        },
       },
-      overrides
+      overrides,
     };
 
     return config;
@@ -272,10 +272,10 @@ class TeamConfigurationManager {
     }
 
     // Convert to YAML and save
-    const yamlContent = yaml.dump(config, { 
+    const yamlContent = yaml.dump(config, {
       indent: 2,
       quotingType: '"',
-      forceQuotes: false
+      forceQuotes: false,
     });
 
     const header = `# Aegis Framework Team Configuration
@@ -292,17 +292,17 @@ class TeamConfigurationManager {
    */
   private showNextSteps(config: AegisFrameworkConfig): void {
     console.log('\n📋 Next Steps:');
-    
+
     if (config.team.profile === 'minimal') {
       console.log('1. ⚠️  Review constitutional override expiry date');
       console.log('2. 📅 Schedule review before override expires');
       console.log('3. 🔍 Monitor for constitutional violations');
     }
-    
+
     console.log('4. 🚀 Run framework tools with new configuration');
     console.log('5. 📊 Monitor team workflow with new settings');
     console.log('6. 🔄 Adjust configuration as needed\n');
-    
+
     console.log('📖 Commands:');
     console.log('• View config: cat .framework/team-config.yaml');
     console.log('• Validate: node cli/validate-team-config.ts');
@@ -332,16 +332,16 @@ class TeamConfigurationManager {
    */
   async validate(): Promise<void> {
     const config = this.loadConfiguration();
-    
+
     if (!config) {
       console.log('❌ No configuration found. Run setup first.');
       return;
     }
 
     const compliance = validateConstitutionalCompliance(config);
-    
+
     console.log('🔍 Configuration Validation Results\n');
-    
+
     if (compliance.valid) {
       console.log('✅ Configuration is constitutionally compliant');
     } else {
@@ -359,7 +359,7 @@ class TeamConfigurationManager {
       const expiry = new Date(config.overrides.overrideExpiry);
       const now = new Date();
       const daysRemaining = Math.ceil((expiry.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
-      
+
       if (daysRemaining <= 30) {
         console.log(`\n⏰ Override expires in ${daysRemaining} days. Consider renewal.`);
       }

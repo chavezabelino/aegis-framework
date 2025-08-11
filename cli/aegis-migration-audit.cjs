@@ -23,7 +23,9 @@ const fs = require('fs');
 const path = require('path');
 
 function printHelp() {
-  console.log(`\nAegis Migration Audit CLI\n\nUsage:\n  node cli/aegis-migration-audit.cjs <target-path> [options]\n\nOptions:\n  --output <file>   Write migration plan to file (default: stdout)\n  --strict          Fail on first critical compliance issue\n  --help            Show usage instructions\n`);
+  console.log(
+    `\nAegis Migration Audit CLI\n\nUsage:\n  node cli/aegis-migration-audit.cjs <target-path> [options]\n\nOptions:\n  --output <file>   Write migration plan to file (default: stdout)\n  --strict          Fail on first critical compliance issue\n  --help            Show usage instructions\n`
+  );
 }
 
 function scanDirectory(dir, fileList = []) {
@@ -59,7 +61,7 @@ function auditFile(filePath) {
       hasVersion,
       hasContracts,
       hasObservability,
-      hasErrorStates
+      hasErrorStates,
     };
   }
   // Constitution

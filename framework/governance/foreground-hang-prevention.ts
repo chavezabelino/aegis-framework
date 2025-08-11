@@ -42,7 +42,7 @@ interface ProcessRunResult {
 export class ForegroundHangPrevention {
   private projectRoot: string;
   private logsDir: string;
-  private processPatterns: ProcessPattern[];
+  private processPatterns!: ProcessPattern[];
   private runningProcesses: Map<string, BackgroundProcess> = new Map();
 
   constructor(projectRoot: string = process.cwd()) {
@@ -61,7 +61,7 @@ export class ForegroundHangPrevention {
         category: 'dev-server',
         defaultPort: 3000,
         healthCheck: 'http://localhost:3000',
-        logPattern: 'Local:.*http://localhost'
+        logPattern: 'Local:.*http://localhost',
       },
       {
         pattern: /yarn\s+dev/,
@@ -69,7 +69,7 @@ export class ForegroundHangPrevention {
         category: 'dev-server',
         defaultPort: 3000,
         healthCheck: 'http://localhost:3000',
-        logPattern: 'Local:.*http://localhost'
+        logPattern: 'Local:.*http://localhost',
       },
       {
         pattern: /bun\s+dev/,
@@ -77,7 +77,7 @@ export class ForegroundHangPrevention {
         category: 'dev-server',
         defaultPort: 3000,
         healthCheck: 'http://localhost:3000',
-        logPattern: 'Local:.*http://localhost'
+        logPattern: 'Local:.*http://localhost',
       },
       {
         pattern: /vite/,
@@ -85,7 +85,7 @@ export class ForegroundHangPrevention {
         category: 'dev-server',
         defaultPort: 5173,
         healthCheck: 'http://localhost:5173',
-        logPattern: 'Local:.*http://localhost:5173'
+        logPattern: 'Local:.*http://localhost:5173',
       },
       {
         pattern: /next\s+dev/,
@@ -93,7 +93,7 @@ export class ForegroundHangPrevention {
         category: 'dev-server',
         defaultPort: 3000,
         healthCheck: 'http://localhost:3000',
-        logPattern: 'Ready on.*http://localhost'
+        logPattern: 'Ready on.*http://localhost',
       },
       {
         pattern: /webpack.*dev/,
@@ -101,59 +101,59 @@ export class ForegroundHangPrevention {
         category: 'dev-server',
         defaultPort: 8080,
         healthCheck: 'http://localhost:8080',
-        logPattern: 'webpack compiled'
+        logPattern: 'webpack compiled',
       },
-      
+
       // Build Watchers
       {
         pattern: /tsc.*--watch/,
         name: 'tsc-watch',
         category: 'build-watch',
-        logPattern: 'Found 0 errors. Watching for file changes'
+        logPattern: 'Found 0 errors. Watching for file changes',
       },
       {
         pattern: /rollup.*--watch/,
         name: 'rollup-watch',
         category: 'build-watch',
-        logPattern: 'watching for changes'
+        logPattern: 'watching for changes',
       },
-      
+
       // Test Watchers
       {
         pattern: /jest.*--watch/,
         name: 'jest-watch',
         category: 'test-watch',
-        logPattern: 'Watch Usage'
+        logPattern: 'Watch Usage',
       },
       {
         pattern: /vitest/,
         name: 'vitest',
         category: 'test-watch',
-        logPattern: 'watching for file changes'
+        logPattern: 'watching for file changes',
       },
-      
+
       // Databases
       {
         pattern: /mongod/,
         name: 'mongodb',
         category: 'database',
         defaultPort: 27017,
-        healthCheck: 'mongodb://localhost:27017'
+        healthCheck: 'mongodb://localhost:27017',
       },
       {
         pattern: /redis-server/,
         name: 'redis',
         category: 'database',
-        defaultPort: 6379
+        defaultPort: 6379,
       },
-      
+
       // Generic Services
       {
         pattern: /docker.*up/,
         name: 'docker-compose',
         category: 'service',
-        logPattern: 'started'
-      }
+        logPattern: 'started',
+      },
     ];
   }
 
@@ -168,14 +168,14 @@ export class ForegroundHangPrevention {
    */
   detectLongRunningProcess(command: string): ProcessPattern | null {
     const cleanCommand = command.trim().toLowerCase();
-    
+
     for (const pattern of this.processPatterns) {
       if (pattern.pattern.test(cleanCommand)) {
         console.log(`🎯 Detected long-running process: ${pattern.name} (${pattern.category})`);
         return pattern;
       }
     }
-    
+
     return null;
   }
 
@@ -184,25 +184,25 @@ export class ForegroundHangPrevention {
    */
   async runWithHangPrevention(command: string): Promise<ProcessRunResult> {
     const pattern = this.detectLongRunningProcess(command);
-    
+
     if (!pattern) {
       // Not a long-running process, run normally
       try {
-        const output = execSync(command, { 
+        const output = execSync(command, {
           cwd: this.projectRoot,
           encoding: 'utf8',
-          timeout: 30000 // 30 second timeout for normal commands
+          timeout: 30000, // 30 second timeout for normal commands
         });
         return {
           success: true,
           message: `Command completed: ${output.trim()}`,
-          backgrounded: false
+          backgrounded: false,
         };
       } catch (error: any) {
         return {
           success: false,
           message: `Command failed: ${error.message}`,
-          backgrounded: false
+          backgrounded: false,
         };
       }
     }
@@ -216,32 +216,32 @@ export class ForegroundHangPrevention {
    */
   private async runInBackground(command: string, pattern: ProcessPattern): Promise<ProcessRunResult> {
     console.log(`🚀 Backgrounding long-running process: ${pattern.name}`);
-    
+
     // Kill any existing process of the same type
     await this.killExistingProcess(pattern.name);
-    
+
     // Set up log file
     const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
     const logFile = path.join(this.logsDir, `${pattern.name}-${timestamp}.log`);
-    
+
     // Create background command
     const backgroundCommand = `${command} > ${logFile} 2>&1 & echo $!`;
-    
+
     try {
       // Start the process in background
-      const pidOutput = execSync(backgroundCommand, { 
+      const pidOutput = execSync(backgroundCommand, {
         cwd: this.projectRoot,
         encoding: 'utf8',
-        shell: '/bin/bash'
+        shell: '/bin/bash',
       });
-      
+
       const pid = parseInt(pidOutput.trim());
-      
+
       if (isNaN(pid)) {
         return {
           success: false,
           message: `Failed to start background process: invalid PID`,
-          backgrounded: false
+          backgrounded: false,
         };
       }
 
@@ -252,53 +252,52 @@ export class ForegroundHangPrevention {
         logFile,
         healthCheck: pattern.healthCheck,
         startTime: new Date(),
-        category: pattern.category
+        category: pattern.category,
       };
-      
+
       this.runningProcesses.set(pattern.name, backgroundProcess);
-      
+
       // Wait a moment for startup
       await this.sleep(3000);
-      
+
       // Check if process is still running
       const isRunning = this.isProcessRunning(pid);
       if (!isRunning) {
         return {
           success: false,
           message: `Process ${pattern.name} failed to start (PID ${pid} not found)`,
-          backgrounded: true
+          backgrounded: true,
         };
       }
-      
+
       // Show initial log output
       const initialLogs = await this.getRecentLogs(logFile, 10);
-      
+
       console.log(`✅ Process ${pattern.name} started in background (PID: ${pid})`);
       console.log(`📄 Log file: ${logFile}`);
-      
+
       if (initialLogs) {
         console.log(`📋 Recent logs:\n${initialLogs}`);
       }
-      
+
       // Check health if applicable
       if (pattern.healthCheck) {
         await this.waitForHealthCheck(pattern, 30000); // 30 second timeout
       }
-      
+
       return {
         success: true,
         pid,
         logFile,
         healthCheck: pattern.healthCheck,
         message: `${pattern.name} started successfully in background (PID: ${pid})`,
-        backgrounded: true
+        backgrounded: true,
       };
-      
     } catch (error: any) {
       return {
         success: false,
         message: `Failed to background process: ${error.message}`,
-        backgrounded: false
+        backgrounded: false,
       };
     }
   }
@@ -313,7 +312,7 @@ export class ForegroundHangPrevention {
       try {
         process.kill(existing.pid, 'SIGTERM');
         await this.sleep(2000); // Give it time to gracefully shutdown
-        
+
         if (this.isProcessRunning(existing.pid)) {
           console.log(`💀 Force killing ${processName} (PID: ${existing.pid})`);
           process.kill(existing.pid, 'SIGKILL');
@@ -321,7 +320,7 @@ export class ForegroundHangPrevention {
       } catch (error) {
         console.log(`⚠️ Could not kill existing process: ${error}`);
       }
-      
+
       this.runningProcesses.delete(processName);
     }
   }
@@ -346,12 +345,12 @@ export class ForegroundHangPrevention {
       if (!fs.existsSync(logFile)) {
         return null;
       }
-      
-      const output = execSync(`tail -n ${lines} "${logFile}"`, { 
+
+      const output = execSync(`tail -n ${lines} "${logFile}"`, {
         encoding: 'utf8',
-        cwd: this.projectRoot
+        cwd: this.projectRoot,
       });
-      
+
       return output.trim();
     } catch (error) {
       return null;
@@ -367,25 +366,25 @@ export class ForegroundHangPrevention {
     }
 
     console.log(`🏥 Waiting for health check: ${pattern.healthCheck}`);
-    
+
     const startTime = Date.now();
     const interval = 2000; // Check every 2 seconds
-    
+
     while (Date.now() - startTime < timeout) {
       try {
         if (pattern.healthCheck.startsWith('http')) {
           // HTTP health check
           const curlResult = execSync(`curl -s -f "${pattern.healthCheck}" -o /dev/null`, {
             encoding: 'utf8',
-            timeout: 5000
+            timeout: 5000,
           });
           console.log(`✅ Health check passed: ${pattern.healthCheck}`);
           return true;
         } else {
           // Custom health check command
-          execSync(pattern.healthCheck, { 
+          execSync(pattern.healthCheck, {
             encoding: 'utf8',
-            timeout: 5000
+            timeout: 5000,
           });
           console.log(`✅ Health check passed: ${pattern.healthCheck}`);
           return true;
@@ -396,7 +395,7 @@ export class ForegroundHangPrevention {
         await this.sleep(interval);
       }
     }
-    
+
     console.log(`⚠️ Health check timeout after ${timeout / 1000}s`);
     return false;
   }
@@ -412,7 +411,7 @@ export class ForegroundHangPrevention {
         this.runningProcesses.delete(name);
       }
     }
-    
+
     return new Map(this.runningProcesses);
   }
 
@@ -424,7 +423,7 @@ export class ForegroundHangPrevention {
     if (!process) {
       return null;
     }
-    
+
     return await this.getRecentLogs(process.logFile, lines);
   }
 
@@ -433,11 +432,11 @@ export class ForegroundHangPrevention {
    */
   async killAllProcesses(): Promise<void> {
     console.log(`🔄 Killing ${this.runningProcesses.size} background processes...`);
-    
+
     for (const [name, process] of this.runningProcesses.entries()) {
       await this.killExistingProcess(name);
     }
-    
+
     this.runningProcesses.clear();
     console.log(`✅ All background processes killed`);
   }
@@ -452,7 +451,7 @@ export class ForegroundHangPrevention {
  */
 async function main() {
   const prevention = new ForegroundHangPrevention();
-  
+
   if (process.argv.length < 3) {
     console.log('🛡️ Foreground Hang Prevention System');
     console.log('Usage: node foreground-hang-prevention.ts "<command>"');
@@ -466,9 +465,9 @@ async function main() {
     console.log('  node foreground-hang-prevention.ts --kill-all');
     return;
   }
-  
+
   const command = process.argv[2];
-  
+
   if (command === '--status') {
     const running = prevention.getRunningProcesses();
     if (running.size === 0) {
@@ -486,19 +485,19 @@ async function main() {
     }
     return;
   }
-  
+
   if (command === '--kill-all') {
     await prevention.killAllProcesses();
     return;
   }
-  
+
   if (command === '--logs') {
     const processName = process.argv[3];
     if (!processName) {
       console.log('❌ Please specify process name for logs');
       return;
     }
-    
+
     const logs = await prevention.showLogs(processName);
     if (logs) {
       console.log(`📋 Recent logs for ${processName}:`);
@@ -508,10 +507,10 @@ async function main() {
     }
     return;
   }
-  
+
   // Run command with hang prevention
   const result = await prevention.runWithHangPrevention(command);
-  
+
   if (result.success) {
     console.log(`✅ ${result.message}`);
     if (result.backgrounded) {

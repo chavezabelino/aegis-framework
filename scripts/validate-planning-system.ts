@@ -61,7 +61,11 @@ class PlanningSystemValidator {
 
       this.addResult('Blueprint', 'PASS', 'Blueprint configuration is valid');
     } catch (error) {
-      this.addResult('Blueprint', 'FAIL', `Blueprint validation failed: ${error instanceof Error ? error.message : String(error)}`);
+      this.addResult(
+        'Blueprint',
+        'FAIL',
+        `Blueprint validation failed: ${error instanceof Error ? error.message : String(error)}`
+      );
     }
   }
 
@@ -81,7 +85,11 @@ class PlanningSystemValidator {
 
       this.addResult('Configuration', 'PASS', 'Planning configuration is valid');
     } catch (error) {
-      this.addResult('Configuration', 'FAIL', `Configuration validation failed: ${error instanceof Error ? error.message : String(error)}`);
+      this.addResult(
+        'Configuration',
+        'FAIL',
+        `Configuration validation failed: ${error instanceof Error ? error.message : String(error)}`
+      );
     }
   }
 
@@ -90,7 +98,7 @@ class PlanningSystemValidator {
       { name: 'Auto Plan Detector', path: 'tools/auto-plan-detector.ts' },
       { name: 'Planner Critic', path: 'tools/planner-critic.ts' },
       { name: 'MCP Server', path: 'tools/mcp-aegis-server.ts' },
-      { name: 'Plan Gate', path: 'scripts/ci/plan-gate.mjs' }
+      { name: 'Plan Gate', path: 'scripts/ci/plan-gate.mjs' },
     ];
 
     for (const tool of tools) {
@@ -119,7 +127,11 @@ class PlanningSystemValidator {
           }
         }
       } catch (error) {
-        this.addResult(tool.name, 'FAIL', `Tool validation failed: ${error instanceof Error ? error.message : String(error)}`);
+        this.addResult(
+          tool.name,
+          'FAIL',
+          `Tool validation failed: ${error instanceof Error ? error.message : String(error)}`
+        );
       }
     }
   }
@@ -141,7 +153,11 @@ class PlanningSystemValidator {
           this.addResult('CLI', 'FAIL', 'CLI help command failed');
         }
       } catch (error) {
-        this.addResult('CLI', 'FAIL', `CLI execution failed: ${error instanceof Error ? error.message : String(error)}`);
+        this.addResult(
+          'CLI',
+          'FAIL',
+          `CLI execution failed: ${error instanceof Error ? error.message : String(error)}`
+        );
       }
     } catch (error) {
       this.addResult('CLI', 'FAIL', `CLI validation failed: ${error instanceof Error ? error.message : String(error)}`);
@@ -169,7 +185,11 @@ class PlanningSystemValidator {
 
       this.addResult('MCP Server', 'PASS', 'MCP server configuration is valid');
     } catch (error) {
-      this.addResult('MCP Server', 'FAIL', `MCP server validation failed: ${error instanceof Error ? error.message : String(error)}`);
+      this.addResult(
+        'MCP Server',
+        'FAIL',
+        `MCP server validation failed: ${error instanceof Error ? error.message : String(error)}`
+      );
     }
   }
 
@@ -177,7 +197,7 @@ class PlanningSystemValidator {
     const prompts = [
       { name: 'Vibe Coder', path: 'tools/prompts/aegis-vibe-coder.md' },
       { name: 'Plan Optimizer', path: 'tools/prompts/aegis-plan-optimizer.md' },
-      { name: 'Contract Tests', path: 'tools/prompts/contract-driven-tests.md' }
+      { name: 'Contract Tests', path: 'tools/prompts/contract-driven-tests.md' },
     ];
 
     for (const prompt of prompts) {
@@ -200,7 +220,11 @@ class PlanningSystemValidator {
 
         this.addResult(prompt.name, 'PASS', 'Prompt file is valid');
       } catch (error) {
-        this.addResult(prompt.name, 'FAIL', `Prompt validation failed: ${error instanceof Error ? error.message : String(error)}`);
+        this.addResult(
+          prompt.name,
+          'FAIL',
+          `Prompt validation failed: ${error instanceof Error ? error.message : String(error)}`
+        );
       }
     }
   }
@@ -211,7 +235,7 @@ class PlanningSystemValidator {
       { name: 'IDE Integration', path: 'docs/aegis/planning/ide-integration.md' },
       { name: 'Vibe Coding', path: 'docs/aegis/planning/vibe-coding.md' },
       { name: 'Implementation Summary', path: 'docs/aegis/planning/IMPLEMENTATION-SUMMARY.md' },
-      { name: 'Quick Start', path: 'QUICK-START-PLANNING.md' }
+      { name: 'Quick Start', path: 'QUICK-START-PLANNING.md' },
     ];
 
     for (const doc of docs) {
@@ -229,7 +253,11 @@ class PlanningSystemValidator {
 
         this.addResult(doc.name, 'PASS', 'Documentation file is valid');
       } catch (error) {
-        this.addResult(doc.name, 'FAIL', `Documentation validation failed: ${error instanceof Error ? error.message : String(error)}`);
+        this.addResult(
+          doc.name,
+          'FAIL',
+          `Documentation validation failed: ${error instanceof Error ? error.message : String(error)}`
+        );
       }
     }
   }
@@ -237,7 +265,7 @@ class PlanningSystemValidator {
   private async validateDependencies(): Promise<void> {
     try {
       const packageJson = JSON.parse(fs.readFileSync('package.json', 'utf8'));
-      
+
       // Check for MCP dependency
       if (!packageJson.dependencies?.['@modelcontextprotocol/sdk']) {
         this.addResult('Dependencies', 'FAIL', 'MCP SDK dependency not found');
@@ -245,9 +273,16 @@ class PlanningSystemValidator {
       }
 
       // Check for planning scripts
-      const requiredScripts = ['aegis:planning', 'plan:gate:mvp', 'plan:gate:surgical', 'plan:gate:systemic', 'vibe', 'mcp:start'];
+      const requiredScripts = [
+        'aegis:planning',
+        'plan:gate:mvp',
+        'plan:gate:surgical',
+        'plan:gate:systemic',
+        'vibe',
+        'mcp:start',
+      ];
       const missingScripts = requiredScripts.filter(script => !packageJson.scripts?.[script]);
-      
+
       if (missingScripts.length > 0) {
         this.addResult('Dependencies', 'FAIL', `Missing scripts: ${missingScripts.join(', ')}`);
         return;
@@ -255,14 +290,18 @@ class PlanningSystemValidator {
 
       this.addResult('Dependencies', 'PASS', 'All required dependencies and scripts are present');
     } catch (error) {
-      this.addResult('Dependencies', 'FAIL', `Dependencies validation failed: ${error instanceof Error ? error.message : String(error)}`);
+      this.addResult(
+        'Dependencies',
+        'FAIL',
+        `Dependencies validation failed: ${error instanceof Error ? error.message : String(error)}`
+      );
     }
   }
 
   private async validateIDEConfigs(): Promise<void> {
     const configs = [
       { name: 'Cursor Config', path: '.cursor/settings.json' },
-      { name: 'VS Code Config', path: '.vscode/settings.json' }
+      { name: 'VS Code Config', path: '.vscode/settings.json' },
     ];
 
     for (const config of configs) {
@@ -280,7 +319,11 @@ class PlanningSystemValidator {
 
         this.addResult(config.name, 'PASS', 'IDE configuration is valid');
       } catch (error) {
-        this.addResult(config.name, 'FAIL', `IDE config validation failed: ${error instanceof Error ? error.message : String(error)}`);
+        this.addResult(
+          config.name,
+          'FAIL',
+          `IDE config validation failed: ${error instanceof Error ? error.message : String(error)}`
+        );
       }
     }
   }
@@ -291,7 +334,7 @@ class PlanningSystemValidator {
 
   private printResults(): void {
     console.log('📋 Validation Results:\n');
-    
+
     for (const result of this.results) {
       const icon = result.status === 'PASS' ? '✅' : result.status === 'FAIL' ? '❌' : '⚠️';
       console.log(`${icon} ${result.component}: ${result.message}`);
@@ -326,7 +369,7 @@ class PlanningSystemValidator {
 
 // Run validation
 const validator = new PlanningSystemValidator();
-validator.validateAll().catch((error) => {
+validator.validateAll().catch(error => {
   console.error('❌ Validation failed:', error.message);
   process.exit(1);
 });

@@ -13,7 +13,8 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import { execSync } from 'child_process';
 
-const PROVENANCE_REGEX = /^\/\*\*\s*\n\s*@aegisBlueprint:\s*(.+)\s*\n\s*@version:\s*(.+)\s*\n\s*@mode:\s*(lean|strict|generative)\s*\n\s*@intent:\s*(.+)\s*\n\s*@context:\s*(.+)\s*\n\s*@model:\s*(.+)\s*\n\s*@hash:\s*([a-f0-9]{64})\s*\n\s*\*\//m;
+const PROVENANCE_REGEX =
+  /^\/\*\*\s*\n\s*@aegisBlueprint:\s*(.+)\s*\n\s*@version:\s*(.+)\s*\n\s*@mode:\s*(lean|strict|generative)\s*\n\s*@intent:\s*(.+)\s*\n\s*@context:\s*(.+)\s*\n\s*@model:\s*(.+)\s*\n\s*@hash:\s*([a-f0-9]{64})\s*\n\s*\*\//m;
 
 class ProvenanceChecker {
   constructor() {
@@ -26,14 +27,14 @@ class ProvenanceChecker {
     try {
       const content = fs.readFileSync(filePath, 'utf8');
       const match = content.match(PROVENANCE_REGEX);
-      
+
       if (!match) {
         this.errors.push(`Missing or invalid provenance header: ${filePath}`);
         return false;
       }
 
       const [, blueprint, version, mode, intent, context, model, hash] = match;
-      
+
       // Validate blueprint ID
       if (!blueprint || blueprint.trim() === '') {
         this.errors.push(`Invalid blueprint ID in ${filePath}`);
@@ -95,17 +96,17 @@ class ProvenanceChecker {
 
   getFilesRecursively(dirPath, extensions) {
     const files = [];
-    
+
     if (!fs.existsSync(dirPath)) {
       return files;
     }
 
     const items = fs.readdirSync(dirPath);
-    
+
     for (const item of items) {
       const fullPath = path.join(dirPath, item);
       const stat = fs.statSync(fullPath);
-      
+
       if (stat.isDirectory()) {
         // Skip node_modules and .git
         if (item !== 'node_modules' && item !== '.git') {
@@ -124,7 +125,7 @@ class ProvenanceChecker {
 
   printResults() {
     console.log('🔍 Provenance Check Results\n');
-    
+
     if (this.errors.length === 0 && this.warnings.length === 0) {
       console.log('✅ All files have valid provenance headers');
       return true;
@@ -153,7 +154,7 @@ class ProvenanceChecker {
  * @model: ${model}
  * @hash: <placeholder>
  */`;
-    
+
     const hash = this.generateHash(content);
     return content.replace('<placeholder>', hash);
   }
@@ -161,7 +162,7 @@ class ProvenanceChecker {
 
 async function main() {
   const checker = new ProvenanceChecker();
-  
+
   // Check specific directories
   const directories = ['framework', 'blueprints', 'adapters', 'tools', 'cli', 'patterns'];
   let totalValid = 0;
@@ -172,7 +173,7 @@ async function main() {
       const result = await checker.checkDirectory(dir);
       totalValid += result.validCount;
       totalFiles += result.totalCount;
-      
+
       if (result.totalCount > 0) {
         console.log(`${dir}: ${result.validCount}/${result.totalCount} files valid`);
       }
@@ -180,9 +181,9 @@ async function main() {
   }
 
   console.log(`\n📊 Summary: ${totalValid}/${totalFiles} files have valid provenance`);
-  
+
   const success = checker.printResults();
-  
+
   if (!success && checker.isCI) {
     process.exit(1);
   }
@@ -190,7 +191,7 @@ async function main() {
 
 // Run if called directly
 if (import.meta.url === `file://${process.argv[1]}`) {
-  main().catch((error) => {
+  main().catch(error => {
     console.error('❌ Provenance check failed:', error.message);
     process.exit(1);
   });

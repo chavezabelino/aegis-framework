@@ -1,65 +1,80 @@
 <!--
+# 🔥 __Real-Time Evolution Detection from Copilot Conversations**
+
 @aegisFrameworkVersion: 2.4.0-alpha-dev
 @intent: Complete documentation of real-time evolution detection from copilot conversations
 @context: Answer to "how do we get detection in-flight from real-time prompts? copilot instructions?"
 -->
 
-# 🔥 **Real-Time Evolution Detection from Copilot Conversations**
+# 🔥 __Real-Time Evolution Detection from Copilot Conversations**
 
-## 🎯 **Complete Solution Architecture**
+## 🎯 __Complete Solution Architecture**
 
-### **In-Flight Detection System**
+### __In-Flight Detection System**
+
 The framework now captures evolution triggers directly from:
-- ✅ **GitHub Copilot conversations** 
-- ✅ **User prompts and questions**
-- ✅ **AI response quality analysis**
-- ✅ **Copilot instruction patterns**
-- ✅ **Real-time conversation context**
 
-## 🔍 **Pattern Recognition Engine**
+- ✅ __GitHub Copilot conversations**
+- ✅ __User prompts and questions**
+- ✅ __AI response quality analysis**
+- ✅ __Copilot instruction patterns**
+- ✅ __Real-time conversation context**
 
-### **Critical Trigger Patterns** (Auto-Generate Stories)
+## 🔍 __Pattern Recognition Engine**
+
+### __Critical Trigger Patterns__ (Auto-Generate Stories)
+
 ```regex
-/assess.*pitfall|enhance.*framework.*guard|constitutional.*safeguards/i
+/assess._pitfall|enhance._framework._guard|Constitutional._safeguards/i
 → 🚨 Constitutional violation detection
-```
+```text
 
-### **High-Priority Patterns** (Suggest Stories)
+### __High-Priority Patterns__ (Suggest Stories)
+
 ```regex
 /does this break|will this cause|runtime failures/i
 → ⚠️ User concern about breaking changes
-```
+```text
 
-### **Medium-Priority Patterns** (Monitor)
+### __Medium-Priority Patterns__ (Monitor)
+
 ```regex
-/should.*document.*somehow|systematic.*way|field-driven/i
+/should._document._somehow|systematic.*way|field-driven/i
 → 💡 Documentation gap identification
-```
+```text
 
-## 🤖 **Copilot Integration Points**
+## 🤖 __Copilot Integration Points**
 
-### **1. Copilot Instructions Enhancement**
-File: `.github/copilot-instructions.md`
+### __1. Copilot Instructions Enhancement**
+
+File: `.GitHub/copilot-instructions.md`
+
 ```markdown
 ## 🔍 Real-Time Evolution Detection
 
-### **Automatic Trigger Patterns**
+### __Automatic Trigger Patterns**
+
 These user phrases automatically trigger evolution detection:
+
 - "does this break" / "will this cause" / "runtime failures"
 - "assess the pitfall" / "enhance the framework" / "guard against"
 - "should we document somehow" / "systematic way"
 - "field-driven" / "eating dog food" / "real-world usage"
 
-### **Real-Time Response Guidelines**
-When users express concerns about:
-1. **Breaking changes** → Acknowledge and explain framework protections
-2. **Framework gaps** → Note that insight will be captured for evolution
-3. **Documentation needs** → Mention automatic evolution story system
-4. **Field friction** → Emphasize that experience feeds framework learning
-```
+### __Real-Time Response Guidelines**
 
-### **2. Conversation Capture Hook**
+When users express concerns about:
+
+1. __Breaking changes__ → Acknowledge and explain framework protections
+2. __Framework gaps__ → Note that insight will be captured for evolution
+3. __Documentation needs__ → Mention automatic evolution story system
+4. __Field friction__ → Emphasize that experience feeds framework learning
+```text
+
+### __2. Conversation Capture Hook**
+
 File: `tools/copilot-integration.ts`
+
 ```typescript
 export async function captureConversationContext(
   userPrompt: string,
@@ -70,163 +85,185 @@ export async function captureConversationContext(
   // Automatic evolution story generation
   // Conversation logging for pattern recognition
 }
-```
+```text
 
-### **3. Real-Time Analysis Engine**
+### __3. Real-Time Analysis Engine**
+
 File: `tools/realtime-evolution-detection.ts`
+
 ```typescript
 class RealTimeEvolutionDetector extends EvolutionStoryDetector {
   async analyzeConversationContext(context: ConversationContext): Promise<EvolutionTrigger[]>
   async analyzeAIResponseQuality(context: ConversationContext): Promise<EvolutionTrigger[]>
   async analyzeCopilotInstructions(context: ConversationContext): Promise<EvolutionTrigger[]>
 }
-```
+```text
 
-## 📊 **Real-Time Detection Categories**
+## 📊 __Real-Time Detection Categories**
 
-### **Constitutional Violation Detection** 🚨
-- **Pattern**: Framework enhancement requests, pitfall assessments
-- **Action**: Auto-generate evolution story
-- **Example**: "assess the pitfall in our constitutional safeguards"
-- **Response**: Creates `EVS-YYYY-MM-DD-XXX-constitutional-insight.md`
+### __Constitutional Violation Detection__ 🚨
 
-### **User Question Analysis** ⚠️
-- **Pattern**: Breaking change concerns, runtime failure questions
-- **Action**: Suggest manual evolution story
-- **Example**: "does this break the build or cause runtime failures?"
-- **Response**: Flags for documentation gap analysis
+- __Pattern__: Framework enhancement requests, pitfall assessments
+- __Action__: Auto-generate evolution story
+- __Example__: "assess the pitfall in our Constitutional safeguards"
+- __Response__: Creates `EVS-YYYY-MM-DD-XXX-Constitutional-insight.md`
 
-### **Field Experience Capture** 💡
-- **Pattern**: "eating dog food", real-world usage friction
-- **Action**: Document migration friction
-- **Example**: "this field-driven approach revealed gaps"
-- **Response**: Creates migration experience documentation
+### __User Question Analysis__ ⚠️
 
-### **AI Quality Assessment** 📝
-- **Pattern**: AI uncertainty, incomplete responses
-- **Action**: Improve framework guidance
-- **Example**: Multiple "I'm not sure" indicators in AI responses
-- **Response**: Flags for framework documentation enhancement
+- __Pattern__: Breaking change concerns, runtime failure questions
+- __Action__: Suggest manual evolution story
+- __Example__: "does this break the build or cause runtime failures?"
+- __Response__: Flags for documentation gap analysis
 
-## 🔄 **Real-Time Workflow**
+### __Field Experience Capture__ 💡
 
-### **1. Conversation Capture**
-```
+- __Pattern__: "eating dog food", real-world usage friction
+- __Action__: Document migration friction
+- __Example__: "this field-driven approach revealed gaps"
+- __Response__: Creates migration experience documentation
+
+### __AI Quality Assessment__ 📝
+
+- __Pattern__: AI uncertainty, incomplete responses
+- __Action__: Improve framework guidance
+- __Example__: Multiple "I'm not sure" indicators in AI responses
+- __Response__: Flags for framework documentation enhancement
+
+## 🔄 __Real-Time Workflow**
+
+### __1. Conversation Capture**
+
+```text
 User Prompt → Pattern Analysis → Trigger Detection → Context Logging
-```
+```text
 
-### **2. Immediate Response**
-```
+### __2. Immediate Response**
+
+```text
 Critical Triggers → Auto-Generate Story → GitHub Comment/Notification
 Medium Triggers → Suggest Documentation → CLI Guidance
-```
+```text
 
-### **3. Historical Analysis**
-```
+### __3. Historical Analysis**
+
+```text
 Conversation Logs → Pattern Recognition → Framework Learning → Constitutional Evolution
-```
+```text
 
-## 🛠️ **Integration Commands**
+## 🛠️ __Integration Commands**
 
-### **Real-Time Analysis**
+### __Real-Time Analysis**
+
 ```bash
 # Analyze recent copilot interactions
 npm run analyze-copilot
 
 # Test real-time detection patterns
-node cli/test-realtime-detection.cjs
+node CLI/test-realtime-detection.cjs
 
 # Manual evolution story creation
 npm run evolution-story
-```
+```text
 
-### **Conversation Logging**
+### __Conversation Logging**
+
 ```bash
-# Logs saved to: .aegis/conversation-logs/YYYY-MM-DD.jsonl
+# Logs saved to: .Aegis/conversation-logs/YYYY-MM-DD.jsonl
 # Analysis: Session patterns, confusion indicators, topic extraction
-```
+```text
 
-## 📋 **Automatic Integration**
+## 📋 __Automatic Integration**
 
-### **GitHub Copilot Chat**
-- **Conversation contexts** automatically captured
-- **Evolution triggers** detected in real-time
-- **Constitutional patterns** flagged immediately
-- **Framework gaps** documented proactively
+### __GitHub Copilot Chat**
 
-### **GitHub Copilot Completions**
-- **Question patterns** in code comments detected
-- **Concern indicators** in documentation captured
-- **Implementation friction** automatically logged
+- __Conversation contexts__ automatically captured
+- __Evolution triggers__ detected in real-time
+- __Constitutional patterns__ flagged immediately
+- __Framework gaps__ documented proactively
 
-## 🔍 **Pattern Examples**
+### __GitHub Copilot Completions**
 
-### **Your Original Question**
-```
+- __Question patterns__ in code comments detected
+- __Concern indicators__ in documentation captured
+- __Implementation friction__ automatically logged
+
+## 🔍 __Pattern Examples**
+
+### __Your Original Question**
+
+```text
 "how do we get detection in-flight from real-time prompts? copilot instructions?"
-```
-**Detected Pattern**: Framework automation improvement request  
-**Trigger Type**: `ai-quality-gap`  
-**Severity**: `medium`  
-**Auto-Generate**: `false`  
-**Suggested Story**: `"AI Assistant Quality Gap - realtime prompts copilot"`
+```text
 
-### **Previous Questions**
-```
+**Detected Pattern__: Framework automation improvement request  
+**Trigger Type__: `ai-quality-gap`  
+**Severity__: `medium`  
+**Auto-Generate__: `false`  
+**Suggested Story__: `"AI Assistant Quality Gap - realtime prompts copilot"`
+
+### __Previous Questions**
+
+```text
 "is this all after the fact? do i have to remember to run this scan?"
-```
-**Detected Pattern**: User workflow automation concern  
-**Trigger Type**: `user-question`  
-**Severity**: `high`  
-**Result**: Led to proactive detection implementation
+```text
 
-## 🎯 **Meta-Learning Results**
+**Detected Pattern__: User workflow automation concern  
+**Trigger Type__: `user-question`  
+**Severity__: `high`  
+**Result__: Led to proactive detection implementation
 
-### **Conversation → Constitutional Evolution**
-1. **User expresses concern** → Real-time detection
-2. **Pattern recognized** → Evolution trigger created
-3. **Story generated** → Constitutional documentation
-4. **Framework enhanced** → Future prevention
-5. **Learning captured** → Pattern library updated
+## 🎯 __Meta-Learning Results**
 
-### **Field Experience → Framework Improvement**
-```
+### __Conversation → Constitutional Evolution**
+
+1. __User expresses concern__ → Real-time detection
+2. __Pattern recognized__ → Evolution trigger created
+3. __Story generated__ → Constitutional documentation
+4. __Framework enhanced__ → Future prevention
+5. __Learning captured__ → Pattern library updated
+
+### __Field Experience → Framework Improvement**
+
+```text
 Real Conversations → Constitutional Insights → Framework Evolution → Better User Experience
-```
+```text
 
-## 🚀 **What This Achieves**
+## 🚀 __What This Achieves**
 
-### **Complete In-Flight Detection**
-- ✅ **No manual scanning required** - happens automatically during conversations
-- ✅ **Real-time trigger recognition** - catches concerns as they're expressed
-- ✅ **Immediate documentation** - critical triggers auto-generate stories
-- ✅ **Pattern learning** - framework improves from every conversation
-- ✅ **Constitutional compliance** - maintains traceability and governance
+### __Complete In-Flight Detection**
 
-### **Proactive Framework Evolution**
-- ✅ **Field insights captured live** during development conversations
-- ✅ **Documentation gaps identified** from real user questions
-- ✅ **Framework friction detected** from implementation struggles
-- ✅ **Constitutional learning** automated from field experience
+- ✅ __No manual scanning required__ - happens automatically during conversations
+- ✅ __Real-time trigger recognition__ - catches concerns as they're expressed
+- ✅ __Immediate documentation__ - critical triggers auto-generate stories
+- ✅ __Pattern learning__ - framework improves from every conversation
+- ✅ __Constitutional compliance__ - maintains traceability and governance
+
+### __Proactive Framework Evolution**
+
+- ✅ __Field insights captured live__ during development conversations
+- ✅ __Documentation gaps identified__ from real user questions
+- ✅ __Framework friction detected__ from implementation struggles
+- ✅ __Constitutional learning__ automated from field experience
 
 ---
 
-## ✅ **Answer to Your Question**
+## ✅ __Answer to Your Question**
 
 > "how do we get detection in-flight from real-time prompts? copilot instructions?"
 
 **COMPLETE SOLUTION IMPLEMENTED:**
 
-1. **🔥 Real-time pattern recognition** in copilot conversations
-2. **🤖 Automatic trigger detection** from user prompts
-3. **📝 In-flight story generation** for critical constitutional insights
-4. **⚡ Zero-latency capture** of field-driven evolution needs
-5. **🧠 Intelligent conversation analysis** for framework improvement
+1. __🔥 Real-time pattern recognition__ in copilot conversations
+2. __🤖 Automatic trigger detection__ from user prompts
+3. __📝 In-flight story generation__ for critical Constitutional insights
+4. __⚡ Zero-latency capture__ of field-driven evolution needs
+5. __🧠 Intelligent conversation analysis__ for framework improvement
 
-**The framework now learns constitutionally from every conversation and captures evolution insights the moment they're expressed - no manual intervention required.**
+**The framework now learns constitutionally from every conversation and captures evolution insights the moment they're
+expressed - no manual intervention required.**
 
 ---
 
-**Status**: ✅ **Fully Implemented** - Real-Time In-Flight Detection Active  
-**Framework Version**: 2.0.0-alpha-dev  
-**Integration**: GitHub Copilot Instructions + Conversation Analysis + Auto-Generation
+**Status__: ✅ __Fully Implemented__ - Real-Time In-Flight Detection Active  
+**Framework Version__: 2.0.0-alpha-dev  
+**Integration__: GitHub Copilot Instructions + Conversation Analysis + Auto-Generation

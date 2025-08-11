@@ -2,18 +2,18 @@
 
 /**
  * Template Quality Validator
- * 
+ *
  * Constitutional enforcement tool for Article IX: Template and Documentation Quality Standards
  * Validates encoding compliance, structural integrity, and output fidelity
- * 
+ *
  * @aegisFrameworkVersion: 2.4.0
  * @intent: Prevent HTML encoding artifacts and ensure template quality with team configuration support
  * @constitutionalAuthority: Article IX, Section 4
  */
 
-import fs from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import { TeamConfigLoader } from './team-config-loader.js';
 
 // ES module compatibility
@@ -88,11 +88,30 @@ class TemplateQualityValidator {
       console.log('📋 Template quality validation disabled in team configuration');
       return {
         overall: 100,
-        encoding: { score: 100, plainTextCompliance: true, htmlEntities: [], encodingIssues: [], mixedEncodingDetected: false },
-        structure: { score: 100, markdownStructure: true, headingHierarchy: true, constitutionalAnnotations: true, formatConsistency: true, issues: [] },
-        fidelity: { score: 100, referenceMatches: [], encodingArtifacts: [], outputConsistency: true, crossPlatformCompatible: true },
+        encoding: {
+          score: 100,
+          plainTextCompliance: true,
+          htmlEntities: [],
+          encodingIssues: [],
+          mixedEncodingDetected: false,
+        },
+        structure: {
+          score: 100,
+          markdownStructure: true,
+          headingHierarchy: true,
+          constitutionalAnnotations: true,
+          formatConsistency: true,
+          issues: [],
+        },
+        fidelity: {
+          score: 100,
+          referenceMatches: [],
+          encodingArtifacts: [],
+          outputConsistency: true,
+          crossPlatformCompatible: true,
+        },
         violations: [],
-        recommendations: []
+        recommendations: [],
       };
     }
 
@@ -108,7 +127,7 @@ class TemplateQualityValidator {
       structure,
       fidelity,
       violations: this.violations,
-      recommendations: this.generateRecommendations()
+      recommendations: this.generateRecommendations(),
     };
 
     this.printResults(result);
@@ -117,7 +136,7 @@ class TemplateQualityValidator {
 
   private async validateEncoding(): Promise<EncodingValidation> {
     console.log('📝 Validating Encoding Compliance...');
-    
+
     const templatePaths = this.findTemplateFiles();
     const htmlEntities: string[] = [];
     const encodingIssues: string[] = [];
@@ -127,7 +146,7 @@ class TemplateQualityValidator {
     // Common HTML entities that should be plain text
     const forbiddenEntities = {
       '&#39;': "'",
-      '&apos;': "'", 
+      '&apos;': "'",
       '&quot;': '"',
       '&ldquo;': '"',
       '&rdquo;': '"',
@@ -138,7 +157,7 @@ class TemplateQualityValidator {
       '&amp;': '&',
       '&lt;': '<',
       '&gt;': '>',
-      '&nbsp;': ' '
+      '&nbsp;': ' ',
     };
 
     for (const templatePath of templatePaths) {
@@ -151,14 +170,14 @@ class TemplateQualityValidator {
           if (line.includes(entity)) {
             htmlEntities.push(`${templatePath}:${index + 1} - Found "${entity}", should be "${replacement}"`);
             plainTextCompliance = false;
-            
+
             this.violations.push({
               type: 'encoding',
               severity: 'high',
               file: templatePath,
               line: index + 1,
               message: `HTML entity "${entity}" found, violates plain text primacy`,
-              suggestion: `Replace with plain Unicode character: "${replacement}"`
+              suggestion: `Replace with plain Unicode character: "${replacement}"`,
             });
           }
         }
@@ -166,26 +185,31 @@ class TemplateQualityValidator {
         // Check for mixed encoding patterns
         const hasHtmlEntities = Object.keys(forbiddenEntities).some(entity => line.includes(entity));
         const hasUnicodeChars = /[""''—–]/.test(line);
-        
+
         if (hasHtmlEntities && hasUnicodeChars) {
           mixedEncodingDetected = true;
           encodingIssues.push(`${templatePath}:${index + 1} - Mixed encoding detected`);
-          
+
           this.violations.push({
             type: 'encoding',
             severity: 'critical',
             file: templatePath,
             line: index + 1,
             message: 'Mixed encoding detected: HTML entities and Unicode characters in same context',
-            suggestion: 'Use consistent plain Unicode characters throughout'
+            suggestion: 'Use consistent plain Unicode characters throughout',
           });
         }
       });
     }
 
-    const score = plainTextCompliance && !mixedEncodingDetected ? 100 : 
-                  plainTextCompliance ? 75 : 
-                  htmlEntities.length < 10 ? 50 : 0;
+    const score =
+      plainTextCompliance && !mixedEncodingDetected
+        ? 100
+        : plainTextCompliance
+          ? 75
+          : htmlEntities.length < 10
+            ? 50
+            : 0;
 
     console.log(`  ✅ Plain text compliance: ${plainTextCompliance ? 'PASS' : 'FAIL'}`);
     console.log(`  ✅ Mixed encoding check: ${mixedEncodingDetected ? 'FAIL' : 'PASS'}`);
@@ -196,13 +220,13 @@ class TemplateQualityValidator {
       plainTextCompliance,
       htmlEntities,
       encodingIssues,
-      mixedEncodingDetected
+      mixedEncodingDetected,
     };
   }
 
   private async validateStructure(): Promise<StructuralValidation> {
     console.log('🏗️ Validating Structural Integrity...');
-    
+
     const templatePaths = this.findTemplateFiles();
     const issues: string[] = [];
     let markdownStructure = true;
@@ -212,30 +236,30 @@ class TemplateQualityValidator {
 
     for (const templatePath of templatePaths) {
       const content = fs.readFileSync(templatePath, 'utf-8');
-      
+
       // Check for proper markdown structure
       if (!this.validateMarkdownStructure(content, templatePath)) {
         markdownStructure = false;
       }
-      
+
       // Check heading hierarchy
       if (!this.validateHeadingHierarchy(content, templatePath)) {
         headingHierarchy = false;
       }
-      
+
       // Check constitutional annotations
       if (templatePath.includes('framework/') && !this.validateConstitutionalAnnotations(content, templatePath)) {
         constitutionalAnnotations = false;
       }
-      
+
       // Check format consistency
       if (!this.validateFormatConsistency(content, templatePath)) {
         formatConsistency = false;
       }
     }
 
-    const score = [markdownStructure, headingHierarchy, constitutionalAnnotations, formatConsistency]
-      .filter(Boolean).length * 25;
+    const score =
+      [markdownStructure, headingHierarchy, constitutionalAnnotations, formatConsistency].filter(Boolean).length * 25;
 
     console.log(`  ✅ Markdown structure: ${markdownStructure ? 'PASS' : 'FAIL'}`);
     console.log(`  ✅ Heading hierarchy: ${headingHierarchy ? 'PASS' : 'FAIL'}`);
@@ -249,13 +273,13 @@ class TemplateQualityValidator {
       headingHierarchy,
       constitutionalAnnotations,
       formatConsistency,
-      issues
+      issues,
     };
   }
 
   private async validateFidelity(): Promise<FidelityValidation> {
     console.log('🎯 Validating Output Fidelity...');
-    
+
     const referenceMatches: ReferenceMatch[] = [];
     const encodingArtifacts: string[] = [];
     let outputConsistency = true;
@@ -269,41 +293,40 @@ class TemplateQualityValidator {
     if (fs.existsSync(testTargetPath) && fs.existsSync(outputPath)) {
       const testTarget = fs.readFileSync(testTargetPath, 'utf-8');
       const output = fs.readFileSync(outputPath, 'utf-8');
-      
+
       const differences = this.findDifferences(testTarget, output);
       const matches = differences.length === 0;
-      
+
       referenceMatches.push({
         template: 'github-copilot-ready.md',
         reference: 'github-copilot-ready-test-target.md',
         matches,
-        differences
+        differences,
       });
 
       if (!matches) {
         outputConsistency = false;
-        
+
         // Check if differences are encoding-related
-        const encodingDiffs = differences.filter(diff => 
-          diff.includes('&#') || diff.includes('&amp;') || diff.includes('&lt;') || diff.includes('&gt;')
+        const encodingDiffs = differences.filter(
+          diff => diff.includes('&#') || diff.includes('&amp;') || diff.includes('&lt;') || diff.includes('&gt;')
         );
-        
+
         if (encodingDiffs.length > 0) {
           encodingArtifacts.push(...encodingDiffs);
-          
+
           this.violations.push({
             type: 'fidelity',
             severity: 'high',
             file: outputPath,
             message: 'Output contains encoding artifacts that differ from reference target',
-            suggestion: 'Clean up templates to use plain Unicode characters'
+            suggestion: 'Clean up templates to use plain Unicode characters',
           });
         }
       }
     }
 
-    const score = outputConsistency && crossPlatformCompatible ? 100 : 
-                  outputConsistency ? 75 : 50;
+    const score = outputConsistency && crossPlatformCompatible ? 100 : outputConsistency ? 75 : 50;
 
     console.log(`  ✅ Output consistency: ${outputConsistency ? 'PASS' : 'FAIL'}`);
     console.log(`  ✅ Cross-platform compatible: ${crossPlatformCompatible ? 'PASS' : 'FAIL'}`);
@@ -314,7 +337,7 @@ class TemplateQualityValidator {
       referenceMatches,
       encodingArtifacts,
       outputConsistency,
-      crossPlatformCompatible
+      crossPlatformCompatible,
     };
   }
 
@@ -322,7 +345,7 @@ class TemplateQualityValidator {
     const templateDirs = [
       path.join(this.frameworkRoot, 'framework/templates'),
       path.join(this.frameworkRoot, 'templates'),
-      path.join(this.frameworkRoot, 'docs')
+      path.join(this.frameworkRoot, 'docs'),
     ];
 
     const templateFiles: string[] = [];
@@ -363,10 +386,10 @@ class TemplateQualityValidator {
 
     for (let i = 0; i < lines.length; i++) {
       const line = lines[i].trim();
-      
+
       if (line.startsWith('#')) {
         hasHeadings = true;
-        
+
         // Check for proper spacing after #
         if (!line.match(/^#+\s+/)) {
           this.violations.push({
@@ -375,7 +398,7 @@ class TemplateQualityValidator {
             file: filePath,
             line: i + 1,
             message: 'Missing space after heading marker',
-            suggestion: 'Add space after # in headings: "# Heading"'
+            suggestion: 'Add space after # in headings: "# Heading"',
           });
           hasValidStructure = false;
         }
@@ -392,7 +415,7 @@ class TemplateQualityValidator {
     for (let i = 0; i < lines.length; i++) {
       const line = lines[i].trim();
       const match = line.match(/^(#+)\s+/);
-      
+
       if (match) {
         headings.push({ level: match[1].length, line: i + 1 });
       }
@@ -402,7 +425,7 @@ class TemplateQualityValidator {
     for (let i = 1; i < headings.length; i++) {
       const current = headings[i];
       const previous = headings[i - 1];
-      
+
       if (current.level > previous.level + 1) {
         this.violations.push({
           type: 'structure',
@@ -410,7 +433,7 @@ class TemplateQualityValidator {
           file: filePath,
           line: current.line,
           message: `Heading level ${current.level} skips level ${previous.level + 1}`,
-          suggestion: 'Use sequential heading levels (h1 → h2 → h3, etc.)'
+          suggestion: 'Use sequential heading levels (h1 → h2 → h3, etc.)',
         });
         return false;
       }
@@ -436,7 +459,7 @@ class TemplateQualityValidator {
         severity: 'critical',
         file: filePath,
         message: `Missing required constitutional annotations: ${missingAnnotations.join(', ')}`,
-        suggestion: 'Add required annotations to file header'
+        suggestion: 'Add required annotations to file header',
       });
       return false;
     }
@@ -455,7 +478,7 @@ class TemplateQualityValidator {
 
     for (let i = 0; i < lines.length; i++) {
       const line = lines[i];
-      
+
       for (const pattern of listPatterns) {
         if (pattern.test(line)) {
           if (currentListPattern && currentListPattern !== pattern) {
@@ -465,7 +488,7 @@ class TemplateQualityValidator {
               file: filePath,
               line: i + 1,
               message: 'Inconsistent list formatting within document',
-              suggestion: 'Use consistent list markers throughout the document'
+              suggestion: 'Use consistent list markers throughout the document',
             });
             consistent = false;
           }
@@ -473,7 +496,7 @@ class TemplateQualityValidator {
           break;
         }
       }
-      
+
       // Reset pattern if we hit a non-list line
       if (!listPatterns.some(p => p.test(line)) && line.trim() !== '') {
         currentListPattern = null;
@@ -508,7 +531,7 @@ class TemplateQualityValidator {
       'Implement pre-commit hooks for template quality validation',
       'Add encoding validation to CI/CD pipeline',
       'Maintain reference targets for critical generated outputs',
-      'Use consistent markdown formatting across all documentation'
+      'Use consistent markdown formatting across all documentation',
     ];
 
     // Add specific recommendations based on violations
@@ -534,7 +557,7 @@ class TemplateQualityValidator {
 
     if (result.violations.length > 0) {
       console.log('⚠️  Quality Violations:\n');
-      
+
       const critical = result.violations.filter(v => v.severity === 'critical');
       const high = result.violations.filter(v => v.severity === 'high');
       const medium = result.violations.filter(v => v.severity === 'medium');

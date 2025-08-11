@@ -1,4 +1,6 @@
 <!--
+# 🌐 Tech Stack Neutrality Implementation Plan
+
 @aegisFrameworkVersion: 2.4.0-alpha-dev
 @intent: Comprehensive plan for removing tech stack bias and achieving full reusability
 @context: Analysis of current tech stack bias and roadmap for framework neutrality
@@ -8,100 +10,110 @@
 
 ## 📊 Current Bias Assessment
 
-### **Critical Dependencies Creating Lock-in**
+### __Critical Dependencies Creating Lock-in**
 
-#### **1. JavaScript/TypeScript Ecosystem Lock-in**
-- **CLI Tools**: All written in TypeScript/Node.js
-- **Build System**: npm-based package management
-- **Schema Validation**: Zod (TypeScript-specific)
-- **Template Engine**: EJS with JavaScript context
+#### __1. JavaScript/TypeScript Ecosystem Lock-in**
 
-#### **2. React + Next.js Frontend Assumptions**
-- **Component Patterns**: React-specific in templates
-- **Build Patterns**: Next.js deployment assumptions
-- **Development Workflow**: npm/yarn ecosystem assumptions
+- __CLI Tools__: All written in TypeScript/Node.js
+- __Build System__: npm-based package management
+- __Schema Validation__: Zod (TypeScript-specific)
+- __Template Engine__: EJS with JavaScript context
 
-#### **3. Supabase Backend Lock-in**
-- **CORS Handlers**: Mandatory Supabase-specific implementation
-- **Environment Variables**: Supabase service keys required
-- **Edge Functions**: Supabase deployment model assumed
+#### __2. React + Next.js Frontend Assumptions**
 
-#### **4. Testing & Quality Assumptions**
-- **Test Framework**: Jest-specific configuration
-- **Style Guidelines**: Tailwind CSS patterns mandated
-- **Build Validation**: Node.js-based tooling
+- __Component Patterns__: React-specific in templates
+- __Build Patterns__: Next.js deployment assumptions
+- __Development Workflow__: npm/yarn ecosystem assumptions
+
+#### __3. Supabase Backend Lock-in**
+
+- __CORS Handlers__: Mandatory Supabase-specific implementation
+- __Environment Variables__: Supabase service keys required
+- __Edge Functions__: Supabase deployment model assumed
+
+#### __4. Testing & Quality Assumptions**
+
+- __Test Framework__: Jest-specific configuration
+- __Style Guidelines__: Tailwind CSS patterns mandated
+- __Build Validation__: Node.js-based tooling
 
 ## 🎯 Neutrality Architecture
 
-### **Phase 1: Core Abstraction Layer (Months 1-2)**
+### __Phase 1: Core Abstraction Layer (Months 1-2)**
 
-#### **1.1 Framework-Agnostic CLI**
+#### __1.1 Framework-Agnostic CLI**
+
 ```bash
 # Current (biased)
-node cli/team-config.ts
+node CLI/team-config.ts
 
 # Target (neutral)
-aegis-cli team-config
-```
+Aegis-CLI team-config
+```text
 
-**Implementation**:
+**Implementation__:
+
 - Create language-agnostic CLI protocol
 - Implement CLI adapters for multiple languages:
-  - `aegis-node` (Node.js/TypeScript)
-  - `aegis-python` (Python)
-  - `aegis-go` (Go)
-  - `aegis-rust` (Rust)
+  - `Aegis-node` (Node.js/TypeScript)
+  - `Aegis-python` (Python)
+  - `Aegis-go` (Go)
+  - `Aegis-rust` (Rust)
 - Shared JSON/YAML configuration protocols
 
-#### **1.2 Universal Schema System**
+#### __1.2 Universal Schema System**
+
 ```yaml
 # Current (Zod-specific)
 validation:
   library: "zod"
-  patterns: "typescript"
+  patterns: "TypeScript"
 
 # Target (universal)
 validation:
-  jsonSchema: "schemas/universal.json"
+  jsonSchema: "schemas/universal.JSON"
   adapters:
-    - language: "typescript"
+    - language: "TypeScript"
       library: "zod"
-    - language: "python" 
+    - language: "python"
       library: "pydantic"
     - language: "go"
       library: "jsonschema"
-```
+```text
 
-#### **1.3 Language-Agnostic Template System**
+#### __1.3 Language-Agnostic Template System**
+
 - Replace EJS with universal template engine
 - Support for multiple template formats:
-  - **Handlebars**: Language-neutral templating
-  - **Jinja2**: For Python ecosystems  
-  - **Go Templates**: For Go ecosystems
-  - **Mustache**: Universal logic-less templates
+  - __Handlebars__: Language-neutral templating
+  - __Jinja2__: For Python ecosystems
+  - __Go Templates__: For Go ecosystems
+  - __Mustache__: Universal logic-less templates
 
-### **Phase 2: Adapter Implementation (Months 3-6)**
+### __Phase 2: Adapter Implementation (Months 3-6)**
 
-#### **2.1 Complete React + Next.js Adapter**
+#### __2.1 Complete React + Next.js Adapter**
+
 ```typescript
-// adapters/react-next/blueprint-adapter.ts
+// adapters/react-next/Blueprint-adapter.ts
 export class ReactNextAdapter implements AdapterInterface {
-  name = "react-next";
-  version = "1.0.0";
-  supportedModes = ["lean", "strict", "generative"];
+  name = "react-next"
+  version = "1.0.0"
+  supportedModes = ["lean", "strict", "generative"]
 
-  translateBlueprint(blueprint: Blueprint): ReactNextBlueprint {
+  translateBlueprint(Blueprint: Blueprint): ReactNextBlueprint {
     return {
-      components: this.generateReactComponents(blueprint),
-      routes: this.generateNextRoutes(blueprint),
-      schemas: this.generateZodSchemas(blueprint),
-      styles: this.generateTailwindClasses(blueprint)
-    };
+      components: this.generateReactComponents(Blueprint),
+      routes: this.generateNextRoutes(Blueprint),
+      schemas: this.generateZodSchemas(Blueprint),
+      styles: this.generateTailwindClasses(Blueprint)
+    }
   }
 }
-```
+```text
 
-#### **2.2 Python + FastAPI Adapter**
+#### __2.2 Python + FastAPI Adapter**
+
 ```python
 # adapters/python-fastapi/blueprint_adapter.py
 class FastAPIAdapter(AdapterInterface):
@@ -109,25 +121,27 @@ class FastAPIAdapter(AdapterInterface):
     version = "1.0.0"
     supported_modes = ["lean", "strict", "generative"]
 
-    def translate_blueprint(self, blueprint: Blueprint) -> FastAPIBlueprint:
+    def translate_blueprint(self, Blueprint: Blueprint) -> FastAPIBlueprint:
         return FastAPIBlueprint(
-            routes=self.generate_fastapi_routes(blueprint),
-            models=self.generate_pydantic_models(blueprint),
-            dependencies=self.generate_dependency_injection(blueprint)
+            routes=self.generate_fastapi_routes(Blueprint),
+            models=self.generate_pydantic_models(Blueprint),
+            dependencies=self.generate_dependency_injection(Blueprint)
         )
-```
+```text
 
-#### **2.3 Additional Adapters**
-- **Vue + Nuxt**: Frontend alternative
-- **Spring Boot**: Java ecosystem
-- **Django**: Python web framework
-- **Laravel**: PHP ecosystem
-- **Ruby on Rails**: Ruby ecosystem
-- **ASP.NET Core**: C# ecosystem
+#### __2.3 Additional Adapters**
 
-### **Phase 3: Backend Neutrality (Months 4-7)**
+- __Vue + Nuxt__: Frontend alternative
+- __Spring Boot__: Java ecosystem
+- __Django__: Python web framework
+- __Laravel__: PHP ecosystem
+- __Ruby on Rails__: Ruby ecosystem
+- __ASP.NET Core__: C# ecosystem
 
-#### **3.1 Database Abstraction Layer**
+### __Phase 3: Backend Neutrality (Months 4-7)**
+
+#### __3.1 Database Abstraction Layer**
+
 ```yaml
 # Universal database configuration
 database:
@@ -142,22 +156,24 @@ database:
       client: true
     raw_sql:
       migrations: "./sql"
-```
+```text
 
-#### **3.2 Authentication Provider Abstraction**
+#### __3.2 Authentication Provider Abstraction**
+
 ```yaml
 auth:
   provider: "auth0" # or supabase, firebase, cognito, custom
   adapters:
     supabase:
-      social_providers: ["google", "github"]
+      social_providers: ["google", "GitHub"]
     auth0:
       universal_login: true
     firebase:
       phone_auth: true
-```
+```text
 
-#### **3.3 Deployment Platform Neutrality**
+#### __3.3 Deployment Platform Neutrality**
+
 ```yaml
 deployment:
   platform: "vercel" # or netlify, aws, gcp, azure
@@ -171,11 +187,12 @@ deployment:
     aws:
       lambda: true
       cloudfront: true
-```
+```text
 
-### **Phase 4: Universal Tooling (Months 5-8)**
+### __Phase 4: Universal Tooling (Months 5-8)**
 
-#### **4.1 Build System Abstraction**
+#### __4.1 Build System Abstraction**
+
 ```yaml
 # Universal build configuration
 build:
@@ -187,134 +204,142 @@ build:
       features: ["default"]
     pip:
       requirements: "requirements.txt"
-```
+```text
 
-#### **4.2 Testing Framework Neutrality**
+#### __4.2 Testing Framework Neutrality**
+
 ```yaml
 testing:
-  framework: "jest" # or pytest, go_test, cargo_test
+  framework: "Jest" # or pytest, go_test, cargo_test
   adapters:
-    jest:
-      config: "jest.config.js"
+    Jest:
+      config: "Jest.config.js"
     pytest:
       config: "pytest.ini"
     go_test:
       coverage: true
-```
+```text
 
-#### **4.3 Quality Tools Abstraction**
+#### __4.3 Quality Tools Abstraction**
+
 ```yaml
 quality:
   linting:
-    javascript: "eslint"
+    JavaScript: "ESLint"
     python: "flake8"
     go: "golangci-lint"
     rust: "clippy"
   formatting:
-    javascript: "prettier"
+    JavaScript: "Prettier"
     python: "black"
     go: "gofmt"
     rust: "rustfmt"
-```
+```text
 
 ## 🔧 Implementation Strategy
 
-### **Migration Phases**
+### __Migration Phases**
 
-#### **Phase 1: Foundation (Months 1-2)**
-1. **Universal Configuration Schema**
+#### __Phase 1: Foundation (Months 1-2)**
+
+1. __Universal Configuration Schema**
    - JSON Schema-based configuration
-   - Language-agnostic blueprint definitions
+   - Language-agnostic Blueprint definitions
    - Cross-platform CLI protocol
 
-2. **Core Abstraction Interfaces**
+2. __Core Abstraction Interfaces**
    - `AdapterInterface` for all tech stacks
    - `ConfigurationProvider` for environments
    - `ValidationProvider` for schema validation
 
-#### **Phase 2: Primary Adapters (Months 3-4)**
-1. **Complete Existing Adapters**
+#### __Phase 2: Primary Adapters (Months 3-4)**
+
+1. __Complete Existing Adapters**
    - React + Next.js (full implementation)
    - Python + FastAPI (full implementation)
    - Deno + Edge Functions (full implementation)
 
-2. **Testing & Validation**
-   - Cross-adapter blueprint compatibility
+2. __Testing & Validation**
+   - Cross-adapter Blueprint compatibility
    - Output validation across tech stacks
    - Constitutional compliance verification
 
-#### **Phase 3: Ecosystem Expansion (Months 5-6)**
-1. **Additional Frontend Adapters**
+#### __Phase 3: Ecosystem Expansion (Months 5-6)**
+
+1. __Additional Frontend Adapters**
    - Vue + Nuxt
    - Angular
    - Svelte + SvelteKit
 
-2. **Additional Backend Adapters**
+2. __Additional Backend Adapters**
    - Spring Boot
    - Django
    - Ruby on Rails
 
-#### **Phase 4: Enterprise Support (Months 7-8)**
-1. **Enterprise Platforms**
+#### __Phase 4: Enterprise Support (Months 7-8)**
+
+1. __Enterprise Platforms**
    - .NET Core
    - Java Enterprise
    - Kubernetes-native
 
-2. **Legacy Integration**
+2. __Legacy Integration**
    - Existing codebase migration tools
    - Gradual adoption pathways
    - Backward compatibility guarantees
 
 ## 📋 Technical Implementation Details
 
-### **1. Adapter Interface Enhancement**
+### __1. Adapter Interface Enhancement**
+
 ```typescript
 interface UniversalAdapterInterface {
   // Core identification
-  name: string;
-  version: string;
-  language: string;
-  ecosystem: string;
-  
-  // Capability declaration
-  supportedModes: ExecutionMode[];
-  supportedFeatures: FrameworkFeature[];
-  
-  // Translation methods
-  translateBlueprint(blueprint: UniversalBlueprint): TechStackBlueprint;
-  generateScaffold(blueprint: UniversalBlueprint): FileStructure;
-  validateOutput(output: any): ValidationResult;
-  
-  // Configuration methods
-  generateConfiguration(): ConfigurationTemplate;
-  validateEnvironment(): EnvironmentCheck;
-  
-  // Build integration
-  generateBuildScript(): BuildConfiguration;
-  generateTestScript(): TestConfiguration;
-  
-  // Deployment integration
-  generateDeploymentConfig(): DeploymentConfiguration;
-}
-```
+  name: string
+  version: string
+  language: string
+  ecosystem: string
 
-### **2. Universal Blueprint Schema**
+  // Capability declaration
+  supportedModes: ExecutionMode[]
+  supportedFeatures: FrameworkFeature[]
+
+  // Translation methods
+  translateBlueprint(Blueprint: UniversalBlueprint): TechStackBlueprint
+  generateScaffold(Blueprint: UniversalBlueprint): FileStructure
+  validateOutput(output: any): ValidationResult
+
+  // Configuration methods
+  generateConfiguration(): ConfigurationTemplate
+  validateEnvironment(): EnvironmentCheck
+
+  // Build integration
+  generateBuildScript(): BuildConfiguration
+  generateTestScript(): TestConfiguration
+
+  // Deployment integration
+  generateDeploymentConfig(): DeploymentConfiguration
+}
+```text
+
+### __2. Universal Blueprint Schema**
+
 ```yaml
-# Universal blueprint format
-apiVersion: "aegis.dev/v2"
+# Universal Blueprint format
+apiVersion: "Aegis.dev/v2"
 kind: "Blueprint"
 metadata:
   id: "feat-user-auth"
   name: "User Authentication"
   version: "1.0.0"
-  
+
 spec:
   # Language-agnostic requirements
   features:
     - authentication
     - authorization
     - user_management
-    
+
   # Universal interface definitions
   interfaces:
     - name: "UserService"
@@ -324,7 +349,7 @@ spec:
             - name: "credentials"
               type: "UserCredentials"
           returns: "AuthResult"
-  
+
   # Technology mappings
   adapters:
     react-next:
@@ -339,12 +364,13 @@ spec:
       controllers:
         - "AuthController"
         - "UserController"
-```
+```text
 
-### **3. Configuration Management**
+### __3. Configuration Management**
+
 ```yaml
 # Universal team configuration
-apiVersion: "aegis.dev/v2"
+apiVersion: "Aegis.dev/v2"
 kind: "TeamConfiguration"
 metadata:
   team: "product-team"
@@ -357,67 +383,75 @@ spec:
     backend: "python-fastapi"
     database: "postgresql"
     deployment: "vercel"
-  
+
   # Feature configuration (stack-agnostic)
   features:
     core:
       blueprint_validation: true
       constitutional_enforcement: true
     required:
-      evolution_stories: 
+      evolution_stories:
         enabled: true
         auto_generate: false
     optional:
       realtime_detection:
         enabled: false
-```
+```text
 
 ## 🎯 Success Metrics
 
-### **Technical Metrics**
-- **Adapter Coverage**: 8+ major tech stacks supported
-- **Blueprint Portability**: 95%+ blueprint compatibility across adapters
-- **Output Consistency**: Identical functionality across tech stacks
-- **Performance Parity**: <10% performance difference between adapters
+### __Technical Metrics**
 
-### **Adoption Metrics**
-- **Multi-Stack Usage**: 40%+ of teams using non-React stacks
-- **Ecosystem Diversity**: 5+ different primary tech stacks in production
-- **Migration Success**: 90%+ successful migrations between tech stacks
+- __Adapter Coverage__: 8+ major tech stacks supported
+- __Blueprint Portability__: 95%+ Blueprint compatibility across adapters
+- __Output Consistency__: Identical functionality across tech stacks
+- __Performance Parity__: <10% performance difference between adapters
 
-### **Quality Metrics**
-- **Constitutional Compliance**: 100% constitutional adherence across all adapters
-- **Test Coverage**: 90%+ test coverage for all adapters
-- **Documentation Coverage**: Complete documentation for all supported stacks
+### __Adoption Metrics**
+
+- __Multi-Stack Usage__: 40%+ of teams using non-React stacks
+- __Ecosystem Diversity__: 5+ different primary tech stacks in production
+- __Migration Success__: 90%+ successful migrations between tech stacks
+
+### __Quality Metrics**
+
+- __Constitutional Compliance__: 100% Constitutional adherence across all adapters
+- __Test Coverage__: 90%+ test coverage for all adapters
+- __Documentation Coverage__: Complete documentation for all supported stacks
 
 ## 🚨 Risk Mitigation
 
-### **Technical Risks**
-1. **Adapter Complexity**: Phased implementation with MVP adapters first
-2. **Maintenance Burden**: Automated testing and community contributions
-3. **Performance Variations**: Benchmarking and optimization guidelines
+### __Technical Risks**
 
-### **Adoption Risks**
-1. **Learning Curve**: Comprehensive documentation and examples
-2. **Migration Complexity**: Automated migration tools and guides
-3. **Ecosystem Fragmentation**: Core functionality remains universal
+1. __Adapter Complexity__: Phased implementation with MVP adapters first
+2. __Maintenance Burden__: Automated testing and community contributions
+3. __Performance Variations__: Benchmarking and optimization guidelines
 
-### **Resource Risks**
-1. **Development Effort**: Community-driven adapter development
-2. **Expertise Requirements**: Partner with ecosystem experts
-3. **Ongoing Maintenance**: Sustainable contribution model
+### __Adoption Risks**
+
+1. __Learning Curve__: Comprehensive documentation and examples
+2. __Migration Complexity__: Automated migration tools and guides
+3. __Ecosystem Fragmentation__: Core functionality remains universal
+
+### __Resource Risks**
+
+1. __Development Effort__: Community-driven adapter development
+2. __Expertise Requirements__: Partner with ecosystem experts
+3. __Ongoing Maintenance__: Sustainable contribution model
 
 ---
 
 ## 📅 Implementation Timeline
 
-| Phase | Duration | Deliverables | Dependencies |
-|-------|----------|--------------|--------------|
-| **Foundation** | 2 months | Universal interfaces, core abstractions | Framework redesign |
-| **Primary Adapters** | 2 months | React+Next, Python+FastAPI, Deno complete | Foundation phase |
-| **Ecosystem Expansion** | 2 months | Vue, Angular, Spring Boot, Django | Primary adapters |
-| **Enterprise Support** | 2 months | .NET, Java Enterprise, Kubernetes | Ecosystem expansion |
+| Phase                   | Duration | Deliverables                              | Dependencies        |
+| ----------------------- | -------- | ----------------------------------------- | ------------------- |
+| __Foundation__          | 2 months | Universal interfaces, core abstractions   | Framework redesign  |
+| __Primary Adapters__    | 2 months | React+Next, Python+FastAPI, Deno complete | Foundation phase    |
+| __Ecosystem Expansion__ | 2 months | Vue, Angular, Spring Boot, Django         | Primary adapters    |
+| __Enterprise Support__  | 2 months | .NET, Java Enterprise, Kubernetes         | Ecosystem expansion |
 
-**Total Timeline**: 8 months for full tech stack neutrality
+**Total Timeline__: 8 months for full tech stack neutrality
 
-This plan transforms Aegis Framework from a React+Next.js+Supabase-biased system into a truly universal AI engineering framework that can support any tech stack while maintaining constitutional governance and blueprint-driven development principles.
+This plan transforms Aegis Framework from a React+Next.js+Supabase-biased system into a truly universal AI engineering
+framework that can support any tech stack while maintaining Constitutional governance and Blueprint-driven development
+principles.

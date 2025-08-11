@@ -7,11 +7,11 @@ module.exports = function (context, options) {
     async loadContent() {
       // Load framework data from parent directory
       const frameworkRoot = path.resolve(context.siteDir, '..');
-      
+
       try {
         // Load capability map
         const capabilityMapPath = path.join(frameworkRoot, '.framework', 'capability-map.json');
-        const capabilityMap = fs.existsSync(capabilityMapPath) 
+        const capabilityMap = fs.existsSync(capabilityMapPath)
           ? JSON.parse(fs.readFileSync(capabilityMapPath, 'utf8'))
           : null;
 
@@ -23,22 +23,18 @@ module.exports = function (context, options) {
 
         // Load framework dashboard
         const dashboardPath = path.join(frameworkRoot, 'FRAMEWORK-DASHBOARD.md');
-        const dashboard = fs.existsSync(dashboardPath)
-          ? fs.readFileSync(dashboardPath, 'utf8')
-          : null;
+        const dashboard = fs.existsSync(dashboardPath) ? fs.readFileSync(dashboardPath, 'utf8') : null;
 
         // Load version
         const versionPath = path.join(frameworkRoot, 'VERSION');
-        const version = fs.existsSync(versionPath)
-          ? fs.readFileSync(versionPath, 'utf8').trim()
-          : 'unknown';
+        const version = fs.existsSync(versionPath) ? fs.readFileSync(versionPath, 'utf8').trim() : 'unknown';
 
         return {
           capabilityMap,
           blueprintRegistry,
           dashboard,
           version,
-          frameworkRoot
+          frameworkRoot,
         };
       } catch (error) {
         console.warn('Failed to load Aegis framework data:', error.message);
@@ -46,14 +42,14 @@ module.exports = function (context, options) {
       }
     },
 
-    async contentLoaded({content, actions}) {
+    async contentLoaded({ content, actions }) {
       if (!content) return;
 
-      const {createData, addRoute} = actions;
-      
+      const { createData, addRoute } = actions;
+
       // Create data for client-side components
       await createData('framework-data.json', JSON.stringify(content, null, 2));
-      
+
       // Generate capability pages
       if (content.capabilityMap) {
         await this.generateCapabilityPages(content, actions);
@@ -73,8 +69,8 @@ module.exports = function (context, options) {
     },
 
     async generateCapabilityPages(content, actions) {
-      const {createData} = actions;
-      const {capabilityMap} = content;
+      const { createData } = actions;
+      const { capabilityMap } = content;
 
       // Generate individual category pages
       for (const [category, capabilities] of Object.entries(capabilityMap.categories)) {
@@ -82,7 +78,7 @@ module.exports = function (context, options) {
           category,
           capabilities,
           totalCount: capabilities.length,
-          statusBreakdown: this.getStatusBreakdown(capabilities)
+          statusBreakdown: this.getStatusBreakdown(capabilities),
         };
 
         await createData(`capability-${category}.json`, JSON.stringify(categoryData, null, 2));
@@ -90,8 +86,8 @@ module.exports = function (context, options) {
     },
 
     async generateBlueprintPages(content, actions) {
-      const {createData} = actions;
-      const {blueprintRegistry} = content;
+      const { createData } = actions;
+      const { blueprintRegistry } = content;
 
       if (blueprintRegistry.blueprints) {
         // Group blueprints by category
@@ -112,6 +108,6 @@ module.exports = function (context, options) {
         acc[cap.status] = (acc[cap.status] || 0) + 1;
         return acc;
       }, {});
-    }
+    },
   };
 };

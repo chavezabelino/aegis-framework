@@ -1,11 +1,13 @@
 # Dependencies
+
 node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-package-lock.json
+package-lock.JSON
 
 # Environment variables
+
 .env
 .env.local
 .env.development.local
@@ -13,6 +15,7 @@ package-lock.json
 .env.production.local
 
 # OS generated files
+
 .DS_Store
 .DS_Store?
 ._*
@@ -22,6 +25,7 @@ ehthumbs.db
 Thumbs.db
 
 # Editor directories and files
+
 .vscode/
 .idea/
 *.swp
@@ -29,90 +33,115 @@ Thumbs.db
 *~
 
 # Logs
+
 logs
-*.log
-npm-debug.log*
+_.log
+npm-debug.log_
 
 # Runtime data
+
 pids
 *.pid
 *.seed
 *.pid.lock
 
 # Coverage directory used by tools like istanbul
+
 coverage/
 *.lcov
 
 # nyc test coverage
+
 .nyc_output
 
 # Temporary folders
+
 tmp/
 temp/
 
 # Build outputs
+
 dist/
 build/
 out/
 
 # TypeScript cache
+
 *.tsbuildinfo
 
 # Optional npm cache directory
+
 .npm
 
 # ESLint cache
+
 .eslintcache
 
 # Optional REPL history
+
 .node_repl_history
 
 # Output of 'npm pack'
+
 *.tgz
 
 # Dependency directories
+
 node_modules/
+website/node_modules/
 jspm_packages/
 
-# Snowpack dependency directory (https://snowpack.dev/)
+# Snowpack dependency directory (<https://snowpack.dev/>)
+
 web_modules/
 
 # Microbundle cache
+
 .rpt2_cache/
 .rts2_cache_cjs/
 .rts2_cache_es/
 .rts2_cache_umd/
 
 # Optional stylelint cache
+
 .stylelintcache
 
 # Stores VSCode versions used for testing VSCode extensions
+
 .vscode-test
 
 # Aegis Framework specific ignores
-# Keep constitutional state but ignore temporary files
+
+# Keep Constitutional state but ignore temporary files
+
 .framework/temp/
 .framework/cache/
 
 # Framework state directories (keep essential, ignore temp/cache)
-.aegis/temp/
-.aegis/cache/
+
+.Aegis/temp/
+.Aegis/cache/
 .framework/temp/
 .framework/cache/
 
 # Ignore compiled output (if any)
+
 *.js.map
 *.d.ts.map
 
 # Vite + Bun specific ignores
+
 # Vite cache and build artifacts
-.vite/
+
+.Vite/
 *.local
 
 # Bun specific
-bun.lockb
+
+Bun.lockb
 
 # Development and IDE files (keep essential configs, ignore temp files)
+
 .cursor/temp/
 .cursor/cache/
 .vscode/extensions/
@@ -124,6 +153,7 @@ bun.lockb
 *~
 
 # OS generated files
+
 .DS_Store
 .DS_Store?
 ._*
@@ -133,31 +163,38 @@ ehthumbs.db
 Thumbs.db
 
 # Logs and runtime data
+
 logs/
-*.log
-npm-debug.log*
+_.log
+npm-debug.log_
 yarn-debug.log*
 yarn-error.log*
 
 # Temporary folders
+
 tmp/
 temp/
 
 # Ignore compiled CLI JS and accidental folders
-cli/apprenticeship-cli.js
-cli/cli/
-cli/framework/
+
+CLI/apprenticeship-CLI.js
+CLI/CLI/
+CLI/framework/
 
 # Jest snapshot output
-**/__snapshots__/
+
+**/**snapshots**/
+
 # Local governance churn
-.aegis/attestations/local/**
-.aegis/reports/*.local.json
-.aegis/telemetry/*.ndjson
+
+.Aegis/attestations/local/**
+.Aegis/reports/_.local.JSON
+.Aegis/Telemetry/_.NDJSON
 
 # Governance artifacts (local only)
-.aegis/attestations/local/**
-.aegis/reports/**
-.aegis/telemetry/**
-.aegis/vr-baselines/**
-tests/vr/__screenshots__/**
+
+.Aegis/attestations/local/**
+.Aegis/reports/**
+.Aegis/Telemetry/**
+.Aegis/VR-baselines/**
+tests/VR/**screenshots**/**

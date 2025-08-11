@@ -1,4 +1,4 @@
-import type {ReactNode} from 'react';
+import type { ReactNode } from 'react';
 import clsx from 'clsx';
 import Heading from '@theme/Heading';
 import styles from './styles.module.css';
@@ -15,8 +15,8 @@ const FeatureList: FeatureItem[] = [
     Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
-        Built-in governance patterns with constitutional principles, democratic amendments, 
-        and automated compliance enforcement. Maintain control while enabling AI assistance.
+        Built-in governance patterns with constitutional principles, democratic amendments, and automated compliance
+        enforcement. Maintain control while enabling AI assistance.
       </>
     ),
   },
@@ -25,8 +25,8 @@ const FeatureList: FeatureItem[] = [
     Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
     description: (
       <>
-        Comprehensive observability with live capability mapping, execution tracing, 
-        and health monitoring. Know exactly what your framework does and how it works.
+        Comprehensive observability with live capability mapping, execution tracing, and health monitoring. Know exactly
+        what your framework does and how it works.
       </>
     ),
   },
@@ -35,14 +35,14 @@ const FeatureList: FeatureItem[] = [
     Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        Advanced drift detection with semantic interrupts, intent enforcement, 
-        and self-healing governance. Prevent AI agents from deviating from objectives.
+        Advanced drift detection with semantic interrupts, intent enforcement, and self-healing governance. Prevent AI
+        agents from deviating from objectives.
       </>
     ),
   },
 ];
 
-function Feature({title, Svg, description}: FeatureItem) {
+function Feature({ title, Svg, description }: FeatureItem) {
   return (
     <div className={clsx('col col--4')}>
       <div className="text--center">

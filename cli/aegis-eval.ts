@@ -2,10 +2,10 @@
 
 /**
  * Aegis Evaluation Engine
- * 
+ *
  * First-class evals in CI: golden prompts + expected artifacts + LLM-as-judge
  * Unit/integration → prompt evals → LLM-as-judge (style only) → delta vs baseline
- * 
+ *
  * @aegisFrameworkVersion 2.4.0
  * @intent Production-grade evaluation pipeline for AI-generated code
  * @context Hardening Aegis from "promising" to "undeniable"
@@ -137,37 +137,48 @@ class AegisEvaluationEngine {
     } = {}
   ): Promise<EvalResult[]> {
     console.log(`🧪 Running Aegis Framework Evaluations...`);
-    
+
     // Initialize telemetry
     this.initializeTelemetry();
-    
+
     try {
       const evalPrompts = await this.loadEvalPrompts(evalId);
       const results: EvalResult[] = [];
 
       for (const evalPrompt of evalPrompts) {
         console.log(`\n📋 Evaluating: ${evalPrompt.name}`);
-        
+
         // Trace the entire evaluation process
-        const result = await this.telemetry?.traceOperation(
-          `evaluation.${evalPrompt.id}`,
-          () => this.runSingleEvaluation(evalPrompt, options),
-          {
-            evalId: evalPrompt.id,
-            evalName: evalPrompt.name,
-            evalVersion: evalPrompt.version
-          }
-        ) || await this.runSingleEvaluation(evalPrompt, options);
-        
+        const result =
+          (await this.telemetry?.traceOperation(
+            `evaluation.${evalPrompt.id}`,
+            () => this.runSingleEvaluation(evalPrompt, options),
+            {
+              evalId: evalPrompt.id,
+              evalName: evalPrompt.name,
+              evalVersion: evalPrompt.version,
+            }
+          )) || (await this.runSingleEvaluation(evalPrompt, options));
+
         // Record evaluation result in telemetry
         if (this.telemetry) {
-          this.telemetry.recordEvaluation(evalPrompt.id, result);
+          this.telemetry.recordEvaluation(evalPrompt.id, {
+            passed: result.passed,
+            score: result.score,
+            validationPassRate: result.validation.passRate,
+            judgeResults: result.judgeResults.map(judge => ({
+              name: judge.name,
+              score: judge.score,
+              weight: judge.weight,
+            })),
+            errors: result.errors,
+          });
         }
-        
+
         results.push(result);
-        
+
         await this.storeResult(result);
-        
+
         if (options.verbose) {
           this.printDetailedResult(result);
         } else {
@@ -190,7 +201,6 @@ class AegisEvaluationEngine {
       }
 
       return results;
-      
     } finally {
       // Finalize telemetry session
       if (this.telemetry) {
@@ -199,12 +209,9 @@ class AegisEvaluationEngine {
     }
   }
 
-  private async runSingleEvaluation(
-    evalPrompt: EvalPrompt,
-    options: any
-  ): Promise<EvalResult> {
+  private async runSingleEvaluation(evalPrompt: EvalPrompt, options: any): Promise<EvalResult> {
     const startTime = performance.now();
-    
+
     const result: EvalResult = {
       id: evalPrompt.id,
       timestamp: new Date().toISOString(),
@@ -215,17 +222,17 @@ class AegisEvaluationEngine {
         tokensUsed: 0,
         filesGenerated: 0,
         linesGenerated: 0,
-        withinThresholds: false
+        withinThresholds: false,
       },
       validation: {
         rulesPassed: 0,
         rulesTotal: 0,
         passRate: 0,
-        failedRules: []
+        failedRules: [],
       },
       judgeResults: [],
       errors: [],
-      warnings: []
+      warnings: [],
     };
 
     try {
@@ -253,10 +260,7 @@ class AegisEvaluationEngine {
       result.validation = await this.validateOutputs(evalPrompt, generationResult);
 
       // Step 4: Performance Threshold Check
-      result.performance.withinThresholds = this.checkPerformanceThresholds(
-        result.performance,
-        evalPrompt.performance
-      );
+      result.performance.withinThresholds = this.checkPerformanceThresholds(result.performance, evalPrompt.performance);
 
       // Step 5: LLM-as-Judge Evaluation (Style/Quality Only)
       console.log(`  👨‍⚖️ Running LLM judges...`);
@@ -264,10 +268,7 @@ class AegisEvaluationEngine {
 
       // Calculate overall score
       result.score = this.calculateOverallScore(result);
-      result.passed = result.validation.passRate >= 0.8 && 
-                     result.score >= 0.7 && 
-                     result.performance.withinThresholds;
-
+      result.passed = result.validation.passRate >= 0.8 && result.score >= 0.7 && result.performance.withinThresholds;
     } catch (error) {
       result.errors.push(`Evaluation failed: ${error}`);
     }
@@ -278,13 +279,13 @@ class AegisEvaluationEngine {
   private async loadEvalPrompts(evalId?: string): Promise<EvalPrompt[]> {
     const promptsDir = path.join(this.evalsPath, 'golden-prompts');
     const files = fs.readdirSync(promptsDir).filter(f => f.endsWith('.yaml'));
-    
+
     const prompts: EvalPrompt[] = [];
-    
+
     for (const file of files) {
       const content = fs.readFileSync(path.join(promptsDir, file), 'utf8');
       const prompt = yaml.load(content) as EvalPrompt;
-      
+
       if (!evalId || prompt.id === evalId) {
         prompts.push(prompt);
       }
@@ -302,10 +303,10 @@ class AegisEvaluationEngine {
     // In production, this would run actual test suites
     console.log('    ✅ Unit tests: All passing');
     console.log('    ✅ Integration tests: All passing');
-    
+
     return {
       passed: true,
-      output: 'All tests passed (simulated)'
+      output: 'All tests passed (simulated)',
     };
   }
 
@@ -317,7 +318,7 @@ class AegisEvaluationEngine {
   }> {
     // This would integrate with the actual blueprint generation
     // For now, simulate the process
-    
+
     const outputPath = path.join(this.resultsPath, evalPrompt.id);
     if (!fs.existsSync(outputPath)) {
       fs.mkdirSync(outputPath, { recursive: true });
@@ -325,7 +326,7 @@ class AegisEvaluationEngine {
 
     // Mock generation - in real implementation, this would call the blueprint engine
     console.log('    📝 Generating authentication system files...');
-    
+
     const mockFiles = [
       'auth/login.ts',
       'auth/register.ts',
@@ -334,7 +335,7 @@ class AegisEvaluationEngine {
       'middleware/auth.ts',
       'utils/password.ts',
       'output.strict.json',
-      'output.lean.json'
+      'output.lean.json',
     ];
 
     let totalLines = 0;
@@ -344,7 +345,7 @@ class AegisEvaluationEngine {
       if (!fs.existsSync(dir)) {
         fs.mkdirSync(dir, { recursive: true });
       }
-      
+
       const mockContent = this.generateMockFileContent(file, evalPrompt.id);
       fs.writeFileSync(filePath, mockContent);
       totalLines += mockContent.split('\n').length;
@@ -355,28 +356,25 @@ class AegisEvaluationEngine {
       tokensUsed: 2100,
       filesGenerated: mockFiles.length,
       linesGenerated: totalLines,
-      outputPath
+      outputPath,
     };
   }
 
-  private async validateOutputs(
-    evalPrompt: EvalPrompt,
-    generationResult: any
-  ): Promise<ValidationResult> {
+  private async validateOutputs(evalPrompt: EvalPrompt, generationResult: any): Promise<ValidationResult> {
     const validation: ValidationResult = {
       rulesPassed: 0,
       rulesTotal: 0,
       passRate: 0,
-      failedRules: []
+      failedRules: [],
     };
 
     for (const expectedOutput of evalPrompt.expectedOutputs) {
       for (const rule of expectedOutput.validationRules) {
         validation.rulesTotal++;
-        
+
         // Mock validation - in real implementation, check actual files
         const passed = Math.random() > 0.2; // 80% pass rate for demo
-        
+
         if (passed) {
           validation.rulesPassed++;
         } else {
@@ -385,39 +383,33 @@ class AegisEvaluationEngine {
       }
     }
 
-    validation.passRate = validation.rulesTotal > 0 
-      ? validation.rulesPassed / validation.rulesTotal 
-      : 0;
+    validation.passRate = validation.rulesTotal > 0 ? validation.rulesPassed / validation.rulesTotal : 0;
 
     return validation;
   }
 
-  private checkPerformanceThresholds(
-    actual: PerformanceResult,
-    expected: PerformanceThresholds
-  ): boolean {
-    return actual.generationTime <= expected.maxGenerationTime &&
-           actual.tokensUsed <= expected.maxTokens &&
-           actual.filesGenerated >= expected.expectedFiles * 0.8 && // 80% of expected
-           actual.linesGenerated >= expected.expectedLines * 0.8;
+  private checkPerformanceThresholds(actual: PerformanceResult, expected: PerformanceThresholds): boolean {
+    return (
+      actual.generationTime <= expected.maxGenerationTime &&
+      actual.tokensUsed <= expected.maxTokens &&
+      actual.filesGenerated >= expected.expectedFiles * 0.8 && // 80% of expected
+      actual.linesGenerated >= expected.expectedLines * 0.8
+    );
   }
 
-  private async runJudges(
-    evalPrompt: EvalPrompt,
-    generationResult: any
-  ): Promise<JudgeResult[]> {
+  private async runJudges(evalPrompt: EvalPrompt, generationResult: any): Promise<JudgeResult[]> {
     const results: JudgeResult[] = [];
 
     for (const judge of evalPrompt.judges) {
       const judgePath = path.join(this.evalsPath, judge.prompt);
-      
+
       if (!fs.existsSync(judgePath)) {
         console.warn(`⚠️ Judge prompt not found: ${judgePath}`);
         continue;
       }
-      
+
       const judgePrompt = fs.readFileSync(judgePath, 'utf8');
-      
+
       try {
         // Use deterministic rule-based evaluation for functional demo
         const judgeResult = await this.evaluateWithJudge(judge, judgePrompt, generationResult);
@@ -432,7 +424,7 @@ class AegisEvaluationEngine {
           weight: judge.weight,
           reasoning: `Judge evaluation failed: ${error}`,
           criticalIssues: ['Judge evaluation failed'],
-          recommendations: ['Fix judge evaluation system']
+          recommendations: ['Fix judge evaluation system'],
         });
       }
     }
@@ -443,21 +435,25 @@ class AegisEvaluationEngine {
   private async evaluateWithJudge(judge: Judge, judgePrompt: string, generationResult: any): Promise<JudgeResult> {
     // For this functional implementation, we'll use deterministic rule-based evaluation
     // In production, this would call an LLM API (OpenAI, Claude, etc.)
-    
+
     const codeToEvaluate = this.getGeneratedCode(generationResult);
     const evaluation = await this.runDeterministicJudge(judge.name, judgePrompt, codeToEvaluate);
-    
+
     return {
       name: judge.name,
       score: evaluation.score,
       weight: judge.weight,
       reasoning: evaluation.reasoning,
       criticalIssues: evaluation.criticalIssues,
-      recommendations: evaluation.recommendations
+      recommendations: evaluation.recommendations,
     };
   }
 
-  private async runDeterministicJudge(judgeName: string, judgePrompt: string, code: string): Promise<{
+  private async runDeterministicJudge(
+    judgeName: string,
+    judgePrompt: string,
+    code: string
+  ): Promise<{
     score: number;
     reasoning: string;
     criticalIssues: string[];
@@ -476,12 +472,17 @@ class AegisEvaluationEngine {
           score: 0.7,
           reasoning: `Basic evaluation for ${judgeName}`,
           criticalIssues: [],
-          recommendations: ['Implement specific judge logic']
+          recommendations: ['Implement specific judge logic'],
         };
     }
   }
 
-  private evaluateSecurity(code: string): { score: number; reasoning: string; criticalIssues: string[]; recommendations: string[] } {
+  private evaluateSecurity(code: string): {
+    score: number;
+    reasoning: string;
+    criticalIssues: string[];
+    recommendations: string[];
+  } {
     let score = 8; // Start with good baseline
     const issues: string[] = [];
     const recommendations: string[] = [];
@@ -521,11 +522,16 @@ class AegisEvaluationEngine {
       score: Math.max(0, Math.min(10, score)) / 10,
       reasoning: `Security evaluation based on common patterns. Found ${score > 7 ? 'good' : 'concerning'} security practices.`,
       criticalIssues: issues,
-      recommendations
+      recommendations,
     };
   }
 
-  private evaluateCodeQuality(code: string): { score: number; reasoning: string; criticalIssues: string[]; recommendations: string[] } {
+  private evaluateCodeQuality(code: string): {
+    score: number;
+    reasoning: string;
+    criticalIssues: string[];
+    recommendations: string[];
+  } {
     let score = 8; // Start with good baseline
     const issues: string[] = [];
     const recommendations: string[] = [];
@@ -562,11 +568,16 @@ class AegisEvaluationEngine {
       score: Math.max(0, Math.min(10, score)) / 10,
       reasoning: `Code quality evaluation based on TypeScript best practices. Code demonstrates ${score > 7 ? 'good' : 'basic'} quality standards.`,
       criticalIssues: issues,
-      recommendations
+      recommendations,
     };
   }
 
-  private evaluateFrameworkCompliance(code: string): { score: number; reasoning: string; criticalIssues: string[]; recommendations: string[] } {
+  private evaluateFrameworkCompliance(code: string): {
+    score: number;
+    reasoning: string;
+    criticalIssues: string[];
+    recommendations: string[];
+  } {
     let score = 7; // Start with moderate baseline
     const issues: string[] = [];
     const recommendations: string[] = [];
@@ -605,7 +616,7 @@ class AegisEvaluationEngine {
       score: Math.max(0, Math.min(10, score)) / 10,
       reasoning: `Framework compliance evaluation based on Aegis requirements. ${score > 7 ? 'Good' : 'Needs improvement on'} framework integration.`,
       criticalIssues: issues,
-      recommendations
+      recommendations,
     };
   }
 
@@ -621,7 +632,9 @@ class AegisEvaluationEngine {
 
     switch (filename) {
       case 'types/auth.ts':
-        return commonHeader + `
+        return (
+          commonHeader +
+          `
 export interface User {
   id: string;
   email: string;
@@ -644,10 +657,13 @@ export interface RegisterRequest {
   password: string;
   confirmPassword: string;
 }
-`;
-      
+`
+        );
+
       case 'auth/login.ts':
-        return commonHeader + `
+        return (
+          commonHeader +
+          `
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { User, AuthToken, LoginRequest } from '../types/auth';
@@ -684,17 +700,22 @@ async function getUserByEmail(email: string): Promise<User> {
 function emit(event: string, data: any): void {
   console.log(\`Event: \${event}\`, data);
 }
-`;
+`
+        );
 
       case 'output.strict.json':
-        return JSON.stringify({
-          evalId,
-          mode: 'strict',
-          files: ['auth/login.ts', 'auth/register.ts', 'types/auth.ts'],
-          events: ['auth.login.success', 'auth.login.failed', 'auth.login.error'],
-          timestamp: new Date().toISOString()
-        }, null, 2);
-        
+        return JSON.stringify(
+          {
+            evalId,
+            mode: 'strict',
+            files: ['auth/login.ts', 'auth/register.ts', 'types/auth.ts'],
+            events: ['auth.login.success', 'auth.login.failed', 'auth.login.error'],
+            timestamp: new Date().toISOString(),
+          },
+          null,
+          2
+        );
+
       default:
         return commonHeader + `\n// Generated file: ${filename}\n// Evaluation: ${evalId}\n\nexport {};\n`;
     }
@@ -755,13 +776,13 @@ export async function loginUser(email: string, password: string): Promise<AuthTo
   private calculateOverallScore(result: EvalResult): number {
     const validationScore = result.validation.passRate;
     const performanceScore = result.performance.withinThresholds ? 1.0 : 0.5;
-    
+
     const judgeScore = result.judgeResults.reduce((sum, judge) => {
-      return sum + (judge.score * judge.weight);
+      return sum + judge.score * judge.weight;
     }, 0);
 
     // Weighted average: 40% validation, 20% performance, 40% judges
-    return (validationScore * 0.4) + (performanceScore * 0.2) + (judgeScore * 0.4);
+    return validationScore * 0.4 + performanceScore * 0.2 + judgeScore * 0.4;
   }
 
   private async compareAgainstBaseline(
@@ -770,7 +791,7 @@ export async function loginUser(email: string, password: string): Promise<AuthTo
     threshold: number = 0.95
   ): Promise<void> {
     console.log(`\n📊 Comparing against baseline: ${baselineName}`);
-    
+
     const baseline = await this.loadBaseline(baselineName);
     if (!baseline) {
       console.log(`⚠️  Baseline not found: ${baselineName}`);
@@ -795,7 +816,7 @@ export async function loginUser(email: string, password: string): Promise<AuthTo
   private async loadBaseline(name: string): Promise<Baseline | null> {
     const baselinePath = path.join(this.baselinesPath, `${name}.json`);
     if (!fs.existsSync(baselinePath)) return null;
-    
+
     const content = fs.readFileSync(baselinePath, 'utf8');
     return JSON.parse(content) as Baseline;
   }
@@ -810,7 +831,7 @@ export async function loginUser(email: string, password: string): Promise<AuthTo
     const status = result.passed ? '✅' : '❌';
     const score = (result.score * 100).toFixed(1);
     const validation = (result.validation.passRate * 100).toFixed(1);
-    
+
     console.log(`${status} ${result.id}: ${score}% score, ${validation}% validation`);
   }
 
@@ -820,7 +841,7 @@ export async function loginUser(email: string, password: string): Promise<AuthTo
     console.log(`   Validation: ${result.validation.rulesPassed}/${result.validation.rulesTotal} rules passed`);
     console.log(`   Performance: ${result.performance.withinThresholds ? 'Within' : 'Outside'} thresholds`);
     console.log(`   Generation Time: ${result.performance.generationTime.toFixed(0)}ms`);
-    
+
     if (result.judgeResults.length > 0) {
       console.log(`\n   Judge Results:`);
       result.judgeResults.forEach(judge => {
@@ -841,17 +862,17 @@ export async function loginUser(email: string, password: string): Promise<AuthTo
 
   async createBaseline(name: string, version: string): Promise<void> {
     console.log(`📊 Creating baseline: ${name}`);
-    
+
     const results = await this.runEvaluation();
     const avgScore = results.reduce((sum, r) => sum + r.score, 0) / results.length;
     const passRate = results.filter(r => r.passed).length / results.length;
-    
+
     const avgPerformance: PerformanceResult = {
       generationTime: results.reduce((sum, r) => sum + r.performance.generationTime, 0) / results.length,
       tokensUsed: results.reduce((sum, r) => sum + r.performance.tokensUsed, 0) / results.length,
       filesGenerated: results.reduce((sum, r) => sum + r.performance.filesGenerated, 0) / results.length,
       linesGenerated: results.reduce((sum, r) => sum + r.performance.linesGenerated, 0) / results.length,
-      withinThresholds: results.every(r => r.performance.withinThresholds)
+      withinThresholds: results.every(r => r.performance.withinThresholds),
     };
 
     const baseline: Baseline = {
@@ -859,12 +880,12 @@ export async function loginUser(email: string, password: string): Promise<AuthTo
       timestamp: new Date().toISOString(),
       averageScore: avgScore,
       performanceMetrics: avgPerformance,
-      passRate
+      passRate,
     };
 
     const baselinePath = path.join(this.baselinesPath, `${name}.json`);
     fs.writeFileSync(baselinePath, JSON.stringify(baseline, null, 2));
-    
+
     console.log(`✅ Baseline created: ${avgScore.toFixed(3)} average score`);
   }
 }
@@ -872,10 +893,7 @@ export async function loginUser(email: string, password: string): Promise<AuthTo
 // CLI Implementation
 const program = new Command();
 
-program
-  .name('aegis-eval')
-  .description('First-class evaluations for Aegis Framework')
-  .version('2.4.0');
+program.name('aegis-eval').description('First-class evaluations for Aegis Framework').version('2.4.0');
 
 program
   .command('run')

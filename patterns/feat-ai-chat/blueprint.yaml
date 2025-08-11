@@ -10,7 +10,7 @@ description: |
 
 determinismConfig:
   seed: "ai-chat-v1"
-  temperature: 0.1  # Slightly higher for chat UX
+  temperature: 0.1 # Slightly higher for chat UX
   strictMode: true
 
 requiredRoutes:
@@ -28,7 +28,7 @@ requiredProviders:
   - name: "chatProvider"
     type: "context"
     version: "1.0.0"
-  - name: "streamProvider" 
+  - name: "streamProvider"
     type: "realtime"
     version: "1.0.0"
 
@@ -55,7 +55,7 @@ ruleContracts:
         - "Harmful content filtering"
         - "Rate limiting per user"
         - "Conversation length limits"
-  
+
   - rule: "streaming-ux"
     version: "1.0.0"
     enforcement: "blocking"
@@ -65,7 +65,7 @@ ruleContracts:
         - "Graceful error handling for stream interruption"
         - "Stop generation button"
         - "Progressive message display"
-  
+
   - rule: "accessibility-chat"
     version: "1.0.0"
     enforcement: "blocking"
@@ -82,7 +82,7 @@ observability:
       schema: "MessageSentSchema"
       description: "User sent a message"
     - name: "chat.response.started"
-      schema: "ResponseStartedSchema" 
+      schema: "ResponseStartedSchema"
       description: "AI response generation started"
     - name: "chat.response.streamed"
       schema: "ResponseStreamedSchema"
@@ -101,15 +101,15 @@ errorStates:
   - code: "STREAM_INTERRUPTED"
     fallback: "Show partial response with retry option"
     recovery: "Resume from last chunk or restart"
-  
+
   - code: "RATE_LIMIT_EXCEEDED"
     fallback: "Show cooldown timer and usage limits"
     recovery: "Queue message for later sending"
-  
+
   - code: "CONTENT_FILTERED"
     fallback: "Show content policy explanation"
     recovery: "Suggest message modifications"
-  
+
   - code: "NETWORK_ERROR"
     fallback: "Offline mode with cached responses"
     recovery: "Auto-retry when connection restored"
@@ -128,7 +128,7 @@ adapters:
       stateManagement: "zustand"
       styling: "tailwindcss"
       streaming: "vercel-ai-sdk"
-  
+
   react-vite:
     framework: "Vite + React"
     version: "5.x"
@@ -151,16 +151,16 @@ examples:
       assistant: "The Aegis Framework is a constitutional AI governance system..."
     - user: "How do I create a blueprint?"
       assistant: "To create a blueprint, you can use the `aegis-blueprint` CLI..."
-  
+
   systemPrompt: |
     You are a helpful AI assistant integrated into an application built with
     the Aegis Framework. You should be helpful, accurate, and safe.
-    
+
     Always:
     - Provide clear, actionable information
     - Admit when you don't know something
     - Respect user privacy and safety
-    
+
     Never:
     - Generate harmful or inappropriate content
     - Share personal information
@@ -171,12 +171,12 @@ safety:
     enabled: true
     provider: "openai-moderation"
     blockLevel: "medium"
-  
+
   rateLimit:
     requestsPerMinute: 20
     tokensPerHour: 50000
     conversationLength: 100
-  
+
   dataHandling:
     retentionPeriod: "30days"
     encryptInTransit: true

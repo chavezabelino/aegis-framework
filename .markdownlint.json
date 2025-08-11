@@ -1,0 +1,106 @@
+{
+  "default": true,
+  "MD013": {
+    "line_length": 120,
+    "code_blocks": false,
+    "tables": false
+  },
+  "MD024": false,
+  "MD033": false,
+  "MD041": {
+    "level": 1
+  },
+  "MD022": true,
+  "MD032": true,
+  "MD012": {
+    "maximum": 1
+  },
+  "MD025": {
+    "level": 1
+  },
+  "MD026": {
+    "punctuation": ".,;:!"
+  },
+  "MD029": {
+    "style": "ordered"
+  },
+  "MD030": {
+    "ul_single": 1,
+    "ol_single": 1,
+    "ul_multi": 1,
+    "ol_multi": 1
+  },
+  "MD031": true,
+  "MD033": false,
+  "MD034": true,
+  "MD035": {
+    "style": "---"
+  },
+  "MD036": false,
+  "MD037": true,
+  "MD038": true,
+  "MD039": true,
+  "MD040": true,
+  "MD042": true,
+  "MD043": false,
+  "MD044": {
+    "names": [
+      "JavaScript",
+      "TypeScript",
+      "Node.js",
+      "GitHub",
+      "GitHub Actions",
+      "CI/CD",
+      "API",
+      "CLI",
+      "JSON",
+      "YAML",
+      "Markdown",
+      "HTML",
+      "CSS",
+      "EJS",
+      "npm",
+      "Bun",
+      "Vite",
+      "Playwright",
+      "Jest",
+      "ESLint",
+      "Prettier",
+      "Docusaurus",
+      "Aegis",
+      "Aegis Framework",
+      "Constitutional",
+      "Blueprint",
+      "Telemetry",
+      "ATS",
+      "MCP",
+      "PREC",
+      "VR",
+      "HMAC",
+      "SHA256",
+      "NDJSON",
+      "EJS",
+      "Unicode",
+      "UTF-8"
+    ],
+    "code_blocks": false,
+    "code_spans": false
+  },
+  "MD045": true,
+  "MD046": {
+    "style": "fenced"
+  },
+  "MD047": true,
+  "MD048": {
+    "style": "backtick"
+  },
+  "MD049": {
+    "style": "emphasis"
+  },
+  "MD050": {
+    "style": "asterisk"
+  },
+  "MD051": true,
+  "MD052": true,
+  "MD053": true
+}

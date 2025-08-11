@@ -2,17 +2,17 @@
 
 /**
  * Democratic Amendment Workflow Engine
- * 
+ *
  * Community-driven constitutional amendment proposal, review, and voting system
  * Part of Option C: Democratic Amendment Workflows
- * 
+ *
  * @aegisFrameworkVersion: 2.4.0-beta
  * @intent: Implement democratic governance for constitutional amendments
  */
 
-import fs from "fs";
-import path from "path";
-import crypto from "crypto";
+import fs from 'fs';
+import path from 'path';
+import crypto from 'crypto';
 
 interface AmendmentProposal {
   id: string;
@@ -24,21 +24,21 @@ interface AmendmentProposal {
   type: 'constitutional' | 'framework-spec' | 'governance-process' | 'enforcement-rule';
   impact: 'breaking' | 'major' | 'minor' | 'patch';
   version: string;
-  
+
   // Amendment content
   currentText?: string;
   proposedText: string;
   rationale: string;
   implementationPlan: string[];
   migrationGuide: string[];
-  
+
   // Democratic process
   reviewPeriod: {
     startDate: string;
     endDate: string;
     durationDays: number;
   };
-  
+
   voting: {
     startDate?: string;
     endDate?: string;
@@ -46,7 +46,7 @@ interface AmendmentProposal {
     quorum: number;
     threshold: number; // percentage needed to pass
   };
-  
+
   // Tracking
   comments: Comment[];
   revisions: AmendmentRevision[];
@@ -110,7 +110,7 @@ class DemocraticAmendmentEngine {
   }
 
   async createAmendmentProposal(proposal: Partial<AmendmentProposal>): Promise<AmendmentProposal> {
-    console.log("🗳️ Creating new amendment proposal...");
+    console.log('🗳️ Creating new amendment proposal...');
 
     const proposalId = this.generateProposalId(proposal.title || 'untitled');
     const reviewDays = this.calculateReviewPeriod(proposal.impact || 'minor');
@@ -127,24 +127,24 @@ class DemocraticAmendmentEngine {
       type: proposal.type || 'framework-spec',
       impact: proposal.impact || 'minor',
       version: this.loadCurrentVersion(),
-      
+
       proposedText: proposal.proposedText || '',
       rationale: proposal.rationale || '',
       implementationPlan: proposal.implementationPlan || [],
       migrationGuide: proposal.migrationGuide || [],
-      
+
       reviewPeriod: {
         startDate,
         endDate,
-        durationDays: reviewDays
+        durationDays: reviewDays,
       },
-      
+
       voting: {
         votes: [],
         quorum: this.calculateQuorum(proposal.impact || 'minor'),
-        threshold: this.calculateThreshold(proposal.impact || 'minor')
+        threshold: this.calculateThreshold(proposal.impact || 'minor'),
       },
-      
+
       comments: [],
       revisions: [],
       supporters: [],
@@ -152,13 +152,13 @@ class DemocraticAmendmentEngine {
         relatedArticles: [],
         affectedFiles: [],
         testingRequired: this.requiresTesting(proposal.impact || 'minor'),
-        precedents: []
-      }
+        precedents: [],
+      },
     };
 
     await this.saveProposal(fullProposal);
     console.log(`✅ Amendment proposal ${proposalId} created successfully`);
-    
+
     return fullProposal;
   }
 
@@ -202,7 +202,7 @@ class DemocraticAmendmentEngine {
       timestamp: new Date().toISOString(),
       type: comment.type || 'suggestion',
       resolved: false,
-      replies: []
+      replies: [],
     };
 
     proposal.comments.push(newComment);
@@ -225,10 +225,8 @@ class DemocraticAmendmentEngine {
     }
 
     // Check for unresolved critical concerns
-    const unresolvedCritical = proposal.comments.filter(
-      c => !c.resolved && c.type === 'concern'
-    );
-    
+    const unresolvedCritical = proposal.comments.filter(c => !c.resolved && c.type === 'concern');
+
     if (unresolvedCritical.length > 0) {
       console.warn(`⚠️ ${unresolvedCritical.length} unresolved concerns detected`);
     }
@@ -237,9 +235,7 @@ class DemocraticAmendmentEngine {
     const votingDays = this.calculateVotingPeriod(proposal.impact);
     proposal.status = 'voting';
     proposal.voting.startDate = new Date().toISOString();
-    proposal.voting.endDate = new Date(
-      Date.now() + votingDays * 24 * 60 * 60 * 1000
-    ).toISOString();
+    proposal.voting.endDate = new Date(Date.now() + votingDays * 24 * 60 * 60 * 1000).toISOString();
 
     await this.saveProposal(proposal);
     await this.notifyCommunity(proposal, 'voting-started');
@@ -283,7 +279,7 @@ class DemocraticAmendmentEngine {
       decision: vote.decision || 'abstain',
       rationale: vote.rationale,
       timestamp: new Date().toISOString(),
-      weight: this.calculateVotingWeight(voter)
+      weight: this.calculateVotingWeight(voter),
     };
 
     proposal.voting.votes.push(newVote);
@@ -302,15 +298,15 @@ class DemocraticAmendmentEngine {
 
     const votes = proposal.voting.votes;
     const totalVotes = votes.length;
-    
+
     // Calculate weighted votes
     const approvals = votes.filter(v => v.decision === 'approve').reduce((sum, v) => sum + v.weight, 0);
     const rejections = votes.filter(v => v.decision === 'reject').reduce((sum, v) => sum + v.weight, 0);
     const abstentions = votes.filter(v => v.decision === 'abstain').reduce((sum, v) => sum + v.weight, 0);
-    
+
     const totalWeight = approvals + rejections + abstentions;
     const approvalPercentage = totalWeight > 0 ? (approvals / totalWeight) * 100 : 0;
-    
+
     const quorumMet = totalVotes >= proposal.voting.quorum;
     const passed = quorumMet && approvalPercentage >= proposal.voting.threshold;
 
@@ -322,7 +318,14 @@ class DemocraticAmendmentEngine {
       approvalPercentage,
       quorumMet,
       passed,
-      summary: this.generateVotingSummary(proposal, { approvals, rejections, abstentions, approvalPercentage, quorumMet, passed })
+      summary: this.generateVotingSummary(proposal, {
+        approvals,
+        rejections,
+        abstentions,
+        approvalPercentage,
+        quorumMet,
+        passed,
+      }),
     };
 
     console.log(`📊 Voting Results:`);
@@ -355,7 +358,7 @@ class DemocraticAmendmentEngine {
 
     // Tally final votes
     const result = await this.tallyVotes(proposalId);
-    
+
     if (result.passed) {
       proposal.status = 'approved';
       await this.implementAmendment(proposal);
@@ -371,7 +374,7 @@ class DemocraticAmendmentEngine {
   }
 
   async listProposals(status?: string): Promise<AmendmentProposal[]> {
-    console.log("📋 Listing amendment proposals...");
+    console.log('📋 Listing amendment proposals...');
 
     const proposalsDir = this.proposalsPath;
     if (!fs.existsSync(proposalsDir)) {
@@ -385,7 +388,7 @@ class DemocraticAmendmentEngine {
       try {
         const filePath = path.join(proposalsDir, file);
         const proposal = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-        
+
         if (!status || proposal.status === status) {
           proposals.push(proposal);
         }
@@ -405,15 +408,11 @@ class DemocraticAmendmentEngine {
     systemHealth: string;
   }> {
     const allProposals = await this.listProposals();
-    const activeProposals = allProposals.filter(p => 
-      ['under-review', 'voting'].includes(p.status)
-    ).length;
-    
+    const activeProposals = allProposals.filter(p => ['under-review', 'voting'].includes(p.status)).length;
+
     const pendingVotes = allProposals.filter(p => p.status === 'voting').length;
-    
-    const recentActivity = allProposals
-      .slice(0, 5)
-      .map(p => `${p.id}: ${p.status} (${p.title})`);
+
+    const recentActivity = allProposals.slice(0, 5).map(p => `${p.id}: ${p.status} (${p.title})`);
 
     const systemHealth = this.assessDemocraticHealth(allProposals);
 
@@ -421,54 +420,77 @@ class DemocraticAmendmentEngine {
       activeProposals,
       pendingVotes,
       recentActivity,
-      systemHealth
+      systemHealth,
     };
   }
 
   // Helper methods
   private generateProposalId(title: string): string {
-    const sanitized = title.toLowerCase().replace(/[^a-z0-9]/g, '-').substring(0, 30);
+    const sanitized = title
+      .toLowerCase()
+      .replace(/[^a-z0-9]/g, '-')
+      .substring(0, 30);
     const timestamp = Date.now().toString(36);
     return `amendment-${sanitized}-${timestamp}`;
   }
 
   private calculateReviewPeriod(impact: string): number {
     switch (impact) {
-      case 'breaking': return 21; // 3 weeks
-      case 'major': return 14; // 2 weeks
-      case 'minor': return 7; // 1 week
-      case 'patch': return 3; // 3 days
-      default: return 7;
+      case 'breaking':
+        return 21; // 3 weeks
+      case 'major':
+        return 14; // 2 weeks
+      case 'minor':
+        return 7; // 1 week
+      case 'patch':
+        return 3; // 3 days
+      default:
+        return 7;
     }
   }
 
   private calculateVotingPeriod(impact: string): number {
     switch (impact) {
-      case 'breaking': return 14; // 2 weeks
-      case 'major': return 7; // 1 week
-      case 'minor': return 5; // 5 days
-      case 'patch': return 3; // 3 days
-      default: return 5;
+      case 'breaking':
+        return 14; // 2 weeks
+      case 'major':
+        return 7; // 1 week
+      case 'minor':
+        return 5; // 5 days
+      case 'patch':
+        return 3; // 3 days
+      default:
+        return 5;
     }
   }
 
   private calculateQuorum(impact: string): number {
     switch (impact) {
-      case 'breaking': return 10; // High participation required
-      case 'major': return 7;
-      case 'minor': return 5;
-      case 'patch': return 3;
-      default: return 5;
+      case 'breaking':
+        return 10; // High participation required
+      case 'major':
+        return 7;
+      case 'minor':
+        return 5;
+      case 'patch':
+        return 3;
+      default:
+        return 5;
     }
   }
 
   private calculateThreshold(impact: string): number {
     switch (impact) {
-      case 'breaking': return 75; // 75% approval
-      case 'major': return 66; // 2/3 majority
-      case 'minor': return 60; // 60% approval
-      case 'patch': return 50; // Simple majority
-      default: return 60;
+      case 'breaking':
+        return 75; // 75% approval
+      case 'major':
+        return 66; // 2/3 majority
+      case 'minor':
+        return 60; // 60% approval
+      case 'patch':
+        return 50; // Simple majority
+      default:
+        return 60;
     }
   }
 
@@ -506,7 +528,7 @@ class DemocraticAmendmentEngine {
   private async validateProposalCompleteness(proposal: AmendmentProposal): Promise<void> {
     const required = ['title', 'description', 'proposedText', 'rationale'];
     const missing = required.filter(field => !proposal[field as keyof AmendmentProposal]);
-    
+
     if (missing.length > 0) {
       throw new Error(`Proposal incomplete: missing ${missing.join(', ')}`);
     }
@@ -517,10 +539,10 @@ class DemocraticAmendmentEngine {
   }
 
   private assessDemocraticHealth(proposals: AmendmentProposal[]): string {
-    const recentProposals = proposals.filter(p => 
-      Date.now() - new Date(p.proposedDate).getTime() < 30 * 24 * 60 * 60 * 1000
+    const recentProposals = proposals.filter(
+      p => Date.now() - new Date(p.proposedDate).getTime() < 30 * 24 * 60 * 60 * 1000
     );
-    
+
     if (recentProposals.length === 0) return 'Quiet period';
     if (recentProposals.length >= 5) return 'Active engagement';
     return 'Normal activity';
@@ -535,7 +557,7 @@ class DemocraticAmendmentEngine {
     if (!fs.existsSync(dir)) {
       fs.mkdirSync(dir, { recursive: true });
     }
-    
+
     const filePath = path.join(dir, `${proposal.id}.json`);
     fs.writeFileSync(filePath, JSON.stringify(proposal, null, 2));
   }
@@ -556,72 +578,76 @@ class DemocraticAmendmentEngine {
 
   private async implementAmendment(proposal: AmendmentProposal): Promise<void> {
     console.log(`🔧 Implementing amendment: ${proposal.title}`);
-    
+
     // In practice, this would:
     // 1. Update constitutional documents
     // 2. Modify framework specifications
     // 3. Update governance processes
     // 4. Run tests and validation
-    
+
     proposal.status = 'implemented';
-    
+
     // Record implementation
     const implementationLog = {
       amendmentId: proposal.id,
       implementedDate: new Date().toISOString(),
       implementedBy: 'democratic-process',
       version: proposal.version,
-      changes: proposal.implementationPlan
+      changes: proposal.implementationPlan,
     };
-    
+
     console.log(`✅ Amendment ${proposal.id} implemented successfully`);
   }
 
   private async recordAmendmentHistory(proposal: AmendmentProposal, result: VotingResult): Promise<void> {
     const historyPath = path.join(this.frameworkRoot, 'framework/governance/amendment-history.json');
-    
+
     let history: any[] = [];
     if (fs.existsSync(historyPath)) {
       history = JSON.parse(fs.readFileSync(historyPath, 'utf8'));
     }
-    
+
     history.push({
       proposalId: proposal.id,
       title: proposal.title,
       result: result.passed ? 'approved' : 'rejected',
       votingResult: result,
-      finalizedDate: new Date().toISOString()
+      finalizedDate: new Date().toISOString(),
     });
-    
+
     fs.writeFileSync(historyPath, JSON.stringify(history, null, 2));
     console.log(`📚 Amendment history updated`);
   }
 
   displayProposal(proposal: AmendmentProposal): void {
     console.log(`\n🗳️ Amendment Proposal: ${proposal.id}`);
-    console.log("=====================================");
+    console.log('=====================================');
     console.log(`Title: ${proposal.title}`);
     console.log(`Status: ${proposal.status}`);
     console.log(`Type: ${proposal.type} (${proposal.impact} impact)`);
     console.log(`Proposer: ${proposal.proposer}`);
     console.log(`Proposed: ${new Date(proposal.proposedDate).toLocaleDateString()}`);
-    console.log("");
+    console.log('');
     console.log(`Description: ${proposal.description}`);
-    console.log("");
+    console.log('');
     console.log(`Rationale: ${proposal.rationale}`);
-    
+
     if (proposal.status === 'under-review' || proposal.status === 'voting') {
-      console.log("");
-      console.log(`Review Period: ${new Date(proposal.reviewPeriod.startDate).toLocaleDateString()} - ${new Date(proposal.reviewPeriod.endDate).toLocaleDateString()}`);
-      
+      console.log('');
+      console.log(
+        `Review Period: ${new Date(proposal.reviewPeriod.startDate).toLocaleDateString()} - ${new Date(proposal.reviewPeriod.endDate).toLocaleDateString()}`
+      );
+
       if (proposal.voting.startDate) {
-        console.log(`Voting Period: ${new Date(proposal.voting.startDate).toLocaleDateString()} - ${new Date(proposal.voting.endDate!).toLocaleDateString()}`);
+        console.log(
+          `Voting Period: ${new Date(proposal.voting.startDate).toLocaleDateString()} - ${new Date(proposal.voting.endDate!).toLocaleDateString()}`
+        );
         console.log(`Votes Cast: ${proposal.voting.votes.length}/${proposal.voting.quorum} (quorum)`);
       }
     }
-    
+
     if (proposal.comments.length > 0) {
-      console.log("");
+      console.log('');
       console.log(`Comments: ${proposal.comments.length}`);
       proposal.comments.slice(0, 3).forEach(comment => {
         console.log(`  ${comment.type}: ${comment.content.substring(0, 100)}...`);
@@ -639,23 +665,23 @@ interface VoterProfile {
 async function main() {
   const args = process.argv.slice(2);
   const command = args[0];
-  
+
   const engine = new DemocraticAmendmentEngine();
-  
+
   switch (command) {
     case 'status':
       const status = await engine.getDemocraticStatus();
-      console.log("🗳️ Democratic Amendment System Status");
-      console.log("===================================");
+      console.log('🗳️ Democratic Amendment System Status');
+      console.log('===================================');
       console.log(`Active Proposals: ${status.activeProposals}`);
       console.log(`Pending Votes: ${status.pendingVotes}`);
       console.log(`System Health: ${status.systemHealth}`);
       if (status.recentActivity.length > 0) {
-        console.log("\nRecent Activity:");
+        console.log('\nRecent Activity:');
         status.recentActivity.forEach(activity => console.log(`  ${activity}`));
       }
       break;
-      
+
     case 'list':
       const proposals = await engine.listProposals(args[1]);
       console.log(`\n📋 Amendment Proposals (${proposals.length})`);
@@ -663,7 +689,7 @@ async function main() {
         console.log(`  ${p.id}: ${p.title} [${p.status}]`);
       });
       break;
-      
+
     case 'show':
       if (!args[1]) {
         console.error('Usage: show <proposal-id>');
@@ -676,13 +702,13 @@ async function main() {
         console.error(`Proposal ${args[1]} not found`);
       }
       break;
-      
+
     default:
-      console.log("🗳️ Democratic Amendment Workflow Engine");
-      console.log("Available commands:");
-      console.log("  status - Show system status");
-      console.log("  list [status] - List proposals");
-      console.log("  show <id> - Show proposal details");
+      console.log('🗳️ Democratic Amendment Workflow Engine');
+      console.log('Available commands:');
+      console.log('  status - Show system status');
+      console.log('  list [status] - List proposals');
+      console.log('  show <id> - Show proposal details');
       break;
   }
 }

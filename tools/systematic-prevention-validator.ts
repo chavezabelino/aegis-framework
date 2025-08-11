@@ -70,7 +70,7 @@ export class SystematicPreventionValidator {
     this.projectRoot = projectRoot;
     this.mechanismsFile = path.join(this.projectRoot, '.framework/prevention-mechanisms.json');
     this.historyFile = path.join(this.projectRoot, '.framework/validation-history.json');
-    
+
     this.ensureDirectoryExists();
     this.initializePreventionMechanisms();
     this.loadValidationHistory();
@@ -101,7 +101,7 @@ export class SystematicPreventionValidator {
             expectedOutcome: 'System detects inconsistencies and blocks operations',
             testImplementation: 'Create temporary version inconsistency and validate detection',
             riskLevel: 'critical',
-            autoExecutable: true
+            autoExecutable: true,
           },
           {
             id: 'auto-fix-validation',
@@ -110,9 +110,9 @@ export class SystematicPreventionValidator {
             expectedOutcome: 'System automatically corrects detected inconsistencies',
             testImplementation: 'Trigger auto-fix and validate corrections',
             riskLevel: 'high',
-            autoExecutable: true
-          }
-        ]
+            autoExecutable: true,
+          },
+        ],
       },
       {
         id: 'constitutional-compliance-prevention',
@@ -130,7 +130,7 @@ export class SystematicPreventionValidator {
             expectedOutcome: 'System detects and blocks false claims',
             testImplementation: 'Create temporary false claim and validate detection',
             riskLevel: 'critical',
-            autoExecutable: true
+            autoExecutable: true,
           },
           {
             id: 'compliance-validation',
@@ -139,9 +139,9 @@ export class SystematicPreventionValidator {
             expectedOutcome: 'System validates all constitutional requirements',
             testImplementation: 'Run full compliance check and validate results',
             riskLevel: 'high',
-            autoExecutable: true
-          }
-        ]
+            autoExecutable: true,
+          },
+        ],
       },
       {
         id: 'self-healing-prevention',
@@ -159,7 +159,7 @@ export class SystematicPreventionValidator {
             expectedOutcome: 'System identifies and records failure patterns',
             testImplementation: 'Simulate recurring failure and validate pattern detection',
             riskLevel: 'critical',
-            autoExecutable: true
+            autoExecutable: true,
           },
           {
             id: 'healing-action-execution',
@@ -168,9 +168,9 @@ export class SystematicPreventionValidator {
             expectedOutcome: 'System executes appropriate healing actions',
             testImplementation: 'Trigger healing for known pattern and validate execution',
             riskLevel: 'high',
-            autoExecutable: true
-          }
-        ]
+            autoExecutable: true,
+          },
+        ],
       },
       {
         id: 'evolution-learning-prevention',
@@ -188,9 +188,9 @@ export class SystematicPreventionValidator {
             expectedOutcome: 'System learns from patterns and implements prevention',
             testImplementation: 'Create new pattern and validate learning response',
             riskLevel: 'critical',
-            autoExecutable: true
-          }
-        ]
+            autoExecutable: true,
+          },
+        ],
       },
       {
         id: 'agent-drift-prevention',
@@ -208,9 +208,9 @@ export class SystematicPreventionValidator {
             expectedOutcome: 'System detects and blocks violating actions',
             testImplementation: 'Simulate intent violation and validate blocking',
             riskLevel: 'high',
-            autoExecutable: true
-          }
-        ]
+            autoExecutable: true,
+          },
+        ],
       },
       {
         id: 'predictive-compliance-prevention',
@@ -228,10 +228,10 @@ export class SystematicPreventionValidator {
             expectedOutcome: 'System accurately predicts potential violations',
             testImplementation: 'Create predictable violation scenario and validate prediction',
             riskLevel: 'medium',
-            autoExecutable: true
-          }
-        ]
-      }
+            autoExecutable: true,
+          },
+        ],
+      },
     ];
 
     mechanisms.forEach(mechanism => {
@@ -244,18 +244,18 @@ export class SystematicPreventionValidator {
    */
   async validateAllMechanisms(): Promise<SystematicValidationReport> {
     console.log('🔬 Running systematic prevention validation...');
-    
+
     const results: ValidationResult[] = [];
     let mechanismsPassed = 0;
     let mechanismsFailed = 0;
     let criticalFailures = 0;
-    
+
     for (const [mechanismId, mechanism] of this.mechanisms) {
       console.log(`\n🧪 Validating: ${mechanism.name}`);
-      
+
       const result = await this.validateMechanism(mechanism);
       results.push(result);
-      
+
       if (result.status === 'pass') {
         mechanismsPassed++;
       } else if (result.status === 'fail') {
@@ -264,16 +264,15 @@ export class SystematicPreventionValidator {
           criticalFailures++;
         }
       }
-      
+
       // Update mechanism with validation result
       mechanism.lastValidated = new Date();
       mechanism.validationResult = result;
     }
-    
+
     // Determine overall status
-    const overallStatus = criticalFailures > 0 ? 'fail' : 
-                         mechanismsFailed > 0 ? 'warning' : 'pass';
-    
+    const overallStatus = criticalFailures > 0 ? 'fail' : mechanismsFailed > 0 ? 'warning' : 'pass';
+
     const report: SystematicValidationReport = {
       overallStatus,
       mechanismsValidated: this.mechanisms.size,
@@ -282,13 +281,13 @@ export class SystematicPreventionValidator {
       criticalFailures,
       results,
       recommendations: this.generateRecommendations(results),
-      nextValidation: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000) // 7 days from now
+      nextValidation: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000), // 7 days from now
     };
-    
+
     // Save validation history
     this.validationHistory.push(...results);
     await this.saveValidationData();
-    
+
     await this.displayReport(report);
     return report;
   }
@@ -319,7 +318,7 @@ export class SystematicPreventionValidator {
           evidence,
           recommendations: ['Implement missing mechanism file'],
           executionTime: Date.now() - startTime,
-          timestamp: new Date()
+          timestamp: new Date(),
         };
       }
 
@@ -329,10 +328,10 @@ export class SystematicPreventionValidator {
       for (const scenario of mechanism.testScenarios) {
         testsRun++;
         console.log(`   🔍 Testing: ${scenario.name}`);
-        
+
         try {
           const testResult = await this.executeTestScenario(mechanism, scenario);
-          
+
           if (testResult.success) {
             testsPassed++;
             evidence.push(`✅ ${scenario.name}: ${testResult.message}`);
@@ -351,8 +350,7 @@ export class SystematicPreventionValidator {
       }
 
       // Determine status
-      const status = errors.length > 0 ? 'fail' : 
-                    warnings.length > 0 ? 'warning' : 'pass';
+      const status = errors.length > 0 ? 'fail' : warnings.length > 0 ? 'warning' : 'pass';
 
       // Generate recommendations
       if (testsFailed > 0) {
@@ -373,9 +371,8 @@ export class SystematicPreventionValidator {
         evidence,
         recommendations,
         executionTime: Date.now() - startTime,
-        timestamp: new Date()
+        timestamp: new Date(),
       };
-
     } catch (error) {
       return {
         mechanism: mechanism.id,
@@ -388,12 +385,15 @@ export class SystematicPreventionValidator {
         evidence,
         recommendations: ['Debug validation process'],
         executionTime: Date.now() - startTime,
-        timestamp: new Date()
+        timestamp: new Date(),
       };
     }
   }
 
-  private async executeTestScenario(mechanism: PreventionMechanism, scenario: PreventionTestScenario): Promise<{ success: boolean; message: string }> {
+  private async executeTestScenario(
+    mechanism: PreventionMechanism,
+    scenario: PreventionTestScenario
+  ): Promise<{ success: boolean; message: string }> {
     switch (scenario.id) {
       case 'version-drift-detection':
         return await this.testVersionDriftDetection();
@@ -424,12 +424,12 @@ export class SystematicPreventionValidator {
       const { VersionConsistencyValidator } = await import('./validate-version-consistency.js');
       const validator = new VersionConsistencyValidator(this.projectRoot);
       const result = await validator.validateAll();
-      
+
       // Test passes if validator can detect inconsistencies (or if none exist)
       const success = result.overallStatus === 'pass' || result.violations.length >= 0; // Can detect
-      return { 
-        success, 
-        message: success ? 'Version consistency validation operational' : 'Version validator not working' 
+      return {
+        success,
+        message: success ? 'Version consistency validation operational' : 'Version validator not working',
       };
     } catch (error) {
       return { success: false, message: `Version validator not accessible: ${error}` };
@@ -440,12 +440,12 @@ export class SystematicPreventionValidator {
     try {
       const { VersionConsistencyValidator } = await import('./validate-version-consistency.js');
       const validator = new VersionConsistencyValidator(this.projectRoot);
-      
+
       // Test if auto-fix method exists and is callable
       const hasAutoFix = typeof validator.autoFix === 'function';
-      return { 
-        success: hasAutoFix, 
-        message: hasAutoFix ? 'Auto-fix capability available' : 'Auto-fix method not found' 
+      return {
+        success: hasAutoFix,
+        message: hasAutoFix ? 'Auto-fix capability available' : 'Auto-fix method not found',
       };
     } catch (error) {
       return { success: false, message: `Auto-fix test failed: ${error}` };
@@ -457,11 +457,11 @@ export class SystematicPreventionValidator {
       const { ConstitutionalComplianceEnforcer } = await import('./constitutional-compliance-enforcer.js');
       const enforcer = new ConstitutionalComplianceEnforcer(this.projectRoot);
       const result = await enforcer.enforceCompliance();
-      
+
       // Test passes if enforcer can evaluate claims
-      return { 
-        success: result.status !== undefined, 
-        message: 'Constitutional compliance enforcer operational' 
+      return {
+        success: result !== null && result !== undefined,
+        message: 'Constitutional compliance enforcer operational',
       };
     } catch (error) {
       return { success: false, message: `Constitutional enforcer test failed: ${error}` };
@@ -483,10 +483,10 @@ export class SystematicPreventionValidator {
       const { SelfHealingGovernance } = await import('../framework/healing/self-healing-governance.js');
       const governance = new SelfHealingGovernance(this.projectRoot);
       const result = await governance.preventRepeatFailures();
-      
-      return { 
-        success: result.status !== undefined, 
-        message: 'Self-healing governance operational' 
+
+      return {
+        success: result !== null && result !== undefined,
+        message: 'Self-healing governance operational',
       };
     } catch (error) {
       return { success: false, message: `Self-healing test failed: ${error}` };
@@ -503,10 +503,10 @@ export class SystematicPreventionValidator {
       const { EvolutionLearningSystem } = await import('./evolution-learning-system.js');
       const learningSystem = new EvolutionLearningSystem(this.projectRoot);
       const result = await learningSystem.preventRepeatPatterns();
-      
-      return { 
-        success: result.status !== undefined, 
-        message: 'Evolution learning system operational' 
+
+      return {
+        success: result !== null && result !== undefined,
+        message: 'Evolution learning system operational',
       };
     } catch (error) {
       return { success: false, message: `Evolution learning test failed: ${error}` };
@@ -517,20 +517,20 @@ export class SystematicPreventionValidator {
     try {
       const { IntentEnforcementEngine } = await import('./intent-enforcement-engine.js');
       const engine = new IntentEnforcementEngine(this.projectRoot);
-      
+
       // Test with a safe command
       engine.setExecutionIntent({
         primaryGoal: 'Test intent enforcement',
         mode: 'strict',
         expectedActions: ['validate'],
         forbiddenActions: ['delete'],
-        safetyConstraints: ['No destructive operations']
+        safetyConstraints: ['No destructive operations'],
       });
-      
+
       const result = engine.enforceIntent('echo "test"', 'Testing intent enforcement');
-      return { 
-        success: result.allowed !== undefined, 
-        message: 'Intent enforcement engine operational' 
+      return {
+        success: result.allowed !== undefined,
+        message: 'Intent enforcement engine operational',
       };
     } catch (error) {
       return { success: false, message: `Intent enforcement test failed: ${error}` };
@@ -542,10 +542,10 @@ export class SystematicPreventionValidator {
       const { PredictiveComplianceMonitor } = await import('./predictive-compliance-monitor.js');
       const monitor = new PredictiveComplianceMonitor(this.projectRoot);
       const result = await monitor.monitorCompliance();
-      
-      return { 
-        success: result.status !== undefined, 
-        message: 'Predictive compliance monitor operational' 
+
+      return {
+        success: result !== null && result !== undefined,
+        message: 'Predictive compliance monitor operational',
       };
     } catch (error) {
       return { success: false, message: `Predictive monitoring test failed: ${error}` };
@@ -554,26 +554,26 @@ export class SystematicPreventionValidator {
 
   private generateRecommendations(results: ValidationResult[]): string[] {
     const recommendations: string[] = [];
-    
+
     const failedResults = results.filter(r => r.status === 'fail');
     const warningResults = results.filter(r => r.status === 'warning');
-    
+
     if (failedResults.length > 0) {
       recommendations.push(`Address ${failedResults.length} failed prevention mechanisms immediately`);
     }
-    
+
     if (warningResults.length > 0) {
       recommendations.push(`Review ${warningResults.length} prevention mechanisms with warnings`);
     }
-    
+
     const criticalFailures = results.filter(r => r.status === 'fail' && r.errors.some(e => e.includes('critical')));
     if (criticalFailures.length > 0) {
       recommendations.push('Critical prevention mechanisms require immediate attention');
     }
-    
+
     recommendations.push('Schedule regular validation every 7 days');
     recommendations.push('Consider adding additional test scenarios for edge cases');
-    
+
     return recommendations;
   }
 
@@ -585,29 +585,28 @@ export class SystematicPreventionValidator {
     console.log(`✅ Mechanisms Passed: ${report.mechanismsPassed}`);
     console.log(`❌ Mechanisms Failed: ${report.mechanismsFailed}`);
     console.log(`🚨 Critical Failures: ${report.criticalFailures}`);
-    
+
     if (report.results.length > 0) {
       console.log('\n📋 Validation Results:');
       report.results.forEach((result, index) => {
-        const statusIcon = result.status === 'pass' ? '✅' : 
-                          result.status === 'warning' ? '⚠️' : '❌';
+        const statusIcon = result.status === 'pass' ? '✅' : result.status === 'warning' ? '⚠️' : '❌';
         console.log(`   ${statusIcon} ${result.mechanism}: ${result.status.toUpperCase()}`);
         console.log(`      Tests: ${result.testsPassed}/${result.testsRun} passed`);
         console.log(`      Time: ${result.executionTime}ms`);
-        
+
         if (result.errors.length > 0) {
           console.log(`      Errors: ${result.errors.slice(0, 2).join(', ')}${result.errors.length > 2 ? '...' : ''}`);
         }
       });
     }
-    
+
     if (report.recommendations.length > 0) {
       console.log('\n💡 Recommendations:');
       report.recommendations.forEach(rec => {
         console.log(`   • ${rec}`);
       });
     }
-    
+
     console.log(`\n⏰ Next validation scheduled: ${report.nextValidation.toLocaleDateString()}`);
   }
 
@@ -617,7 +616,7 @@ export class SystematicPreventionValidator {
         const data = JSON.parse(fs.readFileSync(this.historyFile, 'utf8'));
         this.validationHistory = data.map((item: any) => ({
           ...item,
-          timestamp: new Date(item.timestamp)
+          timestamp: new Date(item.timestamp),
         }));
       }
     } catch (error) {
@@ -630,7 +629,7 @@ export class SystematicPreventionValidator {
       // Save mechanisms
       const mechanismsData = Array.from(this.mechanisms.values());
       fs.writeFileSync(this.mechanismsFile, JSON.stringify(mechanismsData, null, 2));
-      
+
       // Save validation history (keep last 50 validations)
       const recentHistory = this.validationHistory.slice(-50);
       fs.writeFileSync(this.historyFile, JSON.stringify(recentHistory, null, 2));

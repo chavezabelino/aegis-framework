@@ -7,7 +7,8 @@
 
 # 📋 Example: Constitutional Remediation Plan Template
 
-This template demonstrates how to create remediation plans that meet constitutional safety requirements and prevent the gaps identified in framework migration pitfalls.
+This template demonstrates how to create remediation plans that meet Constitutional safety requirements and prevent the
+gaps identified in framework migration pitfalls.
 
 ## YAML Format Example
 
@@ -23,10 +24,10 @@ version: "1.0.0"
 
 # Constitutional annotations (required)
 aegisFrameworkVersion: "2.0.0-alpha-dev"
-blueprintId: "feat-public-viewing"  # Optional if not blueprint-specific
+blueprintId: "feat-public-viewing" # Optional if not Blueprint-specific
 mode: "strict"
 intent: "Migrate existing project to Aegis Framework v2.0 with complete safety guarantees"
-context: "AI-generated remediation plan demonstrating constitutional compliance patterns"
+context: "AI-generated remediation plan demonstrating Constitutional compliance patterns"
 
 # Project targeting
 targetProject:
@@ -34,8 +35,8 @@ targetProject:
   type: "react-nextjs"
   currentFrameworkVersion: "1.0.0-alpha"
   detectedIssues:
-    - "Missing constitutional annotations"
-    - "Outdated blueprint schema"
+    - "Missing Constitutional annotations"
+    - "Outdated Blueprint schema"
     - "Non-compliant file structure"
     - "Missing rollback mechanisms"
 
@@ -45,7 +46,7 @@ phases:
     name: "Constitutional Preflight Validation"
     description: "Validate current state and prepare safe migration environment"
     order: 1
-    
+
     # Required validation steps
     validationSteps:
       - name: "build-check"
@@ -63,7 +64,7 @@ phases:
         description: "Check code quality standards"
         required: true
         rollbackOnFailure: true
-    
+
     # Required rollback plan
     rollbackPlan:
       strategy: "git-snapshot"
@@ -76,7 +77,7 @@ phases:
           description: "Verify working directory is clean after rollback"
           required: true
           rollbackOnFailure: false
-    
+
     # Required dry-run simulation
     dryRunSimulation:
       enabled: true
@@ -89,7 +90,7 @@ phases:
         - "No critical files will be deleted"
         - "All imports will remain valid"
         - "Build process will not break"
-    
+
     # Tool validation
     toolingRequirements:
       requiredTools:
@@ -107,18 +108,20 @@ phases:
           validated: true
       toolingValidated: true
       validationCommand: "node tools/validate-tools.js"
-    
+
     # Risk assessment
     riskLevel: "medium"
-    riskMitigation: "Comprehensive validation gates and rollback mechanisms ensure safe execution with ability to restore previous state"
-    
+    riskMitigation:
+      "Comprehensive validation gates and rollback mechanisms ensure safe execution with ability to restore previous
+      state"
+
     # Constitutional impact
     constitutionalImpact:
       blueprintChanges: false
       frameworkModifications: true
       breakingChanges: false
       requiresApproval: true
-    
+
     # Execution metadata
     estimatedDuration: "15-30 minutes"
     dependencies: []
@@ -128,19 +131,19 @@ phases:
     name: "Framework Structure Migration"
     description: "Apply framework changes with continuous validation"
     order: 2
-    
+
     validationSteps:
       - name: "incremental-build"
         command: "npm run build"
         description: "Validate build after each structural change"
         required: true
         rollbackOnFailure: true
-      - name: "constitutional-compliance"
+      - name: "Constitutional-compliance"
         command: "node tools/validate-constitution.ts"
-        description: "Ensure constitutional compliance throughout migration"
+        description: "Ensure Constitutional compliance throughout migration"
         required: true
         rollbackOnFailure: true
-    
+
     rollbackPlan:
       strategy: "git-snapshot"
       snapshotCommand: "git add . && git commit -m 'migration-checkpoint'"
@@ -152,7 +155,7 @@ phases:
           description: "Ensure project still works after rollback"
           required: true
           rollbackOnFailure: false
-    
+
     dryRunSimulation:
       enabled: true
       commands:
@@ -162,24 +165,25 @@ phases:
       safetyChecks:
         - "Original files preserved during simulation"
         - "No permanent changes during dry run"
-    
+
     toolingRequirements:
       requiredTools:
-        - name: "aegis-hydrate"
-          validateCommand: "node cli/aegis-hydrate.ts --version"
+        - name: "Aegis-hydrate"
+          validateCommand: "node CLI/Aegis-hydrate.ts --version"
           criticalForExecution: true
       scaffoldedTools: []
       toolingValidated: true
-    
+
     riskLevel: "high"
-    riskMitigation: "Phase executed in checkpoint mode with rollback after each step. All changes validated before proceeding."
-    
+    riskMitigation:
+      "Phase executed in checkpoint mode with rollback after each step. All changes validated before proceeding."
+
     constitutionalImpact:
       blueprintChanges: true
       frameworkModifications: true
       breakingChanges: false
       requiresApproval: true
-    
+
     estimatedDuration: "45-60 minutes"
     dependencies: ["phase-1-preflight"]
     parallelizable: false
@@ -206,18 +210,18 @@ complianceTargets:
 # CI integration
 ciIntegration:
   required: true
-  workflowPath: ".github/workflows/constitutional-compliance.yml"
+  workflowPath: ".GitHub/workflows/Constitutional-compliance.yml"
   complianceChecks:
     - metric: "Schema Validation"
       targetValue: "pass"
-      measurementCommand: "node tools/validate-remediation-plan.ts plan.yaml"
+      measurementCommand: "node tools/validate-remediation-plan.ts plan.YAML"
       validationFrequency: "pre-phase"
       enforcementLevel: "blocking"
   preflightGates:
     - name: "build-gate"
       command: "npm run build"
       blocking: true
-    - name: "test-gate" 
+    - name: "test-gate"
       command: "npm test"
       blocking: true
     - name: "lint-gate"
@@ -248,8 +252,8 @@ overallRollbackStrategy:
 emergencyProcedures:
   escalationPath: "Contact framework maintainers via GitHub issues with 'emergency' label"
   emergencyContacts:
-    - "framework-maintainers@aegis.dev"
-    - "constitutional-committee@aegis.dev"
+    - "framework-maintainers@Aegis.dev"
+    - "Constitutional-committee@Aegis.dev"
   failsafeActions:
     - "git-tag-emergency-restore"
     - "create-emergency-branch"
@@ -259,10 +263,10 @@ emergencyProcedures:
 # Plan validation metadata
 planValidation:
   schemaValidated: true
-  preflightTested: false  # Set to true after running dry-run
-  dryRunExecuted: false   # Set to true after successful simulation
+  preflightTested: false # Set to true after running dry-run
+  dryRunExecuted: false # Set to true after successful simulation
   toolingVerified: true
-  peerReviewed: false     # Optional but recommended
+  peerReviewed: false # Optional but recommended
   constitutionallyCompliant: true
 
 # Success criteria (minimum 3 required)
@@ -277,22 +281,22 @@ successCriteria:
     measurementMethod: "node tools/validate-constitution.ts returns success"
     acceptanceThreshold: "full compliance"
   - criterion: "Framework Migration Complete"
-    measurementMethod: "aegis hydrate --validate returns success"
+    measurementMethod: "Aegis hydrate --validate returns success"
     acceptanceThreshold: "validation pass"
 
 # Approval and governance
 approvalRequired: true
 approvers:
   - "framework-maintainer"
-  - "constitutional-reviewer"
+  - "Constitutional-reviewer"
 constitutionalReview: true
 
 # Timestamps
 createdAt: "2025-08-06T00:00:00Z"
 lastModified: "2025-08-06T00:00:00Z"
 estimatedCompletionTime: "2-3 hours with approval gates"
-actualExecutionTime: null  # Filled during execution
-```
+actualExecutionTime: null # Filled during execution
+```text
 
 ## JSON Format Example
 
@@ -307,14 +311,14 @@ The same plan can be expressed in JSON format:
   "aegisFrameworkVersion": "2.0.0-alpha-dev",
   "mode": "strict",
   "intent": "Migrate existing project to Aegis Framework v2.0 with complete safety guarantees",
-  "context": "AI-generated remediation plan demonstrating constitutional compliance patterns",
+  "context": "AI-generated remediation plan demonstrating Constitutional compliance patterns",
   "targetProject": {
     "path": "/path/to/target/project",
     "type": "react-nextjs",
     "currentFrameworkVersion": "1.0.0-alpha",
     "detectedIssues": [
-      "Missing constitutional annotations",
-      "Outdated blueprint schema",
+      "Missing Constitutional annotations",
+      "Outdated Blueprint schema",
       "Non-compliant file structure",
       "Missing rollback mechanisms"
     ]
@@ -353,10 +357,7 @@ The same plan can be expressed in JSON format:
         "enabled": true,
         "commands": ["echo 'Simulating framework migration...'"],
         "diffGeneration": true,
-        "safetyChecks": [
-          "No critical files will be deleted",
-          "All imports will remain valid"
-        ]
+        "safetyChecks": ["No critical files will be deleted", "All imports will remain valid"]
       },
       "toolingRequirements": {
         "requiredTools": [
@@ -421,7 +422,7 @@ The same plan can be expressed in JSON format:
   },
   "emergencyProcedures": {
     "escalationPath": "Contact framework maintainers via GitHub issues",
-    "emergencyContacts": ["framework-maintainers@aegis.dev"],
+    "emergencyContacts": ["framework-maintainers@Aegis.dev"],
     "failsafeActions": ["git-tag-emergency-restore", "escalate-to-maintainers"]
   },
   "planValidation": {
@@ -454,55 +455,56 @@ The same plan can be expressed in JSON format:
   "lastModified": "2025-08-06T00:00:00Z",
   "estimatedCompletionTime": "2-3 hours with approval gates"
 }
-```
+```text
 
 ## Validation Command
 
 ```bash
-# Validate this plan against constitutional requirements
-node tools/validate-remediation-plan.ts example-remediation-plan.yaml
+# Validate this plan against Constitutional requirements
+node tools/validate-remediation-plan.ts example-remediation-plan.YAML
 
 # Expected output:
-# 🔍 Validating remediation plan against constitutional requirements...
+# 🔍 Validating remediation plan against Constitutional requirements...
 # 📊 Validation Score: 95/100
 # ✅ Overall: VALID
-# ✅ Remediation plan meets constitutional requirements and is safe for execution.
-```
+# ✅ Remediation plan meets Constitutional requirements and is safe for execution.
+```text
 
 ## Key Constitutional Protections
 
-This template includes all required constitutional protections:
+This template includes all required Constitutional protections:
 
-1. **✅ Validation Gates**: Build, test, lint checks before changes
-2. **✅ Rollback Strategy**: Git snapshots with tested restoration
-3. **✅ Dry-Run Simulation**: Preview effects before execution
-4. **✅ Tool Validation**: Verify all required tools exist
-5. **✅ Constitutional Review**: Framework compliance checks
-6. **✅ Success Criteria**: Measurable completion standards
-7. **✅ Emergency Procedures**: Escalation and failsafe actions
-8. **✅ CI Integration**: Automated preflight gates
-9. **✅ Risk Assessment**: Clear mitigation strategies
-10. **✅ Constitutional Annotations**: Full metadata compliance
+1. __✅ Validation Gates__: Build, test, lint checks before changes
+2. __✅ Rollback Strategy__: Git snapshots with tested restoration
+3. __✅ Dry-Run Simulation__: Preview effects before execution
+4. __✅ Tool Validation__: Verify all required tools exist
+5. __✅ Constitutional Review__: Framework compliance checks
+6. __✅ Success Criteria__: Measurable completion standards
+7. __✅ Emergency Procedures__: Escalation and failsafe actions
+8. __✅ CI Integration__: Automated preflight gates
+9. __✅ Risk Assessment__: Clear mitigation strategies
+10. __✅ Constitutional Annotations__: Full metadata compliance
 
 ## Anti-Patterns to Avoid
 
-❌ **Don't** create plans without rollback strategies  
-❌ **Don't** skip validation steps for "simple" changes  
-❌ **Don't** assume tools exist without validation  
-❌ **Don't** omit dry-run simulation for high-risk phases  
-❌ **Don't** ignore constitutional review requirements  
-❌ **Don't** use generic success criteria without measurement methods  
+❌ __Don't__ create plans without rollback strategies  
+❌ __Don't__ skip validation steps for "simple" changes  
+❌ __Don't__ assume tools exist without validation  
+❌ __Don't__ omit dry-run simulation for high-risk phases  
+❌ __Don't__ ignore Constitutional review requirements  
+❌ __Don't__ use generic success criteria without measurement methods
 
 ## Framework Protection Summary
 
 This template prevents the specific gaps identified in framework migration pitfalls:
 
-- **Validation Gates**: Required build/test/lint checks before any structural changes
-- **Tool Validation**: All referenced tools must exist and be validated
-- **Rollback Safety**: Every phase includes tested rollback procedures
-- **Dry-Run Protection**: High-risk changes must be simulated first
-- **Constitutional Compliance**: All plans validated against framework principles
-- **Measurable Success**: Clear, testable criteria for completion
-- **Emergency Procedures**: Escalation paths and failsafe actions defined
+- __Validation Gates__: Required build/test/lint checks before any structural changes
+- __Tool Validation__: All referenced tools must exist and be validated
+- __Rollback Safety__: Every phase includes tested rollback procedures
+- __Dry-Run Protection__: High-risk changes must be simulated first
+- __Constitutional Compliance__: All plans validated against framework principles
+- __Measurable Success__: Clear, testable criteria for completion
+- __Emergency Procedures__: Escalation paths and failsafe actions defined
 
-By following this template, remediation plans will meet constitutional requirements and provide the safety mechanisms needed to prevent incomplete or dangerous migrations.
+By following this template, remediation plans will meet Constitutional requirements and provide the safety mechanisms
+needed to prevent incomplete or dangerous migrations.

@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# Run lint-staged for automatic formatting and fixing
+echo "🎨 Running lint-staged for markdown files..."
+npx lint-staged
+
+# Run constitutional validation
+echo "🏛️ Running constitutional validation..."
+npm run validate

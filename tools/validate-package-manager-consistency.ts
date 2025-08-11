@@ -25,23 +25,23 @@ class PackageManagerValidator {
 
     // 1. Validate package.json scripts
     await this.validatePackageJsonScripts();
-    
+
     // 2. Validate GitHub Actions workflows
     await this.validateGitHubWorkflows();
-    
+
     // 3. Validate documentation
     await this.validateDocumentation();
-    
+
     // 4. Validate git hooks
     await this.validateGitHooks();
-    
+
     // 5. Validate CLI scripts shebang
     await this.validateCliScripts();
 
     return {
       isValid: this.errors.length === 0,
       errors: this.errors,
-      warnings: this.warnings
+      warnings: this.warnings,
     };
   }
 
@@ -90,12 +90,12 @@ class PackageManagerValidator {
   private async validateGitHubWorkflows(): Promise<void> {
     try {
       console.log('🔄 Validating GitHub Actions workflows...');
-      
+
       const workflowFiles = await glob('.github/workflows/*.yml');
-      
+
       for (const file of workflowFiles) {
         const content = readFileSync(file, 'utf8');
-        
+
         // Check for setup-node usage (should be setup-bun)
         if (content.includes('setup-node@') && !content.includes('setup-bun@')) {
           this.errors.push(`Workflow ${file} uses setup-node instead of setup-bun`);
@@ -126,25 +126,21 @@ class PackageManagerValidator {
   private async validateDocumentation(): Promise<void> {
     try {
       console.log('📚 Validating documentation...');
-      
+
       const docFiles = await glob('docs/**/*.md');
       docFiles.push('README.md', 'CONTRIBUTING.md');
-      
+
       for (const file of docFiles) {
         try {
           const content = readFileSync(file, 'utf8');
-          
+
           // Check for npm install in development instructions
-          if (content.includes('npm install') && 
-              content.includes('development') && 
-              !content.includes('end user')) {
+          if (content.includes('npm install') && content.includes('development') && !content.includes('end user')) {
             this.warnings.push(`Documentation ${file} shows "npm install" for development - should show "bun install"`);
           }
 
           // Check for npm run in development examples
-          if (content.includes('npm run') && 
-              content.includes('development') &&
-              !content.includes('user')) {
+          if (content.includes('npm run') && content.includes('development') && !content.includes('user')) {
             this.warnings.push(`Documentation ${file} shows "npm run" for development - should show "bun run"`);
           }
         } catch (error) {
@@ -161,12 +157,12 @@ class PackageManagerValidator {
   private async validateGitHooks(): Promise<void> {
     try {
       console.log('🎣 Validating git hooks...');
-      
+
       const hookFiles = await glob('tools/*hook*.sh');
-      
+
       for (const file of hookFiles) {
         const content = readFileSync(file, 'utf8');
-        
+
         // Check for node usage in hooks
         if (content.includes('node cli/') || content.includes('node tools/')) {
           this.warnings.push(`Git hook ${file} uses "node" - consider "bun" for consistency`);
@@ -182,14 +178,14 @@ class PackageManagerValidator {
   private async validateCliScripts(): Promise<void> {
     try {
       console.log('🔧 Validating CLI scripts...');
-      
+
       const cliFiles = await glob('cli/*.ts');
-      cliFiles.push(...await glob('tools/*.ts'));
-      
+      cliFiles.push(...(await glob('tools/*.ts')));
+
       for (const file of cliFiles) {
         const content = readFileSync(file, 'utf8');
         const lines = content.split('\n');
-        
+
         // Check shebang line
         if (lines[0].startsWith('#!/')) {
           if (lines[0].includes('node') && !lines[0].includes('bun')) {
@@ -206,15 +202,8 @@ class PackageManagerValidator {
 
   private isDistributionScript(scriptName: string): boolean {
     // Scripts that are meant for end-user distribution can use npm
-    const distributionScripts = [
-      'publish',
-      'prepublish', 
-      'postpublish',
-      'pack',
-      'prepack',
-      'postpack'
-    ];
-    
+    const distributionScripts = ['publish', 'prepublish', 'postpublish', 'pack', 'prepack', 'postpack'];
+
     return distributionScripts.includes(scriptName);
   }
 }
@@ -222,31 +211,34 @@ class PackageManagerValidator {
 // CLI execution
 if (import.meta.url === `file://${process.argv[1]}`) {
   const validator = new PackageManagerValidator();
-  
-  validator.validate().then(result => {
-    console.log('\n🏛️ Package Manager Consistency Report');
-    console.log('=====================================');
-    
-    if (result.warnings.length > 0) {
-      console.log('\n⚠️  Warnings:');
-      result.warnings.forEach(warning => console.log(`   ${warning}`));
-    }
-    
-    if (result.errors.length > 0) {
-      console.log('\n❌ Errors:');
-      result.errors.forEach(error => console.log(`   ${error}`));
-      console.log('\n🚨 CONSTITUTIONAL VIOLATION: Package manager inconsistency detected!');
-      console.log('Run the auto-fix: bun tools/fix-package-manager-consistency.ts');
+
+  validator
+    .validate()
+    .then(result => {
+      console.log('\n🏛️ Package Manager Consistency Report');
+      console.log('=====================================');
+
+      if (result.warnings.length > 0) {
+        console.log('\n⚠️  Warnings:');
+        result.warnings.forEach(warning => console.log(`   ${warning}`));
+      }
+
+      if (result.errors.length > 0) {
+        console.log('\n❌ Errors:');
+        result.errors.forEach(error => console.log(`   ${error}`));
+        console.log('\n🚨 CONSTITUTIONAL VIOLATION: Package manager inconsistency detected!');
+        console.log('Run the auto-fix: bun tools/fix-package-manager-consistency.ts');
+        process.exit(1);
+      } else {
+        console.log('\n✅ Package manager consistency validated!');
+        console.log('All development commands use Bun, distribution uses NPM.');
+        process.exit(0);
+      }
+    })
+    .catch(error => {
+      console.error('💥 Validation failed:', error);
       process.exit(1);
-    } else {
-      console.log('\n✅ Package manager consistency validated!');
-      console.log('All development commands use Bun, distribution uses NPM.');
-      process.exit(0);
-    }
-  }).catch(error => {
-    console.error('💥 Validation failed:', error);
-    process.exit(1);
-  });
+    });
 }
 
 export { PackageManagerValidator };

@@ -55,7 +55,7 @@ export class AutoRepairMLEngine {
    */
   repairBlueprint(blueprint: Blueprint, patterns: ErrorPattern[]): RepairAction[] {
     // Map detected patterns to repair actions (context-sensitive)
-    const actions: RepairAction[] = patterns.map((pattern) => {
+    const actions: RepairAction[] = patterns.map(pattern => {
       let action = '';
       let applied = false;
       let details = '';
@@ -106,7 +106,7 @@ export class AutoRepairMLEngine {
     const fs = require('fs');
     const path = require('path');
     const eventsPath = path.resolve(__dirname, '../observability/events.jsonl');
-    actions.forEach((action) => {
+    actions.forEach(action => {
       try {
         const event = {
           id: `event-${Date.now()}-${Math.random().toString(36).slice(2, 10)}`,
@@ -132,4 +132,3 @@ export class AutoRepairMLEngine {
     });
   }
 }
-

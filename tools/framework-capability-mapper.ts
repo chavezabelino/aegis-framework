@@ -51,22 +51,24 @@ export class FrameworkCapabilityMapper {
    */
   async discoverCapabilities(): Promise<CapabilityMap> {
     console.log('🔍 Discovering framework capabilities...');
-    
+
     // Clear existing capabilities
     this.capabilities.clear();
-    
+
     // Discover capabilities from different sources
     await this.discoverFromTools();
     await this.discoverFromFrameworkCore();
     await this.discoverFromGovernance();
     await this.discoverFromBlueprints();
     await this.discoverFromCLI();
-    
+
     // Generate capability map
     const map = this.generateCapabilityMap();
-    
-    console.log(`✅ Discovered ${map.totalCapabilities} capabilities across ${Object.keys(map.categories).length} categories`);
-    
+
+    console.log(
+      `✅ Discovered ${map.totalCapabilities} capabilities across ${Object.keys(map.categories).length} categories`
+    );
+
     return map;
   }
 
@@ -76,7 +78,7 @@ export class FrameworkCapabilityMapper {
   private async discoverFromTools(): Promise<void> {
     const toolsDir = path.join(this.projectRoot, 'tools');
     const toolFiles = this.getTypeScriptFiles(toolsDir);
-    
+
     for (const file of toolFiles) {
       const capability = await this.analyzeToolFile(file);
       if (capability) {
@@ -91,7 +93,7 @@ export class FrameworkCapabilityMapper {
   private async discoverFromFrameworkCore(): Promise<void> {
     const frameworkDir = path.join(this.projectRoot, 'framework');
     const coreFiles = this.getTypeScriptFiles(frameworkDir);
-    
+
     for (const file of coreFiles) {
       const capability = await this.analyzeFrameworkFile(file);
       if (capability) {
@@ -106,9 +108,9 @@ export class FrameworkCapabilityMapper {
   private async discoverFromGovernance(): Promise<void> {
     const governanceDir = path.join(this.projectRoot, 'framework/governance');
     if (!fs.existsSync(governanceDir)) return;
-    
+
     const govFiles = this.getTypeScriptFiles(governanceDir);
-    
+
     for (const file of govFiles) {
       const capability = await this.analyzeGovernanceFile(file);
       if (capability) {
@@ -123,11 +125,12 @@ export class FrameworkCapabilityMapper {
   private async discoverFromBlueprints(): Promise<void> {
     const blueprintsDir = path.join(this.projectRoot, 'blueprints');
     if (!fs.existsSync(blueprintsDir)) return;
-    
-    const blueprintDirs = fs.readdirSync(blueprintsDir, { withFileTypes: true })
+
+    const blueprintDirs = fs
+      .readdirSync(blueprintsDir, { withFileTypes: true })
       .filter(dirent => dirent.isDirectory())
       .map(dirent => dirent.name);
-    
+
     for (const dir of blueprintDirs) {
       const capability = await this.analyzeBlueprintDir(path.join(blueprintsDir, dir));
       if (capability) {
@@ -142,7 +145,7 @@ export class FrameworkCapabilityMapper {
   private async discoverFromCLI(): Promise<void> {
     const cliDir = path.join(this.projectRoot, 'cli');
     const cliFiles = this.getTypeScriptFiles(cliDir);
-    
+
     for (const file of cliFiles) {
       const capability = await this.analyzeCLIFile(file);
       if (capability) {
@@ -157,17 +160,17 @@ export class FrameworkCapabilityMapper {
   private async analyzeToolFile(filePath: string): Promise<FrameworkCapability | null> {
     const content = fs.readFileSync(filePath, 'utf8');
     const fileName = path.basename(filePath, '.ts');
-    
+
     // Extract metadata from file header
     const metadata = this.extractFileMetadata(content);
     if (!metadata.intent) return null;
-    
+
     // Analyze exports and classes
     const exports = this.extractExports(content);
     const classes = this.extractClasses(content);
-    
+
     const stats = fs.statSync(filePath);
-    
+
     return {
       id: `tool-${fileName}`,
       name: this.humanizeFileName(fileName),
@@ -180,7 +183,7 @@ export class FrameworkCapabilityMapper {
       documentation: this.findDocumentation(fileName),
       blueprint: metadata.blueprint,
       lastModified: stats.mtime,
-      codeSignature: this.generateCodeSignature(content)
+      codeSignature: this.generateCodeSignature(content),
     };
   }
 
@@ -190,12 +193,12 @@ export class FrameworkCapabilityMapper {
   private async analyzeFrameworkFile(filePath: string): Promise<FrameworkCapability | null> {
     const content = fs.readFileSync(filePath, 'utf8');
     const fileName = path.basename(filePath, '.ts');
-    
+
     const metadata = this.extractFileMetadata(content);
     if (!metadata.intent) return null;
-    
+
     const stats = fs.statSync(filePath);
-    
+
     return {
       id: `framework-${fileName}`,
       name: this.humanizeFileName(fileName),
@@ -207,7 +210,7 @@ export class FrameworkCapabilityMapper {
       documentation: this.findDocumentation(fileName),
       blueprint: metadata.blueprint,
       lastModified: stats.mtime,
-      codeSignature: this.generateCodeSignature(content)
+      codeSignature: this.generateCodeSignature(content),
     };
   }
 
@@ -217,12 +220,12 @@ export class FrameworkCapabilityMapper {
   private async analyzeGovernanceFile(filePath: string): Promise<FrameworkCapability | null> {
     const content = fs.readFileSync(filePath, 'utf8');
     const fileName = path.basename(filePath, '.ts');
-    
+
     const metadata = this.extractFileMetadata(content);
     if (!metadata.intent) return null;
-    
+
     const stats = fs.statSync(filePath);
-    
+
     return {
       id: `governance-${fileName}`,
       name: this.humanizeFileName(fileName),
@@ -234,7 +237,7 @@ export class FrameworkCapabilityMapper {
       documentation: this.findDocumentation(fileName),
       blueprint: metadata.blueprint,
       lastModified: stats.mtime,
-      codeSignature: this.generateCodeSignature(content)
+      codeSignature: this.generateCodeSignature(content),
     };
   }
 
@@ -244,14 +247,14 @@ export class FrameworkCapabilityMapper {
   private async analyzeBlueprintDir(dirPath: string): Promise<FrameworkCapability | null> {
     const blueprintFile = path.join(dirPath, 'blueprint.yaml');
     if (!fs.existsSync(blueprintFile)) return null;
-    
+
     const content = fs.readFileSync(blueprintFile, 'utf8');
     const dirName = path.basename(dirPath);
-    
+
     // Parse YAML for blueprint metadata
     const metadata = this.parseBlueprintYAML(content);
     const stats = fs.statSync(blueprintFile);
-    
+
     return {
       id: `blueprint-${dirName}`,
       name: metadata.name || this.humanizeFileName(dirName),
@@ -263,7 +266,7 @@ export class FrameworkCapabilityMapper {
       documentation: this.findDocumentation(dirName),
       blueprint: blueprintFile,
       lastModified: stats.mtime,
-      codeSignature: this.generateCodeSignature(content)
+      codeSignature: this.generateCodeSignature(content),
     };
   }
 
@@ -273,12 +276,12 @@ export class FrameworkCapabilityMapper {
   private async analyzeCLIFile(filePath: string): Promise<FrameworkCapability | null> {
     const content = fs.readFileSync(filePath, 'utf8');
     const fileName = path.basename(filePath, '.ts');
-    
+
     const metadata = this.extractFileMetadata(content);
     if (!metadata.intent) return null;
-    
+
     const stats = fs.statSync(filePath);
-    
+
     return {
       id: `cli-${fileName}`,
       name: this.humanizeFileName(fileName),
@@ -291,7 +294,7 @@ export class FrameworkCapabilityMapper {
       documentation: this.findDocumentation(fileName),
       blueprint: metadata.blueprint,
       lastModified: stats.mtime,
-      codeSignature: this.generateCodeSignature(content)
+      codeSignature: this.generateCodeSignature(content),
     };
   }
 
@@ -300,31 +303,31 @@ export class FrameworkCapabilityMapper {
    */
   private extractFileMetadata(content: string): any {
     const metadata: any = {};
-    
+
     const lines = content.split('\n').slice(0, 20); // Check first 20 lines
-    
+
     for (const line of lines) {
       const intentMatch = line.match(/@intent:\s*(.+)/);
       if (intentMatch) {
         metadata.intent = intentMatch[1].trim();
       }
-      
+
       const contextMatch = line.match(/@context:\s*(.+)/);
       if (contextMatch) {
         metadata.context = contextMatch[1].trim();
       }
-      
+
       const blueprintMatch = line.match(/@aegisBlueprint:\s*(.+)/);
       if (blueprintMatch) {
         metadata.blueprint = blueprintMatch[1].trim();
       }
-      
+
       const modeMatch = line.match(/@mode:\s*(.+)/);
       if (modeMatch) {
         metadata.mode = modeMatch[1].trim();
       }
     }
-    
+
     return metadata;
   }
 
@@ -334,7 +337,7 @@ export class FrameworkCapabilityMapper {
   private extractExports(content: string): string[] {
     const exports: string[] = [];
     const exportMatches = content.match(/export\s+(class|function|interface|type|const)\s+(\w+)/g);
-    
+
     if (exportMatches) {
       for (const match of exportMatches) {
         const nameMatch = match.match(/export\s+(?:class|function|interface|type|const)\s+(\w+)/);
@@ -343,7 +346,7 @@ export class FrameworkCapabilityMapper {
         }
       }
     }
-    
+
     return exports;
   }
 
@@ -353,7 +356,7 @@ export class FrameworkCapabilityMapper {
   private extractClasses(content: string): string[] {
     const classes: string[] = [];
     const classMatches = content.match(/class\s+(\w+)/g);
-    
+
     if (classMatches) {
       for (const match of classMatches) {
         const nameMatch = match.match(/class\s+(\w+)/);
@@ -362,7 +365,7 @@ export class FrameworkCapabilityMapper {
         }
       }
     }
-    
+
     return classes;
   }
 
@@ -372,7 +375,7 @@ export class FrameworkCapabilityMapper {
   private extractDependencies(content: string): string[] {
     const dependencies: string[] = [];
     const importMatches = content.match(/import.*from\s+['"]([^'"]+)['"]/g);
-    
+
     if (importMatches) {
       for (const match of importMatches) {
         const pathMatch = match.match(/from\s+['"]([^'"]+)['"]/);
@@ -384,7 +387,7 @@ export class FrameworkCapabilityMapper {
         }
       }
     }
-    
+
     return dependencies;
   }
 
@@ -397,13 +400,13 @@ export class FrameworkCapabilityMapper {
     if (usageMatch) {
       return usageMatch[1].trim();
     }
-    
+
     // Look for main function
     const mainMatch = content.match(/async function main\(\)[^{]*{([\s\S]*?)^}/m);
     if (mainMatch) {
       return `// Example usage:\n${mainMatch[1].slice(0, 300)}...`;
     }
-    
+
     return undefined;
   }
 
@@ -412,19 +415,15 @@ export class FrameworkCapabilityMapper {
    */
   private extractCLIUsage(content: string): string | undefined {
     // Look for usage patterns
-    const usagePatterns = [
-      /Usage:\s*(.+)/,
-      /console\.log\(['"]Usage[^'"]*['"][^)]*\)/,
-      /aegis-\w+.*</
-    ];
-    
+    const usagePatterns = [/Usage:\s*(.+)/, /console\.log\(['"]Usage[^'"]*['"][^)]*\)/, /aegis-\w+.*</];
+
     for (const pattern of usagePatterns) {
       const match = content.match(pattern);
       if (match) {
         return match[1] || match[0];
       }
     }
-    
+
     return undefined;
   }
 
@@ -436,24 +435,24 @@ export class FrameworkCapabilityMapper {
     if (content.includes('experimental') || content.includes('EXPERIMENTAL')) {
       return 'experimental';
     }
-    
+
     if (content.includes('alpha') || content.includes('ALPHA')) {
       return 'alpha';
     }
-    
+
     if (content.includes('beta') || content.includes('BETA')) {
       return 'beta';
     }
-    
+
     if (content.includes('deprecated') || content.includes('DEPRECATED')) {
       return 'deprecated';
     }
-    
+
     // Check mode for stability
     if (metadata.mode === 'strict') {
       return 'stable';
     }
-    
+
     return 'stable'; // Default to stable
   }
 
@@ -465,16 +464,16 @@ export class FrameworkCapabilityMapper {
       `docs/implementation/${fileName}.md`,
       `docs/implementation/${fileName}-*.md`,
       `docs/${fileName}.md`,
-      `README.md`
+      `README.md`,
     ];
-    
+
     for (const pattern of docPatterns) {
       const fullPath = path.join(this.projectRoot, pattern);
       if (fs.existsSync(fullPath)) {
         return pattern;
       }
     }
-    
+
     return undefined;
   }
 
@@ -483,25 +482,25 @@ export class FrameworkCapabilityMapper {
    */
   private parseBlueprintYAML(content: string): any {
     const metadata: any = {};
-    
+
     const lines = content.split('\n');
     for (const line of lines) {
       const nameMatch = line.match(/name:\s*(.+)/);
       if (nameMatch) {
         metadata.name = nameMatch[1].trim().replace(/['"]/g, '');
       }
-      
+
       const descMatch = line.match(/description:\s*(.+)/);
       if (descMatch) {
         metadata.description = descMatch[1].trim().replace(/['"]/g, '');
       }
-      
+
       const statusMatch = line.match(/status:\s*(.+)/);
       if (statusMatch) {
         metadata.status = statusMatch[1].trim().replace(/['"]/g, '');
       }
     }
-    
+
     return metadata;
   }
 
@@ -511,29 +510,29 @@ export class FrameworkCapabilityMapper {
   private generateCapabilityMap(): CapabilityMap {
     const categories: Record<string, FrameworkCapability[]> = {};
     const issues: string[] = [];
-    
+
     // Group capabilities by category
     for (const capability of this.capabilities.values()) {
       if (!categories[capability.category]) {
         categories[capability.category] = [];
       }
       categories[capability.category].push(capability);
-      
+
       // Check for issues
       if (capability.status === 'deprecated') {
         issues.push(`${capability.name} is deprecated`);
       }
-      
+
       if (!capability.documentation) {
         issues.push(`${capability.name} has no documentation`);
       }
     }
-    
+
     // Sort categories
     for (const category in categories) {
       categories[category].sort((a, b) => a.name.localeCompare(b.name));
     }
-    
+
     return {
       generated: new Date(),
       frameworkVersion: this.frameworkVersion,
@@ -541,7 +540,7 @@ export class FrameworkCapabilityMapper {
       categories,
       executionPaths: this.generateExecutionPaths(),
       healthStatus: issues.length === 0 ? 'healthy' : issues.length < 5 ? 'warnings' : 'issues',
-      issues
+      issues,
     };
   }
 
@@ -550,11 +549,11 @@ export class FrameworkCapabilityMapper {
    */
   private generateExecutionPaths(): Record<string, string[]> {
     const paths: Record<string, string[]> = {};
-    
+
     for (const capability of this.capabilities.values()) {
       paths[capability.id] = capability.implementation;
     }
-    
+
     return paths;
   }
 
@@ -567,7 +566,7 @@ export class FrameworkCapabilityMapper {
       if (fs.existsSync(versionFile)) {
         return fs.readFileSync(versionFile, 'utf8').trim();
       }
-      
+
       const packageFile = path.join(this.projectRoot, 'package.json');
       if (fs.existsSync(packageFile)) {
         const pkg = JSON.parse(fs.readFileSync(packageFile, 'utf8'));
@@ -576,7 +575,7 @@ export class FrameworkCapabilityMapper {
     } catch (error) {
       // Ignore errors
     }
-    
+
     return 'unknown';
   }
 
@@ -585,15 +584,15 @@ export class FrameworkCapabilityMapper {
    */
   private getTypeScriptFiles(dir: string): string[] {
     if (!fs.existsSync(dir)) return [];
-    
+
     const files: string[] = [];
-    
+
     function walkDir(currentDir: string) {
       const entries = fs.readdirSync(currentDir, { withFileTypes: true });
-      
+
       for (const entry of entries) {
         const fullPath = path.join(currentDir, entry.name);
-        
+
         if (entry.isDirectory() && !entry.name.startsWith('.')) {
           walkDir(fullPath);
         } else if (entry.isFile() && entry.name.endsWith('.ts') && !entry.name.endsWith('.d.ts')) {
@@ -601,7 +600,7 @@ export class FrameworkCapabilityMapper {
         }
       }
     }
-    
+
     walkDir(dir);
     return files;
   }
@@ -625,9 +624,11 @@ export class FrameworkCapabilityMapper {
     const keyElements = [
       content.match(/export\s+(class|function|interface)/g)?.join(''),
       content.match(/@intent:\s*(.+)/)?.[1],
-      content.match(/\/\*\*[\s\S]*?\*\//)?.[0]
-    ].filter(Boolean).join('|');
-    
+      content.match(/\/\*\*[\s\S]*?\*\//)?.[0],
+    ]
+      .filter(Boolean)
+      .join('|');
+
     return Buffer.from(keyElements).toString('base64').slice(0, 16);
   }
 
@@ -636,15 +637,15 @@ export class FrameworkCapabilityMapper {
    */
   async saveCapabilityMap(map: CapabilityMap, outputPath?: string): Promise<string> {
     const filePath = outputPath || path.join(this.projectRoot, '.framework/capability-map.json');
-    
+
     // Ensure directory exists
     const dir = path.dirname(filePath);
     if (!fs.existsSync(dir)) {
       fs.mkdirSync(dir, { recursive: true });
     }
-    
+
     fs.writeFileSync(filePath, JSON.stringify(map, null, 2));
-    
+
     console.log(`💾 Capability map saved to ${filePath}`);
     return filePath;
   }
@@ -658,7 +659,7 @@ export class FrameworkCapabilityMapper {
     markdown += `**Framework Version**: ${map.frameworkVersion}\n`;
     markdown += `**Total Capabilities**: ${map.totalCapabilities}\n`;
     markdown += `**Health Status**: ${map.healthStatus.toUpperCase()}\n\n`;
-    
+
     if (map.issues.length > 0) {
       markdown += `## Issues\n\n`;
       for (const issue of map.issues) {
@@ -666,32 +667,32 @@ export class FrameworkCapabilityMapper {
       }
       markdown += `\n`;
     }
-    
+
     for (const [category, capabilities] of Object.entries(map.categories)) {
       markdown += `## ${category.toUpperCase()} (${capabilities.length})\n\n`;
-      
+
       for (const capability of capabilities) {
         markdown += `### ${capability.name}\n\n`;
         markdown += `**Status**: ${capability.status}\n`;
         markdown += `**Description**: ${capability.description}\n`;
         markdown += `**Implementation**: ${capability.implementation.join(', ')}\n`;
-        
+
         if (capability.dependencies.length > 0) {
           markdown += `**Dependencies**: ${capability.dependencies.join(', ')}\n`;
         }
-        
+
         if (capability.documentation) {
           markdown += `**Documentation**: [${capability.documentation}](${capability.documentation})\n`;
         }
-        
+
         if (capability.usageExample) {
           markdown += `**Usage**:\n\`\`\`\n${capability.usageExample}\n\`\`\`\n`;
         }
-        
+
         markdown += `**Last Modified**: ${capability.lastModified.toISOString()}\n\n`;
       }
     }
-    
+
     return markdown;
   }
 }
@@ -701,40 +702,39 @@ export class FrameworkCapabilityMapper {
  */
 async function main() {
   const mapper = new FrameworkCapabilityMapper();
-  
+
   console.log('🧠 Aegis Framework Capability Mapper');
   console.log('=====================================\n');
-  
+
   try {
     const map = await mapper.discoverCapabilities();
-    
+
     // Save JSON map
     const jsonPath = await mapper.saveCapabilityMap(map);
-    
+
     // Generate and save markdown report
     const markdown = mapper.generateMarkdownReport(map);
     const markdownPath = path.join(process.cwd(), '.framework/capability-map.md');
     fs.writeFileSync(markdownPath, markdown);
-    
+
     console.log(`📊 Framework Capability Summary:`);
     console.log(`   Total Capabilities: ${map.totalCapabilities}`);
     console.log(`   Categories: ${Object.keys(map.categories).length}`);
     console.log(`   Health Status: ${map.healthStatus.toUpperCase()}`);
-    
+
     if (map.issues.length > 0) {
       console.log(`   Issues: ${map.issues.length}`);
     }
-    
+
     console.log(`\n📄 Reports generated:`);
     console.log(`   JSON: ${jsonPath}`);
     console.log(`   Markdown: ${markdownPath}`);
-    
+
     // Show category breakdown
     console.log(`\n📋 Category Breakdown:`);
     for (const [category, capabilities] of Object.entries(map.categories)) {
       console.log(`   ${category}: ${capabilities.length} capabilities`);
     }
-    
   } catch (error) {
     console.error('❌ Failed to map capabilities:', error);
     process.exit(1);

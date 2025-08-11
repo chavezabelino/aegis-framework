@@ -1,6 +1,6 @@
 <!--
 @aegisFrameworkVersion: <%= frameworkVersion %>
-<% if (projectStandards) { %>@intent: Complete <%= agent.displayName %> instructions combining constitutional compliance with operational excellence
+<% if (projectStandards) { %>@intent: Complete <%= agent.displayName %> instructions combining Constitutional compliance with operational excellence
 @context: Single source of truth for <%= agent.displayName %> under Aegis Framework + Kilo standards
 @generatedFrom: agent-instructions.template.md + project-standards.md
 @lastGenerated: <%= lastUpdated %><% } else { %>@intent: Agent-agnostic instructions template for all Aegis agents
@@ -10,9 +10,9 @@
 
 # 🤖 <%= agent.displayName %> Instructions for Aegis Framework v<%= frameworkVersion %>
 
-> **Complete instructions combining constitutional compliance with operational excellence.**
+> __Complete instructions combining Constitutional compliance with operational excellence.**
 
-<%- sections.constitutional %>
+<%- sections.Constitutional %>
 
 <%- sections.frameworkContext %>
 
@@ -32,10 +32,9 @@
 
 <%- sections.knowledgeBase %>
 
-<% if (projectStandards) { %>
----
-<%- projectStandards %>
-<% } else { %>
+## <% if (projectStandards) { %>
+
+<%- projectStandards %> <% } else { %>
 
 <%- sections.aiAgentMode %>
 
@@ -45,14 +44,13 @@
 
 <%- sections.codePatterns %>
 
-<%- sections.decisionMatrix %>
-<% } %>
+<%- sections.decisionMatrix %> <% } %>
 
 ---
 
-**Version**: <%= frameworkVersion %> (Enhanced with v2.5 Operational Patterns)  
-**Last Updated**: <%= lastUpdated %>  
-**Target Agent**: <%= agent.displayName %>  
-**Framework Authority**: Aegis Framework Constitution  
-**Operational Standards**: Kilo v2.5 Battle-Tested Patterns  
-**Mode Support**: Constitutional (`strict`), Tactical (`lean`), Hybrid (recommended)
+**Version__: <%= frameworkVersion %> (Enhanced with v2.5 Operational Patterns)  
+**Last Updated__: <%= lastUpdated %>  
+**Target Agent__: <%= agent.displayName %>  
+**Framework Authority__: Aegis Framework Constitution  
+**Operational Standards__: Kilo v2.5 Battle-Tested Patterns  
+**Mode Support__: Constitutional (`strict`), Tactical (`lean`), Hybrid (recommended)

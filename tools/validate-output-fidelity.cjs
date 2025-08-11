@@ -2,17 +2,17 @@
 
 /**
  * Output Fidelity Validator (CommonJS)
- * 
+ *
  * Constitutional enforcement tool for Article IX: Template and Documentation Quality Standards
  * Validates generated outputs against reference targets for character-perfect fidelity
- * 
+ *
  * @aegisFrameworkVersion: 1.3.0
  * @intent: Ensure generated outputs match reference targets exactly
  * @constitutionalAuthority: Article IX, Section 2
  */
 
-const fs = require("fs");
-const path = require("path");
+const fs = require('fs');
+const path = require('path');
 
 class OutputFidelityValidator {
   constructor() {
@@ -30,7 +30,7 @@ class OutputFidelityValidator {
       overall,
       matches,
       violations: this.violations,
-      recommendations: this.generateRecommendations()
+      recommendations: this.generateRecommendations(),
     };
 
     this.printResults(result);
@@ -39,13 +39,13 @@ class OutputFidelityValidator {
 
   async validateOutputs() {
     const matches = [];
-    
+
     // Known output/reference pairs
     const outputPairs = [
       {
         output: 'framework/generated/instructions/current/github-copilot-ready.md',
-        reference: 'framework/generated/instructions/current/github-copilot-ready-test-target.md'
-      }
+        reference: 'framework/generated/instructions/current/github-copilot-ready-test-target.md',
+      },
     ];
 
     for (const pair of outputPairs) {
@@ -57,12 +57,12 @@ class OutputFidelityValidator {
         matches.push(match);
       } else {
         console.log(`⚠️  Missing files for comparison: ${pair.output} or ${pair.reference}`);
-        
+
         this.violations.push({
           severity: 'high',
           file: outputPath,
           message: 'Reference target missing for fidelity validation',
-          suggestion: 'Ensure reference targets exist for all generated outputs'
+          suggestion: 'Ensure reference targets exist for all generated outputs',
         });
       }
     }
@@ -88,12 +88,12 @@ class OutputFidelityValidator {
 
       if (outputLine !== referenceLine) {
         const diffType = this.classifyDifference(outputLine, referenceLine);
-        
+
         differences.push({
           line: i + 1,
           expected: referenceLine,
           actual: outputLine,
-          type: diffType
+          type: diffType,
         });
 
         // Check for encoding issues
@@ -105,7 +105,7 @@ class OutputFidelityValidator {
     }
 
     const matches = differences.length === 0;
-    const score = matches ? 100 : Math.max(0, 100 - (differences.length * 2));
+    const score = matches ? 100 : Math.max(0, 100 - differences.length * 2);
 
     // Add violations for significant differences
     if (!matches) {
@@ -116,9 +116,10 @@ class OutputFidelityValidator {
         severity,
         file: outputPath,
         message: `Output differs from reference target (${differences.length} differences)`,
-        suggestion: encodingIssues.length > 0 ? 
-          'Clean up HTML entities in templates to use plain Unicode characters' :
-          'Review template generation logic for consistency'
+        suggestion:
+          encodingIssues.length > 0
+            ? 'Clean up HTML entities in templates to use plain Unicode characters'
+            : 'Review template generation logic for consistency',
       });
     }
 
@@ -128,14 +129,14 @@ class OutputFidelityValidator {
       matches,
       score,
       differences,
-      encodingIssues
+      encodingIssues,
     };
   }
 
   classifyDifference(actual, expected) {
     // Check for encoding differences (HTML entities)
     const htmlEntityPattern = /&(#\d+|#x[0-9a-fA-F]+|[a-zA-Z]+);/g;
-    
+
     if (htmlEntityPattern.test(actual) || htmlEntityPattern.test(expected)) {
       return 'encoding';
     }
@@ -151,7 +152,7 @@ class OutputFidelityValidator {
   detectEncodingIssue(actual, expected, line) {
     const commonEntities = {
       '&#39;': "'",
-      '&apos;': "'", 
+      '&apos;': "'",
       '&quot;': '"',
       '&ldquo;': '"',
       '&rdquo;': '"',
@@ -162,7 +163,7 @@ class OutputFidelityValidator {
       '&amp;': '&',
       '&lt;': '<',
       '&gt;': '>',
-      '&nbsp;': ' '
+      '&nbsp;': ' ',
     };
 
     for (const [entity, replacement] of Object.entries(commonEntities)) {
@@ -171,7 +172,7 @@ class OutputFidelityValidator {
           line,
           entity,
           replacement,
-          context: actual
+          context: actual,
         };
       }
     }
@@ -181,7 +182,7 @@ class OutputFidelityValidator {
 
   calculateOverallScore(matches) {
     if (matches.length === 0) return 0;
-    
+
     const totalScore = matches.reduce((sum, match) => sum + match.score, 0);
     return Math.round(totalScore / matches.length);
   }
@@ -189,8 +190,8 @@ class OutputFidelityValidator {
   generateRecommendations() {
     const recommendations = [];
 
-    const encodingViolations = this.violations.filter(v => 
-      v.message.includes('HTML entities') || v.suggestion.includes('Unicode')
+    const encodingViolations = this.violations.filter(
+      v => v.message.includes('HTML entities') || v.suggestion.includes('Unicode')
     );
 
     if (encodingViolations.length > 0) {
@@ -221,19 +222,19 @@ class OutputFidelityValidator {
     result.matches.forEach(match => {
       const status = match.matches ? '✅ PASS' : '❌ FAIL';
       console.log(`${status} ${path.basename(match.outputFile)} (${match.score}/100)`);
-      
+
       if (!match.matches) {
         console.log(`  📋 ${match.differences.length} differences found`);
-        
+
         if (match.encodingIssues.length > 0) {
           console.log(`  🔤 ${match.encodingIssues.length} encoding issues detected`);
-          
+
           // Show first few encoding issues as examples
           const examples = match.encodingIssues.slice(0, 3);
           examples.forEach(issue => {
             console.log(`    Line ${issue.line}: "${issue.entity}" → "${issue.replacement}"`);
           });
-          
+
           if (match.encodingIssues.length > 3) {
             console.log(`    ... and ${match.encodingIssues.length - 3} more`);
           }
@@ -244,12 +245,17 @@ class OutputFidelityValidator {
 
     if (result.violations.length > 0) {
       console.log('⚠️  Fidelity Violations:\n');
-      
+
       result.violations.forEach(violation => {
-        const icon = violation.severity === 'critical' ? '🚨' : 
-                    violation.severity === 'high' ? '❌' : 
-                    violation.severity === 'medium' ? '⚠️' : 'ℹ️';
-        
+        const icon =
+          violation.severity === 'critical'
+            ? '🚨'
+            : violation.severity === 'high'
+              ? '❌'
+              : violation.severity === 'medium'
+                ? '⚠️'
+                : 'ℹ️';
+
         console.log(`${icon} ${violation.severity.toUpperCase()}: ${violation.message}`);
         console.log(`   File: ${violation.file}`);
         if (violation.line) console.log(`   Line: ${violation.line}`);

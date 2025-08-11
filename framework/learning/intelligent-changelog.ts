@@ -2,17 +2,17 @@
 
 /**
  * Intelligent Changelog Generation Engine
- * 
+ *
  * AI-powered changelog analysis, generation, and release planning
  * Part of Phase 2: Intelligent Governance
- * 
+ *
  * @aegisFrameworkVersion: 2.4.0-beta
  * @intent: Implement intelligent changelog automation with AI-powered analysis
  */
 
-import fs from "fs";
-import path from "path";
-import { execSync } from "child_process";
+import fs from 'fs';
+import path from 'path';
+import { execSync } from 'child_process';
 
 interface ChangelogEntry {
   id: string;
@@ -85,23 +85,23 @@ class IntelligentChangelogEngine {
   }
 
   async generateIntelligentChangelog(): Promise<ChangelogAnalysis> {
-    console.log("📝 Generating intelligent changelog analysis...");
+    console.log('📝 Generating intelligent changelog analysis...');
 
     // Analyze recent commits
     await this.analyzeRecentCommits();
-    
+
     // Detect undocumented changes
     await this.detectUndocumentedChanges();
-    
+
     // Analyze current changelog
     await this.analyzeExistingChangelog();
-    
+
     // Generate version planning
     const versionPlan = await this.generateVersionPlan();
-    
+
     // Analyze trends
     const trends = await this.analyzeTrends();
-    
+
     // Generate recommendations
     const recommendations = await this.generateRecommendations();
 
@@ -110,12 +110,12 @@ class IntelligentChangelogEngine {
         totalChanges: this.entries.length,
         byType: this.groupByType(),
         byImpact: this.groupByImpact(),
-        frameworkEvolution: this.getFrameworkEvolution()
+        frameworkEvolution: this.getFrameworkEvolution(),
       },
       entries: this.entries,
       versionPlan,
       recommendations,
-      trends
+      trends,
     };
 
     console.log(`📊 Changelog Analysis Complete:`);
@@ -133,44 +133,50 @@ class IntelligentChangelogEngine {
         return fs.readFileSync(versionPath, 'utf8').trim();
       }
     } catch (error) {
-      console.warn("⚠️ Could not load VERSION file");
+      console.warn('⚠️ Could not load VERSION file');
     }
-    return "1.0.0-alpha";
+    return '1.0.0-alpha';
   }
 
   private async analyzeRecentCommits(): Promise<void> {
-    console.log("  🔍 Analyzing recent git commits...");
+    console.log('  🔍 Analyzing recent git commits...');
 
     try {
       // Get recent commits (last 20)
-      const gitLog = execSync('git log --oneline --pretty=format:"%H|%ad|%an|%s" --date=iso -20', 
-        { cwd: this.frameworkRoot, encoding: 'utf8' });
-      
-      const commits = gitLog.split('\n').filter(line => line.trim()).map(line => {
-        const [hash, date, author, message] = line.split('|');
-        return { hash, date, author, message, files: [] };
+      const gitLog = execSync('git log --oneline --pretty=format:"%H|%ad|%an|%s" --date=iso -20', {
+        cwd: this.frameworkRoot,
+        encoding: 'utf8',
       });
+
+      const commits = gitLog
+        .split('\n')
+        .filter(line => line.trim())
+        .map(line => {
+          const [hash, date, author, message] = line.split('|');
+          return { hash, date, author, message, files: [] };
+        });
 
       // Analyze commits for changes
       for (const commit of commits) {
         await this.analyzeCommitForChanges(commit);
       }
     } catch (error) {
-      console.warn("⚠️ Could not analyze git commits (not in git repo?)");
+      console.warn('⚠️ Could not analyze git commits (not in git repo?)');
     }
   }
 
   private async analyzeCommitForChanges(commit: GitCommit): Promise<void> {
     // Detect change patterns from commit messages
     const message = commit.message.toLowerCase();
-    
+
     // Pattern detection for framework features
     if (message.includes('pattern recognition') || message.includes('learning engine')) {
       this.entries.push({
         id: `pattern-recognition-${commit.hash.substring(0, 8)}`,
         type: 'added',
         category: 'AI Intelligence',
-        description: '🧠 **Enhanced Pattern Recognition Engine**: AI-powered drift pattern analysis and learning from violations',
+        description:
+          '🧠 **Enhanced Pattern Recognition Engine**: AI-powered drift pattern analysis and learning from violations',
         impact: 'major',
         version: '1.1.0-beta',
         date: commit.date,
@@ -181,8 +187,8 @@ class IntelligentChangelogEngine {
           mode: 'strict',
           confidence: 0.9,
           category: 'intelligence',
-          tags: ['ai', 'learning', 'patterns', 'drift-detection']
-        }
+          tags: ['ai', 'learning', 'patterns', 'drift-detection'],
+        },
       });
     }
 
@@ -202,8 +208,8 @@ class IntelligentChangelogEngine {
           mode: 'strict',
           confidence: 0.9,
           category: 'intelligence',
-          tags: ['ai', 'prevention', 'enforcement', 'learning']
-        }
+          tags: ['ai', 'prevention', 'enforcement', 'learning'],
+        },
       });
     }
 
@@ -212,7 +218,8 @@ class IntelligentChangelogEngine {
         id: `cli-enhancement-${commit.hash.substring(0, 8)}`,
         type: 'changed',
         category: 'CLI Tooling',
-        description: '⚡ **Enhanced Constitutional Conductor**: Integrated AI learning insights and predictive capabilities',
+        description:
+          '⚡ **Enhanced Constitutional Conductor**: Integrated AI learning insights and predictive capabilities',
         impact: 'minor',
         version: '1.1.0-beta',
         date: commit.date,
@@ -223,31 +230,32 @@ class IntelligentChangelogEngine {
           mode: 'strict',
           confidence: 0.8,
           category: 'tooling',
-          tags: ['cli', 'enhancement', 'ai-integration']
-        }
+          tags: ['cli', 'enhancement', 'ai-integration'],
+        },
       });
     }
   }
 
   private async detectUndocumentedChanges(): Promise<void> {
-    console.log("  🔍 Detecting undocumented changes...");
+    console.log('  🔍 Detecting undocumented changes...');
 
     // Check for new files in framework/learning/
     const learningDir = path.join(this.frameworkRoot, 'framework/learning');
     if (fs.existsSync(learningDir)) {
       const files = fs.readdirSync(learningDir);
-      
+
       if (files.includes('pattern-recognition-engine.ts')) {
         // Check if this is documented in changelog
         const changelogPath = path.join(this.frameworkRoot, 'CHANGELOG.md');
         const changelog = fs.readFileSync(changelogPath, 'utf8');
-        
+
         if (!changelog.includes('Pattern Recognition Engine')) {
           this.entries.push({
             id: 'undocumented-pattern-recognition',
             type: 'added',
             category: 'AI Intelligence',
-            description: '🧠 **Pattern Recognition Engine**: Analyzes drift logs to learn from violations and predict future issues',
+            description:
+              '🧠 **Pattern Recognition Engine**: Analyzes drift logs to learn from violations and predict future issues',
             impact: 'major',
             version: '1.1.0-beta',
             date: new Date().toISOString(),
@@ -258,8 +266,8 @@ class IntelligentChangelogEngine {
               mode: 'strict',
               confidence: 1.0,
               category: 'intelligence',
-              tags: ['undocumented', 'ai', 'learning', 'patterns']
-            }
+              tags: ['undocumented', 'ai', 'learning', 'patterns'],
+            },
           });
         }
       }
@@ -267,13 +275,14 @@ class IntelligentChangelogEngine {
       if (files.includes('predictive-enforcement.ts')) {
         const changelogPath = path.join(this.frameworkRoot, 'CHANGELOG.md');
         const changelog = fs.readFileSync(changelogPath, 'utf8');
-        
+
         if (!changelog.includes('Predictive Enforcement')) {
           this.entries.push({
             id: 'undocumented-predictive-enforcement',
             type: 'added',
             category: 'AI Intelligence',
-            description: '🛡️ **Predictive Enforcement System**: Prevents violations before they occur using learned patterns',
+            description:
+              '🛡️ **Predictive Enforcement System**: Prevents violations before they occur using learned patterns',
             impact: 'major',
             version: '1.1.0-beta',
             date: new Date().toISOString(),
@@ -284,8 +293,8 @@ class IntelligentChangelogEngine {
               mode: 'strict',
               confidence: 1.0,
               category: 'intelligence',
-              tags: ['undocumented', 'ai', 'prevention', 'enforcement']
-            }
+              tags: ['undocumented', 'ai', 'prevention', 'enforcement'],
+            },
           });
         }
       }
@@ -296,13 +305,14 @@ class IntelligentChangelogEngine {
     if (fs.existsSync(phase2Doc)) {
       const changelogPath = path.join(this.frameworkRoot, 'CHANGELOG.md');
       const changelog = fs.readFileSync(changelogPath, 'utf8');
-      
+
       if (!changelog.includes('Phase 2') && !changelog.includes('Enhanced Pattern Recognition')) {
         this.entries.push({
           id: 'phase-2-completion',
           type: 'added',
           category: 'Framework Evolution',
-          description: '🎯 **Phase 2: Enhanced Pattern Recognition Complete**: Intelligent learning, pattern analysis, and predictive enforcement capabilities',
+          description:
+            '🎯 **Phase 2: Enhanced Pattern Recognition Complete**: Intelligent learning, pattern analysis, and predictive enforcement capabilities',
           impact: 'major',
           version: '1.1.0-beta',
           date: new Date().toISOString(),
@@ -313,37 +323,40 @@ class IntelligentChangelogEngine {
             mode: 'strict',
             confidence: 1.0,
             category: 'framework-evolution',
-            tags: ['phase-completion', 'ai', 'intelligence', 'learning']
-          }
+            tags: ['phase-completion', 'ai', 'intelligence', 'learning'],
+          },
         });
       }
     }
   }
 
   private async analyzeExistingChangelog(): Promise<void> {
-    console.log("  📖 Analyzing existing changelog...");
+    console.log('  📖 Analyzing existing changelog...');
 
     const changelogPath = path.join(this.frameworkRoot, 'CHANGELOG.md');
     if (!fs.existsSync(changelogPath)) return;
 
     const changelog = fs.readFileSync(changelogPath, 'utf8');
-    
+
     // Extract unreleased section for analysis
     const unreleasedMatch = changelog.match(/## \[Unreleased\]([\s\S]*?)(?=## \[|$)/);
     if (unreleasedMatch) {
       const unreleasedContent = unreleasedMatch[1];
-      
+
       // Count existing entries
       const addedCount = (unreleasedContent.match(/### Added[\s\S]*?(?=### |$)/)?.[0]?.match(/^- /gm) || []).length;
       const changedCount = (unreleasedContent.match(/### Changed[\s\S]*?(?=### |$)/)?.[0]?.match(/^- /gm) || []).length;
-      const enhancedCount = (unreleasedContent.match(/### Enhanced[\s\S]*?(?=### |$)/)?.[0]?.match(/^- /gm) || []).length;
-      
-      console.log(`    📊 Existing unreleased entries: Added=${addedCount}, Changed=${changedCount}, Enhanced=${enhancedCount}`);
+      const enhancedCount = (unreleasedContent.match(/### Enhanced[\s\S]*?(?=### |$)/)?.[0]?.match(/^- /gm) || [])
+        .length;
+
+      console.log(
+        `    📊 Existing unreleased entries: Added=${addedCount}, Changed=${changedCount}, Enhanced=${enhancedCount}`
+      );
     }
   }
 
   private async generateVersionPlan(): Promise<VersionPlan> {
-    console.log("  🎯 Generating version planning...");
+    console.log('  🎯 Generating version planning...');
 
     const breakingChanges = this.entries.filter(e => e.impact === 'breaking');
     const majorChanges = this.entries.filter(e => e.impact === 'major');
@@ -364,11 +377,13 @@ class IntelligentChangelogEngine {
     }
 
     const migrationRequired = breakingChanges.length > 0;
-    const migrationGuide = migrationRequired ? [
-      'Update framework annotations to include new AI learning metadata',
-      'Review and update constitutional compliance checks',
-      'Migrate to enhanced pattern recognition workflows'
-    ] : [];
+    const migrationGuide = migrationRequired
+      ? [
+          'Update framework annotations to include new AI learning metadata',
+          'Review and update constitutional compliance checks',
+          'Migrate to enhanced pattern recognition workflows',
+        ]
+      : [];
 
     return {
       targetVersion,
@@ -377,7 +392,7 @@ class IntelligentChangelogEngine {
       features: this.entries.filter(e => e.type === 'added'),
       breakingChanges,
       migrationRequired,
-      migrationGuide
+      migrationGuide,
     };
   }
 
@@ -385,10 +400,11 @@ class IntelligentChangelogEngine {
     const trends: ChangelogTrend[] = [];
 
     // AI Intelligence trend
-    const aiChanges = this.entries.filter(e => 
-      e.metadata.tags.includes('ai') || 
-      e.metadata.tags.includes('learning') ||
-      e.metadata.tags.includes('intelligence')
+    const aiChanges = this.entries.filter(
+      e =>
+        e.metadata.tags.includes('ai') ||
+        e.metadata.tags.includes('learning') ||
+        e.metadata.tags.includes('intelligence')
     );
 
     if (aiChanges.length > 0) {
@@ -396,14 +412,13 @@ class IntelligentChangelogEngine {
         pattern: 'ai-intelligence-evolution',
         frequency: aiChanges.length,
         description: 'Framework is evolving toward intelligent, self-learning capabilities',
-        prediction: 'Expect continued AI integration in governance, validation, and automation'
+        prediction: 'Expect continued AI integration in governance, validation, and automation',
       });
     }
 
     // Constitutional governance trend
-    const governanceChanges = this.entries.filter(e => 
-      e.category.includes('Constitutional') || 
-      e.metadata.tags.includes('governance')
+    const governanceChanges = this.entries.filter(
+      e => e.category.includes('Constitutional') || e.metadata.tags.includes('governance')
     );
 
     if (governanceChanges.length > 0) {
@@ -411,7 +426,7 @@ class IntelligentChangelogEngine {
         pattern: 'constitutional-governance',
         frequency: governanceChanges.length,
         description: 'Strong focus on constitutional governance and automated compliance',
-        prediction: 'Framework will continue strengthening democratic and automated governance'
+        prediction: 'Framework will continue strengthening democratic and automated governance',
       });
     }
 
@@ -468,7 +483,7 @@ class IntelligentChangelogEngine {
       'Constitutional Governance → AI Intelligence',
       'Manual Enforcement → Predictive Prevention',
       'Reactive Compliance → Proactive Learning',
-      'Static Rules → Dynamic Pattern Recognition'
+      'Static Rules → Dynamic Pattern Recognition',
     ];
   }
 
@@ -495,7 +510,7 @@ class IntelligentChangelogEngine {
   }
 
   async generateChangelogUpdate(analysis: ChangelogAnalysis): Promise<string> {
-    console.log("  📝 Generating changelog update...");
+    console.log('  📝 Generating changelog update...');
 
     let changelogUpdate = `## [${analysis.versionPlan.targetVersion}] - ${analysis.versionPlan.releaseDate}\n\n`;
 
@@ -507,7 +522,7 @@ class IntelligentChangelogEngine {
       fixed: analysis.entries.filter(e => e.type === 'fixed'),
       deprecated: analysis.entries.filter(e => e.type === 'deprecated'),
       removed: analysis.entries.filter(e => e.type === 'removed'),
-      security: analysis.entries.filter(e => e.type === 'security')
+      security: analysis.entries.filter(e => e.type === 'security'),
     };
 
     // Generate sections
@@ -536,14 +551,14 @@ class IntelligentChangelogEngine {
 
   async saveChangelogAnalysis(analysis: ChangelogAnalysis): Promise<void> {
     const analysisPath = path.join(this.frameworkRoot, 'framework/learning/changelog-analysis.json');
-    
+
     const saved = {
       metadata: {
         generated: new Date().toISOString(),
-        version: "1.1.0-beta",
-        engine: "intelligent-changelog"
+        version: '1.1.0-beta',
+        engine: 'intelligent-changelog',
       },
-      analysis
+      analysis,
     };
 
     fs.writeFileSync(analysisPath, JSON.stringify(saved, null, 2));
@@ -551,35 +566,35 @@ class IntelligentChangelogEngine {
   }
 
   displayAnalysis(analysis: ChangelogAnalysis): void {
-    console.log("\n📝 Intelligent Changelog Analysis Report");
-    console.log("=======================================");
+    console.log('\n📝 Intelligent Changelog Analysis Report');
+    console.log('=======================================');
     console.log(`Total Changes: ${analysis.summary.totalChanges}`);
     console.log(`Next Version: ${analysis.versionPlan.targetVersion} (${analysis.versionPlan.versionType})`);
     console.log(`Release Date: ${analysis.versionPlan.releaseDate}`);
-    console.log("");
+    console.log('');
 
-    console.log("📊 Changes by Type:");
+    console.log('📊 Changes by Type:');
     Object.entries(analysis.summary.byType).forEach(([type, count]) => {
       console.log(`  ${type}: ${count}`);
     });
 
-    console.log("\n🎯 Changes by Impact:");
+    console.log('\n🎯 Changes by Impact:');
     Object.entries(analysis.summary.byImpact).forEach(([impact, count]) => {
       console.log(`  ${impact}: ${count}`);
     });
 
-    console.log("\n📈 Framework Evolution Trends:");
+    console.log('\n📈 Framework Evolution Trends:');
     analysis.summary.frameworkEvolution.forEach(trend => {
       console.log(`  ${trend}`);
     });
 
-    console.log("\n💡 Recommendations:");
+    console.log('\n💡 Recommendations:');
     analysis.recommendations.forEach(rec => {
       console.log(`  ${rec}`);
     });
 
     if (analysis.trends.length > 0) {
-      console.log("\n📊 Identified Trends:");
+      console.log('\n📊 Identified Trends:');
       analysis.trends.forEach(trend => {
         console.log(`  ${trend.pattern}: ${trend.description}`);
         console.log(`    Prediction: ${trend.prediction}`);
@@ -592,17 +607,17 @@ class IntelligentChangelogEngine {
 async function main() {
   const engine = new IntelligentChangelogEngine();
   const analysis = await engine.generateIntelligentChangelog();
-  
+
   engine.displayAnalysis(analysis);
   await engine.saveChangelogAnalysis(analysis);
-  
+
   // Generate changelog update
   const changelogUpdate = await engine.generateChangelogUpdate(analysis);
-  console.log("\n📝 Generated Changelog Update:");
-  console.log("================================");
+  console.log('\n📝 Generated Changelog Update:');
+  console.log('================================');
   console.log(changelogUpdate);
-  
-  console.log("\n✨ Intelligent changelog analysis complete!");
+
+  console.log('\n✨ Intelligent changelog analysis complete!');
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {

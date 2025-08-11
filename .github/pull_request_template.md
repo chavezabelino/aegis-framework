@@ -1,33 +1,37 @@
 # 🛡️ Aegis Constitutional Governance PR
 
-## 📋 **Evidence Manifest**
+## 📋 __Evidence Manifest**
 
-### **Blueprint Compliance**
-- [ ] **Blueprint**: `blueprints/<id>/blueprint.yaml` exists and is valid
-- [ ] **Evidence**: `blueprints/<id>/evidence.json` contains required commands and outputs
-- [ ] **Validation**: All evidence commands execute successfully
+### __Blueprint Compliance**
 
-### **Governance Checks**
-- [ ] **Provenance**: All AI-generated files have valid headers with cryptographic hashes
-- [ ] **Attestations**: HMAC signatures generated and verified for all files
-- [ ] **Paths**: All files in allowed directories, no unauthorized locations
-- [ ] **Versions**: All version references synchronized across project
-- [ ] **Evidence**: Evidence manifest validates successfully
+- [ ] __Blueprint__: `blueprints/<id>/Blueprint.YAML` exists and is valid
+- [ ] __Evidence__: `blueprints/<id>/evidence.JSON` contains required commands and outputs
+- [ ] __Validation__: All evidence commands execute successfully
 
-## 🔍 **Command Receipts**
+### __Governance Checks**
 
-### **Planning Optimization**
+- [ ] __Provenance__: All AI-generated files have valid headers with cryptographic hashes
+- [ ] __Attestations__: HMAC signatures generated and verified for all files
+- [ ] __Paths__: All files in allowed directories, no unauthorized locations
+- [ ] __Versions__: All version references synchronized across project
+- [ ] __Evidence__: Evidence manifest validates successfully
+
+## 🔍 __Command Receipts**
+
+### __Planning Optimization**
+
 ```bash
 # Auto-detection
-npm run aegis:planning auto "Add user authentication" -- --output .aegis/outputs/auth-plan-strict.json
-# Output: ✅ Plan generated: .aegis/outputs/auth-plan-strict.json
+npm run Aegis:planning auto "Add user authentication" -- --output .Aegis/outputs/auth-plan-strict.JSON
+# Output: ✅ Plan generated: .Aegis/outputs/auth-plan-strict.JSON
 
 # Validation
-npm run aegis:planning validate MVP-Fix .aegis/outputs/auth-plan-strict.json 2
+npm run Aegis:planning validate MVP-Fix .Aegis/outputs/auth-plan-strict.JSON 2
 # Output: ✅ Plan validation passed
-```
+```text
 
-### **Governance Enforcement**
+### __Governance Enforcement**
+
 ```bash
 # Provenance check
 npm run check:provenance -- --ci
@@ -42,75 +46,85 @@ npm run check:version -- --ci
 # Output: ✅ All version references are synchronized
 
 # Evidence check
-node tools/check-evidence.ts blueprints/**/evidence.json --ci
+node tools/check-evidence.ts blueprints/__/evidence.JSON --ci
 # Output: ✅ All evidence manifests are valid
-```
+```text
 
-### **Attestation**
+### __Attestation**
+
 ```bash
 # Generate attestations
-AEGIS_HMAC_KEY=${{ secrets.AEGIS_HMAC_KEY }} node tools/attest.ts attest tools cli
+AEGIS_HMAC_KEY=${{ secrets.AEGIS_HMAC_KEY }} node tools/attest.ts attest tools CLI
 # Output: ✅ Attested 48 files
 
 # Verify attestations
-AEGIS_HMAC_KEY=${{ secrets.AEGIS_HMAC_KEY }} node tools/attest.ts verify tools cli
+AEGIS_HMAC_KEY=${{ secrets.AEGIS_HMAC_KEY }} node tools/attest.ts verify tools CLI
 # Output: ✅ All attestations verified successfully
-```
+```text
 
-## 📊 **Telemetry Artifacts**
+## 📊 __Telemetry Artifacts**
 
-### **Planning Events**
+### __Planning Events**
+
 ```json
 {"timestamp":"2025-01-15T10:00:00Z","event":"planning.detected","planClass":"MVP-Fix","confidence":0.95,"prompt":"Add user authentication"}
 {"timestamp":"2025-01-15T10:00:01Z","event":"planning.validated","planClass":"MVP-Fix","validationResult":"passed","tokenCount":1089}
 {"timestamp":"2025-01-15T10:00:02Z","event":"planning.selected","planClass":"MVP-Fix","reasoning":["minimal scope","contract-driven","observable behavior"]}
-```
+```text
 
-### **Generated Outputs**
-- `.aegis/outputs/auth-plan-strict.json` - Planning optimization output
-- `.aegis/telemetry/planning-events.ndjson` - Telemetry events
-- `.aegis/attestations/<commit>/tools/*.sig` - Cryptographic attestations
+### __Generated Outputs**
 
-## 🎯 **VR Summary**
+- `.Aegis/outputs/auth-plan-strict.JSON` - Planning optimization output
+- `.Aegis/Telemetry/planning-events.NDJSON` - Telemetry events
+- `.Aegis/attestations/<commit>/tools/*.sig` - Cryptographic attestations
 
-### **Visual Regression Tests**
-- [ ] **Baseline**: `.aegis/vr-baselines/` contains reference screenshots
-- [ ] **Current**: `.aegis/vr-report/` contains current run results
-- [ ] **Threshold**: Diff percentage < 0.01 (1%)
-- [ ] **Routes**: All public routes tested for visual consistency
+## 🎯 __VR Summary**
 
-### **VR Results**
+### __Visual Regression Tests**
+
+- [ ] __Baseline__: `.Aegis/VR-baselines/` contains reference screenshots
+- [ ] __Current__: `.Aegis/VR-report/` contains current run results
+- [ ] __Threshold__: Diff percentage < 0.01 (1%)
+- [ ] __Routes__: All public routes tested for visual consistency
+
+### __VR Results**
+
 ```bash
-npx playwright test --config=tests/vr/playwright.config.ts
+npx Playwright test --config=tests/VR/Playwright.config.ts
 # Output: ✅ All VR tests passed
-```
+```text
 
-## 🚨 **Governance Violations**
+## 🚨 __Governance Violations**
 
-### **Fixed Violations**
-- [ ] **Path violations**: Moved unauthorized files to proper locations
-- [ ] **Provenance violations**: Added missing headers and generated hashes
-- [ ] **Version violations**: Synchronized all version references
-- [ ] **Evidence violations**: Created missing telemetry and output files
+### __Fixed Violations**
 
-### **Current Status**
-- [ ] **CI Status**: All governance jobs pass
-- [ ] **Required Statuses**: All required status checks enabled
-- [ ] **Artifacts**: All required artifacts uploaded
+- [ ] __Path violations__: Moved unauthorized files to proper locations
+- [ ] __Provenance violations__: Added missing headers and generated hashes
+- [ ] __Version violations__: Synchronized all version references
+- [ ] __Evidence violations__: Created missing Telemetry and output files
 
-## 📝 **Summary**
+### __Current Status**
 
-### **What Changed**
-- [ ] **Files modified**: List of files with changes
-- [ ] **Governance impact**: How changes affect constitutional compliance
-- [ ] **Evidence provided**: Links to generated artifacts and receipts
+- [ ] __CI Status__: All governance jobs pass
+- [ ] __Required Statuses__: All required status checks enabled
+- [ ] __Artifacts__: All required artifacts uploaded
 
-### **Compliance Verification**
-- [ ] **Blueprint primacy**: All changes trace to valid blueprints
-- [ ] **Provenance**: All AI-generated content has verifiable headers
-- [ ] **Attestation**: All files have cryptographic signatures
-- [ ] **Evidence**: All claims backed by machine-checkable proofs
+## 📝 __Summary**
+
+### __What Changed**
+
+- [ ] __Files modified__: List of files with changes
+- [ ] __Governance impact__: How changes affect Constitutional compliance
+- [ ] __Evidence provided__: Links to generated artifacts and receipts
+
+### __Compliance Verification**
+
+- [ ] __Blueprint primacy__: All changes trace to valid blueprints
+- [ ] __Provenance__: All AI-generated content has verifiable headers
+- [ ] __Attestation__: All files have cryptographic signatures
+- [ ] __Evidence__: All claims backed by machine-checkable proofs
 
 ---
 
-**This PR demonstrates constitutional governance enforcement with concrete evidence, cryptographic attestations, and machine-verifiable proofs.**
+**This PR demonstrates Constitutional governance enforcement with concrete evidence, cryptographic attestations, and
+machine-verifiable proofs.**

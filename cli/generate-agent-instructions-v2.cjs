@@ -43,27 +43,44 @@ function getFrameworkCapabilities() {
     '- **Multi-Agent**: v1.1.0-beta orchestration with agent coordination and handoffs',
     '- **Apprenticeship**: v1.3.0 scaffolding system with mentor guidance',
     '- **Observability**: MCP metadata emission, drift logging, run logs',
-    '- **CLI**: Enhanced tooling for blueprint management, drift control, and apprenticeship'
+    '- **CLI**: Enhanced tooling for blueprint management, drift control, and apprenticeship',
   ].join('\n');
 }
 
 function renderSections(agent) {
   return {
     constitutional: ejs.render(loadSection('constitutional.template.md'), {}),
-    frameworkContext: ejs.render(loadSection('framework-context.template.md'), { frameworkVersion: getFrameworkVersion(), frameworkCapabilities: getFrameworkCapabilities() }),
+    frameworkContext: ejs.render(loadSection('framework-context.template.md'), {
+      frameworkVersion: getFrameworkVersion(),
+      frameworkCapabilities: getFrameworkCapabilities(),
+    }),
     agentProfile: ejs.render(loadSection('agent-profile.template.md'), { agent }),
-    multiAgent: ejs.render(loadSection('multi-agent.template.md'), { multiAgentContent: 'See framework/versions/framework-core-v1.1.0-beta-spec.md for orchestration details.' }),
-    blueprintCompliance: ejs.render(loadSection('blueprint-compliance.template.md'), { blueprintComplianceContent: 'See framework-core-v1.0.0-alpha.md for blueprint requirements.' }),
-    mcpMetadata: ejs.render(loadSection('mcp-metadata.template.md'), { mcpMetadataContent: 'See framework/observability/ for MCP event schemas.' }),
-    driftDetection: ejs.render(loadSection('drift-detection.template.md'), { driftDetectionContent: 'See drift log and CLI for drift management.' }),
-    cliIntegration: ejs.render(loadSection('cli-integration.template.md'), { cliIntegrationContent: 'See CLI tools for blueprint, drift, and apprenticeship workflows.' }),
-    validation: ejs.render(loadSection('validation.template.md'), { validationContent: 'See tests/snapshot-tests/ and validation tools.' }),
-    knowledgeBase: ejs.render(loadSection('knowledge-base.template.md'), { knowledgeBaseContent: 'See docs/ for architecture, workflow, and reference.' }),
+    multiAgent: ejs.render(loadSection('multi-agent.template.md'), {
+      multiAgentContent: 'See framework/versions/framework-core-v1.1.0-beta-spec.md for orchestration details.',
+    }),
+    blueprintCompliance: ejs.render(loadSection('blueprint-compliance.template.md'), {
+      blueprintComplianceContent: 'See framework-core-v1.0.0-alpha.md for blueprint requirements.',
+    }),
+    mcpMetadata: ejs.render(loadSection('mcp-metadata.template.md'), {
+      mcpMetadataContent: 'See framework/observability/ for MCP event schemas.',
+    }),
+    driftDetection: ejs.render(loadSection('drift-detection.template.md'), {
+      driftDetectionContent: 'See drift log and CLI for drift management.',
+    }),
+    cliIntegration: ejs.render(loadSection('cli-integration.template.md'), {
+      cliIntegrationContent: 'See CLI tools for blueprint, drift, and apprenticeship workflows.',
+    }),
+    validation: ejs.render(loadSection('validation.template.md'), {
+      validationContent: 'See tests/snapshot-tests/ and validation tools.',
+    }),
+    knowledgeBase: ejs.render(loadSection('knowledge-base.template.md'), {
+      knowledgeBaseContent: 'See docs/ for architecture, workflow, and reference.',
+    }),
     aiAgentMode: ejs.render(loadSection('ai-agent-mode.template.md'), {}),
     directoryStructure: ejs.render(loadSection('directory-structure.template.md'), {}),
     rcaDebugLoop: ejs.render(loadSection('rca-debug-loop.template.md'), {}),
     codePatterns: ejs.render(loadSection('code-patterns.template.md'), {}),
-    decisionMatrix: ejs.render(loadSection('decision-matrix.template.md'), {})
+    decisionMatrix: ejs.render(loadSection('decision-matrix.template.md'), {}),
   };
 }
 

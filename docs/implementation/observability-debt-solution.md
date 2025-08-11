@@ -1,4 +1,6 @@
 <!--
+# Observability Debt Solution: Complete Implementation
+
 @aegisFrameworkVersion: 2.4.0
 @intent: Document the complete observability debt solution for framework capability understanding
 @context: Comprehensive documentation of the live capability mapping and orientation system
@@ -7,54 +9,60 @@
 
 # Observability Debt Solution: Complete Implementation
 
-**Date**: August 8, 2025  
-**Version**: v2.4.0  
-**Type**: Comprehensive Framework Enhancement  
-**Problem Solved**: "I can't even start to explain what our framework does now and how it does what it claims"
+**Date__: August 8, 2025  
+**Version__: v2.4.0  
+**Type__: Comprehensive Framework Enhancement  
+**Problem Solved__: "I can't even start to explain what our framework does now and how it does what it claims"
 
 ---
 
 ## The Problem: Observability Debt
 
-The user correctly identified that the Aegis Framework had developed **observability debt**:
+The user correctly identified that the Aegis Framework had developed __observability debt__:
 
-> "we've been moving so fast and adding so many features that it's challenging for me to even understand what our framework does now and how it does what it claims. when someone asks me how to use it, i can't even start to explain."
+> "we've been moving so fast and adding so many features that it's challenging for me to even understand what our
+> framework does now and how it does what it claims. when someone asks me how to use it, i can't even start to explain."
 
-This is not an orientation gap—this is **observability debt** where framework capabilities exist in:
+This is not an orientation gap—this is __observability debt__ where framework capabilities exist in:
+
 - Scattered mental notes
 - Partial documentation
 - Running code itself
 - Implementation details buried in files
 
-**Result**: "What it does" and "how it does it" are only discoverable by spelunking the repo.
+**Result__: "What it does" and "how it does it" are only discoverable by spelunking the repo.
 
 ---
 
 ## The Solution: Live Observability System
 
-Following the principle of **binding truth to the system**, we implemented a comprehensive observability solution that automatically maintains an accurate, real-time view of framework capabilities.
+Following the principle of __binding truth to the system__, we implemented a comprehensive observability solution that
+automatically maintains an accurate, real-time view of framework capabilities.
 
-### 🧠 **Core Philosophy**
+### 🧠 __Core Philosophy**
 
-1. **Truth Lives in the System**: All feature descriptions derive from live code analysis
-2. **Auto-Generated Intelligence**: Re-rendered on every build, never drifts
-3. **Execution Traceability**: Real-time feature usage tracking with blueprint links
-4. **Single Source of Truth**: Blueprint registry centralizes all feature definitions
+1. __Truth Lives in the System__: All feature descriptions derive from live code analysis
+2. __Auto-Generated Intelligence__: Re-rendered on every build, never drifts
+3. __Execution Traceability__: Real-time feature usage tracking with Blueprint links
+4. __Single Source of Truth__: Blueprint registry centralizes all feature definitions
 
 ---
 
 ## Implementation Components
 
-### 1. **Live Capability Mapper** 📊
-**File**: `tools/framework-capability-mapper.ts`
+### 1. __Live Capability Mapper__ 📊
 
-**What it Does**:
+**File__: `tools/framework-capability-mapper.ts`
+
+**What it Does__:
+
 - Automatically discovers all framework features from codebase
 - Analyzes TypeScript files for metadata, exports, and documentation
 - Categorizes capabilities (core, tool, governance, integration)
 - Generates real-time capability inventory
 
-**Key Features**:
+**Key Features__:
+
 ```typescript
 // Auto-discovery from code
 await mapper.discoverCapabilities();
@@ -62,54 +70,59 @@ await mapper.discoverCapabilities();
 // Real-time categorization
 {
   tool: 37 capabilities,
-  core: 20 capabilities, 
+  core: 20 capabilities,
   governance: 4 capabilities,
   integration: 2 capabilities
 }
 
 // Health monitoring
 healthStatus: 'healthy' | 'warnings' | 'issues'
-```
+```text
 
-**Usage**:
+**Usage__:
+
 ```bash
 # Discover all capabilities
 node tools/framework-capability-mapper.ts
 
 # Generates:
-# - .framework/capability-map.json (machine-readable)
+# - .framework/capability-map.JSON (machine-readable)
 # - .framework/capability-map.md (human-readable)
-```
+```text
 
-### 2. **Orientation CLI** 🧭
-**File**: `cli/aegis-orient.ts`
+### 2. __Orientation CLI__ 🧭
 
-**What it Does**:
-- Instant framework overview command (`aegis-orient`)
-- Category-specific exploration (`aegis-orient category governance`)
-- Search capabilities (`aegis-orient search semantic`)
-- Health status monitoring (`aegis-orient health`)
+**File__: `CLI/Aegis-orient.ts`
 
-**Key Commands**:
+**What it Does__:
+
+- Instant framework overview command (`Aegis-orient`)
+- Category-specific exploration (`Aegis-orient category governance`)
+- Search capabilities (`Aegis-orient search semantic`)
+- Health status monitoring (`Aegis-orient health`)
+
+**Key Commands__:
+
 ```bash
 # Quick overview (default)
-aegis-orient
+Aegis-orient
 
 # Detailed breakdown
-aegis-orient detailed
+Aegis-orient detailed
 
 # Category exploration
-aegis-orient category governance
+Aegis-orient category governance
 
 # Search capabilities
-aegis-orient search validation
+Aegis-orient search validation
 
 # Health check
-aegis-orient health
-```
+Aegis-orient health
+```text
 
-**Sample Output**:
-```
+**Sample Output__:
+
+```text
 🧭 Aegis Framework Orientation
 📊 Framework Summary
 Version: 2.4.0
@@ -129,108 +142,120 @@ Aegis is a framework for AI-assisted engineering with:
 🏛️ core: 20 capabilities
 ⚖️ governance: 4 capabilities
 🔗 integration: 2 capabilities
-```
+```text
 
-### 3. **Execution Trace Hooks** 🔍
-**File**: `framework/observability/execution-trace-hooks.ts`
+### 3. __Execution Trace Hooks__ 🔍
 
-**What it Does**:
+**File__: `framework/observability/execution-trace-hooks.ts`
+
+**What it Does__:
+
 - Lightweight hooks that log feature invocations
-- Links executions to blueprints and documentation
+- Links executions to Blueprints and documentation
 - Real-time usage analytics with performance metrics
 - Session tracking and execution history
 
-**Integration Example**:
+**Integration Example__:
+
 ```typescript
-import { trace } from '../framework/observability/execution-trace-hooks.ts';
+import {trace} from "../framework/observability/execution-trace-hooks.ts"
 
 // In any framework method
 const traceCtx = trace(
-  'constitutional-enforcement', 
-  'intent-enforcement', 
-  'enforceIntent', 
-  { command, explanation }, 
-  undefined, 
-  'docs/implementation/intent-enforcement.md'
-);
+  "Constitutional-enforcement",
+  "intent-enforcement",
+  "enforceIntent",
+  {command, explanation},
+  undefined,
+  "docs/implementation/intent-enforcement.md"
+)
 
-// Execution automatically traced with blueprint links
-```
+// Execution automatically traced with Blueprint links
+```text
 
-**Analytics**:
-```
+**Analytics__:
+
+```text
 📊 Execution Statistics:
    Total Executions: 14
    Session Traces: 1
    Most Used Features:
-     • blueprint-registry: 14 executions
-     • constitutional-enforcement: 8 executions
-```
+     • Blueprint-registry: 14 executions
+     • Constitutional-enforcement: 8 executions
+```text
 
-### 4. **Blueprint Registry** 📋
-**File**: `framework/registry/blueprint-registry.ts`
+### 4. __Blueprint Registry__ 📋
 
-**What it Does**:
+**File__: `framework/registry/Blueprint-registry.ts`
+
+**What it Does__:
+
 - Single source of truth for all framework features
 - Auto-discovery from YAML files and code annotations
 - Centralized feature descriptions to prevent documentation drift
 - Blueprint validation and consistency checking
 
-**Auto-Discovery**:
+**Auto-Discovery__:
+
 ```typescript
-// From blueprint.yaml files
-await registry.discover();
+// From Blueprint.YAML files
+await registry.discover()
 
 // From code annotations
 // @aegisBlueprint: semantic-interrupt-system
 // Automatically registered with extracted metadata
-```
+```text
 
-**Blueprint Management**:
+**Blueprint Management__:
+
 ```bash
 # Discover blueprints
-node framework/registry/blueprint-registry.ts discover
+node framework/registry/Blueprint-registry.ts discover
 
 # List all blueprints
-node framework/registry/blueprint-registry.ts list
+node framework/registry/Blueprint-registry.ts list
 
-# Export to markdown
-node framework/registry/blueprint-registry.ts export
+# Export to Markdown
+node framework/registry/Blueprint-registry.ts export
 
 # Validate consistency
-node framework/registry/blueprint-registry.ts validate
-```
+node framework/registry/Blueprint-registry.ts validate
+```text
 
-### 5. **Live Dashboard** 🏛️
-**File**: `cli/aegis-dashboard.ts`
+### 5. __Live Dashboard__ 🏛️
 
-**What it Does**:
+**File__: `CLI/Aegis-dashboard.ts`
+
+**What it Does__:
+
 - Comprehensive real-time framework dashboard
 - Live monitoring mode with auto-refresh
 - Health check aggregation across all systems
 - Comprehensive report generation
 
-**Dashboard Features**:
+**Dashboard Features__:
+
 ```bash
 # Full dashboard
-aegis-dashboard
+Aegis-dashboard
 
 # Quick status
-aegis-dashboard status
+Aegis-dashboard status
 
 # Live monitoring (auto-refresh)
-aegis-dashboard monitor
+Aegis-dashboard monitor
 
 # Health check
-aegis-dashboard health
+Aegis-dashboard health
 
 # Generate comprehensive report
-aegis-dashboard report
-```
+Aegis-dashboard report
+```text
 
-**Live Monitoring Output**:
-```
-🏛️ AEGIS FRAMEWORK DASHBOARD
+**Live Monitoring Output__:
+
+```text
+🏛️ Aegis Framework DASHBOARD
 📊 FRAMEWORK OVERVIEW
 Version: 2.4.0
 Capabilities: 63
@@ -244,164 +269,181 @@ Capability Distribution:
 
 🔍 EXECUTION TRACING
 Most Used Features:
-  • blueprint-registry: 14 executions
-  • constitutional-enforcement: 8 executions
+  • Blueprint-registry: 14 executions
+  • Constitutional-enforcement: 8 executions
 
 🏥 HEALTH STATUS
 Overall: HEALTHY ✅
 Documentation: 100.0%
 Test Coverage: 5.8%
-```
+```text
 
 ---
 
 ## Key Benefits Achieved
 
-### 1. **Eliminates Orientation Gap**
-- **Before**: "I can't even start to explain what our framework does"
-- **After**: Instant framework overview with `aegis-orient` command
+### 1. __Eliminates Orientation Gap**
 
-### 2. **Prevents Documentation Drift**
-- **Before**: Features and docs could diverge silently
-- **After**: Truth bound to live system state, auto-generated on every scan
+- __Before__: "I can't even start to explain what our framework does"
+- __After__: Instant framework overview with `Aegis-orient` command
 
-### 3. **Real-Time Feature Discovery**
-- **Before**: Manual inventory of capabilities required
-- **After**: Automatic discovery from codebase with live updates
+### 2. __Prevents Documentation Drift**
 
-### 4. **Execution Transparency**
-- **Before**: No visibility into feature usage patterns
-- **After**: Real-time tracing with blueprint links and performance metrics
+- __Before__: Features and docs could diverge silently
+- __After__: Truth bound to live system state, auto-generated on every scan
 
-### 5. **Comprehensive Health Monitoring**
-- **Before**: Health status scattered across multiple tools
-- **After**: Unified health dashboard with actionable insights
+### 3. __Real-Time Feature Discovery**
+
+- __Before__: Manual inventory of capabilities required
+- __After__: Automatic discovery from codebase with live updates
+
+### 4. __Execution Transparency**
+
+- __Before__: No visibility into feature usage patterns
+- __After__: Real-time tracing with Blueprint links and performance metrics
+
+### 5. __Comprehensive Health Monitoring**
+
+- __Before__: Health status scattered across multiple tools
+- __After__: Unified health dashboard with actionable insights
 
 ---
 
 ## Usage Patterns
 
-### **For Framework Users**
+### __For Framework Users**
 
 ```bash
 # "What does this framework do?"
-aegis-orient
+Aegis-orient
 
 # "How do I use X feature?"
-aegis-orient search X
+Aegis-orient search X
 
 # "What's available in governance?"
-aegis-orient category governance
+Aegis-orient category governance
 
 # "Is everything working?"
-aegis-dashboard health
-```
+Aegis-dashboard health
+```text
 
-### **For Framework Developers**
+### __For Framework Developers**
 
 ```bash
 # Full capability scan
 node tools/framework-capability-mapper.ts
 
 # Blueprint management
-node framework/registry/blueprint-registry.ts discover
-node framework/registry/blueprint-registry.ts validate
+node framework/registry/Blueprint-registry.ts discover
+node framework/registry/Blueprint-registry.ts validate
 
 # Live monitoring during development
-aegis-dashboard monitor
+Aegis-dashboard monitor
 
 # Generate comprehensive report
-aegis-dashboard report
-```
+Aegis-dashboard report
+```text
 
-### **For Framework Maintainers**
+### __For Framework Maintainers**
 
 ```bash
 # Check execution patterns
 node framework/observability/execution-trace-hooks.ts stats
 
 # Blueprint consistency
-node framework/registry/blueprint-registry.ts validate
+node framework/registry/Blueprint-registry.ts validate
 
 # Documentation coverage
-aegis-dashboard health
-```
+Aegis-dashboard health
+```text
 
 ---
 
 ## Integration Points
 
-### **Automatic Integration**
-1. **Capability Discovery**: Runs automatically on framework initialization
-2. **Execution Tracing**: Integrated into key framework methods
-3. **Blueprint Discovery**: Auto-scans codebase for annotations
-4. **Health Monitoring**: Continuous validation of framework state
+### __Automatic Integration**
 
-### **Manual Integration**
-1. **Add Tracing**: Import and use `trace()` function in new features
-2. **Blueprint Annotations**: Add `@aegisBlueprint` comments to code
-3. **Documentation Links**: Reference docs in trace calls
-4. **Health Checks**: Add validation rules to blueprint registry
+1. __Capability Discovery__: Runs automatically on framework initialization
+2. __Execution Tracing__: Integrated into key framework methods
+3. __Blueprint Discovery__: Auto-scans codebase for annotations
+4. __Health Monitoring__: Continuous validation of framework state
+
+### __Manual Integration**
+
+1. __Add Tracing__: Import and use `trace()` function in new features
+2. __Blueprint Annotations__: Add `@aegisBlueprint` comments to code
+3. __Documentation Links__: Reference docs in trace calls
+4. __Health Checks__: Add validation rules to Blueprint registry
 
 ---
 
 ## Performance Impact
 
-### **Discovery Performance**
-- **Capability Mapping**: <2 seconds for full framework scan
-- **Blueprint Discovery**: <1 second for code annotation scan
-- **Execution Tracing**: <1ms overhead per traced operation
-- **Dashboard Generation**: <3 seconds for complete dashboard
+### __Discovery Performance**
 
-### **Storage Impact**
-- **Capability Map**: ~100KB JSON file
-- **Execution Traces**: ~10KB per session (auto-rotated)
-- **Blueprint Registry**: ~50KB JSON file
-- **Total Framework Overhead**: <500KB storage, <5MB memory
+- __Capability Mapping__: <2 seconds for full framework scan
+- __Blueprint Discovery__: <1 second for code annotation scan
+- __Execution Tracing__: <1ms overhead per traced operation
+- __Dashboard Generation__: <3 seconds for complete dashboard
+
+### __Storage Impact**
+
+- __Capability Map__: ~100KB JSON file
+- __Execution Traces__: ~10KB per session (auto-rotated)
+- __Blueprint Registry__: ~50KB JSON file
+- __Total Framework Overhead__: <500KB storage, <5MB memory
 
 ---
 
 ## Future Enhancements
 
-### **Planned Improvements**
-1. **Interactive Dashboard**: Web-based live dashboard with charts
-2. **Usage Analytics**: Detailed feature adoption and usage patterns
-3. **Automated Recommendations**: AI-driven framework optimization suggestions
-4. **Integration Monitoring**: Track external integrations and dependencies
-5. **Performance Profiling**: Detailed performance analysis of framework operations
+### __Planned Improvements**
 
-### **Advanced Features**
-1. **Capability Dependencies**: Visual dependency graph of framework features
-2. **Blueprint Versioning**: Track blueprint evolution over time
-3. **Usage Heatmaps**: Visual representation of feature usage patterns
-4. **Automated Testing**: Generate tests based on capability inventory
-5. **Documentation Generation**: Auto-generate docs from capability metadata
+1. __Interactive Dashboard__: Web-based live dashboard with charts
+2. __Usage Analytics__: Detailed feature adoption and usage patterns
+3. __Automated Recommendations__: AI-driven framework optimization suggestions
+4. __Integration Monitoring__: Track external integrations and dependencies
+5. __Performance Profiling__: Detailed performance analysis of framework operations
+
+### __Advanced Features**
+
+1. __Capability Dependencies__: Visual dependency graph of framework features
+2. __Blueprint Versioning__: Track Blueprint evolution over time
+3. __Usage Heatmaps__: Visual representation of feature usage patterns
+4. __Automated Testing__: Generate tests based on capability inventory
+5. __Documentation Generation__: Auto-generate docs from capability metadata
 
 ---
 
 ## Solution Summary
 
-### **Problem Solved**
-✅ **Observability Debt Eliminated**: Complete real-time visibility into framework capabilities  
-✅ **Orientation Gap Closed**: Instant framework understanding with comprehensive tooling  
-✅ **Documentation Drift Prevented**: Truth bound to live system state  
-✅ **Usage Transparency**: Real-time feature usage tracking and analytics  
-✅ **Health Monitoring**: Comprehensive framework health with actionable insights  
+### __Problem Solved**
 
-### **Core Innovation**
-The solution transforms the framework from a black box requiring archaeological excavation into a **self-documenting, self-monitoring system** where:
+✅ __Observability Debt Eliminated__: Complete real-time visibility into framework capabilities  
+✅ __Orientation Gap Closed__: Instant framework understanding with comprehensive tooling  
+✅ __Documentation Drift Prevented__: Truth bound to live system state  
+✅ __Usage Transparency__: Real-time feature usage tracking and analytics  
+✅ __Health Monitoring__: Comprehensive framework health with actionable insights
 
-- **Capabilities are auto-discovered** from code
-- **Usage is traced in real-time** with blueprint links
-- **Health is monitored continuously** across all systems
-- **Truth is bound to the system** preventing drift
-- **Orientation is instant** with comprehensive tooling
+### __Core Innovation**
 
-### **Result**
-**Framework explainability regained at the speed of development**—no more observability debt, no more orientation gaps, no more "I can't explain what we built."
+The solution transforms the framework from a black box requiring archaeological excavation into a __self-documenting,
+self-monitoring system__ where:
+
+- __Capabilities are auto-discovered__ from code
+- __Usage is traced in real-time__ with Blueprint links
+- __Health is monitored continuously__ across all systems
+- __Truth is bound to the system__ preventing drift
+- __Orientation is instant__ with comprehensive tooling
+
+### __Result**
+
+**Framework explainability regained at the speed of development__—no more observability debt, no more orientation gaps,
+no more "I can't explain what we built."
 
 ---
 
-**Status**: **OBSERVABILITY DEBT SOLUTION: COMPLETE** 🧠📊🔍
+**Status__: __OBSERVABILITY DEBT SOLUTION: COMPLETE__ 🧠📊🔍
 
-*The Aegis Framework now provides complete real-time visibility into its capabilities, usage patterns, and health status through a comprehensive observability system that binds truth to live system state.*
+_The Aegis Framework now provides complete real-time visibility into its capabilities, usage patterns, and health status
+through a comprehensive observability system that binds truth to live system state._

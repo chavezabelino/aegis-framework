@@ -1,0 +1,16 @@
+{
+  "report": true,
+  "low": true,
+  "moderate": true,
+  "high": true,
+  "critical": true,
+  "allowlist": [
+    {
+      "advisory": "GHSA-67mh-4wv8-2f99",
+      "reason": "Transitive via vitest; no runtime exposure",
+      "expires": "2025-10-15"
+    }
+  ],
+  "skip-dev": false,
+  "pass-enoaudit": true
+}

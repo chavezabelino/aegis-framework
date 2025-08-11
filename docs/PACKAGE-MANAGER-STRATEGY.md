@@ -1,188 +1,210 @@
 # 📦 Aegis Framework Package Manager Strategy
 
-## 🎯 **The Clear Strategy**
+## 🎯 __The Clear Strategy**
 
-### **Development (Internal): Bun 🚀**
-- **All development commands**: `bun`
-- **All CI/CD**: `bun` 
-- **All scripts**: `bun`
-- **All workflows**: `bun`
+### __Development (Internal): Bun 🚀**
 
-### **Distribution (External): NPM 📦**
-- **End-user installation**: `npm install -g @aegis-framework/cli`
-- **Package registry**: NPM registry
-- **User expectations**: Industry standard
+- __All development commands__: `Bun`
+- __All CI/CD__: `Bun`
+- __All scripts__: `Bun`
+- __All workflows__: `Bun`
 
-## 🧠 **Why This Dual Approach Makes Sense**
+### __Distribution (External): npm 📦**
 
-### **Bun for Development:**
+- __End-user installation__: `npm install -g @Aegis-framework/CLI`
+- __Package registry__: npm registry
+- __User expectations__: Industry standard
+
+## 🧠 __Why This Dual Approach Makes Sense**
+
+### __Bun for Development:**
+
 ```bash
 # Lightning fast development
-bun install          # 2-5 seconds vs npm's 15-30s
-bun cli/script.ts    # Direct execution, no compilation
-bun test             # Built-in test runner
-bun run build        # Faster builds
-```
+Bun install          # 2-5 seconds vs npm's 15-30s
+Bun CLI/script.ts    # Direct execution, no compilation
+Bun test             # Built-in test runner
+Bun run build        # Faster builds
+```text
 
-### **NPM for Distribution:**
+### __npm for Distribution:**
+
 ```bash
 # Users expect this
-npm install -g @aegis-framework/cli@2.4.0
-aegis-hydrate /project
-```
+npm install -g @Aegis-framework/CLI@2.4.0
+Aegis-hydrate /project
+```text
 
-**Why NPM for distribution?**
-1. **Universal compatibility**: Every Node.js developer has NPM
-2. **Package registry**: NPM is the standard registry
-3. **Corporate environments**: Many enterprises block alternative package managers
-4. **Ecosystem expectation**: CLI tools distribute via NPM
+**Why npm for distribution?**
 
-## 📊 **Before vs After Fix**
+1. __Universal compatibility__: Every Node.js developer has npm
+2. __Package registry__: npm is the standard registry
+3. __Corporate environments__: Many enterprises block alternative package managers
+4. __Ecosystem expectation__: CLI tools distribute via npm
 
-### **❌ Before (Inconsistent):**
+## 📊 __Before vs After Fix**
+
+### __❌ Before (Inconsistent):**
+
 ```json
 {
   "scripts": {
-    "build": "npm run validate:all && npm run build:vite",
+    "build": "npm run validate:all && npm run build:Vite",
     "build:package": "node scripts/build-package.ts",
-    "cursor:start": "bun run cli/cursor-realtime-cli.ts start",
+    "cursor:start": "Bun run CLI/cursor-realtime-CLI.ts start",
     "release": "node scripts/release.ts"
   }
 }
-```
-**Problem**: Mixing npm, node, and bun commands randomly
+```text
 
-### **✅ After (Consistent):**
+**Problem__: Mixing npm, node, and Bun commands randomly
+
+### __✅ After (Consistent):**
+
 ```json
 {
   "scripts": {
-    "build": "bun run validate:all && bun run build:vite",
-    "build:package": "bun scripts/build-package.ts", 
-    "cursor:start": "bun run cli/cursor-realtime-cli.ts start",
-    "release": "bun scripts/release.ts"
+    "build": "Bun run validate:all && Bun run build:Vite",
+    "build:package": "Bun scripts/build-package.ts",
+    "cursor:start": "Bun run CLI/cursor-realtime-CLI.ts start",
+    "release": "Bun scripts/release.ts"
   }
 }
-```
-**Solution**: All internal commands use `bun`
+```text
 
-## 🔧 **Developer Commands (All Bun)**
+**Solution__: All internal commands use `Bun`
 
-### **Development:**
+## 🔧 __Developer Commands (All Bun)**
+
+### __Development:**
+
 ```bash
-bun install                    # Install dependencies
-bun dev                        # Development server
-bun test                       # Run tests
-bun cli/aegis-hydrate.ts       # Run CLI directly
-```
+Bun install                    # Install dependencies
+Bun dev                        # Development server
+Bun test                       # Run tests
+Bun CLI/Aegis-hydrate.ts       # Run CLI directly
+```text
 
-### **Building:**
+### __Building:**
+
 ```bash
-bun run build                  # Build project
-bun run build:package          # Build NPM package
-bun scripts/release.ts         # Release automation
-```
+Bun run build                  # Build project
+Bun run build:package          # Build npm package
+Bun scripts/release.ts         # Release automation
+```text
 
-### **Framework Operations:**
+### __Framework Operations:**
+
 ```bash
-bun cli/aegis-conductor.ts     # Governance
-bun cli/aegis-eval.ts run      # Evaluations
-bun cli/aegis-orient.ts        # Orientation
-```
+Bun CLI/Aegis-conductor.ts     # Governance
+Bun CLI/Aegis-eval.ts run      # Evaluations
+Bun CLI/Aegis-orient.ts        # Orientation
+```text
 
-## 📦 **End-User Distribution (NPM)**
+## 📦 __End-User Distribution (npm)**
 
-### **Installation (What Users Do):**
+### __Installation (What Users Do):**
+
 ```bash
 # Global installation (standard)
-npm install -g @aegis-framework/cli@2.4.0
+npm install -g @Aegis-framework/CLI@2.4.0
 
-# Project-specific installation  
-npm install @aegis-framework/cli@2.4.0
+# Project-specific installation
+npm install @Aegis-framework/CLI@2.4.0
 
 # Usage (same regardless of how they installed)
-aegis-hydrate /path/to/project
-aegis-conductor init
-```
+Aegis-hydrate /path/to/project
+Aegis-conductor init
+```text
 
-### **Package Structure:**
-```
-@aegis-framework/cli/
+### __Package Structure:**
+
+```text
+@Aegis-framework/CLI/
 ├── bin/
-│   ├── aegis-hydrate        # Global executable
-│   ├── aegis-conductor      # Governance tool
-│   └── aegis-eval           # Evaluation tool
+│   ├── Aegis-hydrate        # Global executable
+│   ├── Aegis-conductor      # Governance tool
+│   └── Aegis-eval           # Evaluation tool
 ├── lib/                     # Compiled/source code
-├── package.json             # NPM package metadata
+├── package.JSON             # npm package metadata
 └── README.md               # Installation instructions
-```
+```text
 
-## 🏗️ **Build Pipeline Strategy**
+## 🏗️ __Build Pipeline Strategy**
 
-### **Development → NPM Package:**
+### __Development → npm Package:**
+
 ```bash
 # 1. Development (Bun)
-bun install
-bun run build
-bun test
+Bun install
+Bun run build
+Bun test
 
 # 2. Package Building (Bun)
-bun scripts/build-package.ts  # Creates dist/aegis-cli/
+Bun scripts/build-package.ts  # Creates dist/Aegis-CLI/
 
-# 3. NPM Publishing (NPM - registry upload)
-cd dist/aegis-cli/
+# 3. npm Publishing (npm - registry upload)
+cd dist/Aegis-CLI/
 npm publish
 
-# 4. User Installation (NPM - dependency resolution)
-npm install -g @aegis-framework/cli@2.4.0
-```
+# 4. User Installation (npm - dependency resolution)
+npm install -g @Aegis-framework/CLI@2.4.0
+```text
 
-## 🔍 **Why the Confusion Happened**
+## 🔍 __Why the Confusion Happened**
 
-### **1. Distribution Complexity:**
+### __1. Distribution Complexity:**
+
 We conflated "development package manager" with "distribution package manager"
 
-### **2. Legacy Scripts:**
-The project evolved from npm → hybrid → bun, leaving inconsistent scripts
+### __2. Legacy Scripts:**
 
-### **3. Industry Patterns:**
+The project evolved from npm → hybrid → Bun, leaving inconsistent scripts
+
+### __3. Industry Patterns:**
+
 Many projects use the same package manager for dev and distribution, but that's not always optimal
 
-## ✅ **The Fix Applied**
+## ✅ __The Fix Applied**
 
-### **Changed in package.json:**
-- ❌ `"build": "npm run validate:all && npm run build:vite"`
-- ✅ `"build": "bun run validate:all && bun run build:vite"`
+### __Changed in package.JSON:**
 
-- ❌ `"build:package": "node scripts/build-package.ts"`  
-- ✅ `"build:package": "bun scripts/build-package.ts"`
+- ❌ `"build": "npm run validate:all && npm run build:Vite"`
+- ✅ `"build": "Bun run validate:all && Bun run build:Vite"`
+
+- ❌ `"build:package": "node scripts/build-package.ts"`
+- ✅ `"build:package": "Bun scripts/build-package.ts"`
 
 - ❌ `"release": "node scripts/release.ts"`
-- ✅ `"release": "bun scripts/release.ts"`
+- ✅ `"release": "Bun scripts/release.ts"`
 
-### **GitHub Actions:**
+### __GitHub Actions:**
+
 - ❌ `actions/setup-node@v4` + `npm install`
-- ✅ `oven-sh/setup-bun@v2` + `bun install`
+- ✅ `oven-sh/setup-Bun@v2` + `Bun install`
 
-## 🎯 **Clear Rules Going Forward**
+## 🎯 __Clear Rules Going Forward**
 
-### **Development Rules:**
-1. **All scripts use `bun`**
-2. **All CI/CD uses `bun`** 
-3. **All direct execution uses `bun`**
-4. **No `npm run` in internal scripts**
-5. **No `node script.ts` - use `bun script.ts`**
+### __Development Rules:**
 
-### **Distribution Rules:**
-1. **Users install via `npm install -g @aegis-framework/cli`**
-2. **Package published to NPM registry**
-3. **Documentation shows NPM installation**
-4. **Corporate compatibility via NPM**
+1. __All scripts use `Bun`**
+2. __All CI/CD uses `Bun`**
+3. __All direct execution uses `Bun`**
+4. __No `npm run` in internal scripts**
+5. __No `node script.ts` - use `Bun script.ts`**
 
-## 🚀 **Result: Best of Both Worlds**
+### __Distribution Rules:**
 
-- ⚡ **Lightning fast development** with Bun
-- 🌍 **Universal distribution** with NPM
-- 🔧 **Developer velocity** with modern tooling
-- 📦 **User accessibility** with standard packaging
+1. __Users install via `npm install -g @Aegis-framework/CLI`**
+2. __Package published to npm registry**
+3. __Documentation shows npm installation**
+4. __Corporate compatibility via npm**
 
-**No more hybrid confusion - clear separation of concerns!** ✨
+## 🚀 __Result: Best of Both Worlds**
+
+- ⚡ __Lightning fast development__ with Bun
+- 🌍 __Universal distribution__ with npm
+- 🔧 __Developer velocity__ with modern tooling
+- 📦 __User accessibility__ with standard packaging
+
+**No more hybrid confusion - clear separation of concerns!__ ✨

@@ -32,16 +32,7 @@ class ComprehensiveVersionUpdater {
     this.config = {
       oldVersion: '2.1.0',
       newVersion: '2.1.0',
-      filePatterns: [
-        '**/*.ts',
-        '**/*.js',
-        '**/*.md',
-        '**/*.yaml',
-        '**/*.yml',
-        '**/*.json',
-        '**/*.sh',
-        '**/*.cjs'
-      ],
+      filePatterns: ['**/*.ts', '**/*.js', '**/*.md', '**/*.yaml', '**/*.yml', '**/*.json', '**/*.sh', '**/*.cjs'],
       excludePatterns: [
         'node_modules/**',
         'dist/**',
@@ -50,20 +41,20 @@ class ComprehensiveVersionUpdater {
         '**/*.d.ts',
         '**/package-lock.json',
         '**/yarn.lock',
-        '**/bun.lockb'
+        '**/bun.lockb',
       ],
       annotationPatterns: [
         '@aegisFrameworkVersion: 2.1.0',
         '@aegisFrameworkVersion: "2.1.0"',
-        '@aegisFrameworkVersion: \'2.1.0\''
+        "@aegisFrameworkVersion: '2.1.0'",
       ],
       contentPatterns: [
         'v2.1.0',
         '2.1.0',
         '@aegis-framework/cli@2.1.0',
         'aegis-framework/cli:2.1.0',
-        'framework-core-v2.1.0.md'
-      ]
+        'framework-core-v2.1.0.md',
+      ],
     };
   }
 
@@ -86,7 +77,6 @@ class ComprehensiveVersionUpdater {
 
       // Generate report
       this.generateReport();
-
     } catch (error) {
       console.error('❌ Error during version update:', error);
       process.exit(1);
@@ -100,7 +90,7 @@ class ComprehensiveVersionUpdater {
       const matches = await glob(pattern, {
         cwd: this.frameworkRoot,
         ignore: this.config.excludePatterns,
-        absolute: true
+        absolute: true,
       });
       files.push(...matches);
     }
@@ -134,7 +124,7 @@ class ComprehensiveVersionUpdater {
       }
 
       // Special handling for CLI version commands
-      if (content.includes('.version(\'2.1.0\')')) {
+      if (content.includes(".version('2.1.0')")) {
         updatedContent = updatedContent.replace(/\.version\('2\.0\.1'\)/g, `.version('${this.config.newVersion}')`);
         hasChanges = true;
       }
@@ -145,7 +135,7 @@ class ComprehensiveVersionUpdater {
       }
 
       // Special handling for environment variables
-      if (content.includes('process.env.npm_package_version || \'2.1.0\'')) {
+      if (content.includes("process.env.npm_package_version || '2.1.0'")) {
         updatedContent = updatedContent.replace(
           /process\.env\.npm_package_version \|\| '2\.0\.1'/g,
           `process.env.npm_package_version || '${this.config.newVersion}'`
@@ -169,7 +159,6 @@ class ComprehensiveVersionUpdater {
       } else {
         this.skippedFiles.push(relativePath);
       }
-
     } catch (error) {
       const relativePath = path.relative(this.frameworkRoot, filePath);
       this.errors.push(`${relativePath}: ${error instanceof Error ? error.message : String(error)}`);

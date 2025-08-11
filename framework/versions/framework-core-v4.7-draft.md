@@ -11,7 +11,7 @@
 @migrationNote: See framework/versions/framework-core-v1.1.0-beta-spec.md for current feature planning
 @newFeatures: [MIGRATED TO v1.1.0-beta]
 - Multi-agent execution support → Multi-Agent Execution Layer
-- Model Context Protocol (MCP) metadata emission → MCP Metadata Output  
+- Model Context Protocol (MCP) metadata emission → MCP Metadata Output
 - Blueprint execution metadata with run logs → Blueprint Execution Metadata
 - Snapshot testing across lean/strict/full modes → Enhanced Testing
 - Adapter interface for tech stack translation → Enhanced Adapter Interface
@@ -21,20 +21,21 @@
 
 # ⚙️ Aegis Framework v4.7 (Draft) - ARCHIVED
 
-> ⚠️ **ARCHIVED**: This draft has been superseded by semantic versioning. 
-> 
-> **See instead**: [`framework/versions/framework-core-v1.1.0-beta-spec.md`](framework-core-v1.1.0-beta-spec.md)
+> ⚠️ __ARCHIVED__: This draft has been superseded by semantic versioning.
+>
+> __See instead__: [`framework/versions/framework-core-v1.1.0-beta-spec.md`](framework-core-v1.1.0-beta-spec.md)
 
 _This draft has been migrated to the v1.1.0-beta specification as part of our semantic versioning adoption._
 
 ## 🆕 Additions in v4.7
 
 ...
+
 ## 🔁 Multi-Agent Execution Layer
 
 <!--
 @task: Define how preferredAgents is declared and resolved.
-@context: Each blueprint should declare one or more agents. Execution engine must hydrate blueprints using the agent contract.
+@context: Each Blueprint should declare one or more agents. Execution engine must hydrate blueprints using the agent contract.
 -->
 
 ## 📄 MCP Metadata Output
@@ -46,5 +47,5 @@ _This draft has been migrated to the v1.1.0-beta specification as part of our se
 ## 🧠 Drift Logging
 
 <!--
-@task: Add schema for drift-log.yaml. Reference types like drift, regression, hallucination, etc.
+@task: Add schema for drift-log.YAML. Reference types like drift, regression, hallucination, etc.
 -->

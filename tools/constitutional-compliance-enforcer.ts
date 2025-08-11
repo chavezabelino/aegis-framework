@@ -59,23 +59,23 @@ class ConstitutionalComplianceEnforcer {
    */
   async processUserInput(userInput: string, currentContext: string): Promise<any> {
     console.log('🔍 Processing user input for constitutional compliance...\n');
-    
+
     // Check for semantic interrupts first
     const reflexResponse = await this.reflexEngine.processInput(userInput, currentContext);
-    
+
     if (reflexResponse.triggered) {
       console.log('🚨 SEMANTIC INTERRUPT DETECTED - Constitutional reflex activated\n');
       return {
         type: 'semantic_interrupt',
         reflexResponse,
-        compliance: 'suspended_for_realignment'
+        compliance: 'suspended_for_realignment',
       };
     }
-    
+
     // No semantic interrupt - continue normal compliance checking
     return {
       type: 'normal_operation',
-      compliance: await this.enforceCompliance()
+      compliance: await this.enforceCompliance(),
     };
   }
 
@@ -86,58 +86,78 @@ class ConstitutionalComplianceEnforcer {
     this.intelligenceClaims = [
       {
         id: 'version-consistency',
-        claim: "Intelligence features prevent version documentation drift",
-        implementation: "tools/validate-version-consistency.ts",
-        validation: "Pre-commit hooks enforce version consistency",
+        claim: 'Intelligence features prevent version documentation drift',
+        implementation: 'tools/validate-version-consistency.ts',
+        validation: 'Pre-commit hooks enforce version consistency',
         status: 'verified',
-        evidence: ["Automated validation", "Pre-commit integration", "Auto-fix capability"],
-        required: true
+        evidence: ['Automated validation', 'Pre-commit integration', 'Auto-fix capability'],
+        required: true,
       },
       {
         id: 'constitutional-validation',
-        claim: "Constitutional validation ensures comprehensive compliance",
-        implementation: "tools/validate-constitution.ts",
-        validation: "All constitutional articles enforced",
+        claim: 'Constitutional validation ensures comprehensive compliance',
+        implementation: 'tools/validate-constitution.ts',
+        validation: 'All constitutional articles enforced',
         status: 'verified',
-        evidence: ["Enhanced version consistency integration", "Comprehensive validation system", "Constitutional article validation", "Violation detection and reporting"],
-        required: true
+        evidence: [
+          'Enhanced version consistency integration',
+          'Comprehensive validation system',
+          'Constitutional article validation',
+          'Violation detection and reporting',
+        ],
+        required: true,
       },
       {
         id: 'self-healing-governance',
-        claim: "Self-healing governance prevents repeat failures",
-        implementation: "framework/healing/self-healing-governance.ts",
-        validation: "Automated error detection and correction",
+        claim: 'Self-healing governance prevents repeat failures',
+        implementation: 'framework/healing/self-healing-governance.ts',
+        validation: 'Automated error detection and correction',
         status: 'verified',
-        evidence: ["Failure pattern detection", "Prevention mechanism implementation", "Constitutional violation detection", "Intelligence failure detection"],
-        required: true
+        evidence: [
+          'Failure pattern detection',
+          'Prevention mechanism implementation',
+          'Constitutional violation detection',
+          'Intelligence failure detection',
+        ],
+        required: true,
       },
       {
         id: 'agent-drift-prevention',
-        claim: "Agent drift prevention catches systematic issues",
-        implementation: "tools/intent-enforcement-engine.ts",
-        validation: "Real-time drift detection and prevention",
+        claim: 'Agent drift prevention catches systematic issues',
+        implementation: 'tools/intent-enforcement-engine.ts',
+        validation: 'Real-time drift detection and prevention',
         status: 'verified',
-        evidence: ["Systematic issue pattern detection implemented", "Version drift detection active", "Constitutional compliance checking", "Intent enforcement operational"],
-        required: true
+        evidence: [
+          'Systematic issue pattern detection implemented',
+          'Version drift detection active',
+          'Constitutional compliance checking',
+          'Intent enforcement operational',
+        ],
+        required: true,
       },
       {
         id: 'evolution-learning',
-        claim: "Evolution learning prevents repeat patterns",
-        implementation: "tools/evolution-learning-system.ts",
-        validation: "Pattern recognition and learning",
+        claim: 'Evolution learning prevents repeat patterns',
+        implementation: 'tools/evolution-learning-system.ts',
+        validation: 'Pattern recognition and learning',
         status: 'verified',
-        evidence: ["Pattern recognition for repeat failures", "Learning from constitutional violations", "Intelligence failure detection", "Prevention mechanism implementation"],
-        required: true
+        evidence: [
+          'Pattern recognition for repeat failures',
+          'Learning from constitutional violations',
+          'Intelligence failure detection',
+          'Prevention mechanism implementation',
+        ],
+        required: true,
       },
       {
         id: 'feature-configurability',
-        claim: "Feature configurability system is complete",
-        implementation: "tools/team-config-loader.ts",
-        validation: "Three-tier configuration system operational",
+        claim: 'Feature configurability system is complete',
+        implementation: 'tools/team-config-loader.ts',
+        validation: 'Three-tier configuration system operational',
         status: 'verified',
-        evidence: ["Core infrastructure", "Required features", "Optional features"],
-        required: true
-      }
+        evidence: ['Core infrastructure', 'Required features', 'Optional features'],
+        required: true,
+      },
     ];
   }
 
@@ -148,49 +168,66 @@ class ConstitutionalComplianceEnforcer {
     this.preventionMechanisms = [
       {
         id: 'version-consistency-prevention',
-        purpose: "Prevent version documentation drift",
-        implementation: "tools/validate-version-consistency.ts",
-        validation: "Pre-commit hooks block version mismatches",
-        evidence: ["Automated validation", "Critical file protection", "Auto-fix capability"],
+        purpose: 'Prevent version documentation drift',
+        implementation: 'tools/validate-version-consistency.ts',
+        validation: 'Pre-commit hooks block version mismatches',
+        evidence: ['Automated validation', 'Critical file protection', 'Auto-fix capability'],
         status: 'active',
-        required: true
+        required: true,
       },
       {
         id: 'intelligence-claim-validation',
-        purpose: "Prevent false claims about framework capabilities",
-        implementation: "tools/constitutional-compliance-enforcer.ts",
-        validation: "All claims verified against implementation",
-        evidence: ["Claim registry", "Implementation verification", "Evidence requirement"],
+        purpose: 'Prevent false claims about framework capabilities',
+        implementation: 'tools/constitutional-compliance-enforcer.ts',
+        validation: 'All claims verified against implementation',
+        evidence: ['Claim registry', 'Implementation verification', 'Evidence requirement'],
         status: 'active',
-        required: true
+        required: true,
       },
       {
         id: 'constitutional-compliance-enforcement',
-        purpose: "Enforce constitutional compliance",
-        implementation: "tools/validate-constitution.ts",
-        validation: "All constitutional articles validated",
-        evidence: ["Article validation", "Compliance checking", "Violation reporting", "Version consistency integration", "Comprehensive validation system"],
+        purpose: 'Enforce constitutional compliance',
+        implementation: 'tools/validate-constitution.ts',
+        validation: 'All constitutional articles validated',
+        evidence: [
+          'Article validation',
+          'Compliance checking',
+          'Violation reporting',
+          'Version consistency integration',
+          'Comprehensive validation system',
+        ],
         status: 'active',
-        required: true
+        required: true,
       },
       {
         id: 'self-healing-prevention',
-        purpose: "Prevent repeat failures through self-healing",
-        implementation: "framework/healing/self-healing-governance.ts",
-        validation: "Automated error detection and correction",
-        evidence: ["Failure pattern detection", "Prevention mechanism implementation", "Constitutional violation detection", "Intelligence failure detection"],
+        purpose: 'Prevent repeat failures through self-healing',
+        implementation: 'framework/healing/self-healing-governance.ts',
+        validation: 'Automated error detection and correction',
+        evidence: [
+          'Failure pattern detection',
+          'Prevention mechanism implementation',
+          'Constitutional violation detection',
+          'Intelligence failure detection',
+        ],
         status: 'active',
-        required: true
+        required: true,
       },
       {
         id: 'drift-prevention',
-        purpose: "Prevent agent and framework drift",
-        implementation: "tools/intent-enforcement-engine.ts",
-        validation: "Real-time drift detection and prevention",
-        evidence: ["Intent validation", "Drift detection", "Prevention mechanisms", "Systematic issue pattern detection", "Version drift prevention"],
+        purpose: 'Prevent agent and framework drift',
+        implementation: 'tools/intent-enforcement-engine.ts',
+        validation: 'Real-time drift detection and prevention',
+        evidence: [
+          'Intent validation',
+          'Drift detection',
+          'Prevention mechanisms',
+          'Systematic issue pattern detection',
+          'Version drift prevention',
+        ],
         status: 'active',
-        required: true
-      }
+        required: true,
+      },
     ];
   }
 
@@ -264,7 +301,7 @@ class ConstitutionalComplianceEnforcer {
       violations,
       warnings,
       recommendations,
-      frameworkBlocked
+      frameworkBlocked,
     };
 
     this.displayResults(result);
@@ -274,7 +311,9 @@ class ConstitutionalComplianceEnforcer {
   /**
    * Validate an intelligence claim
    */
-  private async validateIntelligenceClaim(claim: IntelligenceClaim): Promise<{ status: 'verified' | 'unverified' | 'false' }> {
+  private async validateIntelligenceClaim(
+    claim: IntelligenceClaim
+  ): Promise<{ status: 'verified' | 'unverified' | 'false' }> {
     // If claim is already marked as verified in configuration, respect that
     if (claim.status === 'verified') {
       return { status: 'verified' };
@@ -306,7 +345,9 @@ class ConstitutionalComplianceEnforcer {
   /**
    * Validate a prevention mechanism
    */
-  private async validatePreventionMechanism(mechanism: PreventionMechanism): Promise<{ status: 'active' | 'inactive' | 'failed' }> {
+  private async validatePreventionMechanism(
+    mechanism: PreventionMechanism
+  ): Promise<{ status: 'active' | 'inactive' | 'failed' }> {
     // If mechanism is already marked as active in configuration, respect that
     if (mechanism.status === 'active') {
       return { status: 'active' };
@@ -435,7 +476,7 @@ class ConstitutionalComplianceEnforcer {
     console.log('Framework operations are blocked due to constitutional crisis.');
     console.log('All framework tools and commands are suspended.');
     console.log('Emergency response required to restore compliance.');
-    
+
     // In a real implementation, this would:
     // 1. Disable all framework CLI commands
     // 2. Block all framework tool execution
@@ -474,7 +515,9 @@ class ConstitutionalComplianceEnforcer {
     // Check if implementation exists
     const implementationPath = path.join(this.projectRoot, mechanism.implementation);
     if (!fs.existsSync(implementationPath)) {
-      throw new Error(`Prevention mechanism "${mechanism.purpose}" implementation does not exist: ${mechanism.implementation}`);
+      throw new Error(
+        `Prevention mechanism "${mechanism.purpose}" implementation does not exist: ${mechanism.implementation}`
+      );
     }
 
     this.preventionMechanisms.push(mechanism);
@@ -485,12 +528,12 @@ class ConstitutionalComplianceEnforcer {
 // CLI interface
 async function main(): Promise<void> {
   const enforcer = new ConstitutionalComplianceEnforcer();
-  
+
   if (process.argv.includes('--block')) {
     await enforcer.blockFrameworkOperations();
   } else {
     const result = await enforcer.enforceCompliance();
-    
+
     if (result.frameworkBlocked) {
       process.exit(1);
     }

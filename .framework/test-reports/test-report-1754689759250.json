@@ -15,12 +15,8 @@
       "status": "fail",
       "score": 0,
       "executionTime": 113,
-      "evidence": [
-        "Target feature exists: tools/validate-version-consistency.ts"
-      ],
-      "errors": [
-        "Unit test failed: Error: Command failed: node tools/validate-version-consistency.ts"
-      ],
+      "evidence": ["Target feature exists: tools/validate-version-consistency.ts"],
+      "errors": ["Unit test failed: Error: Command failed: node tools/validate-version-consistency.ts"],
       "warnings": []
     },
     {
@@ -28,10 +24,7 @@
       "status": "pass",
       "score": 85,
       "executionTime": 0,
-      "evidence": [
-        "Integration test framework available",
-        "Component integration verified"
-      ],
+      "evidence": ["Integration test framework available", "Component integration verified"],
       "errors": [],
       "warnings": []
     },
@@ -40,10 +33,7 @@
       "status": "pass",
       "score": 80,
       "executionTime": 0,
-      "evidence": [
-        "E2E test environment available",
-        "Complete workflow tested"
-      ],
+      "evidence": ["E2E test environment available", "Complete workflow tested"],
       "errors": [],
       "warnings": []
     },
@@ -64,10 +54,7 @@
       "status": "pass",
       "score": 85,
       "executionTime": 0,
-      "evidence": [
-        "Security test framework available",
-        "Security analysis completed"
-      ],
+      "evidence": ["Security test framework available", "Security analysis completed"],
       "errors": [],
       "warnings": [],
       "securityFindings": [
@@ -96,10 +83,7 @@
       "status": "pass",
       "score": 90,
       "executionTime": 0,
-      "evidence": [
-        "Reliability metrics collected",
-        "Uptime: 99.5%"
-      ],
+      "evidence": ["Reliability metrics collected", "Uptime: 99.5%"],
       "errors": [],
       "warnings": [],
       "reliabilityMetrics": {
@@ -114,10 +98,7 @@
       "status": "fail",
       "score": 0,
       "executionTime": 73,
-      "evidence": [
-        "Target feature exists: tools/evolution-learning-system.ts",
-        "Feature execution successful"
-      ],
+      "evidence": ["Target feature exists: tools/evolution-learning-system.ts", "Feature execution successful"],
       "errors": [],
       "warnings": []
     },
@@ -126,10 +107,7 @@
       "status": "pass",
       "score": 90,
       "executionTime": 74,
-      "evidence": [
-        "Response time: 74ms",
-        "Performance metrics collected"
-      ],
+      "evidence": ["Response time: 74ms", "Performance metrics collected"],
       "errors": [],
       "warnings": [],
       "performanceMetrics": {
@@ -145,9 +123,7 @@
       "status": "fail",
       "score": 0,
       "executionTime": 61,
-      "evidence": [
-        "Target feature exists: tools/intent-enforcement-engine.ts"
-      ],
+      "evidence": ["Target feature exists: tools/intent-enforcement-engine.ts"],
       "errors": [
         "Unit test failed: Error: Command failed: node tools/intent-enforcement-engine.ts\nnode:internal/modules/esm/resolve:274\n    throw new ERR_MODULE_NOT_FOUND(\n          ^\n\nError [ERR_MODULE_NOT_FOUND]: Cannot find module '/Users/nino/Workspace/02-local-dev/aegis-framework/tools/team-config-loader.js' imported from /Users/nino/Workspace/02-local-dev/aegis-framework/tools/intent-enforcement-engine.ts\n    at finalizeResolution (node:internal/modules/esm/resolve:274:11)\n    at moduleResolve (node:internal/modules/esm/resolve:859:10)\n    at defaultResolve (node:internal/modules/esm/resolve:983:11)\n    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:801:12)\n    at #cachedDefaultResolve (node:internal/modules/esm/loader:725:25)\n    at ModuleLoader.resolve (node:internal/modules/esm/loader:708:38)\n    at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:309:38)\n    at #link (node:internal/modules/esm/module_job:201:49) {\n  code: 'ERR_MODULE_NOT_FOUND',\n  url: 'file:///Users/nino/Workspace/02-local-dev/aegis-framework/tools/team-config-loader.js'\n}\n\nNode.js v24.2.0\n"
       ],
@@ -158,10 +134,7 @@
       "status": "pass",
       "score": 85,
       "executionTime": 0,
-      "evidence": [
-        "Integration test framework available",
-        "Component integration verified"
-      ],
+      "evidence": ["Integration test framework available", "Component integration verified"],
       "errors": [],
       "warnings": []
     },
@@ -170,10 +143,7 @@
       "status": "fail",
       "score": 0,
       "executionTime": 222,
-      "evidence": [
-        "Target feature exists: tools/predictive-compliance-monitor.ts",
-        "Feature execution successful"
-      ],
+      "evidence": ["Target feature exists: tools/predictive-compliance-monitor.ts", "Feature execution successful"],
       "errors": [],
       "warnings": []
     },
@@ -182,10 +152,7 @@
       "status": "pass",
       "score": 90,
       "executionTime": 217,
-      "evidence": [
-        "Response time: 217ms",
-        "Performance metrics collected"
-      ],
+      "evidence": ["Response time: 217ms", "Performance metrics collected"],
       "errors": [],
       "warnings": [],
       "performanceMetrics": {
@@ -201,10 +168,7 @@
       "status": "pass",
       "score": 80,
       "executionTime": 0,
-      "evidence": [
-        "E2E test environment available",
-        "Complete workflow tested"
-      ],
+      "evidence": ["E2E test environment available", "Complete workflow tested"],
       "errors": [],
       "warnings": []
     }

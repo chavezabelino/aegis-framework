@@ -1,5 +1,7 @@
 <!--
 @aegisBlueprint: planning-optimization
+# 🚀 IDE Integration with MCP Support
+
 @version: 1.0.0
 @mode: lean
 @intent: IDE integration guide for planning optimization with MCP support
@@ -8,88 +10,91 @@
 
 # 🚀 IDE Integration with MCP Support
 
-> **Universal planning optimization** that works with any IDE through MCP (Model Context Protocol).
+> __Universal planning optimization__ that works with any IDE through MCP (Model Context Protocol).
 
-## 🎯 **Supported IDEs**
+## 🎯 __Supported IDEs**
 
-### **Cursor**
-- **Built-in AI**: Native integration with planning optimization
-- **MCP Support**: Full MCP protocol support
-- **Command Palette**: Access Aegis commands directly
-- **Auto-completion**: Planning suggestions in real-time
+### __Cursor**
 
-### **VS Code**
-- **GitHub Copilot**: Enhanced with planning optimization
-- **Claude Extension**: Full planning optimization support
-- **MCP Extensions**: Native MCP protocol support
-- **Command Palette**: Aegis commands available
+- __Built-in AI__: Native integration with planning optimization
+- __MCP Support__: Full MCP protocol support
+- __Command Palette__: Access Aegis commands directly
+- __Auto-completion__: Planning suggestions in real-time
 
-### **JetBrains IDEs**
-- **AI Assistant**: Planning optimization integration
-- **MCP Plugins**: Full MCP protocol support
-- **Tool Windows**: Dedicated Aegis planning panel
+### __VS Code**
 
-### **Any MCP-Compatible Editor**
-- **Universal Support**: Works with any MCP-compatible editor
-- **Protocol Standard**: Uses Model Context Protocol
-- **Tool Integration**: Seamless command execution
+- __GitHub Copilot__: Enhanced with planning optimization
+- __Claude Extension__: Full planning optimization support
+- __MCP Extensions__: Native MCP protocol support
+- __Command Palette__: Aegis commands available
 
-## 🚀 **MCP Server Setup**
+### __JetBrains IDEs**
 
-### **1. Install MCP Server**
+- __AI Assistant__: Planning optimization integration
+- __MCP Plugins__: Full MCP protocol support
+- __Tool Windows__: Dedicated Aegis planning panel
+
+### __Any MCP-Compatible Editor**
+
+- __Universal Support__: Works with any MCP-compatible editor
+- __Protocol Standard__: Uses Model Context Protocol
+- __Tool Integration__: Seamless command execution
+
+## 🚀 __MCP Server Setup**
+
+### __1. Install MCP Server**
+
 ```bash
 # Install Aegis MCP server
-npm install -g @aegis-framework/mcp-server
+npm install -g @Aegis-framework/MCP-server
 
 # Or use local installation
 npm install @modelcontextprotocol/sdk
-```
+```text
 
-### **2. Configure IDE**
+### __2. Configure IDE**
 
-#### **Cursor Configuration**
+#### __Cursor Configuration**
+
 ```json
-// .cursor/settings.json
+// .cursor/settings.JSON
 {
   "mcpServers": {
-    "aegis-planning": {
+    "Aegis-planning": {
       "command": "node",
-      "args": ["tools/mcp-aegis-server.ts"],
+      "args": ["tools/MCP-Aegis-server.ts"],
       "env": {}
     }
   }
 }
-```
+```text
 
-#### **VS Code Configuration**
+#### __VS Code Configuration**
+
 ```json
-// .vscode/settings.json
+// .vscode/settings.JSON
 {
-  "mcp.servers": {
-    "aegis-planning": {
+  "MCP.servers": {
+    "Aegis-planning": {
       "command": "node",
-      "args": ["tools/mcp-aegis-server.ts"]
+      "args": ["tools/MCP-Aegis-server.ts"]
     }
   }
 }
-```
+```text
 
-#### **JetBrains Configuration**
+#### __JetBrains Configuration**
+
 ```yaml
-# .idea/mcp-servers.xml
-<mcp-servers>
-  <server name="aegis-planning">
-    <command>node</command>
-    <args>
-      <arg>tools/mcp-aegis-server.ts</arg>
-    </args>
-  </server>
-</mcp-servers>
-```
+# .idea/MCP-servers.xml
+<MCP-servers> <server name="Aegis-planning"> <command>node</command> <args> <arg>tools/MCP-Aegis-server.ts</arg> </args>
+</server> </MCP-servers>
+```text
 
-## 🛠️ **Available MCP Tools**
+## 🛠️ __Available MCP Tools**
 
-### **1. Auto Plan Detection**
+### __1. Auto Plan Detection**
+
 ```json
 {
   "name": "aegis_plan_auto_detect",
@@ -104,11 +109,12 @@ npm install @modelcontextprotocol/sdk
     }
   }
 }
-```
+```text
 
-**Usage**: AI agents automatically call this when users make requests.
+**Usage__: AI agents automatically call this when users make requests.
 
-### **2. Plan Validation**
+### __2. Plan Validation**
+
 ```json
 {
   "name": "aegis_plan_validate",
@@ -129,11 +135,12 @@ npm install @modelcontextprotocol/sdk
     }
   }
 }
-```
+```text
 
-**Usage**: Validates plans before implementation.
+**Usage__: Validates plans before implementation.
 
-### **3. Plan Comparison**
+### __3. Plan Comparison**
+
 ```json
 {
   "name": "aegis_plan_compare",
@@ -141,20 +148,21 @@ npm install @modelcontextprotocol/sdk
   "inputSchema": {
     "type": "object",
     "properties": {
-      "plan1Content": { "type": "string" },
-      "plan1Class": { "type": "string" },
-      "plan1Files": { "type": "number" },
-      "plan2Content": { "type": "string" },
-      "plan2Class": { "type": "string" },
-      "plan2Files": { "type": "number" }
+      "plan1Content": {"type": "string"},
+      "plan1Class": {"type": "string"},
+      "plan1Files": {"type": "number"},
+      "plan2Content": {"type": "string"},
+      "plan2Class": {"type": "string"},
+      "plan2Files": {"type": "number"}
     }
   }
 }
-```
+```text
 
-**Usage**: Compares alternative approaches automatically.
+**Usage__: Compares alternative approaches automatically.
 
-### **4. Plan Generation**
+### __4. Plan Generation**
+
 ```json
 {
   "name": "aegis_plan_generate",
@@ -172,34 +180,38 @@ npm install @modelcontextprotocol/sdk
     }
   }
 }
-```
+```text
 
-**Usage**: Generates plan templates for specific scenarios.
+**Usage__: Generates plan templates for specific scenarios.
 
-## 🎯 **IDE-Specific Features**
+## 🎯 __IDE-Specific Features**
 
-### **Cursor Integration**
-- **Native AI**: Built-in AI agents use planning optimization automatically
-- **Command Palette**: `Cmd/Ctrl + Shift + P` → "Aegis: Auto Plan"
-- **Chat Panel**: Planning suggestions in AI chat
-- **File Operations**: Automatic plan file creation
+### __Cursor Integration**
 
-### **VS Code Integration**
-- **GitHub Copilot**: Enhanced with planning optimization
-- **Claude Extension**: Full planning optimization support
-- **Command Palette**: `Cmd/Ctrl + Shift + P` → "Aegis: Validate Plan"
-- **Status Bar**: Shows current plan class and validation status
+- __Native AI__: Built-in AI agents use planning optimization automatically
+- __Command Palette__: `Cmd/Ctrl + Shift + P` → "Aegis: Auto Plan"
+- __Chat Panel__: Planning suggestions in AI chat
+- __File Operations__: Automatic plan file creation
 
-### **JetBrains Integration**
-- **AI Assistant**: Planning optimization in AI chat
-- **Tool Window**: Dedicated Aegis planning panel
-- **Context Actions**: Right-click → "Aegis: Generate Plan"
-- **Project View**: Plan files with special icons
+### __VS Code Integration**
 
-## 🚀 **Usage Examples**
+- __GitHub Copilot__: Enhanced with planning optimization
+- __Claude Extension__: Full planning optimization support
+- __Command Palette__: `Cmd/Ctrl + Shift + P` → "Aegis: Validate Plan"
+- __Status Bar__: Shows current plan class and validation status
 
-### **Cursor Example**
-```
+### __JetBrains Integration**
+
+- __AI Assistant__: Planning optimization in AI chat
+- __Tool Window__: Dedicated Aegis planning panel
+- __Context Actions__: Right-click → "Aegis: Generate Plan"
+- __Project View__: Plan files with special icons
+
+## 🚀 __Usage Examples**
+
+### __Cursor Example**
+
+```text
 User: "Add user authentication to the app"
 
 Cursor AI automatically:
@@ -208,10 +220,11 @@ Cursor AI automatically:
 3. Generates contract-driven plan
 4. Calls aegis_plan_validate
 5. Implements with observable behavior focus
-```
+```text
 
-### **VS Code Example**
-```
+### __VS Code Example**
+
+```text
 User: "Fix the search not working"
 
 VS Code + Copilot automatically:
@@ -220,10 +233,11 @@ VS Code + Copilot automatically:
 3. Generates behavioral contracts
 4. Validates plan constraints
 5. Implements observable behavior fix
-```
+```text
 
-### **JetBrains Example**
-```
+### __JetBrains Example**
+
+```text
 User: "Refactor auth to use JWT"
 
 JetBrains AI Assistant automatically:
@@ -231,86 +245,97 @@ JetBrains AI Assistant automatically:
 2. Generates plan preserving contracts
 3. Validates against constraints
 4. Implements maintaining observable behavior
-```
+```text
 
-## 🎯 **Advanced Configuration**
+## 🎯 __Advanced Configuration**
 
-### **Custom MCP Server**
+### __Custom MCP Server**
+
 ```typescript
 // Custom MCP server with additional tools
-import { Server } from '@modelcontextprotocol/sdk/server/index.js';
+import {Server} from "@modelcontextprotocol/sdk/server/index.js"
 
 const server = new Server({
-  name: 'aegis-custom',
-  version: '1.0.0',
-});
+  name: "Aegis-custom",
+  version: "1.0.0"
+})
 
 // Add custom planning tools
 server.registerTool({
-  name: 'aegis_custom_plan',
-  description: 'Custom planning tool',
+  name: "aegis_custom_plan",
+  description: "Custom planning tool",
   inputSchema: {
-    type: 'object',
+    type: "object",
     properties: {
       // Custom properties
     }
   }
-});
-```
+})
+```text
 
-### **IDE-Specific Extensions**
+### __IDE-Specific Extensions**
+
 ```typescript
 // Cursor extension
 export function activate(context: vscode.ExtensionContext) {
   // Register Aegis commands
   context.subscriptions.push(
-    vscode.commands.registerCommand('aegis.autoPlan', () => {
+    vscode.commands.registerCommand("Aegis.autoPlan", () => {
       // Auto plan detection
     })
-  );
+  )
 }
-```
+```text
 
-## 🚀 **Getting Started**
+## 🚀 __Getting Started**
 
-### **1. Install MCP Server**
+### __1. Install MCP Server**
+
 ```bash
 npm install @modelcontextprotocol/sdk
-```
+```text
 
-### **2. Configure Your IDE**
+### __2. Configure Your IDE**
+
 Follow the configuration examples above for your specific IDE.
 
-### **3. Test Integration**
+### __3. Test Integration**
+
 ```bash
 # Test MCP server
-node tools/mcp-aegis-server.ts
+node tools/MCP-Aegis-server.ts
 
 # Test auto plan detection
 npm run vibe "Add user authentication"
-```
+```text
 
-### **4. Use with AI Agents**
-- **Cursor**: Built-in AI automatically uses planning optimization
-- **VS Code**: GitHub Copilot enhanced with planning optimization
-- **JetBrains**: AI Assistant with planning optimization
-- **Any MCP IDE**: Universal planning optimization support
+### __4. Use with AI Agents**
 
-## 🎯 **Benefits**
+- __Cursor__: Built-in AI automatically uses planning optimization
+- __VS Code__: GitHub Copilot enhanced with planning optimization
+- __JetBrains__: AI Assistant with planning optimization
+- __Any MCP IDE__: Universal planning optimization support
 
-### **1. Universal Compatibility**
+## 🎯 __Benefits**
+
+### __1. Universal Compatibility**
+
 - Works with any MCP-compatible IDE
 - No vendor lock-in
 - Standard protocol support
 
-### **2. Seamless Integration**
+### __2. Seamless Integration**
+
 - Native IDE experience
 - Automatic planning optimization
 - Zero configuration required
 
-### **3. Consistent Quality**
+### __3. Consistent Quality**
+
 - Same planning optimization across all IDEs
 - Contract-driven development everywhere
 - Automatic validation and constraints
 
-**The result**: **Universal planning optimization** that works seamlessly across Cursor, VS Code, JetBrains, and any MCP-compatible IDE. Users get the same high-quality planning optimization regardless of their development environment! 🚀
+**The result__: __Universal planning optimization__ that works seamlessly across Cursor, VS Code, JetBrains, and any
+MCP-compatible IDE. Users get the same high-quality planning optimization regardless of their development environment!
+🚀

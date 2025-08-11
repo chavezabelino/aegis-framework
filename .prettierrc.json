@@ -1,0 +1,93 @@
+{
+  "printWidth": 120,
+  "tabWidth": 2,
+  "useTabs": false,
+  "semi": true,
+  "singleQuote": true,
+  "quoteProps": "as-needed",
+  "jsxSingleQuote": false,
+  "trailingComma": "es5",
+  "bracketSpacing": true,
+  "bracketSameLine": false,
+  "arrowParens": "avoid",
+  "endOfLine": "lf",
+  "embeddedLanguageFormatting": "auto",
+  "overrides": [
+    {
+      "files": "*.md",
+      "options": {
+        "printWidth": 120,
+        "proseWrap": "always",
+        "tabWidth": 2,
+        "useTabs": false,
+        "semi": false,
+        "singleQuote": false,
+        "quoteProps": "preserve",
+        "trailingComma": "none",
+        "bracketSpacing": false,
+        "arrowParens": "avoid",
+        "endOfLine": "lf",
+        "embeddedLanguageFormatting": "auto"
+      }
+    },
+    {
+      "files": "*.mdx",
+      "options": {
+        "printWidth": 120,
+        "proseWrap": "always",
+        "tabWidth": 2,
+        "useTabs": false,
+        "semi": false,
+        "singleQuote": false,
+        "quoteProps": "preserve",
+        "trailingComma": "none",
+        "bracketSpacing": false,
+        "arrowParens": "avoid",
+        "endOfLine": "lf",
+        "embeddedLanguageFormatting": "auto"
+      }
+    },
+    {
+      "files": "*.json",
+      "options": {
+        "printWidth": 120,
+        "tabWidth": 2,
+        "useTabs": false,
+        "semi": false,
+        "singleQuote": false,
+        "quoteProps": "preserve",
+        "trailingComma": "es5",
+        "bracketSpacing": true,
+        "endOfLine": "lf"
+      }
+    },
+    {
+      "files": "*.yaml",
+      "options": {
+        "printWidth": 120,
+        "tabWidth": 2,
+        "useTabs": false,
+        "semi": false,
+        "singleQuote": false,
+        "quoteProps": "preserve",
+        "trailingComma": "none",
+        "bracketSpacing": false,
+        "endOfLine": "lf"
+      }
+    },
+    {
+      "files": "*.yml",
+      "options": {
+        "printWidth": 120,
+        "tabWidth": 2,
+        "useTabs": false,
+        "semi": false,
+        "singleQuote": false,
+        "quoteProps": "preserve",
+        "trailingComma": "none",
+        "bracketSpacing": false,
+        "endOfLine": "lf"
+      }
+    }
+  ]
+}

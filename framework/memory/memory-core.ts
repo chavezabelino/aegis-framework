@@ -6,7 +6,6 @@
  */
 
 import { z } from 'zod';
-import { AegisModule } from '../adapters/adapter-interface';
 
 // ============================================================================
 // CONSTITUTIONAL MEMORY SCHEMAS
@@ -23,7 +22,7 @@ export const MemoryMessageSchema = z.object({
   curated: z.boolean().optional(),
   blueprintId: z.string().min(1, 'Blueprint ID is required'),
   schemaVersion: z.string().min(1, 'Schema version is required'),
-  observabilityEvents: z.array(z.string()).optional()
+  observabilityEvents: z.array(z.string()).optional(),
 });
 
 export type MemoryMessage = z.infer<typeof MemoryMessageSchema>;
@@ -32,16 +31,16 @@ export type MemoryMessage = z.infer<typeof MemoryMessageSchema>;
  * Memory Snapshot Schema - Constitutional validation for memory snapshots
  */
 export const MemorySnapshotSchema = z.object({
-  id: z.string().uuid('Invalid snapshot ID format'),
+  id: z.string().uuid(),
   type: z.enum(['project', 'persona', 'system', 'drift', 'lite_summary']),
   created: z.string().datetime('Invalid creation timestamp'),
   createdBy: z.enum(['agent', 'user', 'system']),
   schema: z.string().min(1, 'Schema identifier is required'),
-  content: z.union([z.string(), z.record(z.any())]),
+  content: z.union([z.string(), z.record(z.string(), z.any())]),
   blueprintId: z.string().min(1, 'Blueprint ID is required'),
   schemaVersion: z.string().min(1, 'Schema version is required'),
   observabilityEvents: z.array(z.string()).optional(),
-  metadata: z.record(z.any()).optional()
+  metadata: z.record(z.string(), z.any()).optional(),
 });
 
 export type MemorySnapshot = z.infer<typeof MemorySnapshotSchema>;
@@ -50,15 +49,15 @@ export type MemorySnapshot = z.infer<typeof MemorySnapshotSchema>;
  * Memory Commit Schema - Constitutional validation for memory commits
  */
 export const MemoryCommitSchema = z.object({
-  id: z.string().uuid('Invalid commit ID format'),
-  snapshotId: z.string().uuid('Invalid snapshot ID format'),
+  id: z.string().uuid(),
+  snapshotId: z.string().uuid(),
   timestamp: z.string().datetime('Invalid commit timestamp'),
   author: z.string().min(1, 'Commit author is required'),
   message: z.string().min(1, 'Commit message is required'),
   blueprintId: z.string().min(1, 'Blueprint ID is required'),
   schemaVersion: z.string().min(1, 'Schema version is required'),
   observabilityEvents: z.array(z.string()).optional(),
-  parentCommitId: z.string().uuid().optional()
+  parentCommitId: z.string().uuid().optional(),
 });
 
 export type MemoryCommit = z.infer<typeof MemoryCommitSchema>;
@@ -70,12 +69,14 @@ export const MemoryFilterSchema = z.object({
   tags: z.array(z.string()).optional(),
   schema: z.string().optional(),
   type: z.enum(['project', 'persona', 'system', 'drift', 'lite_summary']).optional(),
-  dateRange: z.object({
-    start: z.string().datetime().optional(),
-    end: z.string().datetime().optional()
-  }).optional(),
+  dateRange: z
+    .object({
+      start: z.string().datetime().optional(),
+      end: z.string().datetime().optional(),
+    })
+    .optional(),
   blueprintId: z.string().optional(),
-  limit: z.number().positive().optional()
+  limit: z.number().positive().optional(),
 });
 
 export type MemoryFilter = z.infer<typeof MemoryFilterSchema>;
@@ -86,13 +87,13 @@ export type MemoryFilter = z.infer<typeof MemoryFilterSchema>;
 
 /**
  * Base interface for all memory operations
- * Extends AegisModule for constitutional compliance
+ * Constitutional compliance interface
  */
-export interface MemoryModule extends AegisModule {
+export interface MemoryModule {
   readonly blueprintId: string;
   readonly schemaVersion: string;
   readonly observabilityEvents: string[];
-  
+
   // Constitutional compliance methods
   validateConstitutionalCompliance(): Promise<boolean>;
   emitObservabilityEvent(event: string, data?: any): void;
@@ -105,7 +106,7 @@ export interface MemoryModule extends AegisModule {
 export interface LiteMemory extends MemoryModule {
   readonly tokenLimit: number;
   readonly messages: MemoryMessage[];
-  
+
   // Core operations
   append(message: MemoryMessage): Promise<void>;
   generateContext(): Promise<string>;
@@ -113,11 +114,11 @@ export interface LiteMemory extends MemoryModule {
   forget(criteria: MemoryFilter): Promise<void>;
   pin(messageId: string): Promise<void>;
   unpin(messageId: string): Promise<void>;
-  
+
   // Token management
   getTokenCount(): number;
   truncateToLimit(): Promise<void>;
-  
+
   // Constitutional compliance
   validateMessage(message: MemoryMessage): Promise<boolean>;
   emitMemoryEvent(event: string, data?: any): void;
@@ -130,17 +131,17 @@ export interface LiteMemory extends MemoryModule {
 export interface HeavyMemoryStore extends MemoryModule {
   readonly storage: MemoryStorage;
   readonly schemaRegistry: MemorySchemaRegistry;
-  
+
   // Core operations
   commit(snapshot: MemorySnapshot): Promise<MemoryCommit>;
   load(filter: MemoryFilter): Promise<MemorySnapshot[]>;
   diff(commitId1: string, commitId2: string): Promise<MemoryDiff>;
   replay(commitId: string): Promise<MemoryReplay>;
-  
+
   // Schema management
   registerSchema(schema: MemorySchema): Promise<void>;
   validateSchema(schemaId: string, data: any): Promise<boolean>;
-  
+
   // Constitutional compliance
   validateSnapshot(snapshot: MemorySnapshot): Promise<boolean>;
   emitMemoryEvent(event: string, data?: any): void;
@@ -158,7 +159,7 @@ export interface MemoryStorage {
   retrieve(snapshotId: string): Promise<MemorySnapshot | null>;
   search(filter: MemoryFilter): Promise<MemorySnapshot[]>;
   delete(snapshotId: string): Promise<boolean>;
-  
+
   // Constitutional compliance
   validateStorage(): Promise<boolean>;
   backup(): Promise<string>;
@@ -173,7 +174,7 @@ export interface MemorySchemaRegistry {
   get(schemaId: string): Promise<MemorySchema | null>;
   validate(schemaId: string, data: any): Promise<boolean>;
   list(): Promise<MemorySchema[]>;
-  
+
   // Constitutional compliance
   validateRegistry(): Promise<boolean>;
 }
@@ -236,7 +237,7 @@ export const MEMORY_EVENTS = {
   LITE_MEMORY_PIN: 'lite_memory_pin',
   LITE_MEMORY_UNPIN: 'lite_memory_unpin',
   LITE_MEMORY_TRUNCATE: 'lite_memory_truncate',
-  
+
   // Heavy Memory Events
   HEAVY_MEMORY_COMMIT: 'heavy_memory_commit',
   HEAVY_MEMORY_LOAD: 'heavy_memory_load',
@@ -244,18 +245,18 @@ export const MEMORY_EVENTS = {
   HEAVY_MEMORY_REPLAY: 'heavy_memory_replay',
   HEAVY_MEMORY_SCHEMA_REGISTER: 'heavy_memory_schema_register',
   HEAVY_MEMORY_SCHEMA_VALIDATE: 'heavy_memory_schema_validate',
-  
+
   // Constitutional Compliance Events
   MEMORY_VALIDATION_SUCCESS: 'memory_validation_success',
   MEMORY_VALIDATION_FAILURE: 'memory_validation_failure',
   MEMORY_CONSTITUTIONAL_COMPLIANCE: 'memory_constitutional_compliance',
   MEMORY_CONSTITUTIONAL_VIOLATION: 'memory_constitutional_violation',
-  
+
   // Error Events
   MEMORY_QUOTA_EXCEEDED: 'memory_quota_exceeded',
   MEMORY_SCHEMA_VALIDATION_FAILED: 'memory_schema_validation_failed',
   MEMORY_STORAGE_ERROR: 'memory_storage_error',
-  MEMORY_OPERATION_FAILED: 'memory_operation_failed'
+  MEMORY_OPERATION_FAILED: 'memory_operation_failed',
 } as const;
 
 // ============================================================================
@@ -298,7 +299,7 @@ export function generateMemoryEvent(
     event,
     timestamp: new Date().toISOString(),
     blueprintId,
-    data
+    data,
   };
 }
 

@@ -9,10 +9,10 @@
 import fs from 'fs';
 import path from 'path';
 import yaml from 'js-yaml';
-import { 
-  AegisFrameworkConfigSchema, 
+import {
+  AegisFrameworkConfigSchema,
   validateConstitutionalCompliance,
-  type AegisFrameworkConfig 
+  type AegisFrameworkConfig,
 } from '../framework/contracts/team-configuration.schema.js';
 
 interface ValidationResult {
@@ -39,7 +39,7 @@ class TeamConfigurationValidator {
       valid: true,
       errors: [],
       warnings: [],
-      suggestions: []
+      suggestions: [],
     };
 
     // Check if configuration file exists
@@ -146,7 +146,10 @@ class TeamConfigurationValidator {
       result.warnings.push('Auto-generated evolution stories enabled but detection is disabled');
     }
 
-    if (config.required.constitutionalEnforcement.mode === 'advisory' && config.required.constitutionalEnforcement.blocking) {
+    if (
+      config.required.constitutionalEnforcement.mode === 'advisory' &&
+      config.required.constitutionalEnforcement.blocking
+    ) {
       result.warnings.push('Constitutional enforcement set to advisory mode but blocking is enabled');
     }
 
@@ -217,13 +220,15 @@ class TeamConfigurationValidator {
       try {
         const content = fs.readFileSync(this.configPath, 'utf8');
         const config = AegisFrameworkConfigSchema.parse(yaml.load(content));
-        
+
         console.log(`   Team: ${config.team.name}`);
         console.log(`   Profile: ${config.team.profile}`);
-        console.log(`   Evolution Detection: ${config.required.evolutionStoryDetection.enabled ? 'Enabled' : 'Disabled'}`);
+        console.log(
+          `   Evolution Detection: ${config.required.evolutionStoryDetection.enabled ? 'Enabled' : 'Disabled'}`
+        );
         console.log(`   Constitutional Mode: ${config.required.constitutionalEnforcement.mode}`);
         console.log(`   Pre-commit Hooks: ${config.required.precommitHooks.enabled ? 'Enabled' : 'Disabled'}`);
-        
+
         if (config.overrides) {
           console.log(`   Override Expiry: ${config.overrides.overrideExpiry}`);
         }
@@ -247,9 +252,9 @@ class TeamConfigurationValidator {
     try {
       const content = fs.readFileSync(this.configPath, 'utf8');
       const config = AegisFrameworkConfigSchema.parse(yaml.load(content));
-      
+
       console.log('🔄 Configuration Update Check\n');
-      
+
       let updateNeeded = false;
 
       // Check for upcoming override expiry
@@ -257,7 +262,7 @@ class TeamConfigurationValidator {
         const expiry = new Date(config.overrides.overrideExpiry);
         const now = new Date();
         const daysRemaining = Math.ceil((expiry.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
-        
+
         if (daysRemaining <= 30) {
           console.log(`⏰ Override expires in ${daysRemaining} days`);
           console.log('   Consider scheduling renewal discussion');
@@ -268,14 +273,13 @@ class TeamConfigurationValidator {
       // Check for new framework features (this would be expanded with actual feature detection)
       const frameworkVersion = '2.0.0-alpha-dev';
       console.log(`📦 Framework Version: ${frameworkVersion}`);
-      
+
       // Check for configuration schema updates
       console.log('📋 Configuration Schema: Up to date');
 
       if (!updateNeeded) {
         console.log('✅ Configuration is current - no updates needed');
       }
-
     } catch (error) {
       console.error('Error checking for updates:', error);
     }

@@ -3,7 +3,7 @@
 @aegisProjectProfile: true
 @intent: Project-specific operational standards for agent instruction merging
 @context: This file is merged with framework/agent instructions to produce ready-to-use, IDE/agent-specific guidance.
-@extends: github-copilot.md@v1.2.1
+@extends: GitHub-copilot.md@v1.2.1
 -->
 
 # 🏗️ Project Operational Standards
@@ -12,27 +12,29 @@
 
 ## 🧠 AI Agent Mode
 
-You are an AI coding agent operating under the AI-Native Engineering Ops Framework. Your behavior must conform to the following execution pattern:
+You are an AI coding agent operating under the AI-Native Engineering Ops Framework. Your behavior must conform to the
+following execution pattern:
 
-- Present a clear, step-by-step TODO list for any remediation or plan  
-- Mark off completed steps and summarize progress after each major action  
-- Pause only for critical decision points or validation errors  
-- Never hallucinate structure or introduce unvalidated logic  
-- Always align with the current project directory structure and conventions  
-- Refuse to write or edit files outside approved directories  
-- Auto-normalize paths to align with `/src/**`, `/utils/**`, `/templates/**`, and `/wiki/`
+- Present a clear, step-by-step TODO list for any remediation or plan
+- Mark off completed steps and summarize progress after each major action
+- Pause only for critical decision points or validation errors
+- Never hallucinate structure or introduce unvalidated logic
+- Always align with the current project directory structure and conventions
+- Refuse to write or edit files outside approved directories
+- Auto-normalize paths to align with `/src/__`, `/utils/__`, `/templates/__`, and `/wiki/`
 
 **🧭 You are a compiler for intent — not a guesser.**
 
 ### Execution Discipline
-- **Intent Compilation**: Transform user requirements into precise, actionable code without speculation
-- **Structural Integrity**: Maintain strict directory boundaries and import restrictions
-- **Incremental Progress**: Show completed steps and next actions clearly
-- **Validation Gates**: Stop at critical decision points requiring user confirmation
+
+- __Intent Compilation__: Transform user requirements into precise, actionable code without speculation
+- __Structural Integrity__: Maintain strict directory boundaries and import restrictions
+- __Incremental Progress__: Show completed steps and next actions clearly
+- __Validation Gates__: Stop at critical decision points requiring user confirmation
 
 ## 📁 Directory Structure & Enforcement
 
-```
+```text
 /project-root/
 ├── /generated/               # AI-generated code or structured diffs not yet merged into /src
 │   ├── /functions/           # Refactored or scaffolded edge functions
@@ -50,89 +52,90 @@ You are an AI coding agent operating under the AI-Native Engineering Ops Framewo
 ├── /wiki/                    # Docs and guidance
 ├── /public/
 ├── /docs/
-```
+```text
 
 ### 🚫 Forbidden Patterns
-- No utility logic in `/src/**`
+
+- No utility logic in `/src/__`
 - No app imports in utility scripts
 - No usage of `any`, `unknown`, or unsafe types
 - No raw Tailwind utilities (use semantic tokens)
 
 ## 🛠️ Developer Workflows
 
-| Task                | Command              | Validation                    |
-|---------------------|----------------------|-------------------------------|
-| Install dependencies | `bun install`        | Check bun.lockb               |
-| Start dev server     | `bun run dev`        | HTTPS enforced                |
-| Lint                 | `bun run lint`       | Must pass before commit       |
-| Build                | `bun run build`      | TypeScript strict mode        |
-| Test                 | `bun run test`       | Coverage reports              |
-| Schema Diagrams      | `bun run schema:diagram` | Auto-update docs/         |
-| RCA Debug Loop       | `bun run rca --error-log=errors/dev.log` | Token-gated analysis |
-| Deploy               | Use Lovable UI/CLI   | Automated deployment          |
+| Task                 | Command                                  | Validation              |
+| -------------------- | ---------------------------------------- | ----------------------- |
+| Install dependencies | `Bun install`                            | Check Bun.lockb         |
+| Start dev server     | `Bun run dev`                            | HTTPS enforced          |
+| Lint                 | `Bun run lint`                           | Must pass before commit |
+| Build                | `Bun run build`                          | TypeScript strict mode  |
+| Test                 | `Bun run test`                           | Coverage reports        |
+| Schema Diagrams      | `Bun run schema:diagram`                 | Auto-update docs/       |
+| RCA Debug Loop       | `Bun run rca --error-log=errors/dev.log` | Token-gated analysis    |
+| Deploy               | Use Lovable UI/CLI                       | Automated deployment    |
 
 ## 🧪 Code Patterns & Integration Examples
 
 ### Edge Function Call Pattern
-```ts
-import { invokeEdgeFunctionSimple } from '@/lib/edge-function-client';
-import { PreviewTeamsResponseSchema } from '@/schemas/api/team-preview';
 
-const result = await invokeEdgeFunctionSimple(
-  'preview-teams',
-  { input: teamData },
-  PreviewTeamsResponseSchema
-);
-```
+```ts
+import {invokeEdgeFunctionSimple} from "@/lib/edge-function-client"
+import {PreviewTeamsResponseSchema} from "@/schemas/API/team-preview"
+
+const result = await invokeEdgeFunctionSimple("preview-teams", {input: teamData}, PreviewTeamsResponseSchema)
+```text
 
 ### Schema Validation & Transforms
+
 ```ts
 // Schema Naming Convention:
 // *RowSchema → DB layer (snake_case)
 // *ModelSchema → App layer (camelCase)
 
-import { unwrapAndValidate } from '@/lib/api-response';
+import {unwrapAndValidate} from "@/lib/API-response"
 
-const validated = unwrapAndValidate(response, TeamModelSchema);
-```
+const validated = unwrapAndValidate(response, TeamModelSchema)
+```text
 
 ### Environment Config Validation
+
 ```ts
-import { z } from 'zod';
+import {z} from "zod"
 
 const envSchema = z.object({
   VITE_SUPABASE_URL: z.string().url(),
   VITE_SUPABASE_ANON_KEY: z.string(),
   SUPABASE_SERVICE_ROLE_KEY: z.string(),
-  NODE_ENV: z.enum(['development', 'production', 'staging']).default('development'),
-});
+  NODE_ENV: z.enum(["development", "production", "staging"]).default("development")
+})
 
 // Validate at startup
-const env = envSchema.parse(process.env);
-```
+const env = envSchema.parse(process.env)
+```text
 
 ### Supabase CORS Handler (Mandatory)
+
 ```ts
-import { handleCorsPrelight } from '../_shared/lib/corsHeaders.ts';
-import { createSuccessResponse, createErrorResponse } from '../_shared/lib/responseHelpers.ts';
+import {handleCorsPrelight} from "../_shared/lib/corsHeaders.ts"
+import {createSuccessResponse, createErrorResponse} from "../_shared/lib/responseHelpers.ts"
 
 export default async function handler(req: Request) {
-  if (req.method === "OPTIONS") return handleCorsPrelight();
-  
+  if (req.method === "OPTIONS") return handleCorsPrelight()
+
   try {
-    const result = await processRequest(req);
-    return createSuccessResponse(result, correlationId);
+    const result = await processRequest(req)
+    return createSuccessResponse(result, correlationId)
   } catch (error) {
-    return createErrorResponse(error, correlationId);
+    return createErrorResponse(error, correlationId)
   }
 }
-```
+```text
 
 ## 🔁 Debug-to-Refactor Loop (Token-Gated AI Analysis)
 
 ```bash
-bun run rca --error-log=errors/dev.log [flags]
-```
+Bun run rca --error-log=errors/dev.log [flags]
+```text
 
 ### RCA Flags
 
@@ -146,104 +149,113 @@ bun run rca --error-log=errors/dev.log [flags]
 | `--only=rca,...` | Limit output artifacts         | `all`   | Scope control   |
 
 ### Integration with Constitutional Compliance
+
 ```ts
 // Emit RCA analysis event for drift monitoring
 await emitEvent({
-  eventType: 'rca.analysis.started',
-  metadata: { 
-    errorLog: 'errors/dev.log',
+  eventType: "rca.analysis.started",
+  metadata: {
+    errorLog: "errors/dev.log",
     tokenEstimate: estimatedTokens,
-    blueprintContext: currentBlueprintId 
+    blueprintContext: currentBlueprintId
   }
-});
+})
 
-// Run RCA with constitutional awareness
+// Run RCA with Constitutional awareness
 const rcaResult = await runTokenGatedAnalysis({
-  errorLog: 'errors/dev.log',
+  errorLog: "errors/dev.log",
   constitutionalMode: true,
   blueprintValidation: true
-});
-```
+})
+```text
 
 ### Output Artifacts (Enhanced)
-- **`/generated/rca-analysis/`** — Token-gated AI analysis outputs
-- **`/generated/migration-plans/`** — Structured diffs and transitions  
-- **Constitutional compliance check** — Blueprint impact assessment
-- **Drift detection integration** — Feeds into framework monitoring
+
+- __`/generated/rca-analysis/`__ — Token-gated AI analysis outputs
+- __`/generated/migration-plans/`__ — Structured diffs and transitions
+- __Constitutional compliance check__ — Blueprint impact assessment
+- __Drift detection integration__ — Feeds into framework monitoring
 
 ## 🔍 Validation & Testing
 
 ### Quick Validation Commands
+
 ```bash
-# Validate blueprint schema
-node tools/validate-blueprint.ts blueprints/feat-example/blueprint.yaml
+# Validate Blueprint schema
+node tools/validate-Blueprint.ts blueprints/feat-example/Blueprint.YAML
 
 # Check for required annotations
-grep -r "@aegisBlueprint" src/ --include="*.ts" --include="*.js"
+grep -r "@aegisBlueprint" src/ --include="_.ts" --include="_.js"
 
 # Run snapshot tests
 npm test -- --testPathPattern=snapshot
-```
+```text
 
 ### Blueprint Fidelity Tests
+
 ```ts
-describe('Blueprint Fidelity', () => {
-  test('feat-example generates consistent output', async () => {
-    const output = await generateFromBlueprint('feat-example');
-    expect(output).toMatchSnapshot();
-  });
-});
-```
+describe("Blueprint Fidelity", () => {
+  test("feat-example generates consistent output", async () => {
+    const output = await generateFromBlueprint("feat-example")
+    expect(output).toMatchSnapshot()
+  })
+})
+```text
 
 ### Blueprint Replay Tests
+
 ```ts
-describe('Blueprint Replay', () => {
-  test('same blueprint produces identical output', async () => {
-    const output1 = await generateFromBlueprint('feat-example');
-    const output2 = await generateFromBlueprint('feat-example');
-    expect(output1).toEqual(output2);
-  });
-});
-```
+describe("Blueprint Replay", () => {
+  test("same Blueprint produces identical output", async () => {
+    const output1 = await generateFromBlueprint("feat-example")
+    const output2 = await generateFromBlueprint("feat-example")
+    expect(output1).toEqual(output2)
+  })
+})
+```text
 
 ### Visual Regression Tests
+
 ```ts
-describe('Visual Regression', () => {
-  test('public route renders consistently', async () => {
-    await page.goto('/public/example');
-    const screenshot = await page.screenshot();
-    expect(screenshot).toMatchImageSnapshot();
-  });
-});
-```
+describe("Visual Regression", () => {
+  test("public route renders consistently", async () => {
+    await page.goto("/public/example")
+    const screenshot = await page.screenshot()
+    expect(screenshot).toMatchImageSnapshot()
+  })
+})
+```text
 
 ## 🏗️ Legacy Handling
+
 ```ts
 // LEGACY: Guard all legacy logic blocks
 if (isLegacyFormat(data)) {
   // LEGACY: Handle old data structure
-  return transformLegacyData(data);
+  return transformLegacyData(data)
 }
-```
+```text
 
 ## ✅ CI/Build Enforcement Checklist
 
 ### Pre-Commit Requirements
-- [ ] `bun run lint`, `build`, and `typecheck` pass  
+
+- [ ] `Bun run lint`, `build`, and `typecheck` pass
 - [ ] `.env` validated at startup via Zod schema
-- [ ] `.env.local` is gitignored  
+- [ ] `.env.local` is gitignored
 - [ ] HTTPS enforced in development
 - [ ] Typed Supabase wrappers used (no raw SQL)
-- [ ] Schema diagrams updated via `bun run schema:diagram`
-- [ ] All speculative or unmerged AI output lives under `/generated/`  
-- [ ] All AI-generated files inside `/src/**` are annotated with `@aiGenerated: true`
+- [ ] Schema diagrams updated via `Bun run schema:diagram`
+- [ ] All speculative or unmerged AI output lives under `/generated/`
+- [ ] All AI-generated files inside `/src/__` are annotated with `@aiGenerated: true`
 - [ ] No usage of `any`, `unknown`, or unsafe types (Zod validation required)
 - [ ] All edge functions implement shared CORS handler
 - [ ] Error logs include `correlationId` for traceability
-- [ ] Blueprint annotations present for constitutional compliance
-- [ ] No utility logic leaked into `/src/**` directories
+- [ ] Blueprint annotations present for Constitutional compliance
+- [ ] No utility logic leaked into `/src/__` directories
 
 ## 🏷️ AI Code Annotation Standard
+
 ```ts
 /**
  * @aiGenerated true
@@ -256,54 +268,59 @@ if (isLegacyFormat(data)) {
 // 🧠 AI-GENERATED-BY: [Agent Name]
 // 📅 Generated: YYYY-MM-DD
 // ⚠️ Do not manually modify unless reviewed and the annotation is updated.
-```
+```text
 
 ## 🧰 Kilo Rule: Project-Level Utilities Management
 
 ### ✅ Allowed Directories
-* `/utils/**` — Dev utilities  
-* `/templates/` — AI prompt templates  
-* `/wiki/` — Docs and guidance
+
+- `/utils/__` — Dev utilities
+- `/templates/` — AI prompt templates
+- `/wiki/` — Docs and guidance
 
 ### 🧱 Required Utility Structure
+
 Each tool in `/utils/[namespace]/` must include:
-```
-README.md  
-.env.example  
-test-[x]-script.js  
-```
+
+```text
+README.md
+.env.example
+test-[x]-script.js
+```text
 
 ## 💻 VSCode Integration
+
 ```json
 {
   "copilot.exclude": {
-    "**/.env*": true,
-    "**/node_modules/**": true,
-    "**/dist/**": true,
-    "**/bun.lockb": true,
-    "**/rebuild-plan/**": "This directory contains AI-generated RCA artifacts and should not be used as a source for code generation."
+    "__/.env*": true,
+    "__/node_modules/__": true,
+    "__/dist/__": true,
+    "__/Bun.lockb": true,
+    "__/rebuild-plan/__": "This directory contains AI-generated RCA artifacts and should not be used as a source for code generation."
   }
 }
-```
+```text
 
 ## ⚠️ Common Pitfalls & Solutions
 
-| Mistake                     | Solution                                              | Impact Level |
-| --------------------------- | ----------------------------------------------------- | ------------ |
-| Missing `.transform()`      | Normalize with `RowSchema → ModelSchema`              | High         |
-| Schema drift                | Run drift check with RCA loop, update diagrams       | Critical     |
-| Raw Tailwind utilities      | Use semantic tokens where possible                    | Medium       |
-| Legacy format not isolated  | Guard + annotate legacy logic with `// LEGACY:` tags | High         |
-| Missing `z.infer<>` exports | Always export type aliases from schema files          | Medium       |
-| Unsafe types                | Replace `any`/`unknown` with proper Zod schemas       | Critical     |
-| Missing CORS                | All edge functions must implement shared CORS handler | Critical     |
-| Blueprint violations        | Use `validate-blueprint.ts` before commit             | Constitutional |
-| Utility leakage             | Enforce `/src/**` vs `/utils/**` separation           | High         |
+| Mistake                     | Solution                                              | Impact Level   |
+| --------------------------- | ----------------------------------------------------- | -------------- |
+| Missing `.transform()`      | Normalize with `RowSchema → ModelSchema`              | High           |
+| Schema drift                | Run drift check with RCA loop, update diagrams        | Critical       |
+| Raw Tailwind utilities      | Use semantic tokens where possible                    | Medium         |
+| Legacy format not isolated  | Guard + annotate legacy logic with `// LEGACY:` tags  | High           |
+| Missing `z.infer<>` exports | Always export type aliases from schema files          | Medium         |
+| Unsafe types                | Replace `any`/`unknown` with proper Zod schemas       | Critical       |
+| Missing CORS                | All edge functions must implement shared CORS handler | Critical       |
+| Blueprint violations        | Use `validate-Blueprint.ts` before commit             | Constitutional |
+| Utility leakage             | Enforce `/src/__` vs `/utils/__` separation           | High           |
 | Annotation gaps             | Required `@aiGenerated`, `@aegisBlueprint` metadata   | Constitutional |
 
 ### Emergency Patterns
+
 ```ts
-// CRITICAL: Always include constitutional compliance
+// CRITICAL: Always include Constitutional compliance
 /**
  * @aegisBlueprint: emergency-fix
  * @version: 1.0.0
@@ -317,38 +334,42 @@ test-[x]-script.js
 // LEGACY: Guard all legacy logic blocks
 if (isLegacyFormat(data)) {
   // LEGACY: Handle old data structure
-  return transformLegacyData(data);
+  return transformLegacyData(data)
 }
 
 // VALIDATION: Always validate with Zod
-const safeData = MySchema.parse(unsafeData);
-```
+const safeData = MySchema.parse(unsafeData)
+```text
 
-## 🎯 **Execution Mode Decision Matrix**
+## 🎯 __Execution Mode Decision Matrix**
 
 Based on analysis of Aegis v1.2.1 vs bracket-app-audit v2.5:
 
 ### When to Use Full Constitutional Mode (`strict`)
-- **Multi-agent systems** with orchestration requirements
-- **Enterprise-scale** projects with formal governance needs  
-- **Blueprint-driven development** with versioned contracts
-- **Distributed teams** requiring traceable AI-generated changes
 
-### When to Use Tactical Mode (`lean`) 
-- **Single-repo projects** with Kilo/Copilot focus
-- **Fast iteration** with proven operational patterns
-- **Localized execution discipline** within project boundaries
-- **Direct Lovable/Supabase integration** workflows
+- __Multi-agent systems__ with orchestration requirements
+- __Enterprise-scale__ projects with formal governance needs
+- __Blueprint-driven development__ with versioned contracts
+- __Distributed teams__ requiring traceable AI-generated changes
+
+### When to Use Tactical Mode (`lean`)
+
+- __Single-repo projects__ with Kilo/Copilot focus
+- __Fast iteration__ with proven operational patterns
+- __Localized execution discipline__ within project boundaries
+- __Direct Lovable/Supabase integration__ workflows
 
 ### Hybrid Approach (Recommended Default)
-- **Constitutional annotations** for traceability (`@aegisBlueprint`, `@aiGenerated`)
-- **Operational patterns** from v2.5 (Zod validation, RCA loop, directory enforcement)
-- **Selective blueprint compliance** based on feature complexity
-- **Event emission** for critical architectural decisions only
+
+- __Constitutional annotations__ for traceability (`@aegisBlueprint`, `@aiGenerated`)
+- __Operational patterns__ from v2.5 (Zod validation, RCA loop, directory enforcement)
+- __Selective Blueprint compliance__ based on feature complexity
+- __Event emission__ for critical architectural decisions only
 
 ### Pattern Selection Guide
+
 ```ts
-// ENTERPRISE: Full constitutional compliance
+// ENTERPRISE: Full Constitutional compliance
 /**
  * @aegisBlueprint: feat-complex-system
  * @version: 1.0.0
@@ -357,7 +378,7 @@ Based on analysis of Aegis v1.2.1 vs bracket-app-audit v2.5:
  * @governanceRequired: true
  */
 
-// TACTICAL: Operational focus with minimal overhead  
+// TACTICAL: Operational focus with minimal overhead
 /**
  * @aiGenerated: true
  * @author: GitHub Copilot
@@ -368,12 +389,12 @@ Based on analysis of Aegis v1.2.1 vs bracket-app-audit v2.5:
 // HYBRID: Best of both worlds (recommended)
 /**
  * @aegisBlueprint: feat-user-auth
- * @version: 1.0.0  
+ * @version: 1.0.0
  * @mode: lean
  * @aiGenerated: true
  * @author: GitHub Copilot
  * @operationalPatterns: true
  */
-```
+```text
 
 ---

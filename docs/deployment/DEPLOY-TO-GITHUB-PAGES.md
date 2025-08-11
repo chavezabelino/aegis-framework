@@ -1,4 +1,6 @@
 <!--
+# 🚀 Deploy to GitHub Pages - Complete Guide
+
 @aegisFrameworkVersion: 2.5.0
 @intent: GitHub Pages deployment guide for AI Agent Development Governance documentation
 @context: Deployment documentation for hosting framework documentation
@@ -7,16 +9,18 @@
 
 # 🚀 Deploy to GitHub Pages - Complete Guide
 
-## ✅ **SITE IS READY!**
+## ✅ __SITE IS READY!**
 
-Your Docusaurus documentation site is built and running at http://localhost:3000/aegis-framework/
+Your Docusaurus documentation site is built and running at <http://localhost:3000/aegis-framework/>
 
-## 🎯 **DEPLOYMENT OPTIONS**
+## 🎯 __DEPLOYMENT OPTIONS**
 
-### **Option A: Automated GitHub Actions (RECOMMENDED)**
+### __Option A: Automated GitHub Actions (RECOMMENDED)**
 
 #### Step 1: Update Configuration
-1. **Edit `website/docusaurus.config.ts`**:
+
+1. __Edit `website/Docusaurus.config.ts`__:
+
    ```typescript
    // Replace "your-username" with your actual GitHub username
    url: 'https://your-username.github.io',
@@ -24,31 +28,33 @@ Your Docusaurus documentation site is built and running at http://localhost:3000
    ```
 
 #### Step 2: Enable GitHub Pages
-1. **Go to your repository on GitHub**
-2. **Settings** → **Pages**
-3. **Source**: Select "GitHub Actions"
-4. **Save**
+
+1. __Go to your repository on GitHub**
+2. __Settings__ → __Pages**
+3. __Source__: Select "GitHub Actions"
+4. __Save**
 
 #### Step 3: Deploy
+
 ```bash
 # Commit and push - GitHub Actions will automatically deploy
 git add .
 git commit -m "Add Docusaurus documentation site with live framework data"
 git push origin main
-```
+```text
 
-**Your site will be live at**: `https://your-username.github.io/aegis-framework/`
+**Your site will be live at__: `https://your-username.github.io/aegis-framework/`
 
 ---
 
-### **Option B: Manual Script Deployment**
+### __Option B: Manual Script Deployment**
 
 ```bash
 # Update framework data and deploy in one command
 ./scripts/deploy-docs.sh
-```
+```text
 
-### **Option C: Direct Deployment**
+### __Option C: Direct Deployment**
 
 ```bash
 cd website
@@ -57,116 +63,127 @@ cd website
 # Then build and deploy
 npm run build
 npm run deploy
-```
+```text
 
-## 📊 **WHAT YOUR SITE INCLUDES**
+## 📊 __WHAT YOUR SITE INCLUDES**
 
-### **Live Framework Data**
-- **64 Capabilities** across 4 categories
-- **Real-time Health Status**
-- **Blueprint Registry** with 2 active blueprints
-- **Auto-generated Documentation** from your framework observability
+### __Live Framework Data**
 
-### **Professional Navigation**
-- **Homepage**: Framework overview with key features
-- **Live Dashboard**: Real-time metrics and capability visualization
-- **Documentation**: Getting started and tutorials
-- **Capabilities**: Auto-generated from capability-map.json
-- **Blueprints**: Auto-generated from blueprint-registry.json
-- **Evolution Stories**: Framework development history (blog)
+- __64 Capabilities__ across 4 categories
+- __Real-time Health Status**
+- __Blueprint Registry__ with 2 active Blueprints
+- __Auto-generated Documentation__ from your framework observability
 
-### **Visual Features**
-- **Capability Distribution Charts**: 59% Tools, 31% Core, 6% Governance, 3% Integration
-- **Health Status Cards**: Live framework monitoring
-- **Interactive Navigation**: Search, categories, version dropdown
-- **Mobile Responsive**: Professional design on all devices
+### __Professional Navigation**
 
-## 🔄 **KEEPING CONTENT UPDATED**
+- __Homepage__: Framework overview with key features
+- __Live Dashboard__: Real-time metrics and capability visualization
+- __Documentation__: Getting started and tutorials
+- __Capabilities__: Auto-generated from capability-map.JSON
+- __Blueprints__: Auto-generated from Blueprint-registry.JSON
+- __Evolution Stories__: Framework development history (blog)
 
-### **Automatic Updates**
+### __Visual Features**
+
+- __Capability Distribution Charts__: 59% Tools, 31% Core, 6% Governance, 3% Integration
+- __Health Status Cards__: Live framework monitoring
+- __Interactive Navigation__: Search, categories, version dropdown
+- __Mobile Responsive__: Professional design on all devices
+
+## 🔄 __KEEPING CONTENT UPDATED**
+
+### __Automatic Updates**
+
 Your site automatically generates content from:
+
 ```bash
 # These files power your documentation
-.framework/capability-map.json       # → Capability pages
-.framework/blueprint-registry.json   # → Blueprint docs
+.framework/capability-map.JSON       # → Capability pages
+.framework/Blueprint-registry.JSON   # → Blueprint docs
 FRAMEWORK-DASHBOARD.md               # → Dashboard data
 docs/evolution/                      # → Evolution stories (blog)
-```
+```text
 
-### **Refresh Process**
+### __Refresh Process**
+
 ```bash
 # Update framework data (run these when you add capabilities)
 node tools/framework-capability-mapper.ts
-node framework/registry/blueprint-registry.ts discover  
+node framework/registry/Blueprint-registry.ts discover
 node tools/update-framework-dashboard.ts
 
 # Then rebuild/redeploy docs
 cd website && npm run build && npm run deploy
-```
+```text
 
-## 🎨 **CUSTOMIZATION OPTIONS**
+## 🎨 __CUSTOMIZATION OPTIONS**
 
-### **Branding**
-- **Logo**: Replace `website/static/img/logo.svg`
-- **Favicon**: Replace `website/static/img/favicon.ico`  
-- **Colors**: Edit `website/src/css/custom.css`
+### __Branding**
 
-### **Content**
-- **Add Pages**: Create files in `website/docs/`
-- **Blog Posts**: Add to `website/blog/`
-- **Custom Components**: Add to `website/src/components/`
+- __Logo__: Replace `website/static/img/logo.svg`
+- __Favicon__: Replace `website/static/img/favicon.ico`
+- __Colors__: Edit `website/src/CSS/custom.CSS`
 
-## 🔍 **TROUBLESHOOTING**
+### __Content**
 
-### **Common Issues**
+- __Add Pages__: Create files in `website/docs/`
+- __Blog Posts__: Add to `website/blog/`
+- __Custom Components__: Add to `website/src/components/`
 
-#### **Build Errors**
+## 🔍 __TROUBLESHOOTING**
+
+### __Common Issues**
+
+#### __Build Errors**
+
 ```bash
 # Clear cache and rebuild
 cd website
-rm -rf .docusaurus build
+rm -rf .Docusaurus build
 npm run build
-```
+```text
 
-#### **GitHub Pages Not Updating**
-1. Check **Actions** tab for deployment status
-2. Verify **Pages** settings use "GitHub Actions" source
-3. Ensure `baseUrl: '/aegis-framework/'` in config
+#### __GitHub Pages Not Updating**
 
-#### **Missing Framework Data**
+1. Check __Actions__ tab for deployment status
+2. Verify __Pages__ settings use "GitHub Actions" source
+3. Ensure `baseUrl: '/Aegis-framework/'` in config
+
+#### __Missing Framework Data**
+
 ```bash
 # Regenerate framework data
 node tools/framework-capability-mapper.ts
 node tools/update-framework-dashboard.ts
-```
+```text
 
-## 🎉 **SUCCESS METRICS**
+## 🎉 __SUCCESS METRICS**
 
 Once deployed, your site will provide:
 
-✅ **Zero Documentation Debt**: Auto-updates from framework data  
-✅ **Professional Presentation**: Beautiful, searchable, mobile-friendly  
-✅ **Live Framework Status**: Real-time capability and health monitoring  
-✅ **Developer Experience**: Comprehensive docs with examples  
-✅ **Zero Server Costs**: Hosted free on GitHub Pages  
-✅ **SEO Optimized**: Professional metadata and structure  
+✅ __Zero Documentation Debt__: Auto-updates from framework data  
+✅ __Professional Presentation__: Beautiful, searchable, mobile-friendly  
+✅ __Live Framework Status__: Real-time capability and health monitoring  
+✅ __Developer Experience__: Comprehensive docs with examples  
+✅ __Zero Server Costs__: Hosted free on GitHub Pages  
+✅ __SEO Optimized__: Professional metadata and structure
 
-## 🔗 **NEXT STEPS**
+## 🔗 __NEXT STEPS**
 
-1. **🔧 Update your GitHub username** in the config files
-2. **🚀 Push to trigger deployment** or run the deployment script
-3. **📢 Share your documentation URL** with users and contributors
-4. **📈 Monitor usage** through GitHub Pages analytics
+1. __🔧 Update your GitHub username__ in the config files
+2. __🚀 Push to trigger deployment__ or run the deployment script
+3. __📢 Share your documentation URL__ with users and contributors
+4. __📈 Monitor usage__ through GitHub Pages analytics
 
-**Your observability problem is now completely solved with a professional, auto-updating documentation website!** 🚀📚✨
+**Your observability problem is now completely solved with a professional, auto-updating documentation website!__ 🚀📚✨
 
 ---
 
-## 📞 **NEED HELP?**
+## 📞 __NEED HELP?**
 
-- **Local Development**: `cd website && npm start`
-- **Build Test**: `cd website && npm run build`
-- **Force Deploy**: `./scripts/deploy-docs.sh`
-- **Framework Data**: Run capability mapper and dashboard update scripts
+- __Local Development__: `cd website && npm start`
+- __Build Test__: `cd website && npm run build`
+- __Force Deploy__: `./scripts/deploy-docs.sh`
+- __Framework Data__: Run capability mapper and dashboard update scripts
 
-**Your documentation now maintains itself as your framework evolves!** 🎯
+**Your documentation now maintains itself as your framework evolves!__ 🎯

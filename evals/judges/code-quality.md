@@ -7,24 +7,28 @@ You are an expert code reviewer evaluating AI-generated code for quality, mainta
 **Rate the code on a scale of 1-10 for each category:**
 
 ### 1. Type Safety (25%)
+
 - [ ] All functions have proper TypeScript types
 - [ ] Interfaces are well-defined and exported
 - [ ] No usage of `any` type without justification
 - [ ] Generic types used appropriately
 
 ### 2. Code Structure (25%)
+
 - [ ] Functions are single-purpose and focused
 - [ ] Proper separation of concerns
 - [ ] Consistent naming conventions
 - [ ] Logical file organization
 
 ### 3. Error Handling (25%)
+
 - [ ] Comprehensive error handling with try/catch
 - [ ] Errors are properly typed and informative
 - [ ] Graceful degradation when possible
 - [ ] Error boundaries in appropriate places
 
 ### 4. Documentation & Readability (25%)
+
 - [ ] Code is self-documenting with clear variable names
 - [ ] Complex logic has explanatory comments
 - [ ] Public APIs are documented
@@ -52,16 +56,13 @@ You are an expert code reviewer evaluating AI-generated code for quality, mainta
   },
   "overallScore": 8.0,
   "criticalIssues": [],
-  "recommendations": [
-    "Add JSDoc comments for public APIs",
-    "Consider custom error classes for better error handling"
-  ]
+  "recommendations": ["Add JSDoc comments for public APIs", "Consider custom error classes for better error handling"]
 }
-```
+```text
 
 ## Instructions
 
-1. **Focus on maintainability** - Code should be easy to understand and modify
-2. **Consider scalability** - Will this code work well as the system grows?
-3. **Look for patterns** - Are there repeated patterns that could be abstracted?
-4. **Check consistency** - Does the code follow consistent patterns throughout?
+1. __Focus on maintainability__ - Code should be easy to understand and modify
+2. __Consider scalability__ - Will this code work well as the system grows?
+3. __Look for patterns__ - Are there repeated patterns that could be abstracted?
+4. __Check consistency__ - Does the code follow consistent patterns throughout?

@@ -42,8 +42,8 @@ export class RealtimeConstitutionalEnforcer {
    * Load all available blueprints for validation
    */
   private async loadBlueprintRegistry(): Promise<void> {
-    const blueprintFiles = await glob('patterns/**/blueprint.yaml', { 
-      cwd: this.projectRoot 
+    const blueprintFiles = await glob('patterns/**/blueprint.yaml', {
+      cwd: this.projectRoot,
     });
 
     for (const blueprintPath of blueprintFiles) {
@@ -51,11 +51,11 @@ export class RealtimeConstitutionalEnforcer {
         const content = fs.readFileSync(path.join(this.projectRoot, blueprintPath), 'utf8');
         const yaml = await import('yaml');
         const blueprint = yaml.parse(content);
-        
+
         if (blueprint.id) {
           this.blueprintRegistry.set(blueprint.id, {
             ...blueprint,
-            path: blueprintPath
+            path: blueprintPath,
           });
         }
       } catch (error) {
@@ -77,20 +77,20 @@ export class RealtimeConstitutionalEnforcer {
         constitutionalArticle: 'Article I, Section 2: Blueprint Primacy',
         description: 'Password handling code detected without blueprint reference',
         suggestedFix: 'Reference user-authentication blueprint and include @aegisBlueprint annotation',
-        blockExecution: true
+        blockExecution: true,
       },
-      
+
       // Session management patterns
       {
         pattern: /(?:session|cookie|token).*(?:create|generate|validate|destroy)/i,
         violationType: 'blueprint-missing',
-        severity: 'critical', 
+        severity: 'critical',
         constitutionalArticle: 'Article I, Section 2: Blueprint Primacy',
         description: 'Session management code detected without blueprint reference',
         suggestedFix: 'Reference user-authentication blueprint for session patterns',
-        blockExecution: true
+        blockExecution: true,
       },
-      
+
       // Database authentication queries
       {
         pattern: /db\.(?:query|select|insert|update).*(?:user|auth|login|session)/i,
@@ -99,9 +99,9 @@ export class RealtimeConstitutionalEnforcer {
         constitutionalArticle: 'Article I, Section 2: Blueprint Primacy',
         description: 'Authentication database operations without blueprint validation',
         suggestedFix: 'Use validated database patterns from user-authentication blueprint',
-        blockExecution: true
+        blockExecution: true,
       },
-      
+
       // Login/logout endpoints
       {
         pattern: /(?:POST|GET|DELETE).*\/(?:login|logout|register|auth)/i,
@@ -110,9 +110,9 @@ export class RealtimeConstitutionalEnforcer {
         constitutionalArticle: 'Article I, Section 2: Blueprint Primacy',
         description: 'Authentication endpoints without blueprint compliance',
         suggestedFix: 'Implement authentication endpoints using user-authentication blueprint',
-        blockExecution: true
+        blockExecution: true,
       },
-      
+
       // CSRF and security patterns
       {
         pattern: /csrf|xsrf|token.*verify|security.*check/i,
@@ -121,8 +121,8 @@ export class RealtimeConstitutionalEnforcer {
         constitutionalArticle: 'Article I, Section 4: Safety',
         description: 'Security patterns require constitutional compliance',
         suggestedFix: 'Implement security patterns from user-authentication blueprint',
-        blockExecution: false
-      }
+        blockExecution: false,
+      },
     ];
   }
 
@@ -130,11 +130,7 @@ export class RealtimeConstitutionalEnforcer {
    * Check if code has required constitutional annotations
    */
   private hasConstitutionalAnnotations(content: string): boolean {
-    const requiredAnnotations = [
-      /@aegisBlueprint/,
-      /@version/,
-      /@intent/
-    ];
+    const requiredAnnotations = [/@aegisBlueprint/, /@version/, /@intent/];
 
     return requiredAnnotations.some(annotation => annotation.test(content));
   }
@@ -158,7 +154,7 @@ export class RealtimeConstitutionalEnforcer {
       /log.*auth|auth.*log/i,
       /event.*auth|auth.*event/i,
       /telemetry|metric|trace/i,
-      /console\.log.*auth/i
+      /console\.log.*auth/i,
     ];
 
     return observabilityPatterns.some(pattern => pattern.test(content));
@@ -169,7 +165,7 @@ export class RealtimeConstitutionalEnforcer {
    */
   async analyzeFile(filePath: string): Promise<ConstitutionalViolation[]> {
     const violations: ConstitutionalViolation[] = [];
-    
+
     try {
       const content = fs.readFileSync(filePath, 'utf8');
       const lines = content.split('\n');
@@ -203,7 +199,7 @@ export class RealtimeConstitutionalEnforcer {
               evidence: `${pattern.description}: "${matches[0]}"`,
               suggestedFix: pattern.suggestedFix,
               constitutionalArticle: pattern.constitutionalArticle,
-              blockExecution: pattern.blockExecution
+              blockExecution: pattern.blockExecution,
             });
           }
 
@@ -217,12 +213,11 @@ export class RealtimeConstitutionalEnforcer {
               evidence: 'Authentication code missing required observability events',
               suggestedFix: 'Add authentication event logging per user-authentication blueprint',
               constitutionalArticle: 'Article I, Section 1: Observability',
-              blockExecution: false
+              blockExecution: false,
             });
           }
         }
       }
-
     } catch (error) {
       violations.push({
         type: 'blueprint-missing',
@@ -231,7 +226,7 @@ export class RealtimeConstitutionalEnforcer {
         evidence: `Could not analyze file: ${error instanceof Error ? error.message : String(error)}`,
         suggestedFix: 'Ensure file is readable and contains valid code',
         constitutionalArticle: 'Article I: Core Principles',
-        blockExecution: false
+        blockExecution: false,
       });
     }
 
@@ -246,7 +241,7 @@ export class RealtimeConstitutionalEnforcer {
 
     for (const searchPath of paths) {
       const fullPath = path.join(this.projectRoot, searchPath);
-      
+
       if (!fs.existsSync(fullPath)) {
         continue;
       }
@@ -254,7 +249,7 @@ export class RealtimeConstitutionalEnforcer {
       // Find relevant code files
       const codeFiles = await glob('**/*.{ts,tsx,js,jsx,svelte,vue}', {
         cwd: fullPath,
-        ignore: ['node_modules/**', '*.test.*', '*.spec.*', 'dist/**', 'build/**']
+        ignore: ['node_modules/**', '*.test.*', '*.spec.*', 'dist/**', 'build/**'],
       });
 
       for (const file of codeFiles) {
@@ -277,7 +272,7 @@ export class RealtimeConstitutionalEnforcer {
   }> {
     console.log('🏛️ Running real-time constitutional compliance enforcement...\n');
 
-    const violations = filePaths 
+    const violations = filePaths
       ? await Promise.all(filePaths.map(path => this.analyzeFile(path))).then(results => results.flat())
       : await this.analyzeCodebase();
 
@@ -290,10 +285,15 @@ export class RealtimeConstitutionalEnforcer {
       console.log('=====================================\n');
 
       for (const violation of violations) {
-        const icon = violation.severity === 'critical' ? '🚨' : 
-                    violation.severity === 'high' ? '⚠️' : 
-                    violation.severity === 'medium' ? '💡' : '📝';
-        
+        const icon =
+          violation.severity === 'critical'
+            ? '🚨'
+            : violation.severity === 'high'
+              ? '⚠️'
+              : violation.severity === 'medium'
+                ? '💡'
+                : '📝';
+
         console.log(`${icon} [${violation.severity.toUpperCase()}] ${violation.type}`);
         console.log(`   File: ${violation.file}${violation.line ? `:${violation.line}` : ''}`);
         console.log(`   Evidence: ${violation.evidence}`);
@@ -308,7 +308,7 @@ export class RealtimeConstitutionalEnforcer {
       if (shouldBlock) {
         console.log('🚫 CONSTITUTIONAL ENFORCEMENT: Critical violations detected!');
         console.log('Code generation/deployment blocked until violations are resolved.\n');
-        
+
         console.log('📋 Required Actions:');
         criticalViolations.forEach((violation, index) => {
           console.log(`${index + 1}. ${violation.suggestedFix}`);
@@ -320,8 +320,8 @@ export class RealtimeConstitutionalEnforcer {
 
     return {
       violations,
-      criticalViolations, 
-      shouldBlock
+      criticalViolations,
+      shouldBlock,
     };
   }
 
@@ -342,8 +342,8 @@ export class RealtimeConstitutionalEnforcer {
         line: v.line,
         evidence: v.evidence,
         constitutionalArticle: v.constitutionalArticle,
-        blockExecution: v.blockExecution
-      }))
+        blockExecution: v.blockExecution,
+      })),
     };
 
     return JSON.stringify(report, null, 2);
@@ -353,22 +353,19 @@ export class RealtimeConstitutionalEnforcer {
 /**
  * CLI interface for real-time enforcement
  */
-export async function enforceConstitutionalCompliance(
-  filePaths?: string[],
-  projectRoot?: string
-): Promise<void> {
+export async function enforceConstitutionalCompliance(filePaths?: string[], projectRoot?: string): Promise<void> {
   const enforcer = new RealtimeConstitutionalEnforcer(projectRoot);
   const result = await enforcer.enforceConstitutionalCompliance(filePaths);
-  
+
   // Save enforcement report
   const reportDir = path.join(projectRoot || process.cwd(), '.aegis', 'enforcement-reports');
   if (!fs.existsSync(reportDir)) {
     fs.mkdirSync(reportDir, { recursive: true });
   }
-  
+
   const reportFile = path.join(reportDir, `enforcement-${Date.now()}.json`);
   fs.writeFileSync(reportFile, enforcer.generateReport(result.violations));
-  
+
   if (result.shouldBlock) {
     process.exit(1);
   }
@@ -377,9 +374,8 @@ export async function enforceConstitutionalCompliance(
 // CLI execution
 if (require.main === module) {
   const filePaths = process.argv.slice(2);
-  enforceConstitutionalCompliance(filePaths.length > 0 ? filePaths : undefined)
-    .catch(error => {
-      console.error('Constitutional enforcement error:', error);
-      process.exit(1);
-    });
+  enforceConstitutionalCompliance(filePaths.length > 0 ? filePaths : undefined).catch(error => {
+    console.error('Constitutional enforcement error:', error);
+    process.exit(1);
+  });
 }

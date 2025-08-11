@@ -34,10 +34,10 @@ console.log('   ✅ Produces real, traceable results\n');
 // Demonstrate actual detection system
 console.log('🔎 Running ACTUAL evolution story detection (not echo demo):');
 try {
-  const output = execSync('node tools/detect-evolution-stories.ts', { 
+  const output = execSync('node tools/detect-evolution-stories.ts', {
     encoding: 'utf8',
     stdio: 'pipe',
-    timeout: 10000
+    timeout: 10000,
   });
   console.log('✅ Real functional test completed successfully');
   console.log('📊 Actual output received (truncated for demo)');
@@ -54,7 +54,7 @@ try {
 console.log('\n🏛️ CONSTITUTIONAL FRAMEWORK SUMMARY:');
 console.log('=====================================');
 console.log('✅ Intent enforcement prevents demonstrative commands');
-console.log('✅ Constitutional compliance blocks agent drift'); 
+console.log('✅ Constitutional compliance blocks agent drift');
 console.log('✅ Traceability requirements ensure functional purpose');
 console.log('✅ Real-time validation prevents constitutional violations');
 console.log('✅ Framework automatically detects and blocks problematic patterns\n');
@@ -73,5 +73,5 @@ console.log('⚖️ Constitutional principles are enforced in real-time.\n');
 
 console.log('📚 For more details, see:');
 console.log('   - tools/intent-enforcement-engine.ts');
-console.log('   - tools/constitutional-ai-agent.ts'); 
+console.log('   - tools/constitutional-ai-agent.ts');
 console.log('   - framework/governance/amendment-proposals/article-xi-agent-drift-prevention.md');

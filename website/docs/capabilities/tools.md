@@ -9,52 +9,60 @@ slug: /docs/capabilities/tools
 
 ## Overview
 
-The Tools category represents **38 capabilities (59%)** of the framework, providing the operational backbone for AI-assisted engineering.
+The Tools category represents __38 capabilities (59%)__ of the framework, providing the operational backbone for
+AI-assisted engineering.
 
 ## Key Tool Categories
 
 ### CLI Utilities
-- **aegis-conductor**: Core framework orchestration
-- **aegis-hydrate**: Project initialization and setup
-- **aegis-orient**: Framework capability overview
-- **aegis-dashboard**: Live monitoring and health checks
+
+- __Aegis-conductor__: Core framework orchestration
+- __Aegis-hydrate__: Project initialization and setup
+- __Aegis-orient__: Framework capability overview
+- __Aegis-dashboard__: Live monitoring and health checks
 
 ### Validation Engines
-- **Constitutional Compliance Enforcer**: Validates framework intelligence claims
-- **Version Consistency Validator**: Ensures version synchronization across files
-- **Blueprint Validator**: Validates blueprint specifications
-- **Template Quality Validator**: Ensures template standards
+
+- __Constitutional Compliance Enforcer__: Validates framework intelligence claims
+- __Version Consistency Validator__: Ensures version synchronization across files
+- __Blueprint Validator__: Validates Blueprint specifications
+- __Template Quality Validator__: Ensures template standards
 
 ### Enforcement Tools
-- **Intent Enforcement Engine**: Real-time drift prevention
-- **Predictive Compliance Monitor**: Proactive violation prevention
-- **Systematic Prevention Validator**: Comprehensive mechanism testing
+
+- __Intent Enforcement Engine__: Real-time drift prevention
+- __Predictive Compliance Monitor__: Proactive violation prevention
+- __Systematic Prevention Validator__: Comprehensive mechanism testing
 
 ### Development Support
-- **Framework Capability Mapper**: Auto-discovers and catalogs capabilities
-- **Blueprint Registry Manager**: Manages blueprint metadata
-- **Evolution Story Detector**: Identifies framework evolution patterns
+
+- __Framework Capability Mapper__: Auto-discovers and catalogs capabilities
+- __Blueprint Registry Manager__: Manages Blueprint metadata
+- __Evolution Story Detector__: Identifies framework evolution patterns
 
 ## Status Distribution
 
 Tools capabilities span all maturity levels:
-- **Stable**: Production-ready operational tools
-- **Beta**: Feature-complete, undergoing validation
-- **Alpha**: Early implementation, active development
-- **Experimental**: Proof-of-concept, research phase
+
+- __Stable__: Production-ready operational tools
+- __Beta__: Feature-complete, undergoing validation
+- __Alpha__: Early implementation, active development
+- __Experimental__: Proof-of-concept, research phase
 
 ## Usage Patterns
 
 Tools are primarily accessed through:
-1. **Command Line**: Direct CLI execution
-2. **Git Hooks**: Pre-commit and pre-push automation
-3. **CI/CD Pipelines**: Automated validation and deployment
-4. **Development Scripts**: Build and release automation
+
+1. __Command Line__: Direct CLI execution
+2. __Git Hooks__: Pre-commit and pre-push automation
+3. __CI/CD Pipelines__: Automated validation and deployment
+4. __Development Scripts__: Build and release automation
 
 ## Integration Points
 
 Tools integrate with:
-- **Constitutional Framework**: All tools respect constitutional principles
-- **Observability System**: Execution tracing and monitoring
-- **Team Configuration**: Configurable enforcement levels
-- **Version Management**: Semantic versioning and consistency
+
+- __Constitutional Framework__: All tools respect Constitutional principles
+- __Observability System__: Execution tracing and monitoring
+- __Team Configuration__: Configurable enforcement levels
+- __Version Management__: Semantic versioning and consistency

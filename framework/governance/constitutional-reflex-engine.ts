@@ -29,7 +29,7 @@ interface ReflexResponse {
 export class ConstitutionalReflexEngine {
   private semanticDetector: SemanticInterruptDetector;
   private projectRoot: string;
-  private reflexPatterns: ConstitutionalReflex[];
+  private reflexPatterns!: ConstitutionalReflex[];
   private isActive: boolean = true;
 
   constructor(projectRoot: string = process.cwd()) {
@@ -45,29 +45,29 @@ export class ConstitutionalReflexEngine {
         confidence: 0.8,
         reflexAction: 'interrupt',
         priority: 'high',
-        description: 'User expressed doubt about agent intent alignment'
+        description: 'User expressed doubt about agent intent alignment',
       },
       {
         trigger: 'goal_confusion',
         confidence: 0.85,
         reflexAction: 'realign',
         priority: 'critical',
-        description: 'User indicates fundamental misunderstanding of objectives'
+        description: 'User indicates fundamental misunderstanding of objectives',
       },
       {
         trigger: 'drift_detection',
         confidence: 0.75,
         reflexAction: 'validate',
         priority: 'medium',
-        description: 'Potential drift from original blueprint detected'
+        description: 'Potential drift from original blueprint detected',
       },
       {
         trigger: 'explicit_halt',
         confidence: 0.95,
         reflexAction: 'halt',
         priority: 'critical',
-        description: 'User explicitly requested cessation of current activity'
-      }
+        description: 'User explicitly requested cessation of current activity',
+      },
     ];
   }
 
@@ -80,28 +80,28 @@ export class ConstitutionalReflexEngine {
         triggered: false,
         reflexType: 'none',
         recommendations: [],
-        nextActions: ['Continue normal operation']
+        nextActions: ['Continue normal operation'],
       };
     }
 
     // Check for semantic interrupts
     const interrupt = this.semanticDetector.detectInterrupt(userInput);
-    
+
     if (interrupt) {
       console.log('🚨 CONSTITUTIONAL REFLEX TRIGGERED');
       console.log('═══════════════════════════════════\n');
-      
+
       // Run drift diagnostic
       const diagnostic = await this.semanticDetector.runDriftDiagnostic(userInput, currentContext);
-      
+
       // Determine reflex action
       const reflexAction = this.determineReflexAction(interrupt, diagnostic);
-      
+
       // Generate response
       const response = this.generateReflexResponse(interrupt, diagnostic, reflexAction);
-      
+
       console.log('🔧 CONSTITUTIONAL REFLEX COMPLETE\n');
-      
+
       return response;
     }
 
@@ -110,7 +110,7 @@ export class ConstitutionalReflexEngine {
       triggered: false,
       reflexType: 'none',
       recommendations: [],
-      nextActions: ['Continue normal operation']
+      nextActions: ['Continue normal operation'],
     };
   }
 
@@ -120,7 +120,7 @@ export class ConstitutionalReflexEngine {
   private determineReflexAction(interrupt: any, diagnostic: any): ConstitutionalReflex {
     const urgency = interrupt.urgency;
     const driftPercentage = diagnostic.driftPercentage;
-    
+
     if (urgency === 'critical' || driftPercentage > 60) {
       return this.reflexPatterns.find(r => r.reflexAction === 'halt') || this.reflexPatterns[0];
     } else if (interrupt.type === 'goal-confusion' || driftPercentage > 30) {
@@ -142,7 +142,7 @@ export class ConstitutionalReflexEngine {
       diagnostic,
       recommendations: [],
       nextActions: [],
-      userPrompt: undefined
+      userPrompt: undefined,
     };
 
     // Generate specific recommendations based on reflex action
@@ -151,70 +151,83 @@ export class ConstitutionalReflexEngine {
         response.recommendations = [
           '🛑 IMMEDIATE HALT: All current operations suspended',
           '🔍 CRITICAL REVIEW: Fundamental realignment required',
-          '💬 USER CLARIFICATION: Explicit confirmation needed before proceeding'
+          '💬 USER CLARIFICATION: Explicit confirmation needed before proceeding',
         ];
         response.nextActions = [
           'Stop all current activities',
           'Request explicit user confirmation of intent',
-          'Create new checkpoint with confirmed objective'
+          'Create new checkpoint with confirmed objective',
         ];
-        response.userPrompt = '🚨 **CRITICAL ALIGNMENT CHECK**: I\'ve detected significant confusion about my current objective. Please clarify what you want me to focus on, and I\'ll create a new checkpoint to ensure we\'re aligned.';
+        response.userPrompt =
+          "🚨 **CRITICAL ALIGNMENT CHECK**: I've detected significant confusion about my current objective. Please clarify what you want me to focus on, and I'll create a new checkpoint to ensure we're aligned.";
         break;
 
       case 'realign':
         response.recommendations = [
           '⚡ COURSE CORRECTION: Significant realignment needed',
           '🎯 OBJECTIVE CLARIFICATION: Verify current goals with user',
-          '📍 NEW CHECKPOINT: Establish confirmed direction'
+          '📍 NEW CHECKPOINT: Establish confirmed direction',
         ];
         response.nextActions = [
           'Pause current approach',
           'Clarify specific objectives causing confusion',
-          'Propose alternative approaches for consideration'
+          'Propose alternative approaches for consideration',
         ];
-        response.userPrompt = '🔄 **REALIGNMENT NEEDED**: I sense confusion about my current direction. Let me clarify: my understanding is that I\'m working on **' + diagnostic.currentObjective + '**. Is this correct, or should I adjust my approach?';
+        response.userPrompt =
+          "🔄 **REALIGNMENT NEEDED**: I sense confusion about my current direction. Let me clarify: my understanding is that I'm working on **" +
+          diagnostic.currentObjective +
+          '**. Is this correct, or should I adjust my approach?';
         break;
 
       case 'interrupt':
         response.recommendations = [
           '🔍 INTENT CLARIFICATION: Explain current reasoning',
           '📋 TRANSPARENCY MODE: Show decision process',
-          '🎯 FOCUS CHECK: Confirm current priorities'
+          '🎯 FOCUS CHECK: Confirm current priorities',
         ];
         response.nextActions = [
           'Explain current reasoning and approach',
           'Provide transparent view of decision process',
-          'Confirm understanding of priorities'
+          'Confirm understanding of priorities',
         ];
-        response.userPrompt = '🧭 **INTENT CHECK**: I\'m currently focused on **' + diagnostic.currentObjective + '**. My reasoning is to systematically address this objective, but I sense this might not align with your expectations. Would you like me to explain my approach or adjust my focus?';
+        response.userPrompt =
+          "🧭 **INTENT CHECK**: I'm currently focused on **" +
+          diagnostic.currentObjective +
+          '**. My reasoning is to systematically address this objective, but I sense this might not align with your expectations. Would you like me to explain my approach or adjust my focus?';
         break;
 
       case 'validate':
         response.recommendations = [
           '✅ VALIDATION CHECK: Confirm current direction',
           '📊 PROGRESS REVIEW: Show current status',
-          '🎯 ALIGNMENT VERIFICATION: Ensure objectives match'
+          '🎯 ALIGNMENT VERIFICATION: Ensure objectives match',
         ];
         response.nextActions = [
           'Provide status update on current progress',
           'Confirm alignment with expected direction',
-          'Offer course correction if needed'
+          'Offer course correction if needed',
         ];
-        response.userPrompt = '📊 **STATUS CHECK**: I\'m working on **' + diagnostic.currentObjective + '** and making progress. Does this align with your current priorities, or would you prefer I adjust my focus?';
+        response.userPrompt =
+          "📊 **STATUS CHECK**: I'm working on **" +
+          diagnostic.currentObjective +
+          '** and making progress. Does this align with your current priorities, or would you prefer I adjust my focus?';
         break;
 
       case 'checkpoint':
         response.recommendations = [
           '📍 CHECKPOINT CREATION: Document current state',
           '🎯 OBJECTIVE CONFIRMATION: Verify current goals',
-          '📝 PROGRESS DOCUMENTATION: Record current status'
+          '📝 PROGRESS DOCUMENTATION: Record current status',
         ];
         response.nextActions = [
           'Create checkpoint with current state',
           'Document current objectives clearly',
-          'Confirm direction with user'
+          'Confirm direction with user',
         ];
-        response.userPrompt = '📍 **CHECKPOINT**: Let me confirm our current direction. I understand I\'m working on **' + diagnostic.currentObjective + '**. Should I continue with this approach, or would you like to establish a new direction?';
+        response.userPrompt =
+          "📍 **CHECKPOINT**: Let me confirm our current direction. I understand I'm working on **" +
+          diagnostic.currentObjective +
+          '**. Should I continue with this approach, or would you like to establish a new direction?';
         break;
     }
 
@@ -246,7 +259,7 @@ export class ConstitutionalReflexEngine {
   getHistory(): any {
     return {
       checkpoints: this.semanticDetector.getCheckpointHistory(),
-      diagnostics: this.semanticDetector.getDiagnosticHistory()
+      diagnostics: this.semanticDetector.getDiagnosticHistory(),
     };
   }
 }
@@ -256,7 +269,7 @@ export class ConstitutionalReflexEngine {
  */
 async function main() {
   const engine = new ConstitutionalReflexEngine();
-  
+
   // Create initial checkpoint
   engine.createCheckpoint(
     'Implement semantic interrupt detection as constitutional safeguard',
@@ -264,7 +277,7 @@ async function main() {
     'Constitutional framework enhancement',
     true
   );
-  
+
   if (process.argv.length < 3) {
     console.log('🧠 Constitutional Reflex Engine Test');
     console.log('Usage: node constitutional-reflex-engine.ts "<user input>"');
@@ -275,29 +288,28 @@ async function main() {
     console.log('  "I don\'t understand what you\'re doing"');
     return;
   }
-  
+
   const userInput = process.argv[2];
   const currentContext = 'Testing constitutional reflex engine with semantic interrupt detection implementation';
-  
+
   console.log(`🔬 Testing reflex response to: "${userInput}"\n`);
-  
+
   const response = await engine.processInput(userInput, currentContext);
-  
+
   if (response.triggered) {
     console.log(`🎯 REFLEX RESPONSE (${response.reflexType}):`);
     console.log('═══════════════════════════════════');
-    
+
     if (response.userPrompt) {
       console.log('\n💬 **USER PROMPT**:');
       console.log(response.userPrompt);
     }
-    
+
     console.log('\n📋 **RECOMMENDATIONS**:');
     response.recommendations.forEach(rec => console.log(`   • ${rec}`));
-    
+
     console.log('\n🔧 **NEXT ACTIONS**:');
     response.nextActions.forEach(action => console.log(`   • ${action}`));
-    
   } else {
     console.log('✅ No constitutional reflex triggered - normal operation continues');
   }

@@ -9,7 +9,7 @@ remediationPlan:
   name: "AI Agent Constitutional Drift Prevention"
   description: "Comprehensive implementation of real-time intent enforcement and constitutional compliance for AI agents"
   version: "1.0.0"
-  
+
   # Constitutional annotations
   aegisFrameworkVersion: "2.0.0-alpha-dev"
   blueprintId: "constitutional-governance"
@@ -35,26 +35,26 @@ phase1:
   description: "Implement core constitutional enforcement mechanisms"
   order: 1
   riskLevel: "medium"
-  
+
   validationSteps:
     - name: "build-validation"
       command: "npm run build"
       description: "Ensure framework builds successfully with new components"
       required: true
       rollbackOnFailure: true
-    
+
     - name: "test-validation"
       command: "npm test"
       description: "Verify all existing tests pass with constitutional enhancements"
       required: true
       rollbackOnFailure: true
-    
+
     - name: "constitutional-validation"
       command: "node tools/validate-constitution.ts"
       description: "Verify constitutional compliance of new amendments"
       required: true
       rollbackOnFailure: true
-  
+
   rollbackPlan:
     strategy: "git-snapshot"
     snapshotCommand: "git stash push -m 'Pre-constitutional-enhancement-snapshot'"
@@ -66,7 +66,7 @@ phase1:
         description: "Verify clean working directory after rollback"
         required: true
         rollbackOnFailure: false
-  
+
   dryRunSimulation:
     enabled: true
     commands:
@@ -79,7 +79,7 @@ phase1:
       - "syntax validation"
       - "import resolution check"
       - "constitutional schema validation"
-  
+
   toolingRequirements:
     requiredTools:
       - name: "node"
@@ -90,7 +90,7 @@ phase1:
         version: ">=9.0.0"
         validateCommand: "npm --version"
         criticalForExecution: true
-    
+
     scaffoldedTools:
       - name: "intent-enforcement-engine"
         path: "tools/intent-enforcement-engine.ts"
@@ -104,16 +104,16 @@ phase1:
         path: "tools/constitutional-pre-commit-hook.sh"
         purpose: "Pre-commit constitutional compliance validation"
         validated: true
-    
+
     toolingValidated: true
     validationCommand: "node tools/validate-tools-manifest.ts"
-  
+
   constitutionalImpact:
     blueprintChanges: false
     frameworkModifications: true
     breakingChanges: false
     requiresApproval: true
-  
+
   estimatedDuration: "2-4 hours"
   dependencies: []
   parallelizable: false
@@ -144,25 +144,25 @@ constitutionalCompliance:
 ciIntegration:
   required: true
   workflowPath: ".github/workflows/constitutional-compliance.yml"
-  
+
   preflightGates:
     - name: "constitutional-validation"
       command: "node tools/validate-constitution.ts"
       blocking: true
-    
+
     - name: "intent-enforcement-test"
       command: "node tools/intent-enforcement-engine.ts"
       blocking: true
-    
+
     - name: "build-validation"
       command: "npm run build"
       blocking: true
-  
+
   postExecutionValidation:
     - "npm run build"
     - "npm test"
     - "node tools/validate-constitution.ts"
-  
+
   failureActions: ["rollback", "notify"]
 
 # Overall Safety Mechanisms
@@ -191,19 +191,19 @@ successCriteria:
   - criterion: "Build successful"
     measurementMethod: "npm run build"
     acceptanceThreshold: "zero errors"
-  
+
   - criterion: "Tests passing"
     measurementMethod: "npm test"
     acceptanceThreshold: "100% pass rate"
-  
+
   - criterion: "Constitutional compliance"
     measurementMethod: "node tools/validate-constitution.ts"
     acceptanceThreshold: "full compliance"
-  
+
   - criterion: "Intent enforcement operational"
     measurementMethod: "node tools/intent-enforcement-engine.ts"
     acceptanceThreshold: "successful blocking of echo commands for functional intent"
-  
+
   - criterion: "Agent drift prevention validated"
     measurementMethod: "node tools/demo-constitutional-enforcement.cjs"
     acceptanceThreshold: "constitutional enforcement demonstrates drift prevention"

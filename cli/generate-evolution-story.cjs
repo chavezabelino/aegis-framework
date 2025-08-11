@@ -12,7 +12,7 @@ const readline = require('readline');
 
 const rl = readline.createInterface({
   input: process.stdin,
-  output: process.stdout
+  output: process.stdout,
 });
 
 function prompt(question) {
@@ -30,13 +30,13 @@ async function generateEvolutionStory() {
   const triggerType = await prompt('🎯 Trigger Type (field-usage/audit/migration/user-question): ');
   const impactLevel = await prompt('📊 Impact Level (patch/minor/major/constitutional): ');
   const fieldUser = await prompt('👤 Field User Identifier (optional): ');
-  const frameworkVersion = await prompt('🏷️  Framework Version (default: 2.0.0-alpha-dev): ') || '2.0.0-alpha-dev';
+  const frameworkVersion = (await prompt('🏷️  Framework Version (default: 2.0.0-alpha-dev): ')) || '2.0.0-alpha-dev';
 
   // Generate story ID
   const today = new Date().toISOString().split('T')[0];
   const sequence = '001'; // Simple sequence for now
   const storyId = `EVS-${today}-${sequence}`;
-  
+
   // Collect story details
   console.log('\n🌱 Field Context:');
   const scenario = await prompt('   Real-world scenario: ');
@@ -168,9 +168,12 @@ ${implementationStrategy}
 `;
 
   // Create the file
-  const fileName = `${storyId.toLowerCase()}-${title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')}.md`;
+  const fileName = `${storyId.toLowerCase()}-${title
+    .toLowerCase()
+    .replace(/\s+/g, '-')
+    .replace(/[^a-z0-9-]/g, '')}.md`;
   const filePath = path.join('docs', 'evolution', fileName);
-  
+
   // Ensure directory exists
   const dir = path.dirname(filePath);
   if (!fs.existsSync(dir)) {
@@ -187,7 +190,7 @@ ${implementationStrategy}
   console.log('   2. Update artifactsGenerated list with actual files created');
   console.log('   3. Document success metrics and lessons learned');
   console.log('   4. Link to specific commits and releases');
-  
+
   if (impactLevel === 'constitutional') {
     console.log('\n⚖️ Constitutional Impact Detected:');
     console.log('   - This story will require governance review');

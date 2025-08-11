@@ -11,7 +11,10 @@ import path from 'path';
 
 describe('Multi-Agent Orchestration', () => {
   it('should include agents and coordination in blueprint', () => {
-    const blueprint = fs.readFileSync(path.join(__dirname, '../../blueprints/feat-public-viewing/blueprint.yaml'), 'utf-8');
+    const blueprint = fs.readFileSync(
+      path.join(__dirname, '../../blueprints/feat-public-viewing/blueprint.yaml'),
+      'utf-8'
+    );
     expect(blueprint).toMatch(/agents:/);
     expect(blueprint).toMatch(/coordination:/);
   });

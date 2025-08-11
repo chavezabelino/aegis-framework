@@ -54,7 +54,7 @@ class VersionSyncChecker {
     try {
       const content = fs.readFileSync(filePath, 'utf8');
       const packageJson = JSON.parse(content);
-      
+
       if (packageJson.version && packageJson.version !== this.rootVersion) {
         this.errors.push(`Version mismatch in ${filePath}: ${packageJson.version} != ${this.rootVersion}`);
         return false;
@@ -70,7 +70,7 @@ class VersionSyncChecker {
   checkBlueprintYaml(filePath) {
     try {
       const content = fs.readFileSync(filePath, 'utf8');
-      
+
       // Look for version field in YAML
       const versionMatch = content.match(/^version:\s*["']?([^"\s]+)["']?/m);
       if (versionMatch) {
@@ -91,7 +91,7 @@ class VersionSyncChecker {
   checkMarkdownFiles(filePath) {
     try {
       const content = fs.readFileSync(filePath, 'utf8');
-      
+
       // Look for version references in markdown
       const versionMatches = content.match(/version[:\s]+["']?([^"\s]+)["']?/gi);
       if (versionMatches) {
@@ -117,11 +117,11 @@ class VersionSyncChecker {
       }
 
       const items = fs.readdirSync(dirPath);
-      
+
       for (const item of items) {
         const fullPath = path.join(dirPath, item);
         const stat = fs.statSync(fullPath);
-        
+
         if (stat.isDirectory()) {
           // Skip node_modules and .git
           if (item !== 'node_modules' && item !== '.git') {
@@ -129,7 +129,7 @@ class VersionSyncChecker {
           }
         } else if (stat.isFile()) {
           const ext = path.extname(item);
-          
+
           if (item === 'package.json') {
             this.checkPackageJson(fullPath);
           } else if (item === 'blueprint.yaml' || item.endsWith('.blueprint.yaml')) {
@@ -146,11 +146,11 @@ class VersionSyncChecker {
 
   printResults() {
     console.log('🔍 Version Sync Check Results\n');
-    
+
     if (this.rootVersion) {
       console.log(`📋 Root Version: ${this.rootVersion}\n`);
     }
-    
+
     if (this.errors.length === 0 && this.warnings.length === 0) {
       console.log('✅ All version references are synchronized');
       return true;
@@ -171,7 +171,7 @@ class VersionSyncChecker {
 
   suggestFix(filePath, currentVersion, expectedVersion) {
     const ext = path.extname(filePath);
-    
+
     if (ext === '.json') {
       return `Update ${filePath} version field to "${expectedVersion}"`;
     } else if (ext === '.yaml' || ext === '.yml') {
@@ -179,14 +179,14 @@ class VersionSyncChecker {
     } else if (ext === '.md') {
       return `Update version references in ${filePath} to "${expectedVersion}"`;
     }
-    
+
     return `Update version in ${filePath} to "${expectedVersion}"`;
   }
 }
 
 async function main() {
   const checker = new VersionSyncChecker();
-  
+
   // Read root version first
   if (!checker.readRootVersion()) {
     console.error('❌ Failed to read root version');
@@ -195,7 +195,7 @@ async function main() {
 
   // Check specific directories
   const directories = ['blueprints', 'adapters', 'tools', 'cli', 'patterns', 'packages'];
-  
+
   for (const dir of directories) {
     await checker.checkDirectory(dir);
   }
@@ -206,7 +206,7 @@ async function main() {
   }
 
   const success = checker.printResults();
-  
+
   if (!success && checker.isCI) {
     process.exit(1);
   }
@@ -214,7 +214,7 @@ async function main() {
 
 // Run if called directly
 if (import.meta.url === `file://${process.argv[1]}`) {
-  main().catch((error) => {
+  main().catch(error => {
     console.error('❌ Version sync check failed:', error.message);
     process.exit(1);
   });
