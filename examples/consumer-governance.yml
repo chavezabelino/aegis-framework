@@ -1,0 +1,8 @@
+name: Governance
+on: [push, pull_request]
+
+jobs:
+  aegis:
+    uses: chavezabelino/aegis-framework/.github/workflows/aegis-governance-reusable.yml@v2.6.0
+    with:
+      profile: standard

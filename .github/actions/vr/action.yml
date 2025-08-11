@@ -1,0 +1,21 @@
+name: vr
+description: Playwright VR with test detection
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      run: npm i -D @playwright/test@1.46.1
+    - shell: bash
+      run: npx playwright install --with-deps chromium
+    - id: detect
+      shell: bash
+      run: |
+        shopt -s nullglob
+        files=(tests/vr/**/*.spec.ts tests/vr/*.spec.ts)
+        echo "count=${#files[@]}" >> "$GITHUB_OUTPUT"
+    - if: ${{ steps.detect.outputs.count != '0' }}
+      shell: bash
+      run: npx playwright test
+    - if: ${{ steps.detect.outputs.count == '0' }}
+      shell: bash
+      run: echo "Skipping VR: no tests"

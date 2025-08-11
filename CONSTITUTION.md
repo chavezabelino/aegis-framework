@@ -604,7 +604,16 @@ All constitutional OS architecture implementations must:
   - One failing CI run (seeded violation), and one passing CI run (fix applied).
   - Both MUST attach governance reports and artifacts.
 
-### Section 8: Change Control
+### Section 8: Reusable Governance Workflow
+- Consumers MUST use the reusable governance workflow by tag: `chavezabelino/aegis-framework/.github/workflows/aegis-governance-reusable.yml@<version>`
+- Profile selection MUST be documented in the repository's governance setup
+- Copying governance workflows is PROHIBITED; all consumers MUST use the reusable workflow
+- The reusable workflow provides three profiles:
+  - `lite`: Fast checks for development (typecheck, lint, test, provenance headers)
+  - `standard`: Production-ready validation (includes evidence proving)
+  - `core`: Maximum security (includes visual regression testing)
+
+### Section 9: Change Control
 - Constitutional changes to governance SHALL require CODEOWNERS review on:
   - `.github/workflows/**`, `tools/**`, `CONSTITUTION.md`, `docs/aegis/**`, `.cursorrules`.
 - Constitution-Version MUST be bumped and a changelog entry recorded with each amendment.

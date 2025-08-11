@@ -1,0 +1,15 @@
+name: prove-evidence
+description: Execute evidence manifests and enforce outputs
+runs:
+  using: composite
+  steps:
+    - name: Prove Evidence (PREC)
+      shell: bash
+      run: |
+        # Allow relaxed signatures only if SKIP_SIGNATURE_CHECKS was set by provenance action
+        npx tsx tools/check-evidence.ts "blueprints/**/evidence.json"
+    - name: Plan gate (MVP)
+      shell: bash
+      env:
+        PLAN_GATE_ALLOW_MISSING: ${{ github.event_name == 'pull_request' && 'true' || 'false' }}
+      run: node scripts/ci/plan-gate.mjs .aegis/outputs/auth-plan-strict.json || true

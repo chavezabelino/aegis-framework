@@ -1,0 +1,16 @@
+{
+  "startedAtUtc": "2025-08-11T10:18:31.371Z",
+  "manifests": [
+    {
+      "path": "blueprints/planning-optimization/evidence.json",
+      "commands": [],
+      "outputs": []
+    }
+  ],
+  "env": {
+    "ciMode": true,
+    "hasHmac": false,
+    "relaxSigChecks": true
+  },
+  "findings": []
+}

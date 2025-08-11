@@ -1,0 +1,27 @@
+name: provenance
+description: Check provenance headers; optionally attest+verify when secret present
+inputs:
+  mode:
+    required: true
+    description: headers-only | attest
+runs:
+  using: composite
+  steps:
+    - name: Check headers
+      if: ${{ inputs.mode == 'headers-only' }}
+      shell: bash
+      run: node tools/check-provenance.js --ci
+
+    - name: Attest (trusted) or relax (PRs)
+      if: ${{ inputs.mode == 'attest' }}
+      shell: bash
+      run: |
+        if [ -n "${{ secrets.AEGIS_HMAC_KEY }}" ]; then
+          export AEGIS_HMAC_KEY="${{ secrets.AEGIS_HMAC_KEY }}"
+          npx tsx tools/attest.ts attest "cli tools" 
+          npx tsx tools/attest.ts verify
+        else
+          echo "No AEGIS_HMAC_KEY (PR/fork): will NOT fail on missing .sig"
+          export SKIP_SIGNATURE_CHECKS=true
+        fi
+        node tools/check-provenance.js --ci

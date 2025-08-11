@@ -1,0 +1,72 @@
+name: Aegis Governance (Reusable)
+
+on:
+  workflow_call:
+    inputs:
+      profile:
+        type: string
+        required: true
+        default: lite   # lite | standard | core
+
+permissions:
+  id-token: write
+  contents: read
+  security-events: write
+
+env:
+  NODE_VERSION: '20.16.0'
+  NPM_CONFIG_AUDIT: 'false'
+  NPM_CONFIG_FUND: 'false'
+
+concurrency:
+  group: governance-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  fast_checks:
+    name: Fast Checks (types, lint, unit, diff coverage)
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-node
+      - run: npm ci --prefer-offline --no-audit --no-fund
+      - run: npm run typecheck
+      - run: npm run lint -- --max-warnings=0
+      - run: npm test -- --coverage
+      - name: Diff coverage (>=70% on changed files)
+        run: npx aegis-coverage-diff --min 70 || npx --yes @aegis/governance coverage-diff --min 70
+
+  provenance_min:
+    name: Provenance (headers only)
+    if: ${{ inputs.profile != 'none' }}
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-node
+      - run: npm ci --prefer-offline --no-audit --no-fund
+      - uses: ./.github/actions/provenance
+        with:
+          mode: headers-only
+
+  prove_evidence:
+    name: Prove Evidence (PREC)
+    if: ${{ inputs.profile != 'lite' }}
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-node
+      - run: npm ci --prefer-offline --no-audit --no-fund
+      - uses: ./.github/actions/provenance
+        with:
+          mode: attest   # attest+verify if secret, relaxed on PRs
+      - uses: ./.github/actions/prove-evidence
+
+  vr:
+    name: Visual Regression
+    if: ${{ inputs.profile == 'core' }}
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-node
+      - run: npm ci --prefer-offline --no-audit --no-fund
+      - uses: ./.github/actions/vr
