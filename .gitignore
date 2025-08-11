@@ -150,3 +150,7 @@ cli/framework/
 
 # Jest snapshot output
 **/__snapshots__/
+# Local governance churn
+.aegis/attestations/local/**
+.aegis/reports/*.local.json
+.aegis/telemetry/*.ndjson
