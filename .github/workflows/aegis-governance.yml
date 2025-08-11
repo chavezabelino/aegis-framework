@@ -232,8 +232,8 @@ jobs:
     - name: Generate planning outputs
       run: |
         mkdir -p .aegis/outputs
-        npm run aegis:planning auto "Add user authentication" -- --output .aegis/outputs/auth-plan-strict.json
-        npm run aegis:planning validate MVP-Fix .aegis/outputs/auth-plan-strict.json 2
+        npx --yes tsx cli/aegis-planning.ts auto "Add user authentication" --output .aegis/outputs/auth-plan-strict.json
+        npx --yes tsx cli/aegis-planning.ts validate MVP-Fix .aegis/outputs/auth-plan-strict.json 2
     - name: Generate telemetry
       run: |
         mkdir -p .aegis/telemetry

@@ -70,9 +70,9 @@ function ensureDir(p) { fs.mkdirSync(p, { recursive: true }); }
     };
 
     // Planning receipts (best-effort)
-    receipts.commands.planning_help = run('npm run aegis:planning help || true');
-    receipts.commands.planning_auto = run('npm run aegis:planning auto "Add user authentication" -- --output .aegis/outputs/auth-plan-strict.json || true');
-    receipts.commands.planning_validate = run('npm run aegis:planning validate MVP-Fix .aegis/outputs/auth-plan-strict.json 2 || true');
+    receipts.commands.planning_help = run('npx --yes tsx cli/aegis-planning.ts help || true');
+    receipts.commands.planning_auto = run('npx --yes tsx cli/aegis-planning.ts auto "Add user authentication" -- --output .aegis/outputs/auth-plan-strict.json || true');
+    receipts.commands.planning_validate = run('npx --yes tsx cli/aegis-planning.ts validate MVP-Fix .aegis/outputs/auth-plan-strict.json 2 || true');
 
     // Path/version checks (best-effort)
     receipts.commands.check_paths = run('node tools/check-paths.js --json || true');

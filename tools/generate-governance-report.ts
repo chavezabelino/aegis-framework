@@ -104,9 +104,9 @@ async function main() {
   };
 
   // 1) Planning optimization receipts
-  receipts.commands['planning_help'] = run('npm run aegis:planning help');
-  receipts.commands['planning_auto'] = run('npm run aegis:planning auto "Add user authentication" -- --output .aegis/outputs/auth-plan-strict.json');
-  receipts.commands['planning_validate'] = run('npm run aegis:planning validate MVP-Fix .aegis/outputs/auth-plan-strict.json 2');
+  receipts.commands['planning_help'] = run('npx --yes tsx cli/aegis-planning.ts help');
+  receipts.commands['planning_auto'] = run('npx --yes tsx cli/aegis-planning.ts auto "Add user authentication" --output .aegis/outputs/auth-plan-strict.json');
+  receipts.commands['planning_validate'] = run('npx --yes tsx cli/aegis-planning.ts validate MVP-Fix .aegis/outputs/auth-plan-strict.json 2');
 
   // 2) Governance checks
   receipts.commands['check_paths'] = run('node tools/check-paths.js');
