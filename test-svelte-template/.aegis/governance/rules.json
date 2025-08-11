@@ -1,0 +1,10 @@
+{
+  "mode": "strict",
+  "blueprint": "default",
+  "rules": {
+    "type-safety": true,
+    "accessibility": true,
+    "performance": true,
+    "security": true
+  }
+}

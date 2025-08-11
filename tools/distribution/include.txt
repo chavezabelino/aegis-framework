@@ -1,0 +1,31 @@
+/**
+ @aegisBlueprint: planning-optimization
+ @version: 2.5.0
+ @mode: lean
+ @intent: Authoritative include list for vendored Aegis bundle
+ @context: Aegis Framework → app vendoring; deterministic distribution list
+ @model: gpt-5-cursor
+ @hash: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+*/
+
+# Lines starting with # are ignored.
+# Paths are relative to the framework repo root. Missing files warn, not fail.
+
+tools/check-provenance.js
+tools/check-paths.js
+tools/check-version-sync.js
+quality.json
+templates/project-standards.md
+docs/aegis/governance/ci-workflows.md
+docs/aegis/governance/attestation.md
+scripts/ci/plan-gate.mjs
+
+# Governance and workspace standards (optional; missing files will warn)
+CONSTITUTION.md
+.cursorrules
+.markdownlint.json
+.editorconfig
+.gitattributes
+.framework/enforcement-config.yaml
+
+

@@ -34,13 +34,13 @@ Analyze the user's request for:
 
 ### __1. Auto-Analyze Request**
 
-```text
+```
 User: "Add user authentication to the app"
 Analysis:
 - Plan Class: MVP-Fix (new feature, simple scope)
 - Estimated Files: 2-3 (auth middleware + login page)
 - Contracts: redirect behavior, form validation, state management
-```text
+```
 
 ### __2. Auto-Generate Plan**
 
@@ -60,7 +60,7 @@ Analysis:
 
 - E2E: test redirect behavior (accepts `/login` or `/(auth)/login`)
 - Component: assert form has proper ARIA labels
-```text
+```
 
 ### __3. Auto-Validate & Execute**
 
@@ -92,7 +92,7 @@ Accept multiple valid implementations:
 // Both are valid
 const loginRoute = "/login"
 const loginRoute = "/(auth)/login"
-```text
+```
 
 ## 🔄 __Automatic Validation**
 
@@ -128,7 +128,7 @@ Always structure your response as:
 ## 🚀 Implementation
 
 [Your implementation with contract-driven focus]
-```text
+```
 
 ## 🎯 __IDE & MCP Integration**
 
@@ -182,7 +182,7 @@ Aegis plan:compare plan1.md plan2.md
 
 # Auto plan detection (via MCP)
 Aegis plan:auto "your prompt here"
-```text
+```
 
 ### __IDE Integration**
 

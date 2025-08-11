@@ -19,7 +19,7 @@ specification:
   status: "Draft Standard"
   maintainer: "Aegis Framework Project"
   scope: "AI agent code generation governance and quality assurance"
-```text
+```
 
 ## 🎯 Purpose & Scope
 
@@ -98,7 +98,7 @@ aiCodePattern:
     antiPatterns: ["patterns-to-avoid"]
     examples: ["reference-implementations"]
     tests: ["validation-test-cases"]
-```text
+```
 
 #### Pattern Categories
 
@@ -139,7 +139,7 @@ interface PreGenerationValidation {
   selectApplicablePatterns(context: CodeGenerationContext): Pattern[]
   enforceGovernanceRules(patterns: Pattern[]): EnforcementResult
 }
-```text
+```
 
 #### Post-Generation Validation
 
@@ -149,7 +149,7 @@ interface PostGenerationValidation {
   checkCompliance(code: GeneratedCode, rules: GovernanceRule[]): ComplianceResult
   reportViolations(violations: GovernanceViolation[]): void
 }
-```text
+```
 
 #### Governance Rules Engine
 
@@ -167,7 +167,7 @@ interface GovernanceRulesEngine {
   proposeRuleChange(change: RuleChange): RuleChangeProposal
   validateRuleChange(proposal: RuleChangeProposal): ValidationResult
 }
-```text
+```
 
 ### Compliance Measurement
 
@@ -189,7 +189,7 @@ complianceMetrics:
     consistency: "Consistency of AI agent outputs"
     standards: "Adherence to coding standards"
     security: "Security vulnerability prevention"
-```text
+```
 
 ## 📡 Telemetry & Learning
 
@@ -228,7 +228,7 @@ interface AIAgentTelemetry {
     securityAssessment: SecurityMetric[]
   }
 }
-```text
+```
 
 #### Privacy & Anonymization
 
@@ -255,7 +255,7 @@ interface PatternLearningEngine {
   analyzeGovernanceEffectiveness(governance: GovernanceMetric[]): GovernanceInsight[]
   recommendGovernanceUpdates(insights: GovernanceInsight[]): GovernanceUpdate[]
 }
-```text
+```
 
 ## 🔄 Multi-Agent Coordination
 
@@ -279,7 +279,7 @@ interface AgentRegistration {
   coordinationMode: "independent" | "collaborative" | "hierarchical"
   conflictResolution: ConflictResolutionStrategy
 }
-```text
+```
 
 #### Multi-Agent Orchestration
 
@@ -297,7 +297,7 @@ interface MultiAgentOrchestration {
   validateCombinedOutput(results: AgentResult[]): ValidationResult
   enforceConsistency(results: AgentResult[]): ConsistencyEnforcement
 }
-```text
+```
 
 ## 📊 Implementation Standards
 
@@ -345,7 +345,7 @@ interface AIToolIntegration {
   receivePatternUpdates(updates: PatternUpdate[]): void
   applyGovernanceChanges(changes: GovernanceChange[]): void
 }
-```text
+```
 
 ## 🏛️ Governance Model
 
@@ -408,7 +408,7 @@ Aegis governance configure
 
 # Enable real-time enforcement
 Aegis enforce --real-time
-```text
+```
 
 ## 🔮 Future Roadmap
 

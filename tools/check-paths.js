@@ -30,6 +30,7 @@ const ALLOWED_DIRECTORIES = {
   '.github/': 'GitHub workflows and templates',
   '.cursor/': 'Cursor IDE configuration',
   '.vscode/': 'VS Code workspace settings',
+  '.husky/': 'Git hooks configuration',
   'scripts/': 'Project scripts',
   'packages/': 'Published packages/workspaces',
   'website/': 'Documentation website',
@@ -39,6 +40,8 @@ const ALLOWED_DIRECTORIES = {
   'logs/': 'Log outputs (ignored in VCS)',
   'scaffolds/': 'Scaffold templates',
   'templates/': 'General templates',
+  'e2e/': 'End-to-end tests',
+  'types/': 'TypeScript type definitions',
 };
 
 // Files that are allowed in root
@@ -46,11 +49,14 @@ const ALLOWED_ROOT_FILES = [
   'package.json',
   'package-lock.json',
   'bun.lock',
+  'pnpm-lock.yaml',
   'tsconfig.json',
   'tsconfig.dev.json',
   'vite.config.ts',
   'vite.cli.config.ts',
   'jest.config.cjs',
+  'vitest.config.ts',
+  'playwright.config.ts',
   'VERSION',
   'README.md',
   'CHANGELOG.md',
@@ -60,9 +66,17 @@ const ALLOWED_ROOT_FILES = [
   '.cursorrules',
   '.gitignore',
   '.eslintrc.js',
+  '.eslintrc.cjs',
   '.prettierrc',
+  '.prettierrc.json',
   '.prettierignore',
+  '.markdownlint.json',
   'CODEOWNERS',
+  'PLAN.md',
+  'audit-ci.json',
+  'audit-ci.generated.json',
+  'knip.json',
+  'quality.json',
 ];
 
 const IGNORED_ROOT_DIRS = new Set(['node_modules', '.git', '.framework']);

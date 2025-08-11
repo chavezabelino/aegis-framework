@@ -31,7 +31,7 @@ code patterns/feat-public-viewing/pattern.YAML
 
 # Run snapshot tests
 npm run test:snapshots
-```text
+```
 
 ---
 
@@ -39,7 +39,7 @@ npm run test:snapshots
 
 ```bash
 node tools/validate-Blueprint.js blueprints/feat-my-feature/Blueprint.YAML
-```text
+```
 
 ---
 

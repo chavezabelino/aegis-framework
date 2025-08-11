@@ -40,4 +40,4 @@ Aegis test:generate --contract-driven
 
 # Validate test contracts (via MCP)
 Aegis test:validate --behavioral
-```text
+```

@@ -34,7 +34,7 @@ following execution pattern:
 
 ## 📁 Directory Structure & Enforcement
 
-```text
+```
 /project-root/
 ├── /generated/               # AI-generated code or structured diffs not yet merged into /src
 │   ├── /functions/           # Refactored or scaffolded edge functions
@@ -52,7 +52,7 @@ following execution pattern:
 ├── /wiki/                    # Docs and guidance
 ├── /public/
 ├── /docs/
-```text
+```
 
 ### 🚫 Forbidden Patterns
 
@@ -83,7 +83,7 @@ import {invokeEdgeFunctionSimple} from "@/lib/edge-function-client"
 import {PreviewTeamsResponseSchema} from "@/schemas/API/team-preview"
 
 const result = await invokeEdgeFunctionSimple("preview-teams", {input: teamData}, PreviewTeamsResponseSchema)
-```text
+```
 
 ### Schema Validation & Transforms
 
@@ -95,7 +95,7 @@ const result = await invokeEdgeFunctionSimple("preview-teams", {input: teamData}
 import {unwrapAndValidate} from "@/lib/API-response"
 
 const validated = unwrapAndValidate(response, TeamModelSchema)
-```text
+```
 
 ### Environment Config Validation
 
@@ -111,7 +111,7 @@ const envSchema = z.object({
 
 // Validate at startup
 const env = envSchema.parse(process.env)
-```text
+```
 
 ### Supabase CORS Handler (Mandatory)
 
@@ -129,13 +129,13 @@ export default async function handler(req: Request) {
     return createErrorResponse(error, correlationId)
   }
 }
-```text
+```
 
 ## 🔁 Debug-to-Refactor Loop (Token-Gated AI Analysis)
 
 ```bash
 Bun run rca --error-log=errors/dev.log [flags]
-```text
+```
 
 ### RCA Flags
 
@@ -167,7 +167,7 @@ const rcaResult = await runTokenGatedAnalysis({
   constitutionalMode: true,
   blueprintValidation: true
 })
-```text
+```
 
 ### Output Artifacts (Enhanced)
 
@@ -189,7 +189,7 @@ grep -r "@aegisBlueprint" src/ --include="_.ts" --include="_.js"
 
 # Run snapshot tests
 npm test -- --testPathPattern=snapshot
-```text
+```
 
 ### Blueprint Fidelity Tests
 
@@ -200,7 +200,7 @@ describe("Blueprint Fidelity", () => {
     expect(output).toMatchSnapshot()
   })
 })
-```text
+```
 
 ### Blueprint Replay Tests
 
@@ -212,7 +212,7 @@ describe("Blueprint Replay", () => {
     expect(output1).toEqual(output2)
   })
 })
-```text
+```
 
 ### Visual Regression Tests
 
@@ -224,7 +224,7 @@ describe("Visual Regression", () => {
     expect(screenshot).toMatchImageSnapshot()
   })
 })
-```text
+```
 
 ## 🏗️ Legacy Handling
 
@@ -234,7 +234,7 @@ if (isLegacyFormat(data)) {
   // LEGACY: Handle old data structure
   return transformLegacyData(data)
 }
-```text
+```
 
 ## ✅ CI/Build Enforcement Checklist
 
@@ -268,7 +268,7 @@ if (isLegacyFormat(data)) {
 // 🧠 AI-GENERATED-BY: [Agent Name]
 // 📅 Generated: YYYY-MM-DD
 // ⚠️ Do not manually modify unless reviewed and the annotation is updated.
-```text
+```
 
 ## 🧰 Kilo Rule: Project-Level Utilities Management
 
@@ -282,11 +282,11 @@ if (isLegacyFormat(data)) {
 
 Each tool in `/utils/[namespace]/` must include:
 
-```text
+```
 README.md
 .env.example
 test-[x]-script.js
-```text
+```
 
 ## 💻 VSCode Integration
 
@@ -300,7 +300,7 @@ test-[x]-script.js
     "__/rebuild-plan/__": "This directory contains AI-generated RCA artifacts and should not be used as a source for code generation."
   }
 }
-```text
+```
 
 ## ⚠️ Common Pitfalls & Solutions
 
@@ -339,7 +339,7 @@ if (isLegacyFormat(data)) {
 
 // VALIDATION: Always validate with Zod
 const safeData = MySchema.parse(unsafeData)
-```text
+```
 
 ## 🎯 __Execution Mode Decision Matrix**
 
@@ -395,6 +395,6 @@ Based on analysis of Aegis v1.2.1 vs bracket-app-audit v2.5:
  * @author: GitHub Copilot
  * @operationalPatterns: true
  */
-```text
+```
 
 ---

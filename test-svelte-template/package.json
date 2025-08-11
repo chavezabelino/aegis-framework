@@ -1,0 +1,55 @@
+{
+  "name": "aegis-svelte-drizzle-starter",
+  "version": "1.0.0",
+  "description": "Svelte/Drizzle/Neon starter template with Aegis framework governance",
+  "type": "module",
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build",
+    "preview": "vite preview",
+    "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+    "lint": "prettier --plugin-search-dir . --check . && eslint .",
+    "format": "prettier --plugin-search-dir . --write .",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:studio": "drizzle-kit studio",
+    "aegis:init": "node scripts/aegis-init.js",
+    "aegis:check": "node scripts/aegis-check.js",
+    "aegis:validate": "node scripts/aegis-validate.js"
+  },
+  "dependencies": {
+    "svelte": "^5.0.0",
+    "@sveltejs/kit": "^2.0.0",
+    "drizzle-orm": "^0.29.0",
+    "@neondatabase/serverless": "^0.9.0",
+    "vite": "^5.0.0"
+  },
+  "devDependencies": {
+    "@sveltejs/adapter-auto": "^3.0.0",
+    "@sveltejs/vite-plugin-svelte": "^3.0.0",
+    "drizzle-kit": "^0.20.0",
+    "eslint": "^8.0.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-svelte": "^2.35.0",
+    "prettier": "^3.0.0",
+    "prettier-plugin-svelte": "^3.0.0",
+    "svelte-check": "^3.6.0",
+    "typescript": "^5.0.0",
+    "vite": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "svelte",
+    "drizzle",
+    "neon",
+    "aegis",
+    "governance",
+    "template",
+    "starter"
+  ],
+  "author": "Aegis Framework",
+  "license": "MIT"
+}

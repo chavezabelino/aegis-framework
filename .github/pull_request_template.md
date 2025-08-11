@@ -28,7 +28,7 @@ npm run Aegis:planning auto "Add user authentication" -- --output .Aegis/outputs
 # Validation
 npm run Aegis:planning validate MVP-Fix .Aegis/outputs/auth-plan-strict.JSON 2
 # Output: ✅ Plan validation passed
-```text
+```
 
 ### __Governance Enforcement**
 
@@ -48,7 +48,7 @@ npm run check:version -- --ci
 # Evidence check
 node tools/check-evidence.ts blueprints/__/evidence.JSON --ci
 # Output: ✅ All evidence manifests are valid
-```text
+```
 
 ### __Attestation**
 
@@ -60,7 +60,7 @@ AEGIS_HMAC_KEY=${{ secrets.AEGIS_HMAC_KEY }} node tools/attest.ts attest tools C
 # Verify attestations
 AEGIS_HMAC_KEY=${{ secrets.AEGIS_HMAC_KEY }} node tools/attest.ts verify tools CLI
 # Output: ✅ All attestations verified successfully
-```text
+```
 
 ## 📊 __Telemetry Artifacts**
 
@@ -70,7 +70,7 @@ AEGIS_HMAC_KEY=${{ secrets.AEGIS_HMAC_KEY }} node tools/attest.ts verify tools C
 {"timestamp":"2025-01-15T10:00:00Z","event":"planning.detected","planClass":"MVP-Fix","confidence":0.95,"prompt":"Add user authentication"}
 {"timestamp":"2025-01-15T10:00:01Z","event":"planning.validated","planClass":"MVP-Fix","validationResult":"passed","tokenCount":1089}
 {"timestamp":"2025-01-15T10:00:02Z","event":"planning.selected","planClass":"MVP-Fix","reasoning":["minimal scope","contract-driven","observable behavior"]}
-```text
+```
 
 ### __Generated Outputs**
 
@@ -92,7 +92,7 @@ AEGIS_HMAC_KEY=${{ secrets.AEGIS_HMAC_KEY }} node tools/attest.ts verify tools C
 ```bash
 npx Playwright test --config=tests/VR/Playwright.config.ts
 # Output: ✅ All VR tests passed
-```text
+```
 
 ## 🚨 __Governance Violations**
 

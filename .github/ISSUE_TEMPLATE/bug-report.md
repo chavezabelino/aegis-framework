@@ -58,15 +58,15 @@ system:__ <!-- macOS, Linux, Windows --> __Installation method:__ <!-- npm, git 
 
 **Error messages:**
 
-```text
+```
 <!-- Paste any error messages here -->
-```text
+```
 
 **Relevant logs:**
 
-```text
+```
 <!-- Any relevant log output -->
-```text
+```
 
 **Screenshots:**
 

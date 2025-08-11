@@ -44,7 +44,7 @@ Aegis-hydrate /path/to/your/project
 # Basic commands
 Aegis-conductor init
 Aegis-conductor check
-```text
+```
 
 #### Option 2: Source Installation (For Customization)
 
@@ -61,7 +61,7 @@ npm run build:package
 
 # Run from source
 ./CLI/Aegis-hydrate.ts /path/to/project
-```text
+```
 
 ### Requirements
 
@@ -75,7 +75,7 @@ npm run build:package
 
 ```bash
 Aegis-hydrate /path/to/project
-```text
+```
 
 Configures a project with framework patterns including approval gates, rollback capability, and compliance validation.
 
@@ -85,7 +85,7 @@ Configures a project with framework patterns including approval gates, rollback 
 Aegis-conductor init       # Initialize framework
 Aegis-conductor check      # Run compliance checks
 Aegis-conductor enforce    # Apply enforcement rules
-```text
+```
 
 ### Distribution
 
@@ -104,7 +104,7 @@ Aegis-conductor enforce    # Apply enforcement rules
 Aegis-hydrate <path>           # Project setup
 Aegis-conductor <command>      # Governance tools
 Aegis-config                   # Configuration management
-```text
+```
 
 ### Development Commands
 
@@ -118,7 +118,7 @@ npm run package:validate       # Validate packages
 npm run release:patch          # Patch release
 npm run release:minor          # Minor release
 npm run release:major          # Major release
-```text
+```
 
 ## What is Aegis?
 
@@ -181,7 +181,7 @@ Aegis-framework/
 ├── VERSION                # Current version tag
 ├── CHANGELOG.md           # Semantic versioning log
 └── README.md              # This file
-```text
+```
 
 ---
 
@@ -337,7 +337,7 @@ Aegis follows [Semantic Versioning](https://semver.org/) starting with v1.0.0-al
 
 # Validate blueprints before committing
 node tools/validate-Blueprint.ts patterns/your-feature/pattern.YAML
-```text
+```
 
 See [Evolution Strategy](docs/evolution-strategy.md) for guidance on framework development and impact assessment.
 
@@ -408,7 +408,7 @@ Aegis follows [Semantic Versioning](https://semver.org/) starting with v1.0.0-al
 
 # Validate blueprints before committing
 node tools/validate-Blueprint.ts patterns/your-feature/pattern.YAML
-```text
+```
 
 See [Evolution Strategy](docs/evolution-strategy.md) for guidance on framework development and impact assessment.
 

@@ -1,0 +1,66 @@
+{
+  "name": "@aegis-framework/svelte-adapter",
+  "version": "1.0.0",
+  "description": "Aegis framework adapter for Svelte/Drizzle/Neon applications",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./adapter": {
+      "import": "./dist/adapter.js",
+      "types": "./dist/adapter.d.ts"
+    },
+    "./patterns": {
+      "import": "./dist/patterns.js",
+      "types": "./dist/patterns.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "clean": "rm -rf dist",
+    "prepublishOnly": "npm run clean && npm run build"
+  },
+  "dependencies": {
+    "@aegis-framework/core": "^2.5.0",
+    "drizzle-orm": "^0.29.0",
+    "@neondatabase/serverless": "^0.9.0"
+  },
+  "peerDependencies": {
+    "svelte": "^5.0.0",
+    "@sveltejs/kit": "^2.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "@types/node": "^20.0.0"
+  },
+  "keywords": [
+    "aegis",
+    "svelte",
+    "drizzle",
+    "neon",
+    "adapter",
+    "governance",
+    "framework"
+  ],
+  "author": "Aegis Framework",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aegis-framework/aegis-framework.git",
+    "directory": "packages/aegis-svelte-adapter"
+  },
+  "bugs": {
+    "url": "https://github.com/aegis-framework/aegis-framework/issues"
+  },
+  "homepage": "https://aegis-framework.dev/docs/svelte"
+}

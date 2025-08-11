@@ -40,7 +40,7 @@ git tag | grep -E "v[12]\." | sort -V > actual-versions.txt
 
 # Create cleaned CHANGELOG based on actual releases
 node tools/reconcile-changelog.ts --validate-against-git
-```text
+```
 
 #### __Success Criteria**
 
@@ -83,7 +83,7 @@ Version-driven roadmaps become obsolete when development diverges from planning.
 
 #### __Solution: Capability-Driven Organization**
 
-```text
+```
 docs/roadmap/
 ├── README.md                      # Master roadmap index & navigation
 ├── current-state.md              # What we have delivered (v2.1.0)
@@ -95,7 +95,7 @@ docs/roadmap/
     ├── tech-stack-neutrality.md
     ├── governance-automation.md
     └── enterprise-integration.md
-```text
+```
 
 #### __Benefits**
 
@@ -141,7 +141,7 @@ interface VersionValidation {
   roadmapReferences: string[] // Roadmap version refs
   releaseDocuments: string[] // docs/releases/ coverage
 }
-```text
+```
 
 #### __CI/CD Integration**
 
@@ -152,7 +152,7 @@ interface VersionValidation {
     npm run validate:versions
     npm run validate:roadmap-alignment
     npm run validate:release-coverage
-```text
+```
 
 ### __3.2 Constitutional Compliance Automation**
 

@@ -24,7 +24,7 @@ import {captureConversationContext} from "./tools/copilot-integration"
 
 // Called automatically when Constitutional patterns detected
 await captureConversationContext(userPrompt, copilotInstructions, workspaceRoot)
-```text
+```
 
 ### __Real-Time Response Guidelines**
 
@@ -69,7 +69,7 @@ contracts.
 @intent: <brief description>
 @context: <relevant context>
 -->
-```text
+```
 
 ## 🛠️ Developer Workflows
 
@@ -81,7 +81,7 @@ node CLI/init-Blueprint.ts feat-your-feature
 
 # Validate Blueprint schema
 node tools/validate-Blueprint.ts blueprints/feat-your-feature/Blueprint.YAML
-```text
+```
 
 ### Blueprint Structure Pattern
 

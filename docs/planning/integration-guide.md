@@ -33,7 +33,7 @@ npm install @modelcontextprotocol/sdk
 
 # Verify installation
 npm list @modelcontextprotocol/sdk
-```text
+```
 
 ### __Step 2: Validate System**
 
@@ -42,7 +42,7 @@ npm list @modelcontextprotocol/sdk
 npm run validate:planning
 
 # Expected output: All validations passed
-```text
+```
 
 ### __Step 3: Configure Your IDE**
 
@@ -91,16 +91,16 @@ npm run MCP:start
 
 # Run complete demo
 ./demo/planning-optimization-demo.sh
-```text
+```
 
 ### __Step 5: Start Using (Just Prompt!)**
 
-```text
+```
 "Add user authentication to the app"
 "Fix the login button not working"
 "Refactor the search to use a new API"
 "Add dark mode support"
-```text
+```
 
 The AI automatically handles all planning optimization behind the scenes!
 
@@ -179,7 +179,7 @@ The AI automatically handles all planning optimization behind the scenes!
     npm run plan:gate:mvp
     npm run plan:gate:surgical
     npm run plan:gate:systemic
-```text
+```
 
 #### __Quality Gates**
 
@@ -189,7 +189,7 @@ The AI automatically handles all planning optimization behind the scenes!
   run: |
     npm run Aegis:planning validate MVP-Fix ./PLAN.md 2
     npm run plan:critic plan1.md plan2.md
-```text
+```
 
 ### __Custom Configuration**
 
@@ -206,7 +206,7 @@ The AI automatically handles all planning optimization behind the scenes!
     }
   }
 }
-```text
+```
 
 #### __Custom Prompts**
 
@@ -216,7 +216,7 @@ The AI automatically handles all planning optimization behind the scenes!
 # Custom Plan Optimizer
 
 Project-specific planning optimization...
-```text
+```
 
 ### __Monitoring & Observability**
 
@@ -229,7 +229,7 @@ aegisTelemetry.emit("plan.optimization.started", {
   filesTouched: 2,
   estimatedTokens: 1500
 })
-```text
+```
 
 #### __Metrics Dashboard**
 
@@ -239,7 +239,7 @@ npm run Aegis:planning metrics
 
 # View optimization trends
 npm run Aegis:planning trends
-```text
+```
 
 ## 🎯 __Integration Best Practices**
 
@@ -289,7 +289,7 @@ cat .vscode/settings.JSON
 
 # Check dependencies
 npm list @modelcontextprotocol/sdk
-```text
+```
 
 #### __Plan Validation Failing**
 
@@ -302,7 +302,7 @@ cat .Aegis/config/planning.JSON
 
 # Review plan constraints
 npm run plan:gate:mvp
-```text
+```
 
 #### __Auto Detection Not Working**
 
@@ -315,7 +315,7 @@ cat tools/auto-plan-detector.ts
 
 # Validate system
 npm run validate:planning
-```text
+```
 
 ### __Getting Help**
 

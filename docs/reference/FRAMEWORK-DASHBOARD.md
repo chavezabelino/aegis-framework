@@ -111,7 +111,7 @@ npm install -g @Aegis-framework/CLI@2.4.0
 
 # Initialize in a project
 Aegis-hydrate /path/to/your/project
-```text
+```
 
 ### Essential Commands
 
@@ -130,7 +130,7 @@ Aegis-dashboard monitor         # Live monitoring mode
 Aegis-conductor init            # Initialize framework
 Aegis-conductor check           # Run compliance checks
 Aegis-conductor enforce         # Apply enforcement rules
-```text
+```
 
 ## 📊 Usage Analytics
 

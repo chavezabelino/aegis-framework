@@ -51,4 +51,4 @@ Aegis plan:compare plan1.md plan2.md
 
 # Auto detect plan (via MCP)
 Aegis plan:auto "your prompt here"
-```text
+```

@@ -4,7 +4,7 @@
 
 ### Twitter/X Thread Starter
 
-```text
+```
 🧵 THREAD: We built the world's first GenAI Operating System
 
 While everyone's deploying AI like browser plugins—fast, fragile, ungoverned—we built the Constitutional layer that makes AI reliable for production.
@@ -12,11 +12,11 @@ While everyone's deploying AI like browser plugins—fast, fragile, ungoverned�
 🛡️ Aegis Framework: Constitutional governance for AI-native engineering
 
 🔗 GitHub.com/chavezabelino/Aegis-framework
-```text
+```
 
 ### LinkedIn Post
 
-```text
+```
 🚀 Introducing the GenAI Operating System
 
 The AI industry has a governance problem. Teams are deploying AI without the infrastructure patterns that make it reliable.
@@ -33,11 +33,11 @@ Stop building faster chaos. Start building governed intelligence.
 #GenAI #AIGovernance #ConstitutionalComputing #AIInfrastructure
 
 🔗 GitHub.com/chavezabelino/Aegis-framework
-```text
+```
 
 ### Reddit r/MachineLearning Post
 
-```text
+```
 Title: [Project] Aegis Framework - Constitutional governance for production AI systems
 
 We've been working on what we call the "GenAI Operating System" - infrastructure patterns for reliable AI in production environments.
@@ -55,11 +55,11 @@ This isn't theoretical - every pattern came from real production problems. We're
 Feedback welcome, especially from teams running AI in production.
 
 GitHub: GitHub.com/chavezabelino/Aegis-framework
-```text
+```
 
 ### Hacker News Submission
 
-```text
+```
 Title: Aegis Framework – Constitutional governance for AI-native engineering
 
 URL: https://github.com/chavezabelino/aegis-framework
@@ -69,7 +69,7 @@ Text: We built what we're calling the world's first "GenAI Operating System" - t
 The insight: while most teams are optimizing prompts, the real challenge is building systematic governance for probabilistic systems. Constitutional computing principles, drift detection, and democratic evolution processes.
 
 Every pattern came from real production problems. Would love HN's feedback on the approach.
-```text
+```
 
 ## 🎨 Visual Assets Needed
 

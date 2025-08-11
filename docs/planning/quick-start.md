@@ -8,7 +8,7 @@
 
 ```bash
 npm install @modelcontextprotocol/sdk
-```text
+```
 
 ### __2. Test the System**
 
@@ -21,7 +21,7 @@ npm run plan:gate:mvp
 
 # Run complete demo
 ./demo/planning-optimization-demo.sh
-```text
+```
 
 ### __3. Configure Your IDE**
 
@@ -45,12 +45,12 @@ npm run plan:gate:mvp
 
 ### __4. Start Using (Just Prompt!)**
 
-```text
+```
 "Add user authentication to the app"
 "Fix the login button not working"
 "Refactor the search to use a new API"
 "Add dark mode support"
-```text
+```
 
 The AI automatically handles all planning optimization behind the scenes!
 
@@ -66,7 +66,7 @@ The AI automatically handles all planning optimization behind the scenes!
 
 ### __Example Flow**
 
-```text
+```
 User: "Add user authentication"
 ↓
 AI: Detects MVP-Fix (new feature, simple scope)
@@ -78,7 +78,7 @@ AI: Validates against constraints
 AI: Implements with observable behavior focus
 ↓
 Result: High-quality, contract-driven authentication system
-```text
+```
 
 ## 🚀 __Advanced Features**
 
@@ -96,7 +96,7 @@ npm run Aegis:planning compare plan1.md plan2.md
 
 # MCP server
 npm run MCP:start
-```text
+```
 
 ### __Package Scripts**
 
@@ -111,7 +111,7 @@ npm run plan:gate:systemic
 
 # Plan comparison
 npm run plan:critic plan1.md plan2.md
-```text
+```
 
 ## 🎯 __Key Benefits**
 
@@ -137,36 +137,36 @@ npm run plan:critic plan1.md plan2.md
 
 ### __Simple Feature Addition**
 
-```text
+```
 User: "Add user authentication"
 AI automatically:
 1. Detects MVP-Fix (new feature, simple scope)
 2. Generates contract-driven plan
 3. Validates against constraints
 4. Implements with observable behavior focus
-```text
+```
 
 ### __Bug Fix**
 
-```text
+```
 User: "Fix the search not working"
 AI automatically:
 1. Detects MVP-Fix (bug fix, simple scope)
 2. Focuses on search behavior
 3. Generates behavioral contracts
 4. Implements observable behavior fix
-```text
+```
 
 ### __Refactoring**
 
-```text
+```
 User: "Refactor auth to use JWT"
 AI automatically:
 1. Detects Surgical-Refactor (refactoring, multiple files)
 2. Preserves existing contracts
 3. Maintains observable behavior
 4. Implements with contract preservation
-```text
+```
 
 ## 🎯 __Troubleshooting**
 
@@ -181,7 +181,7 @@ npm run MCP:start
 # Verify configuration
 cat .cursor/settings.JSON
 cat .vscode/settings.JSON
-```text
+```
 
 #### __Plan Validation Failing**
 
@@ -191,7 +191,7 @@ npm run Aegis:planning validate MVP-Fix ./PLAN.md 2
 
 # Review plan gate configuration
 cat .Aegis/config/planning.JSON
-```text
+```
 
 #### __Auto Detection Not Working**
 
@@ -201,7 +201,7 @@ npm run Aegis:planning auto "your prompt here"
 
 # Check auto detector configuration
 cat tools/auto-plan-detector.ts
-```text
+```
 
 ### __Getting Help**
 

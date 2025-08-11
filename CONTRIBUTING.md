@@ -74,7 +74,7 @@ npm run conductor init
 npm run check
 npm run validate
 
-```text
+```
 
 ### Development Workflow
 
@@ -106,7 +106,7 @@ bun run conductor enforce --auto-fix
 
 bun test
 
-```text
+```
 
 ## 🏛️ Constitutional Compliance
 
@@ -144,7 +144,7 @@ metadata:
 
     mode: "strict"
 
-```text
+```
 
 ## ⚖️ Contract or Schema Changes
 
@@ -178,7 +178,7 @@ bun run conductor enforce --dry-run
 
 bun run conductor drift-report
 
-```text
+```
 
 - New adapters or tools should include constitutional compliance verification
 
@@ -208,7 +208,7 @@ Before submitting a PR, ensure:
 
 Respect the constitutional framework structure:
 
-```text
+```
 
 aegis-framework/
 
@@ -234,7 +234,7 @@ aegis-framework/
 
 └── docs/                    # Documentation
 
-```text
+```
 
 ## 🚫 What NOT to Commit
 

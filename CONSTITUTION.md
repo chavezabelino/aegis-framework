@@ -135,7 +135,7 @@ All AI-generated files must include Constitutional metadata:
 
 -->
 
-```text
+```
 
 Framework files must include:
 
@@ -149,7 +149,7 @@ Framework files must include:
 
 -->
 
-```text
+```
 
 ### Section 3: Blueprint Contract Requirements
 

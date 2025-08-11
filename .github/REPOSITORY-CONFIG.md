@@ -11,7 +11,7 @@ detection, evolution learning, and democratic amendment processes.
 
 ## Topics (GitHub Repository Settings)
 
-```text
+```
 genai-os
 Constitutional-ai
 ai-governance
@@ -32,7 +32,7 @@ Blueprint-driven
 self-healing
 observability
 TypeScript
-```text
+```
 
 ## About Section (Short Description)
 
