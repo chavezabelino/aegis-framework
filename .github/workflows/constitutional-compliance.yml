@@ -24,6 +24,10 @@ jobs:
   compliance-check:
     runs-on: ubuntu-latest
     name: Framework Constitutional Compliance
+    permissions:
+      contents: read
+      issues: write
+      pull-requests: write
     
     steps:
     - name: Checkout repository
@@ -64,9 +68,14 @@ jobs:
         echo "🔍 Detecting evolution story triggers..."
         bun cli/detect-evolution-stories.cjs
         
-    - name: Comment evolution insights
-      if: always()
-      uses: actions/github-script@v6
+    - name: Setup Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20.16.0'
+        
+    - name: Comment evolution insights (PR only)
+      if: github.event_name == 'pull_request'
+      uses: actions/github-script@v7
       with:
         script: |
           const fs = require('fs');
@@ -85,12 +94,9 @@ jobs:
 
           These stories were automatically generated based on detected framework evolution triggers. Please review and complete them with field context and implementation details.`;
               
-              github.rest.issues.createComment({
-                issue_number: context.issue.number,
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                body: comment
-              });
+              const {owner, repo} = context.repo;
+              const issue_number = context.payload.pull_request.number;
+              await github.rest.issues.createComment({ owner, repo, issue_number, body: comment });
             }
           }
         
