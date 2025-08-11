@@ -8,26 +8,26 @@
 
 # 🎨 Framework Customization Enhancement Plan
 
-## 📋 __Executive Summary**
+## 📋 **Executive Summary**
 
 Engineering teams adopting Aegis Framework need flexible customization without breaking Constitutional compliance. This
 plan outlines enhanced tooling to support section-level overrides, appending, and partial customization while
 maintaining framework integrity.
 
-## 🎯 __Customization Requirements**
+## 🎯 **Customization Requirements**
 
-### __Team Adoption Scenarios**
+### **Team Adoption Scenarios**
 
-1. __Enterprise Override__: Replace all framework sections with company-specific standards
-2. __Selective Override__: Replace specific sections (e.g., code patterns) while keeping Constitutional compliance
-3. __Append Mode__: Add custom sections to framework-generated instructions
-4. __Hybrid Mode__: Mix framework sections with custom overrides and additions
+1. **Enterprise Override**: Replace all framework sections with company-specific standards
+2. **Selective Override**: Replace specific sections (e.g., code patterns) while keeping Constitutional compliance
+3. **Append Mode**: Add custom sections to framework-generated instructions
+4. **Hybrid Mode**: Mix framework sections with custom overrides and additions
 
-## 🏗️ __Proposed Architecture**
+## 🏗️ **Proposed Architecture**
 
-### __1. Enhanced CLI with Customization Modes**
+### **1. Enhanced CLI with Customization Modes**
 
-```bash
+```
 # Current (basic override)
 node CLI/generate-agent-instructions-v2.cjs GitHub-copilot --project-profile my-standards.md
 
@@ -38,11 +38,11 @@ node CLI/generate-agent-instructions-v2.cjs GitHub-copilot \
   --append custom-sections/ \
   --merge-strategy selective \
   --output custom-GitHub-copilot-ready.md
-```text
+```
 
-### __2. Customization Configuration File**
+### **2. Customization Configuration File**
 
-```yaml
+```
 # .Aegis-customization.YAML
 customization:
   mode: selective # full | selective | append | hybrid
@@ -67,11 +67,11 @@ customization:
     enforce_constitutional: true
     require_annotations: true
     custom_validation: ./validation/custom-rules.js
-```text
+```
 
-### __3. Section Override Structure**
+### **3. Section Override Structure**
 
-```text
+```
 /project-root/
 ├── .Aegis-customization.YAML
 ├── overrides/
@@ -84,13 +84,13 @@ customization:
 │   └── tool-integration.template.md
 └── validation/
     └── custom-rules.js
-```text
+```
 
-## 🔧 __Implementation Strategy**
+## 🔧 **Implementation Strategy**
 
-### __Phase 1: Section-Level Override Support**
+### **Phase 1: Section-Level Override Support**
 
-#### __Enhanced Generator Logic**
+#### **Enhanced Generator Logic**
 
 ```javascript
 function generateWithCustomization(agentId, customizationConfig) {
@@ -118,9 +118,9 @@ function generateWithCustomization(agentId, customizationConfig) {
 
   return {baseSections, customSections}
 }
-```text
+```
 
-#### __Constitutional Protection**
+#### **Constitutional Protection**
 
 ```javascript
 const PROTECTED_SECTIONS = ["Constitutional", "framework-context", "Blueprint-compliance"]
@@ -128,13 +128,13 @@ const PROTECTED_SECTIONS = ["Constitutional", "framework-context", "Blueprint-co
 function isOverrideAllowed(sectionName, mandatorySections = []) {
   return !PROTECTED_SECTIONS.includes(sectionName) && !mandatorySections.includes(sectionName)
 }
-```text
+```
 
-### __Phase 2: Enhanced Template Engine**
+### **Phase 2: Enhanced Template Engine**
 
-#### __Custom Section Template Structure**
+#### **Custom Section Template Structure**
 
-````markdown
+````
 <!--
 @aegisFrameworkVersion: <%= frameworkVersion %>
 @customSection: true
@@ -147,9 +147,9 @@ function isOverrideAllowed(sectionName, mandatorySections = []) {
 
 ### Authentication Patterns
 
-```ts
+```
 // Company-specific auth patterns
-```text
+```
 ````
 
 ### Data Protection
@@ -160,7 +160,7 @@ function isOverrideAllowed(sectionName, mandatorySections = []) {
 
 ````
 
-#### __Template Validation**
+#### **Template Validation**
 ```JavaScript
 function validateCustomTemplate(templatePath, config) {
   const template = fs.readFileSync(templatePath, 'utf8');
@@ -184,9 +184,9 @@ function validateCustomTemplate(templatePath, config) {
 }
 ````
 
-### __Phase 3: Merge Strategy Engine**
+### **Phase 3: Merge Strategy Engine**
 
-#### __Selective Merge Logic**
+#### **Selective Merge Logic**
 
 ```javascript
 function mergeInstructions(baseSections, customSections, strategy) {
@@ -208,32 +208,32 @@ function mergeInstructions(baseSections, customSections, strategy) {
       }
   }
 }
-```text
+```
 
-## 📊 __Constitutional Compliance**
+## 📊 **Constitutional Compliance**
 
-### __Mandatory Requirements**
+### **Mandatory Requirements**
 
-1. __Protected Sections__: Constitutional, framework-context, Blueprint-compliance cannot be overridden
-2. __Annotation Requirements__: All custom sections must include proper annotations
-3. __Version Tracking__: Custom sections must declare framework version compatibility
-4. __Validation Gates__: Custom sections must pass Constitutional validation
+1. **Protected Sections**: Constitutional, framework-context, Blueprint-compliance cannot be overridden
+2. **Annotation Requirements**: All custom sections must include proper annotations
+3. **Version Tracking**: Custom sections must declare framework version compatibility
+4. **Validation Gates**: Custom sections must pass Constitutional validation
 
-### __Validation Integration**
+### **Validation Integration**
 
-```bash
+```
 # Enhanced validation with custom sections
 node tools/validate-template-quality.cjs --include-custom --config .Aegis-customization.YAML
 
 # ConstitutionalConstitutional compliance check with overrides
 node tools/validate-constitution.cjs --custom-sections overrides/ custom-sections/
-```text
+```
 
-## 🧪 __Usage Examples**
+## 🧪 **Usage Examples**
 
-### __Example 1: Enterprise Code Standards Override**
+### **Example 1: Enterprise Code Standards Override**
 
-```yaml
+```
 # .Aegis-customization.YAML
 customization:
   mode: selective
@@ -243,11 +243,11 @@ customization:
       decision-matrix: ./overrides/enterprise-decision-matrix.template.md
   validation:
     enforce_constitutional: true
-```text
+```
 
-### __Example 2: Startup Append Mode**
+### **Example 2: Startup Append Mode**
 
-```yaml
+```
 # .Aegis-customization.YAML
 customization:
   mode: append
@@ -255,11 +255,11 @@ customization:
     sections:
       startup-velocity: ./custom/rapid-development.template.md
       tool-stack: ./custom/modern-tooling.template.md
-```text
+```
 
-### __Example 3: Hybrid Consulting Firm**
+### **Example 3: Hybrid Consulting Firm**
 
-```yaml
+```
 # .Aegis-customization.YAML
 customization:
   mode: hybrid
@@ -270,41 +270,41 @@ customization:
     sections:
       client-compliance: ./custom/sox-compliance.template.md
       billing-integration: ./custom/time-tracking.template.md
-```text
+```
 
-## ✅ __Implementation Timeline**
+## ✅ **Implementation Timeline**
 
-### __v1.5.0 - Section Override Support**
+### **v1.5.0 - Section Override Support**
 
 - Basic section-level override capability
 - Constitutional protection for mandatory sections
 - Enhanced CLI with override flags
 - Validation integration for custom sections
 
-### __v1.6.0 - Append & Merge Modes**
+### **v1.6.0 - Append & Merge Modes**
 
 - Custom section append capability
 - Multiple merge strategies
 - Customization configuration file support
 - Enhanced template validation
 
-### __v1.7.0 - Advanced Features**
+### **v1.7.0 - Advanced Features**
 
 - Conditional section rendering
 - Template inheritance and extension
 - Visual diff for customized instructions
 - Team collaboration features
 
-## 🔍 __Validation & Quality Assurance**
+## 🔍 **Validation & Quality Assurance**
 
-### __Custom Section Quality Gates**
+### **Custom Section Quality Gates**
 
-1. __Constitutional Annotation__: Required framework version and custom markers
-2. __Template Syntax__: Valid EJS template structure
-3. __Content Quality__: No HTML entity contamination (Article IX compliance)
-4. __Integration Testing__: Custom sections must not break instruction generation
+1. **Constitutional Annotation**: Required framework version and custom markers
+2. **Template Syntax**: Valid EJS template structure
+3. **Content Quality**: No HTML entity contamination (Article IX compliance)
+4. **Integration Testing**: Custom sections must not break instruction generation
 
-### __Team Adoption Testing**
+### **Team Adoption Testing**
 
 - Test with real engineering team scenarios
 - Validate enterprise customization workflows
@@ -313,21 +313,21 @@ customization:
 
 ---
 
-## 🎯 __Business Value**
+## 🎯 **Business Value**
 
-### __For Framework Adopters**
+### **For Framework Adopters**
 
-- __Flexibility__: Customize instructions without losing framework benefits
-- __Adoption Speed__: Easier migration from existing standards
-- __Team Ownership__: Maintain team-specific patterns while gaining framework governance
+- **Flexibility**: Customize instructions without losing framework benefits
+- **Adoption Speed**: Easier migration from existing standards
+- **Team Ownership**: Maintain team-specific patterns while gaining framework governance
 
-### __For Framework Maintainers**
+### **For Framework Maintainers**
 
-- __Wider Adoption__: Lower barrier to entry for teams with existing standards
-- __Feedback Loop__: Learn from team customizations to improve core framework
-- __Enterprise Readiness__: Meet enterprise customization requirements
+- **Wider Adoption**: Lower barrier to entry for teams with existing standards
+- **Feedback Loop**: Learn from team customizations to improve core framework
+- **Enterprise Readiness**: Meet enterprise customization requirements
 
 ---
 
-**Status__: Design Complete - Ready for Implementation __Priority__: High - Critical for framework adoption
-**Dependencies__: v1.4.0 template quality improvements
+**Status**: Design Complete - Ready for Implementation **Priority**: High - Critical for framework adoption
+**Dependencies**: v1.4.0 template quality improvements

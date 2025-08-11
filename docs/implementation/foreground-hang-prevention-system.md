@@ -9,17 +9,17 @@
 
 # Foreground Hang Prevention System
 
-**Date__: August 8, 2025  
-**Version__: v2.4.0  
-**Type__: Constitutional Safeguard Enhancement  
-**Implementation__: `framework/governance/foreground-hang-prevention.ts` + integrated into
+**Date**: August 8, 2025  
+**Version**: v2.4.0  
+**Type**: Constitutional Safeguard Enhancement  
+**Implementation**: `framework/governance/foreground-hang-prevention.ts` + integrated into
 `tools/intent-enforcement-engine.ts`
 
 ---
 
 ## Overview
 
-The __Foreground Hang Prevention System__ solves a classic problem in LLM-agent development loops where agents attempt
+The **Foreground Hang Prevention System** solves a classic problem in LLM-agent development loops where agents attempt
 to run long-running processes (like `npm run dev`, `Vite`, etc.) in the foreground, causing the agent to hang
 indefinitely waiting for the process to complete.
 
@@ -28,10 +28,10 @@ indefinitely waiting for the process to complete.
 In environments like Cursor or VSCode chat-based agents that emulate terminal behavior inline, long-running foreground
 processes create a deadlock:
 
-```bash
+```
 # This hangs the agent forever:
 npm run dev
-```text
+```
 
 The agent never gets control back because:
 
@@ -45,10 +45,10 @@ The agent never gets control back because:
 The system automatically detects long-running process patterns and backgrounds them with proper log streaming and health
 checking:
 
-```bash
+```
 # Automatically becomes:
 npm run dev > logs/npm-dev-timestamp.log 2>&1 &
-```text
+```
 
 With intelligent monitoring:
 
@@ -65,19 +65,19 @@ With intelligent monitoring:
 
 #### 1. Pattern Recognition Engine
 
-**File__: `framework/governance/foreground-hang-prevention.ts`
+**File**: `framework/governance/foreground-hang-prevention.ts`
 
-**Detected Process Categories__:
+**Detected Process Categories**:
 
-- __Development Servers__: `npm run dev`, `yarn dev`, `Bun dev`, `Vite`, `next dev`, `webpack dev`
-- __Build Watchers__: `tsc --watch`, `rollup --watch`
-- __Test Watchers__: `Jest --watch`, `vitest`
-- __Databases__: `mongod`, `redis-server`
-- __Services__: `docker-compose up`
+- **Development Servers**: `npm run dev`, `yarn dev`, `Bun dev`, `Vite`, `next dev`, `webpack dev`
+- **Build Watchers**: `tsc --watch`, `rollup --watch`
+- **Test Watchers**: `Jest --watch`, `vitest`
+- **Databases**: `mongod`, `redis-server`
+- **Services**: `docker-compose up`
 
-**Detection Patterns__:
+**Detection Patterns**:
 
-```typescript
+```
 {
   pattern: /npm\s+run\s+dev/,
   name: 'npm-dev',
@@ -86,11 +86,11 @@ With intelligent monitoring:
   healthCheck: 'http://localhost:3000',
   logPattern: 'Local:.*http://localhost'
 }
-```text
+```
 
 #### 2. Background Process Manager
 
-**Capabilities__:
+**Capabilities**:
 
 - Automatic process backgrounding with PID tracking
 - Log file management with timestamped outputs
@@ -100,11 +100,11 @@ With intelligent monitoring:
 
 #### 3. Constitutional Integration
 
-**Integration Point__: `tools/intent-enforcement-engine.ts`
+**Integration Point**: `tools/intent-enforcement-engine.ts`
 
-**New Methods__:
+**New Methods**:
 
-```typescript
+```
 // Execute with both intent enforcement and hang prevention
 async executeWithHangPrevention(command: string, explanation?: string)
 
@@ -112,7 +112,7 @@ async executeWithHangPrevention(command: string, explanation?: string)
 getBackgroundProcessStatus(): string
 showBackgroundLogs(processName: string, lines?: number)
 killAllBackgroundProcesses(): Promise<void>
-```text
+```
 
 ---
 
@@ -120,7 +120,7 @@ killAllBackgroundProcesses(): Promise<void>
 
 ### Basic Command Detection
 
-```bash
+```
 # Long-running process - automatically backgrounded
 node framework/governance/foreground-hang-prevention.ts "npm run dev"
 
@@ -132,11 +132,11 @@ node framework/governance/foreground-hang-prevention.ts "npm run dev"
 📋 Recent logs:
 > Local: http://localhost:3000/
 🔧 Use "--logs npm-dev" to view logs
-```text
+```
 
 ### Process Management
 
-```bash
+```
 # Check running background processes
 node framework/governance/foreground-hang-prevention.ts --status
 
@@ -145,11 +145,11 @@ node framework/governance/foreground-hang-prevention.ts --logs npm-dev
 
 # Kill all background processes
 node framework/governance/foreground-hang-prevention.ts --kill-all
-```text
+```
 
 ### ConstitutionalConstitutional Integration
 
-```typescript
+```
 import {IntentEnforcementEngine} from "./tools/intent-enforcement-engine.js"
 
 const engine = new IntentEnforcementEngine()
@@ -174,7 +174,7 @@ if (result.success) {
 } else {
   console.log("❌ Failed:", result.message)
 }
-```text
+```
 
 ---
 
@@ -182,30 +182,30 @@ if (result.success) {
 
 ### Development Servers
 
-**Patterns__: `npm run dev`, `yarn dev`, `Bun dev`, `Vite`, `next dev`, `webpack dev`
+**Patterns**: `npm run dev`, `yarn dev`, `Bun dev`, `Vite`, `next dev`, `webpack dev`
 
-**Behavior__:
+**Behavior**:
 
 - Background with log streaming
 - Health check on expected port (3000, 5173, 8080)
 - Wait for server ready message
 - 30-second health check timeout
 
-**Example Output__:
+**Example Output**:
 
-```text
+```
 🎯 Detected long-running process: Vite (dev-server)
 🚀 Automatically backgrounding to prevent agent hang...
 📋 Category: dev-server
 🏥 Waiting for health check: http://localhost:5173
 ✅ Health check passed: http://localhost:5173
-```text
+```
 
 ### Build Watchers
 
-**Patterns__: `tsc --watch`, `rollup --watch`
+**Patterns**: `tsc --watch`, `rollup --watch`
 
-**Behavior__:
+**Behavior**:
 
 - Background with log streaming
 - Monitor for compilation completion messages
@@ -214,9 +214,9 @@ if (result.success) {
 
 ### Test Watchers
 
-**Patterns__: `Jest --watch`, `vitest`
+**Patterns**: `Jest --watch`, `vitest`
 
-**Behavior__:
+**Behavior**:
 
 - Background with log streaming
 - Monitor for test completion/watch mode messages
@@ -225,9 +225,9 @@ if (result.success) {
 
 ### Databases & Services
 
-**Patterns__: `mongod`, `redis-server`, `docker-compose up`
+**Patterns**: `mongod`, `redis-server`, `docker-compose up`
 
-**Behavior__:
+**Behavior**:
 
 - Background with log streaming
 - Port-based health checks where applicable
@@ -240,7 +240,7 @@ if (result.success) {
 
 ### Adding New Process Patterns
 
-```typescript
+```
 // In initializeProcessPatterns()
 {
   pattern: /my-custom-server/,
@@ -251,41 +251,41 @@ if (result.success) {
   logPattern: 'Server started on port',
   killSignal: 'SIGTERM'
 }
-```text
+```
 
 ### Log Management
 
-**Directory__: `logs/` (created automatically)
+**Directory**: `logs/` (created automatically)
 
-**File Naming__: `{process-name}-{timestamp}.log`
+**File Naming**: `{process-name}-{timestamp}.log`
 
-**Log Rotation__: Not implemented (files accumulate)
+**Log Rotation**: Not implemented (files accumulate)
 
-**Viewing Logs__:
+**Viewing Logs**:
 
-```bash
+```
 # Recent logs (20 lines)
 node framework/governance/foreground-hang-prevention.ts --logs npm-dev
 
 # Or directly
 tail -f logs/npm-dev-*.log
-```text
+```
 
 ### Health Check Configuration
 
-**HTTP Health Checks__:
+**HTTP Health Checks**:
 
-```typescript
+```
 healthCheck: "http://localhost:3000/api/health"
-```text
+```
 
-**Custom Command Health Checks__:
+**Custom Command Health Checks**:
 
-```typescript
+```
 healthCheck: "curl -f http://localhost:3000"
-```text
+```
 
-**Timeout__: 30 seconds (configurable per pattern)
+**Timeout**: 30 seconds (configurable per pattern)
 
 ---
 
@@ -293,7 +293,7 @@ healthCheck: "curl -f http://localhost:3000"
 
 ### As a Framework Safeguard
 
-The foreground hang prevention system operates as the __10th Constitutional safeguard layer__:
+The foreground hang prevention system operates as the **10th Constitutional safeguard layer**:
 
 1. Constitutional Compliance Enforcer
 2. Version Consistency Validator
@@ -304,19 +304,19 @@ The foreground hang prevention system operates as the __10th Constitutional safe
 7. Evidence-Based Validation
 8. Framework Intelligence Certification
 9. Semantic Interrupt Reflex System
-10. __Foreground Hang Prevention__ ⬅️ __NEW**
+10. **Foreground Hang Prevention** ⬅️ **NEW**
 
 ### Integration with Intent Enforcement
 
-**Workflow__:
+**Workflow**:
 
 1. Command received by `IntentEnforcementEngine`
 2. Constitutional compliance check (existing)
 3. Semantic interrupt detection (existing)
-4. __Foreground hang prevention check__ (new)
+4. **Foreground hang prevention check** (new)
 5. Command execution with appropriate handling
 
-**Benefits__:
+**Benefits**:
 
 - Commands respect Constitutional constraints
 - Long-running processes don't block agents
@@ -329,24 +329,24 @@ The foreground hang prevention system operates as the __10th Constitutional safe
 
 ### Detection Performance
 
-- __Pattern Matching__: <1ms for 12 concurrent patterns
-- __Process Launch__: <3 seconds including health checks
-- __Health Check__: 2-second intervals, 30-second timeout
-- __Log Streaming__: Real-time with configurable line limits
+- **Pattern Matching**: <1ms for 12 concurrent patterns
+- **Process Launch**: <3 seconds including health checks
+- **Health Check**: 2-second intervals, 30-second timeout
+- **Log Streaming**: Real-time with configurable line limits
 
 ### Resource Management
 
-- __Memory__: ~10MB per background process tracking
-- __Disk__: Log files accumulate (manual cleanup required)
-- __CPU__: Minimal overhead during monitoring
-- __Network__: Health check HTTP requests as needed
+- **Memory**: ~10MB per background process tracking
+- **Disk**: Log files accumulate (manual cleanup required)
+- **CPU**: Minimal overhead during monitoring
+- **Network**: Health check HTTP requests as needed
 
 ### Reliability Metrics
 
-- __Process Detection__: 100% accuracy for defined patterns
-- __Background Success__: >95% for valid commands
-- __Health Check__: Variable based on application startup time
-- __Cleanup__: Automatic on process death detection
+- **Process Detection**: 100% accuracy for defined patterns
+- **Background Success**: >95% for valid commands
+- **Health Check**: Variable based on application startup time
+- **Cleanup**: Automatic on process death detection
 
 ---
 
@@ -356,20 +356,20 @@ The foreground hang prevention system operates as the __10th Constitutional safe
 
 #### 1. Process Fails to Start
 
-**Symptoms__:
+**Symptoms**:
 
-```text
+```
 ❌ Process Vite failed to start (PID 12345 not found)
-```text
+```
 
-**Causes__:
+**Causes**:
 
 - Command not found in PATH
 - Missing dependencies
 - Port already in use
 - Incorrect working directory
 
-**Solutions__:
+**Solutions**:
 
 - Verify command exists: `which Vite`
 - Install dependencies: `npm install`
@@ -378,20 +378,20 @@ The foreground hang prevention system operates as the __10th Constitutional safe
 
 #### 2. Health Check Timeout
 
-**Symptoms__:
+**Symptoms**:
 
-```text
+```
 ⚠️ Health check timeout after 30s
-```text
+```
 
-**Causes__:
+**Causes**:
 
 - Application taking longer than 30s to start
 - Incorrect health check URL
 - Application starting on different port
 - Network connectivity issues
 
-**Solutions__:
+**Solutions**:
 
 - Check application logs for startup errors
 - Verify health check URL in browser
@@ -400,20 +400,20 @@ The foreground hang prevention system operates as the __10th Constitutional safe
 
 #### 3. Process Won't Stop
 
-**Symptoms__:
+**Symptoms**:
 
 - Background process persists after kill command
 - Multiple instances of same process
 
-**Causes__:
+**Causes**:
 
 - Process ignoring SIGTERM
 - Child processes not cleaned up
 - PID tracking incorrect
 
-**Solutions__:
+**Solutions**:
 
-```bash
+```
 # Force kill all instances
 pkill -f "npm run dev"
 
@@ -422,26 +422,26 @@ ps aux | grep node
 
 # Clean restart
 node framework/governance/foreground-hang-prevention.ts --kill-all
-```text
+```
 
 ### Debug Mode
 
-**Enable verbose logging__:
+**Enable verbose logging**:
 
-```typescript
+```
 // In constructor
 console.log("🔍 Debug mode enabled")
-```text
+```
 
-**Check log files__:
+**Check log files**:
 
-```bash
+```
 # Monitor log file in real-time
 tail -f logs/npm-dev-*.log
 
 # Check recent process activity
 ps aux | grep node
-```text
+```
 
 ---
 
@@ -451,36 +451,36 @@ ps aux | grep node
 
 #### 1. Smart Health Checks
 
-- __Application-specific health endpoints__: `/health`, `/API/status`, `/_next/static`
-- __Content-based validation__: Check for specific response content
-- __Retry logic__: Exponential backoff for health check failures
+- **Application-specific health endpoints**: `/health`, `/API/status`, `/_next/static`
+- **Content-based validation**: Check for specific response content
+- **Retry logic**: Exponential backoff for health check failures
 
 #### 2. Process Templates
 
-- __Project-specific configurations__: `.Aegis/process-config.YAML`
-- __Team-shared patterns__: Centralized process definitions
-- __Environment-specific settings__: Dev vs staging vs production
+- **Project-specific configurations**: `.Aegis/process-config.YAML`
+- **Team-shared patterns**: Centralized process definitions
+- **Environment-specific settings**: Dev vs staging vs production
 
 #### 3. Enhanced Log Management
 
-- __Log rotation__: Automatic cleanup of old log files
-- __Log parsing__: Extract structured information from logs
-- __Real-time filtering__: Search and filter log streams
-- __Log forwarding__: Send logs to external monitoring systems
+- **Log rotation**: Automatic cleanup of old log files
+- **Log parsing**: Extract structured information from logs
+- **Real-time filtering**: Search and filter log streams
+- **Log forwarding**: Send logs to external monitoring systems
 
 #### 4. Integration Expansion
 
-- __IDE Integration__: VSCode extension for process management
-- __CI/CD Integration__: Background process management in pipelines
-- __Container Support__: Docker and Kubernetes process detection
-- __Monitoring Integration__: Prometheus metrics, Grafana dashboards
+- **IDE Integration**: VSCode extension for process management
+- **CI/CD Integration**: Background process management in pipelines
+- **Container Support**: Docker and Kubernetes process detection
+- **Monitoring Integration**: Prometheus metrics, Grafana dashboards
 
 #### 5. Advanced Features
 
-- __Process clustering__: Multiple instances of same service
-- __Dependency management__: Start processes in correct order
-- __Resource limits__: CPU/memory constraints per process
-- __Auto-restart__: Automatic recovery from process crashes
+- **Process clustering**: Multiple instances of same service
+- **Dependency management**: Start processes in correct order
+- **Resource limits**: CPU/memory constraints per process
+- **Auto-restart**: Automatic recovery from process crashes
 
 ---
 
@@ -490,13 +490,13 @@ ps aux | grep node
 
 #### Constructor
 
-```typescript
+```
 new ForegroundHangPrevention(projectRoot?: string)
-```text
+```
 
 #### Core Methods
 
-```typescript
+```
 // Detect if command is long-running
 detectLongRunningProcess(command: string): ProcessPattern | null
 
@@ -511,11 +511,11 @@ showLogs(processName: string, lines?: number): Promise<string | null>
 
 // Kill all background processes
 killAllProcesses(): Promise<void>
-```text
+```
 
 #### Types
 
-```typescript
+```
 interface ProcessPattern {
   pattern: RegExp
   name: string
@@ -543,13 +543,13 @@ interface BackgroundProcess {
   startTime: Date
   category: string
 }
-```text
+```
 
 ### IntentEnforcementEngine Integration
 
 #### New Methods
 
-```typescript
+```
 // Execute with Constitutional enforcement and hang prevention
 async executeWithHangPrevention(
   command: string,
@@ -570,7 +570,7 @@ async showBackgroundLogs(processName: string, lines?: number): Promise<string | 
 
 // Kill all background processes
 async killAllBackgroundProcesses(): Promise<void>
-```text
+```
 
 ---
 
@@ -578,24 +578,24 @@ async killAllBackgroundProcesses(): Promise<void>
 
 ### For AI Agents
 
-1. __Always use `executeWithHangPrevention()`__ for command execution in agent workflows
-2. __Check background process status__ before starting new development servers
-3. __Monitor log output__ for process health and debugging
-4. __Clean up processes__ at the end of development sessions
+1. **Always use `executeWithHangPrevention()`** for command execution in agent workflows
+2. **Check background process status** before starting new development servers
+3. **Monitor log output** for process health and debugging
+4. **Clean up processes** at the end of development sessions
 
 ### For Framework Users
 
-1. __Configure health checks__ for custom applications
-2. __Monitor log directory size__ to prevent disk space issues
-3. __Use process management commands__ for debugging
-4. __Add custom process patterns__ for specialized tools
+1. **Configure health checks** for custom applications
+2. **Monitor log directory size** to prevent disk space issues
+3. **Use process management commands** for debugging
+4. **Add custom process patterns** for specialized tools
 
 ### For Framework Developers
 
-1. __Test new patterns thoroughly__ with real applications
-2. __Validate health check logic__ for each process category
-3. __Handle edge cases__ like port conflicts and process failures
-4. __Document new patterns__ and their behaviors
+1. **Test new patterns thoroughly** with real applications
+2. **Validate health check logic** for each process category
+3. **Handle edge cases** like port conflicts and process failures
+4. **Document new patterns** and their behaviors
 
 ---
 
@@ -624,7 +624,7 @@ async killAllBackgroundProcesses(): Promise<void>
 
 ---
 
-**Status__: __FOREGROUND HANG PREVENTION SYSTEM OPERATIONAL**
+**Status**: **FOREGROUND HANG PREVENTION SYSTEM OPERATIONAL**
 
 _The Foreground Hang Prevention System successfully solves the classic LLM-agent development loop deadlock by
 automatically detecting and backgrounding long-running processes while maintaining Constitutional enforcement, logging,

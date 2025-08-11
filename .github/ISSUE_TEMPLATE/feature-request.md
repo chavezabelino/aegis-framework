@@ -79,5 +79,5 @@ assignees: []
 
 ---
 
-🏛️ __Constitutional Note__: All features must comply with the [Framework Constitution](../CONSTITUTION.md) and support
+🏛️ **Constitutional Note**: All features must comply with the [Framework Constitution](../CONSTITUTION.md) and support
 Constitutional governance principles.

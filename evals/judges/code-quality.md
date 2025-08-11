@@ -36,7 +36,7 @@ You are an expert code reviewer evaluating AI-generated code for quality, mainta
 
 ## Output Format
 
-```json
+```
 {
   "typeSafety": {
     "score": 9,
@@ -58,11 +58,11 @@ You are an expert code reviewer evaluating AI-generated code for quality, mainta
   "criticalIssues": [],
   "recommendations": ["Add JSDoc comments for public APIs", "Consider custom error classes for better error handling"]
 }
-```text
+```
 
 ## Instructions
 
-1. __Focus on maintainability__ - Code should be easy to understand and modify
-2. __Consider scalability__ - Will this code work well as the system grows?
-3. __Look for patterns__ - Are there repeated patterns that could be abstracted?
-4. __Check consistency__ - Does the code follow consistent patterns throughout?
+1. **Focus on maintainability** - Code should be easy to understand and modify
+2. **Consider scalability** - Will this code work well as the system grows?
+3. **Look for patterns** - Are there repeated patterns that could be abstracted?
+4. **Check consistency** - Does the code follow consistent patterns throughout?

@@ -19,14 +19,14 @@ This directory contains deployment guides and hosting documentation for the AI A
 
 Complete guide for deploying the framework documentation site to GitHub Pages. Includes:
 
-- __Automated GitHub Actions__ setup (recommended)
-- __Manual deployment__ options
-- __Custom domain__ configuration
-- __Build optimization__ and troubleshooting
+- **Automated GitHub Actions** setup (recommended)
+- **Manual deployment** options
+- **Custom domain** configuration
+- **Build optimization** and troubleshooting
 
-**Status__: Production Ready  
-**Supports__: Docusaurus documentation sites  
-**Requirements__: GitHub repository with Pages enabled
+**Status**: Production Ready  
+**Supports**: Docusaurus documentation sites  
+**Requirements**: GitHub repository with Pages enabled
 
 ### Docusaurus Setup
 
@@ -34,36 +34,36 @@ Complete guide for deploying the framework documentation site to GitHub Pages. I
 
 Setup and configuration guide for the Docusaurus documentation site. Covers:
 
-- __Initial setup__ and project structure
-- __Configuration__ for AI Agent Development Governance theme
-- __Custom components__ and plugin integration
-- __Local development__ environment setup
+- **Initial setup** and project structure
+- **Configuration** for AI Agent Development Governance theme
+- **Custom components** and plugin integration
+- **Local development** environment setup
 
-**Status__: Production Ready  
-**Version__: Docusaurus v3.x compatible  
-**Features__: Full framework documentation support
+**Status**: Production Ready  
+**Version**: Docusaurus v3.x compatible  
+**Features**: Full framework documentation support
 
 ## Deployment Options
 
 ### Documentation Hosting
 
-- __GitHub Pages__: Automated deployment with GitHub Actions
-- __Netlify__: Alternative hosting with continuous deployment
-- __Vercel__: Fast hosting with preview deployments
-- __Custom Server__: Self-hosted documentation options
+- **GitHub Pages**: Automated deployment with GitHub Actions
+- **Netlify**: Alternative hosting with continuous deployment
+- **Vercel**: Fast hosting with preview deployments
+- **Custom Server**: Self-hosted documentation options
 
 ### Framework Distribution
 
-- __npm Package__: `@Aegis-framework/CLI` for command-line tools
-- __Docker Images__: Containerized framework deployment
-- __Source Installation__: Direct from GitHub repository
-- __Enterprise Packages__: Custom distribution for organizations
+- **npm Package**: `@Aegis-framework/CLI` for command-line tools
+- **Docker Images**: Containerized framework deployment
+- **Source Installation**: Direct from GitHub repository
+- **Enterprise Packages**: Custom distribution for organizations
 
 ## Quick Start
 
 ### Deploy Documentation Site
 
-```bash
+```
 # 1. Setup Docusaurus (if not already done)
 cd website/
 npm install
@@ -73,27 +73,27 @@ npm run build
 
 # 3. Deploy to GitHub Pages
 npm run deploy
-```text
+```
 
 ### Framework Installation
 
-```bash
+```
 # Install globally via npm
 npm install -g @Aegis-framework/CLI@2.5.0
 
 # Initialize in your project
 Aegis-conductor init
-```text
+```
 
 ## Support & Troubleshooting
 
-- __Deployment Issues__: Check [GitHub Pages Guide](DEPLOY-TO-GitHub-PAGES.md#troubleshooting)
-- __Configuration Help__: See [Docusaurus Setup](DOCUSAURUS-SETUP.md#configuration)
-- __Community Support__: [GitHub Discussions](https://github.com/your-org/aegis-framework/discussions)
-- __Bug Reports__: [GitHub Issues](https://github.com/your-org/aegis-framework/issues)
+- **Deployment Issues**: Check [GitHub Pages Guide](DEPLOY-TO-GitHub-PAGES.md#troubleshooting)
+- **Configuration Help**: See [Docusaurus Setup](DOCUSAURUS-SETUP.md#configuration)
+- **Community Support**: [GitHub Discussions](https://github.com/your-org/aegis-framework/discussions)
+- **Bug Reports**: [GitHub Issues](https://github.com/your-org/aegis-framework/issues)
 
 ---
 
-**Maintained by__: Framework Development Team  
-**Last Updated__: 2025-01-15  
-**Next Review__: 2025-02-15
+**Maintained by**: Framework Development Team  
+**Last Updated**: 2025-01-15  
+**Next Review**: 2025-02-15

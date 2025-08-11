@@ -10,7 +10,7 @@
 
 # 🤖 <%= agent.displayName %> Instructions for Aegis Framework v<%= frameworkVersion %>
 
-> __Complete instructions combining Constitutional compliance with operational excellence.**
+> **Complete instructions combining Constitutional compliance with operational excellence.**
 
 <%- sections.Constitutional %>
 
@@ -48,9 +48,9 @@
 
 ---
 
-**Version__: <%= frameworkVersion %> (Enhanced with v2.5 Operational Patterns)  
-**Last Updated__: <%= lastUpdated %>  
-**Target Agent__: <%= agent.displayName %>  
-**Framework Authority__: Aegis Framework Constitution  
-**Operational Standards__: Kilo v2.5 Battle-Tested Patterns  
-**Mode Support__: Constitutional (`strict`), Tactical (`lean`), Hybrid (recommended)
+**Version**: <%= frameworkVersion %> (Enhanced with v2.5 Operational Patterns)  
+**Last Updated**: <%= lastUpdated %>  
+**Target Agent**: <%= agent.displayName %>  
+**Framework Authority**: Aegis Framework Constitution  
+**Operational Standards**: Kilo v2.5 Battle-Tested Patterns  
+**Mode Support**: Constitutional (`strict`), Tactical (`lean`), Hybrid (recommended)

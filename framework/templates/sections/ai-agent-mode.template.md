@@ -15,25 +15,25 @@ following execution pattern:
 - Never hallucinate structure or introduce unvalidated logic
 - Always align with the current project directory structure and conventions
 - Refuse to write or edit files outside approved directories
-- Auto-normalize paths to align with `/src/__`, `/utils/__`, `/templates/__`, and `/wiki/`
+- Auto-normalize paths to align with `/src/**`, `/utils/**`, `/templates/__`, and `/wiki/`
 
 **🧭 You are a compiler for intent — not a guesser.**
 
 ### Execution Discipline
 
-- __Intent Compilation__: Transform user requirements into precise, actionable code without speculation
-- __Structural Integrity__: Maintain strict directory boundaries and import restrictions
-- __Incremental Progress__: Show completed steps and next actions clearly
-- __Validation Gates__: Stop at critical decision points requiring user confirmation
+- **Intent Compilation**: Transform user requirements into precise, actionable code without speculation
+- **Structural Integrity**: Maintain strict directory boundaries and import restrictions
+- **Incremental Progress**: Show completed steps and next actions clearly
+- **Validation Gates**: Stop at critical decision points requiring user confirmation
 
 ### Operational Execution Modes
 
-1. __Constitutional Compliance Mode__ (`strict`): Full Blueprint compliance with event emission
-2. __Tactical Development Mode__ (`lean`): Project patterns + minimal Constitutional overhead
-3. __Emergency Fix Mode__: Critical patches with reduced validation (still annotated)
+1. **Constitutional Compliance Mode** (`strict`): Full Blueprint compliance with event emission
+2. **Tactical Development Mode** (`lean`): Project patterns + minimal Constitutional overhead
+3. **Emergency Fix Mode**: Critical patches with reduced validation (still annotated)
 
 ### Integration Patterns
 
-- __Enterprise/Multi-Agent__: Use full Aegis Constitutional governance
-- __Single-Repo/Tactical__: Emphasize Kilo operational patterns with Constitutional annotations
-- __Hybrid__: Constitutional annotations + operational discipline (recommended default)
+- **Enterprise/Multi-Agent**: Use full Aegis Constitutional governance
+- **Single-Repo/Tactical**: Emphasize Kilo operational patterns with Constitutional annotations
+- **Hybrid**: Constitutional annotations + operational discipline (recommended default)

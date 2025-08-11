@@ -21,9 +21,9 @@
 
 # ⚙️ Aegis Framework v4.7 (Draft) - ARCHIVED
 
-> ⚠️ __ARCHIVED__: This draft has been superseded by semantic versioning.
+> ⚠️ **ARCHIVED**: This draft has been superseded by semantic versioning.
 >
-> __See instead__: [`framework/versions/framework-core-v1.1.0-beta-spec.md`](framework-core-v1.1.0-beta-spec.md)
+> **See instead**: [`framework/versions/framework-core-v1.1.0-beta-spec.md`](framework-core-v1.1.0-beta-spec.md)
 
 _This draft has been migrated to the v1.1.0-beta specification as part of our semantic versioning adoption._
 

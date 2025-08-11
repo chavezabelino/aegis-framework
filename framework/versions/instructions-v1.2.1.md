@@ -8,40 +8,40 @@
 
 # 🤖 Generic Ai Agent Instructions for Aegis Framework v1.2.1
 
-> __Agent-specific guidance for Generic Ai Agent working within the Aegis Framework ecosystem.**
+> **Agent-specific guidance for Generic Ai Agent working within the Aegis Framework ecosystem.**
 
 ## 🏛️ Constitutional Compliance
 
-**CRITICAL__: All operations must comply with the [Aegis Framework Constitution](../../CONSTITUTION.md). This includes:
+**CRITICAL**: All operations must comply with the [Aegis Framework Constitution](../../CONSTITUTION.md). This includes:
 
-- __Blueprint Primacy__: No code generation without corresponding Blueprint specifications
-- __Mandatory Annotations__: All AI-generated files require Constitutional metadata
-- __Traceability__: Every change must be traceable through blueprints and contracts
-- __Semantic Versioning__: Strict adherence to Constitutional version management
+- **Blueprint Primacy**: No code generation without corresponding Blueprint specifications
+- **Mandatory Annotations**: All AI-generated files require Constitutional metadata
+- **Traceability**: Every change must be traceable through blueprints and contracts
+- **Semantic Versioning**: Strict adherence to Constitutional version management
 
 ## 🎯 Framework Context (v1.2.1)
 
 ### Current Capabilities
 
-- __Core__: Blueprint-driven development with v1.0.0-alpha specification
-- __Multi-Agent__: v1.1.0-beta orchestration with agent coordination and handoffs
-- __Apprenticeship__: v1.3.0 scaffolding system with mentor guidance
-- __Observability__: MCP metadata emission, drift logging, run logs
-- __CLI__: Enhanced tooling for Blueprint management, drift control, and apprenticeship
+- **Core**: Blueprint-driven development with v1.0.0-alpha specification
+- **Multi-Agent**: v1.1.0-beta orchestration with agent coordination and handoffs
+- **Apprenticeship**: v1.3.0 scaffolding system with mentor guidance
+- **Observability**: MCP metadata emission, drift logging, run logs
+- **CLI**: Enhanced tooling for Blueprint management, drift control, and apprenticeship
 
 ### Execution Modes
 
-- __lean__: Minimal implementation focusing on core requirements
-- __strict__: Full compliance with all Blueprint contracts and rules
-- __generative__: Creative expansion within Constitutional boundaries
+- **lean**: Minimal implementation focusing on core requirements
+- **strict**: Full compliance with all Blueprint contracts and rules
+- **generative**: Creative expansion within Constitutional boundaries
 
 ## 🎯 Generic Ai Agent Specific Guidance
 
 ### Your Capabilities
 
-- __Languages__: TypeScript, python, JavaScript
-- __Specializations__: full-stack, documentation
-- __Coordination__: Multi-agent coordination supported
+- **Languages**: TypeScript, python, JavaScript
+- **Specializations**: full-stack, documentation
+- **Coordination**: Multi-agent coordination supported
 
 ### Your Role in Multi-Agent Workflows
 
@@ -58,7 +58,7 @@ When working in coordinated environments:
 
 When working in multi-agent environments:
 
-```yaml
+```
 # Recognize your role in Blueprint coordination
 agents:
   primary: generic-ai-agent
@@ -72,13 +72,13 @@ coordination:
     - from: generic-ai-agent
       to: cursor
       trigger: "backend services complete"
-```text
+```
 
 ### Handoff Protocols
 
-- __Before Handoff__: Emit clear completion signals and context
-- __Context Transfer__: Provide detailed state and next steps
-- __Validation__: Ensure your output meets handoff trigger conditions
+- **Before Handoff**: Emit clear completion signals and context
+- **Context Transfer**: Provide detailed state and next steps
+- **Validation**: Ensure your output meets handoff trigger conditions
 
 ## 🏗️ Blueprint Compliance
 
@@ -86,7 +86,7 @@ coordination:
 
 Every Blueprint must include:
 
-```yaml
+```
 id: feat-feature-name
 name: Human Readable Feature Name
 version: 1.0.0
@@ -100,13 +100,13 @@ ruleContracts:
 observability:
   events: []
 errorStates: []
-```text
+```
 
 ### Blueprint Annotation Pattern
 
 Always include in generated files:
 
-```markdown
+```
 <!--
 @aegisBlueprint: feat-feature-name
 @version: 1.2.1
@@ -114,7 +114,7 @@ Always include in generated files:
 @intent: Brief description of generated content
 @context: Relevant Blueprint context
 -->
-```text
+```
 
 ## 📄 MCP Metadata Emission
 
@@ -122,7 +122,7 @@ Always include in generated files:
 
 Always emit MCP metadata for observability:
 
-```yaml
+```
 observability:
   mcpContext:
     modelProvider: "openai"
@@ -133,11 +133,11 @@ observability:
     timestamp: "2025-08-06T14:22:14.439Z"
     sessionId: "Aegis-session-12345"
     blueprintHash: "SHA256:abc123..."
-```text
+```
 
 ### Event Emission Points
 
-```yaml
+```
 events:
   - name: mcp_execution_start
     context: {blueprintId: string, agentId: "generic-ai-agent"}
@@ -145,7 +145,7 @@ events:
   - name: mcp_execution_complete
     context: {outputMode: string, tokenUsage: number}
     mcpFields: ["responseTokens", "temperature"]
-```text
+```
 
 ## 🧠 Drift Detection & Response
 
@@ -153,26 +153,26 @@ events:
 
 Monitor for these drift patterns:
 
-- __Semantic Drift__: Output doesn't match Blueprint intent
-- __Regression__: Previously working functionality breaks
-- __Hallucination__: Generated content has factual errors
-- __Performance__: Significant speed or quality degradation
+- **Semantic Drift**: Output doesn't match Blueprint intent
+- **Regression**: Previously working functionality breaks
+- **Hallucination**: Generated content has factual errors
+- **Performance**: Significant speed or quality degradation
 
 ### Drift Response Protocol
 
-```bash
+```
 # If drift detected, log immediately
 Aegis drift log --type=semantic_drift --severity=medium --Blueprint=feat-user-auth
 
 # Request human review for critical drift
 Aegis drift escalate --severity=critical --assignee=developer@company.com
-```text
+```
 
 ## 🛠️ CLI Integration
 
 ### Blueprint Management
 
-```bash
+```
 # Initialize new Blueprint
 Aegis Blueprint init feat-new-feature --agent=generic-ai-agent
 
@@ -181,11 +181,11 @@ Aegis Blueprint validate feat-new-feature
 
 # Generate with mode specification
 Aegis generate feat-new-feature --mode=strict --agent=generic-ai-agent
-```text
+```
 
 ### Essential Commands
 
-```bash
+```
 # Blueprint workflow
 Aegis Blueprint init <name>
 Aegis generate <Blueprint> --mode=strict
@@ -194,7 +194,7 @@ Aegis test snapshot <Blueprint>
 # Multi-agent coordination
 Aegis agent handoff --to=<agent> --context="<message>"
 Aegis drift log --type=<type> --severity=<level>
-```text
+```
 
 ## 🔍 Validation & Testing
 
@@ -202,13 +202,13 @@ Aegis drift log --type=<type> --severity=<level>
 
 Ensure generated code passes snapshot validation:
 
-```bash
+```
 # Run framework snapshot tests
 npm test -- tests/snapshot-tests/
 
 # Validate specific Blueprint
 Aegis test snapshot feat-user-auth
-```text
+```
 
 ### Constitutional Requirements
 
@@ -238,7 +238,7 @@ Aegis test snapshot feat-user-auth
 
 ### Essential Commands
 
-```bash
+```
 # Blueprint workflow
 Aegis Blueprint init <name>
 Aegis generate <Blueprint> --mode=strict
@@ -251,7 +251,7 @@ Aegis drift log --type=<type> --severity=<level>
 # Apprenticeship
 Aegis apprentice start --scaffold=<name>
 Aegis apprentice submit --component=<name>
-```text
+```
 
 ### Constitutional Requirements
 
@@ -263,7 +263,7 @@ Aegis apprentice submit --component=<name>
 
 ---
 
-**Version__: 1.2.1  
-**Last Updated__: 2025-08-06  
-**Target Agent__: Generic Ai Agent  
-**Framework Authority__: Aegis Framework Constitution
+**Version**: 1.2.1  
+**Last Updated**: 2025-08-06  
+**Target Agent**: Generic Ai Agent  
+**Framework Authority**: Aegis Framework Constitution

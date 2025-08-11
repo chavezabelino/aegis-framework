@@ -28,7 +28,7 @@ A PREC proves a change is production-ready with machine-checkable commands and o
 
 ## Example: blueprints/planning-optimization/evidence.JSON
 
-```json
+```
 {
   "Blueprint": "planning-optimization",
   "version": "2.5.0",
@@ -56,7 +56,7 @@ A PREC proves a change is production-ready with machine-checkable commands and o
   },
   "validation": {"timestamp": "2025-01-15T10:00:00Z", "commit": "{{COMMIT_SHA}}", "environment": "ci"}
 }
-```text
+```
 
 ## CI Enforcement
 

@@ -119,7 +119,7 @@ New features must follow this Constitutional process:
 
 All AI-generated files must include Constitutional metadata:
 
-```markdown
+```
 
 <!--
 
@@ -139,7 +139,7 @@ All AI-generated files must include Constitutional metadata:
 
 Framework files must include:
 
-```markdown
+```
 
 <!--
 

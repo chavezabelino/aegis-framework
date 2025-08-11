@@ -8,7 +8,7 @@
 
 ### Event Schema Structure
 
-```typescript
+```
 interface MCPEvent {
   timestamp: string
   eventType: string
@@ -17,11 +17,11 @@ interface MCPEvent {
   correlationId: string
   metadata: Record<string, any>
 }
-```text
+```
 
 ### Required Event Emissions
 
-```typescript
+```
 // Blueprint lifecycle events
 await emitEvent({
   eventType: "Blueprint.validated",
@@ -41,7 +41,7 @@ await emitEvent({
   eventType: "drift.detected",
   metadata: {driftType: "agent-behavior", severity: "medium"}
 })
-```text
+```
 
 ### Observability Files
 

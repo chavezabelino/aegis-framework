@@ -4,7 +4,7 @@ sidebar_position: 3
 
 # Create a Blog Post
 
-Docusaurus creates a __page for each blog post__, but also a __blog index page__, a __tag system__, an __RSS__ feed...
+Docusaurus creates a **page for each blog post**, but also a **blog index page**, a **tag system**, an **RSS** feed...
 
 ## Create your first Post
 
@@ -29,6 +29,6 @@ tags: [greetings]
 Congratulations, you have made your first post!
 
 Feel free to play around and edit this post as much as you like.
-```text
+```
 
 A new blog post is now available at [http://localhost:3000/blog/greetings](http://localhost:3000/blog/greetings).

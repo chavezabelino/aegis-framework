@@ -1,19 +1,19 @@
 # Aegis Framework Evaluation Suite
 
-**First-class evals in CI__ - Golden prompts, expected artifacts, and automated quality gates.
+**First-class evals in CI** - Golden prompts, expected artifacts, and automated quality gates.
 
 ## 🎯 Overview
 
 The `/evals` directory contains:
 
-- __Golden prompts__: Canonical test cases for Blueprint generation
-- __Expected artifacts__: Reference outputs for comparison
-- __LLM-as-judge__: Style and quality evaluation (not correctness)
-- __Delta detection__: Baseline comparison for regression testing
+- **Golden prompts**: Canonical test cases for Blueprint generation
+- **Expected artifacts**: Reference outputs for comparison
+- **LLM-as-judge**: Style and quality evaluation (not correctness)
+- **Delta detection**: Baseline comparison for regression testing
 
 ## 📁 Structure
 
-```text
+```
 evals/
 ├── golden-prompts/           # Test case definitions
 │   ├── feat-user-auth.YAML
@@ -37,11 +37,11 @@ evals/
     ├── ci-config.YAML
     ├── local-config.YAML
     └── enterprise-config.YAML
-```text
+```
 
 ## 🚀 Usage
 
-```bash
+```
 # Run full evaluation suite
 Aegis eval
 
@@ -53,15 +53,15 @@ Aegis eval --baseline main
 
 # CI mode (fail on regression)
 Aegis eval --ci --threshold 0.95
-```text
+```
 
 ## 🎬 CI Integration
 
 Add to your `.GitHub/workflows/Aegis-eval.yml`:
 
-```yaml
+```
 - name: Run Aegis Evaluations
   run: |
     Aegis eval --ci --baseline main
     # Auto-fails if quality drops below threshold
-```text
+```

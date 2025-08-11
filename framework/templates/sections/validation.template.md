@@ -8,7 +8,7 @@
 
 ### Constitutional Compliance Validation
 
-```bash
+```
 # Validate Constitutional compliance
 node tools/validate-constitution.ts
 
@@ -17,11 +17,11 @@ grep -r "@aegisBlueprint" src/ --include="_.ts" --include="_.js"
 
 # Verify semantic versioning
 node tools/validate-Blueprint.ts blueprints/*/Blueprint.YAML
-```text
+```
 
 ### Snapshot Testing
 
-```typescript
+```
 // Blueprint fidelity validation
 describe("Blueprint Fidelity", () => {
   test("feat-example generates consistent output", async () => {
@@ -29,11 +29,11 @@ describe("Blueprint Fidelity", () => {
     expect(output).toMatchSnapshot()
   })
 })
-```text
+```
 
 ### Replay Testing
 
-```typescript
+```
 // Deterministic output validation
 describe("Blueprint Replay", () => {
   test("same Blueprint produces identical output", async () => {
@@ -42,11 +42,11 @@ describe("Blueprint Replay", () => {
     expect(output1).toEqual(output2)
   })
 })
-```text
+```
 
 ### Visual Regression Testing
 
-```typescript
+```
 // Required for public routes
 describe("Visual Regression", () => {
   test("public route renders consistently", async () => {
@@ -55,11 +55,11 @@ describe("Visual Regression", () => {
     expect(screenshot).toMatchImageSnapshot()
   })
 })
-```text
+```
 
 ### Validation Files Structure
 
-```text
+```
 tests/
 ├── snapshot-tests/
 │   ├── Blueprint-fidelity.test.ts
@@ -69,14 +69,14 @@ tests/
 │   └── apprenticeship-scaffolds-replay.test.ts
 └── visual-regression/
     └── public-routes.test.ts
-```text
+```
 
 ### Pre-Commit Validation Hook
 
-```bash
+```
 #!/bin/bash
 # .git/hooks/pre-commit
 node tools/validate-constitution.ts || exit 1
 node tools/validate-Blueprint.ts blueprints/*/Blueprint.YAML || exit 1
 npm run test:snapshot || exit 1
-```text
+```

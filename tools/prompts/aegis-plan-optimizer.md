@@ -16,8 +16,8 @@ You are the Planner. Apply `decision-rubric.md`. Output exactly one plan class:
 
 Rules:
 
-- Assert __behavioral contracts__ only.
-- Prefer __smallest__ viable plan.
+- Assert **behavioral contracts** only.
+- Prefer **smallest** viable plan.
 - Include full files if you touch code.
 - Add acceptance criteria aligned to contracts.
 
@@ -31,18 +31,18 @@ Output Sections:
 6. Risks & Rollback
 7. Acceptance (binary list)
 
-## 🎯 __IDE & MCP Integration**
+## 🎯 **IDE & MCP Integration**
 
-### __Works With Any IDE**
+### **Works With Any IDE**
 
-- __Cursor__: Built-in AI agents and MCP features
-- __VS Code__: GitHub Copilot, Claude, and MCP extensions
-- __JetBrains__: AI Assistant and MCP plugins
-- __Any Editor__: MCP-compatible AI agents
+- **Cursor**: Built-in AI agents and MCP features
+- **VS Code**: GitHub Copilot, Claude, and MCP extensions
+- **JetBrains**: AI Assistant and MCP plugins
+- **Any Editor**: MCP-compatible AI agents
 
-### __MCP Command Integration**
+### **MCP Command Integration**
 
-```bash
+```
 # Validate plan (via MCP)
 Aegis plan:validate --class=mvp --files=2
 

@@ -8,9 +8,9 @@
 
 **Battle-tested pattern from v2.5 bracket-app-audit standards**
 
-```bash
+```
 Bun run rca --error-log=errors/dev.log [flags]
-```text
+```
 
 ### RCA Flags
 
@@ -23,7 +23,7 @@ Bun run rca --error-log=errors/dev.log [flags]
 
 ### Integration with Constitutional Compliance
 
-```ts
+```
 // Emit RCA analysis event for drift monitoring
 await emitEvent({
   eventType: "rca.analysis.started",
@@ -40,14 +40,14 @@ const rcaResult = await runTokenGatedAnalysis({
   constitutionalMode: true,
   blueprintValidation: true
 })
-```text
+```
 
 ### Output Artifacts (Enhanced)
 
-- __`/generated/rca-analysis/`__ — Token-gated AI analysis outputs
-- __`/generated/migration-plans/`__ — Structured diffs and transitions
-- __Constitutional compliance check__ — Blueprint impact assessment
-- __Drift detection integration__ — Feeds into framework monitoring
+- **`/generated/rca-analysis/`** — Token-gated AI analysis outputs
+- **`/generated/migration-plans/`** — Structured diffs and transitions
+- **Constitutional compliance check** — Blueprint impact assessment
+- **Drift detection integration** — Feeds into framework monitoring
 
 ## 🛠️ Developer Workflows
 

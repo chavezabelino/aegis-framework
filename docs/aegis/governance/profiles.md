@@ -72,7 +72,7 @@ Each profile offers different levels of validation and security checks.
 
 ### Consumer Setup
 
-```yaml
+```
 
 ## .GitHub/workflows/governance.yml
 
@@ -90,7 +90,7 @@ jobs:
 
       profile: standard # lite | standard | core
 
-```text
+```
 
 ### Branch Protection Rules
 
@@ -198,7 +198,7 @@ Configure branch protection based on your selected profile:
 
 Each profile includes specific debugging information:
 
-```bash
+```
 
 ## Lite profile debugging
 
@@ -216,4 +216,4 @@ node scripts/ci/plan-gate.mjs --verbose
 npx Playwright test --debug
 npx Playwright show-report
 
-```text
+```

@@ -12,7 +12,7 @@ gaps identified in framework migration pitfalls.
 
 ## YAML Format Example
 
-```yaml
+```
 # Constitutional Remediation Plan
 # All fields marked as required must be present to pass validation
 
@@ -296,13 +296,13 @@ createdAt: "2025-08-06T00:00:00Z"
 lastModified: "2025-08-06T00:00:00Z"
 estimatedCompletionTime: "2-3 hours with approval gates"
 actualExecutionTime: null # Filled during execution
-```text
+```
 
 ## JSON Format Example
 
 The same plan can be expressed in JSON format:
 
-```json
+```
 {
   "id": "example-remediation-2025-001",
   "name": "Framework Migration with Constitutional Safety",
@@ -455,11 +455,11 @@ The same plan can be expressed in JSON format:
   "lastModified": "2025-08-06T00:00:00Z",
   "estimatedCompletionTime": "2-3 hours with approval gates"
 }
-```text
+```
 
 ## Validation Command
 
-```bash
+```
 # Validate this plan against Constitutional requirements
 node tools/validate-remediation-plan.ts example-remediation-plan.YAML
 
@@ -468,43 +468,43 @@ node tools/validate-remediation-plan.ts example-remediation-plan.YAML
 # 📊 Validation Score: 95/100
 # ✅ Overall: VALID
 # ✅ Remediation plan meets Constitutional requirements and is safe for execution.
-```text
+```
 
 ## Key Constitutional Protections
 
 This template includes all required Constitutional protections:
 
-1. __✅ Validation Gates__: Build, test, lint checks before changes
-2. __✅ Rollback Strategy__: Git snapshots with tested restoration
-3. __✅ Dry-Run Simulation__: Preview effects before execution
-4. __✅ Tool Validation__: Verify all required tools exist
-5. __✅ Constitutional Review__: Framework compliance checks
-6. __✅ Success Criteria__: Measurable completion standards
-7. __✅ Emergency Procedures__: Escalation and failsafe actions
-8. __✅ CI Integration__: Automated preflight gates
-9. __✅ Risk Assessment__: Clear mitigation strategies
-10. __✅ Constitutional Annotations__: Full metadata compliance
+1. **✅ Validation Gates**: Build, test, lint checks before changes
+2. **✅ Rollback Strategy**: Git snapshots with tested restoration
+3. **✅ Dry-Run Simulation**: Preview effects before execution
+4. **✅ Tool Validation**: Verify all required tools exist
+5. **✅ Constitutional Review**: Framework compliance checks
+6. **✅ Success Criteria**: Measurable completion standards
+7. **✅ Emergency Procedures**: Escalation and failsafe actions
+8. **✅ CI Integration**: Automated preflight gates
+9. **✅ Risk Assessment**: Clear mitigation strategies
+10. **✅ Constitutional Annotations**: Full metadata compliance
 
 ## Anti-Patterns to Avoid
 
-❌ __Don't__ create plans without rollback strategies  
-❌ __Don't__ skip validation steps for "simple" changes  
-❌ __Don't__ assume tools exist without validation  
-❌ __Don't__ omit dry-run simulation for high-risk phases  
-❌ __Don't__ ignore Constitutional review requirements  
-❌ __Don't__ use generic success criteria without measurement methods
+❌ **Don't** create plans without rollback strategies  
+❌ **Don't** skip validation steps for "simple" changes  
+❌ **Don't** assume tools exist without validation  
+❌ **Don't** omit dry-run simulation for high-risk phases  
+❌ **Don't** ignore Constitutional review requirements  
+❌ **Don't** use generic success criteria without measurement methods
 
 ## Framework Protection Summary
 
 This template prevents the specific gaps identified in framework migration pitfalls:
 
-- __Validation Gates__: Required build/test/lint checks before any structural changes
-- __Tool Validation__: All referenced tools must exist and be validated
-- __Rollback Safety__: Every phase includes tested rollback procedures
-- __Dry-Run Protection__: High-risk changes must be simulated first
-- __Constitutional Compliance__: All plans validated against framework principles
-- __Measurable Success__: Clear, testable criteria for completion
-- __Emergency Procedures__: Escalation paths and failsafe actions defined
+- **Validation Gates**: Required build/test/lint checks before any structural changes
+- **Tool Validation**: All referenced tools must exist and be validated
+- **Rollback Safety**: Every phase includes tested rollback procedures
+- **Dry-Run Protection**: High-risk changes must be simulated first
+- **Constitutional Compliance**: All plans validated against framework principles
+- **Measurable Success**: Clear, testable criteria for completion
+- **Emergency Procedures**: Escalation paths and failsafe actions defined
 
 By following this template, remediation plans will meet Constitutional requirements and provide the safety mechanisms
 needed to prevent incomplete or dangerous migrations.

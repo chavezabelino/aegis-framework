@@ -8,7 +8,7 @@
 
 ### Blueprint Management
 
-```bash
+```
 # Initialize new Blueprint
 node CLI/init-Blueprint.ts feat-your-feature
 
@@ -20,11 +20,11 @@ node CLI/generate-agent-instructions-v2.cjs GitHub-copilot --project-profile tem
 
 # Migration audit
 node CLI/Aegis-migration-audit.cjs ../target-app --output migration-plan.md --strict
-```text
+```
 
 ### Drift Detection & Control
 
-```bash
+```
 # Constitutional conductor (governance automation)
 node CLI/Aegis-conductor.ts
 
@@ -33,7 +33,7 @@ node CLI/drift-CLI.ts --check
 
 # Amendment proposals
 node CLI/amendment-CLI.ts propose --title "Feature Enhancement" --description "..."
-```text
+```
 
 ### Output Management
 
@@ -43,10 +43,10 @@ node CLI/amendment-CLI.ts propose --title "Feature Enhancement" --description ".
 
 ### Validation Tools
 
-```bash
+```
 # Constitutional compliance
 node tools/validate-constitution.ts
 
 # Blueprint validation
 node tools/validate-Blueprint.ts blueprints/*/Blueprint.YAML
-```text
+```

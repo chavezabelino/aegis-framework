@@ -12,6 +12,6 @@
 
 ### Execution Modes
 
-- __lean__: Minimal implementation focusing on core requirements
-- __strict__: Full compliance with all Blueprint contracts and rules
-- __generative__: Creative expansion within Constitutional boundaries
+- **lean**: Minimal implementation focusing on core requirements
+- **strict**: Full compliance with all Blueprint contracts and rules
+- **generative**: Creative expansion within Constitutional boundaries

@@ -10,7 +10,7 @@ This guide explains how to integrate the Aegis Framework's reusable governance w
 
 Create `.GitHub/workflows/governance.yml` in your repository:
 
-```yaml
+```
 name: Governance
 
 on: [push, pull_request]
@@ -25,7 +25,7 @@ jobs:
 
       profile: standard # lite | standard | core
 
-```text
+```
 
 ### 2. Configure Branch Protection
 
@@ -69,7 +69,7 @@ Set up branch protection rules for your main branch:
 
 Ensure your `package.json` includes these scripts:
 
-```json
+```
 
 {
 
@@ -87,22 +87,22 @@ Ensure your `package.json` includes these scripts:
 
 }
 
-```text
+```
 
 ### Required Dependencies
 
 Install necessary dependencies:
 
-```bash
+```
 npm install --save-dev TypeScript @types/node Jest ESLint
 
-```text
+```
 
 ### Optional: Evidence Manifests
 
 For `standard` and `core` profiles, create evidence manifests:
 
-```json
+```
 
 // blueprints/your-feature/evidence.json
 
@@ -138,7 +138,7 @@ For `standard` and `core` profiles, create evidence manifests:
 
 }
 
-```text
+```
 
 ## Profile Selection
 
@@ -146,7 +146,7 @@ For `standard` and `core` profiles, create evidence manifests:
 
 **Best for**: Development branches, rapid iteration
 
-```yaml
+```
 
 jobs:
 
@@ -158,7 +158,7 @@ jobs:
 
       profile: lite
 
-```text
+```
 
 **Includes**:
 
@@ -174,7 +174,7 @@ jobs:
 
 **Best for**: Main branch protection, production deployments
 
-```yaml
+```
 
 jobs:
 
@@ -186,7 +186,7 @@ jobs:
 
       profile: standard
 
-```text
+```
 
 **Includes**:
 
@@ -200,7 +200,7 @@ jobs:
 
 **Best for**: Security-critical applications, compliance requirements
 
-```yaml
+```
 
 jobs:
 
@@ -212,7 +212,7 @@ jobs:
 
       profile: core
 
-```text
+```
 
 **Includes**:
 
@@ -224,7 +224,7 @@ jobs:
 
 ### Custom Workflow Triggers
 
-```yaml
+```
 name: Governance
 
 on:
@@ -269,13 +269,13 @@ jobs:
 
       profile: ${{ GitHub.event.inputs.profile || 'standard' }}
 
-```text
+```
 
 ### Multiple Profiles
 
 Run different profiles for different branches:
 
-```yaml
+```
 name: Governance
 
 on: [push, pull_request]
@@ -302,7 +302,7 @@ jobs:
 
       profile: standard
 
-```text
+```
 
 ### Secrets Configuration
 
@@ -322,11 +322,11 @@ For `standard` and `core` profiles, configure secrets for attestation:
 
 **Workflow Not Found**:
 
-```text
+```
 
 Error: Unable to resolve action `chavezabelino/aegis-framework/.github/workflows/aegis-governance-reusable.yml@v2.6.0`
 
-```text
+```
 
 **Solution**:
 
@@ -338,11 +338,11 @@ Error: Unable to resolve action `chavezabelino/aegis-framework/.github/workflows
 
 **Missing Scripts**:
 
-```text
+```
 
 Error: npm run typecheck failed
 
-```text
+```
 
 **Solution**:
 
@@ -354,11 +354,11 @@ Error: npm run typecheck failed
 
 **Evidence Validation Failing**:
 
-```text
+```
 
 Error: tools/check-evidence.ts not found
 
-```text
+```
 
 **Solution**:
 
@@ -370,11 +370,11 @@ Error: tools/check-evidence.ts not found
 
 **VR Tests Failing**:
 
-```text
+```
 
 Error: No VR tests found
 
-```text
+```
 
 **Solution**:
 
@@ -398,7 +398,7 @@ Enable debug logging by setting the `ACTIONS_STEP_DEBUG` secret to `true`:
 
 Test your setup locally:
 
-```bash
+```
 
 ## Test type checking
 
@@ -420,7 +420,7 @@ npx tsx tools/check-evidence.ts "blueprints/**/evidence.JSON"
 
 npx Playwright test
 
-```text
+```
 
 ## Migration Guide
 

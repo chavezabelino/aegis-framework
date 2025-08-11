@@ -10,36 +10,36 @@
 
 # 🚀 Vibe Coding with Automatic Planning Optimization
 
-> __Just prompt and get results!__ The planning optimization system automatically applies best practices without manual
+> **Just prompt and get results!** The planning optimization system automatically applies best practices without manual
 > steps.
 
-## 🎯 __How It Works**
+## 🎯 **How It Works**
 
-### __Traditional Approach__ (Friction)
+### **Traditional Approach** (Friction)
 
-```text
+```
 1. User writes prompt
 2. Manually create plan
 3. Manually validate plan
 4. Manually run plan gate
 5. Finally implement
-```text
+```
 
-### __Vibe Coding Approach__ (Frictionless)
+### **Vibe Coding Approach** (Frictionless)
 
-```text
+```
 1. User writes prompt
 2. AI automatically analyzes and plans
 3. AI automatically validates
 4. AI implements with contract-driven focus
 5. Done! ✅
-```text
+```
 
-## 🚀 __Usage Examples**
+## 🚀 **Usage Examples**
 
-### __Example 1: Simple Feature Addition**
+### **Example 1: Simple Feature Addition**
 
-```bash
+```
 # User just prompts
 "Add a dark mode toggle to the app"
 
@@ -47,11 +47,11 @@
 # - Detects: MVP-Fix (simple feature, 1-2 files)
 # - Plans: Focus on observable behavior
 # - Implements: Contract-driven solution
-```text
+```
 
-### __Example 2: Bug Fix**
+### **Example 2: Bug Fix**
 
-```bash
+```
 # User just prompts
 "Fix the login button not working"
 
@@ -59,11 +59,11 @@
 # - Detects: MVP-Fix (bug fix, simple scope)
 # - Plans: Focus on button behavior
 # - Implements: Observable behavior fix
-```text
+```
 
-### __Example 3: Refactoring**
+### **Example 3: Refactoring**
 
-```bash
+```
 # User just prompts
 "Refactor the authentication to use JWT"
 
@@ -71,29 +71,29 @@
 # - Detects: Surgical-Refactor (refactoring, multiple files)
 # - Plans: Preserve existing contracts
 # - Implements: Maintain observable behavior
-```text
+```
 
-## 🛠️ __Tools for Vibe Coding**
+## 🛠️ **Tools for Vibe Coding**
 
-### __1. Auto Plan Detection**
+### **1. Auto Plan Detection**
 
-```bash
+```
 # Analyze any prompt automatically
 npm run plan:auto "your prompt here"
 
 # Or use the shorter alias
 npm run vibe "your prompt here"
-```text
+```
 
-### __2. AI Agent Integration**
+### **2. AI Agent Integration**
 
-Use the __Vibe Coder__ prompt with any AI agent:
+Use the **Vibe Coder** prompt with any AI agent:
 
-- __GitHub Copilot__: Use `tools/prompts/Aegis-vibe-coder.kilo.md`
-- __Cursor__: Same prompt, automatic planning
-- __Claude__: Same prompt, automatic planning
+- **GitHub Copilot**: Use `tools/prompts/Aegis-vibe-coder.kilo.md`
+- **Cursor**: Same prompt, automatic planning
+- **Claude**: Same prompt, automatic planning
 
-### __3. Automatic Validation**
+### **3. Automatic Validation**
 
 The AI agent automatically:
 
@@ -102,17 +102,17 @@ The AI agent automatically:
 - ✅ Validates against constraints
 - ✅ Implements with observable behavior focus
 
-## 🎯 __What Happens Automatically**
+## 🎯 **What Happens Automatically**
 
-### __1. Plan Class Detection**
+### **1. Plan Class Detection**
 
 AI analyzes your prompt for:
 
-- __Scope__: "add", "fix", "refactor", "enhance"
-- __Complexity__: "multiple files", "infrastructure", "breaking"
-- __Effort__: "simple", "complex", "quick", "major"
+- **Scope**: "add", "fix", "refactor", "enhance"
+- **Complexity**: "multiple files", "infrastructure", "breaking"
+- **Effort**: "simple", "complex", "quick", "major"
 
-### __2. Contract Extraction**
+### **2. Contract Extraction**
 
 AI automatically extracts observable behaviors:
 
@@ -120,7 +120,7 @@ AI automatically extracts observable behaviors:
 - "Form shows errors" (not "implement validation")
 - "Button responds to clicks" (not "add onClick handler")
 
-### __3. File Estimation**
+### **3. File Estimation**
 
 AI estimates files to touch:
 
@@ -129,7 +129,7 @@ AI estimates files to touch:
 - Test mentions = +1 file
 - Multiple features = +1 file
 
-### __4. Automatic Validation**
+### **4. Automatic Validation**
 
 AI checks:
 
@@ -138,19 +138,19 @@ AI checks:
 - ✅ File count within limits
 - ✅ No forbidden implementation details
 
-## 🚀 __Real-World Examples**
+## 🚀 **Real-World Examples**
 
-### __User Prompt__: "Add user authentication"
+### **User Prompt**: "Add user authentication"
 
-**Auto-Analysis__:
+**Auto-Analysis**:
 
 - Plan Class: MVP-Fix
 - Confidence: 85%
 - Estimated Files: 2-3
 
-**Auto-Generated Plan__:
+**Auto-Generated Plan**:
 
-```markdown
+```
 ## 1) Contracts
 
 - [ ] Unauthenticated users are redirected to login page (observable behavior)
@@ -161,21 +161,21 @@ AI checks:
 
 - File: `src/middleware/auth.ts` — add authentication middleware
 - File: `src/pages/login.tsx` — create login page with form
-```text
+```
 
-**Auto-Implementation__: Contract-driven code that focuses on observable behavior
+**Auto-Implementation**: Contract-driven code that focuses on observable behavior
 
-### __User Prompt__: "Fix the search not working"
+### **User Prompt**: "Fix the search not working"
 
-**Auto-Analysis__:
+**Auto-Analysis**:
 
 - Plan Class: MVP-Fix
 - Confidence: 90%
 - Estimated Files: 1-2
 
-**Auto-Generated Plan__:
+**Auto-Generated Plan**:
 
-```markdown
+```
 ## 1) Contracts
 
 - [ ] Search input accepts user queries (observable behavior)
@@ -186,63 +186,63 @@ AI checks:
 
 - File: `src/components/Search.tsx` — fix search functionality
 - File: `src/API/search.ts` — fix search API integration
-```text
+```
 
-**Auto-Implementation__: Focus on search working, not implementation details
+**Auto-Implementation**: Focus on search working, not implementation details
 
-## 🎯 __Benefits of Vibe Coding**
+## 🎯 **Benefits of Vibe Coding**
 
-### __1. Zero Friction**
+### **1. Zero Friction**
 
 - No manual planning steps
 - No manual validation
 - No remembering commands
 - Just prompt and get results
 
-### __2. Automatic Best Practices**
+### **2. Automatic Best Practices**
 
 - Contract-driven development
 - Observable behavior focus
 - Route equivalence acceptance
 - Plan bloat prevention
 
-### __3. Consistent Quality**
+### **3. Consistent Quality**
 
 - Every request gets planning optimization
 - Every implementation follows contracts
 - Every solution is traceable
 - Every change is validated
 
-## 🚀 __Getting Started**
+## 🚀 **Getting Started**
 
-### __1. Use the Vibe Coder Prompt**
+### **1. Use the Vibe Coder Prompt**
 
 With any AI agent, use: `tools/prompts/Aegis-vibe-coder.kilo.md`
 
-### __2. Try Auto Plan Detection**
+### **2. Try Auto Plan Detection**
 
-```bash
+```
 npm run vibe "your feature request here"
-```text
+```
 
-### __3. Just Prompt Naturally**
+### **3. Just Prompt Naturally**
 
-```text
+```
 "Add a user profile page"
 "Fix the navigation menu"
 "Refactor the data fetching"
 "Add dark mode support"
-```text
+```
 
 The AI automatically handles all the planning optimization behind the scenes!
 
-## 🎯 __Advanced Usage**
+## 🎯 **Advanced Usage**
 
-### __Manual Override__ (When Needed)
+### **Manual Override** (When Needed)
 
 If you need manual control:
 
-```bash
+```
 # Manual plan validation
 npm run plan:gate:mvp
 npm run plan:gate:surgical
@@ -250,14 +250,14 @@ npm run plan:gate:systemic
 
 # Manual plan comparison
 npm run plan:critic plan1.md plan2.md
-```text
+```
 
-### __Custom Prompts**
+### **Custom Prompts**
 
 For specific scenarios:
 
-- __Plan Generation__: `tools/prompts/Aegis-plan-optimizer.kilo.md`
-- __Test Generation__: `tools/prompts/contract-driven-tests.kilo.md`
+- **Plan Generation**: `tools/prompts/Aegis-plan-optimizer.kilo.md`
+- **Test Generation**: `tools/prompts/contract-driven-tests.kilo.md`
 
-**Remember__: Vibe coding is about __frictionless development__. Just prompt naturally, and let the AI handle the
+**Remember**: Vibe coding is about **frictionless development__. Just prompt naturally, and let the AI handle the
 planning optimization automatically! 🚀

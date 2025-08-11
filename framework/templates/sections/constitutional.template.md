@@ -6,9 +6,9 @@
 
 ## 🏛️ Constitutional Compliance
 
-**CRITICAL__: All operations must comply with the [Aegis Framework Constitution](../../CONSTITUTION.md). This includes:
+**CRITICAL**: All operations must comply with the [Aegis Framework Constitution](../../CONSTITUTION.md). This includes:
 
-- __Blueprint Primacy__: No code generation without corresponding Blueprint specifications
-- __Mandatory Annotations__: All AI-generated files require Constitutional metadata
-- __Traceability__: Every change must be traceable through blueprints and contracts
-- __Semantic Versioning__: Strict adherence to Constitutional version management
+- **Blueprint Primacy**: No code generation without corresponding Blueprint specifications
+- **Mandatory Annotations**: All AI-generated files require Constitutional metadata
+- **Traceability**: Every change must be traceable through blueprints and contracts
+- **Semantic Versioning**: Strict adherence to Constitutional version management

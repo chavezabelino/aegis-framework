@@ -7,7 +7,7 @@
 
 # ⚙️ Aegis Framework v1.0.1-alpha Specification
 
-> __Constitutional Conductor__: Self-healing governance foundation with drift detection, automated enforcement, and
+> **Constitutional Conductor**: Self-healing governance foundation with drift detection, automated enforcement, and
 > Constitutional compliance monitoring.
 
 ## 🎯 Overview
@@ -18,7 +18,7 @@ drift detection, and automated enforcement.
 
 ## 🏗️ Architecture Overview
 
-```text
+```
 Aegis-conductor (CLI)
 ├── Constitutional Compliance Engine
 ├── Drift Detection System
@@ -29,15 +29,15 @@ Framework State Management
 ├── .framework/Constitutional-state.JSON
 ├── .framework/enforcement-config.YAML
 └── framework/drift-log/
-```text
+```
 
 ## 🔧 Core Components
 
 ### 1. Constitutional Conductor CLI
 
-**File__: `CLI/Aegis-conductor.ts`
+**File**: `CLI/Aegis-conductor.ts`
 
-```typescript
+```
 interface ConductorCLI {
   // Core commands
   check(): ConstitutionalAuditReport
@@ -61,11 +61,11 @@ interface EnforcementOptions {
   scope: "all" | "annotations" | "versioning" | "blueprints"
   force: boolean
 }
-```text
+```
 
 **CLI Commands:**
 
-```bash
+```
 # Core operations
 Aegis-conductor init                     # Initialize Constitutional framework
 Aegis-conductor check                    # Run full Constitutional audit
@@ -81,13 +81,13 @@ Aegis-conductor validate-blueprints
 # Configuration
 Aegis-conductor configure --enforcement-mode=strict
 Aegis-conductor status
-```text
+```
 
 ### 2. Constitutional State Management
 
-**File__: `.framework/Constitutional-state.JSON`
+**File**: `.framework/Constitutional-state.JSON`
 
-```json
+```
 {
   "version": "1.0.1-alpha",
   "lastAudit": "2025-08-05T14:00:00Z",
@@ -126,11 +126,11 @@ Aegis-conductor status
     "lastEnforcement": "2025-08-05T13:30:00Z"
   }
 }
-```text
+```
 
-**File__: `.framework/enforcement-config.YAML`
+**File**: `.framework/enforcement-config.YAML`
 
-```yaml
+```
 enforcement:
   mode: "guided" # strict | guided | advisory
 
@@ -160,15 +160,15 @@ safety:
   requireConfirmation: ["breaking-changes", "Constitutional-edits"]
   backupBeforeEnforcement: true
   rollbackCapability: true
-```text
+```
 
 ### 3. Drift Detection System
 
-**Directory__: `framework/drift-log/`
+**Directory**: `framework/drift-log/`
 
-**File__: `framework/drift-log/framework-system-drift.JSON`
+**File**: `framework/drift-log/framework-system-drift.JSON`
 
-```json
+```
 [
   {
     "id": "missing-changelog-v1.1.0",
@@ -191,11 +191,11 @@ safety:
     "relatedFiles": ["CHANGELOG.md", "VERSION", "framework/framework-core-v1.0.0-alpha.md"]
   }
 ]
-```text
+```
 
-**File__: `framework/drift-log/agent-drift.JSON`
+**File**: `framework/drift-log/agent-drift.JSON`
 
-```json
+```
 [
   {
     "id": "missing-Blueprint-annotation-001",
@@ -212,13 +212,13 @@ safety:
     "correctionApplied": false
   }
 ]
-```text
+```
 
 ### 4. Enhanced Validation Tools
 
-**File__: `tools/validate-constitution.ts`
+**File**: `tools/validate-constitution.ts`
 
-```typescript
+```
 interface ConstitutionalValidator {
   validateFrameworkStructure(): StructureValidationResult
   validateAnnotationCoverage(): AnnotationValidationResult
@@ -241,11 +241,11 @@ interface ConstitutionalComplianceReport {
   recommendations: string[]
   autoCorrectible: boolean
 }
-```text
+```
 
-**File__: `tools/detect-drift.ts` (Enhanced)
+**File**: `tools/detect-drift.ts` (Enhanced)
 
-```typescript
+```
 interface DriftDetector {
   detectSystemDrift(): SystemDriftReport
   detectAgentDrift(): AgentDriftReport
@@ -262,13 +262,13 @@ interface SystemDriftReport {
   autoCorrectible: boolean
   preventionStrategy: string[]
 }
-```text
+```
 
 ## 🔐 Constitutional Integration
 
 ### Amendment Required: Article IX
 
-```markdown
+```
 ## 🎨 Article IX: Self-Healing Governance
 
 ### Section 1: Constitutional Monitoring
@@ -305,31 +305,31 @@ Constitutional drift shall be:
 - Categorized by type and severity
 - Tracked for pattern analysis
 - Prevented through predictive measures
-```text
+```
 
 ## 🧪 Implementation Plan
 
 ### Week 1: Core Infrastructure
 
-1. __Day 1-2__: Create conductor CLI skeleton and basic commands
-2. __Day 3-4__: Implement Constitutional state management
-3. __Day 5__: Create drift logging infrastructure
+1. **Day 1-2**: Create conductor CLI skeleton and basic commands
+2. **Day 3-4**: Implement Constitutional state management
+3. **Day 5**: Create drift logging infrastructure
 
 ### Week 2: Validation & Enforcement
 
-1. __Day 1-2__: Implement Constitutional validator
-2. __Day 3-4__: Add auto-correction capabilities
-3. __Day 5__: Create enforcement engine with safety checks
+1. **Day 1-2**: Implement Constitutional validator
+2. **Day 3-4**: Add auto-correction capabilities
+3. **Day 5**: Create enforcement engine with safety checks
 
 ### Week 3: Integration & Testing
 
-1. __Day 1-2__: Integration testing with existing tools
-2. __Day 3-4__: Documentation and CLI help
-3. __Day 5__: Performance optimization and error handling
+1. **Day 1-2**: Integration testing with existing tools
+2. **Day 3-4**: Documentation and CLI help
+3. **Day 5**: Performance optimization and error handling
 
 ## 📊 Success Criteria
 
-### __Functional Requirements**
+### **Functional Requirements**
 
 - ✅ Conductor CLI functional with all core commands
 - ✅ Constitutional compliance monitoring active
@@ -337,13 +337,13 @@ Constitutional drift shall be:
 - ✅ Safe auto-correction for annotations and versioning
 - ✅ Comprehensive Constitutional audit reports
 
-### __Performance Requirements**
+### **Performance Requirements**
 
 - Constitutional audit completes in <30 seconds
 - Drift detection overhead <5% of normal operations
 - Auto-correction success rate >90%
 
-### __Safety Requirements**
+### **Safety Requirements**
 
 - No destructive operations without explicit confirmation
 - Complete rollback capability for all enforcement actions
@@ -353,11 +353,11 @@ Constitutional drift shall be:
 
 ### From v1.0.0-alpha to v1.0.1-alpha
 
-1. __Install Dependencies__: Add conductor CLI dependencies
-2. __Initialize Framework State__: Run `Aegis-conductor init`
-3. __First Audit__: Run `Aegis-conductor check`
-4. __Apply Safe Corrections__: Run `Aegis-conductor enforce --auto-fix`
-5. __Configure Enforcement__: Customize `.framework/enforcement-config.YAML`
+1. **Install Dependencies**: Add conductor CLI dependencies
+2. **Initialize Framework State**: Run `Aegis-conductor init`
+3. **First Audit**: Run `Aegis-conductor check`
+4. **Apply Safe Corrections**: Run `Aegis-conductor enforce --auto-fix`
+5. **Configure Enforcement**: Customize `.framework/enforcement-config.YAML`
 
 ### Backward Compatibility
 
@@ -367,5 +367,5 @@ Constitutional drift shall be:
 
 ---
 
-**Next Phase__: See [`framework-core-v1.1.0-beta-spec.md`](framework-core-v1.1.0-beta-spec.md) for intelligent
+**Next Phase**: See [`framework-core-v1.1.0-beta-spec.md`](framework-core-v1.1.0-beta-spec.md) for intelligent
 governance features including pattern recognition and democratic amendment processes.

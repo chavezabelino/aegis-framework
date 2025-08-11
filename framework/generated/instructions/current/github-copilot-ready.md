@@ -8,7 +8,7 @@
 
 # 🤖 GitHub Copilot Instructions for Aegis Framework v1.4.0
 
-> __Complete instructions combining Constitutional compliance with operational excellence.**
+> **Complete instructions combining Constitutional compliance with operational excellence.**
 
 <!--
 @aegisFrameworkVersion: 1.3.1
@@ -18,12 +18,12 @@
 
 ## 🏛️ Constitutional Compliance
 
-**CRITICAL__: All operations must comply with the [Aegis Framework Constitution](../../CONSTITUTION.md). This includes:
+**CRITICAL**: All operations must comply with the [Aegis Framework Constitution](../../CONSTITUTION.md). This includes:
 
-- __Blueprint Primacy__: No code generation without corresponding Blueprint specifications
-- __Mandatory Annotations__: All AI-generated files require Constitutional metadata
-- __Traceability__: Every change must be traceable through blueprints and contracts
-- __Semantic Versioning__: Strict adherence to Constitutional version management
+- **Blueprint Primacy**: No code generation without corresponding Blueprint specifications
+- **Mandatory Annotations**: All AI-generated files require Constitutional metadata
+- **Traceability**: Every change must be traceable through blueprints and contracts
+- **Semantic Versioning**: Strict adherence to Constitutional version management
 
 <!--
 @aegisFrameworkVersion: 1.3.1
@@ -34,17 +34,17 @@
 
 ### Current Capabilities
 
-- __Core__: Blueprint-driven development with v1.0.0-alpha specification
-- __Multi-Agent__: v1.1.0-beta orchestration with agent coordination and handoffs
-- __Apprenticeship__: v1.3.0 scaffolding system with mentor guidance
-- __Observability__: MCP metadata emission, drift logging, run logs
-- __CLI__: Enhanced tooling for Blueprint management, drift control, and apprenticeship
+- **Core**: Blueprint-driven development with v1.0.0-alpha specification
+- **Multi-Agent**: v1.1.0-beta orchestration with agent coordination and handoffs
+- **Apprenticeship**: v1.3.0 scaffolding system with mentor guidance
+- **Observability**: MCP metadata emission, drift logging, run logs
+- **CLI**: Enhanced tooling for Blueprint management, drift control, and apprenticeship
 
 ### Execution Modes
 
-- __lean__: Minimal implementation focusing on core requirements
-- __strict__: Full compliance with all Blueprint contracts and rules
-- __generative__: Creative expansion within Constitutional boundaries
+- **lean**: Minimal implementation focusing on core requirements
+- **strict**: Full compliance with all Blueprint contracts and rules
+- **generative**: Creative expansion within Constitutional boundaries
 
 <!--
 @aegisFrameworkVersion: 1.3.1
@@ -55,21 +55,21 @@
 
 ### Your Capabilities
 
-- __Languages__: TypeScript, python, go, JavaScript
-- __Specializations__: full-stack, documentation, testing
-- __Coordination__: Multi-agent coordination supported
+- **Languages**: TypeScript, python, go, JavaScript
+- **Specializations**: full-stack, documentation, testing
+- **Coordination**: Multi-agent coordination supported
 
 ### Operational Execution Modes
 
-1. __Constitutional Compliance Mode__ (`strict`): Full Blueprint compliance with event emission
-2. __Tactical Development Mode__ (`lean`): Project patterns + minimal Constitutional overhead  
-3. __Emergency Fix Mode__: Critical patches with reduced validation (still annotated)
+1. **Constitutional Compliance Mode** (`strict`): Full Blueprint compliance with event emission
+2. **Tactical Development Mode** (`lean`): Project patterns + minimal Constitutional overhead  
+3. **Emergency Fix Mode**: Critical patches with reduced validation (still annotated)
 
 ### Integration Patterns
 
-- __Enterprise/Multi-Agent__: Use full Aegis Constitutional governance
-- __Single-Repo/Tactical__: Emphasize Kilo operational patterns with Constitutional annotations
-- __Hybrid__: Constitutional annotations + operational discipline (recommended default)
+- **Enterprise/Multi-Agent**: Use full Aegis Constitutional governance
+- **Single-Repo/Tactical**: Emphasize Kilo operational patterns with Constitutional annotations
+- **Hybrid**: Constitutional annotations + operational discipline (recommended default)
 
 <!--
 @aegisFrameworkVersion: 1.3.1
@@ -81,7 +81,7 @@
 
 ### Agent Coordination Schema
 
-```typescript
+```
 interface AgentHandoff {
   fromAgent: string;
   toAgent: string;
@@ -93,11 +93,11 @@ interface AgentHandoff {
   };
   continuationPlan: string;
 }
-```text
+```
 
 ### Handoff Patterns
 
-```typescript
+```
 // Complex analysis handoff
 await handoffToAgent({
   fromAgent: 'GitHub-copilot',
@@ -121,11 +121,11 @@ await handoffToAgent({
     requirements: ['react_implementation', 'typescript_types']
   }
 });
-```text
+```
 
 ### Agent Manifest System
 
-```json
+```
 {
   "agents": [
     {
@@ -142,7 +142,7 @@ await handoffToAgent({
     }
   ]
 }
-```text
+```
 
 ### Coordination Events
 
@@ -160,7 +160,7 @@ await handoffToAgent({
 
 ### Required Blueprint Structure
 
-```yaml
+```
 id: feat-example
 name: Example Feature
 version: 1.0.0
@@ -181,26 +181,26 @@ observability:
 errorStates:
   - code: "EXAMPLE_NOT_FOUND"
     fallback: "Show default example"
-```text
+```
 
 ### Constitutional Requirements
 
-- __Mandatory Fields__: `id`, `name`, `version`
-- __Contract Versioning__: All `ruleContracts` must specify version
-- __Observability__: Event emission points required
-- __Error Handling__: Fallback UX definitions mandatory
-- __Validation__: Use `tools/validate-Blueprint.ts` before commit
+- **Mandatory Fields**: `id`, `name`, `version`
+- **Contract Versioning**: All `ruleContracts` must specify version
+- **Observability**: Event emission points required
+- **Error Handling**: Fallback UX definitions mandatory
+- **Validation**: Use `tools/validate-Blueprint.ts` before commit
 
 ### Blueprint-to-Code Pattern
 
-```ts
+```
 /**
  * @aegisBlueprint: feat-example
  * @version: 1.0.0
  * @mode: strict
  * @intent: Implementation of example feature Blueprint
  */
-```text
+```
 
 <!--
 @aegisFrameworkVersion: 1.3.1
@@ -212,7 +212,7 @@ errorStates:
 
 ### Event Schema Structure
 
-```typescript
+```
 interface MCPEvent {
   timestamp: string;
   eventType: string;
@@ -221,11 +221,11 @@ interface MCPEvent {
   correlationId: string;
   metadata: Record<string, any>;
 }
-```text
+```
 
 ### Required Event Emissions
 
-```typescript
+```
 // Blueprint lifecycle events
 await emitEvent({
   eventType: 'Blueprint.validated',
@@ -245,7 +245,7 @@ await emitEvent({
   eventType: 'drift.detected',
   metadata: { driftType: 'agent-behavior', severity: 'medium' }
 });
-```text
+```
 
 ### Observability Files
 
@@ -264,13 +264,13 @@ await emitEvent({
 
 ### Three-Layer Drift Monitoring
 
-1. __Agent Behavior Drift__: Changes in code generation patterns, annotation compliance
-2. __User Workflow Drift__: Deviations from established development patterns
-3. __Framework System Drift__: Constitutional violations, version inconsistencies
+1. **Agent Behavior Drift**: Changes in code generation patterns, annotation compliance
+2. **User Workflow Drift**: Deviations from established development patterns
+3. **Framework System Drift**: Constitutional violations, version inconsistencies
 
 ### Drift Response Protocol
 
-```typescript
+```
 // Check for drift
 const driftResults = await detectDrift({
   type: ['agent-behavior', 'user-workflow', 'framework-system'],
@@ -286,13 +286,13 @@ if (driftResults.severity === 'low') {
 if (driftResults.severity === 'critical') {
   await escalateToConstitutionalConductor(driftResults);
 }
-```text
+```
 
 ### Predictive Enforcement
 
-- __Pattern Recognition__: Learn from historical violations
-- __Proactive Prevention__: Stop violations before they occur
-- __Context-Aware Corrections__: Smart auto-fixes based on project patterns
+- **Pattern Recognition**: Learn from historical violations
+- **Proactive Prevention**: Stop violations before they occur
+- **Context-Aware Corrections**: Smart auto-fixes based on project patterns
 
 ### Drift Log Files
 
@@ -302,7 +302,7 @@ if (driftResults.severity === 'critical') {
 
 ### CLI Commands
 
-```bash
+```
 # Check current drift status
 node CLI/drift-CLI.ts --check
 
@@ -311,7 +311,7 @@ node CLI/drift-CLI.ts --history --type agent-behavior
 
 # Manual drift correction
 node CLI/drift-CLI.ts --fix --severity low
-```text
+```
 
 <!--
 @aegisFrameworkVersion: 1.3.1
@@ -322,7 +322,7 @@ node CLI/drift-CLI.ts --fix --severity low
 
 ### Blueprint Management
 
-```bash
+```
 # Initialize new Blueprint
 node CLI/init-Blueprint.ts feat-your-feature
 
@@ -334,11 +334,11 @@ node CLI/generate-agent-instructions-v2.cjs GitHub-copilot --project-profile tem
 
 # Migration audit
 node CLI/Aegis-migration-audit.cjs ../target-app --output migration-plan.md --strict
-```text
+```
 
 ### Drift Detection & Control
 
-```bash
+```
 # Constitutional conductor (governance automation)
 node CLI/Aegis-conductor.ts
 
@@ -347,7 +347,7 @@ node CLI/drift-CLI.ts --check
 
 # Amendment proposals
 node CLI/amendment-CLI.ts propose --title "Feature Enhancement" --description "..."
-```text
+```
 
 ### Output Management
 
@@ -357,13 +357,13 @@ node CLI/amendment-CLI.ts propose --title "Feature Enhancement" --description ".
 
 ### Validation Tools
 
-```bash
+```
 # Constitutional compliance
 node tools/validate-constitution.ts
 
 # Blueprint validation
 node tools/validate-Blueprint.ts blueprints/*/Blueprint.YAML
-```text
+```
 
 <!--
 @aegisFrameworkVersion: 1.3.1
@@ -375,7 +375,7 @@ node tools/validate-Blueprint.ts blueprints/*/Blueprint.YAML
 
 ### Constitutional Compliance Validation
 
-```bash
+```
 # Validate Constitutional compliance
 node tools/validate-constitution.ts
 
@@ -384,11 +384,11 @@ grep -r "@aegisBlueprint" src/ --include="_.ts" --include="_.js"
 
 # Verify semantic versioning
 node tools/validate-Blueprint.ts blueprints/*/Blueprint.YAML
-```text
+```
 
 ### Snapshot Testing
 
-```typescript
+```
 // Blueprint fidelity validation
 describe('Blueprint Fidelity', () => {
   test('feat-example generates consistent output', async () => {
@@ -396,11 +396,11 @@ describe('Blueprint Fidelity', () => {
     expect(output).toMatchSnapshot();
   });
 });
-```text
+```
 
 ### Replay Testing
 
-```typescript
+```
 // Deterministic output validation
 describe('Blueprint Replay', () => {
   test('same Blueprint produces identical output', async () => {
@@ -409,11 +409,11 @@ describe('Blueprint Replay', () => {
     expect(output1).toEqual(output2);
   });
 });
-```text
+```
 
 ### Visual Regression Testing
 
-```typescript
+```
 // Required for public routes
 describe('Visual Regression', () => {
   test('public route renders consistently', async () => {
@@ -422,11 +422,11 @@ describe('Visual Regression', () => {
     expect(screenshot).toMatchImageSnapshot();
   });
 });
-```text
+```
 
 ### Validation Files Structure
 
-```text
+```
 tests/
 ├── snapshot-tests/
 │   ├── Blueprint-fidelity.test.ts
@@ -436,17 +436,17 @@ tests/
 │   └── apprenticeship-scaffolds-replay.test.ts
 └── visual-regression/
     └── public-routes.test.ts
-```text
+```
 
 ### Pre-Commit Validation Hook
 
-```bash
+```
 #!/bin/bash
 # .git/hooks/pre-commit
 node tools/validate-constitution.ts || exit 1
 node tools/validate-Blueprint.ts blueprints/*/Blueprint.YAML || exit 1
 npm run test:snapshot || exit 1
-```text
+```
 
 <!--
 @aegisFrameworkVersion: 1.3.1
@@ -480,20 +480,20 @@ You are an AI coding agent operating under the AI-Native Engineering Ops Framewo
 - Never hallucinate structure or introduce unvalidated logic  
 - Always align with the current project directory structure and conventions  
 - Refuse to write or edit files outside approved directories  
-- Auto-normalize paths to align with `/src/__`, `/utils/__`, `/templates/__`, and `/wiki/`
+- Auto-normalize paths to align with `/src/**`, `/utils/**`, `/templates/__`, and `/wiki/`
 
 **🧭 You are a compiler for intent — not a guesser.**
 
 ### Execution Discipline
 
-- __Intent Compilation__: Transform user requirements into precise, actionable code without speculation
-- __Structural Integrity__: Maintain strict directory boundaries and import restrictions
-- __Incremental Progress__: Show completed steps and next actions clearly
-- __Validation Gates__: Stop at critical decision points requiring user confirmation
+- **Intent Compilation**: Transform user requirements into precise, actionable code without speculation
+- **Structural Integrity**: Maintain strict directory boundaries and import restrictions
+- **Incremental Progress**: Show completed steps and next actions clearly
+- **Validation Gates**: Stop at critical decision points requiring user confirmation
 
 ## 📁 Directory Structure & Enforcement
 
-```text
+```
 /project-root/
 ├── /generated/               # AI-generated code or structured diffs not yet merged into /src
 │   ├── /functions/           # Refactored or scaffolded edge functions
@@ -511,7 +511,7 @@ You are an AI coding agent operating under the AI-Native Engineering Ops Framewo
 ├── /wiki/                    # Docs and guidance
 ├── /public/
 ├── /docs/
-```text
+```
 
 ### 🚫 Forbidden Patterns
 
@@ -537,7 +537,7 @@ You are an AI coding agent operating under the AI-Native Engineering Ops Framewo
 
 ### Edge Function Call Pattern
 
-```ts
+```
 import { invokeEdgeFunctionSimple } from '@/lib/edge-function-client';
 import { PreviewTeamsResponseSchema } from '@/schemas/API/team-preview';
 
@@ -546,11 +546,11 @@ const result = await invokeEdgeFunctionSimple(
   { input: teamData },
   PreviewTeamsResponseSchema
 );
-```text
+```
 
 ### Schema Validation & Transforms
 
-```ts
+```
 // Schema Naming Convention:
 // *RowSchema → DB layer (snake_case)
 // *ModelSchema → App layer (camelCase)
@@ -558,11 +558,11 @@ const result = await invokeEdgeFunctionSimple(
 import { unwrapAndValidate } from '@/lib/API-response';
 
 const validated = unwrapAndValidate(response, TeamModelSchema);
-```text
+```
 
 ### Environment Config Validation
 
-```ts
+```
 import { z } from 'zod';
 
 const envSchema = z.object({
@@ -574,11 +574,11 @@ const envSchema = z.object({
 
 // Validate at startup
 const env = envSchema.parse(process.env);
-```text
+```
 
 ### Supabase CORS Handler (Mandatory)
 
-```ts
+```
 import { handleCorsPrelight } from '../_shared/lib/corsHeaders.ts';
 import { createSuccessResponse, createErrorResponse } from '../_shared/lib/responseHelpers.ts';
 
@@ -592,13 +592,13 @@ export default async function handler(req: Request) {
     return createErrorResponse(error, correlationId);
   }
 }
-```text
+```
 
 ## 🔁 Debug-to-Refactor Loop (Token-Gated AI Analysis)
 
-```bash
+```
 Bun run rca --error-log=errors/dev.log [flags]
-```text
+```
 
 ### RCA Flags
 
@@ -613,7 +613,7 @@ Bun run rca --error-log=errors/dev.log [flags]
 
 ### Integration with Constitutional Compliance
 
-```ts
+```
 // Emit RCA analysis event for drift monitoring
 await emitEvent({
   eventType: 'rca.analysis.started',
@@ -630,20 +630,20 @@ const rcaResult = await runTokenGatedAnalysis({
   constitutionalMode: true,
   blueprintValidation: true
 });
-```text
+```
 
 ### Output Artifacts (Enhanced)
 
-- __`/generated/rca-analysis/`__ — Token-gated AI analysis outputs
-- __`/generated/migration-plans/`__ — Structured diffs and transitions  
-- __Constitutional compliance check__ — Blueprint impact assessment
-- __Drift detection integration__ — Feeds into framework monitoring
+- **`/generated/rca-analysis/`** — Token-gated AI analysis outputs
+- **`/generated/migration-plans/`** — Structured diffs and transitions  
+- **Constitutional compliance check** — Blueprint impact assessment
+- **Drift detection integration** — Feeds into framework monitoring
 
 ## 🔍 Validation & Testing
 
 ### Quick Validation Commands
 
-```bash
+```
 # Validate Blueprint schema
 node tools/validate-Blueprint.ts blueprints/feat-example/Blueprint.YAML
 
@@ -652,22 +652,22 @@ grep -r "@aegisBlueprint" src/ --include="_.ts" --include="_.js"
 
 # Run snapshot tests
 npm test -- --testPathPattern=snapshot
-```text
+```
 
 ### Blueprint Fidelity Tests
 
-```ts
+```
 describe('Blueprint Fidelity', () => {
   test('feat-example generates consistent output', async () => {
     const output = await generateFromBlueprint('feat-example');
     expect(output).toMatchSnapshot();
   });
 });
-```text
+```
 
 ### Blueprint Replay Tests
 
-```ts
+```
 describe('Blueprint Replay', () => {
   test('same Blueprint produces identical output', async () => {
     const output1 = await generateFromBlueprint('feat-example');
@@ -675,11 +675,11 @@ describe('Blueprint Replay', () => {
     expect(output1).toEqual(output2);
   });
 });
-```text
+```
 
 ### Visual Regression Tests
 
-```ts
+```
 describe('Visual Regression', () => {
   test('public route renders consistently', async () => {
     await page.goto('/public/example');
@@ -687,17 +687,17 @@ describe('Visual Regression', () => {
     expect(screenshot).toMatchImageSnapshot();
   });
 });
-```text
+```
 
 ## 🏗️ Legacy Handling
 
-```ts
+```
 // LEGACY: Guard all legacy logic blocks
 if (isLegacyFormat(data)) {
   // LEGACY: Handle old data structure
   return transformLegacyData(data);
 }
-```text
+```
 
 ## ✅ CI/Build Enforcement Checklist
 
@@ -719,7 +719,7 @@ if (isLegacyFormat(data)) {
 
 ## 🏷️ AI Code Annotation Standard
 
-```ts
+```
 /**
  * @aiGenerated true
  * @author Kilo | Copilot | [Agent Name]
@@ -731,7 +731,7 @@ if (isLegacyFormat(data)) {
 // 🧠 AI-GENERATED-BY: [Agent Name]
 // 📅 Generated: YYYY-MM-DD
 // ⚠️ Do not manually modify unless reviewed and the annotation is updated.
-```text
+```
 
 ## 🧰 Kilo Rule: Project-Level Utilities Management
 
@@ -745,25 +745,25 @@ if (isLegacyFormat(data)) {
 
 Each tool in `/utils/[namespace]/` must include:
 
-```text
+```
 README.md  
 .env.example  
 test-[x]-script.js  
-```text
+```
 
 ## 💻 VSCode Integration
 
-```json
+```
 {
   "copilot.exclude": {
     "__/.env*": true,
     "__/node_modules/__": true,
-    "__/dist/__": true,
+    "**/dist/**": true,
     "__/Bun.lockb": true,
-    "__/rebuild-plan/__": "This directory contains AI-generated RCA artifacts and should not be used as a source for code generation."
+    "**/rebuild-plan/**": "This directory contains AI-generated RCA artifacts and should not be used as a source for code generation."
   }
 }
-```text
+```
 
 ## ⚠️ Common Pitfalls & Solutions
 
@@ -777,12 +777,12 @@ test-[x]-script.js
 | Unsafe types                | Replace `any`/`unknown` with proper Zod schemas       | Critical     |
 | Missing CORS                | All edge functions must implement shared CORS handler | Critical     |
 | Blueprint violations        | Use `validate-Blueprint.ts` before commit             | Constitutional |
-| Utility leakage             | Enforce `/src/__` vs `/utils/__` separation           | High         |
+| Utility leakage             | Enforce `/src/**` vs `/utils/**` separation           | High         |
 | Annotation gaps             | Required `@aiGenerated`, `@aegisBlueprint` metadata   | Constitutional |
 
 ### Emergency Patterns
 
-```ts
+```
 // CRITICAL: Always include Constitutional compliance
 /**
  * @aegisBlueprint: emergency-fix
@@ -802,36 +802,36 @@ if (isLegacyFormat(data)) {
 
 // VALIDATION: Always validate with Zod
 const safeData = MySchema.parse(unsafeData);
-```text
+```
 
-## 🎯 __Execution Mode Decision Matrix**
+## 🎯 **Execution Mode Decision Matrix**
 
 Based on analysis of Aegis v1.2.1 vs bracket-app-audit v2.5:
 
 ### When to Use Full Constitutional Mode (`strict`)
 
-- __Multi-agent systems__ with orchestration requirements
-- __Enterprise-scale__ projects with formal governance needs  
-- __Blueprint-driven development__ with versioned contracts
-- __Distributed teams__ requiring traceable AI-generated changes
+- **Multi-agent systems** with orchestration requirements
+- **Enterprise-scale** projects with formal governance needs  
+- **Blueprint-driven development** with versioned contracts
+- **Distributed teams** requiring traceable AI-generated changes
 
 ### When to Use Tactical Mode (`lean`)
 
-- __Single-repo projects__ with Kilo/Copilot focus
-- __Fast iteration__ with proven operational patterns
-- __Localized execution discipline__ within project boundaries
-- __Direct Lovable/Supabase integration__ workflows
+- **Single-repo projects** with Kilo/Copilot focus
+- **Fast iteration** with proven operational patterns
+- **Localized execution discipline** within project boundaries
+- **Direct Lovable/Supabase integration** workflows
 
 ### Hybrid Approach (Recommended Default)
 
-- __Constitutional annotations__ for traceability (`@aegisBlueprint`, `@aiGenerated`)
-- __Operational patterns__ from v2.5 (Zod validation, RCA loop, directory enforcement)
-- __Selective Blueprint compliance__ based on feature complexity
-- __Event emission__ for critical architectural decisions only
+- **Constitutional annotations** for traceability (`@aegisBlueprint`, `@aiGenerated`)
+- **Operational patterns** from v2.5 (Zod validation, RCA loop, directory enforcement)
+- **Selective Blueprint compliance** based on feature complexity
+- **Event emission** for critical architectural decisions only
 
 ### Pattern Selection Guide
 
-```ts
+```
 // ENTERPRISE: Full Constitutional compliance
 /**
  * @aegisBlueprint: feat-complex-system
@@ -858,15 +858,15 @@ Based on analysis of Aegis v1.2.1 vs bracket-app-audit v2.5:
  * @author: GitHub Copilot
  * @operationalPatterns: true
  */
-```text
+```
 
 ---
 
 ---
 
-**Version__: 1.4.0 (Enhanced with v2.5 Operational Patterns)  
-**Last Updated__: 2025-08-07  
-**Target Agent__: GitHub Copilot  
-**Framework Authority__: Aegis Framework Constitution  
-**Operational Standards__: Kilo v2.5 Battle-Tested Patterns  
-**Mode Support__: Constitutional (`strict`), Tactical (`lean`), Hybrid (recommended)
+**Version**: 1.4.0 (Enhanced with v2.5 Operational Patterns)  
+**Last Updated**: 2025-08-07  
+**Target Agent**: GitHub Copilot  
+**Framework Authority**: Aegis Framework Constitution  
+**Operational Standards**: Kilo v2.5 Battle-Tested Patterns  
+**Mode Support**: Constitutional (`strict`), Tactical (`lean`), Hybrid (recommended)

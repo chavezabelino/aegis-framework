@@ -16,7 +16,7 @@
 
 ## Example Test
 
-```ts
+```
 import {test, expect} from "@Playwright/test"
 
 test("baseline visual", async ({page}) => {
@@ -24,4 +24,4 @@ test("baseline visual", async ({page}) => {
   await page.setContent('<main style="font-family:sans-serif;padding:24px"><h1>Aegis VR Baseline</h1></main>')
   await expect(page).toHaveScreenshot({maxDiffPixelRatio: 0.01})
 })
-```text
+```

@@ -10,7 +10,7 @@
 
 ## 📊 Plan Metadata
 
-```yaml
+```
 remediationPlan:
   id: "RDP-2025-08-06-002"
   name: "AI Agent Constitutional Drift Prevention"
@@ -24,11 +24,11 @@ remediationPlan:
   mode: "strict"
   intent: "Prevent AI agent drift from constitutional principles through technical and procedural safeguards"
   context: "Response to identified agent drift pattern where echo commands were used instead of functional tests"
-```text
+```
 
 ## 🎯 Target Project
 
-```yaml
+```
 targetProject:
   path: "/Users/nino/Workspace/02-local-dev/aegis-framework"
   type: "aegis-framework-core"
@@ -39,13 +39,13 @@ targetProject:
     - "No real-time enforcement of constitutional compliance"
     - "Lack of intent alignment validation before command execution"
     - "Missing constitutional agent wrapper classes"
-```text
+```
 
 ## 🏗️ Execution Phases
 
 ### Phase 1: Constitutional Framework Enhancement
 
-```yaml
+```
 phase1:
   id: "constitutional-foundation"
   name: "Constitutional Framework Foundation"
@@ -134,11 +134,11 @@ phase1:
   estimatedDuration: "2-4 hours"
   dependencies: []
   parallelizable: false
-```text
+```
 
 ### Phase 2: Integration and Activation
 
-```yaml
+```
 phase2:
   id: "integration-activation"
   name: "Constitutional Enforcement Integration"
@@ -185,11 +185,11 @@ phase2:
   estimatedDuration: "1-2 hours"
   dependencies: ["constitutional-foundation"]
   parallelizable: false
-```text
+```
 
 ### Phase 3: Constitutional Amendment Ratification
 
-```yaml
+```
 phase3:
   id: "amendment-ratification"
   name: "Article XI Constitutional Amendment"
@@ -243,46 +243,46 @@ phase3:
   estimatedDuration: "Community review dependent"
   dependencies: ["constitutional-foundation", "integration-activation"]
   parallelizable: false
-```text
+```
 
 ## 📊 Compliance Targets
 
 ### Build Compliance
 
-```yaml
+```
 buildCompliance:
   metric: "Build Success Rate"
   targetValue: "100%"
   measurementCommand: "npm run build"
   validationFrequency: "pre-phase"
   enforcementLevel: "blocking"
-```text
+```
 
 ### Test Compliance
 
-```yaml
+```
 testCompliance:
   metric: "Test Pass Rate"
   targetValue: "100%"
   measurementCommand: "npm test"
   validationFrequency: "pre-phase"
   enforcementLevel: "blocking"
-```text
+```
 
 ### ConstitutionalConstitutional Compliance
 
-```yaml
+```
 constitutionalCompliance:
   metric: "Constitutional Validation"
   targetValue: "Full Compliance"
   measurementCommand: "node tools/validate-constitution.ts"
   validationFrequency: "continuous"
   enforcementLevel: "blocking"
-```text
+```
 
 ## 🔄 CI/CD Integration
 
-```yaml
+```
 ciIntegration:
   required: true
   workflowPath: ".github/workflows/constitutional-compliance.yml"
@@ -306,11 +306,11 @@ ciIntegration:
     - "node tools/validate-constitution.ts"
 
   failureActions: ["rollback", "notify"]
-```text
+```
 
 ## 🚨 Overall Safety Mechanisms
 
-```yaml
+```
 overallRollbackStrategy:
   strategy: "git-snapshot"
   snapshotCommand: "git stash push -m 'Agent-drift-prevention-implementation-snapshot'"
@@ -331,11 +331,11 @@ emergencyProcedures:
     - "git-snapshot-restore"
     - "disable-constitutional-enforcement"
     - "escalate-to-constitutional-review-board"
-```text
+```
 
 ## ✅ Success Criteria
 
-```yaml
+```
 successCriteria:
   - criterion: "Build successful"
     measurementMethod: "npm run build"
@@ -356,11 +356,11 @@ successCriteria:
   - criterion: "Agent drift prevention validated"
     measurementMethod: "node tools/demo-constitutional-enforcement.cjs"
     acceptanceThreshold: "constitutional enforcement demonstrates drift prevention"
-```text
+```
 
 ## 📋 Plan Validation
 
-```yaml
+```
 planValidation:
   schemaValidated: true
   preflightTested: false
@@ -368,11 +368,11 @@ planValidation:
   toolingVerified: true
   peerReviewed: false
   constitutionallyCompliant: true
-```text
+```
 
 ## 🏛️ Constitutional Approval
 
-```yaml
+```
 approvalRequired: true
 approvers: ["framework-maintainers", "constitutional-review-board"]
 constitutionalReview: true
@@ -380,7 +380,7 @@ constitutionalReview: true
 createdAt: "2025-08-06T00:00:00Z"
 lastModified: "2025-08-06T00:00:00Z"
 estimatedCompletionTime: "4-8 hours + community review"
-```text
+```
 
 ---
 
@@ -388,17 +388,17 @@ estimatedCompletionTime: "4-8 hours + community review"
 
 This remediation plan addresses the identified agent drift issue through:
 
-1. __Technical Safeguards__: Intent enforcement engine and constitutional AI agent wrapper
-2. __Procedural Safeguards__: Pre-commit hooks and CI/CD integration
-3. __Constitutional Safeguards__: Article XI amendment establishing agent compliance requirements
-4. __Validation Safeguards__: Comprehensive testing and compliance checking
+1. **Technical Safeguards**: Intent enforcement engine and constitutional AI agent wrapper
+2. **Procedural Safeguards**: Pre-commit hooks and CI/CD integration
+3. **Constitutional Safeguards**: Article XI amendment establishing agent compliance requirements
+4. **Validation Safeguards**: Comprehensive testing and compliance checking
 
 The plan follows the framework's own constitutional requirements for remediation plans, ensuring safety, traceability,
 and constitutional compliance throughout implementation.
 
-**Primary Goal__: Prevent AI agents from drifting from constitutional principles  
-**Key Innovation__: Real-time intent enforcement preventing echo commands for functional testing  
-**Constitutional Impact__: Establishes mandatory agent compliance standards
+**Primary Goal**: Prevent AI agents from drifting from constitutional principles  
+**Key Innovation**: Real-time intent enforcement preventing echo commands for functional testing  
+**Constitutional Impact**: Establishes mandatory agent compliance standards
 
 This plan directly addresses the pattern we identified: AI agents using non-functional commands (echo) when functional
 actions (actual tests) are required, ensuring constitutional traceability and intent alignment.

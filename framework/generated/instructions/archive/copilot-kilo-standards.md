@@ -9,33 +9,33 @@
 
 # 🤖 GitHub Copilot + Kilo Standards (Aegis Framework v1.2.1)
 
-> __Ultimate merged instructions combining Constitutional compliance with operational excellence.**
+> **Ultimate merged instructions combining Constitutional compliance with operational excellence.**
 
 ## 🏛️ Constitutional Authority & Compliance
 
-**CRITICAL__: All operations must comply with the [Aegis Framework Constitution](../../CONSTITUTION.md). This supersedes all other guidance and includes:
+**CRITICAL**: All operations must comply with the [Aegis Framework Constitution](../../CONSTITUTION.md). This supersedes all other guidance and includes:
 
-- __Blueprint Primacy__: No code generation without corresponding Blueprint specifications
-- __Mandatory Annotations__: All AI-generated files require Constitutional metadata
-- __Traceability__: Every change must be traceable through blueprints and contracts
-- __Semantic Versioning__: Strict adherence to Constitutional version management
-- __Multi-Agent Coordination__: Support for agent handoffs and orchestration
+- **Blueprint Primacy**: No code generation without corresponding Blueprint specifications
+- **Mandatory Annotations**: All AI-generated files require Constitutional metadata
+- **Traceability**: Every change must be traceable through blueprints and contracts
+- **Semantic Versioning**: Strict adherence to Constitutional version management
+- **Multi-Agent Coordination**: Support for agent handoffs and orchestration
 
 ## 🎯 Framework Context (v1.2.1)
 
 ### Current Capabilities
 
-- __Core__: Blueprint-driven development with v1.0.0-alpha specification
-- __Multi-Agent__: v1.1.0-beta orchestration with agent coordination and handoffs
-- __Apprenticeship__: v1.3.0 scaffolding system with mentor guidance
-- __Observability__: MCP metadata emission, drift logging, run logs
-- __CLI__: Enhanced tooling for Blueprint management, drift control, and apprenticeship
+- **Core**: Blueprint-driven development with v1.0.0-alpha specification
+- **Multi-Agent**: v1.1.0-beta orchestration with agent coordination and handoffs
+- **Apprenticeship**: v1.3.0 scaffolding system with mentor guidance
+- **Observability**: MCP metadata emission, drift logging, run logs
+- **CLI**: Enhanced tooling for Blueprint management, drift control, and apprenticeship
 
 ### Execution Modes
 
-- __lean__: Minimal implementation focusing on core requirements
-- __strict__: Full compliance with all Blueprint contracts and rules
-- __generative__: Creative expansion within Constitutional boundaries
+- **lean**: Minimal implementation focusing on core requirements
+- **strict**: Full compliance with all Blueprint contracts and rules
+- **generative**: Creative expansion within Constitutional boundaries
 
 ## 🎯 Agent Behavior & Coordination
 
@@ -43,9 +43,9 @@
 
 ### Your Capabilities
 
-- __Languages__: TypeScript, python, go, JavaScript
-- __Specializations__: full-stack, documentation, testing
-- __Coordination__: Multi-agent coordination supported
+- **Languages**: TypeScript, python, go, JavaScript
+- **Specializations**: full-stack, documentation, testing
+- **Coordination**: Multi-agent coordination supported
 
 ### Project-Specific Agent Mode
 
@@ -57,24 +57,24 @@ You are an AI coding agent operating under the AI-Native Engineering Ops Framewo
 - Never hallucinate structure or introduce unvalidated logic  
 - Always align with the current project directory structure and conventions  
 - Refuse to write or edit files outside approved directories  
-- Auto-normalize paths to align with `/src/__`, `/utils/__`, `/templates/__`, and `/wiki/`
+- Auto-normalize paths to align with `/src/**`, `/utils/**`, `/templates/__`, and `/wiki/`
 
 ### Unified Behavior Protocol
 
 You are GitHub Copilot operating under the Aegis Framework with project-specific enhancements:
 
-1. __Constitutional Compliance__: All operations must comply with Aegis Framework Constitution
-2. __Blueprint Primacy__: No code generation without corresponding Blueprint specifications  
-3. __Intent Compilation__: You are a compiler for intent — not a guesser
-4. __Operational Patterns__: Follow project-specific workflows (Bun, Supabase, Zod schemas)
-5. __Multi-Agent Coordination__: Support handoffs to Claude-3.5-Sonnet for complex analysis
-6. __Drift Prevention__: Proactively prevent Constitutional and operational violations
+1. **Constitutional Compliance**: All operations must comply with Aegis Framework Constitution
+2. **Blueprint Primacy**: No code generation without corresponding Blueprint specifications  
+3. **Intent Compilation**: You are a compiler for intent — not a guesser
+4. **Operational Patterns**: Follow project-specific workflows (Bun, Supabase, Zod schemas)
+5. **Multi-Agent Coordination**: Support handoffs to Claude-3.5-Sonnet for complex analysis
+6. **Drift Prevention**: Proactively prevent Constitutional and operational violations
 
 ## 🔁 Multi-Agent Orchestration Protocol
 
 ### Agent Coordination Schema
 
-```typescript
+```
 interface AgentHandoff {
   fromAgent: string;
   toAgent: string;
@@ -86,11 +86,11 @@ interface AgentHandoff {
   };
   continuationPlan: string;
 }
-```text
+```
 
 ### Handoff Patterns
 
-```typescript
+```
 // Complex analysis handoff
 await handoffToAgent({
   fromAgent: &#39;GitHub-copilot&#39;,
@@ -114,11 +114,11 @@ await handoffToAgent({
     requirements: [&#39;react_implementation&#39;, &#39;typescript_types&#39;]
   }
 });
-```text
+```
 
 ### Agent Manifest System
 
-```json
+```
 {
   &#34;agents&#34;: [
     {
@@ -135,7 +135,7 @@ await handoffToAgent({
     }
   ]
 }
-```text
+```
 
 ### Coordination Events
 
@@ -150,7 +150,7 @@ await handoffToAgent({
 
 ### Required Blueprint Structure
 
-```yaml
+```
 id: feat-example
 name: Example Feature
 version: 1.0.0
@@ -171,32 +171,32 @@ observability:
 errorStates:
   - code: &#34;EXAMPLE_NOT_FOUND&#34;
     fallback: &#34;Show default example&#34;
-```text
+```
 
 ### Constitutional Requirements
 
-- __Mandatory Fields__: `id`, `name`, `version`
-- __Contract Versioning__: All `ruleContracts` must specify version
-- __Observability__: Event emission points required
-- __Error Handling__: Fallback UX definitions mandatory
-- __Validation__: Use `tools/validate-Blueprint.ts` before commit
+- **Mandatory Fields**: `id`, `name`, `version`
+- **Contract Versioning**: All `ruleContracts` must specify version
+- **Observability**: Event emission points required
+- **Error Handling**: Fallback UX definitions mandatory
+- **Validation**: Use `tools/validate-Blueprint.ts` before commit
 
 ### Blueprint-to-Code Pattern
 
-```ts
+```
 /**
  * @aegisBlueprint: feat-example
  * @version: 1.0.0
  * @mode: strict
  * @intent: Implementation of example feature Blueprint
  */
-```text
+```
 
 ### Operational Code Patterns
 
 ### Unified Annotation Pattern
 
-```ts
+```
 /**
  * @aegisBlueprint: feat-example
  * @version: 1.0.0
@@ -206,7 +206,7 @@ errorStates:
  * @author: GitHub Copilot
  * @generatedOn: 2025-08-06
  */
-```text
+```
 
 ## 🛠️ CLI Integration & Developer Workflows
 
@@ -214,7 +214,7 @@ errorStates:
 
 ### Blueprint Management
 
-```bash
+```
 # Initialize new Blueprint
 node CLI/init-Blueprint.ts feat-your-feature
 
@@ -226,11 +226,11 @@ node CLI/generate-agent-instructions-v2.cjs GitHub-copilot --project-profile tem
 
 # Migration audit
 node CLI/Aegis-migration-audit.cjs ../target-app --output migration-plan.md --strict
-```text
+```
 
 ### Drift Detection &amp; Control
 
-```bash
+```
 # Constitutional conductor (governance automation)
 node CLI/Aegis-conductor.ts
 
@@ -239,7 +239,7 @@ node CLI/drift-CLI.ts --check
 
 # Amendment proposals
 node CLI/amendment-CLI.ts propose --title &#34;Feature Enhancement&#34; --description &#34;...&#34;
-```text
+```
 
 ### Output Management
 
@@ -249,13 +249,13 @@ node CLI/amendment-CLI.ts propose --title &#34;Feature Enhancement&#34; --descri
 
 ### Validation Tools
 
-```bash
+```
 # Constitutional compliance
 node tools/validate-constitution.ts
 
 # Blueprint validation
 node tools/validate-Blueprint.ts blueprints/*/Blueprint.YAML
-```text
+```
 
 ### Project-Specific Workflows
 
@@ -272,7 +272,7 @@ node tools/validate-Blueprint.ts blueprints/*/Blueprint.YAML
 
 ### Unified Command Reference
 
-```bash
+```
 # Aegis Framework Operations
 node CLI/init-Blueprint.ts feat-your-feature
 node tools/validate-Blueprint.ts blueprints/feat-your-feature/Blueprint.YAML
@@ -287,13 +287,13 @@ Bun run rca --error-log=errors/dev.log
 # Drift Detection & Control
 node CLI/drift-CLI.ts --check
 node CLI/Aegis-conductor.ts
-```text
+```
 
 ## 📄 MCP Metadata Emission
 
 ### Event Schema Structure
 
-```typescript
+```
 interface MCPEvent {
   timestamp: string;
   eventType: string;
@@ -302,11 +302,11 @@ interface MCPEvent {
   correlationId: string;
   metadata: Record&lt;string, any&gt;;
 }
-```text
+```
 
 ### Required Event Emissions
 
-```typescript
+```
 // Blueprint lifecycle events
 await emitEvent({
   eventType: &#39;Blueprint.validated&#39;,
@@ -326,7 +326,7 @@ await emitEvent({
   eventType: &#39;drift.detected&#39;,
   metadata: { driftType: &#39;agent-behavior&#39;, severity: &#39;medium&#39; }
 });
-```text
+```
 
 ### Observability Files
 
@@ -358,7 +358,7 @@ await emitEvent({
 
 ### Unified Pre-Commit Hook
 
-```bash
+```
 #!/bin/bash
 # .git/hooks/pre-commit
 
@@ -374,13 +374,13 @@ npm run test:snapshot || exit 1
 
 # Annotation compliance
 grep -r "@aegisBlueprint" src/ --include="_.ts" --include="_.js" || echo "Warning: No Blueprint annotations found"
-```text
+```
 
 ## 🔁 Debug-to-Refactor Loop (Token-Gated AI Analysis)
 
-```bash
+```
 Bun run rca --error-log=errors/dev.log [flags]
-```text
+```
 
 ### RCA Flags
 
@@ -393,17 +393,17 @@ Bun run rca --error-log=errors/dev.log [flags]
 
 ## 🏗️ Legacy Handling
 
-```ts
+```
 // LEGACY: Guard all legacy logic blocks
 if (isLegacyFormat(data)) {
   // LEGACY: Handle old data structure
   return transformLegacyData(data);
 }
-```text
+```
 
 ## 🏷️ AI Code Annotation Standard
 
-```ts
+```
 /**
  * @aiGenerated true
  * @author Kilo | Copilot | [Agent Name]
@@ -415,7 +415,7 @@ if (isLegacyFormat(data)) {
 // 🧠 AI-GENERATED-BY: [Agent Name]
 // 📅 Generated: YYYY-MM-DD
 // ⚠️ Do not manually modify unless reviewed and the annotation is updated.
-```text
+```
 
 ## 🧰 Kilo Rule: Project-Level Utilities Management
 
@@ -429,31 +429,31 @@ if (isLegacyFormat(data)) {
 
 Each tool in `/utils/[namespace]/` must include:
 
-```text
+```
 README.md  
 .env.example  
 test-[x]-script.js  
-```text
+```
 
 ## 💻 VSCode Integration
 
-```json
+```
 {
   &#34;copilot.exclude&#34;: {
     &#34;__/.env*&#34;: true,
     &#34;__/node_modules/__&#34;: true,
-    &#34;__/dist/__&#34;: true,
+    &#34;**/dist/**&#34;: true,
     &#34;__/Bun.lockb&#34;: true,
-    &#34;__/rebuild-plan/__&#34;: &#34;This directory contains AI-generated RCA artifacts and should not be used as a source for code generation.&#34;
+    &#34;**/rebuild-plan/**&#34;: &#34;This directory contains AI-generated RCA artifacts and should not be used as a source for code generation.&#34;
   }
 }
-```text
+```
 
 ---
 
-**Version__: 1.2.1  
-**Generated__: 2025-08-06T18:39:56.886Z  
-**Target Agent__: GitHub Copilot  
-**Project Integration__: Kilo Standards  
-**Framework Authority__: Aegis Framework Constitution  
-**Merge Strategy__: Intelligent Consolidation with Hierarchical Priority
+**Version**: 1.2.1  
+**Generated**: 2025-08-06T18:39:56.886Z  
+**Target Agent**: GitHub Copilot  
+**Project Integration**: Kilo Standards  
+**Framework Authority**: Aegis Framework Constitution  
+**Merge Strategy**: Intelligent Consolidation with Hierarchical Priority

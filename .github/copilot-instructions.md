@@ -1,13 +1,13 @@
 # ## 🏛️ Constitutional Authority
 
-**CRITICAL__: All AI agents must comply with the [Aegis Framework Constitution](../CONSTITUTION.md), which establishes
+**CRITICAL**: All AI agents must comply with the [Aegis Framework Constitution](../CONSTITUTION.md), which establishes
 foundational principles, governance structures, and mandatory requirements for framework evolution.
 
 ## 🔍 Real-Time Evolution Detection
 
-**NEW__: The framework now includes real-time evolution story detection. When working with users, be aware that:
+**NEW**: The framework now includes real-time evolution story detection. When working with users, be aware that:
 
-### __Automatic Trigger Patterns**
+### **Automatic Trigger Patterns**
 
 These user phrases automatically trigger evolution detection:
 
@@ -16,9 +16,9 @@ These user phrases automatically trigger evolution detection:
 - "should we document somehow" / "systematic way"
 - "field-driven" / "eating dog food" / "real-world usage"
 
-### __Integration Hook**
+### **Integration Hook**
 
-```typescript
+```
 // Framework automatically captures conversation context
 import {captureConversationContext} from "./tools/copilot-integration"
 
@@ -26,25 +26,25 @@ import {captureConversationContext} from "./tools/copilot-integration"
 await captureConversationContext(userPrompt, copilotInstructions, workspaceRoot)
 ```
 
-### __Real-Time Response Guidelines**
+### **Real-Time Response Guidelines**
 
 When users express concerns about:
 
-1. __Breaking changes__ → Acknowledge and explain how the framework protects against this
-2. __Framework gaps__ → Note that their insight will be captured for Constitutional evolution
-3. __Documentation needs__ → Mention the automatic evolution story system
-4. __Field friction__ → Emphasize that their experience feeds framework learning
+1. **Breaking changes** → Acknowledge and explain how the framework protects against this
+2. **Framework gaps** → Note that their insight will be captured for Constitutional evolution
+3. **Documentation needs** → Mention the automatic evolution story system
+4. **Field friction** → Emphasize that their experience feeds framework learning
 
 ## 🎯 Project Overview Framework AI Coding Instructions
 
 ## �️ Constitutional Authority
 
-**CRITICAL__: All AI agents must comply with the [Aegis Framework Constitution](../CONSTITUTION.md), which establishes
+**CRITICAL**: All AI agents must comply with the [Aegis Framework Constitution](../CONSTITUTION.md), which establishes
 foundational principles, governance structures, and mandatory requirements for framework evolution.
 
 ## �🎯 Project Overview
 
-Aegis is a __Blueprint-driven AI engineering framework__ that enforces reproducible, observable, and auditable
+Aegis is a **Blueprint-driven AI engineering framework** that enforces reproducible, observable, and auditable
 AI-generated code. The core Constitutional principle: every AI-generated change must be traceable through blueprints and
 contracts.
 
@@ -52,16 +52,16 @@ contracts.
 
 ### Blueprint-Driven Development
 
-- __Blueprints__ (`blueprints/*/Blueprint.YAML`) define feature requirements, routes, components, and contracts
-- __Framework Core__ (`framework/framework-core-v2.1.0.md`) defines the specification - currently v2.1.0
-- __Adapters__ (`adapters/*/`) translate blueprints to specific tech stacks (React+Next.js, Deno, Python+FastAPI)
-- __Three execution modes__: `lean` (minimal), `strict` (full compliance), `generative` (creative expansion)
+- **Blueprints** (`blueprints/*/Blueprint.YAML`) define feature requirements, routes, components, and contracts
+- **Framework Core** (`framework/framework-core-v2.1.0.md`) defines the specification - currently v2.1.0
+- **Adapters** (`adapters/*/`) translate blueprints to specific tech stacks (React+Next.js, Deno, Python+FastAPI)
+- **Three execution modes**: `lean` (minimal), `strict` (full compliance), `generative` (creative expansion)
 
 ### Critical Annotation Pattern
 
-**ALWAYS__ include these metadata annotations in AI-generated files:
+**ALWAYS** include these metadata annotations in AI-generated files:
 
-```markdown
+```
 <!--
 @aegisBlueprint: <Blueprint-id>
 @version: <version>
@@ -75,7 +75,7 @@ contracts.
 
 ### Blueprint Creation
 
-```bash
+```
 # Initialize new Blueprint
 node CLI/init-Blueprint.ts feat-your-feature
 
@@ -103,9 +103,9 @@ Store AI agent outputs as:
 
 ## 🧪 Testing & Validation
 
-- __Snapshot tests__ in `tests/snapshot-tests/` validate Blueprint fidelity over time
-- __Replay tests__ in `tests/replay-diff-tests/` ensure deterministic outputs
-- __Visual regression__ required for public routes (mentioned in v2.1.0 spec)
+- **Snapshot tests** in `tests/snapshot-tests/` validate Blueprint fidelity over time
+- **Replay tests** in `tests/replay-diff-tests/` ensure deterministic outputs
+- **Visual regression** required for public routes (mentioned in v2.1.0 spec)
 
 ## 📋 Project Conventions
 
@@ -131,8 +131,8 @@ Store AI agent outputs as:
 
 ## 🚨 Constitutional Requirements
 
-- The framework operates under __Constitutional governance__ - all changes must comply with foundational principles
-- __Mandatory annotations__ are constitutionally required for all AI-generated files
-- __Semantic versioning__ is constitutionally enforced - no informal version systems
-- __Blueprint primacy__ - no code generation without corresponding Blueprint specifications
+- The framework operates under **Constitutional governance** - all changes must comply with foundational principles
+- **Mandatory annotations** are constitutionally required for all AI-generated files
+- **Semantic versioning** is constitutionally enforced - no informal version systems
+- **Blueprint primacy** - no code generation without corresponding Blueprint specifications
 - Violations of Constitutional principles will not be accepted into the framework

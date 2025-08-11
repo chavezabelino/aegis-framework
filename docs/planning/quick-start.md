@@ -1,18 +1,18 @@
 # 🚀 Planning Optimization - Quick Start Guide
 
-> __Get started in 5 minutes__ with universal planning optimization for frictionless "vibe coding"
+> **Get started in 5 minutes** with universal planning optimization for frictionless "vibe coding"
 
-## ⚡ __Immediate Setup (5 minutes)**
+## ⚡ **Immediate Setup (5 minutes)**
 
-### __1. Install Dependencies**
+### **1. Install Dependencies**
 
-```bash
+```
 npm install @modelcontextprotocol/sdk
 ```
 
-### __2. Test the System**
+### **2. Test the System**
 
-```bash
+```
 # Test auto plan detection
 npm run Aegis:planning auto "Add user authentication"
 
@@ -23,27 +23,27 @@ npm run plan:gate:mvp
 ./demo/planning-optimization-demo.sh
 ```
 
-### __3. Configure Your IDE**
+### **3. Configure Your IDE**
 
-#### __Cursor (Recommended)**
+#### **Cursor (Recommended)**
 
 1. Open `.cursor/settings.JSON` (already configured)
 2. Restart Cursor
 3. The MCP server will auto-connect
 
-#### __VS Code**
+#### **VS Code**
 
 1. Install MCP extension: `ms-vscode.MCP`
 2. Open `.vscode/settings.JSON` (already configured)
 3. Restart VS Code
 
-#### __Any MCP IDE**
+#### **Any MCP IDE**
 
 1. Add MCP server configuration
 2. Point to `tools/MCP-Aegis-server.ts`
 3. Restart your IDE
 
-### __4. Start Using (Just Prompt!)**
+### **4. Start Using (Just Prompt!)**
 
 ```
 "Add user authentication to the app"
@@ -54,17 +54,17 @@ npm run plan:gate:mvp
 
 The AI automatically handles all planning optimization behind the scenes!
 
-## 🎯 __What Happens Automatically**
+## 🎯 **What Happens Automatically**
 
-### __Behind the Scenes**
+### **Behind the Scenes**
 
-1. __Auto Detection__: Analyzes your prompt for scope and complexity
-2. __Plan Classification__: Determines MVP-Fix, Surgical-Refactor, or Systemic-Change
-3. __Plan Generation__: Creates contract-driven plan with observable behavior focus
-4. __Validation__: Checks against constraints and best practices
-5. __Implementation__: Executes with Constitutional governance
+1. **Auto Detection**: Analyzes your prompt for scope and complexity
+2. **Plan Classification**: Determines MVP-Fix, Surgical-Refactor, or Systemic-Change
+3. **Plan Generation**: Creates contract-driven plan with observable behavior focus
+4. **Validation**: Checks against constraints and best practices
+5. **Implementation**: Executes with Constitutional governance
 
-### __Example Flow**
+### **Example Flow**
 
 ```
 User: "Add user authentication"
@@ -80,11 +80,11 @@ AI: Implements with observable behavior focus
 Result: High-quality, contract-driven authentication system
 ```
 
-## 🚀 __Advanced Features**
+## 🚀 **Advanced Features**
 
-### __CLI Commands**
+### **CLI Commands**
 
-```bash
+```
 # Auto plan detection
 npm run Aegis:planning auto "your prompt here"
 
@@ -98,9 +98,9 @@ npm run Aegis:planning compare plan1.md plan2.md
 npm run MCP:start
 ```
 
-### __Package Scripts**
+### **Package Scripts**
 
-```bash
+```
 # Quick vibe analysis
 npm run vibe "your prompt here"
 
@@ -113,29 +113,29 @@ npm run plan:gate:systemic
 npm run plan:critic plan1.md plan2.md
 ```
 
-## 🎯 __Key Benefits**
+## 🎯 **Key Benefits**
 
-### __Universal Compatibility**
+### **Universal Compatibility**
 
-- ✅ __Works Everywhere__: Cursor, VS Code, JetBrains, any MCP IDE
-- ✅ __No Vendor Lock-in__: Standard MCP protocol
-- ✅ __Future-Proof__: Compatible with emerging IDE features
+- ✅ **Works Everywhere**: Cursor, VS Code, JetBrains, any MCP IDE
+- ✅ **No Vendor Lock-in**: Standard MCP protocol
+- ✅ **Future-Proof**: Compatible with emerging IDE features
 
-### __Frictionless Development**
+### **Frictionless Development**
 
-- ✅ __Just Prompt__: No manual planning steps required
-- ✅ __Automatic Optimization__: AI handles everything behind the scenes
-- ✅ __Better Quality__: Contract-driven development by default
+- ✅ **Just Prompt**: No manual planning steps required
+- ✅ **Automatic Optimization**: AI handles everything behind the scenes
+- ✅ **Better Quality**: Contract-driven development by default
 
-### __Constitutional Governance**
+### **Constitutional Governance**
 
-- ✅ __Framework Compliance__: Maintains Aegis governance standards
-- ✅ __Traceability__: Every plan is traceable through annotations
-- ✅ __Observability__: Planning decisions emit Telemetry events
+- ✅ **Framework Compliance**: Maintains Aegis governance standards
+- ✅ **Traceability**: Every plan is traceable through annotations
+- ✅ **Observability**: Planning decisions emit Telemetry events
 
-## 🚀 __Real-World Examples**
+## 🚀 **Real-World Examples**
 
-### __Simple Feature Addition**
+### **Simple Feature Addition**
 
 ```
 User: "Add user authentication"
@@ -146,7 +146,7 @@ AI automatically:
 4. Implements with observable behavior focus
 ```
 
-### __Bug Fix**
+### **Bug Fix**
 
 ```
 User: "Fix the search not working"
@@ -157,7 +157,7 @@ AI automatically:
 4. Implements observable behavior fix
 ```
 
-### __Refactoring**
+### **Refactoring**
 
 ```
 User: "Refactor auth to use JWT"
@@ -168,13 +168,13 @@ AI automatically:
 4. Implements with contract preservation
 ```
 
-## 🎯 __Troubleshooting**
+## 🎯 **Troubleshooting**
 
-### __Common Issues**
+### **Common Issues**
 
-#### __MCP Server Not Starting**
+#### **MCP Server Not Starting**
 
-```bash
+```
 # Check if MCP server is running
 npm run MCP:start
 
@@ -183,9 +183,9 @@ cat .cursor/settings.JSON
 cat .vscode/settings.JSON
 ```
 
-#### __Plan Validation Failing**
+#### **Plan Validation Failing**
 
-```bash
+```
 # Check plan constraints
 npm run Aegis:planning validate MVP-Fix ./PLAN.md 2
 
@@ -193,9 +193,9 @@ npm run Aegis:planning validate MVP-Fix ./PLAN.md 2
 cat .Aegis/config/planning.JSON
 ```
 
-#### __Auto Detection Not Working**
+#### **Auto Detection Not Working**
 
-```bash
+```
 # Test auto detection
 npm run Aegis:planning auto "your prompt here"
 
@@ -203,36 +203,36 @@ npm run Aegis:planning auto "your prompt here"
 cat tools/auto-plan-detector.ts
 ```
 
-### __Getting Help**
+### **Getting Help**
 
-- __Documentation__: `docs/Aegis/planning/README.md`
-- __IDE Integration__: `docs/Aegis/planning/ide-integration.md`
-- __Vibe Coding__: `docs/Aegis/planning/vibe-coding.md`
-- __Implementation Summary__: `docs/Aegis/planning/IMPLEMENTATION-SUMMARY.md`
+- **Documentation**: `docs/Aegis/planning/README.md`
+- **IDE Integration**: `docs/Aegis/planning/ide-integration.md`
+- **Vibe Coding**: `docs/Aegis/planning/vibe-coding.md`
+- **Implementation Summary**: `docs/Aegis/planning/IMPLEMENTATION-SUMMARY.md`
 
-## 🚀 __Next Steps**
+## 🚀 **Next Steps**
 
-### __Immediate (Today)**
+### **Immediate (Today)**
 
-1. ✅ __Test the System__: Run the demo script
-2. ✅ __Configure IDE__: Follow IDE integration guide
-3. ✅ __Try Vibe Coding__: Just prompt naturally with your AI agent
+1. ✅ **Test the System**: Run the demo script
+2. ✅ **Configure IDE**: Follow IDE integration guide
+3. ✅ **Try Vibe Coding**: Just prompt naturally with your AI agent
 
-### __This Week**
+### **This Week**
 
-1. __Team Adoption__: Share with development team
-2. __Project Integration__: Add to existing projects
-3. __Measure Impact__: Track productivity improvements
+1. **Team Adoption**: Share with development team
+2. **Project Integration**: Add to existing projects
+3. **Measure Impact**: Track productivity improvements
 
-### __This Month**
+### **This Month**
 
-1. __Optimize Detection__: Fine-tune based on usage patterns
-2. __Extend Features__: Add more sophisticated planning tools
-3. __Scale Adoption__: Deploy across multiple teams and projects
+1. **Optimize Detection**: Fine-tune based on usage patterns
+2. **Extend Features**: Add more sophisticated planning tools
+3. **Scale Adoption**: Deploy across multiple teams and projects
 
-## 🎉 __Success!**
+## 🎉 **Success!**
 
-You now have __universal planning optimization__ that works seamlessly across all IDEs and provides frictionless "vibe
+You now have **universal planning optimization** that works seamlessly across all IDEs and provides frictionless "vibe
 coding" experience while maintaining Constitutional governance and quality standards.
 
 **The Planning Optimization System is ready for production use! 🚀**

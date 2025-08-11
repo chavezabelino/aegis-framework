@@ -15,7 +15,7 @@ Welcome to Aegis — the first governance framework for consistent, compliant AI
 
 ## 🚀 Quickstart
 
-```bash
+```
 # Clone your Blueprint-enabled repo
 git clone git@github.com:your-org/aegis-framework-app.git
 cd Aegis-framework-app
@@ -37,7 +37,7 @@ npm run test:snapshots
 
 ## 🧪 Validating a Blueprint
 
-```bash
+```
 node tools/validate-Blueprint.js blueprints/feat-my-feature/Blueprint.YAML
 ```
 

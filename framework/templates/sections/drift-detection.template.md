@@ -8,13 +8,13 @@
 
 ### Three-Layer Drift Monitoring
 
-1. __Agent Behavior Drift__: Changes in code generation patterns, annotation compliance
-2. __User Workflow Drift__: Deviations from established development patterns
-3. __Framework System Drift__: Constitutional violations, version inconsistencies
+1. **Agent Behavior Drift**: Changes in code generation patterns, annotation compliance
+2. **User Workflow Drift**: Deviations from established development patterns
+3. **Framework System Drift**: Constitutional violations, version inconsistencies
 
 ### Drift Response Protocol
 
-```typescript
+```
 // Check for drift
 const driftResults = await detectDrift({
   type: ["agent-behavior", "user-workflow", "framework-system"],
@@ -30,13 +30,13 @@ if (driftResults.severity === "low") {
 if (driftResults.severity === "critical") {
   await escalateToConstitutionalConductor(driftResults)
 }
-```text
+```
 
 ### Predictive Enforcement
 
-- __Pattern Recognition__: Learn from historical violations
-- __Proactive Prevention__: Stop violations before they occur
-- __Context-Aware Corrections__: Smart auto-fixes based on project patterns
+- **Pattern Recognition**: Learn from historical violations
+- **Proactive Prevention**: Stop violations before they occur
+- **Context-Aware Corrections**: Smart auto-fixes based on project patterns
 
 ### Drift Log Files
 
@@ -46,7 +46,7 @@ if (driftResults.severity === "critical") {
 
 ### CLI Commands
 
-```bash
+```
 # Check current drift status
 node CLI/drift-CLI.ts --check
 
@@ -55,4 +55,4 @@ node CLI/drift-CLI.ts --history --type agent-behavior
 
 # Manual drift correction
 node CLI/drift-CLI.ts --fix --severity low
-```text
+```

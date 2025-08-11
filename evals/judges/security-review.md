@@ -36,7 +36,7 @@ You are an expert security reviewer evaluating AI-generated authentication code 
 
 ## Output Format
 
-```json
+```
 {
   "passwordSecurity": {
     "score": 8,
@@ -58,11 +58,11 @@ You are an expert security reviewer evaluating AI-generated authentication code 
   "criticalIssues": [],
   "recommendations": ["Consider shorter JWT expiration times", "Add account lockout after 5 failed attempts"]
 }
-```text
+```
 
 ## Instructions
 
-1. __Focus on security, not style__ - This is about preventing vulnerabilities
-2. __Be specific__ - Point to exact lines or patterns that concern you
-3. __Consider real-world attacks__ - Think like an attacker trying to exploit this code
-4. __Flag critical issues__ - Any security vulnerability that could lead to compromise
+1. **Focus on security, not style** - This is about preventing vulnerabilities
+2. **Be specific** - Point to exact lines or patterns that concern you
+3. **Consider real-world attacks** - Think like an attacker trying to exploit this code
+4. **Flag critical issues** - Any security vulnerability that could lead to compromise

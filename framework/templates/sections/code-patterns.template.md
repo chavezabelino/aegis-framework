@@ -8,16 +8,16 @@
 
 ### Edge Function Call Pattern
 
-```ts
+```
 import {invokeEdgeFunctionSimple} from "@/lib/edge-function-client"
 import {PreviewTeamsResponseSchema} from "@/schemas/API/team-preview"
 
 const result = await invokeEdgeFunctionSimple("preview-teams", {input: teamData}, PreviewTeamsResponseSchema)
-```text
+```
 
 ### Schema Validation & Transforms
 
-```ts
+```
 // Schema Naming Convention:
 // *RowSchema → DB layer (snake_case)
 // *ModelSchema → App layer (camelCase)
@@ -25,11 +25,11 @@ const result = await invokeEdgeFunctionSimple("preview-teams", {input: teamData}
 import {unwrapAndValidate} from "@/lib/API-response"
 
 const validated = unwrapAndValidate(response, TeamModelSchema)
-```text
+```
 
 ### Environment Config Validation
 
-```ts
+```
 import {z} from "zod"
 
 const envSchema = z.object({
@@ -41,11 +41,11 @@ const envSchema = z.object({
 
 // Validate at startup
 const env = envSchema.parse(process.env)
-```text
+```
 
 ### Supabase CORS Handler (Mandatory)
 
-```ts
+```
 import {handleCorsPrelight} from "../_shared/lib/corsHeaders.ts"
 import {createSuccessResponse, createErrorResponse} from "../_shared/lib/responseHelpers.ts"
 
@@ -59,4 +59,4 @@ export default async function handler(req: Request) {
     return createErrorResponse(error, correlationId)
   }
 }
-```text
+```

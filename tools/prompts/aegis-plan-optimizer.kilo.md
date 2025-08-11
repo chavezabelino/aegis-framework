@@ -16,8 +16,8 @@ You are the Planner. Apply `decision-rubric.md`. Output exactly one plan class:
 
 Rules:
 
-- Assert __behavioral contracts__ only.
-- Prefer __smallest__ viable plan.
+- Assert **behavioral contracts** only.
+- Prefer **smallest** viable plan.
 - Include full files if you touch code.
 - Add acceptance criteria aligned to contracts.
 

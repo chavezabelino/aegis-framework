@@ -93,7 +93,7 @@ Create a complete starter application template for Svelte/Drizzle/Neon tech stac
 ### **Next Steps for Publishing**
 
 1. **Create GitHub Template Repository**
-   ```bash
+   ```
    # Create template repository
    git init
    git add .
@@ -102,7 +102,7 @@ Create a complete starter application template for Svelte/Drizzle/Neon tech stac
    ```
 
 2. **Publish NPM Package**
-   ```bash
+   ```
    cd packages/aegis-svelte-adapter
    npm publish
    ```
@@ -114,7 +114,7 @@ Create a complete starter application template for Svelte/Drizzle/Neon tech stac
 
 ### **Usage Instructions**
 
-```bash
+```
 # Clone and initialize new project
 git clone https://github.com/aegis-framework/svelte-drizzle-starter.git my-app
 cd my-app

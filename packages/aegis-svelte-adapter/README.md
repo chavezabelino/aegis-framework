@@ -4,13 +4,13 @@ Aegis framework adapter for Svelte/Drizzle/Neon applications. This package provi
 
 ## Installation
 
-```bash
+```
 npm install @aegis-framework/svelte-adapter
 ```
 
 ## Quick Start
 
-```typescript
+```
 import { SvelteDrizzleAdapter } from '@aegis-framework/svelte-adapter';
 
 const adapter = new SvelteDrizzleAdapter({
@@ -55,7 +55,7 @@ const component = await adapter.generateComponent({
 
 Main adapter class for Svelte/Drizzle applications.
 
-```typescript
+```
 interface SvelteDrizzleAdapterConfig {
   svelteVersion: string;
   drizzleVersion: string;
@@ -81,7 +81,7 @@ class SvelteDrizzleAdapter {
 
 Pre-defined governance patterns for common use cases.
 
-```typescript
+```
 import { sveltePatterns, drizzlePatterns } from '@aegis-framework/svelte-adapter/patterns';
 
 // Available Svelte patterns
@@ -98,7 +98,7 @@ const contentManagementPattern = drizzlePatterns['content-management'];
 
 Helper functions for component and schema generation.
 
-```typescript
+```
 import { SvelteUtils } from '@aegis-framework/svelte-adapter/utils';
 
 // Generate component templates
@@ -115,7 +115,7 @@ const types = SvelteUtils.generateTypeScriptTypes(component);
 
 ### 1. Generate a Login Form Component
 
-```typescript
+```
 import { SvelteDrizzleAdapter, sveltePatterns } from '@aegis-framework/svelte-adapter';
 
 const adapter = new SvelteDrizzleAdapter({
@@ -135,7 +135,7 @@ const component = await adapter.generateComponent(loginPattern);
 
 ### 2. Generate Database Schema
 
-```typescript
+```
 import { SvelteDrizzleAdapter, drizzlePatterns } from '@aegis-framework/svelte-adapter';
 
 const adapter = new SvelteDrizzleAdapter({
@@ -155,7 +155,7 @@ const schema = await adapter.generateSchema(userPattern);
 
 ### 3. Validate Blueprint
 
-```typescript
+```
 import { SvelteDrizzleAdapter } from '@aegis-framework/svelte-adapter';
 
 const adapter = new SvelteDrizzleAdapter({
@@ -177,7 +177,7 @@ console.log('Blueprint is valid:', isValid);
 
 ### 4. Generate Complete Output
 
-```typescript
+```
 import { SvelteDrizzleAdapter } from '@aegis-framework/svelte-adapter';
 
 const adapter = new SvelteDrizzleAdapter({
@@ -209,7 +209,7 @@ const output = await adapter.generateOutput(blueprint, 'strict');
 ### Svelte Component Patterns
 
 #### Login Form Pattern
-```typescript
+```
 {
   id: 'auth/login-form',
   name: 'Login Form',
@@ -230,7 +230,7 @@ const output = await adapter.generateOutput(blueprint, 'strict');
 ```
 
 #### Data Table Pattern
-```typescript
+```
 {
   id: 'data-tables/basic-table',
   name: 'Data Table',
@@ -253,7 +253,7 @@ const output = await adapter.generateOutput(blueprint, 'strict');
 ### Drizzle Schema Patterns
 
 #### User Management Pattern
-```typescript
+```
 {
   id: 'schemas/user-management',
   name: 'User Management Schema',
@@ -287,20 +287,20 @@ const output = await adapter.generateOutput(blueprint, 'strict');
 
 ### Building the Package
 
-```bash
+```
 cd packages/aegis-svelte-adapter
 npm run build
 ```
 
 ### Running Tests
 
-```bash
+```
 npm test
 ```
 
 ### Development Mode
 
-```bash
+```
 npm run dev
 ```
 

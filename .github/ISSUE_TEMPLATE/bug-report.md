@@ -51,8 +51,8 @@ assignees: []
 
 ## 🖥️ Environment
 
-**Framework version:__ <!-- Check VERSION file or npm ls --> __Node.js version:__ <!-- node --version --> __Operating
-system:__ <!-- macOS, Linux, Windows --> __Installation method:__ <!-- npm, git clone, etc. -->
+**Framework version:** <!-- Check VERSION file or npm ls --> **Node.js version:** <!-- node --version --> **Operating
+system:** <!-- macOS, Linux, Windows --> **Installation method:** <!-- npm, git clone, etc. -->
 
 ## 📋 Additional Context
 
@@ -90,5 +90,5 @@ system:__ <!-- macOS, Linux, Windows --> __Installation method:__ <!-- npm, git 
 
 ---
 
-🏛️ __Constitutional Note__: Bugs that violate Constitutional principles receive priority attention. See
+🏛️ **Constitutional Note**: Bugs that violate Constitutional principles receive priority attention. See
 [Framework Constitution](../CONSTITUTION.md) for governance principles.

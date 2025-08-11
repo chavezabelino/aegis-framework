@@ -91,9 +91,9 @@ Every pattern came from real production problems. Would love HN's feedback on th
 
 ### Primary Links
 
-- __Repository__: <https://github.com/chavezabelino/aegis-framework>
-- __Manifesto__: <https://github.com/chavezabelino/aegis-framework/blob/main/docs/manifesto/README.md>
-- __Principles__: <https://github.com/chavezabelino/aegis-framework/blob/main/docs/manifesto/principles.md>
+- **Repository**: <https://github.com/chavezabelino/aegis-framework>
+- **Manifesto**: <https://github.com/chavezabelino/aegis-framework/blob/main/docs/manifesto/README.md>
+- **Principles**: <https://github.com/chavezabelino/aegis-framework/blob/main/docs/manifesto/principles.md>
 
 ### Hashtags
 
@@ -104,30 +104,30 @@ Primary: `#GenAIOS #ConstitutionalComputing #AIGovernance` Secondary:
 
 ### Developer Communities
 
-- __r/MachineLearning__: Technical deep-dive posts
-- __r/Programming__: Framework architecture discussions
-- __r/TypeScript__: Implementation details
-- __Hacker News__: Philosophical and technical discussions
-- __Dev.to__: Tutorial and case study articles
-- __Medium__: Thought leadership pieces
+- **r/MachineLearning**: Technical deep-dive posts
+- **r/Programming**: Framework architecture discussions
+- **r/TypeScript**: Implementation details
+- **Hacker News**: Philosophical and technical discussions
+- **Dev.to**: Tutorial and case study articles
+- **Medium**: Thought leadership pieces
 
 ### AI/ML Communities
 
-- __AI Twitter__: Quick insights and updates
-- __LinkedIn AI groups__: Professional networking
-- __Discord AI servers__: Real-time community discussion
-- __AI conferences__: Speaking opportunities about Constitutional computing
+- **AI Twitter**: Quick insights and updates
+- **LinkedIn AI groups**: Professional networking
+- **Discord AI servers**: Real-time community discussion
+- **AI conferences**: Speaking opportunities about Constitutional computing
 
 ### Content Calendar Ideas
 
-- __Week 1__: Repository announcement and manifesto sharing
-- __Week 2__: Technical deep-dive threads on Constitutional principles
-- __Week 3__: Case studies and real-world implementation stories
-- __Week 4__: Community evolution stories and framework learning
+- **Week 1**: Repository announcement and manifesto sharing
+- **Week 2**: Technical deep-dive threads on Constitutional principles
+- **Week 3**: Case studies and real-world implementation stories
+- **Week 4**: Community evolution stories and framework learning
 
 ---
 
-📖 __Context__: Use this kit to share the GenAI Operating System vision and build the Constitutional computing
+📖 **Context**: Use this kit to share the GenAI Operating System vision and build the Constitutional computing
 community.
 
-🏛️ __Principle__: Every share should advance the conversation about AI governance and systematic reliability.
+🏛️ **Principle**: Every share should advance the conversation about AI governance and systematic reliability.

@@ -14,31 +14,31 @@
 
 ## 1. Problem Framing (must be 3–6 lines)
 
-- What is the user's __explicit ask__?
-- What __must__ be true when we're done? (contracts)
-- What __must not__ change? (invariants/constraints)
+- What is the user's **explicit ask**?
+- What **must** be true when we're done? (contracts)
+- What **must not** change? (invariants/constraints)
 
 ## 2. Plan Class Selection
 
 Choose exactly one:
 
-- __MVP-Fix__: 1–2 files, < 2h effort, no schema changes.
-- __Surgical-Refactor__: ≤ 5 files, minimal surface, contracts preserved.
-- __Systemic-Change__: requires schema/infra changes; only if MVP/Surgical can't meet contracts.
+- **MVP-Fix**: 1–2 files, < 2h effort, no schema changes.
+- **Surgical-Refactor**: ≤ 5 files, minimal surface, contracts preserved.
+- **Systemic-Change**: requires schema/infra changes; only if MVP/Surgical can't meet contracts.
 
-**Rule:__ Prefer MVP-Fix → Surgical → Systemic, in that order. Justify any escalation in ≤ 3 bullets.
+**Rule:** Prefer MVP-Fix → Surgical → Systemic, in that order. Justify any escalation in ≤ 3 bullets.
 
 ## 3. Behavior > Implementation
 
-- Assert __observable behavior__ (routes, ARIA roles, redirects), not internal classes/colors.
-- Accept __equivalent valid outputs__ (e.g., `/login` or `/(auth)/login`).
+- Assert **observable behavior** (routes, ARIA roles, redirects), not internal classes/colors.
+- Accept **equivalent valid outputs** (e.g., `/login` or `/(auth)/login`).
 
 ## 4. Cost & Risk Heuristics
 
-- __Time__: Can an experienced dev complete this in a single sitting?
-- __Blast radius__: #files touched × criticality.
-- __Reversibility__: Can we revert without data migration?
-- __Token cost__: Prompts/artifacts must be concise; prefer reusable templates.
+- **Time**: Can an experienced dev complete this in a single sitting?
+- **Blast radius**: #files touched × criticality.
+- **Reversibility**: Can we revert without data migration?
+- **Token cost**: Prompts/artifacts must be concise; prefer reusable templates.
 
 ## 5. Acceptance (binary)
 

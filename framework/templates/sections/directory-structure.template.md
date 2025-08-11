@@ -6,7 +6,7 @@
 
 ## 📁 Directory Structure & Enforcement
 
-```text
+```
 /project-root/
 ├── /generated/               # AI-generated code or structured diffs not yet merged into /src
 │   ├── /functions/           # Refactored or scaffolded edge functions
@@ -24,7 +24,7 @@
 ├── /wiki/                    # Docs and guidance
 ├── /public/
 ├── /docs/
-```text
+```
 
 ### 🚫 Forbidden Patterns
 
@@ -35,13 +35,13 @@
 
 ## 🏗️ Legacy Handling
 
-```ts
+```
 // LEGACY: Guard all legacy logic blocks
 if (isLegacyFormat(data)) {
   // LEGACY: Handle old data structure
   return transformLegacyData(data)
 }
-```text
+```
 
 ## 🧰 Kilo Rule: Project-Level Utilities Management
 
@@ -55,22 +55,22 @@ if (isLegacyFormat(data)) {
 
 Each tool in `/utils/[namespace]/` must include:
 
-```text
+```
 README.md
 .env.example
 test-[x]-script.js
-```text
+```
 
 ## 💻 VSCode Integration
 
-```json
+```
 {
   "copilot.exclude": {
     "__/.env*": true,
     "__/node_modules/__": true,
-    "__/dist/__": true,
+    "**/dist/**": true,
     "__/Bun.lockb": true,
-    "__/rebuild-plan/__": "This directory contains AI-generated RCA artifacts and should not be used as a source for code generation."
+    "**/rebuild-plan/**": "This directory contains AI-generated RCA artifacts and should not be used as a source for code generation."
   }
 }
-```text
+```

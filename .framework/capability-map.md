@@ -1,66 +1,66 @@
 # Aegis Framework Capability Map
 
-**Generated__: 2025-08-08T23:10:40.374Z __Framework Version__: 2.4.0 __Total Capabilities__: 59 __Health Status__:
+**Generated**: 2025-08-08T23:10:40.374Z **Framework Version**: 2.4.0 **Total Capabilities**: 59 **Health Status**:
 HEALTHY
 
 ## TOOL (35)
 
 ### Aegis Docs
 
-**Status__: stable __Description__: Quick access to manifesto documentation and principles __Implementation__:
-/Users/nino/Workspace/02-local-dev/Aegis-framework/CLI/Aegis-docs.ts __Dependencies__: commander, fs, path, chalk
-**Documentation__: [README.md](README.md) __Usage__:
+**Status**: stable **Description**: Quick access to manifesto documentation and principles **Implementation**:
+/Users/nino/Workspace/02-local-dev/Aegis-framework/CLI/Aegis-docs.ts **Dependencies**: commander, fs, path, chalk
+**Documentation**: [README.md](README.md) **Usage**:
 
-```text
+```
 Aegis-docs search <
-```text
+```
 
-**Last Modified__: 2025-08-07T11:49:41.827Z
+**Last Modified**: 2025-08-07T11:49:41.827Z
 
 ### Aegis Hydrate
 
-**Status__: alpha __Description__: One-command migration tool with Constitutional governance __Implementation__:
-/Users/nino/Workspace/02-local-dev/Aegis-framework/CLI/Aegis-hydrate.ts __Dependencies__: commander, fs, child_process,
-util, inquirer, chalk, ora __Documentation__: [README.md](README.md) __Last Modified__: 2025-08-08T14:37:34.368Z
+**Status**: alpha **Description**: One-command migration tool with Constitutional governance **Implementation**:
+/Users/nino/Workspace/02-local-dev/Aegis-framework/CLI/Aegis-hydrate.ts **Dependencies**: commander, fs, child_process,
+util, inquirer, chalk, ora **Documentation**: [README.md](README.md) **Last Modified**: 2025-08-08T14:37:34.368Z
 
 ### Aegis Memory
 
-**Status__: stable __Description__: CLI tool for Constitutional memory governance operations __Implementation__:
-/Users/nino/Workspace/02-local-dev/Aegis-framework/CLI/Aegis-memory.ts __Dependencies__: commander, chalk, ora,
-inquirer, fs, path __Documentation__: [README.md](README.md) __Last Modified__: 2025-08-08T22:28:09.773Z
+**Status**: stable **Description**: CLI tool for Constitutional memory governance operations **Implementation**:
+/Users/nino/Workspace/02-local-dev/Aegis-framework/CLI/Aegis-memory.ts **Dependencies**: commander, chalk, ora,
+inquirer, fs, path **Documentation**: [README.md](README.md) **Last Modified**: 2025-08-08T22:28:09.773Z
 
 ### Amendment CLI
 
-**Status__: beta __Description__: Provide user-friendly CLI for amendment management __Implementation__:
-/Users/nino/Workspace/02-local-dev/Aegis-framework/CLI/amendment-CLI.ts __Documentation__: [README.md](README.md)
-**Usage__:
+**Status**: beta **Description**: Provide user-friendly CLI for amendment management **Implementation**:
+/Users/nino/Workspace/02-local-dev/Aegis-framework/CLI/amendment-CLI.ts **Documentation**: [README.md](README.md)
+**Usage**:
 
-```text
+```
 submit <proposal-id>');
-```text
+```
 
-**Last Modified__: 2025-08-08T22:28:09.773Z
+**Last Modified**: 2025-08-08T22:28:09.773Z
 
 ### Apprenticeship CLI
 
-**Status__: beta __Description__: CLI for Blueprint-driven apprenticeship workflows (guided, challenge, review-only)
-**Implementation__: /Users/nino/Workspace/02-local-dev/Aegis-framework/CLI/apprenticeship-CLI.ts __Dependencies__:
-yargs, yargs/helpers __Documentation__: [README.md](README.md) __Usage__:
+**Status**: beta **Description**: CLI for Blueprint-driven apprenticeship workflows (guided, challenge, review-only)
+**Implementation**: /Users/nino/Workspace/02-local-dev/Aegis-framework/CLI/apprenticeship-CLI.ts **Dependencies**:
+yargs, yargs/helpers **Documentation**: [README.md](README.md) **Usage**:
 
-```text
+```
 1024, status: 'completed' }],
-```text
+```
 
-**Last Modified__: 2025-08-08T22:28:09.773Z
+**Last Modified**: 2025-08-08T22:28:09.773Z
 
 ### Auto Update Changelog
 
-**Status__: stable __Description__: Automate changelog maintenance with AI-powered change detection and team
-configuration support __Implementation__:
-/Users/nino/Workspace/02-local-dev/Aegis-framework/tools/auto-update-changelog.ts __Dependencies__: fs, path
-**Documentation__: [README.md](README.md) __Usage__:
+**Status**: stable **Description**: Automate changelog maintenance with AI-powered change detection and team
+configuration support **Implementation**:
+/Users/nino/Workspace/02-local-dev/Aegis-framework/tools/auto-update-changelog.ts **Dependencies**: fs, path
+**Documentation**: [README.md](README.md) **Usage**:
 
-```text
+```
 // Example usage:
 
   const args = process.argv.slice(2);
@@ -69,17 +69,17 @@ configuration support __Implementation__:
   const updater = new AutomatedChangelogUpdater();
   await updater.updateChangelog(dryRun);
 ...
-```text
+```
 
-**Last Modified__: 2025-08-08T22:28:09.793Z
+**Last Modified**: 2025-08-08T22:28:09.793Z
 
 ### Comprehensive Intelligence Testing
 
-**Status__: stable __Description__: Comprehensive testing suite for all framework intelligence features
-**Implementation__: /Users/nino/Workspace/02-local-dev/Aegis-framework/tools/comprehensive-intelligence-testing.ts
-**Dependencies__: fs, path, child_process __Documentation__: [README.md](README.md) __Usage__:
+**Status**: stable **Description**: Comprehensive testing suite for all framework intelligence features
+**Implementation**: /Users/nino/Workspace/02-local-dev/Aegis-framework/tools/comprehensive-intelligence-testing.ts
+**Dependencies**: fs, path, child_process **Documentation**: [README.md](README.md) **Usage**:
 
-```text
+```
 // Example usage:
 
   const testing = new ComprehensiveIntelligenceTesting();
@@ -91,18 +91,18 @@ configuration support __Implementation__:
     process.exit(1);
   }
 ...
-```text
+```
 
-**Last Modified__: 2025-08-08T22:28:09.793Z
+**Last Modified**: 2025-08-08T22:28:09.793Z
 
 ### ConstitutionalConstitutional Compliance Enforcer
 
-**Status__: stable __Description__: Constitutional compliance enforcer to prevent false claims and ensure framework
-integrity __Implementation__:
-/Users/nino/Workspace/02-local-dev/Aegis-framework/tools/Constitutional-compliance-enforcer.ts __Dependencies__: fs,
-path __Documentation__: [README.md](README.md) __Usage__:
+**Status**: stable **Description**: Constitutional compliance enforcer to prevent false claims and ensure framework
+integrity **Implementation**:
+/Users/nino/Workspace/02-local-dev/Aegis-framework/tools/Constitutional-compliance-enforcer.ts **Dependencies**: fs,
+path **Documentation**: [README.md](README.md) **Usage**:
 
-```text
+```
 // Example usage:
 
   const enforcer = new ConstitutionalComplianceEnforcer();
@@ -117,17 +117,17 @@ path __Documentation__: [README.md](README.md) __Usage__:
     }
   }
 ...
-```text
+```
 
-**Last Modified__: 2025-08-08T22:29:35.197Z
+**Last Modified**: 2025-08-08T22:29:35.197Z
 
 ### Continuous Compliance Monitor
 
-**Status__: stable __Description__: Continuous compliance monitoring that ensures Constitutional adherence at all times
-**Implementation__: /Users/nino/Workspace/02-local-dev/Aegis-framework/tools/continuous-compliance-monitor.ts
-**Dependencies__: fs, path, child_process __Documentation__: [README.md](README.md) __Usage__:
+**Status**: stable **Description**: Continuous compliance monitoring that ensures Constitutional adherence at all times
+**Implementation**: /Users/nino/Workspace/02-local-dev/Aegis-framework/tools/continuous-compliance-monitor.ts
+**Dependencies**: fs, path, child_process **Documentation**: [README.md](README.md) **Usage**:
 
-```text
+```
 // Example usage:
 
   const monitor = new ContinuousComplianceMonitor();
@@ -141,37 +141,37 @@ path __Documentation__: [README.md](README.md) __Usage__:
 
   // Check command line arguments
   const args = process....
-```text
+```
 
-**Last Modified__: 2025-08-08T22:28:09.794Z
+**Last Modified**: 2025-08-08T22:28:09.794Z
 
 ### Cursor Integration
 
-**Status__: alpha __Description__: Cursor-specific real-time evolution detection and conversation capture
-**Implementation__: /Users/nino/Workspace/02-local-dev/Aegis-framework/tools/cursor-integration.ts __Dependencies__: fs,
-path __Documentation__: [README.md](README.md) __Last Modified__: 2025-08-08T22:28:09.794Z
+**Status**: alpha **Description**: Cursor-specific real-time evolution detection and conversation capture
+**Implementation**: /Users/nino/Workspace/02-local-dev/Aegis-framework/tools/cursor-integration.ts **Dependencies**: fs,
+path **Documentation**: [README.md](README.md) **Last Modified**: 2025-08-08T22:28:09.794Z
 
 ### Cursor Realtime CLI
 
-**Status__: stable __Description__: CLI for managing Cursor real-time integration __Implementation__:
-/Users/nino/Workspace/02-local-dev/Aegis-framework/CLI/cursor-realtime-CLI.ts __Dependencies__: commander, fs, path, url
-**Documentation__: [README.md](README.md) __Last Modified__: 2025-08-08T22:28:09.773Z
+**Status**: stable **Description**: CLI for managing Cursor real-time integration **Implementation**:
+/Users/nino/Workspace/02-local-dev/Aegis-framework/CLI/cursor-realtime-CLI.ts **Dependencies**: commander, fs, path, url
+**Documentation**: [README.md](README.md) **Last Modified**: 2025-08-08T22:28:09.773Z
 
 ### Cursor Realtime Integration
 
-**Status__: stable __Description__: Real-time Cursor integration for live workflow detection __Implementation__:
-/Users/nino/Workspace/02-local-dev/Aegis-framework/tools/cursor-realtime-integration.ts __Dependencies__: fs, path, url,
-events __Documentation__:
+**Status**: stable **Description**: Real-time Cursor integration for live workflow detection **Implementation**:
+/Users/nino/Workspace/02-local-dev/Aegis-framework/tools/cursor-realtime-integration.ts **Dependencies**: fs, path, url,
+events **Documentation**:
 [docs/implementation/cursor-realtime-integration.md](docs/implementation/cursor-realtime-integration.md) __Last
 Modified__: 2025-08-08T22:28:09.794Z
 
 ### Destructive Action Protection
 
-**Status__: stable __Description__: Destructive action protection and validation system __Implementation__:
-/Users/nino/Workspace/02-local-dev/Aegis-framework/tools/destructive-action-protection.ts __Dependencies__: fs, path
-**Documentation__: [README.md](README.md) __Usage__:
+**Status**: stable **Description**: Destructive action protection and validation system **Implementation**:
+/Users/nino/Workspace/02-local-dev/Aegis-framework/tools/destructive-action-protection.ts **Dependencies**: fs, path
+**Documentation**: [README.md](README.md) **Usage**:
 
-```text
+```
 // Example usage:
 
   const protector = new DestructiveActionProtector();
@@ -183,45 +183,45 @@ Modified__: 2025-08-08T22:28:09.794Z
   }
 
  ...
-```text
+```
 
-**Last Modified__: 2025-08-08T22:28:09.794Z
+**Last Modified**: 2025-08-08T22:28:09.794Z
 
 ### Drift CLI
 
-**Status__: beta __Description__: CLI for drift event listing, review, and replay (human-in-the-loop)
-**Implementation__: /Users/nino/Workspace/02-local-dev/Aegis-framework/CLI/drift-CLI.ts __Dependencies__: fs, js-YAML
-**Documentation__: [README.md](README.md) __Usage__:
+**Status**: beta **Description**: CLI for drift event listing, review, and replay (human-in-the-loop)
+**Implementation**: /Users/nino/Workspace/02-local-dev/Aegis-framework/CLI/drift-CLI.ts **Dependencies**: fs, js-YAML
+**Documentation**: [README.md](README.md) **Usage**:
 
-```text
+```
 drift list [severity] | drift review <id> --approve | drift replay <blueprintId> --fix-mode=<mode>');
-```text
+```
 
-**Last Modified__: 2025-08-08T22:28:09.773Z
+**Last Modified**: 2025-08-08T22:28:09.773Z
 
 ### Drift Monitoring Dashboard
 
-**Status__: stable __Description__: Drift monitoring dashboard with team configuration support __Implementation__:
-/Users/nino/Workspace/02-local-dev/Aegis-framework/tools/drift-monitoring-dashboard.ts __Dependencies__: fs, path
-**Documentation__: [README.md](README.md) __Usage__:
+**Status**: stable **Description**: Drift monitoring dashboard with team configuration support **Implementation**:
+/Users/nino/Workspace/02-local-dev/Aegis-framework/tools/drift-monitoring-dashboard.ts **Dependencies**: fs, path
+**Documentation**: [README.md](README.md) **Usage**:
 
-```text
+```
 // Example usage:
 
   const dashboard = new DriftMonitoringDashboard();
   await dashboard.generateDashboard();
 ...
-```text
+```
 
-**Last Modified__: 2025-08-08T22:28:09.795Z
+**Last Modified**: 2025-08-08T22:28:09.795Z
 
 ### Enhanced Evolution Detector
 
-**Status__: stable __Description__: Enhanced evolution story detection with intelligence gap analysis
-**Implementation__: /Users/nino/Workspace/02-local-dev/Aegis-framework/tools/enhanced-evolution-detector.ts
-**Dependencies__: fs, path __Documentation__: [README.md](README.md) __Usage__:
+**Status**: stable **Description**: Enhanced evolution story detection with intelligence gap analysis
+**Implementation**: /Users/nino/Workspace/02-local-dev/Aegis-framework/tools/enhanced-evolution-detector.ts
+**Dependencies**: fs, path **Documentation**: [README.md](README.md) **Usage**:
 
-```text
+```
 // Example usage:
 
   const detector = new EnhancedEvolutionDetector();
@@ -233,17 +233,17 @@ drift list [severity] | drift review <id> --approve | drift replay <blueprintId>
   }
 
   const contextFi...
-```text
+```
 
-**Last Modified__: 2025-08-08T22:28:09.795Z
+**Last Modified**: 2025-08-08T22:28:09.795Z
 
 ### Enhanced Test Runner
 
-**Status__: stable __Description__: Enhanced test runner for intelligence features that handles TypeScript directly
-**Implementation__: /Users/nino/Workspace/02-local-dev/Aegis-framework/tools/enhanced-test-runner.ts __Dependencies__:
-fs, path, child_process __Documentation__: [README.md](README.md) __Usage__:
+**Status**: stable **Description**: Enhanced test runner for intelligence features that handles TypeScript directly
+**Implementation**: /Users/nino/Workspace/02-local-dev/Aegis-framework/tools/enhanced-test-runner.ts **Dependencies**:
+fs, path, child_process **Documentation**: [README.md](README.md) **Usage**:
 
-```text
+```
 // Example usage:
 
   const runner = new EnhancedTestRunner();
@@ -255,17 +255,17 @@ fs, path, child_process __Documentation__: [README.md](README.md) __Usage__:
     process.exit(1);
   }
 ...
-```text
+```
 
-**Last Modified__: 2025-08-08T22:28:09.795Z
+**Last Modified**: 2025-08-08T22:28:09.795Z
 
 ### Evidence Based Validation
 
-**Status__: stable __Description__: Evidence-based validation system for all framework intelligence claims
-**Implementation__: /Users/nino/Workspace/02-local-dev/Aegis-framework/tools/evidence-based-validation.ts
-**Dependencies__: fs, path, child_process __Documentation__: [README.md](README.md) __Usage__:
+**Status**: stable **Description**: Evidence-based validation system for all framework intelligence claims
+**Implementation**: /Users/nino/Workspace/02-local-dev/Aegis-framework/tools/evidence-based-validation.ts
+**Dependencies**: fs, path, child_process **Documentation**: [README.md](README.md) **Usage**:
 
-```text
+```
 // Example usage:
 
   const validation = new EvidenceBasedValidation();
@@ -275,33 +275,33 @@ fs, path, child_process __Documentation__: [README.md](README.md) __Usage__:
   } catch (error) {
     console.error('❌ Evidence-based validation failed:', error);
     process....
-```text
+```
 
-**Last Modified__: 2025-08-08T22:28:09.795Z
+**Last Modified**: 2025-08-08T22:28:09.795Z
 
 ### Evolution Learning System
 
-**Status__: stable __Description__: Actual evolution learning system that prevents repeat patterns __Implementation__:
-/Users/nino/Workspace/02-local-dev/Aegis-framework/tools/evolution-learning-system.ts __Dependencies__: fs, path
-**Documentation__: [README.md](README.md) __Usage__:
+**Status**: stable **Description**: Actual evolution learning system that prevents repeat patterns **Implementation**:
+/Users/nino/Workspace/02-local-dev/Aegis-framework/tools/evolution-learning-system.ts **Dependencies**: fs, path
+**Documentation**: [README.md](README.md) **Usage**:
 
-```text
+```
 // Example usage:
 
   const learningSystem = new EvolutionLearningSystem();
   await learningSystem.preventRepeatPatterns();
 ...
-```text
+```
 
-**Last Modified__: 2025-08-08T22:28:09.795Z
+**Last Modified**: 2025-08-08T22:28:09.795Z
 
 ### Framework Capability Mapper
 
-**Status__: experimental __Description__: Live capability mapping system that auto-discovers framework features
-**Implementation__: /Users/nino/Workspace/02-local-dev/Aegis-framework/tools/framework-capability-mapper.ts
-**Dependencies__: fs, path, child_process __Documentation__: [README.md](README.md) __Usage__:
+**Status**: experimental **Description**: Live capability mapping system that auto-discovers framework features
+**Implementation**: /Users/nino/Workspace/02-local-dev/Aegis-framework/tools/framework-capability-mapper.ts
+**Dependencies**: fs, path, child_process **Documentation**: [README.md](README.md) **Usage**:
 
-```text
+```
 // Example usage:
 
   const mapper = new FrameworkCapabilityMapper();
@@ -314,18 +314,18 @@ fs, path, child_process __Documentation__: [README.md](README.md) __Usage__:
 
     // Save JSON map
     const jsonPath = await mapper.saveCapab...
-```text
+```
 
-**Last Modified__: 2025-08-08T23:10:35.711Z
+**Last Modified**: 2025-08-08T23:10:35.711Z
 
 ### Framework Intelligence Certification
 
-**Status__: stable __Description__: Framework intelligence certification system that validates and certifies all
-intelligence claims __Implementation__:
-/Users/nino/Workspace/02-local-dev/Aegis-framework/tools/framework-intelligence-certification.ts __Dependencies__: fs,
-path, child_process __Documentation__: [README.md](README.md) __Usage__:
+**Status**: stable **Description**: Framework intelligence certification system that validates and certifies all
+intelligence claims **Implementation**:
+/Users/nino/Workspace/02-local-dev/Aegis-framework/tools/framework-intelligence-certification.ts **Dependencies**: fs,
+path, child_process **Documentation**: [README.md](README.md) **Usage**:
 
-```text
+```
 // Example usage:
 
   const certification = new FrameworkIntelligenceCertification();
@@ -334,48 +334,48 @@ path, child_process __Documentation__: [README.md](README.md) __Usage__:
     process.exit(report.overallCertificationStatus === 'not-certified' ? 1 : 0);
   } catch (error) {
     console.error('❌ Intelligence certification failed:', error);...
-```text
+```
 
-**Last Modified__: 2025-08-08T22:28:09.796Z
+**Last Modified**: 2025-08-08T22:28:09.796Z
 
 ### Generate Agent Instructions
 
-**Status__: alpha __Description__: CLI tool for generating versioned agent instructions __Implementation__:
-/Users/nino/Workspace/02-local-dev/Aegis-framework/CLI/generate-agent-instructions.ts __Documentation__:
-[README.md](README.md) __Usage__:
+**Status**: alpha **Description**: CLI tool for generating versioned agent instructions **Implementation**:
+/Users/nino/Workspace/02-local-dev/Aegis-framework/CLI/generate-agent-instructions.ts **Documentation**:
+[README.md](README.md) **Usage**:
 
-```text
+```
 ');
-```text
+```
 
-**Last Modified__: 2025-08-08T22:28:09.774Z
+**Last Modified**: 2025-08-08T22:28:09.774Z
 
 ### Generate Agent Instructions V2
 
-**Status__: alpha __Description__: Template-driven, agent-agnostic instruction generator __Implementation__:
-/Users/nino/Workspace/02-local-dev/Aegis-framework/CLI/generate-agent-instructions-v2.ts __Dependencies__: url, fs,
-path, js-YAML, EJS __Documentation__: [README.md](README.md) __Usage__:
+**Status**: alpha **Description**: Template-driven, agent-agnostic instruction generator **Implementation**:
+/Users/nino/Workspace/02-local-dev/Aegis-framework/CLI/generate-agent-instructions-v2.ts **Dependencies**: url, fs,
+path, js-YAML, EJS **Documentation**: [README.md](README.md) **Usage**:
 
-```text
+```
 ts-node CLI/generate-agent-instructions-v2.ts <agent-id>');
-```text
+```
 
-**Last Modified__: 2025-08-08T22:28:09.773Z
+**Last Modified**: 2025-08-08T22:28:09.773Z
 
 ### Generate Cursor Instructions
 
-**Status__: alpha __Description__: Cursor-specific instruction generator with real-time detection integration
-**Implementation__: /Users/nino/Workspace/02-local-dev/Aegis-framework/CLI/generate-cursor-instructions.ts
-**Dependencies__: fs, path, url, js-YAML, EJS __Documentation__: [README.md](README.md) __Last Modified__:
+**Status**: alpha **Description**: Cursor-specific instruction generator with real-time detection integration
+**Implementation**: /Users/nino/Workspace/02-local-dev/Aegis-framework/CLI/generate-cursor-instructions.ts
+**Dependencies**: fs, path, url, js-YAML, EJS **Documentation**: [README.md](README.md) **Last Modified**:
 2025-08-08T22:28:09.774Z
 
 ### Intelligent Pattern Detector
 
-**Status__: stable __Description__: Intelligent pattern recognition system for systematic issue detection
-**Implementation__: /Users/nino/Workspace/02-local-dev/Aegis-framework/tools/intelligent-pattern-detector.ts
-**Dependencies__: fs, path, glob __Documentation__: [README.md](README.md) __Usage__:
+**Status**: stable **Description**: Intelligent pattern recognition system for systematic issue detection
+**Implementation**: /Users/nino/Workspace/02-local-dev/Aegis-framework/tools/intelligent-pattern-detector.ts
+**Dependencies**: fs, path, glob **Documentation**: [README.md](README.md) **Usage**:
 
-```text
+```
 // Example usage:
 
   const detector = new IntelligentPatternDetector();
@@ -387,24 +387,24 @@ ts-node CLI/generate-agent-instructions-v2.ts <agent-id>');
   }
 
   const violationFile ...
-```text
+```
 
-**Last Modified__: 2025-08-08T22:28:09.796Z
+**Last Modified**: 2025-08-08T22:28:09.796Z
 
 ### Intent Enforcement Engine
 
-**Status__: stable __Description__: Real-time intent enforcement and agent drift prevention that catches systematic
-issues __Implementation__: /Users/nino/Workspace/02-local-dev/Aegis-framework/tools/intent-enforcement-engine.ts
-**Dependencies__: child_process, fs, path __Documentation__: [README.md](README.md) __Last Modified__:
+**Status**: stable **Description**: Real-time intent enforcement and agent drift prevention that catches systematic
+issues **Implementation**: /Users/nino/Workspace/02-local-dev/Aegis-framework/tools/intent-enforcement-engine.ts
+**Dependencies**: child_process, fs, path **Documentation**: [README.md](README.md) **Last Modified**:
 2025-08-08T23:04:48.989Z
 
 ### Pre Commit Hook
 
-**Status__: stable __Description__: Pre-commit hook with team configuration support __Implementation__:
-/Users/nino/Workspace/02-local-dev/Aegis-framework/tools/pre-commit-hook.ts __Dependencies__: child_process, fs, path
-**Documentation__: [README.md](README.md) __Usage__:
+**Status**: stable **Description**: Pre-commit hook with team configuration support **Implementation**:
+/Users/nino/Workspace/02-local-dev/Aegis-framework/tools/pre-commit-hook.ts **Dependencies**: child_process, fs, path
+**Documentation**: [README.md](README.md) **Usage**:
 
-```text
+```
 // Example usage:
 
   const hook = new PreCommitHook();
@@ -414,17 +414,17 @@ issues __Implementation__: /Users/nino/Workspace/02-local-dev/Aegis-framework/to
     process.exit(1);
   }
 ...
-```text
+```
 
-**Last Modified__: 2025-08-08T22:28:09.796Z
+**Last Modified**: 2025-08-08T22:28:09.796Z
 
 ### Predictive Compliance Monitor
 
-**Status__: stable __Description__: Predictive compliance monitoring that prevents Constitutional violations before they
-occur __Implementation__: /Users/nino/Workspace/02-local-dev/Aegis-framework/tools/predictive-compliance-monitor.ts
-**Dependencies__: fs, path, child_process __Documentation__: [README.md](README.md) __Usage__:
+**Status**: stable **Description**: Predictive compliance monitoring that prevents Constitutional violations before they
+occur **Implementation**: /Users/nino/Workspace/02-local-dev/Aegis-framework/tools/predictive-compliance-monitor.ts
+**Dependencies**: fs, path, child_process **Documentation**: [README.md](README.md) **Usage**:
 
-```text
+```
 // Example usage:
 
   const monitor = new PredictiveComplianceMonitor();
@@ -436,24 +436,24 @@ occur __Implementation__: /Users/nino/Workspace/02-local-dev/Aegis-framework/too
     process.exit(1);
   }
 ...
-```text
+```
 
-**Last Modified__: 2025-08-08T22:28:09.797Z
+**Last Modified**: 2025-08-08T22:28:09.797Z
 
 ### Realtime Evolution Detection
 
-**Status__: stable __Description__: Real-time evolution trigger detection from AI conversation context
-**Implementation__: /Users/nino/Workspace/02-local-dev/Aegis-framework/tools/realtime-evolution-detection.ts
-**Dependencies__: fs, path __Documentation__: [README.md](README.md) __Last Modified__: 2025-08-08T22:28:09.797Z
+**Status**: stable **Description**: Real-time evolution trigger detection from AI conversation context
+**Implementation**: /Users/nino/Workspace/02-local-dev/Aegis-framework/tools/realtime-evolution-detection.ts
+**Dependencies**: fs, path **Documentation**: [README.md](README.md) **Last Modified**: 2025-08-08T22:28:09.797Z
 
 ### Systematic Prevention Validator
 
-**Status__: stable __Description__: Systematic prevention validation framework that ensures all prevention mechanisms
-work correctly __Implementation__:
-/Users/nino/Workspace/02-local-dev/Aegis-framework/tools/systematic-prevention-validator.ts __Dependencies__: fs, path,
-child_process __Documentation__: [README.md](README.md) __Usage__:
+**Status**: stable **Description**: Systematic prevention validation framework that ensures all prevention mechanisms
+work correctly **Implementation**:
+/Users/nino/Workspace/02-local-dev/Aegis-framework/tools/systematic-prevention-validator.ts **Dependencies**: fs, path,
+child_process **Documentation**: [README.md](README.md) **Usage**:
 
-```text
+```
 // Example usage:
 
   const validator = new SystematicPreventionValidator();
@@ -465,17 +465,17 @@ child_process __Documentation__: [README.md](README.md) __Usage__:
     process.exit(1);
   }
 ...
-```text
+```
 
-**Last Modified__: 2025-08-08T22:28:09.797Z
+**Last Modified**: 2025-08-08T22:28:09.797Z
 
 ### Test Cursor Detection
 
-**Status__: alpha __Description__: Test script for Cursor-specific real-time evolution detection __Implementation__:
-/Users/nino/Workspace/02-local-dev/Aegis-framework/tools/test-cursor-detection.ts __Dependencies__: fs, path, url
-**Documentation__: [README.md](README.md) __Usage__:
+**Status**: alpha **Description**: Test script for Cursor-specific real-time evolution detection **Implementation**:
+/Users/nino/Workspace/02-local-dev/Aegis-framework/tools/test-cursor-detection.ts **Dependencies**: fs, path, url
+**Documentation**: [README.md](README.md) **Usage**:
 
-```text
+```
 // Example usage:
 
   try {
@@ -486,17 +486,17 @@ child_process __Documentation__: [README.md](README.md) __Usage__:
     process.exit(1);
   }
 ...
-```text
+```
 
-**Last Modified__: 2025-08-08T22:28:09.797Z
+**Last Modified**: 2025-08-08T22:28:09.797Z
 
 ### Validate Annotations
 
-**Status__: stable __Description__: Annotation validation with team configuration support __Implementation__:
-/Users/nino/Workspace/02-local-dev/Aegis-framework/tools/validate-annotations.ts __Dependencies__: fs, path
-**Documentation__: [README.md](README.md) __Usage__:
+**Status**: stable **Description**: Annotation validation with team configuration support **Implementation**:
+/Users/nino/Workspace/02-local-dev/Aegis-framework/tools/validate-annotations.ts **Dependencies**: fs, path
+**Documentation**: [README.md](README.md) **Usage**:
 
-```text
+```
 // Example usage:
 
   const validator = new AnnotationValidator();
@@ -508,29 +508,29 @@ child_process __Documentation__: [README.md](README.md) __Usage__:
     process.exit(1);
   }
 ...
-```text
+```
 
-**Last Modified__: 2025-08-08T22:28:09.797Z
+**Last Modified**: 2025-08-08T22:28:09.797Z
 
 ### Validate Output Fidelity
 
-**Status__: stable __Description__: Ensure generated outputs match reference targets exactly __Implementation__:
-/Users/nino/Workspace/02-local-dev/Aegis-framework/tools/validate-output-fidelity.ts __Dependencies__: fs, path
-**Documentation__: [README.md](README.md) __Last Modified__: 2025-08-08T22:28:09.798Z
+**Status**: stable **Description**: Ensure generated outputs match reference targets exactly **Implementation**:
+/Users/nino/Workspace/02-local-dev/Aegis-framework/tools/validate-output-fidelity.ts **Dependencies**: fs, path
+**Documentation**: [README.md](README.md) **Last Modified**: 2025-08-08T22:28:09.798Z
 
 ### Validate Template Quality
 
-**Status__: stable __Description__: Prevent HTML encoding artifacts and ensure template quality with team configuration
-support __Implementation__: /Users/nino/Workspace/02-local-dev/Aegis-framework/tools/validate-template-quality.ts
-**Dependencies__: fs, path, url __Documentation__: [README.md](README.md) __Last Modified__: 2025-08-08T22:28:09.798Z
+**Status**: stable **Description**: Prevent HTML encoding artifacts and ensure template quality with team configuration
+support **Implementation**: /Users/nino/Workspace/02-local-dev/Aegis-framework/tools/validate-template-quality.ts
+**Dependencies**: fs, path, url **Documentation**: [README.md](README.md) **Last Modified**: 2025-08-08T22:28:09.798Z
 
 ### Validate Version Consistency
 
-**Status__: stable __Description__: Comprehensive version consistency validation to prevent documentation drift
-**Implementation__: /Users/nino/Workspace/02-local-dev/Aegis-framework/tools/validate-version-consistency.ts
-**Dependencies__: fs, path, child_process __Documentation__: [README.md](README.md) __Usage__:
+**Status**: stable **Description**: Comprehensive version consistency validation to prevent documentation drift
+**Implementation**: /Users/nino/Workspace/02-local-dev/Aegis-framework/tools/validate-version-consistency.ts
+**Dependencies**: fs, path, child_process **Documentation**: [README.md](README.md) **Usage**:
 
-```text
+```
 // Example usage:
 
   const validator = new VersionConsistencyValidator();
@@ -545,165 +545,165 @@ support __Implementation__: /Users/nino/Workspace/02-local-dev/Aegis-framework/t
     }
   }
 ...
-```text
+```
 
-**Last Modified__: 2025-08-08T22:28:09.798Z
+**Last Modified**: 2025-08-08T22:28:09.798Z
 
 ## CORE (18)
 
 ### Adapter Interface
 
-**Status__: beta __Description__: Adapter interface for multi-agent, handoff, and dependency resolution
-**Implementation__: /Users/nino/Workspace/02-local-dev/Aegis-framework/framework/adapters/adapter-interface.ts
-**Documentation__: [README.md](README.md) __Last Modified__: 2025-08-08T22:28:09.785Z
+**Status**: beta **Description**: Adapter interface for multi-agent, handoff, and dependency resolution
+**Implementation**: /Users/nino/Workspace/02-local-dev/Aegis-framework/framework/adapters/adapter-interface.ts
+**Documentation**: [README.md](README.md) **Last Modified**: 2025-08-08T22:28:09.785Z
 
 ### Advanced Observability Engine
 
-**Status__: alpha __Description__: Implement advanced observability and Telemetry for framework intelligence
-**Implementation__:
+**Status**: alpha **Description**: Implement advanced observability and Telemetry for framework intelligence
+**Implementation**:
 /Users/nino/Workspace/02-local-dev/Aegis-framework/framework/observability/advanced-observability-engine.ts
-**Dependencies__: fs, path __Documentation__: [README.md](README.md) __Last Modified__: 2025-08-08T22:28:09.789Z
+**Dependencies**: fs, path **Documentation**: [README.md](README.md) **Last Modified**: 2025-08-08T22:28:09.789Z
 
 ### Auto Repair Ml Engine
 
-**Status__: stable __Description__: Scaffold for ML-driven Blueprint auto-repair engine __Implementation__:
-/Users/nino/Workspace/02-local-dev/Aegis-framework/framework/healing/auto-repair-ml-engine.ts __Documentation__:
-[docs/implementation/auto-repair-ml-engine.md](docs/implementation/auto-repair-ml-engine.md) __Last Modified__:
+**Status**: stable **Description**: Scaffold for ML-driven Blueprint auto-repair engine **Implementation**:
+/Users/nino/Workspace/02-local-dev/Aegis-framework/framework/healing/auto-repair-ml-engine.ts **Documentation**:
+[docs/implementation/auto-repair-ml-engine.md](docs/implementation/auto-repair-ml-engine.md) **Last Modified**:
 2025-08-08T22:28:09.787Z
 
 ### Blueprint Apprenticeship Schema Extension
 
-**Status__: stable __Description__: Blueprint schema extension for apprenticeship scaffolds __Implementation__:
+**Status**: stable **Description**: Blueprint schema extension for apprenticeship scaffolds **Implementation**:
 /Users/nino/Workspace/02-local-dev/Aegis-framework/framework/Blueprint-apprenticeship-schema-extension.ts
-**Documentation__: [README.md](README.md) __Last Modified__: 2025-08-06T01:10:07.675Z
+**Documentation**: [README.md](README.md) **Last Modified**: 2025-08-06T01:10:07.675Z
 
 ### Blueprint Multiagent Schema Extension
 
-**Status__: beta __Description__: Blueprint schema extension for multi-agent orchestration and coordination
-**Implementation__:
-/Users/nino/Workspace/02-local-dev/Aegis-framework/framework/Blueprint-multiagent-schema-extension.ts __Documentation__:
-[README.md](README.md) __Last Modified__: 2025-08-08T22:28:09.785Z
+**Status**: beta **Description**: Blueprint schema extension for multi-agent orchestration and coordination
+**Implementation**:
+/Users/nino/Workspace/02-local-dev/Aegis-framework/framework/Blueprint-multiagent-schema-extension.ts **Documentation**:
+[README.md](README.md) **Last Modified**: 2025-08-08T22:28:09.785Z
 
 ### ConstitutionalConstitutional Reflex Engine
 
-**Status__: stable __Description__: Constitutional reflex engine for real-time semantic interrupt processing
-**Implementation__:
+**Status**: stable **Description**: Constitutional reflex engine for real-time semantic interrupt processing
+**Implementation**:
 /Users/nino/Workspace/02-local-dev/Aegis-framework/framework/governance/Constitutional-reflex-engine.ts
-**Documentation__: [README.md](README.md) __Last Modified__: 2025-08-08T22:28:09.787Z
+**Documentation**: [README.md](README.md) **Last Modified**: 2025-08-08T22:28:09.787Z
 
 ### Cross Framework Learning System
 
-**Status__: experimental __Description__: Implement cross-framework pattern learning and knowledge synthesis
-**Implementation__:
+**Status**: experimental **Description**: Implement cross-framework pattern learning and knowledge synthesis
+**Implementation**:
 /Users/nino/Workspace/02-local-dev/Aegis-framework/framework/learning/cross-framework-learning-system.ts
-**Dependencies__: fs, path __Documentation__: [README.md](README.md) __Last Modified__: 2025-08-08T22:28:09.788Z
+**Dependencies**: fs, path **Documentation**: [README.md](README.md) **Last Modified**: 2025-08-08T22:28:09.788Z
 
 ### Democratic Amendment Engine
 
-**Status__: beta __Description__: Implement democratic governance for Constitutional amendments __Implementation__:
-/Users/nino/Workspace/02-local-dev/Aegis-framework/framework/governance/democratic-amendment-engine.ts __Dependencies__:
-fs, path, crypto __Documentation__: [README.md](README.md) __Last Modified__: 2025-08-08T22:28:09.787Z
+**Status**: beta **Description**: Implement democratic governance for Constitutional amendments **Implementation**:
+/Users/nino/Workspace/02-local-dev/Aegis-framework/framework/governance/democratic-amendment-engine.ts **Dependencies**:
+fs, path, crypto **Documentation**: [README.md](README.md) **Last Modified**: 2025-08-08T22:28:09.787Z
 
 ### Foreground Hang Prevention
 
-**Status__: stable __Description__: Prevent foreground process hangs in LLM-agent development loops __Implementation__:
-/Users/nino/Workspace/02-local-dev/Aegis-framework/framework/governance/foreground-hang-prevention.ts __Dependencies__:
-fs, path, child_process __Documentation__: [README.md](README.md) __Last Modified__: 2025-08-08T23:04:48.989Z
+**Status**: stable **Description**: Prevent foreground process hangs in LLM-agent development loops **Implementation**:
+/Users/nino/Workspace/02-local-dev/Aegis-framework/framework/governance/foreground-hang-prevention.ts **Dependencies**:
+fs, path, child_process **Documentation**: [README.md](README.md) **Last Modified**: 2025-08-08T23:04:48.989Z
 
 ### Ghost Mentor Plugin
 
-**Status__: stable __Description__: Ghost Mentor plugin for apprenticeship scaffolds __Implementation__:
-/Users/nino/Workspace/02-local-dev/Aegis-framework/framework/mentors/ghost-mentor-plugin.ts __Documentation__:
-[README.md](README.md) __Last Modified__: 2025-08-06T01:11:35.375Z
+**Status**: stable **Description**: Ghost Mentor plugin for apprenticeship scaffolds **Implementation**:
+/Users/nino/Workspace/02-local-dev/Aegis-framework/framework/mentors/ghost-mentor-plugin.ts **Documentation**:
+[README.md](README.md) **Last Modified**: 2025-08-06T01:11:35.375Z
 
 ### Intelligent Changelog
 
-**Status__: alpha __Description__: Implement intelligent changelog automation with AI-powered analysis
-**Implementation__: /Users/nino/Workspace/02-local-dev/Aegis-framework/framework/learning/intelligent-changelog.ts
-**Dependencies__: fs, path, child_process __Documentation__: [README.md](README.md) __Last Modified__:
+**Status**: alpha **Description**: Implement intelligent changelog automation with AI-powered analysis
+**Implementation**: /Users/nino/Workspace/02-local-dev/Aegis-framework/framework/learning/intelligent-changelog.ts
+**Dependencies**: fs, path, child_process **Documentation**: [README.md](README.md) **Last Modified**:
 2025-08-08T22:28:09.788Z
 
 ### Memory Core
 
-**Status__: stable __Description__: Core memory interfaces and base classes for Aegis Memory Subsystem
-**Implementation__: /Users/nino/Workspace/02-local-dev/Aegis-framework/framework/memory/memory-core.ts __Dependencies__:
-zod __Documentation__: [README.md](README.md) __Last Modified__: 2025-08-08T22:28:09.789Z
+**Status**: stable **Description**: Core memory interfaces and base classes for Aegis Memory Subsystem
+**Implementation**: /Users/nino/Workspace/02-local-dev/Aegis-framework/framework/memory/memory-core.ts **Dependencies**:
+zod **Documentation**: [README.md](README.md) **Last Modified**: 2025-08-08T22:28:09.789Z
 
 ### Pattern Recognition Engine
 
-**Status__: beta __Description__: Implement intelligent pattern recognition for Constitutional drift prevention
-**Implementation__: /Users/nino/Workspace/02-local-dev/Aegis-framework/framework/learning/pattern-recognition-engine.ts
-**Dependencies__: fs, path __Documentation__: [README.md](README.md) __Last Modified__: 2025-08-08T22:28:09.789Z
+**Status**: beta **Description**: Implement intelligent pattern recognition for Constitutional drift prevention
+**Implementation**: /Users/nino/Workspace/02-local-dev/Aegis-framework/framework/learning/pattern-recognition-engine.ts
+**Dependencies**: fs, path **Documentation**: [README.md](README.md) **Last Modified**: 2025-08-08T22:28:09.789Z
 
 ### Predictive Enforcement
 
-**Status__: beta __Description__: Implement predictive enforcement based on learned patterns __Implementation__:
-/Users/nino/Workspace/02-local-dev/Aegis-framework/framework/learning/predictive-enforcement.ts __Dependencies__: fs,
-path __Documentation__: [README.md](README.md) __Last Modified__: 2025-08-08T22:28:09.789Z
+**Status**: beta **Description**: Implement predictive enforcement based on learned patterns **Implementation**:
+/Users/nino/Workspace/02-local-dev/Aegis-framework/framework/learning/predictive-enforcement.ts **Dependencies**: fs,
+path **Documentation**: [README.md](README.md) **Last Modified**: 2025-08-08T22:28:09.789Z
 
 ### Self Healing Blueprint Engine
 
-**Status__: alpha __Description__: Implement autonomous Blueprint repair and validation enhancement __Implementation__:
-/Users/nino/Workspace/02-local-dev/Aegis-framework/framework/healing/self-healing-Blueprint-engine.ts __Dependencies__:
-fs, path, js-YAML __Documentation__: [README.md](README.md) __Last Modified__: 2025-08-08T22:28:09.787Z
+**Status**: alpha **Description**: Implement autonomous Blueprint repair and validation enhancement **Implementation**:
+/Users/nino/Workspace/02-local-dev/Aegis-framework/framework/healing/self-healing-Blueprint-engine.ts **Dependencies**:
+fs, path, js-YAML **Documentation**: [README.md](README.md) **Last Modified**: 2025-08-08T22:28:09.787Z
 
 ### Self Healing Governance
 
-**Status__: stable __Description__: Actual self-healing governance that prevents repeat failures __Implementation__:
-/Users/nino/Workspace/02-local-dev/Aegis-framework/framework/healing/self-healing-governance.ts __Dependencies__: fs,
-path __Documentation__: [README.md](README.md) __Last Modified__: 2025-08-08T22:28:09.788Z
+**Status**: stable **Description**: Actual self-healing governance that prevents repeat failures **Implementation**:
+/Users/nino/Workspace/02-local-dev/Aegis-framework/framework/healing/self-healing-governance.ts **Dependencies**: fs,
+path **Documentation**: [README.md](README.md) **Last Modified**: 2025-08-08T22:28:09.788Z
 
 ### Semantic Interrupt Detector
 
-**Status__: stable __Description__: Semantic interrupt detection for agent drift prevention and intent realignment
-**Implementation__:
-/Users/nino/Workspace/02-local-dev/Aegis-framework/framework/governance/semantic-interrupt-detector.ts __Dependencies__:
-fs, path __Documentation__: [README.md](README.md) __Last Modified__: 2025-08-08T22:28:09.787Z
+**Status**: stable **Description**: Semantic interrupt detection for agent drift prevention and intent realignment
+**Implementation**:
+/Users/nino/Workspace/02-local-dev/Aegis-framework/framework/governance/semantic-interrupt-detector.ts **Dependencies**:
+fs, path **Documentation**: [README.md](README.md) **Last Modified**: 2025-08-08T22:28:09.787Z
 
 ### Types
 
-**Status__: stable __Description__: Type definitions for ML-driven Blueprint auto-repair engine __Implementation__:
-/Users/nino/Workspace/02-local-dev/Aegis-framework/framework/healing/types.ts __Documentation__: [README.md](README.md)
-**Last Modified__: 2025-08-06T00:18:14.041Z
+**Status**: stable **Description**: Type definitions for ML-driven Blueprint auto-repair engine **Implementation**:
+/Users/nino/Workspace/02-local-dev/Aegis-framework/framework/healing/types.ts **Documentation**: [README.md](README.md)
+**Last Modified**: 2025-08-06T00:18:14.041Z
 
 ## GOVERNANCE (4)
 
 ### ConstitutionalConstitutional Reflex Engine
 
-**Status__: stable __Description__: Constitutional reflex engine for real-time semantic interrupt processing
-**Implementation__:
+**Status**: stable **Description**: Constitutional reflex engine for real-time semantic interrupt processing
+**Implementation**:
 /Users/nino/Workspace/02-local-dev/Aegis-framework/framework/governance/Constitutional-reflex-engine.ts
-**Documentation__: [README.md](README.md) __Last Modified__: 2025-08-08T22:28:09.787Z
+**Documentation**: [README.md](README.md) **Last Modified**: 2025-08-08T22:28:09.787Z
 
 ### Democratic Amendment Engine
 
-**Status__: beta __Description__: Implement democratic governance for Constitutional amendments __Implementation__:
-/Users/nino/Workspace/02-local-dev/Aegis-framework/framework/governance/democratic-amendment-engine.ts __Dependencies__:
-fs, path, crypto __Documentation__: [README.md](README.md) __Last Modified__: 2025-08-08T22:28:09.787Z
+**Status**: beta **Description**: Implement democratic governance for Constitutional amendments **Implementation**:
+/Users/nino/Workspace/02-local-dev/Aegis-framework/framework/governance/democratic-amendment-engine.ts **Dependencies**:
+fs, path, crypto **Documentation**: [README.md](README.md) **Last Modified**: 2025-08-08T22:28:09.787Z
 
 ### Foreground Hang Prevention
 
-**Status__: stable __Description__: Prevent foreground process hangs in LLM-agent development loops __Implementation__:
-/Users/nino/Workspace/02-local-dev/Aegis-framework/framework/governance/foreground-hang-prevention.ts __Dependencies__:
-fs, path, child_process __Documentation__: [README.md](README.md) __Last Modified__: 2025-08-08T23:04:48.989Z
+**Status**: stable **Description**: Prevent foreground process hangs in LLM-agent development loops **Implementation**:
+/Users/nino/Workspace/02-local-dev/Aegis-framework/framework/governance/foreground-hang-prevention.ts **Dependencies**:
+fs, path, child_process **Documentation**: [README.md](README.md) **Last Modified**: 2025-08-08T23:04:48.989Z
 
 ### Semantic Interrupt Detector
 
-**Status__: stable __Description__: Semantic interrupt detection for agent drift prevention and intent realignment
-**Implementation__:
-/Users/nino/Workspace/02-local-dev/Aegis-framework/framework/governance/semantic-interrupt-detector.ts __Dependencies__:
-fs, path __Documentation__: [README.md](README.md) __Last Modified__: 2025-08-08T22:28:09.787Z
+**Status**: stable **Description**: Semantic interrupt detection for agent drift prevention and intent realignment
+**Implementation**:
+/Users/nino/Workspace/02-local-dev/Aegis-framework/framework/governance/semantic-interrupt-detector.ts **Dependencies**:
+fs, path **Documentation**: [README.md](README.md) **Last Modified**: 2025-08-08T22:28:09.787Z
 
 ## INTEGRATION (2)
 
 ### memory_operation_failed
 
-**Status__: stable __Description__: Notify governance system of violation __Implementation__:
-/Users/nino/Workspace/02-local-dev/Aegis-framework/blueprints/memory-governance/Blueprint.YAML __Documentation__:
-[README.md](README.md) __Last Modified__: 2025-08-08T22:28:09.772Z
+**Status**: stable **Description**: Notify governance system of violation **Implementation**:
+/Users/nino/Workspace/02-local-dev/Aegis-framework/blueprints/memory-governance/Blueprint.YAML **Documentation**:
+[README.md](README.md) **Last Modified**: 2025-08-08T22:28:09.772Z
 
 ### Public Tournament Viewer
 
-**Status__: stable __Description__: Blueprint: feat-public-viewing __Implementation__:
-/Users/nino/Workspace/02-local-dev/Aegis-framework/blueprints/feat-public-viewing/Blueprint.YAML __Documentation__:
-[README.md](README.md) __Last Modified__: 2025-08-08T22:28:09.772Z
+**Status**: stable **Description**: Blueprint: feat-public-viewing **Implementation**:
+/Users/nino/Workspace/02-local-dev/Aegis-framework/blueprints/feat-public-viewing/Blueprint.YAML **Documentation**:
+[README.md](README.md) **Last Modified**: 2025-08-08T22:28:09.772Z

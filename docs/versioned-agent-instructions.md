@@ -15,37 +15,37 @@ AI agents based on the current framework state and capabilities.
 
 ### 1. Instruction Generator CLI
 
-- __File__: `CLI/generate-agent-instructions.cjs`
-- __Purpose__: Automatically generates versioned instructions for AI agents
-- __Features__: Agent-specific guidance, framework feature detection, Constitutional compliance
+- **File**: `CLI/generate-agent-instructions.cjs`
+- **Purpose**: Automatically generates versioned instructions for AI agents
+- **Features**: Agent-specific guidance, framework feature detection, Constitutional compliance
 
 ### 2. Generated Instructions
 
-- __Location__: `framework/versions/instructions-*-v{version}.md`
-- __Format__: Markdown with Constitutional metadata annotations
-- __Versioning__: Matches current framework version from `VERSION` file
+- **Location**: `framework/versions/instructions-*-v{version}.md`
+- **Format**: Markdown with Constitutional metadata annotations
+- **Versioning**: Matches current framework version from `VERSION` file
 
 ## 🚀 Usage
 
 ### Generate Instructions for All Agents
 
-```bash
+```
 node CLI/generate-agent-instructions.cjs all
-```text
+```
 
 ### Generate Instructions for Specific Agent
 
-```bash
+```
 node CLI/generate-agent-instructions.cjs GitHub-copilot
 node CLI/generate-agent-instructions.cjs claude-3-5-sonnet
 node CLI/generate-agent-instructions.cjs cursor
-```text
+```
 
 ### List Available Versions
 
-```bash
+```
 node CLI/generate-agent-instructions.cjs list
-```text
+```
 
 ## 📄 Generated Content Structure
 
@@ -174,7 +174,7 @@ Reads from `framework/agent-manifest.JSON`:
 
 ---
 
-**Status__: ✅ Implemented and Operational  
-**Version__: 1.2.1  
-**Last Updated__: August 6, 2025  
-**Framework Authority__: Aegis Framework Constitution
+**Status**: ✅ Implemented and Operational  
+**Version**: 1.2.1  
+**Last Updated**: August 6, 2025  
+**Framework Authority**: Aegis Framework Constitution

@@ -53,7 +53,7 @@ must align with the [Aegis Framework Constitution](CONSTITUTION.md).
 
 ### Local Development Setup
 
-```bash
+```
 
 ## Fork and clone the repository
 
@@ -78,7 +78,7 @@ npm run validate
 
 ### Development Workflow
 
-```bash
+```
 
 ## Before making changes - check current compliance
 
@@ -130,7 +130,7 @@ All contributions MUST maintain constitutional compliance:
 
 - Ensure constitutional annotation compliance:
 
-```yaml
+```
 
 ## blueprint.yaml
 
@@ -162,7 +162,7 @@ metadata:
 
 ## 🧪 Test Requirements
 
-```bash
+```
 
 ## Run constitutional compliance before PR
 

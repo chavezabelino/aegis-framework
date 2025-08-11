@@ -33,5 +33,5 @@
 ## 5) Done When
 
 - [ ] Contracts pass locally
-- [ ] Redirects accept `/login` __or__ `/(auth)/login`
+- [ ] Redirects accept `/login` **or** `/(auth)/login`
 - [ ] plan-gate passes

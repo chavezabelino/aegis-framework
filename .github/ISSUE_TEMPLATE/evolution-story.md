@@ -67,7 +67,7 @@ assignees: []
 
 ---
 
-📖 __Context__: Evolution Stories help the framework learn from real-world usage and evolve constitutionally. Your
+📖 **Context**: Evolution Stories help the framework learn from real-world usage and evolve constitutionally. Your
 experience matters!
 
-🏛️ __Constitutional Reference__: See [Framework Constitution](../CONSTITUTION.md) for governance principles
+🏛️ **Constitutional Reference**: See [Framework Constitution](../CONSTITUTION.md) for governance principles

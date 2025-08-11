@@ -11,7 +11,7 @@
 
 ## 📊 Implementation Metadata
 
-```yaml
+```
 implementation:
   id: "Constitutional-hive-mind-roadmap"
   parentVision: "Constitutional-hive-mind"
@@ -33,54 +33,54 @@ implementation:
   constitutionalAuthority:
     - "Article XI: Field-Driven Abstraction Principle"
     - "Future Article XII: Constitutional Telemetry and Learning"
-```text
+```
 
 ---
 
-## 🎯 __Vision → Reality: No-BS Implementation Path**
+## 🎯 **Vision → Reality: No-BS Implementation Path**
 
 Transform the Constitutional Hive Mind from "poetic vision" to a running system using:
 
-- __Append-only learning ledger__ in Postgres for control plane
-- __Optional event streaming__ when scale/latency demand it
-- __OLAP__ for pattern mining and intelligence
-- __Cheap object store__ for bulky evidence payloads
+- **Append-only learning ledger** in Postgres for control plane
+- **Optional event streaming** when scale/latency demand it
+- **OLAP** for pattern mining and intelligence
+- **Cheap object store** for bulky evidence payloads
 
 **Start simple, upgrade when the data shape proves it.**
 
 ---
 
-## 🏗️ __System Architecture Decision**
+## 🏗️ **System Architecture Decision**
 
-### __Phase 0 (Proof/MVP):__ Boring & Reliable
+### **Phase 0 (Proof/MVP):** Boring & Reliable
 
-- __No broker__ - HTTP ingest → Neon Postgres (control-plane)
-- __S3-compatible object store__ for large artifacts
-- __Daily batch jobs__ for pattern mining
-- __Cheap, reliable, auditable**
+- **No broker** - HTTP ingest → Neon Postgres (control-plane)
+- **S3-compatible object store** for large artifacts
+- **Daily batch jobs** for pattern mining
+- **Cheap, reliable, auditable**
 
-### __Phase 1 (Scale/Real-time):__ Smart Upgrade
+### **Phase 1 (Scale/Real-time):** Smart Upgrade
 
-- __NATS JetStream__ or __Redpanda__ for streaming
-- __Postgres as system of record__ (ledger + registry)
-- __ClickHouse OLAP__ for pattern mining
-- __Constitutional DNA__ published as versioned package
+- **NATS JetStream** or **Redpanda** for streaming
+- **Postgres as system of record** (ledger + registry)
+- **ClickHouse OLAP** for pattern mining
+- **Constitutional DNA** published as versioned package
 
-### __Always:__ Constitutional Governance
+### **Always:** Constitutional Governance
 
-- __Versioned Constitutional DNA__ published as package/manifest
-- __Consensus tracking__ on-ledger
-- __All changes PR'd__ to repo for human review
+- **Versioned Constitutional DNA** published as package/manifest
+- **Consensus tracking** on-ledger
+- **All changes PR'd** to repo for human review
 
 ---
 
-## 📦 __Core System Components**
+## 📦 **Core System Components**
 
-### __1. Node SDK (Client Side)**
+### **1. Node SDK (Client Side)**
 
-**Purpose__: Collect signals (violations, gaps, friction), anonymize, sign, and ship.
+**Purpose**: Collect signals (violations, gaps, friction), anonymize, sign, and ship.
 
-```typescript
+```
 // packages/Aegis-node-sdk/src/types.ts
 export type NodeId = `node_${string}`
 export type DnaVersion = `dna_${string}`
@@ -117,24 +117,24 @@ export interface FrictionSignal {
 }
 
 export type LearningSignal = ViolationSignal | GapSignal | FrictionSignal
-```text
+```
 
 **Key Behaviors:**
 
-- __Offline buffer__ → retry with exponential backoff
-- __Anonymization__: salted hash for user/project IDs; redact PII; DP noise for counts
-- __Schema__: compile-time TS types + Zod runtime validation; send only whitelisted fields
-- __Transport__: HTTP POST (MVP). Later: publish to NATS/Redpanda with protobuf
+- **Offline buffer** → retry with exponential backoff
+- **Anonymization**: salted hash for user/project IDs; redact PII; DP noise for counts
+- **Schema**: compile-time TS types + Zod runtime validation; send only whitelisted fields
+- **Transport**: HTTP POST (MVP). Later: publish to NATS/Redpanda with protobuf
 
-### __2. Ingestion Gateway (HTTP First)**
+### **2. Ingestion Gateway (HTTP First)**
 
-- __Auth__: per-node key (rotatable), HMAC signature header
-- __Validation__: Zod on body, hard drop on unknown fields
-- __Storage__: write to Learning Ledger (append-only tables) in Neon
-- __Artifact handling__: large blobs (evidence, diffs) → S3; store only the key in DB
-- __Rate limiting__: token bucket per node; backpressure responses
+- **Auth**: per-node key (rotatable), HMAC signature header
+- **Validation**: Zod on body, hard drop on unknown fields
+- **Storage**: write to Learning Ledger (append-only tables) in Neon
+- **Artifact handling**: large blobs (evidence, diffs) → S3; store only the key in DB
+- **Rate limiting**: token bucket per node; backpressure responses
 
-### __3. Learning Ledger (Postgres/Neon)**
+### **3. Learning Ledger (Postgres/Neon)**
 
 Keep it boring and auditable.
 
@@ -193,101 +193,101 @@ create table votes (
   cast_at timestamptz default now(),
   primary key (amendment_id, node_id)
 );
-```text
+```
 
-### __4. OLAP Sidecar (When Needed)**
+### **4. OLAP Sidecar (When Needed)**
 
-- __ClickHouse__ for cheap, fast aggregates over billions of rows
-- __Ingest__: nightly (or streaming) ETL from Postgres signals → ClickHouse
-- __Use__: clustering, cohorting, time-series anomaly detection
+- **ClickHouse** for cheap, fast aggregates over billions of rows
+- **Ingest**: nightly (or streaming) ETL from Postgres signals → ClickHouse
+- **Use**: clustering, cohorting, time-series anomaly detection
 
-### __5. Pattern Miner & Proposal Engine**
+### **5. Pattern Miner & Proposal Engine**
 
-- __Miner__: jobs that roll up signals to candidate patterns (support >= N across distinct nodes)
-- __Proposal Engine__: bundles a DNA diff (JSON patch) + rationale + evidence links
+- **Miner**: jobs that roll up signals to candidate patterns (support >= N across distinct nodes)
+- **Proposal Engine**: bundles a DNA diff (JSON patch) + rationale + evidence links
 
-```typescript
+```
 // services/miner/src/minePatterns.ts
 // 1) fetch windows of signals, 2) cluster by (blueprint_id, rule, stack, dna),
 // 3) compute support/cross-node distribution, 4) upsert patterns
 
 // services/proposals/src/generateAmendment.ts
 // build JSON Patch against current dna.manifest -> add rule, adjust severity, add template Blueprint, etc.
-```text
+```
 
-### __6. Consensus & Ratification**
+### **6. Consensus & Ratification**
 
-- __Voting__: one node, one vote to start; add reputation weighting later
-- __Thresholds__: configurable per amendment type (simple majority across ≥K distinct orgs)
-- __Outcome__: on ratify → bump DNA semver, publish manifest, notify nodes
+- **Voting**: one node, one vote to start; add reputation weighting later
+- **Thresholds**: configurable per amendment type (simple majority across ≥K distinct orgs)
+- **Outcome**: on ratify → bump DNA semver, publish manifest, notify nodes
 
-### __7. DNA Propagation**
+### **7. DNA Propagation**
 
-- __Artifact__: versioned Aegis-dna package (JSON manifest) + changelog
-- __Distribution__: CDN + npm package + signed ETAG endpoint
-- __Node behavior__: SDK checks for updates on heartbeat; applies flags/rules locally; reports back compliance
+- **Artifact**: versioned Aegis-dna package (JSON manifest) + changelog
+- **Distribution**: CDN + npm package + signed ETAG endpoint
+- **Node behavior**: SDK checks for updates on heartbeat; applies flags/rules locally; reports back compliance
 
 ---
 
-## 🚀 __Implementation Phases**
+## 🚀 **Implementation Phases**
 
-### __Phase 0: Minimal Viable Hive Mind (v3.0.0)**
+### **Phase 0: Minimal Viable Hive Mind (v3.0.0)**
 
-**Timeline__: 3-4 months  
-**Goal__: Prove the Constitutional learning loop works
+**Timeline**: 3-4 months  
+**Goal**: Prove the Constitutional learning loop works
 
-#### __Deliverables:**
+#### **Deliverables:**
 
-1. __Node SDK__ (TS) with `reportViolation/reportGap/reportFriction`
-2. __HTTP Ingest__ (Netlify Function): validate → write signals → return 202
-3. __Nightly job__ (Netlify Scheduled Function): mine top N candidate patterns → upsert patterns
-4. __Proposal Engine__: for selected pattern, create amendment draft (DB row + GitHub PR)
-5. __Simple Voting API__: nodes fetch open amendments, POST vote
-6. __DNA Publisher__: when ratified, write new dna_versions + publish <aegis-dna@x.y.z>
+1. **Node SDK** (TS) with `reportViolation/reportGap/reportFriction`
+2. **HTTP Ingest** (Netlify Function): validate → write signals → return 202
+3. **Nightly job** (Netlify Scheduled Function): mine top N candidate patterns → upsert patterns
+4. **Proposal Engine**: for selected pattern, create amendment draft (DB row + GitHub PR)
+5. **Simple Voting API**: nodes fetch open amendments, POST vote
+6. **DNA Publisher**: when ratified, write new dna_versions + publish <aegis-dna@x.y.z>
 
-#### __Success Metrics:**
+#### **Success Metrics:**
 
 - 10+ nodes reporting signals
 - 1+ Constitutional amendment generated and ratified
 - Measurable reduction in repeated violations across nodes
 
-### __Phase 1: Intelligent Scaling (v3.1.0)**
+### **Phase 1: Intelligent Scaling (v3.1.0)**
 
-**Timeline__: 2-3 months after Phase 0  
-**Goal__: Handle volume and enable real-time intelligence
+**Timeline**: 2-3 months after Phase 0  
+**Goal**: Handle volume and enable real-time intelligence
 
-#### __Upgrades:**
+#### **Upgrades:**
 
-- __Streaming__: NATS JetStream for real-time signal processing
-- __OLAP__: ClickHouse for complex pattern analysis
-- __Reputation System__: Weight votes by signal quality and diversity
-- __Real-time Dashboard__: Live Constitutional health across the hive mind
+- **Streaming**: NATS JetStream for real-time signal processing
+- **OLAP**: ClickHouse for complex pattern analysis
+- **Reputation System**: Weight votes by signal quality and diversity
+- **Real-time Dashboard**: Live Constitutional health across the hive mind
 
-#### __Success Metrics:**
+#### **Success Metrics:**
 
 - 100+ nodes in hive mind
 - Sub-minute Constitutional violation detection
 - Pattern discovery accuracy > 90%
 
-### __Phase 2: Autonomous Constitutional Evolution (v4.0.0)**
+### **Phase 2: Autonomous Constitutional Evolution (v4.0.0)**
 
-**Timeline__: 6+ months strategic development  
-**Goal__: Self-evolving Constitutional intelligence
+**Timeline**: 6+ months strategic development  
+**Goal**: Self-evolving Constitutional intelligence
 
-#### __Advanced Features:**
+#### **Advanced Features:**
 
-- __AI-powered governance rule optimization**
-- __Predictive compliance and quality assurance**
-- __Self-evolving pattern effectiveness analysis**
-- __Cross-framework Constitutional intelligence**
+- **AI-powered governance rule optimization**
+- **Predictive compliance and quality assurance**
+- **Self-evolving pattern effectiveness analysis**
+- **Cross-framework Constitutional intelligence**
 
 ---
 
-## 📁 __Concrete Implementation Files**
+## 📁 **Concrete Implementation Files**
 
-### __Package Structure:**
+### **Package Structure:**
 
-```text
+```
 packages/
 ├── Aegis-node-sdk/               # TS SDK with Zod, HMAC
 │   ├── src/types.ts
@@ -315,50 +315,50 @@ Constitutional-hive-mind/
 ├── dna-publisher/                # DNA versioning and distribution
 ├── reputation-engine/            # Node reputation calculation
 └── analytics-dashboard/          # Hive mind health monitoring
-```text
+```
 
 ---
 
-## 🔒 __Privacy, Security, Compliance**
+## 🔒 **Privacy, Security, Compliance**
 
-### __Privacy Posture:**
+### **Privacy Posture:**
 
-- __"Never send what you wouldn't email to a stranger"**
+- **"Never send what you wouldn't email to a stranger"**
 - SDK strips, hashes, or buckets fields; context is schema-guarded
 - Org identifiers salted per-org; k-anonymity checks before pattern publication
 
-### __Security:**
+### **Security:**
 
-- __Attestation__: sign DNA manifests; include signature verification in SDK
-- __Abuse controls__: per-node quotas, anomaly detection on spammy nodes
-- __Auth__: per-node keys with HMAC signatures
+- **Attestation**: sign DNA manifests; include signature verification in SDK
+- **Abuse controls**: per-node quotas, anomaly detection on spammy nodes
+- **Auth**: per-node keys with HMAC signatures
 
-### __Compliance:**
+### **Compliance:**
 
-- __GDPR compliance__: anonymized aggregation, right to deletion
-- __Audit trails__: complete Constitutional decision history
-- __Governance transparency__: all amendments public with rationale
+- **GDPR compliance**: anonymized aggregation, right to deletion
+- **Audit trails**: complete Constitutional decision history
+- **Governance transparency**: all amendments public with rationale
 
 ---
 
-## 🗳️ __Democratic Mechanics**
+## 🗳️ **Democratic Mechanics**
 
-### __Amendment Types:**
+### **Amendment Types:**
 
-- __Rule tweak__: adjust severity or enforcement
-- __New Blueprint__: add Constitutional pattern
-- __Enforcement level change__: modify governance strictness
-- __Deprecation__: sunset outdated rules
+- **Rule tweak**: adjust severity or enforcement
+- **New Blueprint**: add Constitutional pattern
+- **Enforcement level change**: modify governance strictness
+- **Deprecation**: sunset outdated rules
 
-### __Voting System:**
+### **Voting System:**
 
-- __Quorum__: X distinct orgs + Y total nodes
-- __Cool-down period__ for objections
-- __Reputation weighting__ (v2): weight by signal quality and diversity
+- **Quorum**: X distinct orgs + Y total nodes
+- **Cool-down period** for objections
+- **Reputation weighting** (v2): weight by signal quality and diversity
 
-### __Consensus Thresholds:**
+### **Consensus Thresholds:**
 
-```yaml
+```
 amendment_thresholds:
   rule_tweak:
     nodes: 10
@@ -372,39 +372,39 @@ amendment_thresholds:
     nodes: 30
     orgs: 7
     majority: "supermajority"
-```text
+```
 
 ---
 
-## ⚡ __When to Introduce Streaming**
+## ⚡ **When to Introduce Streaming**
 
-Introduce __NATS/Redpanda__ when:
+Introduce **NATS/Redpanda** when:
 
-- __> ~100 RPS sustained ingest__ and Postgres write contention
-- Need __sub-minute mining and alerting loops**
-- Want __multiple independent consumers__ without DB coupling
+- **> ~100 RPS sustained ingest** and Postgres write contention
+- Need **sub-minute mining and alerting loops**
+- Want **multiple independent consumers** without DB coupling
 
-Until then, __HTTP + Postgres is the right kind of boring.**
+Until then, **HTTP + Postgres is the right kind of boring.**
 
 ---
 
-## 🎯 __Success Definition**
+## 🎯 **Success Definition**
 
-### __Technical Success:**
+### **Technical Success:**
 
 - Constitutional learning loop operating autonomously
 - Pattern discovery and amendment generation working
 - Node participation growing organically
 - Zero Constitutional violations going undetected
 
-### __Strategic Success:**
+### **Strategic Success:**
 
 - Industry recognition as AI governance standards leader
 - Multiple frameworks adopting Constitutional hive mind principles
 - Enterprise adoption for compliance and quality assurance
 - Academic research citing Constitutional AI methodology
 
-### __Constitutional Success:**
+### **Constitutional Success:**
 
 - Framework self-evolution based on collective intelligence
 - Democratic governance producing measurably better outcomes
@@ -413,25 +413,25 @@ Until then, __HTTP + Postgres is the right kind of boring.**
 
 ---
 
-## 🎬 __Getting Started**
+## 🎬 **Getting Started**
 
-### __Immediate Next Steps:**
+### **Immediate Next Steps:**
 
-1. __Create Node SDK package structure**
-2. __Set up Postgres schema on Neon**
-3. __Build HTTP ingest gateway on Netlify**
-4. __Implement basic pattern mining job**
-5. __Create first Constitutional DNA manifest**
+1. **Create Node SDK package structure**
+2. **Set up Postgres schema on Neon**
+3. **Build HTTP ingest gateway on Netlify**
+4. **Implement basic pattern mining job**
+5. **Create first Constitutional DNA manifest**
 
-### __First Milestone:**
+### **First Milestone:**
 
-**Deploy minimal viable hive mind__ with 3-5 internal test nodes reporting real Constitutional signals and generating
+**Deploy minimal viable hive mind** with 3-5 internal test nodes reporting real Constitutional signals and generating
 first community Constitutional amendment.
 
-**This transforms the Constitutional Hive Mind from vision to working system.__ 🧠⚡
+**This transforms the Constitutional Hive Mind from vision to working system.** 🧠⚡
 
 ---
 
-**Constitutional Authority__: This roadmap implements Article XI (Field-Driven Abstraction Principle) through
+**Constitutional Authority**: This roadmap implements Article XI (Field-Driven Abstraction Principle) through
 distributed Constitutional intelligence, establishing the technical foundation for autonomous framework evolution based
 on collective field experience.

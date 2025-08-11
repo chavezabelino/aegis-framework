@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Create a Page
 
-Add __Markdown or React__ files to `src/pages` to create a __standalone page__:
+Add **Markdown or React** files to `src/pages` to create a **standalone page**:
 
 - `src/pages/index.js` → `localhost:3000/`
 - `src/pages/foo.md` → `localhost:3000/foo`
@@ -26,7 +26,7 @@ export default function MyReactPage() {
     </Layout>
   )
 }
-```text
+```
 
 A new page is now available at [http://localhost:3000/my-react-page](http://localhost:3000/my-react-page).
 
@@ -38,6 +38,6 @@ Create a file at `src/pages/my-Markdown-page.md`:
 # My Markdown page
 
 This is a Markdown page
-```text
+```
 
 A new page is now available at [http://localhost:3000/my-Markdown-page](http://localhost:3000/my-markdown-page).

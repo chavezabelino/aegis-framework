@@ -4,14 +4,14 @@ sidebar_position: 6
 
 # Congratulations
 
-You have just learned the __basics of Docusaurus__ and made some changes to the __initial template__.
+You have just learned the **basics of Docusaurus** and made some changes to the **initial template**.
 
-Docusaurus has __much more to offer__!
+Docusaurus has **much more to offer**!
 
-Have __5 more minutes__? Take a look at __[versioning](../tutorial-extras/manage-docs-versions.md)__ and
+Have **5 more minutes**? Take a look at **[versioning](../tutorial-extras/manage-docs-versions.md)** and
 **[i18n](../tutorial-extras/translate-your-site.md)__.
 
-Anything __unclear__ or __buggy__ in this tutorial?
+Anything **unclear** or **buggy** in this tutorial?
 [Please report it!](https://github.com/facebook/docusaurus/discussions/4610)
 
 ## What's next?

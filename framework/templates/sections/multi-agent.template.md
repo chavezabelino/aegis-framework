@@ -8,7 +8,7 @@
 
 ### Agent Coordination Schema
 
-```typescript
+```
 interface AgentHandoff {
   fromAgent: string
   toAgent: string
@@ -20,11 +20,11 @@ interface AgentHandoff {
   }
   continuationPlan: string
 }
-```text
+```
 
 ### Handoff Patterns
 
-```typescript
+```
 // Complex analysis handoff
 await handoffToAgent({
   fromAgent: "GitHub-copilot",
@@ -48,11 +48,11 @@ await handoffToAgent({
     requirements: ["react_implementation", "typescript_types"]
   }
 })
-```text
+```
 
 ### Agent Manifest System
 
-```json
+```
 {
   "agents": [
     {
@@ -69,7 +69,7 @@ await handoffToAgent({
     }
   ]
 }
-```text
+```
 
 ### Coordination Events
 

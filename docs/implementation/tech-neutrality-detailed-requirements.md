@@ -10,38 +10,38 @@
 
 ## 🎯 Executive Summary
 
-The Aegis Framework currently has __significant bias__ toward the JavaScript/TypeScript + React + Next.js + Supabase
-stack. To achieve full reusability, we need __8 months of focused development__ across 4 phases to implement universal
+The Aegis Framework currently has **significant bias** toward the JavaScript/TypeScript + React + Next.js + Supabase
+stack. To achieve full reusability, we need **8 months of focused development** across 4 phases to implement universal
 adapters, abstract core dependencies, and create language-agnostic tooling.
 
 ## 📊 Current Bias Assessment: Critical Issues
 
-### __🚫 Blocking Dependencies**
+### **🚫 Blocking Dependencies**
 
-#### __1. CLI Tool Lock-in (HIGH IMPACT)**
+#### **1. CLI Tool Lock-in (HIGH IMPACT)**
 
-```bash
+```
 # Current: Requires Node.js everywhere
 node CLI/team-config.ts
 node CLI/validate-team-config.ts
 node tools/validate-Blueprint.ts
 
 # Problem: Python/Go/Rust teams cannot use framework tools
-```text
+```
 
-#### __2. Schema Validation Lock-in (HIGH IMPACT)**
+#### **2. Schema Validation Lock-in (HIGH IMPACT)**
 
-```typescript
+```
 // Current: Zod everywhere in templates
 import { z } from 'zod';
 const schema = z.object({...});
 
 // Problem: Non-TypeScript teams cannot use validation patterns
-```text
+```
 
-#### __3. Supabase-Specific Patterns (MEDIUM IMPACT)**
+#### **3. Supabase-Specific Patterns (MEDIUM IMPACT)**
 
-```typescript
+```
 // Mandatory in all templates
 import {handleCorsPrelight} from "../_shared/lib/corsHeaders.ts"
 export default async function handler(req: Request) {
@@ -49,11 +49,11 @@ export default async function handler(req: Request) {
 }
 
 // Problem: Non-Supabase teams cannot use templates
-```text
+```
 
-#### __4. Build System Assumptions (MEDIUM IMPACT)**
+#### **4. Build System Assumptions (MEDIUM IMPACT)**
 
-```json
+```
 // All examples assume npm/package.JSON
 {
   "scripts": {
@@ -63,13 +63,13 @@ export default async function handler(req: Request) {
 }
 
 // Problem: Cargo/pip/Maven teams excluded
-```text
+```
 
 ## 🏗️ Solution Architecture
 
-### __Core Principle: Adapter Pattern + Universal Interfaces**
+### **Core Principle: Adapter Pattern + Universal Interfaces**
 
-```mermaid
+```
 graph TD
     A[Universal Blueprint] --> B[Adapter Layer]
     B --> C[React+Next.js Output]
@@ -81,17 +81,17 @@ graph TD
     H --> I[node Aegis-CLI]
     H --> J[python Aegis-CLI]
     H --> K[go run Aegis-CLI]
-```text
+```
 
 ## 📝 Detailed Implementation Tasks
 
-### __Phase 1: Foundation (Months 1-2)**
+### **Phase 1: Foundation (Months 1-2)**
 
-#### __Task 1.1: Universal Blueprint Schema**
+#### **Task 1.1: Universal Blueprint Schema**
 
-**Current Problem__: Blueprints assume TypeScript/React patterns __Solution__: Language-agnostic Blueprint definitions
+**Current Problem**: Blueprints assume TypeScript/React patterns **Solution**: Language-agnostic Blueprint definitions
 
-```yaml
+```
 # NEW: Universal Blueprint format
 apiVersion: "Aegis.dev/v2"
 kind: "Blueprint"
@@ -115,27 +115,27 @@ spec:
       routes: ["/auth/login", "/users/{id}"]
     spring-boot:
       controllers: ["AuthController.java"]
-```text
+```
 
-**Implementation Requirements__:
+**Implementation Requirements**:
 
 - [ ] Design universal Blueprint JSON schema
 - [ ] Create Blueprint validation for all adapters
 - [ ] Update existing Blueprints to universal format
 - [ ] Create migration tool for legacy Blueprints
 
-#### __Task 1.2: Language-Agnostic CLI Protocol**
+#### **Task 1.2: Language-Agnostic CLI Protocol**
 
-**Current Problem__: All CLI tools require Node.js __Solution__: Protocol-based CLI with language adapters
+**Current Problem**: All CLI tools require Node.js **Solution**: Protocol-based CLI with language adapters
 
-```bash
+```
 # NEW: Universal CLI protocol
 Aegis-CLI team-config         # Auto-detects language
 Aegis-CLI validate-Blueprint  # Works in any environment
 Aegis-CLI hydrate-project     # Language-neutral migration
-```text
+```
 
-**Implementation Requirements__:
+**Implementation Requirements**:
 
 - [ ] Design CLI protocol specification (JSON/YAML based)
 - [ ] Create reference Node.js implementation
@@ -143,11 +143,11 @@ Aegis-CLI hydrate-project     # Language-neutral migration
 - [ ] Create Go CLI adapter (`go install Aegis-CLI`)
 - [ ] Create Rust CLI adapter (`cargo install Aegis-CLI`)
 
-#### __Task 1.3: Universal Configuration Schema**
+#### **Task 1.3: Universal Configuration Schema**
 
-**Current Problem__: Configuration assumes npm/Node.js ecosystem __Solution__: Tech-stack agnostic configuration
+**Current Problem**: Configuration assumes npm/Node.js ecosystem **Solution**: Tech-stack agnostic configuration
 
-```yaml
+```
 # NEW: Universal team configuration
 apiVersion: "Aegis.dev/v2"
 kind: "TeamConfiguration"
@@ -166,15 +166,15 @@ spec:
       evolution_stories:
         enabled: true
         adapter: "python" # Uses Python tools
-```text
+```
 
-### __Phase 2: Primary Adapters (Months 3-4)**
+### **Phase 2: Primary Adapters (Months 3-4)**
 
-#### __Task 2.1: Complete React+Next.js Adapter**
+#### **Task 2.1: Complete React+Next.js Adapter**
 
-**Current Problem__: Templates hardcoded, not adapter-based __Solution__: Full adapter implementation
+**Current Problem**: Templates hardcoded, not adapter-based **Solution**: Full adapter implementation
 
-```typescript
+```
 // NEW: adapters/react-next/Blueprint-adapter.ts
 export class ReactNextAdapter implements UniversalAdapter {
   translateBlueprint(Blueprint: UniversalBlueprint): ReactNextOutput {
@@ -195,11 +195,11 @@ export class ReactNextAdapter implements UniversalAdapter {
     }
   }
 }
-```text
+```
 
-#### __Task 2.2: Python+FastAPI Adapter**
+#### **Task 2.2: Python+FastAPI Adapter**
 
-**Current Problem__: No Python implementation exists __Solution__: Complete Python ecosystem adapter
+**Current Problem**: No Python implementation exists **Solution**: Complete Python ecosystem adapter
 
 ```python
 # NEW: adapters/python-fastapi/blueprint_adapter.py
@@ -218,11 +218,11 @@ class FastAPIAdapter(UniversalAdapter):
             "requirements.txt": self.requirements,
             "pyproject.toml": self.pyproject
         }
-```text
+```
 
-#### __Task 2.3: Go+Gin Adapter**
+#### **Task 2.3: Go+Gin Adapter**
 
-**Current Problem__: No Go implementation exists __Solution__: Go ecosystem adapter
+**Current Problem**: No Go implementation exists **Solution**: Go ecosystem adapter
 
 ```go
 // NEW: adapters/go-gin/blueprint_adapter.go
@@ -243,15 +243,15 @@ func (a *GinAdapter) GenerateScaffold(Blueprint UniversalBlueprint) FileStructur
         "go.mod":         a.goMod,
     }
 }
-```text
+```
 
-### __Phase 3: Ecosystem Expansion (Months 5-6)**
+### **Phase 3: Ecosystem Expansion (Months 5-6)**
 
-#### __Task 3.1: Additional Frontend Adapters**
+#### **Task 3.1: Additional Frontend Adapters**
 
-**Vue + Nuxt Adapter__:
+**Vue + Nuxt Adapter**:
 
-```typescript
+```
 // NEW: adapters/vue-nuxt/Blueprint-adapter.ts
 export class VueNuxtAdapter implements UniversalAdapter {
   translateBlueprint(Blueprint: UniversalBlueprint): VueNuxtOutput {
@@ -262,11 +262,11 @@ export class VueNuxtAdapter implements UniversalAdapter {
     }
   }
 }
-```text
+```
 
-**Angular Adapter__:
+**Angular Adapter**:
 
-```typescript
+```
 // NEW: adapters/angular/Blueprint-adapter.ts
 export class AngularAdapter implements UniversalAdapter {
   translateBlueprint(Blueprint: UniversalBlueprint): AngularOutput {
@@ -277,11 +277,11 @@ export class AngularAdapter implements UniversalAdapter {
     }
   }
 }
-```text
+```
 
-#### __Task 3.2: Additional Backend Adapters**
+#### **Task 3.2: Additional Backend Adapters**
 
-**Spring Boot Adapter__:
+**Spring Boot Adapter**:
 
 ```java
 // NEW: adapters/spring-boot/BlueprintAdapter.java
@@ -294,9 +294,9 @@ public class SpringBootAdapter implements UniversalAdapter {
         );
     }
 }
-```text
+```
 
-**Django Adapter__:
+**Django Adapter**:
 
 ```python
 # NEW: adapters/django/blueprint_adapter.py
@@ -307,13 +307,13 @@ class DjangoAdapter(UniversalAdapter):
             models=self.generate_django_models(Blueprint.interfaces),
             urls=self.generate_url_patterns(Blueprint.routes)
         )
-```text
+```
 
-### __Phase 4: Enterprise Support (Months 7-8)**
+### **Phase 4: Enterprise Support (Months 7-8)**
 
-#### __Task 4.1: Enterprise Platform Adapters**
+#### **Task 4.1: Enterprise Platform Adapters**
 
-**.NET Core Adapter__:
+**.NET Core Adapter**:
 
 ```csharp
 // NEW: adapters/dotnet-core/BlueprintAdapter.cs
@@ -329,11 +329,11 @@ public class DotNetCoreAdapter : IUniversalAdapter
         };
     }
 }
-```text
+```
 
-**Kubernetes-Native Adapter__:
+**Kubernetes-Native Adapter**:
 
-```yaml
+```
 # NEW: adapters/kubernetes/Blueprint-adapter.YAML
 apiVersion: Aegis.dev/v2
 kind: KubernetesAdapter
@@ -346,13 +346,13 @@ spec:
     deployment: "templates/deployment.YAML"
     service: "templates/service.YAML"
     ingress: "templates/ingress.YAML"
-```text
+```
 
 ## 🛠️ Critical Dependencies to Abstract
 
-### __1. Schema Validation Abstraction**
+### **1. Schema Validation Abstraction**
 
-```yaml
+```
 # Current: Zod-specific
 validation:
   library: "zod"
@@ -367,11 +367,11 @@ validation:
     go: "GitHub.com/go-playground/validator"
     java: "hibernate-validator"
     rust: "serde"
-```text
+```
 
-### __2. Database Abstraction**
+### **2. Database Abstraction**
 
-```yaml
+```
 # Current: Supabase-specific
 database:
   provider: "supabase"
@@ -386,11 +386,11 @@ database:
     prisma: { migrations: true, client: true }
     sqlalchemy: { orm: true, migrations: "alembic" }
     gorm: { autoMigrate: true }
-```text
+```
 
-### __3. Authentication Abstraction**
+### **3. Authentication Abstraction**
 
-```yaml
+```
 # Current: Supabase Auth
 auth:
   provider: "supabase"
@@ -404,11 +404,11 @@ auth:
     auth0: { universal_login: true }
     firebase: { phone_auth: true }
     custom: { jwt: true }
-```text
+```
 
-### __4. Deployment Abstraction**
+### **4. Deployment Abstraction**
 
-```yaml
+```
 # Current: Vercel/Supabase deployment
 deployment:
   platform: "vercel"
@@ -422,49 +422,49 @@ deployment:
     aws: { lambda: true, api_gateway: true }
     gcp: { cloud_functions: true }
     azure: { functions: true }
-```text
+```
 
 ## 📋 Migration Strategy for Existing Projects
 
-### __Backward Compatibility Requirements**
+### **Backward Compatibility Requirements**
 
-1. __Existing Blueprints must continue working**
-2. __Current CLI tools must have deprecation path**
-3. __Migration tools for upgrading to universal format**
+1. **Existing Blueprints must continue working**
+2. **Current CLI tools must have deprecation path**
+3. **Migration tools for upgrading to universal format**
 
-### __Migration Tooling**
+### **Migration Tooling**
 
-```bash
+```
 # Automated migration tools
 Aegis-migrate detect-stack           # Analyze current project
 Aegis-migrate convert-Blueprint      # Convert to universal format
 Aegis-migrate suggest-adapters       # Recommend optimal tech stack
 Aegis-migrate validate-migration     # Verify Constitutional compliance
-```text
+```
 
 ## 🎯 Success Criteria
 
-### __Technical Validation**
+### **Technical Validation**
 
 - [ ] Same Blueprint generates working code in 5+ tech stacks
 - [ ] Constitutional compliance maintained across all adapters
 - [ ] Performance parity within 10% across tech stacks
 - [ ] 100% test coverage for adapter interface compliance
 
-### __Adoption Validation**
+### **Adoption Validation**
 
 - [ ] 3+ production teams using non-React adapters
 - [ ] Migration success rate >90% for existing projects
 - [ ] Community contributions for 2+ additional adapters
 - [ ] Documentation coverage for all supported tech stacks
 
-### __Quality Validation**
+### **Quality Validation**
 
 - [ ] Zero Constitutional violations across adapters
 - [ ] Identical functionality across tech stack implementations
 - [ ] Cross-adapter Blueprint compatibility >95%
 - [ ] Framework evolution stories capture multi-stack insights
 
-This implementation plan transforms Aegis Framework from a __React+Next.js+Supabase tool__ into a __truly universal AI
+This implementation plan transforms Aegis Framework from a **React+Next.js+Supabase tool** into a __truly universal AI
 engineering framework__ that can support any modern tech stack while maintaining its core Constitutional governance and
 Blueprint-driven development principles.

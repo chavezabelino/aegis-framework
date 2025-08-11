@@ -4,7 +4,7 @@ A production-ready starter template for Svelte applications with Drizzle ORM, Ne
 
 ## 🚀 Quick Start
 
-```bash
+```
 # Clone the template
 git clone https://github.com/aegis-framework/svelte-drizzle-starter.git my-app
 cd my-app
@@ -85,7 +85,7 @@ AEGIS_BLUEPRINT="default"
 2. Copy the connection string to `.env.local`
 3. Run migrations:
 
-```bash
+```
 npm run db:generate
 npm run db:migrate
 ```
@@ -94,7 +94,7 @@ npm run db:migrate
 
 Initialize governance patterns:
 
-```bash
+```
 npm run aegis:init
 ```
 
@@ -102,7 +102,7 @@ npm run aegis:init
 
 ### 1. Create a New Feature
 
-```bash
+```
 # Generate a new blueprint
 npm run aegis:planning auto "Add user authentication with login form"
 
@@ -112,7 +112,7 @@ npm run dev
 
 ### 2. Database Changes
 
-```bash
+```
 # Generate migration
 npm run db:generate
 
@@ -125,7 +125,7 @@ npm run db:studio
 
 ### 3. Quality Checks
 
-```bash
+```
 # Type checking
 npm run check
 
@@ -139,7 +139,7 @@ npm run aegis:validate
 
 ## 🧪 Testing
 
-```bash
+```
 # Run tests
 npm test
 
@@ -172,7 +172,7 @@ The app uses SvelteKit's adapter-auto, which automatically detects and configure
 This template includes several governance patterns:
 
 ### Authentication Pattern
-```typescript
+```
 // blueprints/auth/login-form.blueprint.ts
 export const loginFormBlueprint = {
   name: 'login-form',
@@ -187,7 +187,7 @@ export const loginFormBlueprint = {
 ```
 
 ### Data Table Pattern
-```typescript
+```
 // blueprints/data-tables/user-table.blueprint.ts
 export const userTableBlueprint = {
   name: 'user-table',

@@ -9,72 +9,72 @@
 
 # Docusaurus Setup Guide for Aegis Framework
 
-## ✅ __SETUP COMPLETE**
+## ✅ **SETUP COMPLETE**
 
 Your Docusaurus documentation site is now configured and running!
 
-## 🔧 __What's Been Set Up**
+## 🔧 **What's Been Set Up**
 
 ### Core Configuration
 
-- __Site Title__: Aegis Framework
-- __Tagline__: Constitutional AI Engineering with Governance, Monitoring & Safety
-- __Theme__: Professional documentation theme with custom styling
-- __Navigation__: Documentation, Capabilities, Blueprints, Evolution Stories
+- **Site Title**: Aegis Framework
+- **Tagline**: Constitutional AI Engineering with Governance, Monitoring & Safety
+- **Theme**: Professional documentation theme with custom styling
+- **Navigation**: Documentation, Capabilities, Blueprints, Evolution Stories
 
 ### Auto-Generated Content
 
-- __Live Dashboard__: Real-time framework status at `/dashboard`
-- __Capability Pages__: Auto-generated from your `capability-map.JSON`
-- __Blueprint Registry__: Auto-generated from your `Blueprint-registry.JSON`
-- __Framework Data Plugin__: Automatically loads and displays live framework data
+- **Live Dashboard**: Real-time framework status at `/dashboard`
+- **Capability Pages**: Auto-generated from your `capability-map.JSON`
+- **Blueprint Registry**: Auto-generated from your `Blueprint-registry.JSON`
+- **Framework Data Plugin**: Automatically loads and displays live framework data
 
 ### Custom Features
 
-- __Framework Status Cards__: Live metrics display
-- __Capability Distribution Charts__: Visual breakdown of your 64 capabilities
-- __Category Navigation__: Organized by Tool, Core, Governance, Integration
-- __Health Monitoring__: Real-time framework health status
+- **Framework Status Cards**: Live metrics display
+- **Capability Distribution Charts**: Visual breakdown of your 64 capabilities
+- **Category Navigation**: Organized by Tool, Core, Governance, Integration
+- **Health Monitoring**: Real-time framework health status
 
-## 🚀 __Local Development**
+## 🚀 **Local Development**
 
 ### Start Development Server
 
-```bash
+```
 cd website
 npm start
-```text
+```
 
-**Your site is running at__: <http://localhost:3000>
+**Your site is running at**: <http://localhost:3000>
 
 ### Update Framework Data
 
-```bash
+```
 # From project root - run these to refresh data
 node tools/framework-capability-mapper.ts
 node framework/registry/Blueprint-registry.ts discover
 node tools/update-framework-dashboard.ts
-```text
+```
 
-## 📋 __GitHub Pages Deployment**
+## 📋 **GitHub Pages Deployment**
 
 ### Method 1: Automated Deployment (Recommended)
 
-1. __Enable GitHub Pages in Repository Settings__:
+1. **Enable GitHub Pages in Repository Settings**:
    - Go to repository Settings → Pages
    - Source: GitHub Actions
    - The workflow `.GitHub/workflows/deploy-docs.yml` will handle deployment
 
-2. __Update Configuration__: Replace `your-username` in `website/Docusaurus.config.ts`:
+2. **Update Configuration**: Replace `your-username` in `website/Docusaurus.config.ts`:
 
-   ```typescript
+   ```
    url: 'https://your-username.github.io',
    organizationName: 'your-username',
    ```
 
-3. __Push to Main Branch__:
+3. **Push to Main Branch**:
 
-   ```bash
+   ```
    git add .
    git commit -m "Add Docusaurus documentation site"
    git push origin main
@@ -82,14 +82,14 @@ node tools/update-framework-dashboard.ts
 
 ### Method 2: Manual Deployment
 
-```bash
+```
 # Run the deployment script
 ./scripts/deploy-docs.sh
-```text
+```
 
 ### Method 3: Direct Deployment
 
-```bash
+```
 cd website
 
 # Update your config with actual GitHub username
@@ -98,11 +98,11 @@ cd website
 # Build and deploy
 npm run build
 npm run deploy
-```text
+```
 
-## 🎯 __Site Structure**
+## 🎯 **Site Structure**
 
-```text
+```
 https://your-username.github.io/aegis-framework/
 ├── /                          # Homepage with framework overview
 ├── /dashboard                 # Live framework dashboard
@@ -110,9 +110,9 @@ https://your-username.github.io/aegis-framework/
 ├── /docs/capabilities/       # Auto-generated capability docs
 ├── /docs/blueprints/         # Blueprint registry
 └── /blog/                    # Evolution stories
-```text
+```
 
-## 🔄 __Keeping Content Updated**
+## 🔄 **Keeping Content Updated**
 
 The site automatically generates content from your framework data:
 
@@ -125,42 +125,42 @@ The site automatically generates content from your framework data:
 
 ### Update Process
 
-1. __Develop framework features__ (your normal workflow)
-2. __Run data generators__ (capability mapper, Blueprint registry)
-3. __Build/deploy docs__ (automatic on push or manual script)
+1. **Develop framework features** (your normal workflow)
+2. **Run data generators** (capability mapper, Blueprint registry)
+3. **Build/deploy docs** (automatic on push or manual script)
 
-## 📊 __Live Dashboard Features**
+## 📊 **Live Dashboard Features**
 
 Your documentation includes a live dashboard showing:
 
-- __Framework version and health status**
-- __64 capabilities across 4 categories**
-- __Visual capability distribution charts**
-- __Blueprint registry statistics**
-- __Quick action buttons**
+- **Framework version and health status**
+- **64 capabilities across 4 categories**
+- **Visual capability distribution charts**
+- **Blueprint registry statistics**
+- **Quick action buttons**
 
-## 🎨 __Customization Options**
+## 🎨 **Customization Options**
 
 ### Update Branding
 
-- __Logo__: Replace `website/static/img/logo.svg`
-- __Favicon__: Replace `website/static/img/favicon.ico`
-- __Colors__: Edit `website/src/CSS/custom.CSS`
+- **Logo**: Replace `website/static/img/logo.svg`
+- **Favicon**: Replace `website/static/img/favicon.ico`
+- **Colors**: Edit `website/src/CSS/custom.CSS`
 
 ### Add Content
 
-- __Documentation__: Add files to `website/docs/`
-- __Blog Posts__: Add files to `website/blog/`
-- __Pages__: Add components to `website/src/pages/`
+- **Documentation**: Add files to `website/docs/`
+- **Blog Posts**: Add files to `website/blog/`
+- **Pages**: Add components to `website/src/pages/`
 
 ### Modify Navigation
 
-- __Sidebar__: Edit `website/sidebars.ts`
-- __Navbar__: Edit `website/Docusaurus.config.ts`
+- **Sidebar**: Edit `website/sidebars.ts`
+- **Navbar**: Edit `website/Docusaurus.config.ts`
 
-## 🔧 __Available Commands**
+## 🔧 **Available Commands**
 
-```bash
+```
 # Development
 cd website && npm start              # Start dev server
 cd website && npm run build         # Build for production
@@ -173,28 +173,28 @@ cd website && npm run deploy         # Direct deployment
 # Framework Data Updates
 node tools/framework-capability-mapper.ts    # Update capability map
 node tools/update-framework-dashboard.ts     # Update dashboard
-```text
+```
 
-## 🎉 __Result**
+## 🎉 **Result**
 
-You now have a __professional, auto-updating documentation site__ that:
+You now have a **professional, auto-updating documentation site** that:
 
-✅ __Displays live framework data__ (64 capabilities, health status, Blueprints)  
-✅ __Updates automatically__ from your framework's observability system  
-✅ __Provides professional navigation__ and search  
-✅ __Deploys to GitHub Pages__ with zero server costs  
-✅ __Maintains itself__ as your framework evolves
+✅ **Displays live framework data** (64 capabilities, health status, Blueprints)  
+✅ **Updates automatically** from your framework's observability system  
+✅ **Provides professional navigation** and search  
+✅ **Deploys to GitHub Pages** with zero server costs  
+✅ **Maintains itself** as your framework evolves
 
-**Your documentation debt is now solved with a beautiful, live, searchable site!__ 🚀📚✨
+**Your documentation debt is now solved with a beautiful, live, searchable site!** 🚀📚✨
 
 ---
 
-## 🔗 __Next Steps**
+## 🔗 **Next Steps**
 
-1. __Visit your local site__: <http://localhost:3000>
-2. __Update GitHub username__ in config files
-3. __Push to trigger deployment__ or run deployment script
-4. __Share your documentation URL__ with users and contributors
+1. **Visit your local site**: <http://localhost:3000>
+2. **Update GitHub username** in config files
+3. **Push to trigger deployment** or run deployment script
+4. **Share your documentation URL** with users and contributors
 
 The observability system you built earlier now powers a professional documentation site that explains your framework
 automatically!

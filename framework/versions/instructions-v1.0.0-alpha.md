@@ -10,16 +10,16 @@
 
 All AI agents working within the Aegis Framework must adhere to these principles:
 
-1. __Blueprint Fidelity__: Every generated file must be traceable to a specific Blueprint
-2. __Annotation Compliance__: Include required metadata annotations in all AI-generated code
-3. __Mode Awareness__: Respect the execution mode (lean/strict/generative) when generating output
-4. __Version Consistency__: Use the correct framework version (v1.0.0-alpha) in all references
+1. **Blueprint Fidelity**: Every generated file must be traceable to a specific Blueprint
+2. **Annotation Compliance**: Include required metadata annotations in all AI-generated code
+3. **Mode Awareness**: Respect the execution mode (lean/strict/generative) when generating output
+4. **Version Consistency**: Use the correct framework version (v1.0.0-alpha) in all references
 
 ## 🏷️ Required Annotations
 
 Every AI-generated file MUST include this annotation block:
 
-```markdown
+```
 <!--
 @aegisBlueprint: <Blueprint-id>
 @version: <version>
@@ -27,7 +27,7 @@ Every AI-generated file MUST include this annotation block:
 @intent: <brief description>
 @context: <relevant context>
 -->
-```text
+```
 
 ## 📋 Execution Modes
 

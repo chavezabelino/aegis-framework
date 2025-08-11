@@ -4,13 +4,13 @@ This website is built using [Docusaurus](https://docusaurus.io/), a modern stati
 
 ## Installation
 
-```bash
+```
 yarn
 ```
 
 ## Local Development
 
-```bash
+```
 yarn start
 ```
 
@@ -19,7 +19,7 @@ having to restart the server.
 
 ## Build
 
-```bash
+```
 yarn build
 ```
 
@@ -30,13 +30,13 @@ service.
 
 Using SSH:
 
-```bash
+```
 USE_SSH=true yarn deploy
 ```
 
 Not using SSH:
 
-```bash
+```
 GIT_USER=<Your GitHub username> yarn deploy
 ```
 

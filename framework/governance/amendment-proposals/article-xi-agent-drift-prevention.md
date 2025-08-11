@@ -8,10 +8,10 @@
 
 ## 📜 Amendment Proposal
 
-**Proposed Date__: August 6, 2025  
-**Framework Version__: 2.0.0-alpha-dev  
-**Trigger__: Field-identified gap in agent Constitutional compliance  
-**Evolution Story__: EVS-2025-08-06-002 (Agent Drift Prevention)
+**Proposed Date**: August 6, 2025  
+**Framework Version**: 2.0.0-alpha-dev  
+**Trigger**: Field-identified gap in agent Constitutional compliance  
+**Evolution Story**: EVS-2025-08-06-002 (Agent Drift Prevention)
 
 ## 🎯 Constitutional Addition
 
@@ -22,31 +22,31 @@
 All AI agents operating within the Aegis Framework must declare execution intent before performing any actions. This
 declaration shall include:
 
-1. __Primary Goal__: Clear statement of the agent's objective
-2. __Blueprint Context__: Reference to governing Blueprint (if applicable)
-3. __Execution Mode__: Framework mode (lean/strict/generative)
-4. __Expected Actions__: List of anticipated functional operations
-5. __Forbidden Actions__: Constitutional constraints and prohibited operations
+1. **Primary Goal**: Clear statement of the agent's objective
+2. **Blueprint Context**: Reference to governing Blueprint (if applicable)
+3. **Execution Mode**: Framework mode (lean/strict/generative)
+4. **Expected Actions**: List of anticipated functional operations
+5. **Forbidden Actions**: Constitutional constraints and prohibited operations
 
 #### Section 2: Real-Time Intent Enforcement
 
 The framework shall provide mandatory real-time enforcement mechanisms:
 
-1. __Pre-Execution Validation__: All commands must pass Constitutional compliance checks
-2. __Functional Requirement__: Demonstrative commands (e.g., echo) are prohibited when functional actions are intended
-3. __Traceability Requirement__: Every action must be traceable to declared intent and Constitutional principles
-4. __Violation Detection__: Automatic detection and blocking of intent drift patterns
+1. **Pre-Execution Validation**: All commands must pass Constitutional compliance checks
+2. **Functional Requirement**: Demonstrative commands (e.g., echo) are prohibited when functional actions are intended
+3. **Traceability Requirement**: Every action must be traceable to declared intent and Constitutional principles
+4. **Violation Detection**: Automatic detection and blocking of intent drift patterns
 
 #### Section 3: Agent Drift Prevention Standards
 
-##### __Prohibited Patterns**
+##### **Prohibited Patterns**
 
 - Using echo commands when functional testing is required
 - Executing commands without clear Constitutional purpose
 - Bypassing validation requirements through non-functional alternatives
 - Performing actions not aligned with declared intent
 
-##### __Required Safeguards**
+##### **Required Safeguards**
 
 - Intent enforcement engine validation before all command execution
 - Constitutional compliance checking for all file modifications
@@ -55,36 +55,36 @@ The framework shall provide mandatory real-time enforcement mechanisms:
 
 #### Section 4: Enforcement Mechanisms
 
-##### __Technical Implementation**
+##### **Technical Implementation**
 
 - `IntentEnforcementEngine`: Mandatory pre-execution validation
 - `ConstitutionalAIAgent`: Wrapper class enforcing compliance
 - Pre-commit hooks preventing Constitutional violations
 - CI/CD integration blocking non-compliant changes
 
-##### __Violation Consequences**
+##### **Violation Consequences**
 
-- __Warning Level__: Agent coaching and corrective guidance
-- __Error Level__: Action blocking and intent clarification requirement
-- __Critical Level__: Session suspension and Constitutional review
+- **Warning Level**: Agent coaching and corrective guidance
+- **Error Level**: Action blocking and intent clarification requirement
+- **Critical Level**: Session suspension and Constitutional review
 
 #### Section 5: Agent Session Requirements
 
-##### __Session Initialization**
+##### **Session Initialization**
 
 - Constitutional intent declaration
 - Framework version compliance verification
 - Tool manifest validation
 - Safety constraint acknowledgment
 
-##### __Session Monitoring**
+##### **Session Monitoring**
 
 - Real-time command analysis and intent alignment scoring
 - Constitutional violation detection and prevention
 - Action logging with Constitutional metadata
 - Automatic violation reporting and escalation
 
-##### __Session Completion**
+##### **Session Completion**
 
 - Constitutional compliance report generation
 - Intent fulfillment verification
@@ -93,14 +93,14 @@ The framework shall provide mandatory real-time enforcement mechanisms:
 
 #### Section 6: Integration Requirements
 
-##### __Framework Integration**
+##### **Framework Integration**
 
 - All AI agents must use Constitutional wrapper classes
 - Pre-execution validation is mandatory for all actions
 - Constitutional annotations required in all generated files
 - Blueprint traceability enforcement
 
-##### __Development Workflow Integration**
+##### **Development Workflow Integration**
 
 - Git hooks enforce Constitutional compliance
 - CI/CD pipelines include intent validation
@@ -169,17 +169,17 @@ This amendment is proposed under Article VII (Amendment Process) of the Aegis Fr
 
 ## 📋 Amendment Summary
 
-**Purpose__: Prevent AI agent drift from Constitutional principles  
-**Scope__: All AI agents and automated systems within Aegis Framework  
-**Enforcement__: Technical, procedural, and Constitutional mechanisms  
-**Timeline__: Immediate effect with phased implementation
+**Purpose**: Prevent AI agent drift from Constitutional principles  
+**Scope**: All AI agents and automated systems within Aegis Framework  
+**Enforcement**: Technical, procedural, and Constitutional mechanisms  
+**Timeline**: Immediate effect with phased implementation
 
-**Constitutional Impact__: Adds Article XI to the Aegis Framework Constitution, establishing mandatory AI agent
+**Constitutional Impact**: Adds Article XI to the Aegis Framework Constitution, establishing mandatory AI agent
 Constitutional compliance standards and enforcement mechanisms.
 
 ---
 
-**Proposed By__: Constitutional Framework Maintenance  
-**Ratification Date__: Pending Constitutional review  
-**Framework Version__: 2.0.0-alpha-dev  
-**Evolution Story__: EVS-2025-08-06-002
+**Proposed By**: Constitutional Framework Maintenance  
+**Ratification Date**: Pending Constitutional review  
+**Framework Version**: 2.0.0-alpha-dev  
+**Evolution Story**: EVS-2025-08-06-002

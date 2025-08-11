@@ -6,14 +6,14 @@
 **Type:** update
 **Content:**
 
-````markdown
+````
 # QUALITY GATES
 
 ## Aegis Quality Gates
 
 **Run locally**
 
-```bash
+```
 pnpm run quality
 ````
 
@@ -32,7 +32,7 @@ pnpm run quality
 
 Add a waiver file at `.Aegis/waivers/<pr-number>.JSON`:
 
-```json
+```
 {
   "policy": "coverage",
   "justification": "Temporarily low coverage on new parser; tests follow in next PR.",
@@ -100,7 +100,7 @@ Minimum required grade: **C** (70 points) — temporarily lowered for legacy deb
 
 ## Local Development
 
-```bash
+```
 # Run all quality checks
 pnpm run quality
 
@@ -122,7 +122,7 @@ pnpm run Aegis:waivers:verify     # Validate waiver files
 
 Quality thresholds are configured in `.Aegis/config/quality.JSON`:
 
-```json
+```
 {
   "gradeBands": { "A": 90, "B": 80, "C": 70 },
   "thresholds": {
@@ -175,7 +175,7 @@ Quality thresholds are configured in `.Aegis/config/quality.JSON`:
 
 ### Quick Commands for Debt Analysis
 
-```bash
+```
 # Generate flat error list for Cursor quick-fix passes
 pnpm types --pretty false > .Aegis/tmp/types.txt
 

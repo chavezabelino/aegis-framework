@@ -37,7 +37,7 @@ integration.
 
 ## Output Format
 
-```json
+```
 {
   "constitutionalAnnotations": {
     "score": 9,
@@ -62,11 +62,11 @@ integration.
     "Include more detailed error state documentation"
   ]
 }
-```text
+```
 
 ## Instructions
 
-1. __Check Constitutional compliance__ - Verify adherence to CONSTITUTION.md principles
-2. __Validate Blueprint fidelity__ - Ensure generated code matches Blueprint requirements
-3. __Assess framework integration__ - Look for proper use of framework patterns
-4. __Review governance compliance__ - Check for required annotations and documentation
+1. **Check Constitutional compliance** - Verify adherence to CONSTITUTION.md principles
+2. **Validate Blueprint fidelity** - Ensure generated code matches Blueprint requirements
+3. **Assess framework integration** - Look for proper use of framework patterns
+4. **Review governance compliance** - Check for required annotations and documentation

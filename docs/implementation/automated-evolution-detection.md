@@ -10,31 +10,31 @@
 
 ## Overview
 
-The Aegis Framework now includes an __automated detection system__ that identifies when evolution stories should be
+The Aegis Framework now includes an **automated detection system** that identifies when evolution stories should be
 documented. This closes the meta-learning loop by proactively identifying field-driven insights that require
 ConstitutionalConstitutional documentation.
 
 ## 🎯 What It Detects
 
-### __Automatic Triggers**
+### **Automatic Triggers**
 
-- ✅ __Constitutional violations__ without associated evolution stories
-- ✅ __Validation failures__ indicating framework gaps
-- ✅ __Migration friction__ from recent changes
-- ✅ __AI quality gaps__ in generated content
+- ✅ **Constitutional violations** without associated evolution stories
+- ✅ **Validation failures** indicating framework gaps
+- ✅ **Migration friction** from recent changes
+- ✅ **AI quality gaps** in generated content
 
-### __Pattern Recognition**
+### **Pattern Recognition**
 
-- 🔍 __User question patterns__ in documentation and commits
-- 🔍 __Common failure patterns__ across validation systems
-- 🔍 __Documentation drift__ from field usage
-- 🔍 __Tool manifest violations__ indicating missing capabilities
+- 🔍 **User question patterns** in documentation and commits
+- 🔍 **Common failure patterns** across validation systems
+- 🔍 **Documentation drift** from field usage
+- 🔍 **Tool manifest violations** indicating missing capabilities
 
 ## 🛠️ Usage
 
-### __CLI Commands**
+### **CLI Commands**
 
-```bash
+```
 # Detect evolution story triggers
 npm run detect-evolution
 
@@ -46,78 +46,78 @@ npm run evolution-story
 
 # Alternative direct call
 node CLI/generate-evolution-story.cjs
-```text
+```
 
-### __Automatic Integration**
+### **Automatic Integration**
 
 The detection system runs automatically in:
 
-- __CI/CD Pipeline__: On every pull request
-- __Git Hooks__: Pre-commit validation (when configured)
-- __Manual Validation__: Via npm scripts
+- **CI/CD Pipeline**: On every pull request
+- **Git Hooks**: Pre-commit validation (when configured)
+- **Manual Validation**: Via npm scripts
 
 ## 🤖 Auto-Generation
 
-### __Critical Triggers**
+### **Critical Triggers**
 
 For high-severity triggers (like Constitutional violations), the system:
 
-1. __Automatically generates__ placeholder evolution stories
-2. __Creates structured templates__ with detected evidence
-3. __Flags for human review__ and completion
-4. __Links to specific commits__ and changes
+1. **Automatically generates** placeholder evolution stories
+2. **Creates structured templates** with detected evidence
+3. **Flags for human review** and completion
+4. **Links to specific commits** and changes
 
-### __Manual Triggers**
+### **Manual Triggers**
 
 For medium/low-severity triggers, the system:
 
-1. __Suggests__ evolution story creation
-2. __Provides evidence__ and suggested titles
-3. __Guides users__ to the interactive CLI tool
-4. __Tracks patterns__ for future automation
+1. **Suggests** evolution story creation
+2. **Provides evidence** and suggested titles
+3. **Guides users** to the interactive CLI tool
+4. **Tracks patterns** for future automation
 
 ## 📊 Detection Categories
 
-### __Constitutional Violations__ 🚨
+### **Constitutional Violations** 🚨
 
-- __Severity__: Critical
-- __Auto-Generate__: Yes
-- __Evidence__: Commits with Constitutional changes lacking evolution stories
-- __Example__: Framework spec changes without documentation
+- **Severity**: Critical
+- **Auto-Generate**: Yes
+- **Evidence**: Commits with Constitutional changes lacking evolution stories
+- **Example**: Framework spec changes without documentation
 
-### __Validation Failures__ ⚠️
+### **Validation Failures** ⚠️
 
-- __Severity__: High
-- __Auto-Generate__: No
-- __Evidence__: Schema validation failures, CI failures
-- __Example__: Remediation plans failing Constitutional compliance
+- **Severity**: High
+- **Auto-Generate**: No
+- **Evidence**: Schema validation failures, CI failures
+- **Example**: Remediation plans failing Constitutional compliance
 
-### __User Questions__ 💡
+### **User Questions** 💡
 
-- __Severity__: Medium
-- __Auto-Generate__: No
-- __Evidence__: Question patterns in docs, commits, issues
-- __Example__: "Does this break..." or "Will this cause..."
+- **Severity**: Medium
+- **Auto-Generate**: No
+- **Evidence**: Question patterns in docs, commits, issues
+- **Example**: "Does this break..." or "Will this cause..."
 
-### __AI Quality Gaps__ 📝
+### **AI Quality Gaps** 📝
 
-- __Severity__: Medium
-- __Auto-Generate__: No
-- __Evidence__: Incomplete AI content, TODOs, placeholders
-- __Example__: Generated plans with "TBD" sections
+- **Severity**: Medium
+- **Auto-Generate**: No
+- **Evidence**: Incomplete AI content, TODOs, placeholders
+- **Example**: Generated plans with "TBD" sections
 
-### __Migration Friction__ 🔄
+### **Migration Friction** 🔄
 
-- __Severity__: Medium
-- __Auto-Generate__: No
-- __Evidence__: Migration-related keywords in recent changes
-- __Example__: Breaking changes, compatibility issues
+- **Severity**: Medium
+- **Auto-Generate**: No
+- **Evidence**: Migration-related keywords in recent changes
+- **Example**: Breaking changes, compatibility issues
 
 ## 📋 Integration Points
 
-### __CI/CD Workflow**
+### **CI/CD Workflow**
 
-```yaml
+```
 - name: Detect evolution story triggers
   run: |
     echo "🔍 Detecting evolution story triggers..."
@@ -127,35 +127,35 @@ For medium/low-severity triggers, the system:
   if: always()
   uses: actions/GitHub-script@v6
   # ... comments auto-generated stories on PRs
-```text
+```
 
-### __Tools Manifest**
+### **Tools Manifest**
 
-```json
+```
 {
   "name": "detect-evolution-stories",
   "path": "tools/detect-evolution-stories.ts",
   "required": false,
   "description": "Automatically detect triggers for evolution story documentation"
 }
-```text
+```
 
-### __Package.JSON Scripts**
+### **Package.JSON Scripts**
 
-```json
+```
 {
   "scripts": {
     "detect-evolution": "node CLI/detect-evolution-stories.cjs",
     "evolution-story": "node CLI/generate-evolution-story.cjs"
   }
 }
-```text
+```
 
 ## 🔬 Technical Implementation
 
-### __EvolutionStoryDetector Class**
+### **EvolutionStoryDetector Class**
 
-```typescript
+```
 interface EvolutionTrigger {
   type: "Constitutional-violation" | "user-question" | "validation-failure" | "migration-friction" | "ai-quality-gap"
   severity: "low" | "medium" | "high" | "critical"
@@ -163,9 +163,9 @@ interface EvolutionTrigger {
   suggestedStoryTitle: string
   autoGenerate: boolean
 }
-```text
+```
 
-### __Detection Methods**
+### **Detection Methods**
 
 - `detectConstitutionalViolations()`: Git commit analysis
 - `detectValidationFailures()`: Log pattern matching
@@ -173,53 +173,53 @@ interface EvolutionTrigger {
 - `detectAIQualityGaps()`: Content quality analysis
 - `detectMigrationFriction()`: Change impact assessment
 
-### __Auto-Generation Features**
+### **Auto-Generation Features**
 
-- __Story ID Generation__: `EVS-YYYY-MM-DD-XXX` format
-- __Template Creation__: Structured Markdown with metadata
-- __Evidence Compilation__: Specific examples and context
-- __Human Review Flags__: Clear indicators for required completion
+- **Story ID Generation**: `EVS-YYYY-MM-DD-XXX` format
+- **Template Creation**: Structured Markdown with metadata
+- **Evidence Compilation**: Specific examples and context
+- **Human Review Flags**: Clear indicators for required completion
 
 ## 🎯 Meta-Learning Objectives
 
-### __Closing the Loop**
+### **Closing the Loop**
 
 This system enables the framework to:
 
-1. __Learn from field usage__ automatically
-2. __Identify patterns__ before they become systematic
-3. __Document insights__ proactively
-4. __Improve governance__ through data-driven evolution
+1. **Learn from field usage** automatically
+2. **Identify patterns** before they become systematic
+3. **Document insights** proactively
+4. **Improve governance** through data-driven evolution
 
-### __Constitutional Compliance**
+### **Constitutional Compliance**
 
 Implements Article X requirements:
 
-- __Systematic documentation__ of field-driven insights
-- __Constitutional integration__ of evolution stories
-- __Pattern recognition__ for framework improvement
-- __Automated enforcement__ of documentation standards
+- **Systematic documentation** of field-driven insights
+- **Constitutional integration** of evolution stories
+- **Pattern recognition** for framework improvement
+- **Automated enforcement** of documentation standards
 
 ## 🚀 Future Enhancements
 
-### __Planned Capabilities**
+### **Planned Capabilities**
 
-- __Machine learning models__ for better pattern recognition
-- __Integration with user behavior analytics__ for deeper insights
-- __Predictive evolution story generation__ based on trends
-- __Cross-framework learning__ from other Constitutional AI systems
+- **Machine learning models** for better pattern recognition
+- **Integration with user behavior analytics** for deeper insights
+- **Predictive evolution story generation** based on trends
+- **Cross-framework learning** from other Constitutional AI systems
 
-### __Community Integration**
+### **Community Integration**
 
-- __Public API__ for community contributions to detection patterns
-- __Shared learning models__ across Aegis Framework deployments
-- __Industry benchmarking__ for evolution story quality
+- **Public API** for community contributions to detection patterns
+- **Shared learning models** across Aegis Framework deployments
+- **Industry benchmarking** for evolution story quality
 
 ---
 
 ## 📝 Example Output
 
-```text
+```
 🔍 Evolution Story Detection Results:
 
 📋 Constitutional-VIOLATION:
@@ -240,10 +240,10 @@ Implements Article X requirements:
 💡 Suggested manual evolution stories:
    📝 Documentation Gap - README.md
       Command: node CLI/generate-evolution-story.cjs
-```text
+```
 
 ---
 
-**Status__: ✅ Implemented and Integrated  
-**Framework Version__: 2.0.0-alpha-dev  
-**Constitutional Authority__: Article X - Field-Driven Evolution Documentation
+**Status**: ✅ Implemented and Integrated  
+**Framework Version**: 2.0.0-alpha-dev  
+**Constitutional Authority**: Article X - Field-Driven Evolution Documentation

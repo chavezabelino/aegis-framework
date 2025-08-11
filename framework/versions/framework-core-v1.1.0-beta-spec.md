@@ -22,7 +22,7 @@ blueprints while maintaining the core principles of traceability, observability,
 
 ### Agent Declaration in Blueprints
 
-```yaml
+```
 # blueprints/feat-complex-feature/Blueprint.YAML
 id: feat-complex-feature
 name: Complex Multi-Component Feature
@@ -46,13 +46,13 @@ coordination:
     - from: windsurf
       to: GitHub-copilot
       trigger: "API endpoints ready"
-```text
+```
 
 ### Agent Capability Resolution
 
 The framework will query each agent's capabilities through the `agent-manifest.JSON` pattern:
 
-```json
+```
 {
   "agentId": "GitHub-copilot",
   "capabilities": {
@@ -68,13 +68,13 @@ The framework will query each agent's capabilities through the `agent-manifest.J
     "conflictResolution": "merge-strategy"
   }
 }
-```text
+```
 
 ## 📄 Model Context Protocol (MCP) Metadata
 
 ### Runtime MCP Context Emission
 
-```yaml
+```
 # Example Blueprint with MCP metadata
 observability:
   mcpContext:
@@ -93,11 +93,11 @@ observability:
     - name: mcp_execution_complete
       context: {outputMode: string, tokenUsage: number}
       mcpFields: ["responseTokens", "temperature"]
-```text
+```
 
 ### MCP-Compatible Output Format
 
-```json
+```
 {
   "Aegis": {
     "blueprintId": "feat-complex-feature",
@@ -123,13 +123,13 @@ observability:
     }
   }
 }
-```text
+```
 
 ## 🧠 Drift Logging & Human-in-the-Loop
 
 ### Drift Detection Schema
 
-```yaml
+```
 # drift-log.YAML
 driftEvents:
   - id: drift-001
@@ -152,22 +152,22 @@ driftEvents:
     metadata:
       mcpContext: {...}
       blueprintHash: "SHA256:def456..."
-```text
+```
 
 ### Human Intervention Workflow
 
-```bash
+```
 # CLI commands for drift management
 Aegis drift list --severity=high
 Aegis drift review drift-001 --approve
 Aegis drift replay feat-user-auth --fix-mode=guided
-```text
+```
 
 ## 🏗️ Enhanced Adapter Interface
 
 ### Tech Stack Translation Protocol
 
-```typescript
+```
 // adapters/react-next/Blueprint-adapter.ts
 interface AdapterInterface {
   name: string
@@ -183,13 +183,13 @@ interface AdapterInterface {
   handleAgentHandoff(context: HandoffContext): HandoffResult
   resolveDependencies(components: Component[]): DependencyGraph
 }
-```text
+```
 
 ## 📊 Blueprint Execution Metadata
 
 ### Run Logs & Telemetry
 
-```json
+```
 {
   "executionId": "exec-12345",
   "blueprintId": "feat-complex-feature",
@@ -240,7 +240,7 @@ interface AdapterInterface {
     "snapshotTests": "passed"
   }
 }
-```text
+```
 
 ## 🚀 Migration Path from v1.0.0-alpha
 

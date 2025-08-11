@@ -31,7 +31,7 @@
 
 ### Usage
 
-```bash
+```
 node tools/distribution/create-aegis-bundle.cjs
 ```
 
