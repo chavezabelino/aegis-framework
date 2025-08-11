@@ -84,8 +84,8 @@
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^0.5.0",
-    "commander": "^11.1.0",
-    "zod": "^3.22.4",
+    "commander": "^14.0.0",
+    "zod": "^4.0.17",
     "@opentelemetry/api": "^1.9.0",
     "@opentelemetry/auto-instrumentations-node": "^0.62.0",
     "@opentelemetry/exporter-jaeger": "^2.0.1",
@@ -95,13 +95,11 @@
     "@opentelemetry/sdk-node": "^0.203.0",
     "@opentelemetry/sdk-trace-node": "^2.0.1",
     "@opentelemetry/semantic-conventions": "^1.36.0",
-    "commander": "^14.0.0",
     "ejs": "^3.1.10",
     "inquirer": "^12.9.0",
     "js-yaml": "^4.1.0",
     "ora": "^8.2.0",
-    "yargs": "^18.0.0",
-    "zod": "^4.0.15"
+    "yargs": "^18.0.0"
   },
   "devDependencies": {
     "@types/node": "^20.10.0",
