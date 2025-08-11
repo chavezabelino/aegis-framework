@@ -3,7 +3,7 @@
 @version: 1.1.0-beta
 @mode: strict
 @intent: CLI for drift event listing, review, and replay (human-in-the-loop)
-@context: Implements aegis drift list, review, and replay commands for v2.4.0-beta compliance
+@context: Implements aegis drift list, review, and replay commands for v2.5.0 compliance
 */
 
 import fs from 'fs';

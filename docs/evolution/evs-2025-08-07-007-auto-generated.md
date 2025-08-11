@@ -1,8 +1,7 @@
 <!--
 # EVS-2025-08-07-007: Constitutional Change Documentation - 50c89a3
 
-@aegisFrameworkVersion: 2.4.0-alpha-dev
-@intent: Auto-generated evolution story for detected trigger
+@aegisFrameworkVersion: 2.5.0tent: Auto-generated evolution story for detected trigger
 @context: Framework automatic detection of evolution documentation needs
 -->
 
@@ -39,7 +38,7 @@ critical
 
 ### **Evidence Found**
 
-- Commit without evolution story: 50c89a3 fix: Constitutional compliance for v2.1.0
+- Commit without evolution story: 50c89a3 fix: Constitutional compliance for v2.5.0
 
 ## 🌱 Field Context
 

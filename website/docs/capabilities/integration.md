@@ -38,7 +38,7 @@ external system connections.
 #### memory-governance
 
 - **Purpose**: Memory subsystem Constitutional integration
-- **Status**: v3.0.0 strategic capability
+- **Status**: v2.5.0 strategic capability
 - **Architecture**: Dual-layer memory (Lite + Heavy) with compliance
 - **Governance**: Constitutional memory management patterns
 

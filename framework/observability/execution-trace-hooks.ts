@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * @aegisFrameworkVersion: 2.4.0
+ * @aegisFrameworkVersion: 2.5.0
  * @intent: Execution trace hooks that log feature invocations and link to blueprints
  * @context: Solves observability debt by providing real-time feature usage tracking
  * @mode: strict

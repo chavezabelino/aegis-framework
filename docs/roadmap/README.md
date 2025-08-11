@@ -1,12 +1,12 @@
 <!--
-@aegisFrameworkVersion: 2.4.0
+@aegisFrameworkVersion: 2.5.0
 @intent: Master roadmap index and navigation for capability-based planning
 @context: Standardized roadmap organization following version audit remediation
 -->
 
 # 🗺️ Aegis Framework Roadmap Hub
 
-**Current Version**: v2.2.0 (Stable Release)  
+**Current Version**: v2.5.0 (Stable Release)  
 **Planning Approach**: Capability-driven development with time horizon confidence levels  
 **Last Updated**: August 8, 2025  
 **Constitutional Authority**: Article II (Framework Governance)
@@ -27,7 +27,7 @@ development changes and clear confidence levels for planning.
 
 ---
 
-## 🎯 **Current State (v2.2.0)**
+## 🎯 **Current State (v2.5.0)**
 
 ### **📍 [What We Have Today](./current-state.md)**
 
@@ -49,7 +49,7 @@ Comprehensive inventory of all delivered capabilities including:
 
 ### **🧠 [Memory Governance System](./memory-governance-roadmap.md)**
 
-**Target Release**: v2.2.0 (Q2 2025)  
+**Target Release**: v2.5.0 (Q2 2025)  
 **Confidence Level**: 🔥 **High** (detailed implementation plan)
 
 **Core Innovation**: Dual-layer memory architecture (Lite + Heavy memory)
@@ -61,7 +61,7 @@ Comprehensive inventory of all delivered capabilities including:
 
 ### **🎛️ [Feature Configurability System](./feature-configurability-roadmap.md)**
 
-**Target Release**: v2.2.0 (Q2 2025) ✅ **COMPLETED**  
+**Target Release**: v2.5.0 (Q2 2025) ✅ **COMPLETED**  
 **Confidence Level**: ✅ **Delivered** (production ready)
 
 **Core Innovation**: Three-tier configuration system (Core/Required/Optional)
@@ -88,7 +88,7 @@ Comprehensive inventory of all delivered capabilities including:
 
 ### **🛠️ Enhanced Developer Experience**
 
-**Target**: v2.1.0-beta through v2.2.0  
+**Target**: v2.5.0 through v2.5.0  
 **Confidence Level**: 🟡 **Medium** (subject to community feedback)
 
 - **Configuration Profiles**: Strict, Balanced, Minimal presets
@@ -98,7 +98,7 @@ Comprehensive inventory of all delivered capabilities including:
 
 ### **🏢 Enterprise Integration Enhancements**
 
-**Target**: v2.2.0 through v2.3.0  
+**Target**: v2.5.0 through v2.5.0  
 **Confidence Level**: 🟡 **Medium** (market demand dependent)
 
 - **Organization Policies**: Enterprise-level configuration constraints
@@ -112,7 +112,7 @@ Comprehensive inventory of all delivered capabilities including:
 
 ### **🌐 [Universal Tech Stack Support](./tech-stack-neutrality-roadmap.md)**
 
-**Target Release**: v3.0.0 (Q4 2026)  
+**Target Release**: v2.5.0 (Q4 2026)  
 **Confidence Level**: 🔵 **Directional** (strategic commitment)
 
 **Vision**: Transform from React+Next.js-biased to truly universal framework
@@ -125,7 +125,7 @@ Comprehensive inventory of all delivered capabilities including:
 
 ### **🤖 AI-Native Framework Evolution**
 
-**Target**: v3.1.0+ (2027+)  
+**Target**: v2.5.0+ (2027+)  
 **Confidence Level**: 🔵 **Directional** (emerging technology)
 
 - **AI Migration Analysis**: Intelligent project assessment and recommendations
@@ -149,7 +149,7 @@ Comprehensive inventory of all delivered capabilities including:
 ### **🏗️ System Capabilities**
 
 - **[V2 Hydration Roadmap](./v2-hydration-roadmap.md)** - One-command migration evolution and enterprise features
-- **[V1.3.0 Roadmap](./v1.3.0-roadmap.md)** - Historical roadmap for apprenticeship features (completed)
+- **[V1.3.0 Roadmap](./v2.5.0.md)** - Historical roadmap for apprenticeship features (completed)
 
 ---
 
@@ -207,9 +207,9 @@ Comprehensive inventory of all delivered capabilities including:
 
 ### **Quick Navigation**
 
-- **[Current Capabilities](./current-state.md)** - Complete v2.1.0 capability inventory
-- **[Next Major Feature](./feature-configurability-roadmap.md)** - v2.1.0 configurability system
-- **[Long-Term Vision](./tech-stack-neutrality-roadmap.md)** - v3.0.0 universal tech stack support
+- **[Current Capabilities](./current-state.md)** - Complete v2.5.0 capability inventory
+- **[Next Major Feature](./feature-configurability-roadmap.md)** - v2.5.0 configurability system
+- **[Long-Term Vision](./tech-stack-neutrality-roadmap.md)** - v2.5.0 universal tech stack support
 - **[Release History](../releases/)** - Complete release documentation
 
 ### **Related Documentation**

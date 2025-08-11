@@ -1,6 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.4.0-alpha-dev
-@intent: Neural Signal Exchange Protocol specification for Constitutional Hive Mind
+@aegisFrameworkVersion: 2.5.0tent: Neural Signal Exchange Protocol specification for Constitutional Hive Mind
 @context: Operational infrastructure for distributed Constitutional learning and governance
 @visionType: protocol-specification
 @status: draft
@@ -14,7 +13,7 @@
 ```
 protocol:
   id: "neural-signal-exchange-protocol"
-  version: "1.0.0-draft"
+  version: "2.5.0"
   type: "Constitutional-communication"
   scope: "hive-mind-infrastructure"
 
@@ -82,7 +81,7 @@ protocol:
 interface ConstitutionalNeuralSignal {
   // Protocol Infrastructure
   protocol: {
-    version: "1.0.0"
+    version: "2.5.0"
     timestamp: ISO8601DateTime
     nodeId: AnonymizedNodeId // cryptographic hash, rotated
     signalId: UUIDv4

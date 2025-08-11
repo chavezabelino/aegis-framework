@@ -1,8 +1,7 @@
 <!--
 # 🎛️ Feature Configurability Audit: Optional vs Core vs Required
 
-@aegisFrameworkVersion: 2.4.0-alpha-dev
-@intent: Feature configurability audit and design for optional vs core vs required framework behaviors
+@aegisFrameworkVersion: 2.5.0tent: Feature configurability audit and design for optional vs core vs required framework behaviors
 @context: Assess which recently added features should be configurable vs mandatory per dev team preferences
 @mode: analytical
 -->

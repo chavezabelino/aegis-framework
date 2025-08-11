@@ -7,7 +7,7 @@
   "status": "under-review",
   "type": "constitutional",
   "impact": "major",
-  "version": "1.1.0-beta",
+  "version": "2.5.0",
   "proposedText": "Add Article X: AI Learning Integration - All framework components shall integrate with the AI learning system for continuous improvement and pattern recognition.",
   "rationale": "The successful implementation of Pattern Recognition and Predictive Enforcement demonstrates the value of AI learning. This amendment formalizes AI integration as a constitutional requirement.",
   "implementationPlan": [

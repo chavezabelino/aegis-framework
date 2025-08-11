@@ -1,6 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.4.0-alpha-dev
-@intent: Roadmap for implementing tech stack neutrality across the framework
+@aegisFrameworkVersion: 2.5.0tent: Roadmap for implementing tech stack neutrality across the framework
 @context: Future feature planning for universal adapter system and framework reusability
 -->
 
@@ -9,9 +8,9 @@
 ## 📋 Feature Overview
 
 **Feature**: Universal Tech Stack Support  
-**Status**: Future Feature (Planned for v3.0.0)  
+**Status**: Future Feature (Planned for v2.5.0)  
 **Priority**: High Impact, Strategic Initiative  
-**Timeline**: 8 months (v3.0.0-alpha through v3.0.0-stable)
+**Timeline**: 8 months (v2.5.0 through v2.5.0)
 
 ## 🎯 Strategic Objective
 
@@ -63,7 +62,7 @@ graph TD
 
 ## 📅 Implementation Timeline
 
-### **Phase 1: Foundation (Months 1-2) - v3.0.0-alpha**
+### **Phase 1: Foundation (Months 1-2) - v2.5.0**
 
 **Milestone**: Universal Interface Layer
 
@@ -86,7 +85,7 @@ graph TD
 - CLI protocol documented and validated
 - Existing React+Next.js functionality preserved
 
-### **Phase 2: Primary Adapters (Months 3-4) - v3.0.0-beta**
+### **Phase 2: Primary Adapters (Months 3-4) - v2.5.0**
 
 **Milestone**: Core Tech Stack Support
 
@@ -109,7 +108,7 @@ graph TD
 - Blueprint compatibility >95% across adapters
 - Constitutional compliance maintained
 
-### **Phase 3: Ecosystem Expansion (Months 5-6) - v3.0.0-rc**
+### **Phase 3: Ecosystem Expansion (Months 5-6) - v2.5.0**
 
 **Milestone**: Broad Tech Stack Coverage
 
@@ -134,7 +133,7 @@ graph TD
 - Multi-stack project examples
 - Community adapter contributions
 
-### **Phase 4: Enterprise Support (Months 7-8) - v3.0.0-stable**
+### **Phase 4: Enterprise Support (Months 7-8) - v2.5.0**
 
 **Milestone**: Enterprise-Grade Universal Framework
 
@@ -202,7 +201,7 @@ graph TD
 
 ### **Technical Metrics**
 
-- **Adapter Coverage**: 8+ major tech stacks supported by v3.0.0-stable
+- **Adapter Coverage**: 8+ major tech stacks supported by v2.5.0
 - **Blueprint Portability**: 95%+ compatibility across all adapters
 - **Performance Parity**: <10% performance difference between tech stacks
 - **Constitutional Compliance**: 100% adherence across all implementations
@@ -291,10 +290,10 @@ Constitutional compliance that make the framework unique.
 
 | Release           | Timeline | Scope            | Key Features                       |
 | ----------------- | -------- | ---------------- | ---------------------------------- |
-| **v3.0.0-alpha**  | Q1 2026  | Foundation       | Universal interfaces, CLI protocol |
-| **v3.0.0-beta**   | Q2 2026  | Primary Adapters | React, Python, Go, Deno support    |
-| **v3.0.0-rc**     | Q3 2026  | Ecosystem        | Vue, Angular, Spring Boot, Django  |
-| **v3.0.0-stable** | Q4 2026  | Enterprise       | .NET, Java Enterprise, Kubernetes  |
+| **v2.5.0**  | Q1 2026  | Foundation       | Universal interfaces, CLI protocol |
+| **v2.5.0**   | Q2 2026  | Primary Adapters | React, Python, Go, Deno support    |
+| **v2.5.0**     | Q3 2026  | Ecosystem        | Vue, Angular, Spring Boot, Django  |
+| **v2.5.0** | Q4 2026  | Enterprise       | .NET, Java Enterprise, Kubernetes  |
 
 **Next Steps**: Begin foundation design in Q4 2025, community feedback collection, and adapter specification
 development.

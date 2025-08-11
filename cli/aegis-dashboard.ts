@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * @aegisFrameworkVersion: 2.4.0
+ * @aegisFrameworkVersion: 2.5.0
  * @intent: Live framework dashboard that shows real-time capability status and usage
  * @context: Complete observability solution binding truth to live system state
  * @mode: strict

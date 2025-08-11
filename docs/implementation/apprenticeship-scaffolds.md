@@ -1,11 +1,11 @@
-# Apprenticeship Scaffolds for Junior Developers (v2.4.0)
+# Apprenticeship Scaffolds for Junior Developers (v2.5.0)
 
 <!--
 @aegisBlueprint: apprenticeship-scaffolds
 @version: 1.3.0
 @mode: lean
 @intent: Documentation and implementation plan for apprenticeship scaffolds feature
-@context: Describes design, usage, and observability for v1.3.0 apprenticeship workflows
+@context: Describes design, usage, and observability for v2.5.0 apprenticeship workflows
 -->
 
 ## Overview

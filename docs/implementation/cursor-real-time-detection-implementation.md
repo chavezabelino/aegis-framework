@@ -1,8 +1,7 @@
 <!--
 # 🎨 Cursor-Specific Real-Time Evolution Detection Implementation
 
-@aegisFrameworkVersion: 2.4.0-alpha-dev
-@intent: Complete documentation of Cursor-specific real-time evolution detection implementation
+@aegisFrameworkVersion: 2.5.0tent: Complete documentation of Cursor-specific real-time evolution detection implementation
 @context: Answer to "did i lose any expected behavior moving from copilot to cursor rules"
 -->
 

@@ -1,5 +1,5 @@
 /**
- * @aegisFrameworkVersion: 2.4.0
+ * @aegisFrameworkVersion: 2.5.0
  * @intent: CLI for managing Cursor real-time integration
  * @context: Provides command-line interface for live Cursor workflow monitoring
  */

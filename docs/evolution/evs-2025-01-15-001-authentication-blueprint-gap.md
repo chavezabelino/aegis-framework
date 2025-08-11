@@ -1,8 +1,7 @@
 <!--
 # EVS-2025-01-15-001: Authentication Blueprint Gap and Constitutional Drift
 
-@aegisFrameworkVersion: 2.4.0-alpha-dev
-@intent: Evolution story documenting Constitutional violation and authentication Blueprint gap
+@aegisFrameworkVersion: 2.5.0tent: Evolution story documenting Constitutional violation and authentication Blueprint gap
 @context: Field-driven discovery of framework drift during real-world authentication implementation
 -->
 

@@ -1,13 +1,13 @@
 <!--
-@aegisFrameworkVersion: 2.4.0
-@intent: Framework core specification for v2.2.0 with feature configurability system
+@aegisFrameworkVersion: 2.5.0
+@intent: Framework core specification for v2.5.0 with feature configurability system
 @context: Complete framework architecture and capabilities documentation
 @mode: strict
 -->
 
-# 🏛️ Aegis Framework Core v2.2.0
+# 🏛️ Aegis Framework Core v2.5.0
 
-**Version**: v2.2.0 (Stable Release)  
+**Version**: v2.5.0 (Stable Release)  
 **Release Date**: August 8, 2025  
 **Constitutional Authority**: Article II (Framework Governance)
 
@@ -15,7 +15,7 @@
 
 ## 📊 **Executive Summary**
 
-Aegis Framework v2.2.0 represents a major milestone in AI engineering governance, introducing the world's most
+Aegis Framework v2.5.0 represents a major milestone in AI engineering governance, introducing the world's most
 configurable AI framework with a complete three-tier feature configurability system. This release establishes Aegis as
 the definitive platform for teams seeking Constitutional AI governance with unprecedented flexibility and customization
 capabilities.
@@ -418,21 +418,21 @@ optional:
 
 ## 🔮 **Future Roadmap**
 
-### **v2.3.0: Memory Governance Implementation**
+### **v2.5.0: Memory Governance Implementation**
 
 - Complete Lite Memory implementation
 - Heavy Memory persistence layer
 - Constitutional memory compliance
 - Cross-platform memory patterns
 
-### **v3.0.0: Universal Tech Stack Support**
+### **v2.5.0: Universal Tech Stack Support**
 
 - Language-agnostic CLI foundation
 - Universal adapter pattern
 - Cross-platform governance principles
 - Multi-language Blueprint support
 
-### **v3.1.0+: Advanced AI Governance**
+### **v2.5.0+: Advanced AI Governance**
 
 - Predictive governance capabilities
 - Autonomous framework evolution
@@ -459,4 +459,4 @@ optional:
 
 ---
 
-**Aegis Framework v2.2.0** - The world's most configurable AI framework with Constitutional governance.
+**Aegis Framework v2.5.0** - The world's most configurable AI framework with Constitutional governance.

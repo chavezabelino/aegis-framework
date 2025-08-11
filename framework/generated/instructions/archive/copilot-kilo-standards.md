@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.4.0
+@aegisFrameworkVersion: 2.5.0
 @intent: Ultimate merged GitHub Copilot + Kilo standards under Aegis Framework
 @context: Intelligent section merging with deduplication and hierarchical priority
 @generatedFrom: generate-copilot-kilo-standards.cjs
@@ -7,7 +7,7 @@
 @lastGenerated: 2025-08-06T18:39:56.885Z
 -->
 
-# 🤖 GitHub Copilot + Kilo Standards (Aegis Framework v1.2.1)
+# 🤖 GitHub Copilot + Kilo Standards (Aegis Framework v2.5.0)
 
 > **Ultimate merged instructions combining Constitutional compliance with operational excellence.**
 
@@ -21,13 +21,13 @@
 - **Semantic Versioning**: Strict adherence to Constitutional version management
 - **Multi-Agent Coordination**: Support for agent handoffs and orchestration
 
-## 🎯 Framework Context (v1.2.1)
+## 🎯 Framework Context (v2.5.0)
 
 ### Current Capabilities
 
-- **Core**: Blueprint-driven development with v1.0.0-alpha specification
-- **Multi-Agent**: v1.1.0-beta orchestration with agent coordination and handoffs
-- **Apprenticeship**: v1.3.0 scaffolding system with mentor guidance
+- **Core**: Blueprint-driven development with v2.5.0 specification
+- **Multi-Agent**: v2.5.0 orchestration with agent coordination and handoffs
+- **Apprenticeship**: v2.5.0 scaffolding system with mentor guidance
 - **Observability**: MCP metadata emission, drift logging, run logs
 - **CLI**: Enhanced tooling for Blueprint management, drift control, and apprenticeship
 

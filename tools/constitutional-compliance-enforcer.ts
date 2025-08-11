@@ -25,7 +25,12 @@ interface EnforcerResult {
 
 function runNodeScript(scriptPath: string, args: string[]): Promise<{ code: number; stdout: string; stderr: string; }> {
   return new Promise((resolvePromise) => {
-    const child = spawn(process.execPath, [scriptPath, ...args], {
+    // Use tsx for TypeScript files, node for JavaScript files
+    const isTypeScript = scriptPath.endsWith('.ts');
+    const executable = isTypeScript ? 'npx' : process.execPath;
+    const scriptArgs = isTypeScript ? ['tsx', scriptPath, ...args] : [scriptPath, ...args];
+    
+    const child = spawn(executable, scriptArgs, {
       cwd: process.cwd(),
       stdio: ['ignore', 'pipe', 'pipe']
     });

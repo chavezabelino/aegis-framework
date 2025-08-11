@@ -42,10 +42,10 @@ specifications.
 
 Core specifications are versioned and maintained:
 
-- **v2.4.0**: Current stable release with semantic interrupts
-- **v2.3.0**: Constitutional safeguards enhancement
-- **v2.2.0**: Feature configurability system
-- **v2.1.0**: Memory governance foundations
+- **v2.5.0**: Current stable release with semantic interrupts
+- **v2.5.0**: Constitutional safeguards enhancement
+- **v2.5.0**: Feature configurability system
+- **v2.5.0**: Memory governance foundations
 
 ## Constitutional Integration
 

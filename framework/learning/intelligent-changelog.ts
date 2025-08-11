@@ -6,7 +6,7 @@
  * AI-powered changelog analysis, generation, and release planning
  * Part of Phase 2: Intelligent Governance
  *
- * @aegisFrameworkVersion: 2.4.0-beta
+ * @aegisFrameworkVersion: 2.5.0
  * @intent: Implement intelligent changelog automation with AI-powered analysis
  */
 

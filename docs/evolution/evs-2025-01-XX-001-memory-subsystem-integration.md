@@ -1,7 +1,7 @@
 <!--
 # 🧠 EVS-2025-01-XX-001: Aegis Memory Subsystem Integration
 
-@aegisFrameworkVersion: 2.4.0
+@aegisFrameworkVersion: 2.5.0
 @intent: Evolution story for Aegis Memory Subsystem integration
 @context: Analysis of memory governance concepts inspired by MemU framework
 @mode: strict
@@ -12,7 +12,7 @@
 **Evolution Story ID**: EVS-2025-01-XX-001  
 **Trigger Date**: January 2025  
 **Constitutional Authority**: Article III (Evolution Process)  
-**Strategic Alignment**: v3.0.0 Universal Tech Stack Support  
+**Strategic Alignment**: v2.5.0 Universal Tech Stack Support  
 **Impact Level**: High - Memory governance is critical for AI companion applications
 
 ---
@@ -110,17 +110,17 @@ version: 1.0.0
 
 ruleContracts:
   - id: memory-privacy
-    version: "1.0.0"
+    version: "2.5.0"
     description: "Constitutional memory privacy and access controls"
     schema: memory-privacy.schema.ts
 
   - id: memory-traceability
-    version: "1.0.0"
+    version: "2.5.0"
     description: "Memory operation traceability requirements"
     schema: memory-traceability.schema.ts
 
   - id: memory-observability
-    version: "1.0.0"
+    version: "2.5.0"
     description: "Memory Telemetry and audit requirements"
     schema: memory-observability.schema.ts
 
@@ -192,7 +192,7 @@ Aegis memory audit              # Constitutional memory audit
 
 ### **Alignment with Strategic Vision**
 
-#### **Universal Tech Stack Support (v3.0.0)**
+#### **Universal Tech Stack Support (v2.5.0)**
 
 - ✅ **Python Ecosystem**: Memory governance in Python adapters
 - ✅ **Go Ecosystem**: Memory patterns in Go applications
@@ -319,5 +319,5 @@ maintaining the framework's core principles of traceability, observability, and 
 
 **Evolution Story Authority**: Aegis Framework Community  
 **Constitutional Compliance**: Article III (Evolution Process)  
-**Strategic Alignment**: v3.0.0 Universal Tech Stack Support  
+**Strategic Alignment**: v2.5.0 Universal Tech Stack Support  
 **Next Review**: Implementation planning phase

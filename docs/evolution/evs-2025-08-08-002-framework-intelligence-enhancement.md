@@ -1,7 +1,7 @@
 <!--
 # EVS-2025-08-08-002: Framework Intelligence Enhancement & Constitutional Amendments
 
-@aegisFrameworkVersion: 2.4.0
+@aegisFrameworkVersion: 2.5.0
 @intent: Evolution story for framework intelligence enhancement and Constitutional amendments
 @context: Framework learning from intelligence gaps and systematic thinking failures
 @mode: strict

@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.4.0
+@aegisFrameworkVersion: 2.5.0
 @intent: Constitutional compliance template section
 @context: Core Constitutional requirements for all agent instructions
 -->

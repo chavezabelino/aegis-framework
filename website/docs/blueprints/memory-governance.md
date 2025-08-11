@@ -3,7 +3,7 @@
 ## Overview
 
 The `memory-governance` Blueprint defines the Constitutional integration of the memory subsystem, planned as a strategic
-capability for Aegis Framework v3.0.0.
+capability for Aegis Framework v2.5.0.
 
 ## Blueprint Specification
 
@@ -81,7 +81,7 @@ tasks:
 
 ## Implementation Strategy
 
-### Phase 1: Foundation (v3.0.0-alpha)
+### Phase 1: Foundation (v2.5.0)
 
 ```
 interface MemoryCore {
@@ -106,7 +106,7 @@ class HeavyMemoryEngine {
 }
 ```
 
-### Phase 2: Governance Integration (v3.0.0-beta)
+### Phase 2: Governance Integration (v2.5.0)
 
 ```
 class MemoryGovernance {
@@ -117,7 +117,7 @@ class MemoryGovernance {
 }
 ```
 
-### Phase 3: Advanced Features (v3.0.0-stable)
+### Phase 3: Advanced Features (v2.5.0)
 
 - **Pattern Recognition**: Learning from memory usage patterns
 - **Predictive Preloading**: Anticipating memory needs
@@ -159,7 +159,7 @@ class MemoryGovernance {
 
 ### Framework Evolution
 
-- **v3.0.0 Foundation**: Memory subsystem as core capability
+- **v2.5.0 Foundation**: Memory subsystem as core capability
 - **Constitutional Enhancement**: Memory-informed governance evolution
 - **Performance Optimization**: Framework-wide memory efficiency
 - **User Experience**: Seamless context preservation across sessions

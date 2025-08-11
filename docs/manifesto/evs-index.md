@@ -1,8 +1,7 @@
 <!--
 # 📚 Evolution Stories Index
 
-@aegisFrameworkVersion: 2.4.0-alpha-dev
-@intent: Canonical index of all Evolution Stories for pattern recognition and learning
+@aegisFrameworkVersion: 2.5.0tent: Canonical index of all Evolution Stories for pattern recognition and learning
 @context: Central registry enabling systematic analysis of framework evolution patterns
 @manifestoRef: Evidence base supporting field-driven learning claims
 -->
@@ -20,7 +19,7 @@ that drive Constitutional and technical evolution.
 **Constitutional Impact**: 3 major stories  
 **Field-Driven Learning**: 2 complete stories  
 **Auto-Generated**: 7 placeholder stories  
-**Framework Version Range**: v1.0.0-alpha to v2.1.0
+**Framework Version Range**: v2.5.0 to v2.5.0
 
 ## 📋 Complete Evolution Stories
 
@@ -44,7 +43,7 @@ safety mechanisms.
 
 - **Date**: August 7, 2025
 - **Trigger**: User question revealed anti-pattern in framework guidance
-- **Impact**: Complete distribution strategy reversal (v2.1.0)
+- **Impact**: Complete distribution strategy reversal (v2.5.0)
 - **Status**: ✅ Complete - Framework corrected and documented
 - **Pattern**: User insight > Framework assumption
 
@@ -89,7 +88,7 @@ investigation and completion._
 - **Evidence**: Commit without evolution story documentation
 - **Status**: 🚧 Auto-Generated - Requires Investigation
 
-### **EVS-2025-08-07-006: Staged Constitutional Change - framework/framework-core-v2.1.0.md**
+### **EVS-2025-08-07-006: Staged Constitutional Change - framework/framework-core-v2.5.0.md**
 
 - **Detection Pattern**: Constitutional change without evolution story
 - **Evidence**: Framework specification modification
@@ -220,6 +219,6 @@ The two complete field-driven stories demonstrate:
 
 ---
 
-**Framework**: [Core Specification](../../framework/framework-core-v2.0.0-alpha-dev.md)  
+**Framework**: [Core Specification](../../framework/framework-core-v2.5.0  
 **Manifesto**: [Case Studies](./case-studies.md) | [Principles](./principles.md)  
 **Constitution**: [Governance Model](../../CONSTITUTION.md)

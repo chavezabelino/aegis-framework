@@ -1,17 +1,17 @@
 <!--
-@aegisFrameworkVersion: 2.4.0
+@aegisFrameworkVersion: 2.5.0
 @intent: Complete GitHub Copilot instructions combining Constitutional compliance with operational excellence
 @context: Single source of truth for GitHub Copilot under Aegis Framework + Kilo standards
 @generatedFrom: agent-instructions.template.md + project-standards.md
 @lastGenerated: 2025-08-07
 -->
 
-# 🤖 GitHub Copilot Instructions for Aegis Framework v1.4.0
+# 🤖 GitHub Copilot Instructions for Aegis Framework v2.5.0
 
 > **Complete instructions combining Constitutional compliance with operational excellence.**
 
 <!--
-@aegisFrameworkVersion: 1.3.1
+@aegisFrameworkVersion: 2.5.0
 @intent: Constitutional compliance template section
 @context: Core Constitutional requirements for all agent instructions
 -->
@@ -26,17 +26,17 @@
 - **Semantic Versioning**: Strict adherence to Constitutional version management
 
 <!--
-@aegisFrameworkVersion: 1.3.1
+@aegisFrameworkVersion: 2.5.0
 @intent: Template section for agent instructions
 @context: Modular content for framework instruction generation
 -->
-## 🎯 Framework Context (v1.4.0)
+## 🎯 Framework Context (v2.5.0)
 
 ### Current Capabilities
 
-- **Core**: Blueprint-driven development with v1.0.0-alpha specification
-- **Multi-Agent**: v1.1.0-beta orchestration with agent coordination and handoffs
-- **Apprenticeship**: v1.3.0 scaffolding system with mentor guidance
+- **Core**: Blueprint-driven development with v2.5.0 specification
+- **Multi-Agent**: v2.5.0 orchestration with agent coordination and handoffs
+- **Apprenticeship**: v2.5.0 scaffolding system with mentor guidance
 - **Observability**: MCP metadata emission, drift logging, run logs
 - **CLI**: Enhanced tooling for Blueprint management, drift control, and apprenticeship
 
@@ -47,7 +47,7 @@
 - **generative**: Creative expansion within Constitutional boundaries
 
 <!--
-@aegisFrameworkVersion: 1.3.1
+@aegisFrameworkVersion: 2.5.0
 @intent: Template section for agent instructions
 @context: Modular content for framework instruction generation
 -->
@@ -72,7 +72,7 @@
 - **Hybrid**: Constitutional annotations + operational discipline (recommended default)
 
 <!--
-@aegisFrameworkVersion: 1.3.1
+@aegisFrameworkVersion: 2.5.0
 @intent: Multi-agent orchestration template section
 @context: Agent coordination patterns and handoff protocols
 -->
@@ -152,7 +152,7 @@ await handoffToAgent({
 - `agent.workload.distributed`
 
 <!--
-@aegisFrameworkVersion: 1.3.1
+@aegisFrameworkVersion: 2.5.0
 @intent: Template section for agent instructions
 @context: Modular content for framework instruction generation
 -->
@@ -173,7 +173,7 @@ requiredSelectors:
   - name: "selectExample"
 ruleContracts:
   - rule: "validation"
-    version: "1.0.0"
+    version: "2.5.0"
 observability:
   events:
     - name: "example.created"
@@ -203,7 +203,7 @@ errorStates:
 ```
 
 <!--
-@aegisFrameworkVersion: 1.3.1
+@aegisFrameworkVersion: 2.5.0
 @intent: MCP metadata emission template section
 @context: Event schemas and observability patterns for agents
 -->
@@ -256,7 +256,7 @@ await emitEvent({
 - `framework/drift-log/user-workflow-drift.JSON` — Workflow drift tracking
 
 <!--
-@aegisFrameworkVersion: 1.3.1
+@aegisFrameworkVersion: 2.5.0
 @intent: Template section for agent instructions
 @context: Modular content for framework instruction generation
 -->
@@ -314,7 +314,7 @@ node CLI/drift-CLI.ts --fix --severity low
 ```
 
 <!--
-@aegisFrameworkVersion: 1.3.1
+@aegisFrameworkVersion: 2.5.0
 @intent: Template section for agent instructions
 @context: Modular content for framework instruction generation
 -->
@@ -366,7 +366,7 @@ node tools/validate-Blueprint.ts blueprints/*/Blueprint.YAML
 ```
 
 <!--
-@aegisFrameworkVersion: 1.3.1
+@aegisFrameworkVersion: 2.5.0
 @intent: Validation and testing template section
 @context: Testing standards and validation tooling for AI agents
 -->
@@ -449,7 +449,7 @@ npm run test:snapshot || exit 1
 ```
 
 <!--
-@aegisFrameworkVersion: 1.3.1
+@aegisFrameworkVersion: 2.5.0
 @intent: Template section for agent instructions
 @context: Modular content for framework instruction generation
 -->
@@ -459,11 +459,11 @@ See docs/ for architecture, workflow, and reference.
 
 ---
 <!--
-@aegisFrameworkVersion: 1.3.1
+@aegisFrameworkVersion: 2.5.0
 @aegisProjectProfile: true
 @intent: Project-specific operational standards for agent instruction merging
 @context: This file is merged with framework/agent instructions to produce ready-to-use, IDE/agent-specific guidance.
-@extends: GitHub-copilot.md@v1.2.1
+@extends: GitHub-copilot.md@v2.5.0
 -->
 
 # 🏗️ Project Operational Standards
@@ -806,7 +806,7 @@ const safeData = MySchema.parse(unsafeData);
 
 ## 🎯 **Execution Mode Decision Matrix**
 
-Based on analysis of Aegis v1.2.1 vs bracket-app-audit v2.5:
+Based on analysis of Aegis v2.5.0 vs bracket-app-audit v2.5:
 
 ### When to Use Full Constitutional Mode (`strict`)
 

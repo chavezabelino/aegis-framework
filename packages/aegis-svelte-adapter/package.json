@@ -1,6 +1,6 @@
 {
   "name": "@aegis-framework/svelte-adapter",
-  "version": "1.0.0",
+  "version": "2.5.0",
   "description": "Aegis framework adapter for Svelte/Drizzle/Neon applications",
   "type": "module",
   "main": "dist/index.js",

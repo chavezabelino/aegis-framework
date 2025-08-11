@@ -1,6 +1,4 @@
-# @aegisFrameworkVersion: 2.4.0-alpha-dev
-
-# @intent: Constitutional remediation plan for AI agent drift prevention
+# @aegisFrameworkVersion: 2.5.0@intent: Constitutional remediation plan for AI agent drift prevention
 
 # @context: Systematic implementation of safeguards against agent constitutional violations
 
@@ -16,7 +14,7 @@ remediationPlan:
   name: "AI Agent Constitutional Drift Prevention"
   description:
     "Comprehensive implementation of real-time intent enforcement and constitutional compliance for AI agents"
-  version: "1.0.0"
+  version: "2.5.0"
 
   # Constitutional annotations
   aegisFrameworkVersion: "2.0.0-alpha-dev"

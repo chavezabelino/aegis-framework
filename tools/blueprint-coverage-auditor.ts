@@ -1,6 +1,5 @@
 /**
- * @aegisFrameworkVersion: 2.4.0-alpha-dev
- * @intent: Systematic audit of fundamental functionality blueprint coverage
+ * @aegisFrameworkVersion: 2.5.0@intent: Systematic audit of fundamental functionality blueprint coverage
  * @context: Identify critical gaps in framework blueprint coverage to prevent constitutional drift
  */
 

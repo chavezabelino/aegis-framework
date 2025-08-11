@@ -6,7 +6,7 @@
  * Command-line interface for democratic amendment workflows
  * Part of Option C: Democratic Amendment Workflows
  *
- * @aegisFrameworkVersion: 2.4.0-beta
+ * @aegisFrameworkVersion: 2.5.0
  * @intent: Provide user-friendly CLI for amendment management
  */
 

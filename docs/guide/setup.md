@@ -32,7 +32,7 @@ git clone https://github.com/your-org/aegis-framework.git
 cd Aegis-framework
 
 # Or download and extract the latest release
-# wget https://github.com/your-org/aegis-framework/archive/refs/tags/v2.4.0-alpha.tar.gz
+# wget https://github.com/your-org/aegis-framework/archive/refs/tags/v2.5.0.tar.gz
 ```
 
 ### 2. Install Dependencies
@@ -158,7 +158,7 @@ npm run conductor enforce --scope=blueprints
 ```
 # Test Constitutional conductor
 npm run conductor status
-# Expected: "🏛️ Aegis Constitutional Conductor v1.0.1-alpha"
+# Expected: "🏛️ Aegis Constitutional Conductor v2.5.0"
 
 # Test compliance checking
 npm run check

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * @aegisFrameworkVersion: 2.4.0
+ * @aegisFrameworkVersion: 2.5.0
  * @intent: Framework intelligence certification system that validates and certifies all intelligence claims
  * @context: Comprehensive certification authority for framework intelligence features and capabilities
  * @mode: strict

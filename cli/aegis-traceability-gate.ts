@@ -6,7 +6,7 @@
  * Constitutional enforcement tool preventing claims without code lineage.
  * Verifies blueprint→contract→artifact trace before allowing "implemented" status.
  *
- * @aegisFrameworkVersion: 2.4.0
+ * @aegisFrameworkVersion: 2.5.0
  * @intent: Prevent Article I §1 violations through automated verification
  * @context: Response to EVS-2025-01-15-002 constitutional violation
  * @constitutionalAuthority: CONSTITUTION.md Article I Section 1 (Traceability)

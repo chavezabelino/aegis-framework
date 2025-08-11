@@ -53,7 +53,7 @@ contracts.
 ### Blueprint-Driven Development
 
 - **Blueprints** (`blueprints/*/Blueprint.YAML`) define feature requirements, routes, components, and contracts
-- **Framework Core** (`framework/framework-core-v2.1.0.md`) defines the specification - currently v2.1.0
+- **Framework Core** (`framework/framework-core-v2.5.0.md`) defines the specification - currently v2.5.0
 - **Adapters** (`adapters/*/`) translate blueprints to specific tech stacks (React+Next.js, Deno, Python+FastAPI)
 - **Three execution modes**: `lean` (minimal), `strict` (full compliance), `generative` (creative expansion)
 
@@ -85,7 +85,7 @@ node tools/validate-Blueprint.ts blueprints/feat-your-feature/Blueprint.YAML
 
 ### Blueprint Structure Pattern
 
-Follow the template in `framework/framework-core-v2.1.0.md`:
+Follow the template in `framework/framework-core-v2.5.0.md`:
 
 - `id`, `name`, `version` (required)
 - `requiredRoutes`, `requiredProviders`, `requiredSelectors`
@@ -105,7 +105,7 @@ Store AI agent outputs as:
 
 - **Snapshot tests** in `tests/snapshot-tests/` validate Blueprint fidelity over time
 - **Replay tests** in `tests/replay-diff-tests/` ensure deterministic outputs
-- **Visual regression** required for public routes (mentioned in v2.1.0 spec)
+- **Visual regression** required for public routes (mentioned in v2.5.0 spec)
 
 ## 📋 Project Conventions
 

@@ -1,7 +1,7 @@
 <!--
 # Semantic Interrupt Reflex System Breakthrough (EVS-2025-08-08-007)
 
-@aegisFrameworkVersion: 2.4.0
+@aegisFrameworkVersion: 2.5.0
 @intent: Evolution story documenting the semantic interrupt reflex system breakthrough
 @context: Captures revolutionary advancement in agent drift prevention through natural language cue detection
 @mode: strict

@@ -1,7 +1,7 @@
 <!--
 # ConstitutionalConstitutional Crisis: Systematic Intelligence Failure (EVS-2025-08-08-005)
 
-@aegisFrameworkVersion: 2.4.0
+@aegisFrameworkVersion: 2.5.0
 @intent: Constitutional crisis evolution story - systematic intelligence failure
 @context: Framework's core purpose violated by repeated intelligence failures
 @mode: strict

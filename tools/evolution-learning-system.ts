@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * @aegisFrameworkVersion: 2.4.0
+ * @aegisFrameworkVersion: 2.5.0
  * @intent: Actual evolution learning system that prevents repeat patterns
  * @context: Constitutional crisis response - implementing real evolution learning capabilities
  * @mode: strict

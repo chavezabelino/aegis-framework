@@ -1,7 +1,7 @@
 {
   "metadata": {
     "created": "2025-01-08T00:00:00Z",
-    "version": "1.0.0-alpha",
+    "version": "2.5.0",
     "tracking": "agent-behavior-drift"
   },
   "agentSessions": [

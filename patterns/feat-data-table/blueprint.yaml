@@ -24,10 +24,10 @@ requiredRoutes:
 requiredProviders:
   - name: "dataProvider"
     type: "state-management"
-    version: "1.0.0"
+    version: "2.5.0"
   - name: "filterProvider"
     type: "filter-context"
-    version: "1.0.0"
+    version: "2.5.0"
 
 requiredSelectors:
   - name: "selectTableData"
@@ -43,7 +43,7 @@ requiredSelectors:
 
 ruleContracts:
   - rule: "accessibility-compliance"
-    version: "1.0.0"
+    version: "2.5.0"
     enforcement: "blocking"
     schema:
       requirements:
@@ -53,7 +53,7 @@ ruleContracts:
         - "Focus management"
 
   - rule: "performance-optimization"
-    version: "1.0.0"
+    version: "2.5.0"
     enforcement: "warning"
     schema:
       requirements:
@@ -63,7 +63,7 @@ ruleContracts:
         - "Lazy loading of images"
 
   - rule: "responsive-design"
-    version: "1.0.0"
+    version: "2.5.0"
     enforcement: "blocking"
     schema:
       breakpoints:

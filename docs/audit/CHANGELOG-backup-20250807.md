@@ -3,7 +3,7 @@
 All notable changes to the Aegis Framework will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to
-[Semantic Versioning](https://semver.org/spec/v2.4.0.html).
+[Semantic Versioning](https://semver.org/spec/v2.5.0.html).
 
 ## [2.1.0] - 2025-08-07
 
@@ -65,7 +65,7 @@ This stable release provides production-ready package distribution with enhanced
 
 ### Breaking Changes
 
-- None (backward compatible with v2.0.0-alpha)
+- None (backward compatible with v2.5.0)
 
 ### Migration Required
 
@@ -118,7 +118,7 @@ This stable release provides production-ready package distribution with enhanced
 All notable changes to the Aegis Framework will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to
-[Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+[Semantic Versioning](https://semver.org/spec/v2.5.0.html).
 
 ## [Unreleased]
 
@@ -218,7 +218,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - HTML encoding artifacts in template system now automatically detected
 - Template quality issues prevented from entering codebase through pre-commit enforcement
 
-### Planned for v1.4.0
+### Planned for v2.5.0
 
 - Apprenticeship Scaffolds for Junior Developers:
   - `@apprenticeshipMode` execution contexts (guided, challenge, review-only)
@@ -460,7 +460,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Enhanced
 
-- **Framework Specification**: Detailed v1.0.1-alpha spec for Constitutional Conductor phase
+- **Framework Specification**: Detailed v2.5.0 spec for Constitutional Conductor phase
 - **Governance Structure**: Complete governance directory structure with amendment tracking
 - **Compliance Monitoring**: Real-time Constitutional compliance scoring and violation detection
 - **Auto-Correction**: Automated fixes for structural deviations, annotation compliance, and version consistency
@@ -485,9 +485,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Added
 
-- **Framework Foundation**: Semantic versioning adoption with structured v1.0.0-alpha release
+- **Framework Foundation**: Semantic versioning adoption with structured v2.5.0 release
 - **Agent Manifest**: `framework/agent-manifest.JSON` for agent capability discovery and configuration
-- **Version-Specific Instructions**: `framework/versions/instructions-v1.0.0-alpha.md` for agent guidance
+- **Version-Specific Instructions**: `framework/versions/instructions-v2.5.0.md` for agent guidance
 - **CLI Tooling**: `CLI/init-agent-context.ts` for automated copilot instruction generation
 - **Three-Mode Execution**: `lean`, `strict`, and `generative` modes with token optimization
 - **Output Management**: Standardized `output.{lean,strict,full}.JSON` pattern for AI agent outputs
@@ -499,17 +499,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Changed
 
-- **Breaking**: Migrated from informal v4.x versioning to semantic v1.0.0-alpha
+- **Breaking**: Migrated from informal v4.x versioning to semantic v2.5.0
 - **Breaking**: `@blueprintId` annotation now mandatory for all AI-generated files
 - **Enhanced**: Blueprint metadata blocks now include `@aegisFrameworkVersion`
-- **Enhanced**: CLI tooling updated to support v1.0.0-alpha workflows
+- **Enhanced**: CLI tooling updated to support v2.5.0 workflows
 - **Enhanced**: Documentation structure aligned with semantic versioning
-- **Updated**: All framework references from v4.6/v4.7 to v1.0.0-alpha
-- **Renamed**: Framework core specification to `framework-core-v1.0.0-alpha.md`
+- **Updated**: All framework references from v4.6/v4.7 to v2.5.0
+- **Renamed**: Framework core specification to `framework-core-v2.5.0.md`
 
 ### Fixed
 
-- Git tag migration from `v4.6.0` to `v1.0.0-alpha`
+- Git tag migration from `v2.5.0` to `v2.5.0`
 - Version consistency across all documentation and configuration files
 - Copilot instructions alignment with new versioning system
 

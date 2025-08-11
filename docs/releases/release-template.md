@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.4.0
+@aegisFrameworkVersion: 2.5.0
 @intent: Standard template for release documentation
 -->
 

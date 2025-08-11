@@ -1,12 +1,12 @@
 <!--
-# 📦 Understanding Open Source Distribution: GitHub Releases & Our v2.1.0 System
+# 📦 Understanding Open Source Distribution: GitHub Releases & Our v2.5.0 System
 
-@aegisFrameworkVersion: 2.4.0
+@aegisFrameworkVersion: 2.5.0
 @intent: Educational guide for understanding GitHub releases and our distribution system
 @context: Open source software distribution for beginners
 -->
 
-# 📦 Understanding Open Source Distribution: GitHub Releases & Our v2.1.0 System
+# 📦 Understanding Open Source Distribution: GitHub Releases & Our v2.5.0 System
 
 ## 🎯 GitHub Releases: The Basics
 
@@ -22,14 +22,14 @@ you'll see a "Releases" section where users can download stable versions.
 
 You'll see:
 
-- **Version numbers** (like v2.1.0)
+- **Version numbers** (like v2.5.0)
 - **Release notes** (what changed)
 - **Download links** (assets like .zip, .tar.gz files)
 - **Checksums** (security verification)
 
 ### **Our Implementation: What We Built**
 
-Our v2.1.0 system creates everything needed for professional open source distribution:
+Our v2.5.0 system creates everything needed for professional open source distribution:
 
 ```
 # What our build creates:
@@ -89,15 +89,15 @@ Here's what you'd do to create an actual GitHub release:
 
 ```
 # 1. Tag the version
-git tag -a v2.1.0 -m "v2.1.0: Stable release with package distribution"
+git tag -a v2.5.0 -m "v2.5.0: Stable release with package distribution"
 
 # 2. Push the tag
-git push origin v2.1.0
+git push origin v2.5.0
 
 # 3. Create release assets (what we automated)
 cd dist/
-tar -czf Aegis-CLI-v2.1.0.tar.gz Aegis-CLI/
-tar -czf Aegis-framework-lib-v2.1.0.tar.gz Aegis-framework-lib/
+tar -czf Aegis-CLI-v2.5.0.tar.gz Aegis-CLI/
+tar -czf Aegis-framework-lib-v2.5.0.tar.gz Aegis-framework-lib/
 
 # 4. Generate checksums (security)
 shasum -a 256 *.tar.gz > checksums.txt
@@ -116,7 +116,7 @@ npm install -g @Aegis-framework/CLI@2.1.0
 **Direct Download** (GitHub releases):
 
 ```
-curl -sSL https://github.com/owner/repo/releases/download/v2.1.0/aegis-cli-v2.1.0.tar.gz | tar -xz
+curl -sSL https://github.com/owner/repo/releases/download/v2.5.0/aegis-cli-v2.5.0.tar.gz | tar -xz
 ```
 
 **Package Managers**:
@@ -137,7 +137,7 @@ docker run Aegis-framework/CLI:2.1.0
 Our semantic versioning system:
 
 ```
-v2.1.0 = Major.Minor.Patch
+v2.5.0 = Major.Minor.Patch
   ↑      ↑     ↑
   |      |     └── Bug fixes (safe to upgrade)
   |      └────────── New features (backward compatible)
@@ -151,7 +151,7 @@ v2.1.0 = Major.Minor.Patch
 echo "eb587abd422598115f6298a73d83d182606eab3a0e71fba0500eed32a74d4389  Aegis-CLI.tar.gz" | shasum -a 256 -c
 
 # GPG signatures (advanced)
-gpg --verify Aegis-CLI-v2.1.0.tar.gz.sig Aegis-CLI-v2.1.0.tar.gz
+gpg --verify Aegis-CLI-v2.5.0.tar.gz.sig Aegis-CLI-v2.5.0.tar.gz
 ```
 
 ## 📋 Manual Verification Checklist
@@ -189,7 +189,7 @@ gpg --verify Aegis-CLI-v2.1.0.tar.gz.sig Aegis-CLI-v2.1.0.tar.gz
 4. **Version Consistency**:
 
    ```
-   # All should show v2.1.0
+   # All should show v2.5.0
    cat VERSION
    grep version package.JSON
    grep version dist/Aegis-CLI/package.JSON
@@ -217,12 +217,12 @@ When someone finds your GitHub repo, they expect:
 
 ## 🚀 Next Steps for Real Distribution
 
-### **To Actually Publish v2.1.0**
+### **To Actually Publish v2.5.0**
 
 1. **Create GitHub Release**:
    - Go to GitHub → Releases → "Create a new release"
-   - Tag: `v2.1.0`
-   - Upload: `dist/Aegis-CLI-v2.1.0.tar.gz`, `dist/Aegis-framework-lib-v2.1.0.tar.gz`
+   - Tag: `v2.5.0`
+   - Upload: `dist/Aegis-CLI-v2.5.0.tar.gz`, `dist/Aegis-framework-lib-v2.5.0.tar.gz`
    - Add: Release notes from CHANGELOG.md
 
 2. **Publish to npm**:

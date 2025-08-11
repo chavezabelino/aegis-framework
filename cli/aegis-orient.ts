@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * @aegisFrameworkVersion: 2.4.0
+ * @aegisFrameworkVersion: 2.5.0
  * @intent: Instant framework orientation command that explains what Aegis does and how
  * @context: Solves observability debt by providing immediate framework understanding
  * @mode: strict

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * @aegisFrameworkVersion: 2.4.0
+ * @aegisFrameworkVersion: 2.5.0
  * @intent: Single source of truth blueprint registry for framework features
  * @context: Centralizes feature descriptions to prevent documentation drift
  * @mode: strict

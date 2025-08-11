@@ -1,7 +1,7 @@
 <!--
 # Foreground Hang Prevention System
 
-@aegisFrameworkVersion: 2.4.0
+@aegisFrameworkVersion: 2.5.0
 @intent: Document the foreground hang prevention system for LLM-agent development loops
 @context: Comprehensive documentation of the Constitutional safeguard preventing agent blocking
 @mode: strict
@@ -10,7 +10,7 @@
 # Foreground Hang Prevention System
 
 **Date**: August 8, 2025  
-**Version**: v2.4.0  
+**Version**: v2.5.0  
 **Type**: Constitutional Safeguard Enhancement  
 **Implementation**: `framework/governance/foreground-hang-prevention.ts` + integrated into
 `tools/intent-enforcement-engine.ts`

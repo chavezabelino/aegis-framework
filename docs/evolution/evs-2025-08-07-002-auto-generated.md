@@ -1,7 +1,7 @@
 <!--
 # EVS-2025-08-07-002: Version Management Systematic Gap
 
-@aegisFrameworkVersion: 2.4.0
+@aegisFrameworkVersion: 2.5.0
 @intent: Completed evolution story for version management systematic gap
 @context: Framework learning from Constitutional governance violation and systematic remediation
 @mode: strict
@@ -39,7 +39,7 @@ evolutionStory:
 The framework's Constitutional compliance audit revealed systematic gaps in version management governance, specifically:
 
 1. **Phantom version entries** in CHANGELOG without corresponding git tags
-2. **Missing release documentation** for critical versions (v2.1.0)
+2. **Missing release documentation** for critical versions (v2.5.0)
 3. **Roadmap inconsistencies** with actual delivered capabilities
 4. **No automated validation** to prevent version drift
 
@@ -91,8 +91,8 @@ systematic gaps from recurring.
 ### **Phase 1: Version Truth Reconciliation (COMPLETED)**
 
 - ✅ **CHANGELOG cleanup**: Removed phantom versions, aligned with git tags
-- ✅ **Release documentation**: Created missing v2.1.0 documentation
-- ✅ **README alignment**: Updated to reflect current v2.1.0 state
+- ✅ **Release documentation**: Created missing v2.5.0 documentation
+- ✅ **README alignment**: Updated to reflect current v2.5.0 state
 - ✅ **Constitutional validation**: All version consistency checks passing
 
 ### **Phase 2: Capability-Based Roadmap Standardization (COMPLETED)**

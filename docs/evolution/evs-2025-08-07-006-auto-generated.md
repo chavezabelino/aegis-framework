@@ -1,19 +1,18 @@
 <!--
-# EVS-2025-08-07-006: Staged Constitutional Change - framework/framework-core-v2.1.0.md
+# EVS-2025-08-07-006: Staged Constitutional Change - framework/framework-core-v2.5.0.md
 
-@aegisFrameworkVersion: 2.4.0-alpha-dev
-@intent: Auto-generated evolution story for detected trigger
+@aegisFrameworkVersion: 2.5.0tent: Auto-generated evolution story for detected trigger
 @context: Framework automatic detection of evolution documentation needs
 -->
 
-# EVS-2025-08-07-006: Staged Constitutional Change - framework/framework-core-v2.1.0.md
+# EVS-2025-08-07-006: Staged Constitutional Change - framework/framework-core-v2.5.0.md
 
 ## 📊 Story Metadata
 
 ```
 evolutionStory:
   id: "EVS-2025-08-07-006"
-  title: "Staged Constitutional Change - framework/framework-core-v2.1.0.md"
+  title: "Staged Constitutional Change - framework/framework-core-v2.5.0.md"
   date: "2025-08-07"
   frameworkVersion: "2.0.0-alpha-dev"
   triggerType: "Constitutional-violation"
@@ -39,7 +38,7 @@ critical
 
 ### **Evidence Found**
 
-- Staged Constitutional file without evolution story: framework/framework-core-v2.1.0.md
+- Staged Constitutional file without evolution story: framework/framework-core-v2.5.0.md
 
 ## 🌱 Field Context
 

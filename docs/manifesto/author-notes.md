@@ -1,8 +1,7 @@
 <!--
 # 🧭 Author Notes: The Journey to GenAI OS
 
-@aegisFrameworkVersion: 2.4.0-alpha-dev
-@intent: Personal reflections on the journey from autocomplete to GenAI Operating System
+@aegisFrameworkVersion: 2.5.0tent: Personal reflections on the journey from autocomplete to GenAI Operating System
 @context: Author's lived experience building and evolving the framework
 @manifestoRef: The human story behind the technical manifesto
 -->

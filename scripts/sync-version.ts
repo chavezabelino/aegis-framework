@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * @aegisFrameworkVersion: 2.4.0
+ * @aegisFrameworkVersion: 2.5.0
  * @intent: Synchronize version across all framework files
  * @context: Maintain version consistency for stable releases
  */
@@ -63,7 +63,7 @@ class VersionSynchronizer {
 
   private async updateFrameworkVersions(version: string): Promise<void> {
     // Update framework core version references
-    const frameworkFiles = ['framework/framework-core-v2.0.0-alpha-dev.md', 'docs/implementation/complete-summary.md'];
+    const frameworkFiles = ['framework/framework-core-v2.5.0, 'docs/implementation/complete-summary.md'];
 
     for (const filePath of frameworkFiles) {
       if (fs.existsSync(filePath)) {

@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.4.0
+@aegisFrameworkVersion: 2.5.0
 @intent: Constitutional remediation plan for version drift and roadmap standardization
 @context: Implementation plan following comprehensive audit findings
 @mode: strict
@@ -9,7 +9,7 @@
 
 **Plan Version**: 1.0  
 **Implementation Date**: August 7, 2025  
-**Framework Version**: v2.1.0  
+**Framework Version**: v2.5.0  
 **Constitutional Authority**: Article II (Framework Governance) & Article VII (Amendment Process)
 
 ---
@@ -28,8 +28,8 @@ version management practices.
 
 #### **Issue Identified**
 
-- Phantom version entries (v1.5.0, v1.7.x) without corresponding git tags
-- Duplicated v1.4.0 entries causing confusion
+- Phantom version entries (v2.5.0, v1.7.x) without corresponding git tags
+- Duplicated v2.5.0 entries causing confusion
 - Chronological ordering issues
 
 #### **Remediation Actions**
@@ -53,13 +53,13 @@ node tools/reconcile-changelog.ts --validate-against-git
 
 #### **Priority Releases Needing Documentation**
 
-1. **v2.1.0** (current version - critical gap!)
-2. **v1.2.0-alpha** (missing summary)
-3. **v1.2.1** (missing summary)
+1. **v2.5.0** (current version - critical gap!)
+2. **v2.5.0** (missing summary)
+3. **v2.5.0** (missing summary)
 
 #### **Implementation**
 
-- Create `docs/releases/v2.1.0-summary.md` using release template
+- Create `docs/releases/v2.5.0.md` using release template
 - Backfill v1.2.x summaries based on git commit history
 - Update release index to reflect true current version
 
@@ -67,7 +67,7 @@ node tools/reconcile-changelog.ts --validate-against-git
 
 #### **Updates Required**
 
-- README roadmap section: Update v2.0.0 → v2.1.0 as current
+- README roadmap section: Update v2.5.0 → v2.5.0 as current
 - Roadmap timelines: Adjust based on actual delivery vs planned
 - Remove references to undelivered features marked as "complete"
 
@@ -86,7 +86,7 @@ Version-driven roadmaps become obsolete when development diverges from planning.
 ```
 docs/roadmap/
 ├── README.md                      # Master roadmap index & navigation
-├── current-state.md              # What we have delivered (v2.1.0)
+├── current-state.md              # What we have delivered (v2.5.0)
 ├── immediate-horizon.md          # Next 3 months (high confidence)
 ├── planning-horizon.md           # 3-6 months (medium confidence)
 ├── strategic-vision.md           # 6+ months (directional)
@@ -107,7 +107,7 @@ docs/roadmap/
 
 #### **Comprehensive "What We Have Today" Summary**
 
-Create definitive inventory of delivered capabilities as of v2.1.0:
+Create definitive inventory of delivered capabilities as of v2.5.0:
 
 - ✅ Constitutional governance framework
 - ✅ One-command hydration (`Aegis hydrate`)
@@ -181,7 +181,7 @@ This remediation triggers **Evolution Story EVS-2025-08-07-002**:
 ### **Day 1 (Today): Critical Version Fixes**
 
 - [ ] 08:00 - CHANGELOG cleanup and phantom version removal
-- [ ] 10:00 - Create missing v2.1.0 release documentation
+- [ ] 10:00 - Create missing v2.5.0 release documentation
 - [ ] 12:00 - Update README roadmap to reflect current state
 - [ ] 14:00 - Validate all documentation consistency
 - [ ] 16:00 - Deploy corrected documentation
@@ -207,7 +207,7 @@ This remediation triggers **Evolution Story EVS-2025-08-07-002**:
 ### **Immediate Success (24 Hours)**
 
 - ✅ Zero phantom versions in documentation
-- ✅ Current version (v2.1.0) fully documented
+- ✅ Current version (v2.5.0) fully documented
 - ✅ CHANGELOG matches git tag history exactly
 - ✅ README reflects actual framework state
 

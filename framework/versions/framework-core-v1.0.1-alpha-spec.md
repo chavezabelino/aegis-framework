@@ -1,11 +1,11 @@
 <!--
-@aegisFrameworkVersion: 2.4.0-alpha
+@aegisFrameworkVersion: 2.5.0
 @intent: Technical specification for Constitutional Conductor implementation
 @context: Phase 1 of self-healing governance roadmap
 @constitutionalAuthority: ../../CONSTITUTION.md
 -->
 
-# ⚙️ Aegis Framework v1.0.1-alpha Specification
+# ⚙️ Aegis Framework v2.5.0 Specification
 
 > **Constitutional Conductor**: Self-healing governance foundation with drift detection, automated enforcement, and
 > Constitutional compliance monitoring.
@@ -89,7 +89,7 @@ Aegis-conductor status
 
 ```
 {
-  "version": "1.0.1-alpha",
+  "version": "2.5.0",
   "lastAudit": "2025-08-05T14:00:00Z",
   "compliance": {
     "overall": 0.87,
@@ -100,7 +100,7 @@ Aegis-conductor status
     },
     "versioning": {
       "consistency": 1.0,
-      "references": ["VERSION", "framework/framework-core-v1.0.0-alpha.md"],
+      "references": ["VERSION", "framework/framework-core-v2.5.0.md"],
       "lastCheck": "2025-08-05T14:00:00Z"
     },
     "blueprints": {
@@ -171,14 +171,14 @@ safety:
 ```
 [
   {
-    "id": "missing-changelog-v1.1.0",
+    "id": "missing-changelog-v2.5.0",
     "timestamp": "2025-08-05T14:00:00Z",
     "origin": "human",
     "type": "Constitutional-drift",
     "category": "release-process",
     "severity": "medium",
     "target": "CHANGELOG.md",
-    "description": "Framework migration from v4.7 to v1.0.0-alpha did not generate a changelog entry",
+    "description": "Framework migration from v4.7 to v2.5.0 did not generate a changelog entry",
     "impact": {
       "agents": false,
       "blueprints": false,
@@ -188,7 +188,7 @@ safety:
     },
     "autoCorrectible": true,
     "correctionApplied": false,
-    "relatedFiles": ["CHANGELOG.md", "VERSION", "framework/framework-core-v1.0.0-alpha.md"]
+    "relatedFiles": ["CHANGELOG.md", "VERSION", "framework/framework-core-v2.5.0.md"]
   }
 ]
 ```
@@ -351,7 +351,7 @@ Constitutional drift shall be:
 
 ## 🔄 Migration Path
 
-### From v1.0.0-alpha to v1.0.1-alpha
+### From v2.5.0 to v2.5.0
 
 1. **Install Dependencies**: Add conductor CLI dependencies
 2. **Initialize Framework State**: Run `Aegis-conductor init`
@@ -367,5 +367,5 @@ Constitutional drift shall be:
 
 ---
 
-**Next Phase**: See [`framework-core-v1.1.0-beta-spec.md`](framework-core-v1.1.0-beta-spec.md) for intelligent
+**Next Phase**: See [`framework-core-v2.5.0(framework-core-v2.5.0for intelligent
 governance features including pattern recognition and democratic amendment processes.

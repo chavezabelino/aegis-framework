@@ -6,7 +6,7 @@
  * Uses pattern recognition to predict and prevent constitutional violations before they occur
  * Part of Phase 2: Intelligent Governance
  *
- * @aegisFrameworkVersion: 2.4.0-beta
+ * @aegisFrameworkVersion: 2.5.0
  * @intent: Implement predictive enforcement based on learned patterns
  */
 
@@ -140,7 +140,7 @@ class PredictiveEnforcement {
         {
           type: 'suggestion',
           message:
-            '✅ Use this template:\n<!--\n@aegisFrameworkVersion: 1.1.0-beta\n@intent: Description of purpose\n-->',
+            '✅ Use this template:\n<!--\n@aegisFrameworkVersion: 2.5.0\n@intent: Description of purpose\n-->',
           priority: 2,
         },
       ],

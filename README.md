@@ -1,6 +1,6 @@
 # Aegis: AI Agent Development Governance Framework
 
-[![Framework Version](https://img.shields.io/badge/Framework-v2.5.0-orange?style=for-the-badge)](VERSION)
+[![Framework Version](https://img.shields.io/badge/Framework-v2.5.0?style=for-the-badge)](VERSION)
 [![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](LICENSE)
 
 **The first governance framework for consistent, compliant AI agent code generation**
@@ -142,7 +142,7 @@ Key capabilities:
 ```txt
 Aegis-framework/
 ├── framework/             # Core specs, contracts, modes, agent behaviors
-│   ├── framework-core-v1.0.0-alpha.md
+│   ├── framework-core-v2.5.0.md
 │   ├── contracts/         # Blueprint + rule schemas
 │   ├── modes/             # lean, strict, generative (token-mode configs)
 │   ├── agents/            # Copilot, Kilo, Lovable behavior profiles
@@ -198,7 +198,7 @@ Blueprints define:
 - Associated rule contracts and error fallback UX
 - Agent mode and output hash
 
-See `framework/framework-core-v1.0.0-alpha.md` for the full Blueprint schema.
+See `framework/framework-core-v2.5.0.md` for the full Blueprint schema.
 
 ---
 
@@ -251,14 +251,14 @@ Each agent (Copilot, Kilo, Lovable) has a behavior profile in `/framework/agents
 
 ### ✅ **Foundation Era (v1.x - v2.4)**
 
-- ✅ **v1.0.0-alpha**: Initial semantic release - hardened replay, error taxonomy, observability contracts
-- ✅ **v1.2.0-alpha**: Constitutional governance, self-healing systems, pattern recognition, amendment processes
-- ✅ **v1.3.0**: Apprenticeship scaffolds and documentation reorganization
-- ✅ **v1.4.0**: Template quality & GitHub Copilot instructions
-- ✅ **v2.0.0**: One-command hydration paradigm shift
-- ✅ **v2.1.0**: Framework protection & Cursor integration, package distribution
-- ✅ **v2.2.0**: Feature configurability system complete
-- ✅ **v2.4.0**: Constitutional framework maturation
+- ✅ **v2.5.0**: Initial semantic release - hardened replay, error taxonomy, observability contracts
+- ✅ **v2.5.0**: Constitutional governance, self-healing systems, pattern recognition, amendment processes
+- ✅ **v2.5.0**: Apprenticeship scaffolds and documentation reorganization
+- ✅ **v2.5.0**: Template quality & GitHub Copilot instructions
+- ✅ **v2.5.0**: One-command hydration paradigm shift
+- ✅ **v2.5.0**: Framework protection & Cursor integration, package distribution
+- ✅ **v2.5.0**: Feature configurability system complete
+- ✅ **v2.5.0**: Constitutional framework maturation
 
 ### 🎯 **AI Agent Governance Era (v2.5+)**
 
@@ -271,24 +271,24 @@ Each agent (Copilot, Kilo, Lovable) has a behavior profile in `/framework/agents
 
 ### 🚀 **Industry Leadership Era (v3.0+)**
 
-- 🔜 **v3.0.0**: **Multi-Agent Coordination & Standards**
+- 🔜 **v2.5.0**: **Multi-Agent Coordination & Standards**
   - Distributed AI agent governance across development tools
   - Advanced pattern composition and inheritance
   - Industry standards working group establishment
   - Enterprise governance analytics and reporting
 
-- 🔮 **v3.1.0**: **Ecosystem Integration**
+- 🔮 **v2.5.0**: **Ecosystem Integration**
   - Native integrations with major AI coding tools (Cursor, GitHub Copilot, ChatGPT, Claude)
   - Real-time governance enforcement across development environments
   - Community pattern marketplace and contribution system
 
-- 🔮 **v4.0.0**: **Autonomous Governance Evolution**
+- 🔮 **v2.5.0**: **Autonomous Governance Evolution**
   - AI-powered governance rule optimization
   - Predictive compliance and quality assurance
   - Self-evolving pattern effectiveness analysis
 
 See [detailed roadmaps](docs/roadmap/),
-[v2.2.0 Feature Configurability completion](docs/implementation/feature-configurability-phase3-complete.md), and the
+[v2.5.0 Feature Configurability completion](docs/implementation/feature-configurability-phase3-complete.md), and the
 [CHANGELOG.md](CHANGELOG.md) for complete feature planning and release history.
 
 ---
@@ -327,7 +327,7 @@ See [detailed roadmaps](docs/roadmap/),
 
 ## 🔄 Contributing & Versioning
 
-Aegis follows [Semantic Versioning](https://semver.org/) starting with v1.0.0-alpha.
+Aegis follows [Semantic Versioning](https://semver.org/) starting with v2.5.0.
 
 **For changelog-worthy contributions:**
 
@@ -398,7 +398,7 @@ in it.
 
 ## 🔄 Contributing & Versioning
 
-Aegis follows [Semantic Versioning](https://semver.org/) starting with v1.0.0-alpha.
+Aegis follows [Semantic Versioning](https://semver.org/) starting with v2.5.0.
 
 **For changelog-worthy contributions:**
 

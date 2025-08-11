@@ -84,7 +84,7 @@ jobs:
 
   Aegis:
 
-    uses: chavezabelino/Aegis-framework/.GitHub/workflows/Aegis-governance-reusable.yml@v2.6.0
+    uses: chavezabelino/Aegis-framework/.GitHub/workflows/Aegis-governance-reusable.yml@v2.5.0
 
     with:
 

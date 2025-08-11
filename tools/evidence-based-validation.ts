@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * @aegisFrameworkVersion: 2.4.0
+ * @aegisFrameworkVersion: 2.5.0
  * @intent: Evidence-based validation system for all framework intelligence claims
  * @context: Ensures all intelligence claims are backed by concrete, verifiable evidence
  * @mode: strict

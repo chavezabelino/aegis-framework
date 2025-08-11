@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * @aegisFrameworkVersion: 2.4.0
+ * @aegisFrameworkVersion: 2.5.0
  * @intent: Automatically update the framework dashboard for git commits
  * @context: Ensures dashboard stays current and gets committed to repository
  * @mode: strict

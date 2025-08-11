@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * @aegisFrameworkVersion: 2.4.0
+ * @aegisFrameworkVersion: 2.5.0
  * @intent: Semantic interrupt detection for agent drift prevention and intent realignment
  * @context: Constitutional safeguard that detects when users express doubt about agent intent alignment
  * @mode: strict

@@ -1,8 +1,7 @@
 <!--
 # EVS-2025-08-07-005: Constitutional Change Documentation - 2a25979
 
-@aegisFrameworkVersion: 2.4.0-alpha-dev
-@intent: Auto-generated evolution story for detected trigger
+@aegisFrameworkVersion: 2.5.0tent: Auto-generated evolution story for detected trigger
 @context: Framework automatic detection of evolution documentation needs
 -->
 

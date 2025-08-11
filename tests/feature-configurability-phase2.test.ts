@@ -1,5 +1,5 @@
 /**
- * @aegisFrameworkVersion: 2.4.0
+ * @aegisFrameworkVersion: 2.5.0
  * @intent: Integration tests for Phase 2 feature configurability tools
  * @context: Validate pre-commit hooks, template quality, and annotation validation
  * @mode: strict
@@ -119,7 +119,7 @@ describe('Feature Configurability Phase 2 Integration', () => {
       fs.writeFileSync(
         testFile,
         `<!--
-@aegisFrameworkVersion: 2.1.0
+@aegisFrameworkVersion: 2.5.0
 @intent: Test template file
 @context: Testing template quality validation
 @mode: strict
@@ -213,7 +213,7 @@ This is a test template file for validation.
       fs.writeFileSync(
         properFile,
         `/**
- * @aegisFrameworkVersion: 2.1.0
+ * @aegisFrameworkVersion: 2.5.0
  * @intent: Test file with proper annotations
  * @context: Testing annotation validation
  * @mode: strict

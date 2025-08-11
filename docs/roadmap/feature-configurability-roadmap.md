@@ -1,6 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.4.0-alpha-dev
-@intent: Roadmap for three-tier feature configurability system implementation
+@aegisFrameworkVersion: 2.5.0tent: Roadmap for three-tier feature configurability system implementation
 @context: Future implementation of team-specific framework behavior configuration
 -->
 
@@ -40,7 +39,7 @@ amendments.
 
 ## 📅 Implementation Timeline
 
-### **🚀 Phase 1: Foundation (v2.1.0-alpha) - Q1 2026**
+### **🚀 Phase 1: Foundation (v2.5.0) - Q1 2026**
 
 **Theme**: Configuration System Infrastructure
 
@@ -93,7 +92,7 @@ amendments.
 - Team lead approval tracking for all Constitutional overrides
 - Automatic expiry monitoring and renewal alert system
 
-### **🔧 Phase 2: Tool Integration (v2.1.0-beta) - Q2 2026**
+### **🔧 Phase 2: Tool Integration (v2.5.0) - Q2 2026**
 
 **Theme**: Framework-Wide Configuration Support
 
@@ -117,7 +116,7 @@ amendments.
 - **Override Patterns**: Understand why teams need Constitutional overrides
 - **Renewal Behavior**: Track override renewal vs abandonment
 
-### **📊 Phase 3: Advanced Configuration (v2.2.0) - Q3 2026**
+### **📊 Phase 3: Advanced Configuration (v2.5.0) - Q3 2026**
 
 **Theme**: Enhanced Configuration Experience
 
@@ -142,7 +141,7 @@ amendments.
 - **Profile Sharing**: Community-contributed configuration patterns
 - **Migration Profiles**: Specialized configurations for framework migration
 
-### **🌟 Phase 4: Ecosystem Integration (v2.3.0) - Q4 2026**
+### **🌟 Phase 4: Ecosystem Integration (v2.5.0) - Q4 2026**
 
 **Theme**: Configuration Ecosystem Maturity
 
@@ -187,7 +186,7 @@ amendments.
 ### **Configuration Schema Evolution**
 
 ```
-// v2.1.0: Foundation
+// v2.5.0: Foundation
 interface TeamConfiguration {
   team: TeamInfo
   core: CoreFeatures // Always enabled
@@ -196,14 +195,14 @@ interface TeamConfiguration {
   overrides?: OverrideConfig
 }
 
-// v2.2.0: Advanced
+// v2.5.0: Advanced
 interface TeamConfigurationV2 extends TeamConfiguration {
   profiles: CustomProfile[]
   analytics: UsageAnalytics
   integration: ExternalIntegration
 }
 
-// v2.3.0: Ecosystem
+// v2.5.0: Ecosystem
 interface TeamConfigurationV3 extends TeamConfigurationV2 {
   intelligence: ConfigurationIntelligence
   community: CommunityIntegration
@@ -347,5 +346,5 @@ interface TeamConfigurationV3 extends TeamConfigurationV2 {
 **Roadmap Authority**: Aegis Framework Configuration Committee  
 **Implementation Strategy**: Graduated deployment with Constitutional safeguards  
 **Last Updated**: August 6, 2025  
-**Next Review**: v2.1.0-alpha Release Planning  
+**Next Review**: v2.5.0 Release Planning  
 **Constitutional Status**: Approved for implementation with Constitutional protections

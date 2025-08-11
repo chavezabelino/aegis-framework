@@ -416,7 +416,7 @@ class ConstitutionalConductor {
   }
 
   private async findVersionReferences(): Promise<string[]> {
-    return ['VERSION', 'framework/framework-core-v2.4.0-alpha.md'];
+    return ['VERSION', 'framework/framework-core-v2.5.0.md'];
   }
 
   private async calculateVersionConsistency(references: string[]): Promise<number> {
@@ -496,7 +496,7 @@ async function main() {
         break;
 
       case 'status':
-        console.log('🏛️ Aegis Constitutional Conductor v1.0.1-alpha');
+        console.log('🏛️ Aegis Constitutional Conductor v2.5.0');
         console.log('Status: Active and monitoring constitutional compliance');
         break;
 

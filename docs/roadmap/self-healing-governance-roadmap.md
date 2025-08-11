@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.4.0-alpha
+@aegisFrameworkVersion: 2.5.0
 @intent: Strategic roadmap for self-healing Constitutional governance system
 @constitutionalAuthority: ../CONSTITUTION.md
 @amendmentRequired: true
@@ -27,19 +27,19 @@ evolution.
 
 ### **Change Classification**
 
-**🔴 Breaking Changes (v2.0.0)**
+**🔴 Breaking Changes (v2.5.0)**
 
 - Constitutional enforcement becomes mandatory
 - CLI interface changes to conductor-centric model
 - Framework structure requires `.framework/` directory
 
-**🟡 Feature Additions (v1.1.0)**
+**🟡 Feature Additions (v2.5.0)**
 
 - Pattern recognition and learning systems
 - Democratic amendment processes
 - Advanced drift analytics
 
-**🟢 Improvements (v1.0.1)**
+**🟢 Improvements (v2.5.0)**
 
 - Basic conductor CLI
 - Constitutional audit capabilities
@@ -47,7 +47,7 @@ evolution.
 
 ## 🚀 Implementation Phases
 
-### **Phase 1: v1.0.1-alpha - "Constitutional Conductor"**
+### **Phase 1: v2.5.0 - "Constitutional Conductor"**
 
 **Timeline:** Immediate (1-2 weeks)  
 **Constitutional Status:** Patch version enhancement
@@ -72,7 +72,7 @@ evolution.
 - Version consistency validation
 - Basic Constitutional violation detection
 
-### **Phase 2: v1.1.0-beta - "Intelligent Governance"**
+### **Phase 2: v2.5.0 - "Intelligent Governance"**
 
 **Timeline:** 4-6 weeks  
 **Constitutional Status:** Minor version feature addition
@@ -97,7 +97,7 @@ evolution.
 - Pattern-based prevention of recurring issues
 - Functional democratic amendment process
 
-### **Phase 3: v2.0.0 - "Autonomous Constitution"**
+### **Phase 3: v2.5.0 - "Autonomous Constitution"**
 
 **Timeline:** 3-4 months  
 **Constitutional Status:** Major version with breaking changes
@@ -126,9 +126,7 @@ evolution.
 
 ### **Technical Implementation Specs**
 
-- [`framework/versions/framework-core-v1.0.1-alpha-spec.md`](../framework/versions/framework-core-v1.0.1-alpha-spec.md)
-- [`framework/versions/framework-core-v1.1.0-beta-spec.md`](../framework/versions/framework-core-v1.1.0-beta-spec.md)
-- [`framework/versions/framework-core-v2.0.0-spec.md`](../framework/versions/framework-core-v2.0.0-spec.md)
+- [`framework/versions/framework-core-v2.5.0(../framework/versions/framework-core-v2.5.0- [`framework/versions/framework-core-v2.5.0(../framework/versions/framework-core-v2.5.0- [`framework/versions/framework-core-v2.5.0.md`](../framework/versions/framework-core-v2.5.0.md)
 
 ### **Constitutional Amendments**
 
@@ -201,7 +199,7 @@ evolution.
 1. Implement pattern recognition system
 2. Add democratic amendment processes
 3. Create community review workflows
-4. Begin preparation for v2.0.0 breaking changes
+4. Begin preparation for v2.5.0 breaking changes
 
 ---
 

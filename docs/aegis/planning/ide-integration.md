@@ -257,7 +257,7 @@ import {Server} from "@modelcontextprotocol/sdk/server/index.js"
 
 const server = new Server({
   name: "Aegis-custom",
-  version: "1.0.0"
+  version: "2.5.0"
 })
 
 // Add custom planning tools

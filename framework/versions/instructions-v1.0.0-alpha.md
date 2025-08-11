@@ -1,7 +1,7 @@
-# Aegis Framework Agent Instructions v2.4.0-alpha
+# Aegis Framework Agent Instructions v2.5.0
 
 <!--
-@aegisFrameworkVersion: 1.0.0-alpha
+@aegisFrameworkVersion: 2.5.0
 @intent: Global agent instruction set for consistent AI behavior across the framework
 @context: This file defines standard behaviors, patterns, and constraints for all AI agents working within Aegis
 -->
@@ -13,7 +13,7 @@ All AI agents working within the Aegis Framework must adhere to these principles
 1. **Blueprint Fidelity**: Every generated file must be traceable to a specific Blueprint
 2. **Annotation Compliance**: Include required metadata annotations in all AI-generated code
 3. **Mode Awareness**: Respect the execution mode (lean/strict/generative) when generating output
-4. **Version Consistency**: Use the correct framework version (v1.0.0-alpha) in all references
+4. **Version Consistency**: Use the correct framework version (v2.5.0) in all references
 
 ## 🏷️ Required Annotations
 
@@ -74,6 +74,6 @@ Before completing any implementation:
 ## 🚨 Framework Constraints
 
 - Never modify the core framework files without explicit approval
-- Always reference the current framework version (v1.0.0-alpha)
+- Always reference the current framework version (v2.5.0)
 - Use the adapter pattern for tech-stack specific implementations
 - Maintain backwards compatibility with existing blueprints

@@ -1,11 +1,11 @@
 <!--
-@aegisFrameworkVersion: 2.4.0
+@aegisFrameworkVersion: 2.5.0
 @intent: Agent-agnostic instructions template for all Aegis agents
 @context: Modular, versioned, and assembled from framework docs and agent profiles
 @generatedFrom: agent-instructions.template.md
 -->
 
-# 🤖 GitHub Copilot Instructions for Aegis Framework v1.2.1
+# 🤖 GitHub Copilot Instructions for Aegis Framework v2.5.0
 
 > **Agent-specific guidance for GitHub Copilot working within the Aegis Framework ecosystem.**
 
@@ -18,13 +18,13 @@
 - **Traceability**: Every change must be traceable through blueprints and contracts
 - **Semantic Versioning**: Strict adherence to Constitutional version management
 
-## 🎯 Framework Context (v1.2.1)
+## 🎯 Framework Context (v2.5.0)
 
 ### Current Capabilities
 
-- **Core**: Blueprint-driven development with v1.0.0-alpha specification
-- **Multi-Agent**: v1.1.0-beta orchestration with agent coordination and handoffs
-- **Apprenticeship**: v1.3.0 scaffolding system with mentor guidance
+- **Core**: Blueprint-driven development with v2.5.0 specification
+- **Multi-Agent**: v2.5.0 orchestration with agent coordination and handoffs
+- **Apprenticeship**: v2.5.0 scaffolding system with mentor guidance
 - **Observability**: MCP metadata emission, drift logging, run logs
 - **CLI**: Enhanced tooling for Blueprint management, drift control, and apprenticeship
 
@@ -44,11 +44,11 @@
 
 ## 🔁 Multi-Agent Orchestration Protocol
 
-See framework/versions/framework-core-v1.1.0-beta-spec.md for orchestration details.
+See framework/versions/framework-core-v2.5.0or orchestration details.
 
 ## 🏗️ Blueprint Compliance
 
-See framework-core-v1.0.0-alpha.md for Blueprint requirements.
+See framework-core-v2.5.0.md for Blueprint requirements.
 
 ## 📄 MCP Metadata Emission
 

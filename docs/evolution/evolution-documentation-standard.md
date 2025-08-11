@@ -1,8 +1,7 @@
 <!--
 # 📋 Framework Evolution Documentation Standard
 
-@aegisFrameworkVersion: 2.4.0-alpha-dev
-@intent: Constitutional requirements for documenting framework evolution insights
+@aegisFrameworkVersion: 2.5.0tent: Constitutional requirements for documenting framework evolution insights
 @context: Systematic capture of field-driven development patterns and meta-learning
 -->
 

@@ -231,7 +231,7 @@ create table votes (
 
 ## 🚀 **Implementation Phases**
 
-### **Phase 0: Minimal Viable Hive Mind (v3.0.0)**
+### **Phase 0: Minimal Viable Hive Mind (v2.5.0)**
 
 **Timeline**: 3-4 months  
 **Goal**: Prove the Constitutional learning loop works
@@ -251,7 +251,7 @@ create table votes (
 - 1+ Constitutional amendment generated and ratified
 - Measurable reduction in repeated violations across nodes
 
-### **Phase 1: Intelligent Scaling (v3.1.0)**
+### **Phase 1: Intelligent Scaling (v2.5.0)**
 
 **Timeline**: 2-3 months after Phase 0  
 **Goal**: Handle volume and enable real-time intelligence
@@ -269,7 +269,7 @@ create table votes (
 - Sub-minute Constitutional violation detection
 - Pattern discovery accuracy > 90%
 
-### **Phase 2: Autonomous Constitutional Evolution (v4.0.0)**
+### **Phase 2: Autonomous Constitutional Evolution (v2.5.0)**
 
 **Timeline**: 6+ months strategic development  
 **Goal**: Self-evolving Constitutional intelligence

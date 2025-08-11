@@ -101,6 +101,7 @@
     "aegis:compliance": "tsx tools/constitutional-compliance-enforcer.ts",
     "aegis:compliance:json": "tsx tools/constitutional-compliance-enforcer.ts --json",
     "test:compliance": "vitest run -t enforcer.smoke.test.ts",
+    "aegis:version:fix": "tsx tools/bulk-version-fix.ts",
     "aegis:provenance:add": "tsx ./tools/aegis-provenance.ts add",
     "aegis:provenance:verify": "tsx ./tools/aegis-provenance.ts verify",
     "aegis:waivers:verify": "tsx ./tools/aegis-waivers-verify.ts",

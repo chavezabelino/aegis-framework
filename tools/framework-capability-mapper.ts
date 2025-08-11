@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * @aegisFrameworkVersion: 2.4.0
+ * @aegisFrameworkVersion: 2.5.0
  * @intent: Live capability mapping system that auto-discovers framework features
  * @context: Solves observability debt by providing real-time capability inventory
  * @mode: strict

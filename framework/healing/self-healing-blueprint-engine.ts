@@ -6,7 +6,7 @@
  * Automatically detects, analyzes, and repairs blueprint inconsistencies and validation errors
  * Part of Phase 3: Advanced Self-Healing Features
  *
- * @aegisFrameworkVersion: 2.4.0-alpha
+ * @aegisFrameworkVersion: 2.5.0
  * @intent: Implement autonomous blueprint repair and validation enhancement
  */
 
@@ -252,7 +252,7 @@ class SelfHealingBlueprintEngine {
         severity: 'medium',
         description: 'Missing @aegisFrameworkVersion annotation',
         location: `${filePath}:metadata`,
-        expected: '@aegisFrameworkVersion: 1.2.0-alpha',
+        expected: '@aegisFrameworkVersion: 2.5.0',
         actual: 'no annotation',
         repairSuggestion: 'Add framework version annotation to blueprint header',
         autoFixAvailable: true,

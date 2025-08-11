@@ -1,8 +1,7 @@
 <!--
 # 📊 GenAI OS Case Studies
 
-@aegisFrameworkVersion: 2.4.0-alpha-dev
-@intent: Real-world case studies demonstrating GenAI OS principles in practice
+@aegisFrameworkVersion: 2.5.0tent: Real-world case studies demonstrating GenAI OS principles in practice
 @context: Concrete examples linking to Evolution Stories and implementation experiences
 @manifestoRef: Evidence supporting manifesto claims through lived experience
 -->
@@ -271,7 +270,7 @@ graph LR
 
 ## 🏗️ Case Study 5: Template Quality Enforcement
 
-**Evolution Story**: [Article IX Implementation](../../docs/releases/v1.4.0-summary.md)  
+**Evolution Story**: [Article IX Implementation](../../docs/releases/v2.5.0.md)  
 **Principle Demonstrated**: Observable intelligence requires systematic validation
 
 ### **The Problem**
@@ -454,5 +453,5 @@ graph TD
 ---
 
 **Next**: [Author Notes](./author-notes.md) | [EVS Index](./evs-index.md)  
-**Framework**: [Core Specification](../../framework/framework-core-v2.0.0-alpha-dev.md)  
+**Framework**: [Core Specification](../../framework/framework-core-v2.5.0  
 **Constitution**: [Governance Model](../../CONSTITUTION.md)

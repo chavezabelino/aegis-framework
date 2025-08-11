@@ -13,10 +13,10 @@
         "COMPLETE-IMPLEMENTATION-SUMMARY.md",
         "IMPLEMENTATION-SUMMARY.md",
         "ARTICLE-IX-IMPLEMENTATION-SUMMARY.md",
-        "RELEASE-v2.4.0-SUMMARY.md"
+        "RELEASE-v2.5.0-SUMMARY.md"
       ],
       "driftPattern": "progressive-degradation",
-      "timelineSpan": "v1.2.0-alpha to v1.3.0",
+      "timelineSpan": "v2.5.0 to v2.5.0",
       "impactScope": "project-organization"
     }
   },

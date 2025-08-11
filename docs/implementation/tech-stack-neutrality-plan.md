@@ -1,8 +1,7 @@
 <!--
 # 🌐 Tech Stack Neutrality Implementation Plan
 
-@aegisFrameworkVersion: 2.4.0-alpha-dev
-@intent: Comprehensive plan for removing tech stack bias and achieving full reusability
+@aegisFrameworkVersion: 2.5.0tent: Comprehensive plan for removing tech stack bias and achieving full reusability
 @context: Analysis of current tech stack bias and roadmap for framework neutrality
 -->
 
@@ -98,7 +97,7 @@ validation:
 // adapters/react-next/Blueprint-adapter.ts
 export class ReactNextAdapter implements AdapterInterface {
   name = "react-next"
-  version = "1.0.0"
+  version = "2.5.0"
   supportedModes = ["lean", "strict", "generative"]
 
   translateBlueprint(Blueprint: Blueprint): ReactNextBlueprint {
@@ -118,7 +117,7 @@ export class ReactNextAdapter implements AdapterInterface {
 # adapters/python-fastapi/blueprint_adapter.py
 class FastAPIAdapter(AdapterInterface):
     name = "python-fastapi"
-    version = "1.0.0"
+    version = "2.5.0"
     supported_modes = ["lean", "strict", "generative"]
 
     def translate_blueprint(self, Blueprint: Blueprint) -> FastAPIBlueprint:
@@ -331,7 +330,7 @@ kind: "Blueprint"
 metadata:
   id: "feat-user-auth"
   name: "User Authentication"
-  version: "1.0.0"
+  version: "2.5.0"
 
 spec:
   # Language-agnostic requirements
@@ -374,7 +373,7 @@ apiVersion: "Aegis.dev/v2"
 kind: "TeamConfiguration"
 metadata:
   team: "product-team"
-  version: "1.0.0"
+  version: "2.5.0"
 
 spec:
   # Tech stack selection

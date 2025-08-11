@@ -18,7 +18,7 @@ generation. Every AI agent must follow approved patterns to ensure consistent, c
 
 #### memory-governance
 
-- **Status**: Strategic capability (v3.0.0)
+- **Status**: Strategic capability (v2.5.0)
 - **Purpose**: Memory subsystem Constitutional integration
 - **Architecture**: Dual-layer memory with governance
 - **Location**: `patterns/memory-governance/`

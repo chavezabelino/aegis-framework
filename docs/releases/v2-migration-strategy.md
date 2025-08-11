@@ -1,6 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.4.0-alpha-dev
-@intent: Version migration strategy for v1.x → v2.0 breaking changes
+@aegisFrameworkVersion: 2.5.0tent: Version migration strategy for v1.x → v2.0 breaking changes
 @context: Constitutional version management for One-Command Hydration paradigm
 -->
 
@@ -12,12 +11,12 @@
 
 ```
 CURRENT STATE:
-v1.4.0 (framework/generated/instructions/current/GitHub-copilot-ready.md)
-v1.0.0-alpha (most components)
+v2.5.0 (framework/generated/instructions/current/GitHub-copilot-ready.md)
+v2.5.0 (most components)
 
 TARGET STATE:
-v2.0.0-alpha-dev (development)
-v2.0.0-alpha (planned release Q3 2025)
+v2.5.0velopment)
+v2.5.0 (planned release Q3 2025)
 ```
 
 ### **Breaking Change Rationale**
@@ -40,13 +39,13 @@ version bump:
 | Component                        | Current Version             | Target Version         | Action Required   |
 | -------------------------------- | --------------------------- | ---------------------- | ----------------- |
 | `VERSION` file                   | ~~1.4.0~~ → 2.0.0-alpha-dev | 2.0.0-alpha-dev        | ✅ Updated        |
-| `framework-core-v1.0.0-alpha.md` | 1.0.0-alpha                 | Archive to `versions/` | Required          |
+| `framework-core-v2.5.0.md` | 1.0.0-alpha                 | Archive to `versions/` | Required          |
 | `GitHub-copilot-ready.md`        | 1.4.0                       | 2.0.0-alpha-dev        | Required          |
 | Various components               | 1.0.0-alpha                 | 2.0.0-alpha-dev        | Systematic update |
 
 ### **v1.x Feature Mapping to v2.0**
 
-#### **v1.0.0-alpha → v2.0.0-alpha**
+#### **v2.5.0 → v2.5.0**
 
 ```
 Constitutional Framework → Enhanced with Approval Gates
@@ -55,7 +54,7 @@ Manual Migration → Automated Orchestration
 Validation Tools → Embedded in Hydration Workflow
 ```
 
-#### **v1.1.0-beta → v2.1.0-beta** (post-v2.0)
+#### **v2.5.0 → v2.5.0** (post-v2.0)
 
 ```
 Multi-Agent Coordination → Hydration-Orchestrated Agents
@@ -63,7 +62,7 @@ MCP Metadata → Real-time Migration Telemetry
 Apprenticeship → AI-Assisted Migration Guidance
 ```
 
-#### **v1.2.0 → v2.2.0** (post-v2.0)
+#### **v2.5.0 → v2.5.0** (post-v2.0)
 
 ```
 Advanced Drift Detection → Predictive Migration Analysis
@@ -71,7 +70,7 @@ Template Quality → Automated Blueprint Generation
 Framework Healing → Self-Correcting Hydration
 ```
 
-#### **v1.3.0 → v2.3.0** (post-v2.0)
+#### **v2.5.0 → v2.5.0** (post-v2.0)
 
 ```
 Apprenticeship Scaffolds → AI Migration Mentorship
@@ -79,7 +78,7 @@ Learning Telemetry → Migration Pattern Intelligence
 Enhanced Observability → Real-time Hydration Monitoring
 ```
 
-#### **v1.4.0 → v2.4.0** (post-v2.0)
+#### **v2.5.0 → v2.5.0** (post-v2.0)
 
 ```
 Complete Agent Instructions → Hydration-Integrated Instructions
@@ -95,7 +94,7 @@ Operational Excellence → Constitutional Workflow Excellence
 1. **Archive v1.x Specifications**
 
    ```
-   mv framework/framework-core-v1.0.0-alpha.md framework/versions/
+   mv framework/framework-core-v2.5.0.md framework/versions/
    ```
 
 2. **Update Version References**
@@ -103,11 +102,10 @@ Operational Excellence → Constitutional Workflow Excellence
    ```
    # Update all @aegisFrameworkVersion annotations
    find . -name "_.md" -o -name "_.ts" -o -name "*.js" | \
-     xargs sed -i 's/@aegisFrameworkVersion: 1\.[0-9]_\.[0-9]_/@aegisFrameworkVersion: 2.0.0-alpha-dev/g'
-   ```
+     xargs sed -i 's/@aegisFrameworkVersion: 1\.[0-9]_\.[0-9]_/@aegisFrameworkVersion: 2.5.0   ```
 
 3. **Create v2.0 Specification**
-   - ✅ `framework/versions/framework-core-v2.0.0-spec.md`
+   - ✅ `framework/versions/framework-core-v2.5.0.md`
    - ✅ `docs/roadmap/v2-hydration-roadmap.md`
 
 ### **Phase 2: Implementation (Q3 2025)**
@@ -160,8 +158,7 @@ All files must use consistent version annotations:
 
 ```
 /**
- * @aegisFrameworkVersion: 2.0.0-alpha-dev
- * @intent: [File purpose]
+ * @aegisFrameworkVersion: 2.5.0@intent: [File purpose]
  * @context: [Constitutional context]
  * @breakingChange: v2.0 - One-Command Hydration paradigm
  */
@@ -180,7 +177,7 @@ All files must use consistent version annotations:
 
 ### **August 2025 (Current)**
 
-- ✅ v2.0.0 specification complete
+- ✅ v2.5.0 specification complete
 - ✅ Version strategy documented
 - ✅ Initial hydration tool implementation
 - 🔄 Framework version references update
@@ -194,21 +191,21 @@ All files must use consistent version annotations:
 
 ### **October 2025**
 
-- 🎯 v2.0.0-alpha release
+- 🎯 v2.5.0 release
 - 🎯 Community testing and feedback
 - 🎯 Documentation updates
 - 🎯 Migration guide creation
 
 ### **Q4 2025**
 
-- 🎯 v2.0.0-beta with advanced features
+- 🎯 v2.5.0 with advanced features
 - 🎯 CI/CD integration
 - 🎯 Enterprise approval workflows
 - 🎯 Performance optimization
 
 ### **Q1 2026**
 
-- 🎯 v2.0.0 stable release
+- 🎯 v2.5.0 stable release
 - 🎯 Full production readiness
 - 🎯 Enterprise deployment
 - 🎯 v1.x LTS maintenance mode
@@ -219,10 +216,10 @@ All files must use consistent version annotations:
 
 ### **Framework Updates Required**
 
-- [ ] Archive `framework-core-v1.0.0-alpha.md`
+- [ ] Archive `framework-core-v2.5.0.md`
 - [ ] Update all `@aegisFrameworkVersion` annotations
 - [ ] Update `GitHub-copilot-ready.md` version references
-- [ ] Create v2.0.0 framework core specification
+- [ ] Create v2.5.0 framework core specification
 - [ ] Update CLI tools for v2.0 compatibility
 
 ### **Documentation Updates Required**

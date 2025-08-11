@@ -7,7 +7,7 @@
 
 # AI Agent Development Governance Dashboard
 
-[![Framework Version](https://img.shields.io/badge/Framework-v2.5.0-orange?style=for-the-badge)](VERSION)
+[![Framework Version](https://img.shields.io/badge/Framework-v2.5.0?style=for-the-badge)](VERSION)
 [![Capabilities](https://img.shields.io/badge/Capabilities-64-blue?style=for-the-badge)](#capability-overview)
 [![Health](https://img.shields.io/badge/Health-HEALTHY-green?style=for-the-badge)](#health-status)
 
@@ -203,7 +203,7 @@ Aegis-conductor enforce         # Apply enforcement rules
 
 ## 🏛️ Framework Status Summary
 
-**The Aegis Framework v2.4.0 is a mature, production-ready system for AI-assisted engineering with comprehensive
+**The Aegis Framework v2.5.0 is a mature, production-ready system for AI-assisted engineering with comprehensive
 governance, monitoring, and safety features.**
 
 ### Key Strengths

@@ -1,7 +1,7 @@
 <!--
 # Semantic Interrupt Reflex System
 
-@aegisFrameworkVersion: 2.4.0
+@aegisFrameworkVersion: 2.5.0
 @intent: Document the semantic interrupt reflex system for agent drift prevention
 @context: Complete documentation of the groundbreaking semantic interrupt detection capability
 @mode: strict
@@ -10,7 +10,7 @@
 # Semantic Interrupt Reflex System
 
 **Date**: August 8, 2025  
-**Version**: v2.3.0  
+**Version**: v2.5.0  
 **Type**: Constitutional Safeguard Enhancement  
 **Implementation**: `framework/governance/semantic-interrupt-detector.ts` +
 `framework/governance/Constitutional-reflex-engine.ts`

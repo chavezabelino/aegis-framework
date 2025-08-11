@@ -1,12 +1,10 @@
 <!--
-@aegisFrameworkVersion: 2.4.0
+@aegisFrameworkVersion: 2.5.0
 @intent: Active framework specification for One-Command Hydration paradigm
 @context: Breaking change from manual migration to orchestrated "bill becomes law" process
 -->
 
-# ⚙️ Aegis Framework v2.0.0-alpha-dev
-
-> **Breaking Change**: Paradigm shift from manual migration to orchestrated hydration  
+# ⚙️ Aegis Framework v2.5.0**Breaking Change**: Paradigm shift from manual migration to orchestrated hydration  
 > **Status**: Development Phase - Active Implementation
 
 ## 🎯 Major Version Justification
@@ -228,21 +226,21 @@ Aegis hydrate /path/to/project --approval-webhook=https://company.com/approve
 
 ## 📅 Release Timeline
 
-### **v2.0.0-alpha** (Target: Q3 2025)
+### **v2.5.0** (Target: Q3 2025)
 
 - Core hydration tool implementation
 - Basic approval gates
 - Project discovery and analysis
 - Constitutional compliance validation
 
-### **v2.0.0-beta** (Target: Q4 2025)
+### **v2.5.0** (Target: Q4 2025)
 
 - Advanced project profiles (React, Vue, Next.js)
 - CI/CD integration modes
 - Custom approval workflows
 - Enhanced rollback mechanisms
 
-### **v2.0.0 Stable** (Target: Q1 2026)
+### **v2.5.0 Stable** (Target: Q1 2026)
 
 - Production-ready hydration
 - Complete v1.x migration path
@@ -302,7 +300,7 @@ Aegis hydrate /path/to/project --approval-webhook=https://company.com/approve
 
 ---
 
-**This specification represents the foundation of Aegis Framework v2.0.0 - transforming how teams adopt AI-native
+**This specification represents the foundation of Aegis Framework v2.5.0 - transforming how teams adopt AI-native
 engineering practices through Constitutional governance and one-command simplicity.**
 
 ---

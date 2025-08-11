@@ -1,6 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.4.0-alpha-dev
-@intent: Constitutional remediation plan for authentication blueprint gap
+@aegisFrameworkVersion: 2.5.0tent: Constitutional remediation plan for authentication blueprint gap
 @context: Critical framework gap identified through field usage and constitutional violation
 @mode: strict
 -->
@@ -12,7 +11,7 @@
 remediationPlan:
   id: "ARP-2025-01-15-001"
   title: "Authentication Blueprint Suite Creation"
-  version: "1.0.0"
+  version: "2.5.0"
   date: "2025-01-15"
   frameworkVersion: "2.4.0-alpha-dev"
   triggerEvolutionStory: "EVS-2025-01-15-001"

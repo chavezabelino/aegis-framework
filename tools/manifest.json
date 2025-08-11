@@ -1,5 +1,5 @@
 {
-  "version": "2.4.0",
+  "version": "2.5.0",
   "lastUpdated": "2025-08-06T00:00:00Z",
   "tools": [
     {
@@ -77,7 +77,7 @@
       "name": "aegis-docs",
       "path": "cli/aegis-docs.ts",
       "required": false,
-      "version": "1.0.0",
+      "version": "2.5.0",
       "description": "Quick access to manifesto documentation and GenAI OS principles",
       "validateCommand": "node cli/aegis-docs.ts --version"
     },

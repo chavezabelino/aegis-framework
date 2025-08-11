@@ -26,7 +26,7 @@ democratic governance mechanisms.
 - **Semantic Interrupt Detector**: Recognizes 12 patterns of user doubt/confusion
 - **Constitutional Reflex Engine**: Orchestrates responses to alignment issues
 
-## Semantic Interrupt System (v2.4.0)
+## Semantic Interrupt System (v2.5.0)
 
 ### Detection Patterns
 

@@ -1,7 +1,7 @@
 <!--
 # 🎯 Distribution Best Practices: Dependencies vs Bundling
 
-@aegisFrameworkVersion: 2.4.0
+@aegisFrameworkVersion: 2.5.0
 @intent: Explain the correct approach to dependency management in open source distribution
 @context: Best practices for Node.js CLI tool distribution
 -->
@@ -36,7 +36,7 @@ npm install -g create-react-app
 // dist/Aegis-CLI/package.JSON
 {
   "name": "@Aegis-framework/CLI",
-  "version": "2.1.0",
+  "version": "2.5.0",
   "dependencies": {
     "commander": "^14.0.0",
     "inquirer": "^12.9.0",
@@ -141,8 +141,8 @@ npm install -g @Aegis-framework/CLI@2.1.0
 
 ```
 # For developers who want to customize:
-wget https://github.com/aegis-framework/releases/v2.1.0/aegis-framework-v2.1.0.tar.gz
-tar -xzf Aegis-framework-v2.1.0.tar.gz
+wget https://github.com/aegis-framework/releases/v2.5.0/aegis-framework-v2.5.0.tar.gz
+tar -xzf Aegis-framework-v2.5.0.tar.gz
 cd Aegis-framework
 npm install  # Installs dependencies from package.JSON
 ```
@@ -177,7 +177,7 @@ dist/Aegis-CLI/
 ### **2. Source Tarball for GitHub Releases**
 
 ```
-Aegis-framework-v2.1.0.tar.gz
+Aegis-framework-v2.5.0.tar.gz
 ├── CLI/                   # Source files
 ├── framework/             # Framework source
 ├── tools/                 # Tools source

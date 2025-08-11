@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.4.0
+@aegisFrameworkVersion: 2.5.0
 @intent: Template section for agent instructions
 @context: Modular content for framework instruction generation
 -->
@@ -21,7 +21,7 @@ requiredSelectors:
   - name: "selectExample"
 ruleContracts:
   - rule: "validation"
-    version: "1.0.0"
+    version: "2.5.0"
 observability:
   events:
     - name: "example.created"

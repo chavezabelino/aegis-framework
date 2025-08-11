@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.4.0
+@aegisFrameworkVersion: 2.5.0
 @intent: Planning horizon roadmap for 3-6 months with medium confidence planning
 @context: Capability-driven roadmap following remediation plan standardization
 @mode: strict
@@ -9,7 +9,7 @@
 
 **Time Frame**: Q2 2026 (April - June 2026)  
 **Confidence Level**: 🟡 **Medium** (subject to community feedback and market validation)  
-**Framework Version Target**: v2.2.0 through v2.3.0  
+**Framework Version Target**: v2.5.0 through v2.5.0  
 **Constitutional Authority**: Article II (Framework Governance)
 
 ---
@@ -21,9 +21,9 @@ confidence delivery timelines. Capabilities are planned based on community feedb
 
 ---
 
-## 🏢 **Enterprise Integration Enhancements (v2.2.0)**
+## 🏢 **Enterprise Integration Enhancements (v2.5.0)**
 
-### **Target Release**: v2.2.0 (May 2026)
+### **Target Release**: v2.5.0 (May 2026)
 
 **Confidence Level**: 🟡 **Medium** (market demand dependent)
 
@@ -57,9 +57,9 @@ confidence delivery timelines. Capabilities are planned based on community feedb
 
 ---
 
-## 🛠️ **Advanced Developer Tooling (v2.2.0)**
+## 🛠️ **Advanced Developer Tooling (v2.5.0)**
 
-### **Target Release**: v2.2.0 (May 2026)
+### **Target Release**: v2.5.0 (May 2026)
 
 **Confidence Level**: 🟡 **Medium** (community feedback dependent)
 
@@ -93,9 +93,9 @@ confidence delivery timelines. Capabilities are planned based on community feedb
 
 ---
 
-## 🔄 **Self-Healing Governance Automation (v2.2.1)**
+## 🔄 **Self-Healing Governance Automation (v2.5.0)**
 
-### **Target Release**: v2.2.1 (June 2026)
+### **Target Release**: v2.5.0 (June 2026)
 
 **Confidence Level**: 🟡 **Medium** (technical complexity dependent)
 
@@ -129,9 +129,9 @@ confidence delivery timelines. Capabilities are planned based on community feedb
 
 ---
 
-## 🌐 **Universal Adapter Foundation (v2.3.0)**
+## 🌐 **Universal Adapter Foundation (v2.5.0)**
 
-### **Target Release**: v2.3.0 (June 2026)
+### **Target Release**: v2.5.0 (June 2026)
 
 **Confidence Level**: 🔵 **Low** (strategic direction, implementation complexity)
 
@@ -209,7 +209,7 @@ confidence delivery timelines. Capabilities are planned based on community feedb
 
 ### **Long-term Planning**
 
-- **v3.0.0 strategic planning** begins in June 2026
+- **v2.5.0 strategic planning** begins in June 2026
 - **Community roadmap** integration for strategic direction
 - **Industry partnership** exploration for enterprise features
 - **Research collaboration** for advanced governance features

@@ -69,7 +69,7 @@ When adding new features (like the v4.7 draft content), follow this process:
 - Additional execution modes
 - Enhanced observability features
 - New adapter support
-- Multi-agent coordination (planned for v2.4.0)
+- Multi-agent coordination (planned for v2.5.0)
 
 #### Major Releases (x.0.0)
 
@@ -104,7 +104,7 @@ For each change, assess:
 
 ## 🎨 Future Evolution Areas
 
-### v1.0.0-beta Roadmap
+### v2.5.0 Roadmap
 
 - Multi-agent coordination protocols
 - Blueprint composition and inheritance
@@ -112,7 +112,7 @@ For each change, assess:
 - Advanced error recovery patterns
 - Production deployment templates
 
-### v1.1.0 Roadmap
+### v2.5.0 Roadmap
 
 - Language-specific adapters (Python, Go, Rust)
 - IDE integration packages
@@ -120,7 +120,7 @@ For each change, assess:
 - Auto-generated documentation
 - Performance benchmarking suite
 
-### v2.0.0 Vision
+### v2.5.0 Vision
 
 - Visual Blueprint designer
 - Real-time collaboration

@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.4.0
+@aegisFrameworkVersion: 2.5.0
 @intent: Strategic vision roadmap for 6+ months with directional guidance
 @context: Capability-driven roadmap following remediation plan standardization
 @mode: strict
@@ -9,7 +9,7 @@
 
 **Time Frame**: Q3 2026+ (July 2026 and beyond)  
 **Confidence Level**: 🔵 **Directional** (strategic commitment, implementation details TBD)  
-**Framework Version Target**: v3.0.0 and beyond  
+**Framework Version Target**: v2.5.0 and beyond  
 **Constitutional Authority**: Article II (Framework Governance)
 
 ---
@@ -22,9 +22,9 @@ Constitutional governance platform.
 
 ---
 
-## 🌐 **Universal Tech Stack Support (v3.0.0)**
+## 🌐 **Universal Tech Stack Support (v2.5.0)**
 
-### **Target Release**: v3.0.0 (Q4 2026)
+### **Target Release**: v2.5.0 (Q4 2026)
 
 **Confidence Level**: 🔵 **Directional** (strategic commitment)
 
@@ -101,9 +101,9 @@ technology ecosystems.
 
 ---
 
-## 🧠 **Advanced AI Governance Features (v3.1.0+)**
+## 🧠 **Advanced AI Governance Features (v2.5.0+)**
 
-### **Target Release**: v3.1.0+ (2027)
+### **Target Release**: v2.5.0+ (2027)
 
 **Confidence Level**: 🔵 **Directional** (research and development)
 

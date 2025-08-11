@@ -469,7 +469,7 @@ npx @aegis-framework/cli init svelte-drizzle
 
 ### **Industry Leadership**
 
-The Aegis Framework v2.1.0 represents the __first production-ready AI-native framework with Constitutional governance
+The Aegis Framework v2.5.0 represents the __first production-ready AI-native framework with Constitutional governance
 and destructive action protection__, establishing new industry standards for:
 
 - **Democratic AI Governance**: Community-driven development with Constitutional principles
@@ -492,5 +492,5 @@ development builds upon our solid production-ready foundation.**
 
 **Current State Authority**: Aegis Framework Constitutional Committee  
 **Documentation Standard**: Capability-based roadmap foundation  
-**Next Update**: Post v2.2.0 feature configurability implementation  
+**Next Update**: Post v2.5.0 feature configurability implementation  
 **Framework Evolution**: Continuous improvement based on community feedback

@@ -14,7 +14,7 @@
 ```
 specification:
   title: "AI Agent Development Governance Specification"
-  version: "1.0.0"
+  version: "2.5.0"
   date: "2025-01-15"
   status: "Draft Standard"
   maintainer: "Aegis Framework Project"

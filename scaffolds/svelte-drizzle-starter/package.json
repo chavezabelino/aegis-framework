@@ -1,6 +1,6 @@
 {
   "name": "aegis-svelte-drizzle-starter",
-  "version": "1.0.0",
+  "version": "2.5.0",
   "description": "Svelte/Drizzle/Neon starter template with Aegis framework governance",
   "type": "module",
   "scripts": {

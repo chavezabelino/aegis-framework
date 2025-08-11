@@ -1,7 +1,7 @@
 <!--
 # 🔧 Implementation Documentation Index
 
-@aegisFrameworkVersion: 2.4.0
+@aegisFrameworkVersion: 2.5.0
 @intent: Navigation index for implementation documentation
 -->
 
@@ -18,7 +18,7 @@
 
 ### **Version-Specific Implementations**
 
-- **[v1.2.1 Summary](./v1.2.1-summary.md)** - General implementation details from v1.2.1
+- **[v2.5.0 Summary](./v2.5.0.md)** - General implementation details from v2.5.0
 - **[Complete Summary](./complete-summary.md)** - Comprehensive implementation overview
 - **[Framework Evolution Recommendations](./framework-evolution-recommendations.md)** - Strategic roadmap and platform
   vision
@@ -63,7 +63,7 @@
 
 - **[Release Documentation](../releases/)** - User-facing release summaries
 - **[Architecture Documentation](../architecture.md)** - Framework design principles
-- **[Framework Core](../../framework/framework-core-v1.0.0-alpha.md)** - Technical specifications
+- **[Framework Core](../../framework/framework-core-v2.5.0.md)** - Technical specifications
 - **[Constitution](../../CONSTITUTION.md)** - Governance framework
 
 ---

@@ -425,10 +425,10 @@ All real-time operations comply with Aegis Framework Constitution:
 
 ### Roadmap
 
-- **v2.1.0**: Advanced pattern recognition
-- **v2.2.0**: Enhanced visual feedback
-- **v2.3.0**: Integration APIs
-- **v2.4.0**: Analytics dashboard
+- **v2.5.0**: Advanced pattern recognition
+- **v2.5.0**: Enhanced visual feedback
+- **v2.5.0**: Integration APIs
+- **v2.5.0**: Analytics dashboard
 
 ## 📚 References
 

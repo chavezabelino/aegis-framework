@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.4.0
+@aegisFrameworkVersion: 2.5.0
 @intent: Immediate horizon roadmap for next 3 months with high confidence planning
 @context: Capability-driven roadmap following remediation plan standardization
 @mode: strict
@@ -9,7 +9,7 @@
 
 **Time Frame**: Q1 2026 (January - March 2026)  
 **Confidence Level**: 🔥 **High** (detailed implementation plans)  
-**Framework Version Target**: v2.1.0-alpha through v2.1.0-beta  
+**Framework Version Target**: v2.5.0 through v2.5.0  
 **Constitutional Authority**: Article II (Framework Governance)
 
 ---
@@ -22,9 +22,9 @@ implementation paths.
 
 ---
 
-## 🎛️ **Feature Configurability System (v2.1.0-alpha)**
+## 🎛️ **Feature Configurability System (v2.5.0)**
 
-### **Target Release**: v2.1.0-alpha (February 2026)
+### **Target Release**: v2.5.0 (February 2026)
 
 **Confidence Level**: 🔥 **High** (46KB detailed roadmap exists)
 
@@ -82,10 +82,10 @@ implementation paths.
 
 ### **Release Cadence**
 
-- **v2.1.0-alpha**: Feature configurability (February)
-- **v2.1.0-beta**: Enhanced developer experience (March)
-- **v2.1.0-rc**: Release candidate (March)
-- **v2.1.0**: Stable release (March)
+- **v2.5.0**: Feature configurability (February)
+- **v2.5.0**: Enhanced developer experience (March)
+- **v2.5.0**: Release candidate (March)
+- **v2.5.0**: Stable release (March)
 
 ### **Success Criteria**
 
@@ -96,9 +96,9 @@ implementation paths.
 
 ---
 
-## 🛠️ **Enhanced Developer Experience (v2.1.0-beta)**
+## 🛠️ **Enhanced Developer Experience (v2.5.0)**
 
-### **Target Release**: v2.1.0-beta (March 2026)
+### **Target Release**: v2.5.0 (March 2026)
 
 **Confidence Level**: 🔥 **High** (clear implementation path)
 
@@ -131,9 +131,9 @@ implementation paths.
 
 ---
 
-## 🏢 **Enterprise Integration Foundation (v2.1.0-rc)**
+## 🏢 **Enterprise Integration Foundation (v2.5.0)**
 
-### **Target Release**: v2.1.0-rc (March 2026)
+### **Target Release**: v2.5.0 (March 2026)
 
 **Confidence Level**: 🟡 **Medium** (market validation needed)
 
@@ -211,7 +211,7 @@ implementation paths.
 
 ### **Planning Horizon Preparation**
 
-- **v2.2.0 planning** begins in March 2026
+- **v2.5.0 planning** begins in March 2026
 - **Community feedback** integration for next phase
 - **Capability graduation** from experimental to stable
 - **Strategic vision** alignment for long-term planning

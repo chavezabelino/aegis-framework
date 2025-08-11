@@ -1,8 +1,7 @@
 <!--
 # GenAI OS Engineering Principles
 
-@aegisFrameworkVersion: 2.4.0-alpha-dev
-@intent: Core engineering principles for GenAI Operating System development
+@aegisFrameworkVersion: 2.5.0tent: Core engineering principles for GenAI Operating System development
 @context: Technical foundations supporting the manifesto vision
 @manifestoRef: Engineering principles and implementation patterns
 -->
@@ -380,5 +379,5 @@ interface InstitutionalKnowledge {
 ---
 
 **Next**: [Case Studies](./case-studies.md) | [Author Notes](./author-notes.md)  
-**Implementation**: [Framework Core](../../framework/framework-core-v2.0.0-alpha-dev.md)  
+**Implementation**: [Framework Core](../../framework/framework-core-v2.5.0  
 **Constitution**: [Aegis Constitution](../../CONSTITUTION.md)

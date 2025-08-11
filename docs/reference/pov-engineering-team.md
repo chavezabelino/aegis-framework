@@ -33,7 +33,7 @@ Constitutional compliance: Automated enforcement of framework standards
 
 Zero-maintenance governance: System maintains itself and prevents drift
 
-## 🔮 Self-Healing Governance (Coming in v2.4.0-alpha)
+## 🔮 Self-Healing Governance (Coming in v2.5.0)
 
 **Constitutional enforcement**: Framework monitors its own compliance automatically
 

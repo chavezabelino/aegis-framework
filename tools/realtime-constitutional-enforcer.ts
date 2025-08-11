@@ -1,6 +1,5 @@
 /**
- * @aegisFrameworkVersion: 2.4.0-alpha-dev
- * @intent: Real-time constitutional compliance enforcement for AI code generation
+ * @aegisFrameworkVersion: 2.5.0@intent: Real-time constitutional compliance enforcement for AI code generation
  * @context: Prevent constitutional drift by detecting violations during development
  */
 

@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.4.0-alpha
+@aegisFrameworkVersion: 2.5.0
 @intent: Constitutional amendment proposal for self-healing governance
 @constitutionalAuthority: ../../../CONSTITUTION.md
 @amendmentProcess: Article VII
@@ -155,21 +155,21 @@ Self-healing governance must maintain democratic principles:
 
 ## 🚀 Implementation Timeline
 
-### **Phase 1: Foundation** (v1.0.1-alpha - 2 weeks)
+### **Phase 1: Foundation** (v2.5.0 - 2 weeks)
 
 - Basic conductor CLI implementation
 - Constitutional state management
 - Simple drift detection and auto-correction
 - Constitutional amendment integration
 
-### **Phase 2: Intelligence** (v1.1.0-beta - 6 weeks)
+### **Phase 2: Intelligence** (v2.5.0 - 6 weeks)
 
 - Pattern recognition and learning
 - Advanced enforcement capabilities
 - Democratic amendment proposals
 - Community review workflows
 
-### **Phase 3: Autonomy** (v2.0.0 - 3 months)
+### **Phase 3: Autonomy** (v2.5.0 - 3 months)
 
 - Full autonomous Constitutional maintenance
 - Predictive drift prevention

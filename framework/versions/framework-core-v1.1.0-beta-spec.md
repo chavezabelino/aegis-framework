@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.4.0-beta
+@aegisFrameworkVersion: 2.5.0
 @intent: Multi-agent orchestration and advanced observability features
 @migratedFrom: framework-core-v4.7-draft.md
 @context:
@@ -8,7 +8,7 @@
 - Target release: Q4 2025 or Q1 2026
 -->
 
-# ⚙️ Aegis Framework v1.1.0-beta (Specification)
+# ⚙️ Aegis Framework v2.5.0 (Specification)
 
 > Next-generation multi-agent orchestration, observability, and human-in-the-loop drift controls for the Aegis
 > Framework.
@@ -101,7 +101,7 @@ observability:
 {
   "Aegis": {
     "blueprintId": "feat-complex-feature",
-    "version": "1.1.0-beta",
+    "version": "2.5.0",
     "mode": "strict"
   },
   "MCP": {
@@ -178,7 +178,7 @@ interface AdapterInterface {
   validateOutput(output: any): ValidationResult
   generateScaffold(Blueprint: Blueprint): FileStructure
 
-  // New in v1.1.0-beta
+  // New in v2.5.0
   supportsMultiAgent(): boolean
   handleAgentHandoff(context: HandoffContext): HandoffResult
   resolveDependencies(components: Component[]): DependencyGraph
@@ -242,7 +242,7 @@ interface AdapterInterface {
 }
 ```
 
-## 🚀 Migration Path from v1.0.0-alpha
+## 🚀 Migration Path from v2.5.0
 
 ### Breaking Changes
 

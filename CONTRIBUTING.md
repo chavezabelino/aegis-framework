@@ -140,7 +140,7 @@ metadata:
 
     aegisBlueprint: "feat-your-feature"
 
-    version: "1.0.0-alpha"
+    version: "2.5.0"
 
     mode: "strict"
 

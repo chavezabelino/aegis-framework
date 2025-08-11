@@ -1,7 +1,7 @@
 <!--
 # Evolution Story: Version Consistency Automation (EVS-2025-08-08-004)
 
-@aegisFrameworkVersion: 2.4.0
+@aegisFrameworkVersion: 2.5.0
 @intent: Evolution story documenting systematic version consistency failure and automated solution
 @context: Framework learning from repeated version documentation drift issues
 @mode: strict
@@ -83,7 +83,7 @@ private criticalFiles: string[] = [
   'docs/roadmap/README.md',
   'docs/releases/README.md',
   'package.JSON',
-  'framework/framework-core-v2.2.0.md'
+  'framework/framework-core-v2.5.0.md'
 ];
 ```
 
@@ -129,7 +129,7 @@ node tools/validate-version-consistency.ts --auto-fix
 ### **Immediate Results**
 
 - **Critical Files Fixed**: All 5 critical files now have correct version references
-- **Framework Core Created**: `framework/framework-core-v2.2.0.md` with comprehensive documentation
+- **Framework Core Created**: `framework/framework-core-v2.5.0.md` with comprehensive documentation
 - **Prevention System**: Automated validation prevents future version drift
 - **User Feedback**: Acknowledged systematic failure and implemented solution
 
@@ -211,7 +211,7 @@ node tools/validate-version-consistency.ts --auto-fix
 - ✅ Created comprehensive version consistency validator
 - ✅ Integrated version checking into pre-commit hooks
 - ✅ Fixed critical file version mismatches
-- ✅ Created framework core documentation for v2.2.0
+- ✅ Created framework core documentation for v2.5.0
 
 ### **Short Term**
 

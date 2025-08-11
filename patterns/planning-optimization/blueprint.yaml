@@ -10,21 +10,21 @@ determinismConfig:
 
 ruleContracts:
   - rule: "Prefer MVP-Fix over Surgical-Refactor over Systemic-Change"
-    version: "1.0.0"
+    version: "2.5.0"
     enforcement: "blocking"
     schema:
       planClass: ["MVP-Fix", "Surgical-Refactor", "Systemic-Change"]
       escalationJustification: "string"
 
   - rule: "Assert behavioral contracts only, not implementation details"
-    version: "1.0.0"
+    version: "2.5.0"
     enforcement: "blocking"
     schema:
       contractType: ["observable", "behavioral", "user-facing"]
       forbiddenAssertions: ["rgb-colors", "class-names", "internal-implementation"]
 
   - rule: "Plan gate must pass before execution"
-    version: "1.0.0"
+    version: "2.5.0"
     enforcement: "blocking"
     schema:
       gateChecks: ["token-limit", "file-count", "justification-required"]
@@ -34,7 +34,7 @@ ruleContracts:
       maxFilesSurgical: 5
 
   - rule: "Accept multiple valid outputs for equivalent functionality"
-    version: "1.0.0"
+    version: "2.5.0"
     enforcement: "advisory"
     schema:
       routeEquivalence: ["/login", "/(auth)/login"]
@@ -86,21 +86,21 @@ validation:
 adapters:
   github-copilot:
     framework: "aegis"
-    version: "2.4.0"
+    version: "2.5.0"
     config:
       promptTemplate: "tools/prompts/aegis-plan-optimizer.kilo.md"
       maxTokens: 4000
 
   cursor:
     framework: "aegis"
-    version: "2.4.0"
+    version: "2.5.0"
     config:
       promptTemplate: "tools/prompts/aegis-plan-optimizer.kilo.md"
       maxTokens: 6000
 
   claude:
     framework: "aegis"
-    version: "2.4.0"
+    version: "2.5.0"
     config:
       promptTemplate: "tools/prompts/aegis-plan-optimizer.kilo.md"
       maxTokens: 8000

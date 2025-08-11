@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.4.0-spec
+@aegisFrameworkVersion: 2.5.0
 @intent: Updated framework roadmap reflecting v2.0 hydration paradigm
 @context: Version strategy update for One-Command Hydration major release
 -->
@@ -8,7 +8,7 @@
 
 ## 🚀 Major Version Strategy
 
-### **v2.0.0: One-Command Hydration Era**
+### **v2.5.0: One-Command Hydration Era**
 
 > **Breaking Change**: Paradigm shift to orchestrated "bill becomes law" migration
 
@@ -23,14 +23,14 @@
 
 ## 📅 Release Timeline
 
-### **🔄 Current State (v1.0.0-alpha)**
+### **🔄 Current State (v2.5.0)**
 
 - ✅ Constitutional compliance framework
 - ✅ Blueprint-driven development
 - ✅ Manual migration tools
 - ✅ Drift detection infrastructure
 
-### **🎯 v2.0.0-alpha (Q3 2025)**
+### **🎯 v2.5.0 (Q3 2025)**
 
 **Theme**: Core Hydration Implementation
 
@@ -47,7 +47,7 @@
 - Mandatory approval gates
 - `.framework/` directory structure
 
-### **🎯 v2.0.0-beta (Q4 2025)**
+### **🎯 v2.5.0 (Q4 2025)**
 
 **Theme**: Advanced Orchestration
 
@@ -57,7 +57,7 @@
 - 🛡️ **Security Gates**: Constitutional compliance validation
 - 🔧 **Custom Workflows**: Approval webhook integration
 
-### **🎯 v2.1.0-alpha (Q1 2026)**
+### **🎯 v2.5.0 (Q1 2026)**
 
 **Theme**: Feature Configurability System
 
@@ -69,7 +69,7 @@
 
 _See [Feature Configurability Roadmap](feature-configurability-roadmap.md) for detailed implementation plan_
 
-### **🎯 v2.0.0-stable (Q1 2026)**
+### **🎯 v2.5.0 (Q1 2026)**
 
 **Theme**: Production Enterprise Readiness
 
@@ -89,9 +89,9 @@ _See [Feature Configurability Roadmap](feature-configurability-roadmap.md) for d
 
 ---
 
-## 🌐 Future Major Release: v3.0.0 - Universal Tech Stack Support
+## 🌐 Future Major Release: v2.5.0 - Universal Tech Stack Support
 
-### **🚀 v3.0.0: Tech Stack Neutrality Era (Q4 2026)**
+### **🚀 v2.5.0: Tech Stack Neutrality Era (Q4 2026)**
 
 **Theme**: Universal Framework Adoption Across All Tech Stacks
 
@@ -124,14 +124,14 @@ engineering framework__ that supports any modern tech stack while maintaining Co
 
 #### **Success Vision**
 
-By v3.0.0-stable, any development team using Python, Go, Java, .NET, or other major tech stacks can adopt Aegis
+By v2.5.0, any development team using Python, Go, Java, .NET, or other major tech stacks can adopt Aegis
 Framework with the same Constitutional governance and Blueprint-driven development benefits currently available only to
 React+Next.js teams.
 
 **Impact**: Massive expansion of potential framework adopters across all major technology ecosystems while maintaining
 Constitutional compliance and governance principles.
 
-### **🎯 v2.1.0-beta (Q2 2026)**
+### **🎯 v2.5.0 (Q2 2026)**
 
 **Theme**: Configuration System Integration
 
@@ -149,31 +149,31 @@ Constitutional compliance and governance principles.
 #### **Current v1.x Features → v2.0 Integration**
 
 ```
-v1.0.0-alpha → v2.0.0-alpha
+v2.5.0 → v2.5.0
 ├── Manual migration → Orchestrated hydration
 ├── CLI tools → Consolidated command
 ├── Documentation-driven → Tool-driven
 └── Silent automation → Approval gates
 
-v1.1.0-beta → v2.1.0-beta (post-v2.0)
+v2.5.0 → v2.5.0 (post-v2.0)
 ├── Multi-agent coordination → Hydration-integrated orchestration
 ├── MCP metadata → Real-time migration Telemetry
 ├── Apprenticeship → AI-assisted migration guidance
 └── Enhanced CLI → Hydration workflow integration
 
-v1.2.0 → v2.2.0 (post-v2.0)
+v2.5.0 → v2.5.0 (post-v2.0)
 ├── Advanced drift detection → Predictive migration analysis
 ├── Template quality → Automated Blueprint generation
 ├── Framework healing → Self-correcting hydration
 └── Constitutional amendments → Dynamic governance updates
 
-v1.3.0 → v2.3.0 (post-v2.0)
+v2.5.0 → v2.5.0 (post-v2.0)
 ├── Apprenticeship scaffolds → AI migration mentorship
 ├── Learning Telemetry → Migration pattern intelligence
 ├── Enhanced observability → Real-time hydration monitoring
 └── Quality validation → Continuous compliance checking
 
-v2.1.0+ → Configurability Era
+v2.5.0+ → Configurability Era
 ├── Fixed framework behavior → Team-configurable features
 ├── All-or-nothing adoption → Graduated feature adoption
 ├── Universal enforcement → Constitutional override system
@@ -315,4 +315,4 @@ simple, safe, and constitutionally governed.**
 **Roadmap Authority**: Aegis Framework Constitutional Committee  
 **Version Strategy**: v2.0 Breaking Change Protocol  
 **Last Updated**: August 6, 2025  
-**Next Review**: v2.0.0-alpha Release
+**Next Review**: v2.5.0 Release

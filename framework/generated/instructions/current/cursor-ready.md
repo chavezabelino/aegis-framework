@@ -1,16 +1,16 @@
 <!--
-@aegisFrameworkVersion: 2.4.0
+@aegisFrameworkVersion: 2.5.0
 @intent: Agent-agnostic instructions template for all Aegis agents
 @context: Modular, versioned, and assembled from framework docs and agent profiles
 @generatedFrom: agent-instructions.template.md
 -->
 
-# 🤖 Cursor AI Assistant Instructions for Aegis Framework v2.1.0
+# 🤖 Cursor AI Assistant Instructions for Aegis Framework v2.5.0
 
 > **Complete instructions combining Constitutional compliance with operational excellence.**
 
 <!--
-@aegisFrameworkVersion: 1.3.1
+@aegisFrameworkVersion: 2.5.0
 @intent: Constitutional compliance template section
 @context: Core Constitutional requirements for all agent instructions
 -->
@@ -25,7 +25,7 @@
 - **Semantic Versioning**: Strict adherence to Constitutional version management
 
 <!--
-@aegisFrameworkVersion: 1.3.1
+@aegisFrameworkVersion: 2.5.0
 @intent: Validation and testing template section
 @context: Testing standards and validation tooling for AI agents
 -->

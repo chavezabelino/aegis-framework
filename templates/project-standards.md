@@ -1,9 +1,9 @@
 <!--
-@aegisFrameworkVersion: 2.4.0
+@aegisFrameworkVersion: 2.5.0
 @aegisProjectProfile: true
 @intent: Project-specific operational standards for agent instruction merging
 @context: This file is merged with framework/agent instructions to produce ready-to-use, IDE/agent-specific guidance.
-@extends: GitHub-copilot.md@v1.2.1
+@extends: GitHub-copilot.md@v2.5.0
 -->
 
 # 🏗️ Project Operational Standards
@@ -343,7 +343,7 @@ const safeData = MySchema.parse(unsafeData)
 
 ## 🎯 **Execution Mode Decision Matrix**
 
-Based on analysis of Aegis v1.2.1 vs bracket-app-audit v2.5:
+Based on analysis of Aegis v2.5.0 vs bracket-app-audit v2.5:
 
 ### When to Use Full Constitutional Mode (`strict`)
 

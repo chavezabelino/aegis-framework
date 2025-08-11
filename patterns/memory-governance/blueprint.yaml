@@ -96,37 +96,37 @@ requiredSelectors:
 
 ruleContracts:
   - id: memory-privacy
-    version: "2.4.0"
+    version: "2.5.0"
     description: "Constitutional memory privacy and access controls"
     schema: "memory-privacy.schema.ts"
     enforcement: "strict"
 
   - id: memory-traceability
-    version: "1.0.0"
+    version: "2.5.0"
     description: "Memory operation traceability requirements"
     schema: "memory-traceability.schema.ts"
     enforcement: "strict"
 
   - id: memory-observability
-    version: "1.0.0"
+    version: "2.5.0"
     description: "Memory telemetry and audit requirements"
     schema: "memory-observability.schema.ts"
     enforcement: "strict"
 
   - id: memory-schema-validation
-    version: "1.0.0"
+    version: "2.5.0"
     description: "Memory schema validation requirements"
     schema: "memory-schema-validation.schema.ts"
     enforcement: "strict"
 
   - id: memory-quota-management
-    version: "1.0.0"
+    version: "2.5.0"
     description: "Memory quota and storage management"
     schema: "memory-quota.schema.ts"
     enforcement: "strict"
 
   - id: memory-constitutional-compliance
-    version: "1.0.0"
+    version: "2.5.0"
     description: "Constitutional compliance for memory operations"
     schema: "memory-constitutional.schema.ts"
     enforcement: "strict"
@@ -349,4 +349,4 @@ metadata:
     - "redis"
     - "opentelemetry"
   constitutionalAuthority: "Article I (Core Principles) + Article III (Evolution Process)"
-  strategicAlignment: "v3.0.0 Universal Tech Stack Support"
+  strategicAlignment: "v2.5.0 Universal Tech Stack Support"

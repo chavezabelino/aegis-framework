@@ -7,7 +7,7 @@
  * - CI workflows, eval pack, policy pack, tracing config, PR template
  * - Status badge, npm package setup, governance structure
  *
- * @aegisFrameworkVersion: 2.4.0
+ * @aegisFrameworkVersion: 2.5.0
  * @intent: Perfect zero-to-value developer experience
  * @context: One command to production-ready Aegis integration
  */
@@ -508,7 +508,7 @@ Every PR is automatically validated for:
 - Framework standards adherence
 - Regression prevention
 
-*Powered by Aegis Framework v2.4.0*
+*Powered by Aegis Framework v2.5.0*
 `;
 
     fs.writeFileSync(path.join(this.projectRoot, '.aegis', 'README-addition.md'), readmeAddition);

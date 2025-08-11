@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * @aegisFrameworkVersion: 2.4.0
+ * @aegisFrameworkVersion: 2.5.0
  * @intent: Constitutional reflex engine for real-time semantic interrupt processing
  * @context: Integrates semantic interrupt detection into constitutional enforcement framework
  * @mode: strict

@@ -3,7 +3,7 @@
 All notable changes to the Aegis Framework will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.4.0.html).
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.5.0.html).
 
 ## [2.5.0] - 2025-08-09
 
@@ -253,7 +253,7 @@ framework tools.
 - **Evolution Stories**: Systematic learning captured through configuration adoption
 
 ### Breaking Changes
-- None (backward compatible with v2.1.0)
+- None (backward compatible with v2.5.0)
 
 ### Migration Required
 - None (existing installations continue to work)
@@ -337,7 +337,7 @@ This release establishes the foundation for constitutional memory governance wit
 - Systematic learning captured through evolution stories
 
 ### Breaking Changes
-- None (backward compatible with v2.1.0)
+- None (backward compatible with v2.5.0)
 
 ### Migration Required
 - None (existing installations continue to work)
@@ -397,9 +397,7 @@ This stable release provides production-ready package distribution with enhanced
 - Semantic versioning enforcement aligned with constitutional principles
 
 ### Breaking Changes
-- None (backward compatible with v2.0.0-alpha-dev)
-
-### Migration Required
+- None (backward compatible with v2.5.0## Migration Required
 - None (existing installations continue to work)
 
 ---
@@ -582,9 +580,9 @@ Alpha release introducing team-configurable framework behavior.
 ## [1.0.0-alpha] - 2025-08-05
 
 ### Added
-- **Framework Foundation**: Semantic versioning adoption with structured v1.0.0-alpha release
+- **Framework Foundation**: Semantic versioning adoption with structured v2.5.0 release
 - **Agent Manifest**: `framework/agent-manifest.json` for agent capability discovery and configuration
-- **Version-Specific Instructions**: `framework/versions/instructions-v1.0.0-alpha.md` for agent guidance
+- **Version-Specific Instructions**: `framework/versions/instructions-v2.5.0.md` for agent guidance
 - **CLI Tooling**: `cli/init-agent-context.ts` for automated copilot instruction generation
 - **Three-Mode Execution**: `lean`, `strict`, and `generative` modes with token optimization
 - **Output Management**: Standardized `output.{lean,strict,full}.json` pattern for AI agent outputs
@@ -595,16 +593,16 @@ Alpha release introducing team-configurable framework behavior.
 - **Rule Versioning**: Contract evolution tracking with semantic versioning
 
 ### Changed
-- **Breaking**: Migrated from informal v4.x versioning to semantic v1.0.0-alpha
+- **Breaking**: Migrated from informal v4.x versioning to semantic v2.5.0
 - **Breaking**: `@blueprintId` annotation now mandatory for all AI-generated files
 - **Enhanced**: Blueprint metadata blocks now include `@aegisFrameworkVersion`
-- **Enhanced**: CLI tooling updated to support v1.0.0-alpha workflows
+- **Enhanced**: CLI tooling updated to support v2.5.0 workflows
 - **Enhanced**: Documentation structure aligned with semantic versioning
-- **Updated**: All framework references from v4.6/v4.7 to v1.0.0-alpha
-- **Renamed**: Framework core specification to `framework-core-v1.0.0-alpha.md`
+- **Updated**: All framework references from v4.6/v4.7 to v2.5.0
+- **Renamed**: Framework core specification to `framework-core-v2.5.0.md`
 
 ### Fixed
-- Git tag migration from `v4.6.0` to `v1.0.0-alpha`
+- Git tag migration from `v2.5.0` to `v2.5.0`
 - Version consistency across all documentation and configuration files
 - Copilot instructions alignment with new versioning system
 

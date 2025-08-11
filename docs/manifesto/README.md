@@ -1,8 +1,7 @@
 <!--
 # 🏛️ GenAI Operating System Manifesto
 
-@aegisFrameworkVersion: 2.4.0-alpha-dev
-@intent: Navigation index for the GenAI Operating System Manifesto documentation
+@aegisFrameworkVersion: 2.5.0tent: Navigation index for the GenAI Operating System Manifesto documentation
 @context: Central hub for manifesto exploration and implementation guidance
 @manifestoRef: Primary navigation for manifesto ecosystem
 -->
@@ -90,7 +89,7 @@ Join the movement toward **AI-native engineering practices** with governance as 
 ### **Framework Tools**
 
 - **[Aegis CLI](../../README.md#installation)** - Command-line Constitutional governance
-- **[Framework Core](../../framework/framework-core-v2.0.0-alpha-dev.md)** - Technical specification
+- **[Framework Core](../../framework/framework-core-v2.5.0** - Technical specification
 - **[Constitution](../../CONSTITUTION.md)** - Governance framework
 
 ### **Development Integration**
@@ -142,7 +141,7 @@ Join the movement toward **AI-native engineering practices** with governance as 
 ---
 
 **Constitutional Authority**: [Aegis Framework Constitution](../../CONSTITUTION.md)  
-**Framework Version**: [v2.0.0-alpha-dev](../../framework/framework-core-v2.0.0-alpha-dev.md)  
+**Framework Version**: [v2.5.0/../framework/framework-core-v2.5.0  
 **Last Updated**: August 7, 2025
 
 > _"We establish this manifesto to ensure that AI-generated systems remain safe, reliable, and replayable — with

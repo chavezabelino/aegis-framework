@@ -76,13 +76,13 @@ emitEvent({
   timestamp: new Date().toISOString(),
 });
 
-// MCP metadata emission (v2.4.0-beta)
+// MCP metadata emission (v2.5.0)
 function emitMCPEvent(event: object) {
   const mcpPath = require('path').join(__dirname, '../framework/observability/mcp-events.jsonl');
   require('fs').appendFileSync(mcpPath, JSON.stringify(event) + '\n');
 }
 
-// Run log emission (v1.1.0-beta)
+// Run log emission (v2.5.0)
 function emitRunLog(run: object) {
   const runLogPath = require('path').join(__dirname, '../framework/observability/run-log.jsonl');
   require('fs').appendFileSync(runLogPath, JSON.stringify(run) + '\n');

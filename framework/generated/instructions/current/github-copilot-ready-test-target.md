@@ -1,12 +1,12 @@
 <!--
-@aegisFrameworkVersion: 2.4.0
+@aegisFrameworkVersion: 2.5.0
 @intent: Complete GitHub Copilot instructions combining Constitutional compliance with operational excellence
 @context: Single source of truth for GitHub Copilot under Aegis Framework + Kilo standards
 @generatedFrom: agent-instructions.template.md + project-standards.md
 @lastGenerated: 2025-08-06
 -->
 
-# 🤖 GitHub Copilot Instructions for Aegis Framework v1.2.1
+# 🤖 GitHub Copilot Instructions for Aegis Framework v2.5.0
 
 > **Complete instructions combining Constitutional compliance with operational excellence.**
 
@@ -19,13 +19,13 @@
 - **Traceability**: Every change must be traceable through blueprints and contracts
 - **Semantic Versioning**: Strict adherence to Constitutional version management
 
-## 🎯 Framework Context (v1.2.1)
+## 🎯 Framework Context (v2.5.0)
 
 ### Current Capabilities
 
-- **Core**: Blueprint-driven development with v1.0.0-alpha specification
-- **Multi-Agent**: v1.1.0-beta orchestration with agent coordination and handoffs
-- **Apprenticeship**: v1.3.0 scaffolding system with mentor guidance
+- **Core**: Blueprint-driven development with v2.5.0 specification
+- **Multi-Agent**: v2.5.0 orchestration with agent coordination and handoffs
+- **Apprenticeship**: v2.5.0 scaffolding system with mentor guidance
 - **Observability**: MCP metadata emission, drift logging, run logs
 - **CLI**: Enhanced tooling for Blueprint management, drift control, and apprenticeship
 
@@ -408,7 +408,7 @@ See docs/ for architecture, workflow, and reference.
 @aegisProjectProfile: true
 @intent: Project-specific operational standards for agent instruction merging
 @context: This file is merged with framework/agent instructions to produce ready-to-use, IDE/agent-specific guidance.
-@extends: GitHub-copilot.md@v1.2.1
+@extends: GitHub-copilot.md@v2.5.0
 --&gt;
 
 # 🏗️ Project Operational Standards
@@ -674,7 +674,7 @@ test-[x]-script.js
 
 ## 🎯 **Execution Mode Decision Matrix**
 
-Based on analysis of Aegis v1.2.1 vs bracket-app-audit v2.5:
+Based on analysis of Aegis v2.5.0 vs bracket-app-audit v2.5:
 
 ### When to Use Full Constitutional Mode (`strict`)
 

@@ -1,7 +1,7 @@
 <!--
 # EVS-2025-08-08-001: Destructive Action Protection System
 
-@aegisFrameworkVersion: 2.4.0
+@aegisFrameworkVersion: 2.5.0
 @intent: Evolution story for destructive action protection system
 @context: Framework learning from near-catastrophic deletion of essential files
 @mode: strict

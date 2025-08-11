@@ -1,7 +1,7 @@
 <!--
 # ✅ Feature Configurability Phase 3 Complete
 
-@aegisFrameworkVersion: 2.4.0
+@aegisFrameworkVersion: 2.5.0
 @intent: Phase 3 feature configurability integration complete
 @context: Optional features integration with team configuration system
 @mode: strict

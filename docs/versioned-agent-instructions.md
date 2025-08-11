@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.4.0
+@aegisFrameworkVersion: 2.5.0
 @intent: Documentation for versioned agent instruction system
 @context: Auto-generated instructions for AI agents based on framework state
 -->
@@ -95,7 +95,7 @@ Each generated instruction file includes:
 The generator automatically detects framework features:
 
 - ✅ `Blueprint-driven-development` (from core spec)
-- ✅ `multi-agent-orchestration` (from v1.1.0-beta spec)
+- ✅ `multi-agent-orchestration` (from v2.5.0 spec)
 - ✅ `apprenticeship-scaffolds` (from CLI presence)
 - ✅ `advanced-observability` (from framework/observability)
 - ✅ `Constitutional-governance` (from CONSTITUTION.md)
@@ -117,14 +117,14 @@ Reads from `framework/agent-manifest.JSON`:
 
 ## 📋 Current Generated Files
 
-### v1.2.1 (Current)
+### v2.5.0 (Current)
 
-- `instructions-GitHub-copilot-v1.2.1.md` - GitHub Copilot specific
-- `instructions-v1.2.1.md` - Generic AI agent guidance
+- `instructions-GitHub-copilot-v2.5.0.md` - GitHub Copilot specific
+- `instructions-v2.5.0.md` - Generic AI agent guidance
 
-### v1.0.0-alpha (Historical)
+### v2.5.0 (Historical)
 
-- `instructions-v1.0.0-alpha.md` - Original alpha version
+- `instructions-v2.5.0.md` - Original alpha version
 
 ## 🎯 Integration Benefits
 

@@ -1,5 +1,5 @@
 /**
- * @aegisFrameworkVersion: 2.4.0
+ * @aegisFrameworkVersion: 2.5.0
  * @intent: Integration tests for Phase 3 feature configurability tools
  * @context: Validate optional features integration with team configuration
  * @mode: strict
@@ -174,7 +174,7 @@ describe('Feature Configurability Phase 3 Integration', () => {
       fs.writeFileSync(
         testStory,
         `<!--
-@aegisFrameworkVersion: 2.1.0
+@aegisFrameworkVersion: 2.5.0
 @intent: Test evolution story
 @context: Testing dashboard integration
 @mode: strict

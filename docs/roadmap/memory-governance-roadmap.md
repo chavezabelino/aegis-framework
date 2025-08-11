@@ -1,14 +1,14 @@
 <!--
-@aegisFrameworkVersion: 2.4.0
+@aegisFrameworkVersion: 2.5.0
 @intent: Roadmap for Constitutional memory governance subsystem
-@context: Memory governance as strategic capability for v3.0.0 universal tech stack support
+@context: Memory governance as strategic capability for v2.5.0 universal tech stack support
 @mode: strict
 -->
 
 # 🧠 Memory Governance Roadmap
 
 **Capability**: Constitutional Memory Governance  
-**Strategic Alignment**: v3.0.0 Universal Tech Stack Support  
+**Strategic Alignment**: v2.5.0 Universal Tech Stack Support  
 **Confidence Level**: 🔥 **High** (detailed implementation plan)  
 **Constitutional Authority**: Article I (Core Principles) + Article III (Evolution Process)
 
@@ -237,7 +237,7 @@ Aegis memory status             # Show memory subsystem status
 
 ### **Alignment with Strategic Vision**
 
-#### **Universal Tech Stack Support (v3.0.0)**
+#### **Universal Tech Stack Support (v2.5.0)**
 
 - ✅ **Python Ecosystem**: Memory governance in Python adapters
 - ✅ **Go Ecosystem**: Memory patterns in Go applications
@@ -371,5 +371,5 @@ the framework's core principles of traceability, observability, and democratic e
 
 **Roadmap Authority**: Aegis Framework Community  
 **Constitutional Compliance**: Article I (Core Principles) + Article III (Evolution Process)  
-**Strategic Alignment**: v3.0.0 Universal Tech Stack Support  
+**Strategic Alignment**: v2.5.0 Universal Tech Stack Support  
 **Next Review**: Quarterly roadmap review

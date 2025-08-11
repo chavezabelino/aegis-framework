@@ -447,9 +447,9 @@ Template quality violations trigger:
 
 ## 📅 Ratification
 
-This constitution was ratified on August 5, 2025, with the adoption of Aegis Framework v2.4.0-alpha.
+This constitution was ratified on August 5, 2025, with the adoption of Aegis Framework v2.5.0.
 
-**Constitutional Authority**: `framework/framework-core-v1.0.0-alpha.md`
+**Constitutional Authority**: `framework/framework-core-v2.5.0.md`
 
 **Governance Model**: Semantic versioning with structured evolution
 

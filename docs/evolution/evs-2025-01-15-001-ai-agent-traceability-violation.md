@@ -1,7 +1,7 @@
 <!--
 # Evolution Story EVS-2025-01-15-001: AI Agent Traceability Violation
 
-@aegisFrameworkVersion: 2.4.0
+@aegisFrameworkVersion: 2.5.0
 @intent: Document Constitutional violation and remediation for AI agent traceability
 @context: Real-world Constitutional enforcement - AI agent claimed unimplemented features
 @evolutionStoryId: EVS-2025-01-15-001

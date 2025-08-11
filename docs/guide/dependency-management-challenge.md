@@ -1,7 +1,7 @@
 <!--
 # 🔧 Distribution Challenge: Dependency Management
 
-@aegisFrameworkVersion: 2.4.0
+@aegisFrameworkVersion: 2.5.0
 @intent: Document the dependency bundling challenge and proper solutions
 @context: Real-world distribution requires understanding dependency management
 -->
@@ -96,12 +96,12 @@ docker run --rm -v $(pwd):/workspace Aegis-framework/CLI:2.1.0 hydrate /workspac
 Create OS-specific installers:
 
 ```
-# Windows: Aegis-CLI-v2.1.0-windows.msi
-# Mac: Aegis-CLI-v2.1.0-macos.pkg
-# Linux: Aegis-CLI-v2.1.0-linux.deb
+# Windows: Aegis-CLI-v2.5.0.msi
+# Mac: Aegis-CLI-v2.5.0.pkg
+# Linux: Aegis-CLI-v2.5.0.deb
 ```
 
-## 🎯 Recommended Approach for v2.1.0
+## 🎯 Recommended Approach for v2.5.0
 
 For our stable release, let's focus on **npm distribution** because:
 
@@ -114,8 +114,8 @@ For our stable release, let's focus on **npm distribution** because:
 
 ```
 # GitHub Releases Assets:
-Aegis-framework-lib-v2.1.0.tar.gz    # Full framework source
-Aegis-CLI-source-v2.1.0.tar.gz       # CLI source code
+Aegis-framework-lib-v2.5.0.tar.gz    # Full framework source
+Aegis-CLI-source-v2.5.0.tar.gz       # CLI source code
 checksums.txt                         # Security verification
 RELEASE-NOTES.md                      # What's new
 ```
@@ -176,7 +176,7 @@ npm install -g ./Aegis-framework-CLI-2.1.0.tgz
 | **Docker**         | Medium     | Good            | Low         | DevOps teams       |
 | **OS Packages**    | High       | Excellent       | High        | Enterprise         |
 
-## 🚀 Action Plan for v2.1.0
+## 🚀 Action Plan for v2.5.0
 
 1. **Focus on npm distribution** (what we built works for this)
 2. **Document installation methods clearly**

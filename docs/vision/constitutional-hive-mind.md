@@ -1,6 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.4.0-alpha-dev
-@intent: Comprehensive vision document for Constitutional Hive Mind paradigm
+@aegisFrameworkVersion: 2.5.0tent: Comprehensive vision document for Constitutional Hive Mind paradigm
 @context: Paradigm-shifting transformation of framework into distributed Constitutional learning organism
 @visionType: paradigm-shift
 @status: conceptual

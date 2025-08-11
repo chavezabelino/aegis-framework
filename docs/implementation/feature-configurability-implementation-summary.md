@@ -1,8 +1,7 @@
 <!--
 # ✅ Feature Configurability Implementation Complete
 
-@aegisFrameworkVersion: 2.4.0-alpha-dev
-@intent: Implementation summary for three-tier feature configuration system
+@aegisFrameworkVersion: 2.5.0tent: Implementation summary for three-tier feature configuration system
 @context: Complete team configuration system allowing optional vs core vs required framework behaviors
 @mode: implementation-summary
 -->

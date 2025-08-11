@@ -1,10 +1,10 @@
 <!--
-@aegisFrameworkVersion: 2.4.0
+@aegisFrameworkVersion: 2.5.0
 @intent: Stable framework specification for packaged distribution and Constitutional governance
 @context: Stable release with npm packages, Docker support, and automated release pipeline
 -->
 
-# ⚙️ Aegis Framework v2.1.0
+# ⚙️ Aegis Framework v2.5.0
 
 > **Stable Release**: Production-ready package distribution with Constitutional governance  
 > **Status**: Stable Release - Production Ready
@@ -228,21 +228,21 @@ Aegis hydrate /path/to/project --approval-webhook=https://company.com/approve
 
 ## 📅 Release Timeline
 
-### **v2.0.0-alpha** (Target: Q3 2025)
+### **v2.5.0** (Target: Q3 2025)
 
 - Core hydration tool implementation
 - Basic approval gates
 - Project discovery and analysis
 - Constitutional compliance validation
 
-### **v2.0.0-beta** (Target: Q4 2025)
+### **v2.5.0** (Target: Q4 2025)
 
 - Advanced project profiles (React, Vue, Next.js)
 - CI/CD integration modes
 - Custom approval workflows
 - Enhanced rollback mechanisms
 
-### **v2.0.0 Stable** (Target: Q1 2026)
+### **v2.5.0 Stable** (Target: Q1 2026)
 
 - Production-ready hydration
 - Complete v1.x migration path
@@ -302,7 +302,7 @@ Aegis hydrate /path/to/project --approval-webhook=https://company.com/approve
 
 ---
 
-**This specification represents the foundation of Aegis Framework v2.0.0 - transforming how teams adopt AI-native
+**This specification represents the foundation of Aegis Framework v2.5.0 - transforming how teams adopt AI-native
 engineering practices through Constitutional governance and one-command simplicity.**
 
 ---

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * @aegisFrameworkVersion: 2.4.0
+ * @aegisFrameworkVersion: 2.5.0
  * @intent: Automated release management for stable versions
  * @context: Handle version bumping, building, and release preparation
  */
@@ -234,7 +234,7 @@ This release maintains 100% constitutional compliance:
 
 ## Upgrade Instructions
 
-### From v2.0.0-alpha
+### From v2.5.0
 \`\`\`bash
 # Update CLI
 npm update -g @aegis-framework/cli
@@ -253,12 +253,12 @@ aegis-hydrate /path/to/v1/project --migrate-from-v1
 
 ## What's Next
 
-### v2.1.0 (Planned Q1 2026)
+### v2.5.0 (Planned Q1 2026)
 - Enhanced feature configurability system
 - Advanced analytics platform
 - Enterprise integration features
 
-### v3.0.0 (Planned Q4 2026)
+### v2.5.0 (Planned Q4 2026)
 - Universal tech stack support
 - Language-agnostic adapters
 - Cross-platform CLI tools
@@ -304,7 +304,7 @@ Package Distribution:
 - GitHub Releases: aegis-cli.tar.gz, aegis-framework-lib.tar.gz
 - Docker: aegis-framework/cli:${version}
 
-Breaking Changes: None (backward compatible with v2.0.0-alpha)
+Breaking Changes: None (backward compatible with v2.5.0)
 Migration Required: None
 
 Constitutional Compliance: 100%

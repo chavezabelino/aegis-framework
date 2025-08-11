@@ -19,7 +19,7 @@ jobs:
 
   Aegis:
 
-    uses: chavezabelino/Aegis-framework/.GitHub/workflows/Aegis-governance-reusable.yml@v2.6.0
+    uses: chavezabelino/Aegis-framework/.GitHub/workflows/Aegis-governance-reusable.yml@v2.5.0
 
     with:
 
@@ -110,7 +110,7 @@ For `standard` and `core` profiles, create evidence manifests:
 
   "feature": "user-authentication",
 
-  "version": "1.0.0",
+  "version": "2.5.0",
 
   "evidence": [
 
@@ -152,7 +152,7 @@ jobs:
 
   Aegis:
 
-    uses: chavezabelino/aegis-framework/.github/workflows/aegis-governance-reusable.yml@v2.6.0
+    uses: chavezabelino/aegis-framework/.github/workflows/aegis-governance-reusable.yml@v2.5.0
 
     with:
 
@@ -180,7 +180,7 @@ jobs:
 
   Aegis:
 
-    uses: chavezabelino/aegis-framework/.github/workflows/aegis-governance-reusable.yml@v2.6.0
+    uses: chavezabelino/aegis-framework/.github/workflows/aegis-governance-reusable.yml@v2.5.0
 
     with:
 
@@ -206,7 +206,7 @@ jobs:
 
   Aegis:
 
-    uses: chavezabelino/aegis-framework/.github/workflows/aegis-governance-reusable.yml@v2.6.0
+    uses: chavezabelino/aegis-framework/.github/workflows/aegis-governance-reusable.yml@v2.5.0
 
     with:
 
@@ -263,7 +263,7 @@ jobs:
 
   Aegis:
 
-    uses: chavezabelino/Aegis-framework/.GitHub/workflows/Aegis-governance-reusable.yml@v2.6.0
+    uses: chavezabelino/Aegis-framework/.GitHub/workflows/Aegis-governance-reusable.yml@v2.5.0
 
     with:
 
@@ -286,7 +286,7 @@ jobs:
 
     if: GitHub.ref != 'refs/heads/main'
 
-    uses: chavezabelino/Aegis-framework/.GitHub/workflows/Aegis-governance-reusable.yml@v2.6.0
+    uses: chavezabelino/Aegis-framework/.GitHub/workflows/Aegis-governance-reusable.yml@v2.5.0
 
     with:
 
@@ -296,7 +296,7 @@ jobs:
 
     if: GitHub.ref == 'refs/heads/main'
 
-    uses: chavezabelino/Aegis-framework/.GitHub/workflows/Aegis-governance-reusable.yml@v2.6.0
+    uses: chavezabelino/Aegis-framework/.GitHub/workflows/Aegis-governance-reusable.yml@v2.5.0
 
     with:
 
@@ -324,13 +324,13 @@ For `standard` and `core` profiles, configure secrets for attestation:
 
 ```
 
-Error: Unable to resolve action `chavezabelino/aegis-framework/.github/workflows/aegis-governance-reusable.yml@v2.6.0`
+Error: Unable to resolve action `chavezabelino/aegis-framework/.github/workflows/aegis-governance-reusable.yml@v2.5.0`
 
 ```
 
 **Solution**:
 
-- Verify the tag exists: `v2.6.0`
+- Verify the tag exists: `v2.5.0`
 
 - Check repository permissions
 

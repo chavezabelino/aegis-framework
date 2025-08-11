@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * @aegisFrameworkVersion: 2.4.0
+ * @aegisFrameworkVersion: 2.5.0
  * @intent: Comprehensive version update script to fix systematic gaps
  * @context: Addresses documentation drift by updating all version references
  * @mode: strict
@@ -44,16 +44,16 @@ class ComprehensiveVersionUpdater {
         '**/bun.lockb',
       ],
       annotationPatterns: [
-        '@aegisFrameworkVersion: 2.1.0',
+        '@aegisFrameworkVersion: 2.5.0',
         '@aegisFrameworkVersion: "2.1.0"',
         "@aegisFrameworkVersion: '2.1.0'",
       ],
       contentPatterns: [
-        'v2.1.0',
+        'v2.5.0',
         '2.1.0',
         '@aegis-framework/cli@2.1.0',
         'aegis-framework/cli:2.1.0',
-        'framework-core-v2.1.0.md',
+        'framework-core-v2.5.0.md',
       ],
     };
   }

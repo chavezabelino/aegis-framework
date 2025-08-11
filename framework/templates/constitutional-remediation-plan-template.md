@@ -1,6 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.4.0-alpha-dev
-@intent: Constitutional example of a safe remediation plan
+@aegisFrameworkVersion: 2.5.0tent: Constitutional example of a safe remediation plan
 @context: Template showing all required safety mechanisms and validation gates
 @mode: strict
 -->
@@ -20,7 +19,7 @@ gaps identified in framework migration pitfalls.
 id: "example-remediation-2025-001"
 name: "Framework Migration with Constitutional Safety"
 description: "Demonstrates complete remediation plan with all required safety mechanisms and validation gates"
-version: "1.0.0"
+version: "2.5.0"
 
 # Constitutional annotations (required)
 aegisFrameworkVersion: "2.0.0-alpha-dev"
@@ -307,7 +306,7 @@ The same plan can be expressed in JSON format:
   "id": "example-remediation-2025-001",
   "name": "Framework Migration with Constitutional Safety",
   "description": "Demonstrates complete remediation plan with all required safety mechanisms and validation gates",
-  "version": "1.0.0",
+  "version": "2.5.0",
   "aegisFrameworkVersion": "2.0.0-alpha-dev",
   "mode": "strict",
   "intent": "Migrate existing project to Aegis Framework v2.0 with complete safety guarantees",

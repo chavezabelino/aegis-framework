@@ -3,7 +3,7 @@
 @version: 1.1.0-beta
 @mode: strict
 @intent: Blueprint schema extension for multi-agent orchestration and coordination
-@context: Adds agents, coordination, and handoff fields for v2.4.0-beta compliance
+@context: Adds agents, coordination, and handoff fields for v2.5.0 compliance
 */
 
 export interface AgentRole {

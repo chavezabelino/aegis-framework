@@ -1,7 +1,7 @@
 <!--
 # ✅ Feature Configurability Integration Complete
 
-@aegisFrameworkVersion: 2.4.0
+@aegisFrameworkVersion: 2.5.0
 @intent: Complete feature configurability integration documentation
 @context: Final implementation summary for team configuration system integration
 @mode: strict
@@ -11,7 +11,7 @@
 
 ## 📊 Executive Summary
 
-Successfully completed the **feature configurability system integration** for the Aegis Framework v2.1.0. All framework
+Successfully completed the **feature configurability system integration** for the Aegis Framework v2.5.0. All framework
 tools now respect team configuration settings, enabling development teams to customize framework behavior while
 maintaining Constitutional safety.
 

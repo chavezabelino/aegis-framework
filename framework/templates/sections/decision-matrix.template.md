@@ -1,12 +1,12 @@
 <!--
-@aegisFrameworkVersion: 2.4.0
+@aegisFrameworkVersion: 2.5.0
 @intent: Template section for agent instructions
 @context: Modular content for framework instruction generation
 -->
 
 ## 🎯 **Execution Mode Decision Matrix**
 
-Based on analysis of Aegis v1.2.1 vs bracket-app-audit v2.5:
+Based on analysis of Aegis v2.5.0 vs bracket-app-audit v2.5:
 
 ### When to Use Full Constitutional Mode (`strict`)
 

@@ -1,13 +1,13 @@
 <!--
-@aegisFrameworkVersion: 2.4.0
-@intent: Framework core specification for v2.4.0 with semantic interrupt reflex system
+@aegisFrameworkVersion: 2.5.0
+@intent: Framework core specification for v2.5.0 with semantic interrupt reflex system
 @context: Complete framework architecture and capabilities documentation with breakthrough semantic interrupt detection
 @mode: strict
 -->
 
-# 🏛️ Aegis Framework Core v2.4.0
+# 🏛️ Aegis Framework Core v2.5.0
 
-**Version**: v2.4.0 (Stable Release)  
+**Version**: v2.5.0 (Stable Release)  
 **Release Date**: August 8, 2025  
 **Constitutional Authority**: Article II (Framework Governance)
 
@@ -15,7 +15,7 @@
 
 ## Executive Summary
 
-Aegis Framework v2.4.0 introduces a comprehensive Semantic Interrupt Reflex System. This capability provides systematic
+Aegis Framework v2.5.0 introduces a comprehensive Semantic Interrupt Reflex System. This capability provides systematic
 detection and response to user expressions of doubt about AI agent intent alignment, treating user confusion as a
 trigger for Constitutional enforcement.
 
@@ -118,7 +118,7 @@ Nine-layer Constitutional protection system:
 
 ---
 
-## 🎛️ **Feature Configurability System** _(Completed v2.2.0)_
+## 🎛️ **Feature Configurability System** _(Completed v2.5.0)_
 
 ### **Three-Tier Configuration Architecture**
 
@@ -278,14 +278,14 @@ Comprehensive team customization system enabling Constitutional safety with flex
 - Predictive drift detection before user interrupts
 - Enhanced learning from interaction history
 
-### **v3.0.0 - Universal Tech Stack Support** _(Q4 2025)_
+### **v2.5.0 - Universal Tech Stack Support** _(Q4 2025)_
 
 - Language-agnostic adapter architecture
 - Cross-platform governance principles
 - Universal CLI with semantic interrupt support
 - Multi-language Constitutional enforcement
 
-### **v3.1.0 - Advanced AI Governance** _(Q1 2026)_
+### **v2.5.0 - Advanced AI Governance** _(Q1 2026)_
 
 - Constitutional Memory Governance with semantic awareness
 - Predictive Governance with intent alignment
@@ -375,6 +375,6 @@ Comprehensive team customization system enabling Constitutional safety with flex
 
 **Status**: **SEMANTIC INTERRUPT REFLEX SYSTEM OPERATIONAL**
 
-_Aegis Framework v2.4.0 establishes a new paradigm in AI governance through the world's first systematic detection and
+_Aegis Framework v2.5.0 establishes a new paradigm in AI governance through the world's first systematic detection and
 response to user expressions of doubt about agent intent alignment, providing meta-cognitive awareness, structured
 realignment protocols, and evidence-based prevention of systematic intelligence failures._

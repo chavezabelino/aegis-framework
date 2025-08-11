@@ -1,5 +1,5 @@
-# Drift log for v2.4.0-beta human-in-the-loop workflows
-# See framework-core-v1.1.0-beta-spec.md for schema
+# Drift log for v2.5.0 human-in-the-loop workflows
+# See framework-core-v2.5.0or schema
 
 driftEvents:
   # Example event

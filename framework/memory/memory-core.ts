@@ -1,5 +1,5 @@
 /**
- * @aegisFrameworkVersion: 2.4.0
+ * @aegisFrameworkVersion: 2.5.0
  * @intent: Core memory interfaces and base classes for Aegis Memory Subsystem
  * @context: Constitutional memory governance with dual-layer architecture (Lite + Heavy)
  * @mode: strict

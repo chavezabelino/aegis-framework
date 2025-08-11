@@ -1,8 +1,7 @@
 <!--
 # 🔄 Framework Evolution Documentation Standard
 
-@aegisFrameworkVersion: 2.4.0-alpha-dev
-@intent: Constitutional framework for documenting field-driven evolution insights
+@aegisFrameworkVersion: 2.5.0tent: Constitutional framework for documenting field-driven evolution insights
 @context: Systematic capture of "eating our own dog food" feedback loops that drive framework development
 -->
 
@@ -88,8 +87,7 @@ evolutionStory:
 Let me document our current exchange as the first official Evolution Story:
 
 <function_calls> <invoke name="create_file"> <parameter name="content"><!--
-@aegisFrameworkVersion: 2.0.0-alpha-dev
-@intent: Evolution Story documenting remediation plan Constitutional safeguards
+@aegisFrameworkVersion: 2.5.0tent: Evolution Story documenting remediation plan Constitutional safeguards
 @context: First documented field-driven framework evolution from real-world migration experience
 -->
 

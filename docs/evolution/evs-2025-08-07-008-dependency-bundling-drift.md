@@ -1,7 +1,7 @@
 <!--
 # EVS-2025-08-07-008: Dependency Bundling Drift and Correction
 
-@aegisFrameworkVersion: 2.4.0
+@aegisFrameworkVersion: 2.5.0
 @intent: Document framework drift regarding incorrect dependency bundling approach
 @context: Field-driven learning about open source distribution best practices
 -->

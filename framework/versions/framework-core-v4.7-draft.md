@@ -2,30 +2,28 @@
 @aegisBlueprint: framework-core
 @version: 4.7-draft
 @mode: strict
-@intent: ARCHIVED - Features migrated to v2.4.0-beta specification
+@intent: ARCHIVED - Features migrated to v2.5.0 specification
 @context:
 - This file has been archived as part of semantic versioning migration
-- Features from this draft have been migrated to framework-core-v1.1.0-beta-spec.md
-- Do not implement features from this file - use the v1.1.0-beta spec instead
+- Features from this draft have been migrated to framework-core-v2.5.0 Do not implement features from this file - use the v2.5.0 spec instead
 
-@migrationNote: See framework/versions/framework-core-v1.1.0-beta-spec.md for current feature planning
-@newFeatures: [MIGRATED TO v1.1.0-beta]
+@migrationNote: See framework/versions/framework-core-v2.5.0or current feature planning
+@newFeatures: [MIGRATED TO v2.5.0]
 - Multi-agent execution support → Multi-Agent Execution Layer
 - Model Context Protocol (MCP) metadata emission → MCP Metadata Output
 - Blueprint execution metadata with run logs → Blueprint Execution Metadata
 - Snapshot testing across lean/strict/full modes → Enhanced Testing
 - Adapter interface for tech stack translation → Enhanced Adapter Interface
 - Drift logging: human-in-the-loop input and YAML sidecar → Drift Logging & Human-in-the-Loop
-- CLI updates to support all of the above → CLI enhancements in v1.1.0-beta
+- CLI updates to support all of the above → CLI enhancements in v2.5.0
 -->
 
 # ⚙️ Aegis Framework v4.7 (Draft) - ARCHIVED
 
 > ⚠️ **ARCHIVED**: This draft has been superseded by semantic versioning.
 >
-> **See instead**: [`framework/versions/framework-core-v1.1.0-beta-spec.md`](framework-core-v1.1.0-beta-spec.md)
-
-_This draft has been migrated to the v1.1.0-beta specification as part of our semantic versioning adoption._
+> **See instead**: [`framework/versions/framework-core-v2.5.0(framework-core-v2.5.0
+_This draft has been migrated to the v2.5.0 specification as part of our semantic versioning adoption._
 
 ## 🆕 Additions in v4.7
 

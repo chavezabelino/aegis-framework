@@ -262,7 +262,7 @@ program
             type: 'lite_summary',
             created: new Date().toISOString(),
             createdBy: 'system',
-            schema: 'memory-summary@v1.0.0',
+            schema: 'memory-summary@v2.5.0',
             content: {
               messageCount: messages.length,
               summary: `Summarized ${messages.length} lite memory messages`,

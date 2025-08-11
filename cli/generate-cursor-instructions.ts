@@ -1,6 +1,5 @@
 /**
- * @aegisFrameworkVersion: 2.4.0-alpha-dev
- * @intent: Cursor-specific instruction generator with real-time detection integration
+ * @aegisFrameworkVersion: 2.5.0@intent: Cursor-specific instruction generator with real-time detection integration
  * @context: Generates instructions optimized for Cursor's interface patterns and capabilities
  */
 

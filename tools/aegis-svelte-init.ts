@@ -166,7 +166,7 @@ export default config;
     const defaultBlueprint = `{
   "id": "default",
   "name": "Default Svelte/Drizzle/Neon Blueprint",
-  "version": "1.0.0",
+  "version": "2.5.0",
   "description": "Default governance patterns for Svelte applications",
   "adapter": "svelte-drizzle",
   "mode": "${this.options.aegisMode}",

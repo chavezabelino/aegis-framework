@@ -108,7 +108,11 @@ class ConstitutionalValidator {
   }
 
   async validateAll(): Promise<ConstitutionalValidationResult> {
-    console.log('🏛️ Running comprehensive constitutional validation...');
+    const json = process.argv.includes('--json');
+    
+    if (!json) {
+      console.log('🏛️ Running comprehensive constitutional validation...');
+    }
 
     const structure = await this.validateStructure();
     const annotations = await this.validateAnnotations();
@@ -131,7 +135,10 @@ class ConstitutionalValidator {
   }
 
   private async validateStructure(): Promise<StructureValidation> {
-    console.log('  📁 Validating framework structure...');
+    const json = process.argv.includes('--json');
+    if (!json) {
+      console.log('  📁 Validating framework structure...');
+    }
 
     const requiredDirectories = [
       { path: 'framework', required: true },
@@ -184,7 +191,10 @@ class ConstitutionalValidator {
   }
 
   private async validateAnnotations(): Promise<AnnotationValidation> {
-    console.log('  📝 Validating constitutional annotations...');
+    const json = process.argv.includes('--json');
+    if (!json) {
+      console.log('  📝 Validating constitutional annotations...');
+    }
 
     const frameworkFiles = await this.checkFrameworkFileAnnotations();
     const blueprintFiles = await this.checkBlueprintFileAnnotations();
@@ -210,7 +220,10 @@ class ConstitutionalValidator {
   }
 
   private async validateVersioning(): Promise<VersionValidation> {
-    console.log('  🔢 Validating version consistency...');
+    const json = process.argv.includes('--json');
+    if (!json) {
+      console.log('  🔢 Validating version consistency...');
+    }
 
     let references = await this.findAllVersionReferences();
     let inconsistencies = references
@@ -243,7 +256,9 @@ class ConstitutionalValidator {
         }
       }
     } catch (error) {
-      console.warn('  ⚠️ Comprehensive version validation failed, using basic validation');
+      if (!process.argv.includes('--json')) {
+        console.warn('  ⚠️ Comprehensive version validation failed, using basic validation');
+      }
     }
 
     const versionConsistency = inconsistencies.length === 0;
@@ -261,7 +276,10 @@ class ConstitutionalValidator {
   }
 
   private async validateBlueprints(): Promise<BlueprintValidation> {
-    console.log('  📋 Validating blueprint compliance...');
+    const json = process.argv.includes('--json');
+    if (!json) {
+      console.log('  📋 Validating blueprint compliance...');
+    }
 
     const blueprintFiles = await this.findBlueprintFiles();
     const blueprints = await Promise.all(blueprintFiles.map(file => this.validateBlueprintFile(file)));
@@ -324,7 +342,7 @@ class ConstitutionalValidator {
   }
 
   private async checkFrameworkFileAnnotations(): Promise<AnnotationCheck[]> {
-    const frameworkFiles = ['framework/framework-core-v2.4.0.md', 'CONSTITUTION.md'];
+    const frameworkFiles = ['framework/framework-core-v2.5.0.md', 'CONSTITUTION.md'];
 
     return frameworkFiles.map(file => this.checkAnnotationInFile(file, ['@aegisFrameworkVersion']));
   }
@@ -379,7 +397,7 @@ class ConstitutionalValidator {
       'VERSION',
       'README.md',
       'CHANGELOG.md',
-      'framework/framework-core-v2.1.0.md',
+      'framework/framework-core-v2.5.0.md',
       '.github/copilot-instructions.md',
     ];
 
@@ -411,7 +429,7 @@ class ConstitutionalValidator {
     }
 
     // Framework core spec filename contains version - this is expected
-    if (filePath === 'framework/framework-core-v2.1.0.md') {
+    if (filePath === 'framework/framework-core-v2.5.0.md') {
       return version === this.currentVersion; // Should match current version
     }
 
@@ -468,7 +486,7 @@ class ConstitutionalValidator {
       }
 
       // For framework core spec, extract from filename
-      if (filePath === 'framework/framework-core-v2.1.0.md') {
+      if (filePath === 'framework/framework-core-v2.5.0.md') {
         const filenameMatch = filePath.match(/v(\d+\.\d+\.\d+(?:-[a-zA-Z0-9]+)?)/);
         return filenameMatch ? filenameMatch[1] : null;
       }
@@ -688,7 +706,31 @@ class ConstitutionalValidator {
 async function main() {
   const validator = new ConstitutionalValidator();
   const results = await validator.validateAll();
-  validator.displayResults(results);
+  
+  const json = process.argv.includes('--json');
+  
+  if (json) {
+    // Convert to ValidationReport format
+    const issues = results.violations.map(v => ({
+      code: v.id.toUpperCase(),
+      message: v.description,
+      path: v.file ? [v.file] : undefined,
+      hint: v.recommendation
+    }));
+    
+    const report = {
+      claimId: 'constitutional-validation',
+      title: 'Constitutional validation ensures comprehensive compliance',
+      status: results.overall >= 0.9 ? 'pass' : 'fail',
+      summary: `Overall compliance: ${(results.overall * 100).toFixed(1)}%`,
+      issues,
+      evidence: ['Enhanced version consistency integration', 'Comprehensive validation system', 'Constitutional article validation', 'Violation detection and reporting']
+    };
+    
+    process.stdout.write(JSON.stringify(report, null, 2) + '\n');
+  } else {
+    validator.displayResults(results);
+  }
 
   // Exit with appropriate code
   process.exit(results.overall >= 0.9 ? 0 : 1);

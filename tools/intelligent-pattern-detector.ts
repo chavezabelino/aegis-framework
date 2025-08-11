@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * @aegisFrameworkVersion: 2.4.0
+ * @aegisFrameworkVersion: 2.5.0
  * @intent: Intelligent pattern recognition system for systematic issue detection
  * @context: Automatically detect systematic patterns from single violations
  * @mode: strict

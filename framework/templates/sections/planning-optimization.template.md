@@ -1,5 +1,5 @@
 <!--
-@aegisFrameworkVersion: 2.4.0
+@aegisFrameworkVersion: 2.5.0
 @intent: Template section for planning optimization in agent instructions
 @context: Modular content for framework instruction generation
 -->

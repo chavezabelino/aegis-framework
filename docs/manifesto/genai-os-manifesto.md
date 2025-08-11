@@ -1,8 +1,7 @@
 <!--
 # The GenAI Operating System Manifesto
 
-@aegisFrameworkVersion: 2.4.0-alpha-dev
-@intent: Core manifesto declaring the GenAI Operating System paradigm
+@aegisFrameworkVersion: 2.5.0tent: Core manifesto declaring the GenAI Operating System paradigm
 @context: Foundational document establishing AI-native engineering principles
 @manifestoRef: Primary declaration of framework philosophy
 -->
@@ -173,7 +172,7 @@ We invite you to join us.
 ---
 
 **Constitutional Authority**: [Aegis Framework Constitution](../../CONSTITUTION.md)  
-**Implementation**: [Framework Core v2.0.0](../../framework/framework-core-v2.0.0-alpha-dev.md)  
+**Implementation**: [Framework Core v2.5.0](../../framework/framework-core-v2.5.0  
 **Evolution**: [Framework Evolution Stories](../evolution/)
 
 > _"We establish this manifesto to ensure that AI-generated systems remain safe, reliable, and replayable — with

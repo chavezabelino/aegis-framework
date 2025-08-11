@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * @aegisFrameworkVersion: 2.4.0
+ * @aegisFrameworkVersion: 2.5.0
  * @intent: CLI tool for generating versioned agent instructions
  * @context: Automatically creates agent-specific instructions based on current framework state
  */
@@ -44,12 +44,12 @@ class VersionedInstructionGenerator {
     const features: string[] = [];
 
     // Check for core alpha features
-    if (fs.existsSync(path.join(this.frameworkRoot, 'framework', 'framework-core-v1.0.0-alpha.md'))) {
+    if (fs.existsSync(path.join(this.frameworkRoot, 'framework', 'framework-core-v2.5.0.md'))) {
       features.push('blueprint-driven-development', 'constitutional-governance', 'semantic-versioning');
     }
 
     // Check for beta features (multi-agent)
-    if (fs.existsSync(path.join(this.versionsDir, 'framework-core-v1.1.0-beta-spec.md'))) {
+    if (fs.existsSync(path.join(this.versionsDir, 'framework-core-v2.5.0)) {
       features.push('multi-agent-orchestration', 'mcp-metadata', 'drift-logging', 'adapter-interface');
     }
 
@@ -177,9 +177,9 @@ ${referenceSection}
 
   private generateFrameworkContextSection(features: string[]): string {
     const capabilityMap: { [key: string]: string } = {
-      'blueprint-driven-development': '**Core**: Blueprint-driven development with v1.0.0-alpha specification',
-      'multi-agent-orchestration': '**Multi-Agent**: v1.1.0-beta orchestration with agent coordination and handoffs',
-      'apprenticeship-scaffolds': '**Apprenticeship**: v1.3.0 scaffolding system with mentor guidance',
+      'blueprint-driven-development': '**Core**: Blueprint-driven development with v2.5.0 specification',
+      'multi-agent-orchestration': '**Multi-Agent**: v2.5.0 orchestration with agent coordination and handoffs',
+      'apprenticeship-scaffolds': '**Apprenticeship**: v2.5.0 scaffolding system with mentor guidance',
       'advanced-observability': '**Observability**: MCP metadata emission, drift logging, run logs',
       'constitutional-governance': '**Governance**: Constitutional framework with democratic evolution',
     };
@@ -240,7 +240,7 @@ requiredProviders: []
 requiredSelectors: []
 ruleContracts:
   - id: validation-rule
-    version: "1.0.0"
+    version: "2.5.0"
     description: "Rule description"
 observability:
   events: []
@@ -365,7 +365,7 @@ aegis test snapshot feat-user-auth
     return `## 📚 Knowledge Base
 
 ### Key Resources
-- \`framework/framework-core-v1.0.0-alpha.md\`: Core specification
+- \`framework/framework-core-v2.5.0.md\`: Core specification
 - \`CONSTITUTION.md\`: Foundational principles
 - \`framework/agent-manifest.json\`: Agent capabilities
 

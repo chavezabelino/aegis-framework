@@ -439,8 +439,7 @@ export class EvolutionStoryDetector {
     const today = new Date().toISOString().split('T')[0];
 
     return `<!--
-@aegisFrameworkVersion: 2.0.0-alpha-dev
-@intent: Auto-generated evolution story for detected trigger
+@aegisFrameworkVersion: 2.5.0tent: Auto-generated evolution story for detected trigger
 @context: Framework automatic detection of evolution documentation needs
 -->
 

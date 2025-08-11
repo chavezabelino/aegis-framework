@@ -6,7 +6,7 @@
  * Analyzes drift logs and learns from violations to predict and prevent future issues
  * Part of Phase 2: Intelligent Governance
  *
- * @aegisFrameworkVersion: 2.4.0-beta
+ * @aegisFrameworkVersion: 2.5.0
  * @intent: Implement intelligent pattern recognition for constitutional drift prevention
  */
 

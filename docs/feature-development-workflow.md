@@ -18,19 +18,18 @@ Instead of informal drafts, create structured specifications:
 
 ```
 # For a new minor version feature
-touch framework/versions/framework-core-v2.4.0-beta-spec.md
-```
+touch framework/versions/framework-core-v2.5.0``
 
 **Specification Template:**
 
 ```
 <!--
-@aegisFrameworkVersion: 1.1.0-beta
+@aegisFrameworkVersion: 2.5.0
 @intent: [Brief description of feature set]
 @context: [Why these features are needed]
 -->
 
-# ⚙️ Aegis Framework v1.1.0-beta (Specification)
+# ⚙️ Aegis Framework v2.5.0 (Specification)
 
 ## 🎯 Feature Overview
 
@@ -55,7 +54,7 @@ touch framework/versions/framework-core-v2.4.0-beta-spec.md
 
 ### 3. **Implementation Strategy**
 
-For v1.1.0-beta multi-agent features:
+For v2.5.0 multi-agent features:
 
 ```
 # Phase 1: Core infrastructure
@@ -95,26 +94,26 @@ node tools/validate-Blueprint.ts blueprints/test-multi-agent/Blueprint.YAML
 echo "1.1.0-beta" > VERSION
 
 # Update framework core
-mv framework/framework-core-v1.0.0-alpha.md framework/versions/
-cp framework/versions/framework-core-v1.1.0-beta-spec.md framework/framework-core-v1.1.0-beta.md
+mv framework/framework-core-v2.5.0.md framework/versions/
+cp framework/versions/framework-core-v2.5.0ramework/framework-core-v2.5.0.md
 
 # Create git tag
-git tag v1.1.0-beta
-git push origin v1.1.0-beta
+git tag v2.5.0
+git push origin v2.5.0
 ```
 
-## 🔄 Example: Converting v4.7 Draft to v1.1.0-beta
+## 🔄 Example: Converting v4.7 Draft to v2.5.0
 
 **What we did:**
 
 1. ✅ Archived the v4.7 draft with migration notes
-2. ✅ Created comprehensive v1.1.0-beta specification
+2. ✅ Created comprehensive v2.5.0 specification
 3. ✅ Updated roadmap and evolution strategy
 4. ✅ Maintained backward compatibility plan
 
 **What this gives us:**
 
-- Clear feature targeting (v1.1.0-beta gets multi-agent support)
+- Clear feature targeting (v2.5.0 gets multi-agent support)
 - Proper semantic versioning progression
 - Detailed migration guidance
 - Structured implementation plan

@@ -1,5 +1,5 @@
 # @aegisBlueprint
-# @aegisFrameworkVersion: 2.4.0
+# @aegisFrameworkVersion: 2.5.0
 # @intent: Tech-agnostic user authentication blueprint with constitutional compliance
 # @context: Abstract authentication patterns adaptable to any technology stack
 # @mode: strict
@@ -89,7 +89,7 @@ securityContracts:
 
 ruleContracts:
   - rule: "authentication-observability"
-    version: "1.0.0"
+    version: "2.5.0"
     enforcement: "blocking"
     schema:
       requirements:
@@ -99,7 +99,7 @@ ruleContracts:
         - "Privacy-compliant logging (no sensitive data)"
 
   - rule: "authentication-traceability"
-    version: "1.0.0"
+    version: "2.5.0"
     enforcement: "blocking"
     schema:
       requirements:
@@ -109,7 +109,7 @@ ruleContracts:
         - "Dependency versions recorded"
 
   - rule: "authentication-safety"
-    version: "1.0.0"
+    version: "2.5.0"
     enforcement: "blocking"
     schema:
       requirements:

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * @aegisFrameworkVersion: 2.4.0
+ * @aegisFrameworkVersion: 2.5.0
  * @intent: Prevent foreground process hangs in LLM-agent development loops
  * @context: Constitutional safeguard preventing agent blocking on long-running processes
  * @mode: strict

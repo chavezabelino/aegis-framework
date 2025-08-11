@@ -1,6 +1,6 @@
 #!/usr/bin/env ts-node
 /**
- * @aegisFrameworkVersion: 2.4.0
+ * @aegisFrameworkVersion: 2.5.0
  * @intent: Template-driven, agent-agnostic instruction generator
  * @context: Assembles agent instructions from modular templates, agent profiles, and framework docs
  */
@@ -47,9 +47,9 @@ function getLastUpdated(): string {
 function getFrameworkCapabilities(): string {
   // In a real implementation, this would parse framework docs and codebase
   return [
-    '- **Core**: Blueprint-driven development with v1.0.0-alpha specification',
-    '- **Multi-Agent**: v1.1.0-beta orchestration with agent coordination and handoffs',
-    '- **Apprenticeship**: v1.3.0 scaffolding system with mentor guidance',
+    '- **Core**: Blueprint-driven development with v2.5.0 specification',
+    '- **Multi-Agent**: v2.5.0 orchestration with agent coordination and handoffs',
+    '- **Apprenticeship**: v2.5.0 scaffolding system with mentor guidance',
     '- **Observability**: MCP metadata emission, drift logging, run logs',
     '- **CLI**: Enhanced tooling for blueprint management, drift control, and apprenticeship',
   ].join('\n');
@@ -66,10 +66,10 @@ function renderSections(agent: any): Record<string, string> {
     }),
     agentProfile: ejs.render(loadSection('agent-profile.template.md'), { agent }),
     multiAgent: ejs.render(loadSection('multi-agent.template.md'), {
-      multiAgentContent: 'See framework/versions/framework-core-v1.1.0-beta-spec.md for orchestration details.',
+      multiAgentContent: 'See framework/versions/framework-core-v2.5.0or orchestration details.',
     }),
     blueprintCompliance: ejs.render(loadSection('blueprint-compliance.template.md'), {
-      blueprintComplianceContent: 'See framework-core-v1.0.0-alpha.md for blueprint requirements.',
+      blueprintComplianceContent: 'See framework-core-v2.5.0.md for blueprint requirements.',
     }),
     mcpMetadata: ejs.render(loadSection('mcp-metadata.template.md'), {
       mcpMetadataContent: 'See framework/observability/ for MCP event schemas.',

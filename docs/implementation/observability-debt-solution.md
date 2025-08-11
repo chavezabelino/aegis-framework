@@ -1,7 +1,7 @@
 <!--
 # Observability Debt Solution: Complete Implementation
 
-@aegisFrameworkVersion: 2.4.0
+@aegisFrameworkVersion: 2.5.0
 @intent: Document the complete observability debt solution for framework capability understanding
 @context: Comprehensive documentation of the live capability mapping and orientation system
 @mode: strict
@@ -10,7 +10,7 @@
 # Observability Debt Solution: Complete Implementation
 
 **Date**: August 8, 2025  
-**Version**: v2.4.0  
+**Version**: v2.5.0  
 **Type**: Comprehensive Framework Enhancement  
 **Problem Solved**: "I can't even start to explain what our framework does now and how it does what it claims"
 

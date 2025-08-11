@@ -1,6 +1,5 @@
 /**
- * @aegisFrameworkVersion: 2.4.0-alpha-dev
- * @intent: Constitutional validation for Article XI: Field-Driven Abstraction Principle
+ * @aegisFrameworkVersion: 2.5.0@intent: Constitutional validation for Article XI: Field-Driven Abstraction Principle
  * @context: Ensures framework evolution maintains abstract governance focus vs project-specific solutions
  */
 

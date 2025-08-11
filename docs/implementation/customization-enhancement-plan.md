@@ -1,7 +1,7 @@
 <!--
 # 🎨 Framework Customization Enhancement Plan
 
-@aegisFrameworkVersion: 2.4.0
+@aegisFrameworkVersion: 2.5.0
 @intent: Design plan for enhanced team customization capabilities
 @context: Addresses engineering team adoption needs for framework instruction customization
 -->
@@ -274,21 +274,21 @@ customization:
 
 ## ✅ **Implementation Timeline**
 
-### **v1.5.0 - Section Override Support**
+### **v2.5.0 - Section Override Support**
 
 - Basic section-level override capability
 - Constitutional protection for mandatory sections
 - Enhanced CLI with override flags
 - Validation integration for custom sections
 
-### **v1.6.0 - Append & Merge Modes**
+### **v2.5.0 - Append & Merge Modes**
 
 - Custom section append capability
 - Multiple merge strategies
 - Customization configuration file support
 - Enhanced template validation
 
-### **v1.7.0 - Advanced Features**
+### **v2.5.0 - Advanced Features**
 
 - Conditional section rendering
 - Template inheritance and extension
@@ -330,4 +330,4 @@ customization:
 ---
 
 **Status**: Design Complete - Ready for Implementation **Priority**: High - Critical for framework adoption
-**Dependencies**: v1.4.0 template quality improvements
+**Dependencies**: v2.5.0 template quality improvements

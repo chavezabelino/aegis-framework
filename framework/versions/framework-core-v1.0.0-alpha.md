@@ -1,11 +1,11 @@
 <!--
-@aegisFrameworkVersion: 2.4.0-alpha
+@aegisFrameworkVersion: 2.5.0
 @intent: First semantic version release of the full framework specification
 @constitutionalAuthority: ../CONSTITUTION.md
 @governanceModel: Semantic versioning with structured evolution
 -->
 
-# ⚙️ Aegis Framework v1.0.0-alpha
+# ⚙️ Aegis Framework v2.5.0
 
 > A production-grade, Blueprint-driven system for AI-assisted software development with full audit traceability, CI
 > enforcement, replayable implementation, and design replay validation.
@@ -16,7 +16,7 @@ structures, and evolutionary processes for the framework.
 
 ...
 
-## 🆕 Major Features in v1.0.0-alpha
+## 🆕 Major Features in v2.5.0
 
 ### 🔁 Blueprint Replay Layer (Hardened)
 
@@ -48,14 +48,14 @@ structures, and evolutionary processes for the framework.
 
 ### 📘 Changelog
 
-#### v1.0.0-alpha — August 2025
+#### v2.5.0 — August 2025
 
 **🎯 Framework Foundation**
 
-- **Breaking**: Adopted semantic versioning, migrated from informal v4.x to structured v1.0.0-alpha
+- **Breaking**: Adopted semantic versioning, migrated from informal v4.x to structured v2.5.0
 - **Breaking**: Standardized `@aegisFrameworkVersion` metadata in all framework files
 - **New**: Added `framework/agent-manifest.JSON` for agent capability discovery
-- **New**: Added `framework/versions/instructions-v1.0.0-alpha.md` for version-specific agent guidance
+- **New**: Added `framework/versions/instructions-v2.5.0.md` for version-specific agent guidance
 - **New**: Added `CLI/init-agent-context.ts` for automated copilot instruction generation
 
 **🔐 Blueprint Contract Evolution**
@@ -67,7 +67,7 @@ structures, and evolutionary processes for the framework.
 
 **🧪 Validation & Testing Infrastructure**
 
-- **Enhanced**: `tools/validate-Blueprint.ts` now validates against v1.0.0-alpha schema
+- **Enhanced**: `tools/validate-Blueprint.ts` now validates against v2.5.0 schema
 - **New**: Blueprint replay layer ensures deterministic AI output regeneration
 - **New**: Visual regression testing requirements for public routes
 - **New**: Snapshot testing framework for Blueprint fidelity over time
@@ -80,15 +80,15 @@ structures, and evolutionary processes for the framework.
 
 **🏗 Architecture & Tooling**
 
-- **Enhanced**: CLI tooling updated to support v1.0.0-alpha workflows
+- **Enhanced**: CLI tooling updated to support v2.5.0 workflows
 - **New**: Adapter interface design for tech stack translation
 - **New**: Agent manifest system for multi-agent orchestration support
 - **Enhanced**: Documentation structure aligned with semantic versioning
 
 **🔧 Migration Notes**
 
-- All references to v4.6/v4.7 updated to v1.0.0-alpha
-- Git tags migrated from `v4.6.0` to `v1.0.0-alpha`
+- All references to v4.6/v4.7 updated to v2.5.0
+- Git tags migrated from `v2.5.0` to `v2.5.0`
 - Framework core specification file renamed to include version suffix
 - Copilot instructions updated to reflect new version and patterns
 

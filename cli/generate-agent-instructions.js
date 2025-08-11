@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * @aegisFrameworkVersion: 2.4.0
+ * @aegisFrameworkVersion: 2.5.0
  * @intent: CLI tool for generating versioned agent instructions
  * @context: Automatically creates agent-specific instructions based on current framework state
  */
@@ -25,12 +25,12 @@ class VersionedInstructionGenerator {
     const features = [];
 
     // Check for core alpha features
-    if (fs.existsSync(path.join(this.frameworkRoot, 'framework', 'framework-core-v1.0.0-alpha.md'))) {
+    if (fs.existsSync(path.join(this.frameworkRoot, 'framework', 'framework-core-v2.5.0.md'))) {
       features.push('blueprint-driven-development', 'constitutional-governance', 'semantic-versioning');
     }
 
     // Check for beta features (multi-agent)
-    if (fs.existsSync(path.join(this.versionsDir, 'framework-core-v1.1.0-beta-spec.md'))) {
+    if (fs.existsSync(path.join(this.versionsDir, 'framework-core-v2.5.0)) {
       features.push('multi-agent-orchestration', 'mcp-metadata', 'drift-logging', 'adapter-interface');
     }
 
@@ -125,9 +125,9 @@ class VersionedInstructionGenerator {
 ## 🎯 Framework Context (v${this.currentVersion})
 
 ### Current Capabilities
-- **Core**: Blueprint-driven development with v1.0.0-alpha specification
-- **Multi-Agent**: v1.1.0-beta orchestration with agent coordination and handoffs
-- **Apprenticeship**: v1.3.0 scaffolding system with mentor guidance
+- **Core**: Blueprint-driven development with v2.5.0 specification
+- **Multi-Agent**: v2.5.0 orchestration with agent coordination and handoffs
+- **Apprenticeship**: v2.5.0 scaffolding system with mentor guidance
 - **Observability**: MCP metadata emission, drift logging, run logs
 - **CLI**: Enhanced tooling for blueprint management, drift control, and apprenticeship
 
@@ -199,7 +199,7 @@ requiredProviders: []
 requiredSelectors: []
 ruleContracts:
   - id: validation-rule
-    version: "1.0.0"
+    version: "2.5.0"
     description: "Rule description"
 observability:
   events: []
@@ -313,8 +313,8 @@ aegis test snapshot feat-user-auth
 ## 📚 Knowledge Base
 
 ### Key Resources
-- \`framework/framework-core-v1.0.0-alpha.md\`: Core specification
-- \`framework/versions/framework-core-v1.1.0-beta-spec.md\`: Multi-agent features
+- \`framework/framework-core-v2.5.0.md\`: Core specification
+- \`framework/versions/framework-core-v2.5.0: Multi-agent features
 - \`CONSTITUTION.md\`: Foundational principles
 - \`framework/agent-manifest.json\`: Agent capabilities
 
