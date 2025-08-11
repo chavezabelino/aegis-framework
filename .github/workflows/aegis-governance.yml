@@ -6,6 +6,11 @@ on:
   pull_request:
     branches: [ main, develop ]
 
+permissions:
+  id-token: write
+  contents: read
+  security-events: write
+
 env:
   AEGIS_HMAC_KEY: ${{ secrets.AEGIS_HMAC_KEY }}
 
@@ -20,8 +25,8 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: '18'
-        cache: 'npm'
+        node-version: 'lts/*'
+        cache: npm
         
     - name: Install dependencies
       run: npm ci
@@ -48,8 +53,8 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: '18'
-        cache: 'npm'
+        node-version: 'lts/*'
+        cache: npm
         
     - name: Install dependencies
       run: npm ci
@@ -98,8 +103,8 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: '18'
-        cache: 'npm'
+        node-version: 'lts/*'
+        cache: npm
         
     - name: Install dependencies
       run: npm ci
@@ -124,8 +129,8 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: '18'
-        cache: 'npm'
+        node-version: 'lts/*'
+        cache: npm
         
     - name: Install dependencies
       run: npm ci
@@ -151,8 +156,8 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: '18'
-        cache: 'npm'
+        node-version: 'lts/*'
+        cache: npm
         
     - name: Install dependencies
       run: npm ci
@@ -193,8 +198,8 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: '18'
-        cache: 'npm'
+        node-version: 'lts/*'
+        cache: npm
         
     - name: Install dependencies
       run: npm ci
@@ -262,8 +267,8 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: '18'
-        cache: 'npm'
+        node-version: 'lts/*'
+        cache: npm
         
     - name: Install dependencies
       run: npm ci
@@ -286,14 +291,38 @@ jobs:
         name: governance-report
         path: .aegis/reports/governance-report.ci.json
 
-  label_ready:
-    name: Label PR ready:production
-    runs-on: ubuntu-latest
+  receipts:
+    name: Governance receipts
     needs: [validate_blueprint, check_provenance, check_paths, check_version, prove_evidence, vr_tests]
-    if: ${{ github.event_name == 'pull_request' && needs.validate_blueprint.result == 'success' && needs.check_provenance.result == 'success' && needs.check_paths.result == 'success' && needs.check_version.result == 'success' && needs.prove_evidence.result == 'success' && needs.vr_tests.result == 'success' }}
+    if: always()
+    runs-on: ubuntu-latest
     steps:
-    - name: Add label
-      uses: actions-ecosystem/action-add-labels@v1
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        labels: 'ready:production'
+        node-version: 'lts/*'
+        cache: npm
+    - run: npm ci
+    - name: Generate governance report (always)
+      run: node tools/generate-governance-report.ts --ci || true
+    - name: Upload governance report
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: governance-report-fallback
+        path: .aegis/reports/*.json
+        if-no-files-found: warn
+    - name: Upload VR results
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: vr-results-fallback
+        path: .aegis/vr-baselines/**
+        if-no-files-found: warn
+    - name: Upload evidence outputs
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: evidence-fallback
+        path: .aegis/outputs/**
+        if-no-files-found: warn
