@@ -1,0 +1,122 @@
+{
+  "blueprint": "planning-optimization",
+  "version": "2.5.0",
+  "evidence": {
+    "commands": [
+      {
+        "name": "cli_help",
+        "command": "npm run aegis:planning help",
+        "expected": {
+          "exit_code": 0,
+          "output_contains": ["Usage:", "Commands:", "auto", "validate", "compare"]
+        }
+      },
+      {
+        "name": "auto_detection",
+        "command": "npm run aegis:planning auto \"Add user authentication\" -- --output .aegis/outputs/auth-plan-strict.json",
+        "expected": {
+          "exit_code": 0,
+          "output_contains": ["Plan generated", "Plan Class: MVP-Fix"],
+          "files": [
+            {
+              "path": ".aegis/outputs/auth-plan-strict.json",
+              "required": true,
+              "non_empty": true,
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "planClass": { "type": "string", "enum": ["MVP-Fix", "Surgical-Refactor", "Systemic-Change"] },
+                  "contracts": { "type": "array", "minItems": 1 },
+                  "changes": { "type": "array", "minItems": 1 },
+                  "tests": { "type": "array", "minItems": 1 }
+                },
+                "required": ["planClass", "contracts", "changes", "tests"]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "plan_validation",
+        "command": "npm run aegis:planning validate MVP-Fix .aegis/outputs/auth-plan-strict.json 2",
+        "expected": {
+          "exit_code": 0,
+          "output_contains": ["Plan validation passed", "Tokens:", "Files:"]
+        }
+      },
+      {
+        "name": "plan_gate_mvp",
+        "command": "npm run plan:gate:mvp",
+        "expected": {
+          "exit_code": 0,
+          "output_contains": ["Plan Gate: MVP-Fix validation passed"]
+        }
+      },
+      {
+        "name": "provenance_check",
+        "command": "npm run check:provenance -- --ci",
+        "expected": {
+          "exit_code": 0,
+          "output_contains": ["All files have valid provenance headers"]
+        }
+      },
+      {
+        "name": "version_check",
+        "command": "npm run check:version -- --ci",
+        "expected": {
+          "exit_code": 0,
+          "output_contains": ["All version references are synchronized"]
+        }
+      }
+    ],
+    "telemetry": {
+      "events": [
+        {
+          "name": "planning.detected",
+          "file": ".aegis/telemetry/planning-events.ndjson",
+          "schema": {
+            "timestamp": "string",
+            "event": "planning.detected",
+            "planClass": "string",
+            "confidence": "number",
+            "prompt": "string"
+          }
+        },
+        {
+          "name": "planning.validated",
+          "file": ".aegis/telemetry/planning-events.ndjson",
+          "schema": {
+            "timestamp": "string",
+            "event": "planning.validated",
+            "planClass": "string",
+            "validationResult": "string",
+            "tokenCount": "number"
+          }
+        },
+        {
+          "name": "planning.selected",
+          "file": ".aegis/telemetry/planning-events.ndjson",
+          "schema": {
+            "timestamp": "string",
+            "event": "planning.selected",
+            "planClass": "string",
+            "reasoning": "array"
+          }
+        }
+      ]
+    },
+    "outputs": {
+      "required_files": [
+        ".aegis/outputs/auth-plan-strict.json",
+        ".aegis/telemetry/planning-events.ndjson",
+        ".aegis/attestations/*/tools/auto-plan-detector.ts.sig",
+        ".aegis/attestations/*/cli/aegis-planning.ts.sig"
+      ]
+    }
+  },
+  "validation": {
+    "timestamp": "2025-01-15T10:00:00Z",
+    "commit": "{{COMMIT_SHA}}",
+    "environment": "ci"
+  }
+}

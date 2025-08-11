@@ -4,6 +4,20 @@
   "description": "AI Agent Development Governance Framework - Constitutional governance for consistent, compliant AI agent code generation with real-time enforcement and quality assurance",
   "type": "module",
   "scripts": {
+    "plan:gate:mvp": "node scripts/ci/plan-gate.mjs MVP-Fix ./PLAN.md 2",
+    "plan:gate:surgical": "node scripts/ci/plan-gate.mjs Surgical-Refactor ./PLAN.md 5",
+    "plan:gate:systemic": "node scripts/ci/plan-gate.mjs Systemic-Change ./PLAN.md 10",
+    "plan:critic": "node tools/planner-critic.ts",
+    "plan:validate": "node tools/validate-blueprint.ts patterns/planning-optimization/blueprint.yaml",
+    "plan:auto": "node tools/auto-plan-detector.ts",
+    "vibe": "node tools/auto-plan-detector.ts",
+    "mcp:start": "node tools/mcp-aegis-server.ts",
+    "aegis:planning": "node cli/aegis-planning.ts",
+    "validate:planning": "node scripts/validate-planning-system.ts",
+    "validate:blueprint": "node tools/validate-blueprint.ts",
+    "check:provenance": "node tools/check-provenance.js",
+    "check:paths": "node tools/check-paths.js",
+    "check:version": "node tools/check-version-sync.js",
     "validate": "bun tools/validate-constitution.ts",
     "validate:templates": "node tools/validate-template-quality.cjs",
     "validate:fidelity": "node tools/validate-output-fidelity.cjs",
@@ -69,6 +83,7 @@
     "fix:package-manager": "bun tools/fix-package-manager-consistency.ts"
   },
   "dependencies": {
+    "@modelcontextprotocol/sdk": "^0.5.0",
     "@opentelemetry/api": "^1.9.0",
     "@opentelemetry/auto-instrumentations-node": "^0.62.0",
     "@opentelemetry/exporter-jaeger": "^2.0.1",
@@ -84,18 +99,25 @@
     "js-yaml": "^4.1.0",
     "ora": "^8.2.0",
     "yargs": "^18.0.0",
-    "zod": "^4.0.15"
+    "zod": "^4.0.17"
   },
   "devDependencies": {
     "@types/ejs": "^3.1.5",
     "@types/jest": "^30.0.0",
     "@types/js-yaml": "^4.0.9",
     "@types/node": "^20.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.13.0",
+    "@typescript-eslint/parser": "^6.13.0",
     "@vitejs/plugin-react": "^5.0.0",
     "bun": "^1.2.19",
+    "eslint": "^8.55.0",
     "jest": "^30.0.5",
+    "prettier": "^3.1.0",
     "ts-jest": "^29.4.1",
-    "vite": "^7.1.1"
+    "tsx": "^4.20.3",
+    "typescript": "^5.3.0",
+    "vite": "^7.1.1",
+    "vitest": "^1.0.0"
   },
   "keywords": [
     "ai",

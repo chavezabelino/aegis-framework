@@ -1,90 +1,116 @@
-# 🏛️ Constitutional Compliance Checklist
+# 🛡️ Aegis Constitutional Governance PR
 
-## 📋 Change Summary
-**What does this PR do?**
-<!-- Brief description of changes -->
+## 📋 **Evidence Manifest**
 
-**Which constitutional principle does this support?**
-- [ ] Traceability
-- [ ] Observability
-- [ ] Reproducibility
-- [ ] Safety  
-- [ ] Semantic Versioning
+### **Blueprint Compliance**
+- [ ] **Blueprint**: `blueprints/<id>/blueprint.yaml` exists and is valid
+- [ ] **Evidence**: `blueprints/<id>/evidence.json` contains required commands and outputs
+- [ ] **Validation**: All evidence commands execute successfully
 
-## 🔍 Change Classification
-**Semantic version impact:**
-- [ ] Patch (bug fixes, documentation)
-- [ ] Minor (new features, backward compatible)
-- [ ] Major (breaking changes)
+### **Governance Checks**
+- [ ] **Provenance**: All AI-generated files have valid headers with cryptographic hashes
+- [ ] **Attestations**: HMAC signatures generated and verified for all files
+- [ ] **Paths**: All files in allowed directories, no unauthorized locations
+- [ ] **Versions**: All version references synchronized across project
+- [ ] **Evidence**: Evidence manifest validates successfully
 
-**Framework components affected:**
-- [ ] Blueprint system
-- [ ] Execution modes
-- [ ] CLI tools
-- [ ] Governance system
-- [ ] Documentation
-- [ ] Tests
+## 🔍 **Command Receipts**
 
-## ✅ Constitutional Validation
-**Required annotations added:**
-- [ ] `@aegisFrameworkVersion` in new framework files
-- [ ] `@aegisBlueprint` in generated code
-- [ ] Constitutional metadata where applicable
+### **Planning Optimization**
+```bash
+# Auto-detection
+npm run aegis:planning auto "Add user authentication" -- --output .aegis/outputs/auth-plan-strict.json
+# Output: ✅ Plan generated: .aegis/outputs/auth-plan-strict.json
 
-**Testing requirements:**
-- [ ] All existing tests pass
-- [ ] New tests added for new functionality
-- [ ] Breaking changes include migration path
-- [ ] Documentation updated
+# Validation
+npm run aegis:planning validate MVP-Fix .aegis/outputs/auth-plan-strict.json 2
+# Output: ✅ Plan validation passed
+```
 
-**Governance compliance:**
-- [ ] Changes align with manifesto principles
-- [ ] Evolution story documented (if applicable)
-- [ ] Constitutional review completed (for major changes)
+### **Governance Enforcement**
+```bash
+# Provenance check
+npm run check:provenance -- --ci
+# Output: ✅ All files have valid provenance headers
 
-## 🔄 Evolution Story Reference
-**Is this change driven by an evolution story?**
-- [ ] Yes - Evolution Story ID: ___________
-- [ ] No - Standard enhancement/fix
+# Path check
+npm run check:paths -- --ci
+# Output: ✅ All files and directories are in allowed locations
 
-**Field testing completed:**
-- [ ] Tested in real project context
-- [ ] Validated against constitutional principles
-- [ ] Community feedback incorporated (if applicable)
+# Version check
+npm run check:version -- --ci
+# Output: ✅ All version references are synchronized
 
-## 📊 Impact Assessment
-**Backward compatibility:**
-- [ ] Fully backward compatible
-- [ ] Requires migration (migration guide included)
-- [ ] Breaking change (major version bump justified)
+# Evidence check
+node tools/check-evidence.ts blueprints/**/evidence.json --ci
+# Output: ✅ All evidence manifests are valid
+```
 
-**Documentation impact:**
-- [ ] No documentation changes needed
-- [ ] README updated
-- [ ] Manifesto/principles updated
-- [ ] CLI help updated
-- [ ] Examples updated
+### **Attestation**
+```bash
+# Generate attestations
+AEGIS_HMAC_KEY=${{ secrets.AEGIS_HMAC_KEY }} node tools/attest.ts attest tools cli
+# Output: ✅ Attested 48 files
 
-## 🧪 Testing Strategy
-**Testing approach:**
-- [ ] Unit tests
-- [ ] Integration tests  
-- [ ] Snapshot tests
-- [ ] Manual testing
-- [ ] Community validation
+# Verify attestations
+AEGIS_HMAC_KEY=${{ secrets.AEGIS_HMAC_KEY }} node tools/attest.ts verify tools cli
+# Output: ✅ All attestations verified successfully
+```
 
-**Validation results:**
-<!-- Summary of testing outcomes -->
+## 📊 **Telemetry Artifacts**
 
-## 🎯 Review Guidelines
-**For reviewers:**
-- Verify constitutional compliance
-- Check semantic versioning alignment
-- Validate evolution story connection (if applicable)
-- Confirm testing adequacy
-- Review documentation completeness
+### **Planning Events**
+```json
+{"timestamp":"2025-01-15T10:00:00Z","event":"planning.detected","planClass":"MVP-Fix","confidence":0.95,"prompt":"Add user authentication"}
+{"timestamp":"2025-01-15T10:00:01Z","event":"planning.validated","planClass":"MVP-Fix","validationResult":"passed","tokenCount":1089}
+{"timestamp":"2025-01-15T10:00:02Z","event":"planning.selected","planClass":"MVP-Fix","reasoning":["minimal scope","contract-driven","observable behavior"]}
+```
+
+### **Generated Outputs**
+- `.aegis/outputs/auth-plan-strict.json` - Planning optimization output
+- `.aegis/telemetry/planning-events.ndjson` - Telemetry events
+- `.aegis/attestations/<commit>/tools/*.sig` - Cryptographic attestations
+
+## 🎯 **VR Summary**
+
+### **Visual Regression Tests**
+- [ ] **Baseline**: `.aegis/vr-baselines/` contains reference screenshots
+- [ ] **Current**: `.aegis/vr-report/` contains current run results
+- [ ] **Threshold**: Diff percentage < 0.01 (1%)
+- [ ] **Routes**: All public routes tested for visual consistency
+
+### **VR Results**
+```bash
+npx playwright test --config=tests/vr/playwright.config.ts
+# Output: ✅ All VR tests passed
+```
+
+## 🚨 **Governance Violations**
+
+### **Fixed Violations**
+- [ ] **Path violations**: Moved unauthorized files to proper locations
+- [ ] **Provenance violations**: Added missing headers and generated hashes
+- [ ] **Version violations**: Synchronized all version references
+- [ ] **Evidence violations**: Created missing telemetry and output files
+
+### **Current Status**
+- [ ] **CI Status**: All governance jobs pass
+- [ ] **Required Statuses**: All required status checks enabled
+- [ ] **Artifacts**: All required artifacts uploaded
+
+## 📝 **Summary**
+
+### **What Changed**
+- [ ] **Files modified**: List of files with changes
+- [ ] **Governance impact**: How changes affect constitutional compliance
+- [ ] **Evidence provided**: Links to generated artifacts and receipts
+
+### **Compliance Verification**
+- [ ] **Blueprint primacy**: All changes trace to valid blueprints
+- [ ] **Provenance**: All AI-generated content has verifiable headers
+- [ ] **Attestation**: All files have cryptographic signatures
+- [ ] **Evidence**: All claims backed by machine-checkable proofs
 
 ---
 
-🏛️ **Constitutional Authority**: All changes must comply with the [Framework Constitution](../CONSTITUTION.md)
-📖 **Manifesto Reference**: See [GenAI OS Manifesto](../docs/manifesto/README.md) for philosophical alignment
+**This PR demonstrates constitutional governance enforcement with concrete evidence, cryptographic attestations, and machine-verifiable proofs.**

@@ -6,7 +6,7 @@
 
 id: feat-public-viewing
 name: Public Tournament Viewer
-version: 1.0.0
+version: 2.5.0
 agents:
   primary: github-copilot
   fallback: claude-3-5-sonnet

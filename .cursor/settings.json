@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "aegis-planning": {
+      "command": "node",
+      "args": ["tools/mcp-aegis-server.ts"],
+      "env": {}
+    }
+  },
+  "aegis": {
+    "planning": {
+      "autoDetect": true,
+      "validation": true,
+      "comparison": true
+    }
+  }
+}

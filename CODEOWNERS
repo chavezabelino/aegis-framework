@@ -1,0 +1,6 @@
+# Governance-critical ownership
+.github/workflows/**   @aegis-maintainers
+.tools/**              @aegis-maintainers
+CONSTITUTION.md        @aegis-maintainers
+.cursorrules           @aegis-maintainers
+docs/aegis/**         @aegis-maintainers

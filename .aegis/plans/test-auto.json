@@ -1,0 +1,38 @@
+{
+  "planClass": "MVP-Fix",
+  "contracts": [
+    "User authentication works correctly (observable behavior)",
+    "Login form validates input and shows errors (user-facing)",
+    "Successful login redirects to dashboard (behavioral contract)"
+  ],
+  "changes": [
+    {
+      "file": "src/middleware/auth.ts",
+      "action": "add authentication middleware",
+      "reason": "Handle user authentication and redirects"
+    },
+    {
+      "file": "src/pages/login.tsx",
+      "action": "create login page",
+      "reason": "Provide user interface for authentication"
+    }
+  ],
+  "tests": [
+    "E2E: test unauthenticated user redirects to login",
+    "E2E: test successful login redirects to dashboard",
+    "Component: assert login form has proper ARIA labels"
+  ],
+  "risks": [
+    "Middleware might affect other routes",
+    "Authentication state management complexity"
+  ],
+  "rollback": [
+    "revert src/middleware/auth.ts",
+    "revert src/pages/login.tsx"
+  ],
+  "doneWhen": [
+    "Contracts pass locally",
+    "Redirects accept /login or /(auth)/login",
+    "plan-gate passes"
+  ]
+}

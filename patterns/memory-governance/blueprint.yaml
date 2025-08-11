@@ -1,6 +1,6 @@
 id: memory-governance
 name: Constitutional Memory Governance
-version: 1.0.0
+version: 2.5.0
 description: "Constitutional memory governance system for AI companion applications with dual-layer architecture (Lite + Heavy memory)"
 
 # ============================================================================
