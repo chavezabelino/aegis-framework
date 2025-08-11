@@ -1,0 +1,15 @@
+name: setup-node-pinned
+description: Pinned Node with retry and npm cache
+runs:
+  using: "composite"
+  steps:
+    - name: Setup Node.js (retry)
+      uses: Wandalen/wretry.action@v3.5.0
+      with:
+        action: actions/setup-node@v4
+        with: |
+          node-version: ${{ env.NODE_VERSION || '20.16.0' }}
+          cache: npm
+          check-latest: false
+        attempt_limit: 3
+        attempt_delay: 20000

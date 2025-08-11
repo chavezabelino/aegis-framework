@@ -154,3 +154,10 @@ cli/framework/
 .aegis/attestations/local/**
 .aegis/reports/*.local.json
 .aegis/telemetry/*.ndjson
+
+# Governance artifacts (local only)
+.aegis/attestations/local/**
+.aegis/reports/**
+.aegis/telemetry/**
+.aegis/vr-baselines/**
+tests/vr/__screenshots__/**

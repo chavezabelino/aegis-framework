@@ -1,10 +1,8 @@
 name: Aegis Constitutional Governance
-
 on:
   push:
-    branches: [ main, develop ]
   pull_request:
-    branches: [ main, develop ]
+  workflow_dispatch:
 
 concurrency:
   group: governance-${{ github.ref }}
@@ -17,7 +15,6 @@ permissions:
 
 env:
   NODE_VERSION: '20.16.0'
-  AEGIS_HMAC_KEY: ${{ secrets.AEGIS_HMAC_KEY }}
   NPM_CONFIG_AUDIT: "false"
   NPM_CONFIG_FUND: "false"
   NPM_CONFIG_FETCH_RETRIES: "5"
@@ -29,291 +26,290 @@ jobs:
     name: Validate Blueprints
     runs-on: ubuntu-22.04
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-    - name: Setup Node
-      uses: actions/setup-node@v4
-      with:
-        node-version: '20.16.0'
-        cache: npm
-    - name: Install deps (robust)
-      uses: nick-fields/retry@v3
-      with:
-        timeout_minutes: 20
-        max_attempts: 3
-        command: |
-          if [ -f package-lock.json ]; then
-            echo "Lockfile found -> npm ci";
-            npm ci --prefer-offline --no-audit --no-fund;
-          else
-            echo "Lockfile missing -> fallback to npm install (non-reproducible)";
-            npm install --no-audit --no-fund;
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+
+      - name: Install deps (robust)
+        uses: nick-fields/retry@v3
+        with:
+          timeout_minutes: 20
+          max_attempts: 3
+          command: |
+            if [ -f package-lock.json ]; then
+              echo "Lockfile found -> npm ci"
+              npm ci --prefer-offline --no-audit --no-fund
+            else
+              echo "Lockfile missing -> npm install (non-reproducible)"
+              npm install --no-audit --no-fund
+            fi
+
+      - name: Validate blueprints
+        run: |
+          if ls blueprints/**/blueprint.yaml >/dev/null 2>&1; then
+            npx --yes tsx tools/validate-blueprint.ts blueprints/**/blueprint.yaml --ci
           fi
-    - name: Validate blueprints
-      run: |
-        if ls blueprints/**/blueprint.yaml >/dev/null 2>&1; then
-          npx --yes tsx tools/validate-blueprint.ts blueprints/**/blueprint.yaml --ci
-        fi
-        if ls patterns/**/blueprint.yaml >/dev/null 2>&1; then
-          npx --yes tsx tools/validate-blueprint.ts patterns/**/blueprint.yaml --ci || echo "Non-blocking: patterns blueprints validation reported issues"
-        fi
-    - name: Upload blueprint validation results
-      uses: actions/upload-artifact@v4
-      if: always()
-      with:
-        name: blueprint-validation
-        path: |
-          .aegis/validation/
-          !.aegis/validation/*.log
+          if ls patterns/**/blueprint.yaml >/dev/null 2>&1; then
+            # non-blocking for patterns
+            npx --yes tsx tools/validate-blueprint.ts patterns/**/blueprint.yaml --ci || echo "patterns validation reported issues"
+          fi
+
+      - name: Upload blueprint validation results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: blueprint-validation
+          path: .aegis/validation/
 
   check_provenance:
     name: Check Provenance
     runs-on: ubuntu-22.04
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-    - name: Setup Node
-      uses: actions/setup-node@v4
-      with:
-        node-version: '20.16.0'
-        cache: npm
-    - name: Install deps (robust)
-      uses: nick-fields/retry@v3
-      with:
-        timeout_minutes: 20
-        max_attempts: 3
-        command: |
-          if [ -f package-lock.json ]; then
-            echo "Lockfile found -> npm ci";
-            npm ci --prefer-offline --no-audit --no-fund;
-          else
-            echo "Lockfile missing -> fallback to npm install (non-reproducible)";
-            npm install --no-audit --no-fund;
-          fi
-    - name: Generate attestations (trusted)
-      if: ${{ secrets.AEGIS_HMAC_KEY }}
-      run: |
-        npx --yes tsx tools/attest.ts attest cli
-        npx --yes tsx tools/attest.ts attest tools
-      env:
-        AEGIS_HMAC_KEY: ${{ secrets.AEGIS_HMAC_KEY }}
-    - name: Check provenance headers
-      run: node tools/check-provenance.js --ci
-      continue-on-error: true
-    - name: Verify attestations (trusted)
-      if: ${{ secrets.AEGIS_HMAC_KEY }}
-      run: |
-        npx --yes tsx tools/attest.ts verify tools
-        npx --yes tsx tools/attest.ts verify cli
-      env:
-        AEGIS_HMAC_KEY: ${{ secrets.AEGIS_HMAC_KEY }}
-    - name: Note missing HMAC key (skipping attestation)
-      if: ${{ !secrets.AEGIS_HMAC_KEY }}
-      run: echo "AEGIS_HMAC_KEY not set; skipping attestation steps."
-    - name: Upload attestations
-      uses: actions/upload-artifact@v4
-      if: always()
-      with:
-        name: attestations
-        path: .aegis/attestations/
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+
+      - name: Install deps (robust)
+        uses: nick-fields/retry@v3
+        with:
+          timeout_minutes: 20
+          max_attempts: 3
+          command: |
+            if [ -f package-lock.json ]; then
+              npm ci --prefer-offline --no-audit --no-fund
+            else
+              npm install --no-audit --no-fund
+            fi
+
+      # Attest only when secret is present (trusted branches)
+      - name: Generate attestations (trusted)
+        if: ${{ secrets.AEGIS_HMAC_KEY != '' }}
+        env:
+          AEGIS_HMAC_KEY: ${{ secrets.AEGIS_HMAC_KEY }}
+        run: |
+          npx --yes tsx tools/attest.ts attest cli
+          npx --yes tsx tools/attest.ts attest tools
+
+      - name: Check provenance headers
+        run: node tools/check-provenance.js --ci
+        # strict on main, relaxed on PR
+        continue-on-error: ${{ github.event_name == 'pull_request' }}
+
+      - name: Verify attestations (trusted)
+        if: ${{ secrets.AEGIS_HMAC_KEY != '' }}
+        env:
+          AEGIS_HMAC_KEY: ${{ secrets.AEGIS_HMAC_KEY }}
+        run: |
+          npx --yes tsx tools/attest.ts verify tools
+          npx --yes tsx tools/attest.ts verify cli
+
+      - name: Note missing HMAC key (skipping attestation)
+        if: ${{ secrets.AEGIS_HMAC_KEY == '' }}
+        run: echo "AEGIS_HMAC_KEY not set; skipping attest/verify (PR/fork mode)."
+
+      - name: Upload attestations
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: attestations
+          path: .aegis/attestations/
 
   check_paths:
     name: Check File Organization
     runs-on: ubuntu-22.04
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-    - name: Setup Node
-      uses: actions/setup-node@v4
-      with:
-        node-version: '20.16.0'
-        cache: npm
-    - name: Install deps (robust)
-      uses: nick-fields/retry@v3
-      with:
-        timeout_minutes: 20
-        max_attempts: 3
-        command: |
-          if [ -f package-lock.json ]; then
-            echo "Lockfile found -> npm ci";
-            npm ci --prefer-offline --no-audit --no-fund;
-          else
-            echo "Lockfile missing -> fallback to npm install (non-reproducible)";
-            npm install --no-audit --no-fund;
-          fi
-    - name: Check file organization
-      run: |
-        mkdir -p .aegis/validation
-        node tools/check-paths.js --json | tee .aegis/validation/path-check.json
-    - name: Upload path check results
-      uses: actions/upload-artifact@v4
-      if: always()
-      with:
-        name: path-validation
-        path: .aegis/validation/
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+
+      - name: Install deps (robust)
+        uses: nick-fields/retry@v3
+        with:
+          timeout_minutes: 20
+          max_attempts: 3
+          command: |
+            if [ -f package-lock.json ]; then
+              npm ci --prefer-offline --no-audit --no-fund
+            else
+              npm install --no-audit --no-fund
+            fi
+
+      - name: Check file organization
+        run: |
+          mkdir -p .aegis/validation
+          node tools/check-paths.js --json | tee .aegis/validation/path-check.json
+
+      - name: Upload path check results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: path-validation
+          path: .aegis/validation/
 
   check_version:
     name: Check Version Sync
     runs-on: ubuntu-22.04
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-    - name: Setup Node
-      uses: actions/setup-node@v4
-      with:
-        node-version: '20.16.0'
-        cache: npm
-    - name: Install deps (robust)
-      uses: nick-fields/retry@v3
-      with:
-        timeout_minutes: 20
-        max_attempts: 3
-        command: |
-          if [ -f package-lock.json ]; then
-            echo "Lockfile found -> npm ci";
-            npm ci --prefer-offline --no-audit --no-fund;
-          else
-            echo "Lockfile missing -> fallback to npm install (non-reproducible)";
-            npm install --no-audit --no-fund;
-          fi
-    - name: Check version synchronization
-      run: node tools/check-version-sync.js --ci
-    - name: Upload version check results
-      uses: actions/upload-artifact@v4
-      if: always()
-      with:
-        name: version-validation
-        path: .aegis/validation/
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+
+      - name: Install deps (robust)
+        uses: nick-fields/retry@v3
+        with:
+          timeout_minutes: 20
+          max_attempts: 3
+          command: |
+            if [ -f package-lock.json ]; then
+              npm ci --prefer-offline --no-audit --no-fund
+            else
+              npm install --no-audit --no-fund
+            fi
+
+      - name: Check version synchronization
+        run: node tools/check-version-sync.js --ci
+
+      - name: Upload version check results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: version-validation
+          path: .aegis/validation/
 
   prove_evidence:
     name: Prove Evidence
     runs-on: ubuntu-22.04
     needs: [validate_blueprint, check_provenance]
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-    - name: Setup Node
-      uses: actions/setup-node@v4
-      with:
-        node-version: '20.16.0'
-        cache: npm
-    - name: Install deps (robust)
-      uses: nick-fields/retry@v3
-      with:
-        timeout_minutes: 20
-        max_attempts: 3
-        command: |
-          if [ -f package-lock.json ]; then
-            echo "Lockfile found -> npm ci";
-            npm ci --prefer-offline --no-audit --no-fund;
-          else
-            echo "Lockfile missing -> fallback to npm install (non-reproducible)";
-            npm install --no-audit --no-fund;
-          fi
-    - name: Generate planning outputs
-      run: |
-        mkdir -p .aegis/outputs
-        npx --yes tsx cli/aegis-planning.ts auto "Add user authentication" --output .aegis/outputs/auth-plan-strict.json
-        npx --yes tsx cli/aegis-planning.ts validate MVP-Fix .aegis/outputs/auth-plan-strict.json 2
-    - name: Generate telemetry
-      run: |
-        mkdir -p .aegis/telemetry
-        echo '{"timestamp":"2025-01-15T10:00:00Z","event":"planning.detected","planClass":"MVP-Fix","confidence":0.95,"prompt":"Add user authentication"}' > .aegis/telemetry/planning-events.ndjson
-        echo '{"timestamp":"2025-01-15T10:00:01Z","event":"planning.validated","planClass":"MVP-Fix","validationResult":"passed","tokenCount":1089}' >> .aegis/telemetry/planning-events.ndjson
-        echo '{"timestamp":"2025-01-15T10:00:02Z","event":"planning.selected","planClass":"MVP-Fix","reasoning":["minimal scope","contract-driven","observable behavior"]}' >> .aegis/telemetry/planning-events.ndjson
-    - name: Plan gate (MVP)
-      env:
-        PLAN_GATE_ALLOW_MISSING: ${{ github.event_name == 'pull_request' && 'true' || 'false' }}
-      run: node scripts/ci/plan-gate.mjs .aegis/outputs/auth-plan-strict.json
-    - name: Prove evidence
-      env:
-        SKIP_SIGNATURE_CHECKS: ${{ secrets.AEGIS_HMAC_KEY && 'false' || 'true' }}
-      run: npx --yes tsx tools/check-evidence.ts "blueprints/**/evidence.json" --ci
-    - name: Upload evidence
-      uses: actions/upload-artifact@v4
-      if: always()
-      with:
-        name: evidence
-        path: |
-          .aegis/outputs/
-          .aegis/telemetry/
-          blueprints/*/evidence.json
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+
+      - name: Install deps (robust)
+        uses: nick-fields/retry@v3
+        with:
+          timeout_minutes: 20
+          max_attempts: 3
+          command: |
+            if [ -f package-lock.json ]; then
+              npm ci --prefer-offline --no-audit --no-fund
+            else
+              npm install --no-audit --no-fund
+            fi
+
+      - name: Generate planning outputs
+        run: |
+          mkdir -p .aegis/outputs
+          npx --yes tsx cli/aegis-planning.ts help
+          npx --yes tsx cli/aegis-planning.ts auto "Add user authentication" --output .aegis/outputs/auth-plan-strict.json
+          npx --yes tsx cli/aegis-planning.ts validate MVP-Fix .aegis/outputs/auth-plan-strict.json 2
+
+      - name: Generate telemetry
+        run: |
+          mkdir -p .aegis/telemetry
+          echo '{"timestamp":"'"$(date -u +%FT%TZ)"'","event":"planning.detected","planClass":"MVP-Fix","confidence":0.95,"prompt":"Add user authentication"}' > .aegis/telemetry/planning-events.ndjson
+          echo '{"timestamp":"'"$(date -u +%FT%TZ)"'","event":"planning.validated","planClass":"MVP-Fix","validationResult":"passed","tokenCount":1089}' >> .aegis/telemetry/planning-events.ndjson
+          echo '{"timestamp":"'"$(date -u +%FT%TZ)"'","event":"planning.selected","planClass":"MVP-Fix","reasoning":["minimal scope","contract-driven","observable behavior"]}' >> .aegis/telemetry/planning-events.ndjson
+
+      - name: Plan gate (MVP)
+        env:
+          PLAN_GATE_ALLOW_MISSING: ${{ github.event_name == 'pull_request' && 'true' || 'false' }}
+        run: node scripts/ci/plan-gate.mjs .aegis/outputs/auth-plan-strict.json
+
+      - name: Prove evidence (PREC)
+        env:
+          # relax missing .sig only when no secret is present (PR/fork)
+          SKIP_SIGNATURE_CHECKS: ${{ secrets.AEGIS_HMAC_KEY == '' && 'true' || 'false' }}
+        run: npx --yes tsx tools/check-evidence.ts "blueprints/**/evidence.json" --ci
+
+      - name: Upload evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: evidence
+          path: |
+            .aegis/outputs/
+            .aegis/telemetry/
+            blueprints/*/evidence.json
 
   vr_tests:
     name: Visual Regression Tests
     runs-on: ubuntu-22.04
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-    - name: Setup Node
-      uses: actions/setup-node@v4
-      with:
-        node-version: '20.16.0'
-        cache: npm
-    - name: Install deps (robust)
-      uses: nick-fields/retry@v3
-      with:
-        timeout_minutes: 20
-        max_attempts: 3
-        command: |
-          if [ -f package-lock.json ]; then
-            echo "Lockfile found -> npm ci";
-            npm ci --prefer-offline --no-audit --no-fund;
-          else
-            echo "Lockfile missing -> fallback to npm install (non-reproducible)";
-            npm install --no-audit --no-fund;
-          fi
-    - name: Install @playwright/test and browsers
-      run: |
-        npm i -D @playwright/test@^1.46.0
-        npx --yes playwright install --with-deps
-    - name: Create VR config and test with threshold
-      run: |
-        mkdir -p tests/vr
-        cat > tests/vr/playwright.config.ts <<'EOF'
-        import { defineConfig } from '@playwright/test';
-        export default defineConfig({
-          testDir: '.',
-          use: { screenshot: 'only-on-failure' }
-        });
-        EOF
-        # Minimal smoke test to ensure presence
-        cat > tests/vr/smoke.spec.ts <<'EOF'
-        import { test, expect } from '@playwright/test';
-        test('vr smoke', async ({ page }) => {
-          await page.setViewportSize({ width: 400, height: 300 });
-          await page.setContent('<main>VR Smoke</main>');
-          await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.02 });
-        });
-        EOF
-    - name: Detect VR tests
-      id: vr
-      run: |
-        shopt -s nullglob
-        files=(tests/vr/**/*.spec.ts tests/vr/*.spec.ts)
-        echo "count=${#files[@]}" >> "$GITHUB_OUTPUT"
-    - name: Generate VR baseline (first run)
-      if: steps.vr.outputs.count != '0'
-      run: npx playwright test --config=tests/vr/playwright.config.ts --update-snapshots
-    - name: Run VR tests
-      if: steps.vr.outputs.count != '0'
-      run: npx playwright test --config=tests/vr/playwright.config.ts
-    - name: Save/update baselines
-      if: always()
-      run: |
-        mkdir -p .aegis/vr-baselines
-        if [ -d tests/vr/__screenshots__ ]; then
-          cp -R tests/vr/__screenshots__/* .aegis/vr-baselines/ || true
-        fi
-    - name: Upload VR results
-      uses: actions/upload-artifact@v4
-      if: always()
-      with:
-        name: vr-results
-        path: |
-          test-results/
-          playwright-report/
-          .aegis/vr-baselines/
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+
+      - name: Install deps (robust)
+        uses: nick-fields/retry@v3
+        with:
+          timeout_minutes: 20
+          max_attempts: 3
+          command: |
+            if [ -f package-lock.json ]; then
+              npm ci --prefer-offline --no-audit --no-fund
+            else
+              npm install --no-audit --no-fund
+            fi
+
+      - name: Install @playwright/test and Chromium only
+        run: |
+          npm i -D @playwright/test@^1.46.0
+          npx --yes playwright install --with-deps chromium
+
+      - name: Detect VR tests
+        id: vr
+        run: |
+          shopt -s nullglob
+          files=(tests/vr/**/*.spec.ts tests/vr/*.spec.ts)
+          echo "count=${#files[@]}" >> "$GITHUB_OUTPUT"
+
+      - name: Generate VR baseline (first run)
+        if: steps.vr.outputs.count != '0'
+        run: npx playwright test --update-snapshots
+
+      - name: Run VR tests
+        if: steps.vr.outputs.count != '0'
+        run: npx playwright test
+
+      - name: Upload VR results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: vr-results
+          path: |
+            test-results/
+            playwright-report/
 
   governance_report:
     name: Generate Governance Report
@@ -321,73 +317,69 @@ jobs:
     needs: [validate_blueprint, check_provenance, check_paths, check_version, prove_evidence, vr_tests]
     if: always()
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-    - name: Setup Node
-      uses: actions/setup-node@v4
-      with:
-        node-version: '20.16.0'
-        cache: npm
-    - name: Install deps (robust)
-      uses: nick-fields/retry@v3
-      with:
-        timeout_minutes: 20
-        max_attempts: 3
-        command: |
-          if [ -f package-lock.json ]; then
-            echo "Lockfile found -> npm ci";
-            npm ci --prefer-offline --no-audit --no-fund;
-          else
-            echo "Lockfile missing -> fallback to npm install (non-reproducible)";
-            npm install --no-audit --no-fund;
-          fi
-    - name: Download all artifacts
-      uses: actions/download-artifact@v4
-      with:
-        path: .aegis/artifacts/
-    - name: Run governance report generator
-      env:
-        AEGIS_HMAC_KEY: ${{ secrets.AEGIS_HMAC_KEY }}
-      run: |
-        node tools/generate-governance-report.ts || node tools/generate-governance-report.mjs
-        cp .aegis/reports/governance-report.local.json .aegis/reports/governance-report.ci.json || true
-    - name: Upload governance report
-      uses: actions/upload-artifact@v4
-      with:
-        name: governance-report
-        path: .aegis/reports/governance-report.ci.json
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+
+      - name: Install deps (robust)
+        uses: nick-fields/retry@v3
+        with:
+          timeout_minutes: 20
+          max_attempts: 3
+          command: |
+            if [ -f package-lock.json ]; then
+              npm ci --prefer-offline --no-audit --no-fund
+            else
+              npm install --no-audit --no-fund
+            fi
+
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: .aegis/artifacts/
+
+      - name: Run governance report generator
+        env:
+          AEGIS_HMAC_KEY: ${{ secrets.AEGIS_HMAC_KEY }}
+        run: |
+          npx tsx tools/generate-governance-report.ts --ci || node tools/generate-governance-report.mjs --ci
+          cp .aegis/reports/governance-report.local.json .aegis/reports/governance-report.ci.json || true
+
+      - name: Upload governance report
+        uses: actions/upload-artifact@v4
+        with:
+          name: governance-report
+          path: .aegis/reports/governance-report.ci.json
 
   receipts:
     name: Governance receipts
+    runs-on: ubuntu-22.04
     needs: [validate_blueprint, check_provenance, check_paths, check_version, prove_evidence, vr_tests]
     if: always()
-    runs-on: ubuntu-22.04
     steps:
-    - uses: actions/checkout@v4
-    - name: Setup Node
-      uses: actions/setup-node@v4
-      with:
-        node-version: '20.16.0'
-    - name: Generate governance report (no deps)
-      run: node tools/generate-governance-report.mjs --ci || true
-    - name: Upload governance report
-      if: always()
-      uses: actions/upload-artifact@v4
-      with:
-        name: governance-report-fallback
-        path: .aegis/reports/*.json
-        if-no-files-found: warn
-    - name: Upload VR results
-      if: always()
-      uses: actions/upload-artifact@v4
-      with:
-        name: vr-results-fallback
-        path: .aegis/vr-baselines/**
-        if-no-files-found: warn
-    - name: Upload evidence outputs
-      if: always()
-      uses: actions/upload-artifact@v4
-      with:
-        name: evidence-fallback
-        path: .aegis/outputs/**
-        if-no-files-found: warn
+      - uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - name: Generate governance report (no deps)
+        run: node tools/generate-governance-report.mjs --ci || true
+      - name: Upload governance report (fallback)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: governance-report-fallback
+          path: .aegis/reports/*.json
+          if-no-files-found: warn
+      - name: Upload evidence outputs (fallback)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: evidence-fallback
+          path: .aegis/outputs/**
+          if-no-files-found: warn

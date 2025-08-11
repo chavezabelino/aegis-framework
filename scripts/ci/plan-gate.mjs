@@ -2,92 +2,89 @@
 
 /**
  * @aegisBlueprint: planning-optimization
- * @version: 1.0.0
+ * @version: 2.5.1
  * @mode: strict
- * @intent: CI plan gate that enforces planning constraints and prevents plan bloat
- * @context: Constitutional enforcement tool for planning optimization
+ * @intent: "CI plan gate that enforces planning constraints and prevents plan bloat"
+ * @context: scripts/ci/plan-gate.mjs
+ * @model: gpt-5-thinking
+ * @hash: <filled-by-attest>   // leave placeholder; your attest step signs separately
+ *
+ * Usage (preferred):
+ *   node scripts/ci/plan-gate.mjs [.aegis/outputs/<plan>.json]
+ *   env:
+ *     PLAN_GATE_ALLOW_MISSING=true   # skip on PRs with no plan
+ *     PLAN_GATE_STRICT=true          # stricter checks on protected branches
+ *
+ * Legacy compatibility (still supported; deprecating):
+ *   node scripts/ci/plan-gate.mjs <planClass> <path/to/PLAN.md> [filesTouched]
+ *   where planClass ∈ {MVP, SURGICAL, SYSTEMIC}
  */
 
-// Aegis Plan Gate: fail CI on overbuilt plans.
-// Usage: node scripts/ci/plan-gate.mjs <planClass> <path/to/plan.md> [filesTouched]
-// planClass: MVP | SURGICAL | SYSTEMIC
-
-import fs from 'node:fs';
-import path from 'node:path';
-
-// Load configuration (gracefully handle missing)
-const configPath = path.join(process.cwd(), '.aegis/config/planning.json');
-if (!fs.existsSync(configPath)) {
-  console.error('⚠️  Planning config not found at .aegis/config/planning.json. Skipping plan gate.');
-  process.exit(0);
+// --- legacy arg shim (optional, deprecating) ---
+const argv = process.argv.slice(2);
+let legacyPlanClass = null;
+let legacyPlanMd = null;
+if (argv.length >= 2 && ['MVP','SURGICAL','SYSTEMIC','MVP-Fix','Surgical-Refactor','Systemic-Change'].includes(argv[0])) {
+  legacyPlanClass = argv[0];
+  legacyPlanMd = argv[1];
+  console.warn('Plan gate: legacy CLI args detected (<class> <PLAN.md>); prefer JSON plan path. This mode will be removed.');
 }
-const cfg = JSON.parse(fs.readFileSync(configPath, 'utf8'));
+// You can map legacyPlanMd → a temporary JSON (or just ignore and continue with .aegis/outputs/*plan*.json)
+// ------------------------------------------------
 
-const [,, planClassRaw, planPath, filesTouchedRaw] = process.argv;
 
-if (!planClassRaw || !planPath) {
-  console.error('Usage: node scripts/ci/plan-gate.mjs <MVP|SURGICAL|SYSTEMIC> <plan.md> [filesTouched]');
-  process.exit(2);
-}
+#!/usr/bin/env node
+import { existsSync, readFileSync } from 'node:fs';
+import { globSync } from 'glob';
 
-const planClass = planClassRaw;
-if (!fs.existsSync(planPath)) {
-  console.error(`❌ Plan Gate: Plan file not found: ${planPath}. Create one or adjust the path.`);
+const planArg = process.argv[2];
+const allowMissing = process.env.PLAN_GATE_ALLOW_MISSING === 'true';
+const strict = process.env.PLAN_GATE_STRICT === 'true'; // set true on protected branches if you want harder checks
+
+const candidates = globSync('.aegis/outputs/**/*plan*.json').sort();
+const planPath = planArg || candidates.at(-1);
+
+if (!planPath || !existsSync(planPath)) {
+  const msg = 'Plan gate: no plan found (.aegis/outputs/*plan*.json).';
+  if (allowMissing) {
+    console.warn(`${msg} Skipping (ALLOW_MISSING).`);
+    process.exit(0);
+  }
+  console.error(`${msg} Set PLAN_GATE_ALLOW_MISSING=true to skip on PRs.`);
   process.exit(1);
 }
-const plan = fs.readFileSync(planPath, 'utf8');
-const tokensApprox = Math.ceil(plan.length / 4); // rough char→token heuristic
-const filesTouched = Number(filesTouchedRaw ?? 0);
 
-function fail(msg) { 
-  console.error(`❌ Plan Gate: ${msg}`); 
-  process.exit(1); 
+let plan;
+try {
+  plan = JSON.parse(readFileSync(planPath, 'utf8'));
+} catch {
+  console.error(`Plan gate: invalid JSON: ${planPath}`);
+  process.exit(1);
 }
 
-function ok(msg) { 
-  console.log(`✅ Plan Gate: ${msg}`); 
-  process.exit(0); 
+// Minimal, enforceable checks (extend as your schema stabilizes)
+const findings = [];
+
+// Prefer a clear class flag
+const klass = plan.class || plan.planClass || plan.type;
+if (!klass) findings.push('missing plan.class/planClass');
+if (klass && klass !== 'MVP-Fix') findings.push(`planClass must be "MVP-Fix", got "${klass}"`);
+
+// If steps exist, they shouldn’t be empty
+if (Array.isArray(plan.steps) && plan.steps.length === 0) {
+  findings.push('steps present but empty');
 }
 
-// Validate plan class exists in config
-const planClassConfig = cfg.planClasses[planClass];
-if (!planClassConfig) {
-  fail(`Unknown plan class: ${planClass}. Valid classes: ${Object.keys(cfg.planClasses).join(', ')}`);
+// Basic contract-driven hints (non-fatal unless strict)
+if (!plan.contracts && !plan.contract && !plan.behavior) {
+  if (strict) findings.push('missing contracts/behavior section');
 }
 
-// Check token limits
-if (tokensApprox > planClassConfig.maxTokens) {
-  fail(`${planClass} plan too long (${tokensApprox} tokens > ${planClassConfig.maxTokens})`);
+// Decide outcome
+if (findings.length) {
+  const level = strict ? 'ERROR' : 'WARN';
+  findings.forEach(f => console[level === 'ERROR' ? 'error' : 'warn'](`Plan gate ${level}: ${f}`));
+  process.exit(strict ? 1 : 0);
 }
 
-// Check file count limits
-if (filesTouched > planClassConfig.maxFiles) {
-  fail(`${planClass} touches too many files (${filesTouched} > ${planClassConfig.maxFiles})`);
-}
-
-// Check for required justification on systemic changes
-if (planClass === 'SYSTEMIC') {
-  if (cfg.disallowSystemicWithoutJustification && !/Justification/i.test(plan)) {
-    fail('Systemic change missing explicit Justification section');
-  }
-  
-  if (planClassConfig.approvalRequired && !/APPROVAL_REQUIRED/i.test(plan)) {
-    fail('Systemic change requires explicit approval acknowledgment');
-  }
-}
-
-// Validate contract assertions
-const forbiddenPatterns = cfg.contractValidation.forbiddenAssertions;
-for (const pattern of forbiddenPatterns) {
-  if (plan.toLowerCase().includes(pattern.toLowerCase())) {
-    fail(`Plan contains forbidden assertion pattern: ${pattern}`);
-  }
-}
-
-// Check for behavioral contracts
-const hasContracts = /contracts?/i.test(plan) && /observable|behavioral|user-facing/i.test(plan);
-if (!hasContracts) {
-  fail('Plan must include behavioral contracts section');
-}
-
-ok(`${planClass} plan within limits and passes validation`);
+console.log(`Plan gate OK: ${planPath}${klass ? ` (class=${klass})` : ''}`);

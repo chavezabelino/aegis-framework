@@ -61,10 +61,11 @@ const ALLOWED_ROOT_FILES = [
   '.gitignore',
   '.eslintrc.js',
   '.prettierrc',
-  '.prettierignore'
+  '.prettierignore',
+  'CODEOWNERS'
 ];
 
-const IGNORED_ROOT_DIRS = new Set(['node_modules', '.git']);
+const IGNORED_ROOT_DIRS = new Set(['node_modules', '.git', '.framework']);
 const IGNORED_ROOT_FILES = new Set(['.DS_Store']);
 
 class PathChecker {
