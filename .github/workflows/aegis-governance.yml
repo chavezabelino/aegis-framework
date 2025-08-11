@@ -31,12 +31,14 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
       
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '20.16.0'
-        cache: npm
-        
+    - name: Install Node.js 20.x (apt)
+      run: |
+        sudo apt-get update -y
+        curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+        sudo apt-get install -y nodejs
+        node -v
+        npm -v
+      
     - name: Install deps (robust)
       uses: nick-fields/retry@v3
       with:
@@ -63,12 +65,14 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
       
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '20.16.0'
-        cache: npm
-        
+    - name: Install Node.js 20.x (apt)
+      run: |
+        sudo apt-get update -y
+        curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+        sudo apt-get install -y nodejs
+        node -v
+        npm -v
+      
     - name: Install deps (robust)
       uses: nick-fields/retry@v3
       with:
@@ -117,12 +121,14 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
       
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '20.16.0'
-        cache: npm
-        
+    - name: Install Node.js 20.x (apt)
+      run: |
+        sudo apt-get update -y
+        curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+        sudo apt-get install -y nodejs
+        node -v
+        npm -v
+      
     - name: Install deps (robust)
       uses: nick-fields/retry@v3
       with:
@@ -147,12 +153,14 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
       
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '20.16.0'
-        cache: npm
-        
+    - name: Install Node.js 20.x (apt)
+      run: |
+        sudo apt-get update -y
+        curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+        sudo apt-get install -y nodejs
+        node -v
+        npm -v
+      
     - name: Install deps (robust)
       uses: nick-fields/retry@v3
       with:
@@ -178,12 +186,14 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
       
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '20.16.0'
-        cache: npm
-        
+    - name: Install Node.js 20.x (apt)
+      run: |
+        sudo apt-get update -y
+        curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+        sudo apt-get install -y nodejs
+        node -v
+        npm -v
+      
     - name: Install deps (robust)
       uses: nick-fields/retry@v3
       with:
@@ -224,12 +234,14 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
       
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '20.16.0'
-        cache: npm
-        
+    - name: Install Node.js 20.x (apt)
+      run: |
+        sudo apt-get update -y
+        curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+        sudo apt-get install -y nodejs
+        node -v
+        npm -v
+      
     - name: Install deps (robust)
       uses: nick-fields/retry@v3
       with:
@@ -297,12 +309,14 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
       
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '20.16.0'
-        cache: npm
-        
+    - name: Install Node.js 20.x (apt)
+      run: |
+        sudo apt-get update -y
+        curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+        sudo apt-get install -y nodejs
+        node -v
+        npm -v
+      
     - name: Install deps (robust)
       uses: nick-fields/retry@v3
       with:
