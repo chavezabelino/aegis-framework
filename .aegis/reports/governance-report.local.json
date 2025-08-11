@@ -1,0 +1,434 @@
+{
+  "meta": {
+    "generatedAtUtc": "2025-08-11T01:31:32.410Z",
+    "commit": "local",
+    "node": "v24.2.0",
+    "cwd": "/Users/nino/Workspace/02-local-dev/aegis-framework"
+  },
+  "commands": {
+    "planning_help": {
+      "command": "npm run aegis:planning help",
+      "exitCode": 0,
+      "stdout": "\n> aegis-framework@2.5.0 aegis:planning\n> node cli/aegis-planning.ts help\n\n\n🤖 Aegis Planning Optimization CLI\n\nUsage: aegis-planning <command> [options]\n\nCommands:\n  auto <prompt>           Auto-detect plan class and generate plan\n  validate <class> <file> [files]  Validate plan against constraints\n  compare <file1> <file2> [options]  Compare two plans\n  help                   Show this help message\n\nExamples:\n  aegis-planning auto \"Add user authentication\"\n  aegis-planning validate MVP-Fix ./plan.json 2\n  aegis-planning compare plan1.json plan2.json --class1 MVP-Fix --class2 Surgical-Refactor\n\nFor more information, see: docs/aegis/planning/README.md\n\n",
+      "stderr": "",
+      "durationMs": 217
+    },
+    "planning_auto": {
+      "command": "npm run aegis:planning auto \"Add user authentication\" -- --output .aegis/outputs/auth-plan-strict.json",
+      "exitCode": 0,
+      "stdout": "\n> aegis-framework@2.5.0 aegis:planning\n> node cli/aegis-planning.ts auto Add user authentication --output .aegis/outputs/auth-plan-strict.json\n\n✅ Plan generated: .aegis/outputs/auth-plan-strict.json\n📋 Plan Class: MVP-Fix\n📁 Files: 2\n📝 Contracts: 3\n",
+      "stderr": "",
+      "durationMs": 185
+    },
+    "planning_validate": {
+      "command": "npm run aegis:planning validate MVP-Fix .aegis/outputs/auth-plan-strict.json 2",
+      "exitCode": 0,
+      "stdout": "\n> aegis-framework@2.5.0 aegis:planning\n> node cli/aegis-planning.ts validate MVP-Fix .aegis/outputs/auth-plan-strict.json 2\n\n✅ Plan validation passed\n📊 Tokens: 1089/2500\n📁 Files: 2/2\n",
+      "stderr": "",
+      "durationMs": 184
+    },
+    "check_paths": {
+      "command": "node tools/check-paths.js",
+      "exitCode": 1,
+      "stdout": "🔍 Path Check Results\n\n❌ Errors:\n  • Unauthorized directory: .framework/\n  • Unauthorized file: unauthorized-file.ts\n\n📋 Allowed Directories:\n  • framework/ - Core framework code and governance\n  • blueprints/ - Blueprint definitions and schemas\n  • adapters/ - Framework adapters for different environments\n  • tools/ - Development and governance tools\n  • cli/ - Command-line interface tools\n  • patterns/ - Pattern definitions and implementations\n  • .aegis/ - Framework metadata and outputs\n  • docs/ - Documentation\n  • tests/ - Test files\n  • examples/ - Example implementations\n  • demo/ - Demo scripts and examples\n  • .github/ - GitHub workflows and templates\n  • .cursor/ - Cursor IDE configuration\n  • .vscode/ - VS Code workspace settings\n  • scripts/ - Project scripts\n  • packages/ - Published packages/workspaces\n  • website/ - Documentation website\n  • evals/ - Evaluation configs and prompts\n  • bin/ - Executable scripts\n  • dist/ - Build outputs (ignored in VCS)\n  • logs/ - Log outputs (ignored in VCS)\n  • scaffolds/ - Scaffold templates\n  • templates/ - General templates\n",
+      "stderr": "",
+      "durationMs": 254
+    },
+    "check_version": {
+      "command": "node tools/check-version-sync.js",
+      "exitCode": 0,
+      "stdout": "🔍 Version Sync Check Results\n\n📋 Root Version: 2.5.0\n\n✅ All version references are synchronized\n",
+      "stderr": "",
+      "durationMs": 34
+    },
+    "attest_tools": {
+      "command": "node tools/attest.ts attest tools",
+      "exitCode": 0,
+      "stdout": "🔐 Attesting files in tools...\n✅ Attested: tools/attest.ts\n✅ Attested: tools/auto-plan-detector.ts\n✅ Attested: tools/auto-update-changelog.ts\n✅ Attested: tools/blueprint-coverage-auditor.ts\n✅ Attested: tools/check-evidence.ts\n✅ Attested: tools/check-paths.js\n✅ Attested: tools/check-provenance.js\n✅ Attested: tools/check-version-sync.js\n✅ Attested: tools/comprehensive-intelligence-testing.ts\n✅ Attested: tools/constitutional-ai-agent.ts\n✅ Attested: tools/constitutional-compliance-enforcer.ts\n✅ Attested: tools/continuous-compliance-monitor.ts\n✅ Attested: tools/copilot-integration.ts\n✅ Attested: tools/cursor-integration.ts\n✅ Attested: tools/cursor-realtime-integration.ts\n✅ Attested: tools/destructive-action-protection.ts\n✅ Attested: tools/detect-evolution-stories.ts\n✅ Attested: tools/drift-monitoring-dashboard.ts\n✅ Attested: tools/enhanced-evolution-detector.ts\n✅ Attested: tools/enhanced-test-runner.ts\n✅ Attested: tools/evidence-based-validation.ts\n✅ Attested: tools/evolution-learning-system.ts\n✅ Attested: tools/fix-package-manager-consistency.ts\n✅ Attested: tools/framework-capability-mapper.ts\n✅ Attested: tools/framework-intelligence-certification.ts\n✅ Attested: tools/generate-changelog.ts\n✅ Attested: tools/generate-governance-report.ts\n✅ Attested: tools/intelligent-pattern-detector.ts\n✅ Attested: tools/intent-enforcement-engine.ts\n✅ Attested: tools/mcp-aegis-server.ts\n✅ Attested: tools/planner-critic.ts\n✅ Attested: tools/pre-commit-hook.ts\n✅ Attested: tools/predictive-compliance-monitor.ts\n✅ Attested: tools/realtime-constitutional-enforcer.ts\n✅ Attested: tools/realtime-evolution-detection.ts\n✅ Attested: tools/systematic-prevention-validator.ts\n✅ Attested: tools/team-config-loader.ts\n✅ Attested: tools/test-cursor-detection.ts\n✅ Attested: tools/update-framework-dashboard.ts\n✅ Attested: tools/validate-annotations.ts\n✅ Attested: tools/validate-article-xi-abstraction.ts\n✅ Attested: tools/validate-blueprint.ts\n✅ Attested: tools/validate-constitution.ts\n✅ Attested: tools/validate-output-fidelity.ts\n✅ Attested: tools/validate-package-manager-consistency.ts\n✅ Attested: tools/validate-remediation-plan-simple.js\n✅ Attested: tools/validate-remediation-plan.ts\n✅ Attested: tools/validate-template-quality.ts\n✅ Attested: tools/validate-version-consistency.ts\n✅ Attested 49 files\n",
+      "stderr": "",
+      "durationMs": 83
+    },
+    "verify_tools": {
+      "command": "node tools/attest.ts verify tools",
+      "exitCode": 0,
+      "stdout": "🔍 Verifying attestations in tools...\n✅ All attestations verified successfully\n",
+      "stderr": "",
+      "durationMs": 81
+    }
+  },
+  "files": {
+    ".aegis/outputs/auth-plan-strict.json": {
+      "path": ".aegis/outputs/auth-plan-strict.json",
+      "exists": true,
+      "size": 1089,
+      "sha256": "b1d9e3db9da70458d556a053d0aa2ef20c46cc0366a16010370902106046ddd0",
+      "modifiedUtc": "2025-08-11T01:31:32.805Z"
+    },
+    ".aegis/telemetry/planning-events.ndjson": {
+      "path": ".aegis/telemetry/planning-events.ndjson",
+      "exists": true,
+      "size": 1317,
+      "sha256": "d37db92d5a685c364080209e6d3f585ad6b8f84e9499abb79e70cc64b2dd55fa",
+      "modifiedUtc": "2025-08-11T01:31:33.448Z"
+    },
+    ".github/workflows/aegis-governance.yml": {
+      "path": ".github/workflows/aegis-governance.yml",
+      "exists": true,
+      "size": 7806,
+      "sha256": "d15bd57d0a5c21871f330c4fe5c58a2ed7527c262cc180ad5466036c7b5bec1d",
+      "modifiedUtc": "2025-08-11T01:22:22.417Z"
+    },
+    "blueprints/planning-optimization/evidence.json": {
+      "path": "blueprints/planning-optimization/evidence.json",
+      "exists": true,
+      "size": 3765,
+      "sha256": "aabd6e25e72f9e3fc282f581d8077dce6722c6b1f2c8066ed39aa85da02c24e8",
+      "modifiedUtc": "2025-08-11T01:20:42.400Z"
+    }
+  },
+  "attestations": {
+    ".aegis/attestations/local/tools/attest.ts.sig": {
+      "path": ".aegis/attestations/local/tools/attest.ts.sig",
+      "exists": true,
+      "size": 293,
+      "sha256": "75ca4747e787ac620299e2913ccbd66bb76a23cd29179e0628cf8d076dca04d4",
+      "modifiedUtc": "2025-08-11T01:31:33.352Z"
+    },
+    ".aegis/attestations/local/tools/auto-plan-detector.ts.sig": {
+      "path": ".aegis/attestations/local/tools/auto-plan-detector.ts.sig",
+      "exists": true,
+      "size": 305,
+      "sha256": "a5bfea31e530bd7c1b6e88f40f8490595f046305c6c60a9781812118295400d1",
+      "modifiedUtc": "2025-08-11T01:31:33.353Z"
+    },
+    ".aegis/attestations/local/tools/auto-update-changelog.ts.sig": {
+      "path": ".aegis/attestations/local/tools/auto-update-changelog.ts.sig",
+      "exists": true,
+      "size": 308,
+      "sha256": "6e76c9913852648d9a86fa8417c201524b5ca89c725e1c8d3bf148e6b607af37",
+      "modifiedUtc": "2025-08-11T01:31:33.353Z"
+    },
+    ".aegis/attestations/local/tools/blueprint-coverage-auditor.ts.sig": {
+      "path": ".aegis/attestations/local/tools/blueprint-coverage-auditor.ts.sig",
+      "exists": true,
+      "size": 313,
+      "sha256": "a85e9e1728d78326b2e77db88f91c7129cb8cd8ea02993211ca147ff3ad0f1b0",
+      "modifiedUtc": "2025-08-11T01:31:33.354Z"
+    },
+    ".aegis/attestations/local/tools/check-evidence.ts.sig": {
+      "path": ".aegis/attestations/local/tools/check-evidence.ts.sig",
+      "exists": true,
+      "size": 301,
+      "sha256": "98a06b680c3172090aa3bcfca7aac8a09a9dbcfd928cb0bc042418814bd634a5",
+      "modifiedUtc": "2025-08-11T01:31:33.354Z"
+    },
+    ".aegis/attestations/local/tools/check-paths.js.sig": {
+      "path": ".aegis/attestations/local/tools/check-paths.js.sig",
+      "exists": true,
+      "size": 298,
+      "sha256": "ab05155ecc919cd1b5a018436d9c1e466ffdafce9da31307387e81285262b541",
+      "modifiedUtc": "2025-08-11T01:31:33.354Z"
+    },
+    ".aegis/attestations/local/tools/check-provenance.js.sig": {
+      "path": ".aegis/attestations/local/tools/check-provenance.js.sig",
+      "exists": true,
+      "size": 303,
+      "sha256": "5859c75a8a0658fa64db6b55e6c648484f0082b35e930515818ea0f4b5dcccd8",
+      "modifiedUtc": "2025-08-11T01:31:33.354Z"
+    },
+    ".aegis/attestations/local/tools/check-version-sync.js.sig": {
+      "path": ".aegis/attestations/local/tools/check-version-sync.js.sig",
+      "exists": true,
+      "size": 305,
+      "sha256": "c899d67d1e4ceb90d40540b266e595241a2942e26c3591e94650715d482c467e",
+      "modifiedUtc": "2025-08-11T01:31:33.354Z"
+    },
+    ".aegis/attestations/local/tools/comprehensive-intelligence-testing.ts.sig": {
+      "path": ".aegis/attestations/local/tools/comprehensive-intelligence-testing.ts.sig",
+      "exists": true,
+      "size": 321,
+      "sha256": "fbbdf6c2f6909bb2e46d843b8376a234f2d45f8e8c23cffb30276a43ef99291f",
+      "modifiedUtc": "2025-08-11T01:31:33.355Z"
+    },
+    ".aegis/attestations/local/tools/constitutional-ai-agent.ts.sig": {
+      "path": ".aegis/attestations/local/tools/constitutional-ai-agent.ts.sig",
+      "exists": true,
+      "size": 310,
+      "sha256": "4fd15dd04e62996c06af1d26f49dcd30c728c51bebd931318809980af7d750e7",
+      "modifiedUtc": "2025-08-11T01:31:33.355Z"
+    },
+    ".aegis/attestations/local/tools/constitutional-compliance-enforcer.ts.sig": {
+      "path": ".aegis/attestations/local/tools/constitutional-compliance-enforcer.ts.sig",
+      "exists": true,
+      "size": 321,
+      "sha256": "8c354c84a7afcf45debea971fd4ea0f31e4f674fa453c3dc31549119ecb3d89c",
+      "modifiedUtc": "2025-08-11T01:31:33.355Z"
+    },
+    ".aegis/attestations/local/tools/continuous-compliance-monitor.ts.sig": {
+      "path": ".aegis/attestations/local/tools/continuous-compliance-monitor.ts.sig",
+      "exists": true,
+      "size": 316,
+      "sha256": "906d7297248b1c502b5d9e7ca3e5e3227d25858714aa112df5b0b83caf03f851",
+      "modifiedUtc": "2025-08-11T01:31:33.355Z"
+    },
+    ".aegis/attestations/local/tools/copilot-integration.ts.sig": {
+      "path": ".aegis/attestations/local/tools/copilot-integration.ts.sig",
+      "exists": true,
+      "size": 306,
+      "sha256": "bf1bfb219122be7520a97e5fcd07a0398e6298648ce1bf86decb57d241d90306",
+      "modifiedUtc": "2025-08-11T01:31:33.355Z"
+    },
+    ".aegis/attestations/local/tools/cursor-integration.ts.sig": {
+      "path": ".aegis/attestations/local/tools/cursor-integration.ts.sig",
+      "exists": true,
+      "size": 305,
+      "sha256": "0df1edefa3353b76c4fb5d40116371660c1ff1e8f40f2f6f172bd12ab18e5727",
+      "modifiedUtc": "2025-08-11T01:31:33.356Z"
+    },
+    ".aegis/attestations/local/tools/cursor-realtime-integration.ts.sig": {
+      "path": ".aegis/attestations/local/tools/cursor-realtime-integration.ts.sig",
+      "exists": true,
+      "size": 314,
+      "sha256": "b33cb0f3f73355a1c571e40765b0153aa89be12308e5eda6275818528dd04ef8",
+      "modifiedUtc": "2025-08-11T01:31:33.356Z"
+    },
+    ".aegis/attestations/local/tools/destructive-action-protection.ts.sig": {
+      "path": ".aegis/attestations/local/tools/destructive-action-protection.ts.sig",
+      "exists": true,
+      "size": 316,
+      "sha256": "2d5e91b820741832c71726b9a01d833b85dd09521c7dfafebe27e6a2656425f8",
+      "modifiedUtc": "2025-08-11T01:31:33.356Z"
+    },
+    ".aegis/attestations/local/tools/detect-evolution-stories.ts.sig": {
+      "path": ".aegis/attestations/local/tools/detect-evolution-stories.ts.sig",
+      "exists": true,
+      "size": 311,
+      "sha256": "3ba1b33efa5608db5717baefa086aebede832dfc08f424fb5b184c7a5665ea77",
+      "modifiedUtc": "2025-08-11T01:31:33.356Z"
+    },
+    ".aegis/attestations/local/tools/drift-monitoring-dashboard.ts.sig": {
+      "path": ".aegis/attestations/local/tools/drift-monitoring-dashboard.ts.sig",
+      "exists": true,
+      "size": 313,
+      "sha256": "b1dd6b6a0361f2c366314c72bdaf06ddb7df0697b213a89628855bc27f9f8d79",
+      "modifiedUtc": "2025-08-11T01:31:33.356Z"
+    },
+    ".aegis/attestations/local/tools/enhanced-evolution-detector.ts.sig": {
+      "path": ".aegis/attestations/local/tools/enhanced-evolution-detector.ts.sig",
+      "exists": true,
+      "size": 314,
+      "sha256": "43d9b89eededa89c696a802104a3d1675b07156062bd32822e4490709a120d11",
+      "modifiedUtc": "2025-08-11T01:31:33.356Z"
+    },
+    ".aegis/attestations/local/tools/enhanced-test-runner.ts.sig": {
+      "path": ".aegis/attestations/local/tools/enhanced-test-runner.ts.sig",
+      "exists": true,
+      "size": 307,
+      "sha256": "fe1f3665145bba258794e03c5b91ecb26631617b6f5d9f3655867eee4237d018",
+      "modifiedUtc": "2025-08-11T01:31:33.357Z"
+    },
+    ".aegis/attestations/local/tools/evidence-based-validation.ts.sig": {
+      "path": ".aegis/attestations/local/tools/evidence-based-validation.ts.sig",
+      "exists": true,
+      "size": 312,
+      "sha256": "707f14032a6f7c0a742d6ea865a8c009af228dd68d80d9daa58d0af8d5311326",
+      "modifiedUtc": "2025-08-11T01:31:33.357Z"
+    },
+    ".aegis/attestations/local/tools/evolution-learning-system.ts.sig": {
+      "path": ".aegis/attestations/local/tools/evolution-learning-system.ts.sig",
+      "exists": true,
+      "size": 312,
+      "sha256": "1870b2ab3291e173dbb23c5efaae45a1556c7ce48ada96f019cd69e83b5eb96e",
+      "modifiedUtc": "2025-08-11T01:31:33.357Z"
+    },
+    ".aegis/attestations/local/tools/fix-package-manager-consistency.ts.sig": {
+      "path": ".aegis/attestations/local/tools/fix-package-manager-consistency.ts.sig",
+      "exists": true,
+      "size": 318,
+      "sha256": "aa3ca19c38eee08ffb18999aa5a58b9be28b8c8d4377ff81e733ff45b60c3165",
+      "modifiedUtc": "2025-08-11T01:31:33.357Z"
+    },
+    ".aegis/attestations/local/tools/framework-capability-mapper.ts.sig": {
+      "path": ".aegis/attestations/local/tools/framework-capability-mapper.ts.sig",
+      "exists": true,
+      "size": 314,
+      "sha256": "29ba706757189a8a3fda531a87ac4acd6b262a92354da49acc8b194cea12bba3",
+      "modifiedUtc": "2025-08-11T01:31:33.358Z"
+    },
+    ".aegis/attestations/local/tools/framework-intelligence-certification.ts.sig": {
+      "path": ".aegis/attestations/local/tools/framework-intelligence-certification.ts.sig",
+      "exists": true,
+      "size": 323,
+      "sha256": "1409a7713526b5367b318b645106fbddd68a866613ff52c29b9b2a95f33785a1",
+      "modifiedUtc": "2025-08-11T01:31:33.359Z"
+    },
+    ".aegis/attestations/local/tools/generate-changelog.ts.sig": {
+      "path": ".aegis/attestations/local/tools/generate-changelog.ts.sig",
+      "exists": true,
+      "size": 305,
+      "sha256": "0c07541e85a336fbe26918c2769084ece8277f0107cad969dedbca86142a5ee2",
+      "modifiedUtc": "2025-08-11T01:31:33.359Z"
+    },
+    ".aegis/attestations/local/tools/generate-governance-report.ts.sig": {
+      "path": ".aegis/attestations/local/tools/generate-governance-report.ts.sig",
+      "exists": true,
+      "size": 313,
+      "sha256": "c570b18f81aef82cabdb58845c4e60de96db7f5c64e0186b7d430e4da6e6776f",
+      "modifiedUtc": "2025-08-11T01:31:33.359Z"
+    },
+    ".aegis/attestations/local/tools/intelligent-pattern-detector.ts.sig": {
+      "path": ".aegis/attestations/local/tools/intelligent-pattern-detector.ts.sig",
+      "exists": true,
+      "size": 315,
+      "sha256": "aae28ca6cfc6e510b5841890873c9b060b324509e0848f79e24d1557ae8b2220",
+      "modifiedUtc": "2025-08-11T01:31:33.359Z"
+    },
+    ".aegis/attestations/local/tools/intent-enforcement-engine.ts.sig": {
+      "path": ".aegis/attestations/local/tools/intent-enforcement-engine.ts.sig",
+      "exists": true,
+      "size": 312,
+      "sha256": "63e482dba7c709ce4330f62b4194be6c00ec99f004e0ca33585175de5bf4314a",
+      "modifiedUtc": "2025-08-11T01:31:33.359Z"
+    },
+    ".aegis/attestations/local/tools/mcp-aegis-server.ts.sig": {
+      "path": ".aegis/attestations/local/tools/mcp-aegis-server.ts.sig",
+      "exists": true,
+      "size": 303,
+      "sha256": "767ea6c810f206d33c91fad676f3ac85f34f8ab2f30310c3f31978c0c041a37c",
+      "modifiedUtc": "2025-08-11T01:31:33.360Z"
+    },
+    ".aegis/attestations/local/tools/planner-critic.ts.sig": {
+      "path": ".aegis/attestations/local/tools/planner-critic.ts.sig",
+      "exists": true,
+      "size": 301,
+      "sha256": "d3d947096089ff6cbf2999a9cdfd96d32070d640f542c687a2b8c7b1352537c8",
+      "modifiedUtc": "2025-08-11T01:31:33.360Z"
+    },
+    ".aegis/attestations/local/tools/pre-commit-hook.ts.sig": {
+      "path": ".aegis/attestations/local/tools/pre-commit-hook.ts.sig",
+      "exists": true,
+      "size": 302,
+      "sha256": "76d013722e47167b44e5bf0df04909877887187b925644c56b03fe3d2e1fda00",
+      "modifiedUtc": "2025-08-11T01:31:33.360Z"
+    },
+    ".aegis/attestations/local/tools/predictive-compliance-monitor.ts.sig": {
+      "path": ".aegis/attestations/local/tools/predictive-compliance-monitor.ts.sig",
+      "exists": true,
+      "size": 316,
+      "sha256": "ea2e39d4b8d62a986609c1fc29c7c21a980f13af1a6c6fc8981d5c8e327baf5e",
+      "modifiedUtc": "2025-08-11T01:31:33.360Z"
+    },
+    ".aegis/attestations/local/tools/realtime-constitutional-enforcer.ts.sig": {
+      "path": ".aegis/attestations/local/tools/realtime-constitutional-enforcer.ts.sig",
+      "exists": true,
+      "size": 319,
+      "sha256": "e46b306ba75f2736a84df8b41b936a1a17d4d2efe9d8792102c9010cef5c5299",
+      "modifiedUtc": "2025-08-11T01:31:33.360Z"
+    },
+    ".aegis/attestations/local/tools/realtime-evolution-detection.ts.sig": {
+      "path": ".aegis/attestations/local/tools/realtime-evolution-detection.ts.sig",
+      "exists": true,
+      "size": 315,
+      "sha256": "e07b8c3bdf9382c61b1d7f7e506db850cc59fdbb156b113433f6bfc96959cace",
+      "modifiedUtc": "2025-08-11T01:31:33.360Z"
+    },
+    ".aegis/attestations/local/tools/systematic-prevention-validator.ts.sig": {
+      "path": ".aegis/attestations/local/tools/systematic-prevention-validator.ts.sig",
+      "exists": true,
+      "size": 318,
+      "sha256": "87f7ac122cf020809c372a52cdd89ea6ce688a3aa15db158e6ced3c92096b4c5",
+      "modifiedUtc": "2025-08-11T01:31:33.361Z"
+    },
+    ".aegis/attestations/local/tools/team-config-loader.ts.sig": {
+      "path": ".aegis/attestations/local/tools/team-config-loader.ts.sig",
+      "exists": true,
+      "size": 305,
+      "sha256": "8d34645b4431a25a47f9790d936e4ec5f4170f4c3397f251735c81dff2de93a7",
+      "modifiedUtc": "2025-08-11T01:31:33.361Z"
+    },
+    ".aegis/attestations/local/tools/test-cursor-detection.ts.sig": {
+      "path": ".aegis/attestations/local/tools/test-cursor-detection.ts.sig",
+      "exists": true,
+      "size": 308,
+      "sha256": "2564022e60159735ca6afb995a4477e4674e577394fee1902aa24e50e7504351",
+      "modifiedUtc": "2025-08-11T01:31:33.361Z"
+    },
+    ".aegis/attestations/local/tools/update-framework-dashboard.ts.sig": {
+      "path": ".aegis/attestations/local/tools/update-framework-dashboard.ts.sig",
+      "exists": true,
+      "size": 313,
+      "sha256": "3b8c6644e85c3a3c40099b81d086d32009a275241f05deb320cc3bab8257fe56",
+      "modifiedUtc": "2025-08-11T01:31:33.361Z"
+    },
+    ".aegis/attestations/local/tools/validate-annotations.ts.sig": {
+      "path": ".aegis/attestations/local/tools/validate-annotations.ts.sig",
+      "exists": true,
+      "size": 307,
+      "sha256": "53945ee4a444d1c4c8b310b924ae37440c7d5458681e03cf884fe4791e5fa985",
+      "modifiedUtc": "2025-08-11T01:31:33.361Z"
+    },
+    ".aegis/attestations/local/tools/validate-article-xi-abstraction.ts.sig": {
+      "path": ".aegis/attestations/local/tools/validate-article-xi-abstraction.ts.sig",
+      "exists": true,
+      "size": 318,
+      "sha256": "aae63df7b3dbf5d17727d124281870dc4c0aeb623785608aaa1c3ee4dc15340d",
+      "modifiedUtc": "2025-08-11T01:31:33.362Z"
+    },
+    ".aegis/attestations/local/tools/validate-blueprint.ts.sig": {
+      "path": ".aegis/attestations/local/tools/validate-blueprint.ts.sig",
+      "exists": true,
+      "size": 305,
+      "sha256": "3aed1940edc56dd28d71bfe85a1dfdd8b9453b9835eb92584dc2a886fad1e8dd",
+      "modifiedUtc": "2025-08-11T01:31:33.362Z"
+    },
+    ".aegis/attestations/local/tools/validate-constitution.ts.sig": {
+      "path": ".aegis/attestations/local/tools/validate-constitution.ts.sig",
+      "exists": true,
+      "size": 308,
+      "sha256": "23f6ede513c4da9e1a13861d0b4730193a4592e63eda8ae3d86801372166f53a",
+      "modifiedUtc": "2025-08-11T01:31:33.362Z"
+    },
+    ".aegis/attestations/local/tools/validate-output-fidelity.ts.sig": {
+      "path": ".aegis/attestations/local/tools/validate-output-fidelity.ts.sig",
+      "exists": true,
+      "size": 311,
+      "sha256": "7207ae01f2c13b1829e1153f8480180797fb96b9eca1ff0388c778771ebcbb19",
+      "modifiedUtc": "2025-08-11T01:31:33.362Z"
+    },
+    ".aegis/attestations/local/tools/validate-package-manager-consistency.ts.sig": {
+      "path": ".aegis/attestations/local/tools/validate-package-manager-consistency.ts.sig",
+      "exists": true,
+      "size": 323,
+      "sha256": "d198df1babe8e7c1a9322b529e1e320b5766301aa9925ccad1dc3c277731a7dc",
+      "modifiedUtc": "2025-08-11T01:31:33.362Z"
+    },
+    ".aegis/attestations/local/tools/validate-remediation-plan-simple.js.sig": {
+      "path": ".aegis/attestations/local/tools/validate-remediation-plan-simple.js.sig",
+      "exists": true,
+      "size": 319,
+      "sha256": "562c48def02416543f006de3b6d43661c1e1cdad7ad80b1704d9340fc918c865",
+      "modifiedUtc": "2025-08-11T01:31:33.362Z"
+    },
+    ".aegis/attestations/local/tools/validate-remediation-plan.ts.sig": {
+      "path": ".aegis/attestations/local/tools/validate-remediation-plan.ts.sig",
+      "exists": true,
+      "size": 312,
+      "sha256": "e621d5701eab54ff9639d8796ff659994581bb87f3fec204f75349657cbc03b6",
+      "modifiedUtc": "2025-08-11T01:31:33.363Z"
+    },
+    ".aegis/attestations/local/tools/validate-template-quality.ts.sig": {
+      "path": ".aegis/attestations/local/tools/validate-template-quality.ts.sig",
+      "exists": true,
+      "size": 312,
+      "sha256": "e41ac224161b12368d9c38ee07aec809c1c63859717096ab852f5da040478e62",
+      "modifiedUtc": "2025-08-11T01:31:33.363Z"
+    },
+    ".aegis/attestations/local/tools/validate-version-consistency.ts.sig": {
+      "path": ".aegis/attestations/local/tools/validate-version-consistency.ts.sig",
+      "exists": true,
+      "size": 315,
+      "sha256": "03043550c3e616ff199160c4093f13f5b8b63c5df932d96cd7b6174d4d1147fd",
+      "modifiedUtc": "2025-08-11T01:31:33.363Z"
+    }
+  }
+}

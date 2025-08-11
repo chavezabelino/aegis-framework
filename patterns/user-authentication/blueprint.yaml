@@ -6,7 +6,7 @@
 
 id: user-authentication
 name: "Universal User Authentication"
-version: "1.0.0"
+version: "2.5.0"
 aegisFrameworkVersion: "2.4.0"
 
 description: |

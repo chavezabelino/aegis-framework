@@ -1,0 +1,45 @@
+{
+  "name": "@aegis/planning-cli",
+  "version": "2.5.0",
+  "description": "Aegis Planning Optimization CLI",
+  "main": "dist/index.js",
+  "bin": {
+    "aegis-planning": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/index.ts",
+    "test": "vitest",
+    "lint": "eslint src/**/*.ts",
+    "format": "prettier --write src/**/*.ts",
+    "clean": "rm -rf dist",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "commander": "^11.1.0",
+    "zod": "^3.22.4",
+    "@modelcontextprotocol/sdk": "^0.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "typescript": "^5.3.0",
+    "tsx": "^4.6.0",
+    "vitest": "^1.0.0",
+    "eslint": "^8.55.0",
+    "prettier": "^3.1.0",
+    "@typescript-eslint/eslint-plugin": "^6.13.0",
+    "@typescript-eslint/parser": "^6.13.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "aegis",
+    "planning",
+    "optimization",
+    "cli",
+    "framework"
+  ],
+  "author": "Aegis Framework Team",
+  "license": "MIT"
+}

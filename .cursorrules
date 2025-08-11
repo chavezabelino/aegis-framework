@@ -1,54 +1,100 @@
-# .cursorrules
-
-rules:
-  - All AI-generated code must comply with the Aegis Framework Constitution defined in `CONSTITUTION.md`
-  - Detect and respond to real-time evolution prompts such as:
-      - "does this break", "will this cause", "runtime failures"
-      - "assess the pitfall", "enhance the framework", "guard against"
-      - "should we document somehow", "systematic way"
-      - "field-driven", "eating dog food", "real-world usage"
-  - Automatically trigger `captureCursorContext()` with the current prompt and workspace root on evolution pattern match
-  - Annotate all generated files using the following format:
-      - `@aegisBlueprint`, `@version`, `@mode`, `@intent`, `@context`
-  - Only generate code based on a defined `blueprint.yaml` under `blueprints/*`
-  - Blueprint IDs must be referenced in any generated code files
-  - Include observability events, fallback UX, and contract-defined error states as required by blueprint rules
-  - Do not generate or suggest any code outside the scope of a defined blueprint
-  - All outputs must match the structure defined in the active adapter and follow its execution mode (`lean`, `strict`, or `generative`)
-  - Respect semantic versioning in all changes; use version defined in the root `VERSION` file
-  - Store AI-generated outputs under:
-      - `output.lean.json` for minimal
-      - `output.strict.json` for compliant
-      - `output.full.json` for creative
-  - Validate all new or modified blueprints using:
-      - `node cli/init-blueprint.ts <name>`
-      - `node tools/validate-blueprint.ts <path>`
-  - Enforce file organization:
-      - Framework in `framework/`
-      - Blueprints in `blueprints/`
-      - Adapters in `adapters/`
-      - Scripts in `tools/`
-  - Run visual regression tests for any public-facing route or layout
-  - Constitutionally disallow unannotated or non-deterministic AI output
-  - Never bypass blueprint primacy — no generation outside defined schema
-
-# Cursor-Specific Real-Time Evolution Detection
-cursor_integration:
-  - Import and use `captureCursorContext()` from tools/cursor-integration
-  - Analyze conversation context for Cursor-specific evolution triggers
-  - Save conversation logs to `.aegis/cursor-feedback/` for pattern recognition
-  - Auto-generate critical evolution stories for constitutional insights
-  - Provide visual feedback for real-time editing concerns
-
-# Real-Time Response Guidelines
-response_patterns:
-  - When users express breaking change concerns → Acknowledge framework protections
-  - When users identify framework gaps → Note capture for constitutional evolution
-  - When users need documentation → Mention automatic evolution story system
-  - When users report field friction → Emphasize experience feeds framework learning
-  - When users request interface improvements → Log for Cursor integration consideration
-
+schemaVersion: 1
 project: aegis-framework
 agent: cursor
-coordination: true
-real_time_detection: true
+mode: enforce
+updated: 2025-08-10
+
+meta:
+  # Treat MCP (protocol/tools) distinct from ATS (telemetry).
+  definitions:
+    mcp: "Editor/agent tool protocol"
+    ats: "Aegis Telemetry System events & sinks"
+
+guards:
+  - description: "Blueprint primacy"
+    rule: "AI must only generate/modify files when an active blueprint exists under blueprints/<id>/blueprint.yaml."
+    enforce:
+      ci: "npm run validate:blueprint -- blueprints/<id>/blueprint.yaml"
+      fail_on: [missing_blueprint, invalid_schema]
+
+  - description: "Provenance & annotations"
+    rule: "Every AI-written file includes a header with @aegisBlueprint, @version, @mode, @intent, @context, @model, @hash."
+    enforce:
+      precommit: "node tools/check-provenance.js"
+      ci: "node tools/check-provenance.js --ci"
+      format:
+        regex: '^/\\*\\*\n @aegisBlueprint: .+\n @version: .+\n @mode: (lean|strict|generative)\n @intent: .+\n @context: .+\n @model: .+\n @hash: [a-f0-9]{64}\n\\*/'
+
+  - description: "Directory boundaries"
+    rule: "Only write to: framework/, blueprints/, adapters/, tools/, cli/, patterns/planning-optimization/, .aegis/**."
+    enforce:
+      precommit: "node tools/check-paths.js"
+
+  - description: "Execution modes"
+    rule: "Outputs must match active adapter mode."
+    enforce:
+      adapter_config: "adapters/active.json"  # contains { mode: lean|strict|generative }
+      outputs:
+        lean: ".aegis/outputs/<blueprintId>/<timestamp>-lean.json"
+        strict: ".aegis/outputs/<blueprintId>/<timestamp>-strict.json"
+        generative: ".aegis/outputs/<blueprintId>/<timestamp>-full.json"
+
+  - description: "Semantic versioning"
+    rule: "Use root VERSION; bump via scripts; no manual package.json edits."
+    enforce:
+      ci: "node tools/check-version-sync.js"
+
+  - description: "Visual regression"
+    rule: "Run VR for public routes/layouts."
+    enforce:
+      cmd: "npm run test:vr"  # Playwright or Percy
+      baseline: ".aegis/vr-baselines/"
+      threshold: 0.01
+
+cursor_integration:
+  # Do not claim auto-execution; instruct the agent to run commands.
+  on_message_patterns:
+    breaking_change: ["does this break", "runtime failure", "will this cause", "pitfall"]
+    governance: ["enhance the framework", "guard against", "document somehow", "systematic way"]
+    field_feedback: ["field-driven", "dog food", "real-world usage"]
+  actions:
+    - name: "Capture context"
+      when: [breaking_change, governance, field_feedback]
+      instruct: "Run: node tools/cursor-integration/capture-context.ts --root . --message '<prompt>' --out .aegis/cursor-feedback/"
+    - name: "Plan classification"
+      when: [feature_request, bug_fix, refactor]
+      instruct: "Run: npm run aegis:planning auto '<prompt>'"
+
+planning_optimization:
+  class_order: ["MVP-Fix", "Surgical-Refactor", "Systemic-Change"]
+  validator_cmd: "npm run aegis:planning validate <class> <inFile> <targetFiles...>"
+  ci_gates:
+    MVP-Fix: "npm run plan:gate:mvp"
+    Surgical-Refactor: "npm run plan:gate:surgical"
+    Systemic-Change: "npm run plan:gate:systemic"
+  ats_events:
+    - planning.detected
+    - planning.validated
+    - planning.selected
+    - planning.rejected
+
+response_requirements:
+  - "All utility/refactor outputs begin with a Guardrails Check covering: type safety, dev ergonomics, runtime theming/DB tokens, Kilo-grade quality."
+  - "Reference the active blueprint ID in every code block."
+  - "If a required script/path is missing, STOP and generate a remediation plan + diffs."
+
+file_layout:
+  framework: "framework/"
+  blueprints: "blueprints/"
+  adapters: "adapters/"
+  tools: "tools/"
+  cli: "cli/"
+  patterns: "patterns/planning-optimization/"
+  mcp_server: "tools/mcp-aegis-server.ts"
+  planning_cli: "cli/aegis-planning.ts"
+
+deny:
+  - "Generation outside defined schema"
+  - "Unannotated files"
+  - "Non-deterministic outputs without @seed and @hash"
+  - "Modifying CI workflows without updating docs/aegis/change-control.md"

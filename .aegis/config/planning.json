@@ -1,0 +1,44 @@
+{
+  "aegisFrameworkVersion": "2.4.0",
+  "blueprintId": "planning-optimization",
+  "version": "1.0.0",
+  "maxPlanTokensMVP": 2500,
+  "maxFilesMVP": 2,
+  "maxPlanTokensSurgical": 6000,
+  "maxFilesSurgical": 5,
+  "disallowSystemicWithoutJustification": true,
+  "routeEquivalence": ["/login", "/(auth)/login"],
+  "themePolicy": {
+    "forbidExactRGB": true,
+    "requireGradientOrSemantic": true
+  },
+  "planClasses": {
+    "MVP-Fix": {
+      "maxTokens": 2500,
+      "maxFiles": 2,
+      "maxEffortHours": 2,
+      "allowedChanges": ["bug-fixes", "minor-enhancements"],
+      "forbiddenChanges": ["schema-changes", "infrastructure-changes"]
+    },
+    "Surgical-Refactor": {
+      "maxTokens": 6000,
+      "maxFiles": 5,
+      "maxEffortHours": 8,
+      "allowedChanges": ["refactoring", "component-extraction", "api-improvements"],
+      "forbiddenChanges": ["breaking-changes", "major-architecture-shifts"]
+    },
+    "Systemic-Change": {
+      "maxTokens": 15000,
+      "maxFiles": 20,
+      "maxEffortHours": 40,
+      "allowedChanges": ["schema-changes", "infrastructure-changes", "breaking-changes"],
+      "justificationRequired": true,
+      "approvalRequired": true
+    }
+  },
+  "contractValidation": {
+    "requiredTypes": ["observable", "behavioral", "user-facing"],
+    "forbiddenAssertions": ["rgb-colors", "class-names", "internal-implementation"],
+    "preferredSelectors": ["role", "label", "data-testid", "aria-label"]
+  }
+}

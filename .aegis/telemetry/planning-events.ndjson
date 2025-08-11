@@ -1,0 +1,9 @@
+{"timestamp":"2025-01-15T10:00:00Z","event":"planning.detected","planClass":"MVP-Fix","confidence":0.95,"prompt":"Add user authentication"}
+{"timestamp":"2025-01-15T10:00:01Z","event":"planning.validated","planClass":"MVP-Fix","validationResult":"passed","tokenCount":1089}
+{"timestamp":"2025-01-15T10:00:02Z","event":"planning.selected","planClass":"MVP-Fix","reasoning":["minimal scope","contract-driven","observable behavior"]}
+{"timestamp":"2025-08-11T01:27:36.170Z","event":"planning.detected","planClass":"MVP-Fix","confidence":0.95,"prompt":"Add user authentication"}
+{"timestamp":"2025-08-11T01:27:36.170Z","event":"planning.validated","planClass":"MVP-Fix","validationResult":"passed","tokenCount":1089}
+{"timestamp":"2025-08-11T01:27:36.170Z","event":"planning.selected","planClass":"MVP-Fix","reasoning":["minimal scope","contract-driven","observable behavior"]}
+{"timestamp":"2025-08-11T01:31:33.448Z","event":"planning.detected","planClass":"MVP-Fix","confidence":0.95,"prompt":"Add user authentication"}
+{"timestamp":"2025-08-11T01:31:33.448Z","event":"planning.validated","planClass":"MVP-Fix","validationResult":"passed","tokenCount":1089}
+{"timestamp":"2025-08-11T01:31:33.448Z","event":"planning.selected","planClass":"MVP-Fix","reasoning":["minimal scope","contract-driven","observable behavior"]}

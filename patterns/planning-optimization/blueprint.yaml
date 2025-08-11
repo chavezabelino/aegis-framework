@@ -1,0 +1,106 @@
+id: planning-optimization
+name: Planning Optimization Module
+version: 2.5.0
+aegisFrameworkVersion: 2.4.0
+description: "Biases AI agents toward minimum viable, contract-driven solutions with CI plan-bloat gates"
+
+determinismConfig:
+  strictMode: true
+  temperature: 0.1
+
+ruleContracts:
+  - rule: "Prefer MVP-Fix over Surgical-Refactor over Systemic-Change"
+    version: "1.0.0"
+    enforcement: "blocking"
+    schema:
+      planClass: ["MVP-Fix", "Surgical-Refactor", "Systemic-Change"]
+      escalationJustification: "string"
+  
+  - rule: "Assert behavioral contracts only, not implementation details"
+    version: "1.0.0" 
+    enforcement: "blocking"
+    schema:
+      contractType: ["observable", "behavioral", "user-facing"]
+      forbiddenAssertions: ["rgb-colors", "class-names", "internal-implementation"]
+  
+  - rule: "Plan gate must pass before execution"
+    version: "1.0.0"
+    enforcement: "blocking"
+    schema:
+      gateChecks: ["token-limit", "file-count", "justification-required"]
+      maxTokensMVP: 2500
+      maxFilesMVP: 2
+      maxTokensSurgical: 6000
+      maxFilesSurgical: 5
+
+  - rule: "Accept multiple valid outputs for equivalent functionality"
+    version: "1.0.0"
+    enforcement: "advisory"
+    schema:
+      routeEquivalence: ["/login", "/(auth)/login"]
+      themePolicy:
+        forbidExactRGB: true
+        requireGradientOrSemantic: true
+
+observability:
+  events:
+    - name: "plan.optimization.started"
+      description: "Planning optimization process initiated"
+    - name: "plan.class.selected"
+      description: "Plan class (MVP/Surgical/Systemic) selected with justification"
+    - name: "plan.gate.passed"
+      description: "Plan gate validation passed"
+    - name: "plan.gate.failed"
+      description: "Plan gate validation failed with reasons"
+    - name: "plan.contracts.defined"
+      description: "Behavioral contracts defined for plan"
+    - name: "plan.execution.completed"
+      description: "Plan execution completed successfully"
+
+  traces:
+    - operation: "plan_optimization"
+      attributes:
+        - "plan_class"
+        - "files_touched"
+        - "estimated_tokens"
+        - "contracts_count"
+        - "gate_result"
+
+errorStates:
+  - code: "PLAN_GATE_FAILED"
+    fallback: "Plan exceeds complexity limits - revise to smaller scope"
+    recovery: "Run plan optimization with reduced scope or justify escalation"
+  
+  - code: "INSUFFICIENT_JUSTIFICATION"
+    fallback: "Systemic change requires explicit justification"
+    recovery: "Add justification section explaining why MVP/Surgical cannot meet contracts"
+  
+  - code: "CONTRACT_VIOLATION"
+    fallback: "Plan violates behavioral contract requirements"
+    recovery: "Revise plan to focus on observable behavior, not implementation details"
+
+validation:
+  required: ["build", "test", "lint"]
+  optional: ["plan-gate", "contract-validation"]
+
+adapters:
+  github-copilot:
+    framework: "aegis"
+    version: "2.4.0"
+    config:
+      promptTemplate: "tools/prompts/aegis-plan-optimizer.kilo.md"
+      maxTokens: 4000
+  
+  cursor:
+    framework: "aegis"
+    version: "2.4.0"
+    config:
+      promptTemplate: "tools/prompts/aegis-plan-optimizer.kilo.md"
+      maxTokens: 6000
+  
+  claude:
+    framework: "aegis"
+    version: "2.4.0"
+    config:
+      promptTemplate: "tools/prompts/aegis-plan-optimizer.kilo.md"
+      maxTokens: 8000
