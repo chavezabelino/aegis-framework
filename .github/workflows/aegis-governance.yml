@@ -44,7 +44,14 @@ jobs:
       with:
         timeout_minutes: 20
         max_attempts: 3
-        command: npm ci --prefer-offline --no-audit --no-fund
+        command: |
+          if [ -f package-lock.json ]; then
+            echo "Lockfile found -> npm ci";
+            npm ci --prefer-offline --no-audit --no-fund;
+          else
+            echo "Lockfile missing -> fallback to npm install (non-reproducible)";
+            npm install --no-audit --no-fund;
+          fi
       
     - name: Validate blueprints
       run: node tools/validate-blueprint.ts blueprints/**/blueprint.yaml --ci
@@ -78,7 +85,14 @@ jobs:
       with:
         timeout_minutes: 20
         max_attempts: 3
-        command: npm ci --prefer-offline --no-audit --no-fund
+        command: |
+          if [ -f package-lock.json ]; then
+            echo "Lockfile found -> npm ci";
+            npm ci --prefer-offline --no-audit --no-fund;
+          else
+            echo "Lockfile missing -> fallback to npm install (non-reproducible)";
+            npm install --no-audit --no-fund;
+          fi
       
     - name: Generate attestations for repository code
       run: |
@@ -134,7 +148,14 @@ jobs:
       with:
         timeout_minutes: 20
         max_attempts: 3
-        command: npm ci --prefer-offline --no-audit --no-fund
+        command: |
+          if [ -f package-lock.json ]; then
+            echo "Lockfile found -> npm ci";
+            npm ci --prefer-offline --no-audit --no-fund;
+          else
+            echo "Lockfile missing -> fallback to npm install (non-reproducible)";
+            npm install --no-audit --no-fund;
+          fi
       
     - name: Check file organization
       run: node tools/check-paths.js --json
@@ -166,7 +187,14 @@ jobs:
       with:
         timeout_minutes: 20
         max_attempts: 3
-        command: npm ci --prefer-offline --no-audit --no-fund
+        command: |
+          if [ -f package-lock.json ]; then
+            echo "Lockfile found -> npm ci";
+            npm ci --prefer-offline --no-audit --no-fund;
+          else
+            echo "Lockfile missing -> fallback to npm install (non-reproducible)";
+            npm install --no-audit --no-fund;
+          fi
       
     - name: Check version synchronization
       run: node tools/check-version-sync.js --ci
@@ -199,7 +227,14 @@ jobs:
       with:
         timeout_minutes: 20
         max_attempts: 3
-        command: npm ci --prefer-offline --no-audit --no-fund
+        command: |
+          if [ -f package-lock.json ]; then
+            echo "Lockfile found -> npm ci";
+            npm ci --prefer-offline --no-audit --no-fund;
+          else
+            echo "Lockfile missing -> fallback to npm install (non-reproducible)";
+            npm install --no-audit --no-fund;
+          fi
       
     - name: Generate planning outputs
       run: |
@@ -247,7 +282,14 @@ jobs:
       with:
         timeout_minutes: 20
         max_attempts: 3
-        command: npm ci --prefer-offline --no-audit --no-fund
+        command: |
+          if [ -f package-lock.json ]; then
+            echo "Lockfile found -> npm ci";
+            npm ci --prefer-offline --no-audit --no-fund;
+          else
+            echo "Lockfile missing -> fallback to npm install (non-reproducible)";
+            npm install --no-audit --no-fund;
+          fi
       
     - name: Install Playwright
       run: npx playwright install --with-deps
@@ -322,7 +364,14 @@ jobs:
       with:
         timeout_minutes: 20
         max_attempts: 3
-        command: npm ci --prefer-offline --no-audit --no-fund
+        command: |
+          if [ -f package-lock.json ]; then
+            echo "Lockfile found -> npm ci";
+            npm ci --prefer-offline --no-audit --no-fund;
+          else
+            echo "Lockfile missing -> fallback to npm install (non-reproducible)";
+            npm install --no-audit --no-fund;
+          fi
       
     - name: Download all artifacts
       uses: actions/download-artifact@v4
