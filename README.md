@@ -30,6 +30,58 @@ code__ that follows your standards.
 
 ---
 
+## 🚧 In-Flight Features
+
+We're actively developing several major features to enhance the Aegis framework. Here's what's currently in development:
+
+> **💡 Tip**: These features represent the cutting edge of AI agent governance. Each is designed with constitutional compliance and developer ergonomics in mind.
+
+### 🔄 **Agent Outcome Logging** (`feat/agent-outcome-logging`)
+**Status**: Active Development  
+**Target**: v2.6.0  
+**Description**: Tiered, configurable outcome logging for multi-agent assessment and evaluation
+- **Features**: Lite/standard/full/forensic logging modes, JSONL output, integrity hashing
+- **Benefits**: Structured outcome recording, easy copy/paste for other agents, audit trail
+- **Progress**: Blueprint and specification complete, implementation in progress
+
+### 🏛️ **Governance Remediation** (`feat/governance-remediation`)
+**Status**: Active Development  
+**Target**: v2.5.1  
+**Description**: Parallelized 1-week rollout of broken governance features
+- **Features**: Global kill-switch, group flags, deterministic replay harness, CI integration
+- **Benefits**: Restore critical governance features, improve system reliability
+- **Progress**: Core infrastructure implemented, testing and validation ongoing
+
+### 🎯 **Prompt Enhancement Trigger** (`prompt-enhance-trigger`)
+**Status**: Planning Complete  
+**Target**: v2.7.0  
+**Description**: On-demand prompt elevation system with deterministic tracing and replay
+- **Features**: Trigger-based activation, context-aware optimization, transparency modes
+- **Benefits**: Consistent, high-quality AI agent outputs, Kilo-compliant prompts
+- **Progress**: Constitutional blueprint and specification complete
+
+### 💾 **Prompt Cache & Optimization** (`prompt-cache`)
+**Status**: Planning Complete  
+**Target**: v2.8.0  
+**Description**: Intelligent prompt caching, layered checkpoints, and deterministic replay
+- **Features**: SQLite caching, Neon Postgres checkpoints, provider adapters, telemetry
+- **Benefits**: Performance optimization, cost reduction, governance compliance
+- **Progress**: Comprehensive design document and blueprint complete
+
+### 📚 **Constitutional OS Terminology Migration** (`feature/constitutional-os-terminology-migration`)
+**Status**: In Progress  
+**Target**: v2.5.1  
+**Description**: Update framework terminology for clarity and consistency
+- **Features**: Terminology standardization, documentation updates
+- **Benefits**: Improved clarity, better developer experience
+- **Progress**: Ongoing documentation updates
+
+---
+
+**Want to contribute?** Check out our [Contributing Guide](CONTRIBUTING.md) and join the development of these features!
+
+---
+
 ## Installation
 
 ### npm Package
