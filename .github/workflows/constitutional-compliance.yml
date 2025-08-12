@@ -1,243 +1,47 @@
-name: Constitutional Compliance Check
+name: Aegis Constitutional Compliance
 
 on:
+  push:
+    branches: [ main, develop, feature/**, governance/** ]
   pull_request:
-    branches: [main]
-    paths:
-      - "docs/implementation/**"
-      - "docs/releases/**"
-      - "framework/**"
-      - "blueprints/**"
-      - "tools/**"
-      - "CONSTITUTION.md"
-      - "*.yaml"
-      - "*.yml"
-  # Only run full compliance check on PRs, not every push
-  workflow_dispatch:
-    inputs:
-      force_run:
-        description: "Force full compliance check"
-        required: false
-        type: boolean
+    branches: [ main, develop ]
 
 jobs:
-  compliance-check:
+  governance:
+    name: Governance Suite (${{ matrix.group }})
     runs-on: ubuntu-latest
-    name: Framework Constitutional Compliance
-    permissions:
-      contents: read
-      issues: write
-      pull-requests: write
-
+    strategy:
+      fail-fast: false
+      matrix:
+        group: [validation, prevention, intelligence, monitoring, utilities]
+    env:
+      # Default to DRY-RUN; tighten per-branch as you progress the rollout.
+      AEGIS_GOVERNANCE_MODE: dry-run
+      AEGIS_ENFORCE_VALIDATION: ${{ matrix.group == 'validation' && '1' || '0' }}
+      AEGIS_ENFORCE_PREVENTION: ${{ matrix.group == 'prevention' && '1' || '0' }}
+      AEGIS_ENFORCE_INTEL: ${{ matrix.group == 'intelligence' && '1' || '0' }}
+      AEGIS_ENFORCE_MONITORING: ${{ matrix.group == 'monitoring' && '1' || '0' }}
+      AEGIS_INTEL_THRESHOLD: "0.90"
+      TS_RUNNER: tsx
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Setup Bun
-        uses: oven-sh/setup-bun@v2
-        with:
-          bun-version: latest
-
-      - name: Install dependencies
-        run: bun install
-
-      - name: Run constitutional validation
-        run: |
-          echo "🏛️ Running constitutional compliance validation..."
-          bun tools/validate-constitution.ts || exit 1
-          bun tools/validate-template-quality.ts || exit 1
-          bun tools/validate-remediation-plan.ts --check-all || exit 1
-
-      - name: Validate version consistency
-        run: |
-          echo "🔍 Validating version consistency..."
-          npm run validate:versions || exit 1
-
-      - name: Validate roadmap alignment
-        run: |
-          echo "🗺️ Validating roadmap alignment..."
-          bun tools/validate-version-consistency.cjs --check-roadmap || exit 1
-
-      - name: Validate release coverage
-        run: |
-          echo "📋 Validating release documentation coverage..."
-          bun tools/validate-version-consistency.cjs --check-releases || exit 1
-
-      - name: Detect evolution story triggers
-        run: |
-          echo "🔍 Detecting evolution story triggers..."
-          bun cli/detect-evolution-stories.cjs
 
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: "20.16.0"
+          node-version: '20'
 
-      - name: Comment evolution insights (PR only)
-        if: github.event_name == 'pull_request'
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const fs = require('fs');
-            const path = require('path');
-
-            // Check if auto-generated stories were created
-            const evolutionDir = path.join(process.cwd(), 'docs', 'evolution');
-            if (fs.existsSync(evolutionDir)) {
-              const autoStories = fs.readdirSync(evolutionDir)
-                .filter(file => file.includes('auto-generated'));
-              
-              if (autoStories.length > 0) {
-                const comment = `🤖 **Evolution Story Auto-Detection Results**
-                
-            ${autoStories.map(story => `- 📄 ${story}`).join('\n')}
-
-            These stories were automatically generated based on detected framework evolution triggers. Please review and complete them with field context and implementation details.`;
-                
-                const {owner, repo} = context.repo;
-                const issue_number = context.payload.pull_request.number;
-                await github.rest.issues.createComment({ owner, repo, issue_number, body: comment });
-              }
-            }
-
-      - name: Validate blueprints
+      - name: Install CI CLIs
         run: |
-          echo "📋 Validating blueprint schemas..."
-          for blueprint in blueprints/*/blueprint.yaml; do
-            if [ -f "$blueprint" ]; then
-              echo "Validating $blueprint"
-              bun tools/validate-blueprint.ts "$blueprint"
-            fi
-          done
+          npm i -g tsx actionlint@1
 
-      - name: Check for remediation plans
-        run: |
-          echo "🔍 Checking for remediation plans requiring validation..."
-          remediation_plans=$(find . -name "*remediation*plan*.yaml" -o -name "*remediation*plan*.json" 2>/dev/null || true)
-          if [ -n "$remediation_plans" ]; then
-            echo "Found remediation plans - validating constitutional compliance..."
-            for plan in $remediation_plans; do
-              echo "Validating $plan"
-              bun tools/validate-remediation-plan.ts "$plan"
-            done
-          else
-            echo "No remediation plans found - skipping validation"
-          fi
+      - name: Run Governance Group
+        run: node tools/ci/run-governance-suite.mjs --group ${{ matrix.group }}
 
-      - name: Validate tools manifest
-        run: |
-          echo "🛠️ Validating tools manifest..."
-          if [ -f "tools/manifest.json" ]; then
-            node -e "
-              const fs = require('fs');
-              const manifest = JSON.parse(fs.readFileSync('tools/manifest.json', 'utf8'));
-              console.log('Tools manifest validation passed');
-              console.log('Tools count:', manifest.tools.length);
-              console.log('Required tools:', manifest.tools.filter(t => t.required).length);
-            "
-          else
-            echo "❌ Tools manifest missing!"
-            exit 1
-          fi
-
-      - name: Build validation
-        run: |
-          echo "🔨 Running build validation..."
-          if [ -f "package.json" ]; then
-            npm run build || echo "Build script not found or failed"
-          fi
-
-      - name: Test validation
-        run: |
-          echo "🧪 Running test validation..."
-          if [ -f "package.json" ]; then
-            npm test || echo "Test script not found or failed"
-          fi
-
-      - name: Template quality validation
-        run: |
-          echo "📝 Validating template quality..."
-          if [ -f "tools/validate-template-quality.ts" ]; then
-            bun tools/validate-template-quality.ts
-          fi
-
-      - name: Framework version consistency check
-        run: |
-          echo "🔄 Checking framework version consistency..."
-          if [ -f "VERSION" ]; then
-            VERSION=$(cat VERSION)
-            echo "Current version: $VERSION"
-            
-            # Check if framework spec exists for this version
-            SPEC_FILE="framework/framework-core-v${VERSION}.md"
-            if [ -f "$SPEC_FILE" ]; then
-              echo "✅ Framework specification found: $SPEC_FILE"
-            else
-              echo "❌ Framework specification missing: $SPEC_FILE"
-              exit 1
-            fi
-            
-            # Validate version annotations in key files
-            echo "Checking version annotations..."
-            grep -l "@aegisFrameworkVersion" docs/releases/*.md | while read file; do
-              if ! grep -q "@aegisFrameworkVersion: $VERSION" "$file"; then
-                echo "⚠️ Version mismatch in $file"
-              else
-                echo "✅ Version correct in $file"
-              fi
-            done
-          else
-            echo "❌ VERSION file missing!"
-            exit 1
-          fi
-
-      - name: Constitutional change validation
-        run: |
-          echo "⚖️ Validating constitutional changes..."
-
-          # Check if CONSTITUTION.md was modified
-          if git diff --name-only HEAD~1 HEAD | grep -q "CONSTITUTION.md"; then
-            echo "🚨 Constitutional change detected!"
-            
-            # Require special commit message format for constitutional changes
-            COMMIT_MSG=$(git log -1 --pretty=format:"%s")
-            if [[ ! "$COMMIT_MSG" =~ ^CONSTITUTIONAL: ]]; then
-              echo "❌ Constitutional changes must have commit message starting with 'CONSTITUTIONAL:'"
-              echo "Current commit: $COMMIT_MSG"
-              exit 1
-            fi
-            
-            echo "✅ Constitutional change properly formatted"
-          fi
-
-      - name: Generate compliance report
-        run: |
-          echo "📊 Generating compliance report..."
-          cat > compliance-report.md << EOF
-          # Constitutional Compliance Report
-
-          **Generated**: $(date)
-          **Commit**: ${{ github.sha }}
-          **Branch**: ${{ github.ref }}
-
-          ## Checks Performed
-          - ✅ Constitutional validation
-          - ✅ Blueprint schema validation  
-          - ✅ Remediation plan validation
-          - ✅ Tools manifest validation
-          - ✅ Framework version consistency
-          - ✅ Template quality validation
-
-          ## Summary
-          All constitutional compliance checks passed successfully.
-
-          EOF
-
-          cat compliance-report.md
-
-      - name: Upload compliance report
+      - name: Upload artifacts
+        if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: compliance-report
-          path: compliance-report.md
-          retention-days: 30
+          name: aegis-${{ matrix.group }}-artifacts
+          path: .aegis-artifacts/latest-${{ matrix.group }}.json

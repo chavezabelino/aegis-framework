@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+# Aegis pre-commit guard (solo-dev safe)
+# - Default: DRY-RUN (warn only)
+# - Bypass: set SKIP_AEGIS_HOOKS=1
+set -euo pipefail
+
+if [[ "${SKIP_AEGIS_HOOKS:-0}" == "1" ]]; then
+  echo "[aegis] pre-commit bypassed (SKIP_AEGIS_HOOKS=1)"
+  exit 0
+fi
+
+MODE="${AEGIS_GOVERNANCE_MODE:-dry-run}"
+ENF_PREV="${AEGIS_ENFORCE_PREVENTION:-0}"
+
+echo "[aegis] pre-commit mode=${MODE} prevention=${ENF_PREV}"
+
+# Low-risk checks always run (warn by default)
+# Example: package manager lock consistency or destructive action heuristic
+warn() { echo "::warning::[aegis] $*"; }
+err()  { echo "::error::[aegis] $*"; }
+
+# Example heuristic: prevent 'rm -rf' in staged shell scripts
+if git diff --cached --name-only | grep -E '\.sh$' >/dev/null 2>&1; then
+  if git diff --cached -U0 -- '*.sh' | grep -E '^\+.*rm\s+-rf\s+[/a-zA-Z0-9._-]+' >/dev/null 2>&1; then
+    MSG="Potential destructive 'rm -rf' detected in staged shell changes"
+    if [[ "${MODE}" == "enforce" && "${ENF_PREV}" == "1" ]]; then
+      err "${MSG} (blocking)"; exit 1
+    else
+      warn "${MSG} (dry-run)"; # continue
+    fi
+  fi
+fi
+
+# Example: ensure only one package manager lockfile changes
+LOCK_COUNT=$(git diff --cached --name-only | grep -E '(^|/)(package-lock\.json|pnpm-lock\.yaml|yarn\.lock)$' | wc -l | tr -d ' ')
+if [[ "${LOCK_COUNT}" -gt 1 ]]; then
+  MSG="Multiple lockfiles changed in one commit (${LOCK_COUNT})"
+  if [[ "${MODE}" == "enforce" && "${ENF_PREV}" == "1" ]]; then
+    err "${MSG} (blocking)"; exit 1
+  else
+    warn "${MSG} (dry-run)"
+  fi
+fi
+
+echo "[aegis] pre-commit OK"
+exit 0
