@@ -113,7 +113,12 @@
     "test": "vitest run",
     "coverage": "vitest run --coverage",
     "dep:audit:build": "node scripts/audit-allowlist-build.cjs",
-    "dep:audit": "pnpm run dep:audit:build && audit-ci --package-manager npm --config audit-ci.generated.json"
+    "dep:audit": "pnpm run dep:audit:build && audit-ci --package-manager npm --config audit-ci.generated.json",
+    "aegis:outcome": "node tools/ci/record-outcome.mjs",
+    "aegis:outcome:lite": "AEGIS_OUTCOME_MODE=lite node tools/ci/record-outcome.mjs",
+    "aegis:outcome:standard": "AEGIS_OUTCOME_MODE=standard node tools/ci/record-outcome.mjs",
+    "aegis:outcome:full": "AEGIS_OUTCOME_MODE=full node tools/ci/record-outcome.mjs",
+    "aegis:outcome:forensic": "AEGIS_OUTCOME_MODE=forensic node tools/ci/record-outcome.mjs"
   },
   "lint-staged": {
     "*.md": [

@@ -1,0 +1,7 @@
+{
+  "defaultMode": "standard",
+  "maxExcerptChars": 2000,
+  "truncateFullAtChars": 200000,
+  "policyVersion": "v1",
+  "aegisVersion": "v2.6.0"
+}

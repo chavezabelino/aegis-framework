@@ -1,0 +1,126 @@
+id: feat-agent-outcome-logging
+name: Agent Outcome Logging System
+version: 1.0.0
+description: Tiered, configurable outcome logging for multi-agent assessment and evaluation
+
+# Constitutional annotations
+aegisFrameworkVersion: "2.6.0"
+mode: "strict"
+intent: "Enable structured outcome logging for agent outputs with tiered detail levels"
+context: "Multi-agent development workflow requiring assessment and evaluation capabilities"
+
+# Required components
+requiredRoutes: []
+requiredProviders: []
+requiredSelectors: []
+
+# Rule contracts for validation
+ruleContracts:
+  - rule: "outcome-schema-validation"
+    version: "1.0.0"
+    description: "Validate outcome records against Zod schema"
+  - rule: "integrity-hash-validation"
+    version: "1.0.0"
+    description: "Verify bundle SHA256 integrity hashes"
+  - rule: "mode-configuration"
+    version: "1.0.0"
+    description: "Enforce tiered logging modes (lite/standard/full/forensic)"
+
+# Observability events
+observability:
+  events:
+    - name: "outcome.recorded"
+      schema: "OutcomeRecordEventSchema"
+      description: "Emitted when an outcome is successfully recorded"
+    - name: "outcome.validation.failed"
+      schema: "OutcomeValidationErrorSchema"
+      description: "Emitted when outcome validation fails"
+    - name: "outcome.mode.changed"
+      schema: "OutcomeModeChangeSchema"
+      description: "Emitted when logging mode is changed"
+
+# Error states and fallbacks
+errorStates:
+  - code: "OUTCOME_SCHEMA_INVALID"
+    fallback: "Log validation error and continue with minimal record"
+  - code: "OUTCOME_WRITE_FAILED"
+    fallback: "Emit error to stderr and exit with non-zero code"
+  - code: "OUTCOME_MODE_INVALID"
+    fallback: "Default to standard mode and log warning"
+
+# Implementation requirements
+implementation:
+  files:
+    - path: "tools/ci/outcomes/schema.mjs"
+      description: "Zod schema definitions for outcome records"
+      required: true
+    - path: "tools/ci/outcomes/writers.mjs"
+      description: "JSONL and Markdown output writers"
+      required: true
+    - path: "tools/ci/record-outcome.mjs"
+      description: "Main CLI for recording outcomes"
+      required: true
+    - path: "aegis/outcomes/.gitkeep"
+      description: "Outcomes directory placeholder"
+      required: true
+    - path: "aegis/outcome.config.json"
+      description: "Configuration for outcome logging behavior"
+      required: true
+
+# CLI commands
+cli:
+  commands:
+    - name: "aegis:outcome"
+      description: "Record outcome with default mode"
+      script: "node tools/ci/record-outcome.mjs"
+    - name: "aegis:outcome:lite"
+      description: "Record outcome in lite mode (metadata only)"
+      script: "AEGIS_OUTCOME_MODE=lite node tools/ci/record-outcome.mjs"
+    - name: "aegis:outcome:standard"
+      description: "Record outcome in standard mode (with excerpts)"
+      script: "AEGIS_OUTCOME_MODE=standard node tools/ci/record-outcome.mjs"
+    - name: "aegis:outcome:full"
+      description: "Record outcome in full mode (complete data)"
+      script: "AEGIS_OUTCOME_MODE=full node tools/ci/record-outcome.mjs"
+    - name: "aegis:outcome:forensic"
+      description: "Record outcome in forensic mode (with environment)"
+      script: "AEGIS_OUTCOME_MODE=forensic node tools/ci/record-outcome.mjs"
+
+# Dependencies
+dependencies:
+  - name: "zod"
+    version: "^3.23.8"
+    purpose: "Schema validation for outcome records"
+
+# Testing requirements
+testing:
+  - name: "schema-validation"
+    description: "Test Zod schema validation with various inputs"
+    command: "node -e \"import('./tools/ci/outcomes/schema.mjs').then(m => console.log('Schema loaded'))\""
+  - name: "cli-basic"
+    description: "Test basic CLI functionality"
+    command: "echo '{\"aegisVersion\":\"v2.6.0\",\"sessionId\":\"test\",\"stepId\":\"s1\",\"agent\":{\"name\":\"cursor\"},\"prompt\":{\"user\":\"hi\"},\"output\":{\"text\":\"ok\"},\"outcomes\":{\"summary\":\"test\",\"verdict\":\"success\"}}' | node tools/ci/record-outcome.mjs --mode standard"
+  - name: "output-generation"
+    description: "Verify JSONL and Markdown output generation"
+    command: "ls -la aegis/outcomes/$(date +%Y%m%d)/test/s1.*"
+
+# Migration considerations
+migration:
+  breaking: false
+  description: "New feature addition, no breaking changes to existing functionality"
+  steps:
+    - description: "Install zod dependency"
+      command: "pnpm add zod@^3.23.8"
+    - description: "Create outcomes directory structure"
+      command: "mkdir -p aegis/outcomes"
+    - description: "Make CLI executable"
+      command: "chmod +x tools/ci/record-outcome.mjs"
+
+# Success criteria
+successCriteria:
+  - "Schema validation passes for all outcome record types"
+  - "CLI successfully records outcomes in all modes"
+  - "JSONL and Markdown outputs are generated correctly"
+  - "Integrity hashes are computed and validated"
+  - "Configuration file is properly loaded"
+  - "No impact on existing framework functionality"
