@@ -1,0 +1,359 @@
+id: feat-prompt-cache
+name: Aegis Prompt Cache & Optimization System
+version: 1.0.0
+description: Intelligent prompt caching, layered checkpoints, and deterministic replay system for GenAI codegen optimization
+
+# Constitutional annotations
+aegisFrameworkVersion: "2.8.0"
+mode: "strict"
+intent: "Optimize GenAI codegen prompt stacks with caching, checkpoints, and deterministic replay"
+context: "Multi-provider AI development workflow requiring performance optimization and governance"
+
+# Required components
+requiredRoutes: []
+requiredProviders: []
+requiredSelectors: []
+
+# Rule contracts for validation
+ruleContracts:
+  - rule: "prompt-cache-integrity"
+    version: "1.0.0"
+    description: "Ensure prompt cache integrity with stable hashing and validation"
+  - rule: "checkpoint-persistence"
+    version: "1.0.0"
+    description: "Validate checkpoint persistence and graph node relationships"
+  - rule: "artifact-traceability"
+    version: "1.0.0"
+    description: "Ensure artifact and tool trace provenance and linking"
+  - rule: "standards-enforcement"
+    version: "1.0.0"
+    description: "Enforce constitutional standards and rule compliance"
+  - rule: "deterministic-replay"
+    version: "1.0.0"
+    description: "Ensure deterministic replay with semantic diff capabilities"
+  - rule: "telemetry-provenance"
+    version: "1.0.0"
+    description: "Validate telemetry linking to scaffold and checkpoint provenance"
+
+# Observability events
+observability:
+  events:
+    - name: "prompt.cache.hit"
+      schema: "PromptCacheHitSchema"
+      description: "Emitted when prompt cache hit occurs"
+    - name: "prompt.cache.miss"
+      schema: "PromptCacheMissSchema"
+      description: "Emitted when prompt cache miss occurs"
+    - name: "checkpoint.saved"
+      schema: "CheckpointSavedSchema"
+      description: "Emitted when checkpoint is saved"
+    - name: "checkpoint.branched"
+      schema: "CheckpointBranchedSchema"
+      description: "Emitted when checkpoint is branched"
+    - name: "artifact.traced"
+      schema: "ArtifactTracedSchema"
+      description: "Emitted when artifact is traced"
+    - name: "standards.enforced"
+      schema: "StandardsEnforcedSchema"
+      description: "Emitted when standards enforcement completes"
+    - name: "replay.started"
+      schema: "ReplayStartedSchema"
+      description: "Emitted when deterministic replay begins"
+    - name: "replay.completed"
+      schema: "ReplayCompletedSchema"
+      description: "Emitted when deterministic replay completes"
+    - name: "telemetry.recorded"
+      schema: "TelemetryRecordedSchema"
+      description: "Emitted when telemetry is recorded"
+
+# Error states and fallbacks
+errorStates:
+  - code: "PROMPT_CACHE_CORRUPTION"
+    fallback: "Bypass cache and execute fresh prompt"
+  - code: "CHECKPOINT_PERSISTENCE_FAILED"
+    fallback: "Continue without checkpoint, log warning"
+  - code: "ARTIFACT_TRACE_FAILED"
+    fallback: "Continue without artifact tracing"
+  - code: "STANDARDS_ENFORCEMENT_FAILED"
+    fallback: "Log violation and continue with warning"
+  - code: "REPLAY_DETERMINISM_FAILED"
+    fallback: "Return replay failure with diff analysis"
+  - code: "TELEMETRY_RECORDING_FAILED"
+    fallback: "Continue without telemetry, log error"
+
+# Implementation requirements
+implementation:
+  files:
+    # Core prompt cache system
+    - path: "tools/aegis/prompt-cache/schemas.mjs"
+      description: "Zod schemas for prompt cache data models"
+      required: true
+    - path: "tools/aegis/prompt-cache/cache-store.mjs"
+      description: "SQLite-based prompt cache store"
+      required: true
+    - path: "tools/aegis/prompt-cache/provider-adapters.mjs"
+      description: "Provider adapters for OpenAI, Anthropic, vLLM"
+      required: true
+    - path: "tools/aegis/prompt-cache/resolve-scaffold.mjs"
+      description: "Scaffold resolution with caching"
+      required: true
+    
+    # Checkpoint system
+    - path: "tools/aegis/prompt-cache/checkpoint-store.mjs"
+      description: "Neon Postgres checkpoint store"
+      required: true
+    - path: "tools/aegis/prompt-cache/graph-nodes.mjs"
+      description: "LangGraph-compatible graph node management"
+      required: true
+    - path: "tools/aegis/prompt-cache/branch-checkpoint.mjs"
+      description: "Checkpoint branching and revision"
+      required: true
+    
+    # Artifacts and tool traces
+    - path: "tools/aegis/prompt-cache/artifact-store.mjs"
+      description: "Artifact and tool trace persistence"
+      required: true
+    - path: "tools/aegis/prompt-cache/scratchpad.mjs"
+      description: "Persistent scratchpad management"
+      required: true
+    - path: "tools/aegis/prompt-cache/tool-traces.mjs"
+      description: "Tool execution trace recording"
+      required: true
+    
+    # Standards enforcement
+    - path: "tools/aegis/prompt-cache/standards-enforcer.mjs"
+      description: "Constitutional standards enforcement"
+      required: true
+    - path: "tools/aegis/prompt-cache/rulepacks.mjs"
+      description: "Rulepack definitions and validation"
+      required: true
+    
+    # Replay system
+    - path: "tools/aegis/prompt-cache/replay-engine.mjs"
+      description: "Deterministic replay with semantic diff"
+      required: true
+    - path: "tools/aegis/prompt-cache/ast-diff.mjs"
+      description: "AST diff computation for TypeScript/TSX"
+      required: true
+    
+    # Telemetry system
+    - path: "tools/aegis/prompt-cache/telemetry.mjs"
+      description: "Telemetry recording and analysis"
+      required: true
+    - path: "tools/aegis/prompt-cache/cost-tracker.mjs"
+      description: "Cost and latency tracking"
+      required: true
+    
+    # CLI and utilities
+    - path: "tools/aegis/prompt-cache/cli.mjs"
+      description: "Main CLI for prompt cache operations"
+      required: true
+    - path: "tools/aegis/prompt-cache/hash-utils.mjs"
+      description: "Stable hashing utilities"
+      required: true
+    
+    # Configuration and directories
+    - path: "aegis/prompt-cache/.gitkeep"
+      description: "Prompt cache directory placeholder"
+      required: true
+    - path: "aegis/prompt-cache.config.json"
+      description: "Configuration for prompt cache behavior"
+      required: true
+    - path: "checkpoints/.gitkeep"
+      description: "Checkpoints directory placeholder"
+      required: true
+    - path: "artifacts/.gitkeep"
+      description: "Artifacts directory placeholder"
+      required: true
+
+# CLI commands
+cli:
+  commands:
+    # Core prompt cache operations
+    - name: "aegis:cache:resolve"
+      description: "Resolve prompt scaffold with caching"
+      script: "node tools/aegis/prompt-cache/cli.mjs resolve"
+    - name: "aegis:cache:checkpoint"
+      description: "Save checkpoint at current state"
+      script: "node tools/aegis/prompt-cache/cli.mjs checkpoint"
+    - name: "aegis:cache:branch"
+      description: "Branch from existing checkpoint"
+      script: "node tools/aegis/prompt-cache/cli.mjs branch"
+    
+    # Artifact and trace management
+    - name: "aegis:cache:scratchpad"
+      description: "Manage persistent scratchpads"
+      script: "node tools/aegis/prompt-cache/cli.mjs scratchpad"
+    - name: "aegis:cache:trace"
+      description: "Record tool execution traces"
+      script: "node tools/aegis/prompt-cache/cli.mjs trace"
+    
+    # Standards and replay
+    - name: "aegis:cache:enforce"
+      description: "Enforce constitutional standards"
+      script: "node tools/aegis/prompt-cache/cli.mjs enforce"
+    - name: "aegis:cache:replay"
+      description: "Replay from checkpoint with overrides"
+      script: "node tools/aegis/prompt-cache/cli.mjs replay"
+    
+    # Telemetry and analysis
+    - name: "aegis:cache:telemetry"
+      description: "View telemetry and cost analysis"
+      script: "node tools/aegis/prompt-cache/cli.mjs telemetry"
+    - name: "aegis:cache:analyze"
+      description: "Analyze cache performance and hit rates"
+      script: "node tools/aegis/prompt-cache/cli.mjs analyze"
+
+# Data models
+dataModels:
+  - name: "PromptBlock"
+    description: "Individual prompt block with stable hash"
+    schema: "PromptBlockSchema"
+  - name: "PromptScaffold"
+    description: "Complete prompt scaffold with blocks"
+    schema: "PromptScaffoldSchema"
+  - name: "ResolveInput"
+    description: "Input for scaffold resolution"
+    schema: "ResolveInputSchema"
+  - name: "ResolvedScaffold"
+    description: "Resolved scaffold with provider-specific formatting"
+    schema: "ResolvedScaffoldSchema"
+  - name: "GraphNode"
+    description: "LangGraph node with checkpoint data"
+    schema: "GraphNodeSchema"
+  - name: "Checkpoint"
+    description: "Checkpoint with graph state and metadata"
+    schema: "CheckpointSchema"
+  - name: "ScratchpadArtifact"
+    description: "Persistent scratchpad artifact"
+    schema: "ScratchpadArtifactSchema"
+  - name: "ToolTrace"
+    description: "Tool execution trace with inputs/outputs"
+    schema: "ToolTraceSchema"
+  - name: "TelemetryRecord"
+    description: "Telemetry record with cost and performance data"
+    schema: "TelemetryRecordSchema"
+
+# Provider support
+providers:
+  - name: "openai"
+    description: "OpenAI API provider adapter"
+    features: ["gpt-4", "gpt-4o", "gpt-3.5-turbo"]
+  - name: "anthropic"
+    description: "Anthropic API provider adapter"
+    features: ["claude-3-opus", "claude-3-sonnet", "claude-3-haiku"]
+  - name: "vllm"
+    description: "vLLM local provider adapter"
+    features: ["llama-3", "mistral", "codellama"]
+  - name: "sglang"
+    description: "SGLang local provider adapter"
+    features: ["llama-3", "mistral", "codellama"]
+  - name: "llama-cpp"
+    description: "llama.cpp local provider adapter"
+    features: ["llama-3", "mistral", "codellama"]
+
+# Dependencies
+dependencies:
+  - name: "zod"
+    version: "^4.0.17"
+    purpose: "Schema validation for all data models"
+  - name: "sqlite3"
+    version: "^5.1.7"
+    purpose: "Local SQLite for prompt cache"
+  - name: "pg"
+    version: "^8.11.3"
+    purpose: "Neon Postgres for checkpoints and artifacts"
+  - name: "typescript"
+    version: "^5.3.3"
+    purpose: "AST parsing and diff computation"
+  - name: "crypto"
+    version: "built-in"
+    purpose: "SHA-256 hashing for stable identities"
+
+# Testing requirements
+testing:
+  - name: "cache-integrity"
+    description: "Test prompt cache integrity and hashing"
+    command: "pnpm test:prompt-cache --cache-integrity"
+  - name: "checkpoint-persistence"
+    description: "Test checkpoint save/load/branch operations"
+    command: "pnpm test:prompt-cache --checkpoint"
+  - name: "artifact-tracing"
+    description: "Test artifact and tool trace recording"
+    command: "pnpm test:prompt-cache --artifacts"
+  - name: "standards-enforcement"
+    description: "Test constitutional standards enforcement"
+    command: "pnpm test:prompt-cache --standards"
+  - name: "deterministic-replay"
+    description: "Test deterministic replay with semantic diff"
+    command: "pnpm test:prompt-cache --replay"
+  - name: "telemetry-tracking"
+    description: "Test telemetry recording and cost tracking"
+    command: "pnpm test:prompt-cache --telemetry"
+  - name: "provider-adapters"
+    description: "Test provider adapter functionality"
+    command: "pnpm test:prompt-cache --providers"
+  - name: "end-to-end"
+    description: "Test complete prompt cache workflow"
+    command: "pnpm test:prompt-cache --e2e"
+
+# Migration considerations
+migration:
+  breaking: false
+  description: "New feature addition, no breaking changes to existing functionality"
+  steps:
+    # Dependencies
+    - description: "Install database and TypeScript dependencies"
+      command: "pnpm add sqlite3@^5.1.7 pg@^8.11.3 typescript@^5.3.3"
+    
+    # Directory structure
+    - description: "Create prompt cache directory structure"
+      command: "mkdir -p aegis/prompt-cache checkpoints artifacts"
+    - description: "Create tool directories"
+      command: "mkdir -p tools/aegis/prompt-cache"
+    
+    # Database setup
+    - description: "Initialize SQLite cache database"
+      command: "node tools/aegis/prompt-cache/cli.mjs init-cache"
+    - description: "Initialize Neon Postgres tables"
+      command: "node tools/aegis/prompt-cache/cli.mjs init-db"
+    
+    # Permissions and configuration
+    - description: "Make CLI executable"
+      command: "chmod +x tools/aegis/prompt-cache/cli.mjs"
+    - description: "Initialize configuration"
+      command: "node tools/aegis/prompt-cache/cli.mjs init-config"
+
+# Success criteria
+successCriteria:
+  # Core functionality
+  - "Prompt cache provides stable hashing and integrity validation"
+  - "Checkpoint system supports save/load/branch operations"
+  - "Artifact and tool trace recording works correctly"
+  - "Standards enforcement validates constitutional compliance"
+  - "Deterministic replay produces identical outputs"
+  - "Telemetry tracks cost, latency, and cache performance"
+  
+  # Performance requirements
+  - "Cache hit rate >80% for stable scaffolds"
+  - "Checkpoint save/load <100ms"
+  - "Replay time reduction >50% for cached prompts"
+  - "Telemetry overhead <10ms per operation"
+  
+  # Quality requirements
+  - "Zero silent failures in cache operations"
+  - "All data models validated with Zod schemas"
+  - "Provider adapters support all specified providers"
+  - "AST diff computation accurate for TypeScript/TSX"
+  
+  # Integration requirements
+  - "Seamless integration with existing Aegis workflows"
+  - "CI/CD integration for standards enforcement"
+  - "GitHub Actions for cache performance monitoring"
+  - "Comprehensive test coverage (>90%)"
+  
+  # Governance requirements
+  - "All operations follow constitutional guardrails"
+  - "Provenance linking for all artifacts and traces"
+  - "Standards enforcement blocks non-compliant operations"
+  - "Telemetry provides audit trail for all operations"
