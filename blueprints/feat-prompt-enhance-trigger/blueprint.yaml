@@ -1,0 +1,345 @@
+id: feat-prompt-enhance-trigger
+name: Aegis Prompt Enhancement Mode (APEM) with Trace Sink & Replay Harness
+version: 1.0.0
+description: On-demand prompt elevation system with deterministic tracing, replay verification, and drift detection capabilities
+
+# Constitutional annotations
+aegisFrameworkVersion: "2.7.0"
+mode: "strict"
+intent: "Enable automatic prompt optimization for consistent, high-quality AI agent outputs"
+context: "Multi-agent development workflow requiring structured, context-aware prompt transformation"
+
+# Required components
+requiredRoutes: []
+requiredProviders: []
+requiredSelectors: []
+
+# Rule contracts for validation
+ruleContracts:
+  - rule: "trigger-detection"
+    version: "1.0.0"
+    description: "Detect prompt optimization triggers in user input"
+  - rule: "context-injection"
+    version: "1.0.0"
+    description: "Inject relevant Aegis/Kilo guardrails and project context"
+  - rule: "prompt-structuring"
+    version: "1.0.0"
+    description: "Format optimized prompts into Kilo-style structure"
+  - rule: "two-stage-execution"
+    version: "1.0.0"
+    description: "Execute optimize-then-execute flow with transparency"
+  - rule: "traceability"
+    version: "1.0.0"
+    description: "Log raw, optimized, and final prompts for audit"
+  - rule: "trace-sink"
+    version: "1.0.0"
+    description: "Append-only JSONL tracing with redaction and content hashing"
+  - rule: "replay-verification"
+    version: "1.0.0"
+    description: "Deterministic replay with hash-based output verification"
+  - rule: "drift-detection"
+    version: "1.0.0"
+    description: "Multi-model/seed replay matrix for drift detection"
+
+# Observability events
+observability:
+  events:
+    - name: "prompt.optimization.triggered"
+      schema: "PromptOptimizationTriggeredSchema"
+      description: "Emitted when prompt optimization is triggered"
+    - name: "prompt.optimization.completed"
+      schema: "PromptOptimizationCompletedSchema"
+      description: "Emitted when prompt optimization completes successfully"
+    - name: "prompt.optimization.failed"
+      schema: "PromptOptimizationFailedSchema"
+      description: "Emitted when prompt optimization fails"
+    - name: "prompt.execution.started"
+      schema: "PromptExecutionStartedSchema"
+      description: "Emitted when optimized prompt execution begins"
+    - name: "prompt.execution.completed"
+      schema: "PromptExecutionCompletedSchema"
+      description: "Emitted when optimized prompt execution completes"
+    - name: "trace.recorded"
+      schema: "TraceRecordedSchema"
+      description: "Emitted when a trace record is written to JSONL"
+    - name: "replay.started"
+      schema: "ReplayStartedSchema"
+      description: "Emitted when replay verification begins"
+    - name: "replay.completed"
+      schema: "ReplayCompletedSchema"
+      description: "Emitted when replay verification completes"
+    - name: "drift.detected"
+      schema: "DriftDetectedSchema"
+      description: "Emitted when model drift is detected in replay matrix"
+
+# Error states and fallbacks
+errorStates:
+  - code: "PROMPT_OPTIMIZATION_TRIGGER_INVALID"
+    fallback: "Execute raw prompt without optimization"
+  - code: "CONTEXT_INJECTION_FAILED"
+    fallback: "Use default Aegis guardrails and continue optimization"
+  - code: "PROMPT_STRUCTURING_FAILED"
+    fallback: "Return raw prompt with warning about optimization failure"
+  - code: "EXECUTION_FAILED"
+    fallback: "Return error with both raw and optimized prompts for debugging"
+  - code: "TRACE_WRITE_FAILED"
+    fallback: "Continue execution without tracing, log warning"
+  - code: "REPLAY_VERIFICATION_FAILED"
+    fallback: "Return replay results with failure details for analysis"
+  - code: "DRIFT_DETECTION_FAILED"
+    fallback: "Continue with single-model replay, log drift detection failure"
+
+# Implementation requirements
+implementation:
+  files:
+    # Core prompt enhancement
+    - path: "tools/ci/prompt-enhancement/schema.mjs"
+      description: "Zod schema definitions for prompt optimization"
+      required: true
+    - path: "tools/ci/prompt-enhancement/triggers.mjs"
+      description: "Trigger detection and parsing logic"
+      required: true
+    - path: "tools/ci/prompt-enhancement/context.mjs"
+      description: "Context injection and Aegis/Kilo guardrail retrieval"
+      required: true
+    - path: "tools/ci/prompt-enhancement/structuring.mjs"
+      description: "Prompt structuring into Kilo format"
+      required: true
+    - path: "tools/ci/prompt-enhancement/executor.mjs"
+      description: "Two-stage execution engine"
+      required: true
+    - path: "tools/ci/enhance-prompt.mjs"
+      description: "Main CLI for prompt enhancement"
+      required: true
+    
+    # Trace sink system
+    - path: "tools/aegis/apem/trace/trace.types.ts"
+      description: "TypeScript type definitions for trace events"
+      required: true
+    - path: "tools/aegis/apem/trace/trace.schemas.ts"
+      description: "Zod schemas for trace event validation"
+      required: true
+    - path: "tools/aegis/apem/trace/redactor.ts"
+      description: "Secret redaction and content sanitization"
+      required: true
+    - path: "tools/aegis/apem/trace/trace-sink.ts"
+      description: "Append-only JSONL trace writer with rotation"
+      required: true
+    - path: "tools/aegis/apem/trace/trace-schema.json"
+      description: "JSON Schema for external trace validation"
+      required: true
+    
+    # Replay harness system
+    - path: "tools/aegis/apem/replay/replay.types.ts"
+      description: "TypeScript type definitions for replay system"
+      required: true
+    - path: "tools/aegis/apem/replay/replay.schemas.ts"
+      description: "Zod schemas for replay configuration"
+      required: true
+    - path: "tools/aegis/apem/replay/replay-harness.mts"
+      description: "Deterministic replay CLI with verification"
+      required: true
+    - path: "tools/aegis/apem/replay/replay-matrix.mts"
+      description: "Multi-model/seed replay matrix for drift detection"
+      required: true
+    
+    # CI/CD integration
+    - path: ".github/workflows/apem-trace-artifacts.yml"
+      description: "GitHub Action to upload traces as artifacts"
+      required: true
+    - path: ".github/workflows/apem-replay-matrix.yml"
+      description: "GitHub Action for replay matrix drift detection"
+      required: true
+    
+    # Configuration and directories
+    - path: "aegis/prompt-enhancement/.gitkeep"
+      description: "Prompt enhancement directory placeholder"
+      required: true
+    - path: "aegis/prompt-enhancement.config.json"
+      description: "Configuration for prompt enhancement behavior"
+      required: true
+    - path: "traces/.gitkeep"
+      description: "Traces directory placeholder"
+      required: true
+
+# CLI commands
+cli:
+  commands:
+    # Core prompt enhancement
+    - name: "aegis:enhance"
+      description: "Enhance a prompt with Aegis optimization"
+      script: "node tools/ci/enhance-prompt.mjs"
+    - name: "aegis:enhance:transparent"
+      description: "Enhance prompt with transparency (show optimized version)"
+      script: "AEGIS_SHOW_OPTIMIZED=true node tools/ci/enhance-prompt.mjs"
+    - name: "aegis:enhance:debug"
+      description: "Enhance prompt with full debug information"
+      script: "AEGIS_DEBUG_MODE=true node tools/ci/enhance-prompt.mjs"
+    
+    # Trace and replay commands
+    - name: "apem:replay"
+      description: "Replay traces with deterministic verification"
+      script: "node tools/aegis/apem/replay/replay-harness.mts"
+    - name: "apem:replay:matrix"
+      description: "Run replay matrix for drift detection"
+      script: "node tools/aegis/apem/replay/replay-matrix.mts"
+    - name: "apem:trace:validate"
+      description: "Validate trace files against JSON schema"
+      script: "node tools/aegis/apem/trace/validate-traces.mjs"
+    - name: "test:apem"
+      description: "Run APEM test suite"
+      script: "vitest run tests/apem/*.spec.ts"
+
+# Trigger patterns
+triggers:
+  patterns:
+    - pattern: "optimize:"
+      description: "Prefix-based trigger for prompt optimization"
+      priority: "high"
+    - pattern: "/optimize"
+      description: "Slash command trigger for prompt optimization"
+      priority: "high"
+    - pattern: "Aegis, optimize"
+      description: "Natural language trigger for prompt optimization"
+      priority: "medium"
+    - pattern: "enhance:"
+      description: "Alternative prefix trigger"
+      priority: "medium"
+
+# Context injection sources
+contextSources:
+  - name: "aegis-guardrails"
+    description: "Aegis framework guardrails and constraints"
+    source: "framework/memory/aegis-guardrails.json"
+  - name: "kilo-standards"
+    description: "Kilo coding standards and patterns"
+    source: "framework/memory/kilo-standards.json"
+  - name: "project-rules"
+    description: "Project-specific rules and conventions"
+    source: ".aegis/project-rules.json"
+  - name: "session-context"
+    description: "Current session context and history"
+    source: "runtime/session-context.json"
+
+# Prompt structuring templates
+structuringTemplates:
+  - name: "kilo-standard"
+    description: "Standard Kilo format: Goal → Tasks → Constraints → Deliverables"
+    template: "templates/prompt-structuring/kilo-standard.mjs"
+  - name: "debug-focused"
+    description: "Debug-focused format with error handling emphasis"
+    template: "templates/prompt-structuring/debug-focused.mjs"
+  - name: "refactor-focused"
+    description: "Refactor-focused format with architectural considerations"
+    template: "templates/prompt-structuring/refactor-focused.mjs"
+
+# Dependencies
+dependencies:
+  - name: "zod"
+    version: "^4.0.17"
+    purpose: "Schema validation for prompt optimization"
+  - name: "natural"
+    version: "^6.10.4"
+    purpose: "Natural language processing for intent extraction"
+  - name: "execa"
+    version: "^8.0.2"
+    purpose: "Process execution for replay harness"
+  - name: "ajv"
+    version: "^9.0.2"
+    purpose: "JSON Schema validation for external trace validation"
+
+# Testing requirements
+testing:
+  # Core prompt enhancement
+  - name: "trigger-detection"
+    description: "Test trigger detection with various input patterns"
+    command: "node tools/ci/prompt-enhancement/triggers.mjs --test"
+  - name: "context-injection"
+    description: "Test context injection with sample project data"
+    command: "node tools/ci/prompt-enhancement/context.mjs --test"
+  - name: "prompt-structuring"
+    description: "Test prompt structuring with sample inputs"
+    command: "node tools/ci/prompt-enhancement/structuring.mjs --test"
+  - name: "end-to-end"
+    description: "Test complete prompt enhancement workflow"
+    command: "echo 'optimize: fix the login route' | node tools/ci/enhance-prompt.mjs"
+  
+  # Trace sink system
+  - name: "trace-sink"
+    description: "Test trace sink writing and redaction"
+    command: "pnpm test:apem --trace-sink"
+  - name: "trace-validation"
+    description: "Test trace file validation against JSON schema"
+    command: "pnpm apem:trace:validate traces/apem-*.jsonl"
+  
+  # Replay harness system
+  - name: "replay-harness"
+    description: "Test deterministic replay with hash verification"
+    command: "pnpm test:apem --replay"
+  - name: "replay-matrix"
+    description: "Test multi-model/seed replay matrix"
+    command: "pnpm apem:replay:matrix --test"
+  
+  # Integration tests
+  - name: "ci-integration"
+    description: "Test CI workflow integration"
+    command: "pnpm test:apem --ci"
+
+# Migration considerations
+migration:
+  breaking: false
+  description: "New feature addition, no breaking changes to existing functionality"
+  steps:
+    # Core dependencies
+    - description: "Install natural language processing dependency"
+      command: "pnpm add natural@^6.10.4"
+    - description: "Install replay and validation dependencies"
+      command: "pnpm add execa@^8.0.2 ajv@^9.0.2"
+    
+    # Directory structure
+    - description: "Create prompt enhancement directory structure"
+      command: "mkdir -p aegis/prompt-enhancement"
+    - description: "Create traces directory structure"
+      command: "mkdir -p traces"
+    - description: "Create APEM tool directories"
+      command: "mkdir -p tools/aegis/apem/{trace,replay}"
+    
+    # Permissions and initialization
+    - description: "Make CLI executables"
+      command: "chmod +x tools/ci/enhance-prompt.mjs tools/aegis/apem/replay/replay-harness.mts"
+    - description: "Initialize context sources"
+      command: "node tools/ci/prompt-enhancement/context.mjs --init"
+    - description: "Initialize trace schema"
+      command: "node tools/aegis/apem/trace/generate-schema.mjs"
+
+# Success criteria
+successCriteria:
+  # Core prompt enhancement
+  - "Trigger detection correctly identifies optimization requests"
+  - "Context injection pulls relevant Aegis/Kilo guardrails"
+  - "Prompt structuring produces Kilo-compliant formats"
+  - "Two-stage execution works with transparency options"
+  - "Traceability logging captures all prompt transformations"
+  - "No impact on existing prompt execution workflows"
+  - "Performance impact is minimal (<100ms optimization overhead)"
+  
+  # Trace sink system
+  - "Trace sink writes append-only JSONL with proper redaction"
+  - "Content hashing preserves integrity for verification"
+  - "Daily rotation and directory management work correctly"
+  - "JSON schema validation catches invalid trace records"
+  - "Secret redaction patterns cover common credential formats"
+  
+  # Replay harness system
+  - "Deterministic replay produces identical outputs with same inputs"
+  - "Hash-based verification catches output drift"
+  - "Lenient mode handles whitespace and formatting differences"
+  - "Replay matrix detects model drift across multiple models/seeds"
+  - "CI integration fails builds on verification failures"
+  
+  # Integration and governance
+  - "GitHub Actions upload traces as artifacts on completion"
+  - "Replay matrix runs in CI for drift detection"
+  - "All tests pass with comprehensive coverage (>90%)"
+  - "Documentation covers all CLI commands and workflows"
+  - "Migration path is smooth with no breaking changes"
